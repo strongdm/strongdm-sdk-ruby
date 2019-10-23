@@ -10,7 +10,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :sql_nullable, :bool, 1941301
     end
     add_message "v1.MessageOptions" do
-      optional :name, :string, 1941300
+      optional :model_name, :string, 1941300
+      optional :porcelain, :bool, 1941301
     end
     add_message "v1.OneofOptions" do
       optional :model_name, :string, 1941380
