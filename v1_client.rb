@@ -6,6 +6,12 @@ Dir[File.join(__dir__, 'grpc', '*.rb')].each {|file| require file }
 Dir[File.join(__dir__, 'models', '*.rb')].each {|file| require file }
 
 module SDM
+    class Client
+        def initialize(url)
+            @nodes = Nodes.new(url)
+        end
+        attr_reader :nodes
+    end
     # Nodes are proxies in strongDM responsible to communicate with servers
     # (relays) and clients (gateways).
 
