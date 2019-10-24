@@ -2,10 +2,8 @@ this_dir = File.expand_path(File.dirname(__FILE__))
 lib_dir = File.join(this_dir, 'grpc')
 $LOAD_PATH.unshift(lib_dir) unless $LOAD_PATH.include?(lib_dir)
 require 'grpc'
-require_relative './grpc/v1_plumbing'
-require_relative './models/v1_porcelain'
-require_relative './grpc/nodes_pb'
-require_relative './grpc/nodes_services_pb'
+Dir[File.join(__dir__, 'grpc', '*.rb')].each {|file| require file }
+Dir[File.join(__dir__, 'models', '*.rb')].each {|file| require file }
 
 module SDM
     # Nodes are proxies in strongDM responsible to communicate with servers
