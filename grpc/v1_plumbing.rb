@@ -1,6 +1,43 @@
 require_relative './nodes_pb' # import GRPC plumbing
 require_relative '../models/v1_porcelain' # import models porcelain
 
+def node_create_response_to_porcelain(plumbing)
+    porcelain = NodeCreateResponse.new()
+    porcelain.meta = plumbing.meta
+    porcelain.nodes = plumbing.nodes
+    porcelain.tokens = plumbing.tokens
+    porcelain
+end
+
+def node_create_response_to_plumbing(porcelain)
+    plumbing = V1::NodeCreateResponse.new()
+    plumbing.meta = porcelain.meta unless porcelain.meta == nil
+    plumbing.nodes = porcelain.nodes unless porcelain.nodes == nil
+    plumbing.tokens = porcelain.tokens unless porcelain.tokens == nil
+    plumbing
+end
+
+def repeated_node_create_response_to_plumbing(porcelains)
+    items = Array.new
+    porcelains.each do |porcelain|
+        plumbing = node_create_response_to_plumbing(porcelain)
+        items.append(plumbing)
+    end
+    items
+end
+
+def repeated_node_create_response_to_porcelain(plumbings)
+    items = Array.new
+    plumbings.each do |plumbing|
+        porcelain = node_create_response_to_porcelain(plumbing)
+        items.append(porcelain)
+    end
+    items
+end
+
+
+
+
 def node_to_plumbing(porcelain)
     plumbing = V1::Node.new()
     if porcelain .instance_of? Relay
@@ -30,6 +67,16 @@ def repeated_node_to_plumbing(porcelains)
     items
 end
 
+def repeated_node_to_porcelain(plumbings)
+    items = Array.new
+    plumbings.each do |plumbing|
+        porcelain = node_to_porcelain(plumbing)
+        items.append(porcelain)
+    end
+    items
+end
+
+
 def relay_to_porcelain(plumbing)
     porcelain = Relay.new()
     porcelain.id = plumbing.id
@@ -52,6 +99,16 @@ def repeated_relay_to_plumbing(porcelains)
     end
     items
 end
+
+def repeated_relay_to_porcelain(plumbings)
+    items = Array.new
+    plumbings.each do |plumbing|
+        porcelain = relay_to_porcelain(plumbing)
+        items.append(porcelain)
+    end
+    items
+end
+
 
 def gateway_to_porcelain(plumbing)
     porcelain = Gateway.new()
@@ -79,4 +136,47 @@ def repeated_gateway_to_plumbing(porcelains)
     end
     items
 end
+
+def repeated_gateway_to_porcelain(plumbings)
+    items = Array.new
+    plumbings.each do |plumbing|
+        porcelain = gateway_to_porcelain(plumbing)
+        items.append(porcelain)
+    end
+    items
+end
+
+
+def token_to_porcelain(plumbing)
+    porcelain = Token.new()
+    porcelain.id = plumbing.id
+    porcelain.token = plumbing.token
+    porcelain
+end
+
+def token_to_plumbing(porcelain)
+    plumbing = V1::Token.new()
+    plumbing.id = porcelain.id unless porcelain.id == nil
+    plumbing.token = porcelain.token unless porcelain.token == nil
+    plumbing
+end
+
+def repeated_token_to_plumbing(porcelains)
+    items = Array.new
+    porcelains.each do |porcelain|
+        plumbing = token_to_plumbing(porcelain)
+        items.append(plumbing)
+    end
+    items
+end
+
+def repeated_token_to_porcelain(plumbings)
+    items = Array.new
+    plumbings.each do |plumbing|
+        porcelain = token_to_porcelain(plumbing)
+        items.append(porcelain)
+    end
+    items
+end
+
 

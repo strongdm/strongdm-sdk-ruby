@@ -18,37 +18,67 @@ class Nodes
     def create(nodes)
         req = V1::NodeCreateRequest.new()
         req.nodes += repeated_node_to_plumbing(nodes)
-        @stub.create(req)
+
+        plumbing_response = @stub.create(req)
+
+        resp = NodeCreateResponse.new()
+        resp.nodes = repeated_node_to_porcelain(plumbing_response.nodes)
+        resp.tokens = repeated_token_to_porcelain(plumbing_response.tokens)
+        resp
     end
     
     def get()
         req = V1::NodeGetRequest.new()
-        @stub.get(req)
+
+        plumbing_response = @stub.get(req)
+
+        resp = NodeGetResponse.new()
+        resp
     end
     
     def update()
         req = V1::NodeUpdateRequest.new()
-        @stub.update(req)
+
+        plumbing_response = @stub.update(req)
+
+        resp = NodeUpdateResponse.new()
+        resp
     end
     
     def delete()
         req = V1::NodeDeleteRequest.new()
-        @stub.delete(req)
+
+        plumbing_response = @stub.delete(req)
+
+        resp = NodeDeleteResponse.new()
+        resp
     end
     
     def list()
         req = V1::NodeListRequest.new()
-        @stub.list(req)
+
+        plumbing_response = @stub.list(req)
+
+        resp = NodeListResponse.new()
+        resp
     end
     
     def batch_update()
         req = V1::NodeBatchUpdateRequest.new()
-        @stub.batch_update(req)
+
+        plumbing_response = @stub.batch_update(req)
+
+        resp = NodeBatchUpdateResponse.new()
+        resp
     end
     
     def batch_delete()
         req = V1::NodeBatchDeleteRequest.new()
-        @stub.batch_delete(req)
+
+        plumbing_response = @stub.batch_delete(req)
+
+        resp = NodeBatchDeleteResponse.new()
+        resp
     end
     
 end
@@ -833,14 +863,14 @@ end
 					"ModelOptions": {
 						"Name": "",
 						"Nullable": false,
-						"ExposeAsPorcelain": false
+						"ExposeAsPorcelain": true
 					}
 				},
 				{
 					"Comment": "",
 					"Name": "tokens",
 					"Type": {
-						"Ref": ".v1.NodeCreateResponse.TokensEntry",
+						"Ref": ".v1.Token",
 						"Primitive": "TYPE_MESSAGE"
 					},
 					"JSONName": "tokens",
@@ -848,7 +878,7 @@ end
 					"ModelOptions": {
 						"Name": "",
 						"Nullable": false,
-						"ExposeAsPorcelain": false
+						"ExposeAsPorcelain": true
 					}
 				}
 			],
@@ -860,7 +890,7 @@ end
 			},
 			"ModelOptions": {
 				"Name": "",
-				"Porcelain": false
+				"Porcelain": true
 			}
 		},
 		{
@@ -1586,6 +1616,52 @@ end
 			},
 			"ModelOptions": {
 				"Name": "Node",
+				"Porcelain": true
+			}
+		},
+		{
+			"Comment": "Token holds the bearer token used to start up nodes.",
+			"Name": "Token",
+			"Fields": [
+				{
+					"Comment": "",
+					"Name": "id",
+					"Type": {
+						"Ref": "",
+						"Primitive": "TYPE_STRING"
+					},
+					"JSONName": "id",
+					"Repeated": false,
+					"ModelOptions": {
+						"Name": "",
+						"Nullable": false,
+						"ExposeAsPorcelain": false
+					}
+				},
+				{
+					"Comment": "",
+					"Name": "token",
+					"Type": {
+						"Ref": "",
+						"Primitive": "TYPE_STRING"
+					},
+					"JSONName": "token",
+					"Repeated": false,
+					"ModelOptions": {
+						"Name": "",
+						"Nullable": false,
+						"ExposeAsPorcelain": false
+					}
+				}
+			],
+			"Oneofs": null,
+			"SwaggerOptions": {
+				"ExternalDocumentationDescription": "",
+				"ExternalDocumentationURL": "",
+				"Example": ""
+			},
+			"ModelOptions": {
+				"Name": "",
 				"Porcelain": true
 			}
 		}
