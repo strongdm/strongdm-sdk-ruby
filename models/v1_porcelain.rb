@@ -1,5 +1,11 @@
 module SDM
 
+    # ListResponseMetadata
+    class ListResponseMetadata
+       attr_accessor :next_page
+       attr_accessor :found
+    end
+    
     # NodeCreateResponse
     class NodeCreateResponse
        attr_accessor :nodes

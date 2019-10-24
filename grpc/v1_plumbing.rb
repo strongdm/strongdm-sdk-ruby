@@ -5,6 +5,42 @@ require_relative '../models/v1_porcelain' # import models porcelain
 module SDM
     module Plumbing
 
+        def self.list_response_metadata_to_porcelain(plumbing)
+            porcelain = ListResponseMetadata.new()
+            
+            porcelain.next_page = plumbing.next_page
+            
+            
+            porcelain.found = plumbing.found
+            
+            porcelain
+        end
+
+        def self.list_response_metadata_to_plumbing(porcelain)
+            plumbing = V1::ListResponseMetadata.new()
+            plumbing.next_page = porcelain.next_page unless porcelain.next_page == nil
+            plumbing.found = porcelain.found unless porcelain.found == nil
+            plumbing
+        end
+
+        def self.repeated_list_response_metadata_to_plumbing(porcelains)
+            items = Array.new
+            porcelains.each do |porcelain|
+                plumbing = list_response_metadata_to_plumbing(porcelain)
+                items.append(plumbing)
+            end
+            items
+        end
+
+        def self.repeated_list_response_metadata_to_porcelain(plumbings)
+            items = Array.new
+            plumbings.each do |plumbing|
+                porcelain = list_response_metadata_to_porcelain(plumbing)
+                items.append(porcelain)
+            end
+            items
+        end
+
         def self.node_create_response_to_porcelain(plumbing)
             porcelain = NodeCreateResponse.new()
             
