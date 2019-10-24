@@ -5,6 +5,38 @@ require_relative '../models/v1_porcelain' # import models porcelain
 module SDM
     module Plumbing
 
+        def self.delete_response_metadata_to_porcelain(plumbing)
+            porcelain = DeleteResponseMetadata.new()
+            
+            porcelain.affected = plumbing.affected
+            
+            porcelain
+        end
+
+        def self.delete_response_metadata_to_plumbing(porcelain)
+            plumbing = V1::DeleteResponseMetadata.new()
+            plumbing.affected = porcelain.affected unless porcelain.affected == nil
+            plumbing
+        end
+
+        def self.repeated_delete_response_metadata_to_plumbing(porcelains)
+            items = Array.new
+            porcelains.each do |porcelain|
+                plumbing = delete_response_metadata_to_plumbing(porcelain)
+                items.append(plumbing)
+            end
+            items
+        end
+
+        def self.repeated_delete_response_metadata_to_porcelain(plumbings)
+            items = Array.new
+            plumbings.each do |plumbing|
+                porcelain = delete_response_metadata_to_porcelain(plumbing)
+                items.append(porcelain)
+            end
+            items
+        end
+
         def self.list_response_metadata_to_porcelain(plumbing)
             porcelain = ListResponseMetadata.new()
             

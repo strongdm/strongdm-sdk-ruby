@@ -1,5 +1,10 @@
 module SDM
 
+    # DeleteResponseMetadata
+    class DeleteResponseMetadata
+       attr_accessor :affected
+    end
+    
     # ListResponseMetadata
     class ListResponseMetadata
        attr_accessor :next_page
