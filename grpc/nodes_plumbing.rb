@@ -1,10 +1,5 @@
-this_dir = File.expand_path(File.dirname(__FILE__))
-lib_dir = File.join(this_dir, 'grpc')
-$LOAD_PATH.unshift(lib_dir) unless $LOAD_PATH.include?(lib_dir)
-
-require 'grpc'
-require 'nodes_services_pb'
-
+require_relative './nodes_pb' # import GRPC plumbing
+require_relative '../models/nodes_porcelain' # import models porcelain
 
 def Node_to_plumbing(porcelain)
     plumbing = V1::Node.new()
@@ -26,7 +21,6 @@ def Node_to_porcelain(plumbing)
     end
 end
 
-
 def Relay_to_porcelain(plumbing)
     porcelain = Relay.new()
     porcelain.id = plumbing.id
@@ -39,7 +33,6 @@ def Relay_to_plumbing(porcelain)
     plumbing.id = porcelain.id unless porcelain.id == nil
     plumbing.name = porcelain.name unless porcelain.name == nil
     plumbing
-    
 end
 
 def Gateway_to_porcelain(plumbing)
@@ -58,6 +51,5 @@ def Gateway_to_plumbing(porcelain)
     plumbing.listen_address = porcelain.listen_address unless porcelain.listen_address == nil
     plumbing.bind_address = porcelain.bind_address unless porcelain.bind_address == nil
     plumbing
-    
 end
 
