@@ -17,7 +17,7 @@ class Nodes
     
     def create(nodes)
         req = V1::NodeCreateRequest.new()
-        req.nodes = repeated_nodes_to_plumbing(nodes)
+        req.nodes += repeated_node_to_plumbing(nodes)
         @stub.create(req)
     end
     

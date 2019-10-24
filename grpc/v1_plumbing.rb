@@ -4,20 +4,20 @@ require_relative '../models/v1_porcelain' # import models porcelain
 def node_to_plumbing(porcelain)
     plumbing = V1::Node.new()
     if porcelain .instance_of? Relay
-        plumbing.relay = Relay_to_plumbing(porcelain)
+        plumbing.relay = relay_to_plumbing(porcelain)
     end
     if porcelain .instance_of? Gateway
-        plumbing.gateway = Gateway_to_plumbing(porcelain)
+        plumbing.gateway = gateway_to_plumbing(porcelain)
     end
     plumbing
 end
 
 def node_to_porcelain(plumbing)
     if plumbing.relay != nil
-        return Relay_to_porcelain(plumbing.relay)
+        return relay_to_porcelain(plumbing.relay)
     end
     if plumbing.gateway != nil
-        return Gateway_to_porcelain(plumbing.gateway)
+        return gateway_to_porcelain(plumbing.gateway)
     end
 end
 
