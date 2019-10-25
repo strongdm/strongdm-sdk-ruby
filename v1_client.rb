@@ -6,20 +6,23 @@ Dir[File.join(__dir__, 'grpc', '*.rb')].each {|file| require file }
 Dir[File.join(__dir__, 'models', '*.rb')].each {|file| require file }
 
 module SDM
+
+    # Client bundles all the services together and initializes them.
     class Client
         def initialize(url)
             @nodes = Nodes.new(url)
         end
         attr_reader :nodes
     end
+
     # Nodes are proxies in strongDM responsible to communicate with servers
     # (relays) and clients (gateways).
-
     class Nodes
         def initialize(url)
             @stub = V1::Nodes::Stub.new(url, :this_channel_is_insecure)
         end
         
+        # Create registers a new node.
         def create(nodes)
             req = V1::NodeCreateRequest.new()
             req.nodes += Plumbing::repeated_node_to_plumbing(nodes)
@@ -31,6 +34,7 @@ module SDM
             resp
         end
         
+        # Get reads one node by ID.
         def get(id)
             req = V1::NodeGetRequest.new()
             req.id = id
@@ -41,6 +45,7 @@ module SDM
             resp
         end
         
+        # Update patches a node by ID.
         def update(id, node)
             req = V1::NodeUpdateRequest.new()
             req.id = id
@@ -52,6 +57,7 @@ module SDM
             resp
         end
         
+        # Delete removes a node by ID.
         def delete(id)
             req = V1::NodeDeleteRequest.new()
             req.id = id
@@ -62,6 +68,7 @@ module SDM
             resp
         end
         
+        # List is a batched Get call.
         def list(filter)
             req = V1::NodeListRequest.new()
             req.filter = filter
@@ -73,6 +80,7 @@ module SDM
             resp
         end
         
+        # BatchUpdate is a batched Update call.
         def batch_update(nodes)
             req = V1::NodeBatchUpdateRequest.new()
             req.nodes += Plumbing::repeated_node_to_plumbing(nodes)
@@ -83,6 +91,7 @@ module SDM
             resp
         end
         
+        # BatchDelete is a batched Delete call.
         def batch_delete(ids)
             req = V1::NodeBatchDeleteRequest.new()
             req.ids += ids

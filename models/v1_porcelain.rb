@@ -17,50 +17,55 @@ module SDM
        attr_accessor :found
     end
     
-    # NodeCreateResponse
+    # NodeCreateResponse reports how the nodes were created in the system. It can
+    # communicate partial successes or failures.
     class NodeCreateResponse
        attr_accessor :nodes
        attr_accessor :tokens
     end
     
-    # NodeGetResponse
+    # NodeGetResponse returns a requested node.
     class NodeGetResponse
        attr_accessor :node
     end
     
-    # NodeUpdateResponse
+    # NodeUpdateResponse returns the fields of a node after it has been updated by
+    # a NodeUpdateRequest.
     class NodeUpdateResponse
        attr_accessor :node
     end
     
-    # NodeDeleteResponse
+    # NodeDeleteResponse returns information about a node that was deleted.
     class NodeDeleteResponse
        attr_accessor :meta
     end
     
-    # NodeListResponse
+    # NodeListResponse returns a list of nodes that meet the criteria of a
+    # NodeListRequest.
     class NodeListResponse
        attr_accessor :meta
        attr_accessor :nodes
     end
     
-    # NodeBatchUpdateResponse
+    # NodeBatchUpdateResponse returns a list of nodes updated via
+    # NodeBatchUpdateRequest.
     class NodeBatchUpdateResponse
        attr_accessor :nodes
     end
     
-    # NodeBatchDeleteResponse
+    # NodeBatchDeleteResponse returns information about nodes deleted via a
+    # NodeBatchDeleteRequest.
     class NodeBatchDeleteResponse
        attr_accessor :meta
     end
     
-    # Relay
+    # Relay represents a StrongDM CLI installation running in relay mode.
     class Relay
        attr_accessor :id
        attr_accessor :name
     end
     
-    # Gateway
+    # Gateway represents a StrongDM CLI installation running in gateway mode.
     class Gateway
        attr_accessor :id
        attr_accessor :name
@@ -68,7 +73,7 @@ module SDM
        attr_accessor :bind_address
     end
     
-    # Token
+    # Token holds the bearer token used to start up nodes.
     class Token
        attr_accessor :id
        attr_accessor :token
