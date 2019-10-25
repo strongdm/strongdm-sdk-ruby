@@ -40,6 +40,7 @@ module SDM
     
     # NodeBatchUpdateResponse
     class NodeBatchUpdateResponse
+       attr_accessor :nodes
     end
     
     # NodeBatchDeleteResponse
