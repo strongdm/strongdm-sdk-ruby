@@ -37,6 +37,42 @@ module SDM
             items
         end
 
+        def self.batch_delete_response_metadata_to_porcelain(plumbing)
+            porcelain = BatchDeleteResponseMetadata.new()
+            
+            porcelain.found = plumbing.found
+            
+            
+            porcelain.affected = plumbing.affected
+            
+            porcelain
+        end
+
+        def self.batch_delete_response_metadata_to_plumbing(porcelain)
+            plumbing = V1::BatchDeleteResponseMetadata.new()
+            plumbing.found = porcelain.found unless porcelain.found == nil
+            plumbing.affected = porcelain.affected unless porcelain.affected == nil
+            plumbing
+        end
+
+        def self.repeated_batch_delete_response_metadata_to_plumbing(porcelains)
+            items = Array.new
+            porcelains.each do |porcelain|
+                plumbing = batch_delete_response_metadata_to_plumbing(porcelain)
+                items.append(plumbing)
+            end
+            items
+        end
+
+        def self.repeated_batch_delete_response_metadata_to_porcelain(plumbings)
+            items = Array.new
+            plumbings.each do |plumbing|
+                porcelain = batch_delete_response_metadata_to_porcelain(plumbing)
+                items.append(porcelain)
+            end
+            items
+        end
+
         def self.list_response_metadata_to_porcelain(plumbing)
             porcelain = ListResponseMetadata.new()
             

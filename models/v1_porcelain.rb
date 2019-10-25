@@ -5,6 +5,12 @@ module SDM
        attr_accessor :affected
     end
     
+    # BatchDeleteResponseMetadata
+    class BatchDeleteResponseMetadata
+       attr_accessor :found
+       attr_accessor :affected
+    end
+    
     # ListResponseMetadata
     class ListResponseMetadata
        attr_accessor :next_page
