@@ -91,13 +91,14 @@ module SDM
             req = V1::NodeListRequest.new()
             req.filter = filter
 
-            g = Enumerator::Generator.new { |g|
+            resp = NodeListResponse.new()
+            resp.nodes = Enumerator::Generator.new { |g|
                 plumbing_response = @stub.list(req)
                 plumbing_response.nodes.each do |plumbing_item|
                     g.yield Plumbing::node_to_porcelain(plumbing_item)
                 end
             }
-            g
+            resp
             
         end
         
