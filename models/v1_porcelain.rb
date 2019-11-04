@@ -67,7 +67,6 @@ module SDM
     # NodeListResponse returns a list of nodes that meet the criteria of a
     # NodeListRequest.
     class NodeListResponse
-       attr_accessor :meta
        attr_accessor :nodes
     end
     

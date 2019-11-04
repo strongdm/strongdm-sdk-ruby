@@ -78,7 +78,6 @@ module SDM
 
             plumbing_response = @stub.list(req)
             resp = NodeListResponse.new()
-            resp.meta = Plumbing::list_response_metadata_to_porcelain(plumbing_response.meta)
             resp.nodes = Plumbing::repeated_node_to_porcelain(plumbing_response.nodes)
             resp
         end
