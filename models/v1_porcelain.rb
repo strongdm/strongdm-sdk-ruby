@@ -5,6 +5,12 @@ module SDM
        attr_accessor :affected
     end
     
+    # BatchUpdateResponseMetadata
+    class BatchUpdateResponseMetadata
+       attr_accessor :found
+       attr_accessor :affected
+    end
+    
     # BatchDeleteResponseMetadata
     class BatchDeleteResponseMetadata
        attr_accessor :found
@@ -50,6 +56,7 @@ module SDM
     # NodeBatchUpdateResponse returns a list of nodes updated via
     # NodeBatchUpdateRequest.
     class NodeBatchUpdateResponse
+       attr_accessor :meta
        attr_accessor :nodes
     end
     

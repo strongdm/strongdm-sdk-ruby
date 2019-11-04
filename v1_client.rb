@@ -87,6 +87,7 @@ module SDM
 
             plumbing_response = @stub.batch_update(req)
             resp = NodeBatchUpdateResponse.new()
+            resp.meta = Plumbing::batch_update_response_metadata_to_porcelain(plumbing_response.meta)
             resp.nodes = Plumbing::repeated_node_to_porcelain(plumbing_response.nodes)
             resp
         end
