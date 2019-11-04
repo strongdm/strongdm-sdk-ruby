@@ -89,13 +89,18 @@ module SDM
             
                 
             req = V1::NodeListRequest.new()
+            req.meta = V1::ListRequestMetadata.new()
             req.filter = filter
 
             resp = NodeListResponse.new()
             resp.nodes = Enumerator::Generator.new { |g|
-                plumbing_response = @stub.list(req)
-                plumbing_response.nodes.each do |plumbing_item|
-                    g.yield Plumbing::node_to_porcelain(plumbing_item)
+                loop do
+                    plumbing_response = @stub.list(req)
+                    plumbing_response.nodes.each do |plumbing_item|
+                        g.yield Plumbing::node_to_porcelain(plumbing_item)
+                    end
+                    break if plumbing_response.meta.next_page == ""
+                    req.meta.page = plumbing_response.meta.next_page
                 end
             }
             resp
