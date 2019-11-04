@@ -5,6 +5,102 @@ require_relative '../models/v1_porcelain' # import models porcelain
 module SDM
     module Plumbing
 
+        def self.create_response_metadata_to_porcelain(plumbing)
+            porcelain = CreateResponseMetadata.new()
+            
+            porcelain.affected = plumbing.affected
+            
+            porcelain
+        end
+
+        def self.create_response_metadata_to_plumbing(porcelain)
+            plumbing = V1::CreateResponseMetadata.new()
+            plumbing.affected = porcelain.affected unless porcelain.affected == nil
+            plumbing
+        end
+
+        def self.repeated_create_response_metadata_to_plumbing(porcelains)
+            items = Array.new
+            porcelains.each do |porcelain|
+                plumbing = create_response_metadata_to_plumbing(porcelain)
+                items.append(plumbing)
+            end
+            items
+        end
+
+        def self.repeated_create_response_metadata_to_porcelain(plumbings)
+            items = Array.new
+            plumbings.each do |plumbing|
+                porcelain = create_response_metadata_to_porcelain(plumbing)
+                items.append(porcelain)
+            end
+            items
+        end
+
+        def self.get_response_metadata_to_porcelain(plumbing)
+            porcelain = GetResponseMetadata.new()
+            
+            porcelain.found = plumbing.found
+            
+            porcelain
+        end
+
+        def self.get_response_metadata_to_plumbing(porcelain)
+            plumbing = V1::GetResponseMetadata.new()
+            plumbing.found = porcelain.found unless porcelain.found == nil
+            plumbing
+        end
+
+        def self.repeated_get_response_metadata_to_plumbing(porcelains)
+            items = Array.new
+            porcelains.each do |porcelain|
+                plumbing = get_response_metadata_to_plumbing(porcelain)
+                items.append(plumbing)
+            end
+            items
+        end
+
+        def self.repeated_get_response_metadata_to_porcelain(plumbings)
+            items = Array.new
+            plumbings.each do |plumbing|
+                porcelain = get_response_metadata_to_porcelain(plumbing)
+                items.append(porcelain)
+            end
+            items
+        end
+
+        def self.update_response_metadata_to_porcelain(plumbing)
+            porcelain = UpdateResponseMetadata.new()
+            
+            porcelain.affected = plumbing.affected
+            
+            porcelain
+        end
+
+        def self.update_response_metadata_to_plumbing(porcelain)
+            plumbing = V1::UpdateResponseMetadata.new()
+            plumbing.affected = porcelain.affected unless porcelain.affected == nil
+            plumbing
+        end
+
+        def self.repeated_update_response_metadata_to_plumbing(porcelains)
+            items = Array.new
+            porcelains.each do |porcelain|
+                plumbing = update_response_metadata_to_plumbing(porcelain)
+                items.append(plumbing)
+            end
+            items
+        end
+
+        def self.repeated_update_response_metadata_to_porcelain(plumbings)
+            items = Array.new
+            plumbings.each do |plumbing|
+                porcelain = update_response_metadata_to_porcelain(plumbing)
+                items.append(porcelain)
+            end
+            items
+        end
+
         def self.delete_response_metadata_to_porcelain(plumbing)
             porcelain = DeleteResponseMetadata.new()
             

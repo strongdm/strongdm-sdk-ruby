@@ -29,6 +29,7 @@ module SDM
 
             plumbing_response = @stub.create(req)
             resp = NodeCreateResponse.new()
+            resp.meta = Plumbing::create_response_metadata_to_porcelain(plumbing_response.meta)
             resp.nodes = Plumbing::repeated_node_to_porcelain(plumbing_response.nodes)
             resp.tokens = Plumbing::repeated_token_to_porcelain(plumbing_response.tokens)
             resp
@@ -41,6 +42,7 @@ module SDM
 
             plumbing_response = @stub.get(req)
             resp = NodeGetResponse.new()
+            resp.meta = Plumbing::get_response_metadata_to_porcelain(plumbing_response.meta)
             resp.node = Plumbing::node_to_porcelain(plumbing_response.node)
             resp
         end
@@ -53,6 +55,7 @@ module SDM
 
             plumbing_response = @stub.update(req)
             resp = NodeUpdateResponse.new()
+            resp.meta = Plumbing::update_response_metadata_to_porcelain(plumbing_response.meta)
             resp.node = Plumbing::node_to_porcelain(plumbing_response.node)
             resp
         end

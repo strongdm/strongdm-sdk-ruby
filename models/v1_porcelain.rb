@@ -1,5 +1,20 @@
 module SDM
 
+    # CreateResponseMetadata
+    class CreateResponseMetadata
+       attr_accessor :affected
+    end
+    
+    # GetResponseMetadata
+    class GetResponseMetadata
+       attr_accessor :found
+    end
+    
+    # UpdateResponseMetadata
+    class UpdateResponseMetadata
+       attr_accessor :affected
+    end
+    
     # DeleteResponseMetadata
     class DeleteResponseMetadata
        attr_accessor :affected
@@ -26,18 +41,21 @@ module SDM
     # NodeCreateResponse reports how the nodes were created in the system. It can
     # communicate partial successes or failures.
     class NodeCreateResponse
+       attr_accessor :meta
        attr_accessor :nodes
        attr_accessor :tokens
     end
     
     # NodeGetResponse returns a requested node.
     class NodeGetResponse
+       attr_accessor :meta
        attr_accessor :node
     end
     
     # NodeUpdateResponse returns the fields of a node after it has been updated by
     # a NodeUpdateRequest.
     class NodeUpdateResponse
+       attr_accessor :meta
        attr_accessor :node
     end
     
