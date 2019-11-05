@@ -32,12 +32,6 @@ module SDM
        attr_accessor :affected
     end
     
-    # ListResponseMetadata
-    class ListResponseMetadata
-       attr_accessor :next_page
-       attr_accessor :found
-    end
-    
     # NodeCreateResponse reports how the nodes were created in the system. It can
     # communicate partial successes or failures.
     class NodeCreateResponse
