@@ -1,7 +1,9 @@
 require 'grpc'
 require 'google/protobuf/well_known_types'
-require_relative './nodes_pb' # import GRPC plumbing
-require_relative '../models/porcelain' # import models porcelain
+require_relative './options_pb'
+require_relative './spec_pb'
+require_relative './nodes_pb'
+require_relative '../models/porcelain'
 require_relative '../errors/errors'
 
 
