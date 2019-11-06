@@ -1,5 +1,8 @@
+require 'grpc'
+require 'google/protobuf/well_known_types'
 require_relative './nodes_pb' # import GRPC plumbing
 require_relative '../models/v1_porcelain' # import models porcelain
+require_relative '../errors/v1_errors'
 
 
 module SDM
@@ -36,7 +39,6 @@ module SDM
             end
             items
         end
-
         def self.get_response_metadata_to_porcelain(plumbing)
             porcelain = GetResponseMetadata.new()
             
@@ -68,7 +70,6 @@ module SDM
             end
             items
         end
-
         def self.update_response_metadata_to_porcelain(plumbing)
             porcelain = UpdateResponseMetadata.new()
             
@@ -100,7 +101,6 @@ module SDM
             end
             items
         end
-
         def self.delete_response_metadata_to_porcelain(plumbing)
             porcelain = DeleteResponseMetadata.new()
             
@@ -132,7 +132,6 @@ module SDM
             end
             items
         end
-
         def self.batch_update_response_metadata_to_porcelain(plumbing)
             porcelain = BatchUpdateResponseMetadata.new()
             
@@ -168,7 +167,6 @@ module SDM
             end
             items
         end
-
         def self.batch_delete_response_metadata_to_porcelain(plumbing)
             porcelain = BatchDeleteResponseMetadata.new()
             
@@ -204,7 +202,6 @@ module SDM
             end
             items
         end
-
         def self.node_create_response_to_porcelain(plumbing)
             porcelain = NodeCreateResponse.new()
             
@@ -244,7 +241,6 @@ module SDM
             end
             items
         end
-
         def self.node_get_response_to_porcelain(plumbing)
             porcelain = NodeGetResponse.new()
             
@@ -280,7 +276,6 @@ module SDM
             end
             items
         end
-
         def self.node_update_response_to_porcelain(plumbing)
             porcelain = NodeUpdateResponse.new()
             
@@ -316,7 +311,6 @@ module SDM
             end
             items
         end
-
         def self.node_delete_response_to_porcelain(plumbing)
             porcelain = NodeDeleteResponse.new()
             
@@ -348,7 +342,6 @@ module SDM
             end
             items
         end
-
         def self.node_list_response_to_porcelain(plumbing)
             porcelain = NodeListResponse.new()
             
@@ -384,7 +377,6 @@ module SDM
             end
             items
         end
-
         def self.node_batch_update_response_to_porcelain(plumbing)
             porcelain = NodeBatchUpdateResponse.new()
             
@@ -420,7 +412,6 @@ module SDM
             end
             items
         end
-
         def self.node_batch_delete_response_to_porcelain(plumbing)
             porcelain = NodeBatchDeleteResponse.new()
             
@@ -452,7 +443,6 @@ module SDM
             end
             items
         end
-
         def self.node_to_plumbing(porcelain)
             plumbing = V1::Node.new()
             if porcelain .instance_of? Relay
@@ -490,7 +480,6 @@ module SDM
             end
             items
         end
-
         def self.relay_to_porcelain(plumbing)
             porcelain = Relay.new()
             
@@ -526,7 +515,6 @@ module SDM
             end
             items
         end
-
         def self.gateway_to_porcelain(plumbing)
             porcelain = Gateway.new()
             
@@ -570,7 +558,6 @@ module SDM
             end
             items
         end
-
         def self.token_to_porcelain(plumbing)
             porcelain = Token.new()
             
@@ -607,6 +594,55 @@ module SDM
             items
         end
 
+        def self.error_to_porcelain(err)
+            if not err .is_a? GRPC::BadStatus
+                return RPCError.new(err.message, err.code)
+            end
+
+            status = err.to_rpc_status
+            if status == nil
+                return RPCError.new(err.message, err.code)
+            end
+            status.details.each do |detail|
+                case detail.type_url
+                    # AlreadyExistsError is used when an entity already exists in the system
+                    when "type.googleapis.com/v1.AlreadyExistsError"
+                        deserialized = detail.unpack V1::AlreadyExistsError
+                        return AlreadyExistsError.new(err.message, deserialized.entities)
+        
+                    # NotFoundError is used when an entity does not exist in the system
+                    when "type.googleapis.com/v1.NotFoundError"
+                        deserialized = detail.unpack V1::NotFoundError
+                        return NotFoundError.new(err.message, deserialized.entities)
+        
+                    # BadRequestError identifies a bad request sent by the client
+                    when "type.googleapis.com/v1.BadRequestError"
+                        deserialized = detail.unpack V1::BadRequestError
+                        return BadRequestError.new(err.message)
+        
+                    # AuthenticationError is used to specify an authentication failure condition
+                    when "type.googleapis.com/v1.AuthenticationError"
+                        deserialized = detail.unpack V1::AuthenticationError
+                        return AuthenticationError.new(err.message)
+        
+                    # PermissionError is used to specify a permissions violation
+                    when "type.googleapis.com/v1.PermissionError"
+                        deserialized = detail.unpack V1::PermissionError
+                        return PermissionError.new(err.message, deserialized.permission, deserialized.entities)
+        
+                    # InternalError is used to specify an internal system error
+                    when "type.googleapis.com/v1.InternalError"
+                        deserialized = detail.unpack V1::InternalError
+                        return InternalError.new(err.message)
+        
+                    # RateLimitError is used for rate limit excess condition
+                    when "type.googleapis.com/v1.RateLimitError"
+                        deserialized = detail.unpack V1::RateLimitError
+                        return RateLimitError.new(err.message)
+        
+                end
+            end
+            return RPCError.new(err.message, err.code)
+        end
     end
 end
-
