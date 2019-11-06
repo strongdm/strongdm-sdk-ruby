@@ -10,9 +10,7 @@ module SDM
 
         def self.create_response_metadata_to_porcelain(plumbing)
             porcelain = CreateResponseMetadata.new()
-            
             porcelain.affected = plumbing.affected
-            
             porcelain
         end
 
@@ -39,11 +37,10 @@ module SDM
             end
             items
         end
+
         def self.get_response_metadata_to_porcelain(plumbing)
             porcelain = GetResponseMetadata.new()
-            
             porcelain.found = plumbing.found
-            
             porcelain
         end
 
@@ -70,11 +67,10 @@ module SDM
             end
             items
         end
+
         def self.update_response_metadata_to_porcelain(plumbing)
             porcelain = UpdateResponseMetadata.new()
-            
             porcelain.affected = plumbing.affected
-            
             porcelain
         end
 
@@ -101,11 +97,10 @@ module SDM
             end
             items
         end
+
         def self.delete_response_metadata_to_porcelain(plumbing)
             porcelain = DeleteResponseMetadata.new()
-            
             porcelain.affected = plumbing.affected
-            
             porcelain
         end
 
@@ -132,14 +127,11 @@ module SDM
             end
             items
         end
+
         def self.batch_update_response_metadata_to_porcelain(plumbing)
             porcelain = BatchUpdateResponseMetadata.new()
-            
             porcelain.found = plumbing.found
-            
-            
             porcelain.affected = plumbing.affected
-            
             porcelain
         end
 
@@ -167,14 +159,11 @@ module SDM
             end
             items
         end
+
         def self.batch_delete_response_metadata_to_porcelain(plumbing)
             porcelain = BatchDeleteResponseMetadata.new()
-            
             porcelain.found = plumbing.found
-            
-            
             porcelain.affected = plumbing.affected
-            
             porcelain
         end
 
@@ -202,25 +191,20 @@ module SDM
             end
             items
         end
+
         def self.node_create_response_to_porcelain(plumbing)
             porcelain = NodeCreateResponse.new()
-            
             porcelain.meta = create_response_metadata_to_porcelain(plumbing.meta)
-            
-            
-            porcelain.nodes = node_to_porcelain(plumbing.nodes)
-            
-            
-            porcelain.tokens = token_to_porcelain(plumbing.tokens)
-            
+            porcelain.nodes = repeated_node_to_porcelain(plumbing.nodes)
+            porcelain.tokens = repeated_token_to_porcelain(plumbing.tokens)
             porcelain
         end
 
         def self.node_create_response_to_plumbing(porcelain)
             plumbing = V1::NodeCreateResponse.new()
-            plumbing.meta = porcelain.meta unless porcelain.meta == nil
-            plumbing.nodes = porcelain.nodes unless porcelain.nodes == nil
-            plumbing.tokens = porcelain.tokens unless porcelain.tokens == nil
+            plumbing.meta = create_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
+            plumbing.nodes += repeated_node_to_plumbing(porcelain.nodes)
+            plumbing.tokens += repeated_token_to_plumbing(porcelain.tokens)
             plumbing
         end
 
@@ -241,21 +225,18 @@ module SDM
             end
             items
         end
+
         def self.node_get_response_to_porcelain(plumbing)
             porcelain = NodeGetResponse.new()
-            
             porcelain.meta = get_response_metadata_to_porcelain(plumbing.meta)
-            
-            
             porcelain.node = node_to_porcelain(plumbing.node)
-            
             porcelain
         end
 
         def self.node_get_response_to_plumbing(porcelain)
             plumbing = V1::NodeGetResponse.new()
-            plumbing.meta = porcelain.meta unless porcelain.meta == nil
-            plumbing.node = porcelain.node unless porcelain.node == nil
+            plumbing.meta = get_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
+            plumbing.node = node_to_plumbing(porcelain.node) unless porcelain.node == nil
             plumbing
         end
 
@@ -276,21 +257,18 @@ module SDM
             end
             items
         end
+
         def self.node_update_response_to_porcelain(plumbing)
             porcelain = NodeUpdateResponse.new()
-            
             porcelain.meta = update_response_metadata_to_porcelain(plumbing.meta)
-            
-            
             porcelain.node = node_to_porcelain(plumbing.node)
-            
             porcelain
         end
 
         def self.node_update_response_to_plumbing(porcelain)
             plumbing = V1::NodeUpdateResponse.new()
-            plumbing.meta = porcelain.meta unless porcelain.meta == nil
-            plumbing.node = porcelain.node unless porcelain.node == nil
+            plumbing.meta = update_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
+            plumbing.node = node_to_plumbing(porcelain.node) unless porcelain.node == nil
             plumbing
         end
 
@@ -311,17 +289,16 @@ module SDM
             end
             items
         end
+
         def self.node_delete_response_to_porcelain(plumbing)
             porcelain = NodeDeleteResponse.new()
-            
             porcelain.meta = delete_response_metadata_to_porcelain(plumbing.meta)
-            
             porcelain
         end
 
         def self.node_delete_response_to_plumbing(porcelain)
             plumbing = V1::NodeDeleteResponse.new()
-            plumbing.meta = porcelain.meta unless porcelain.meta == nil
+            plumbing.meta = delete_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
             plumbing
         end
 
@@ -342,21 +319,18 @@ module SDM
             end
             items
         end
+
         def self.node_list_response_to_porcelain(plumbing)
             porcelain = NodeListResponse.new()
-            
             porcelain.meta = list_response_metadata_to_porcelain(plumbing.meta)
-            
-            
-            porcelain.nodes = node_to_porcelain(plumbing.nodes)
-            
+            porcelain.nodes = repeated_node_to_porcelain(plumbing.nodes)
             porcelain
         end
 
         def self.node_list_response_to_plumbing(porcelain)
             plumbing = V1::NodeListResponse.new()
-            plumbing.meta = porcelain.meta unless porcelain.meta == nil
-            plumbing.nodes = porcelain.nodes unless porcelain.nodes == nil
+            plumbing.meta = list_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
+            plumbing.nodes += repeated_node_to_plumbing(porcelain.nodes)
             plumbing
         end
 
@@ -377,21 +351,18 @@ module SDM
             end
             items
         end
+
         def self.node_batch_update_response_to_porcelain(plumbing)
             porcelain = NodeBatchUpdateResponse.new()
-            
             porcelain.meta = batch_update_response_metadata_to_porcelain(plumbing.meta)
-            
-            
-            porcelain.nodes = node_to_porcelain(plumbing.nodes)
-            
+            porcelain.nodes = repeated_node_to_porcelain(plumbing.nodes)
             porcelain
         end
 
         def self.node_batch_update_response_to_plumbing(porcelain)
             plumbing = V1::NodeBatchUpdateResponse.new()
-            plumbing.meta = porcelain.meta unless porcelain.meta == nil
-            plumbing.nodes = porcelain.nodes unless porcelain.nodes == nil
+            plumbing.meta = batch_update_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
+            plumbing.nodes += repeated_node_to_plumbing(porcelain.nodes)
             plumbing
         end
 
@@ -412,17 +383,16 @@ module SDM
             end
             items
         end
+
         def self.node_batch_delete_response_to_porcelain(plumbing)
             porcelain = NodeBatchDeleteResponse.new()
-            
             porcelain.meta = batch_delete_response_metadata_to_porcelain(plumbing.meta)
-            
             porcelain
         end
 
         def self.node_batch_delete_response_to_plumbing(porcelain)
             plumbing = V1::NodeBatchDeleteResponse.new()
-            plumbing.meta = porcelain.meta unless porcelain.meta == nil
+            plumbing.meta = batch_delete_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
             plumbing
         end
 
@@ -443,6 +413,7 @@ module SDM
             end
             items
         end
+
         def self.node_to_plumbing(porcelain)
             plumbing = V1::Node.new()
             if porcelain .instance_of? Relay
@@ -480,14 +451,11 @@ module SDM
             end
             items
         end
+
         def self.relay_to_porcelain(plumbing)
             porcelain = Relay.new()
-            
             porcelain.id = plumbing.id
-            
-            
             porcelain.name = plumbing.name
-            
             porcelain
         end
 
@@ -515,20 +483,13 @@ module SDM
             end
             items
         end
+
         def self.gateway_to_porcelain(plumbing)
             porcelain = Gateway.new()
-            
             porcelain.id = plumbing.id
-            
-            
             porcelain.name = plumbing.name
-            
-            
             porcelain.listen_address = plumbing.listen_address
-            
-            
             porcelain.bind_address = plumbing.bind_address
-            
             porcelain
         end
 
@@ -558,14 +519,11 @@ module SDM
             end
             items
         end
+
         def self.token_to_porcelain(plumbing)
             porcelain = Token.new()
-            
             porcelain.id = plumbing.id
-            
-            
             porcelain.token = plumbing.token
-            
             porcelain
         end
 
@@ -593,6 +551,7 @@ module SDM
             end
             items
         end
+
 
         def self.error_to_porcelain(err)
             if not err .is_a? GRPC::BadStatus
