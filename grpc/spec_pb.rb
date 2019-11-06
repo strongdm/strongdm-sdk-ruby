@@ -14,20 +14,16 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       repeated :entities, :string, 1
     end
     add_message "v1.BadRequestError" do
-      optional :message, :string, 1
     end
     add_message "v1.AuthenticationError" do
-      optional :message, :string, 1
     end
     add_message "v1.PermissionError" do
       optional :permission, :string, 1
       repeated :entities, :string, 2
     end
     add_message "v1.InternalError" do
-      optional :message, :string, 1
     end
     add_message "v1.RateLimitError" do
-      optional :message, :string, 1
     end
     add_message "v1.CreateRequestMetadata" do
     end
