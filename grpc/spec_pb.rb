@@ -7,7 +7,26 @@ require 'options_pb'
 require 'protoc-gen-swagger/options/annotations_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("spec.proto", :syntax => :proto3) do
-    add_message "v1.ErrorDetail" do
+    add_message "v1.AlreadyExistsError" do
+      repeated :entities, :string, 1
+    end
+    add_message "v1.NotFoundError" do
+      repeated :entities, :string, 1
+    end
+    add_message "v1.BadRequestError" do
+      optional :message, :string, 1
+    end
+    add_message "v1.AuthenticationError" do
+      optional :message, :string, 1
+    end
+    add_message "v1.PermissionError" do
+      optional :permission, :string, 1
+      repeated :entities, :string, 2
+    end
+    add_message "v1.InternalError" do
+      optional :message, :string, 1
+    end
+    add_message "v1.RateLimitError" do
       optional :message, :string, 1
     end
     add_message "v1.CreateRequestMetadata" do
@@ -53,7 +72,13 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
 end
 
 module V1
-  ErrorDetail = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ErrorDetail").msgclass
+  AlreadyExistsError = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AlreadyExistsError").msgclass
+  NotFoundError = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.NotFoundError").msgclass
+  BadRequestError = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.BadRequestError").msgclass
+  AuthenticationError = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthenticationError").msgclass
+  PermissionError = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.PermissionError").msgclass
+  InternalError = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.InternalError").msgclass
+  RateLimitError = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RateLimitError").msgclass
   CreateRequestMetadata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.CreateRequestMetadata").msgclass
   CreateResponseMetadata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.CreateResponseMetadata").msgclass
   GetRequestMetadata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GetRequestMetadata").msgclass
