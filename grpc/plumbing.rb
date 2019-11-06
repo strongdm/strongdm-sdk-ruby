@@ -1,8 +1,8 @@
 require 'grpc'
 require 'google/protobuf/well_known_types'
 require_relative './nodes_pb' # import GRPC plumbing
-require_relative '../models/v1_porcelain' # import models porcelain
-require_relative '../errors/v1_errors'
+require_relative '../models/porcelain' # import models porcelain
+require_relative '../errors/errors'
 
 
 module SDM
