@@ -26,10 +26,6 @@ module V1
       rpc :Delete, NodeDeleteRequest, NodeDeleteResponse
       # List is a batched Get call.
       rpc :List, NodeListRequest, NodeListResponse
-      # BatchUpdate is a batched Update call.
-      rpc :BatchUpdate, NodeBatchUpdateRequest, NodeBatchUpdateResponse
-      # BatchDelete is a batched Delete call.
-      rpc :BatchDelete, NodeBatchDeleteRequest, NodeBatchDeleteResponse
     end
 
     Stub = Service.rpc_stub_class

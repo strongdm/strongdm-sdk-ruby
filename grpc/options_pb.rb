@@ -19,6 +19,9 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.OneofOptions" do
       optional :model_name, :string, 1941380
     end
+    add_message "v1.ServiceOptions" do
+      optional :main_noun, :string, 1941400
+    end
   end
 end
 
@@ -26,4 +29,5 @@ module V1
   FieldOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.FieldOptions").msgclass
   MessageOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MessageOptions").msgclass
   OneofOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.OneofOptions").msgclass
+  ServiceOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ServiceOptions").msgclass
 end

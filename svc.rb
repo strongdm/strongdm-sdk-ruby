@@ -21,10 +21,10 @@ module SDM
         
             
         # Create registers a new node.
-        def create(nodes)
+        def create(node)
             
             req = V1::NodeCreateRequest.new()
-            req.nodes += Plumbing::repeated_node_to_plumbing(nodes)
+            req.node = Plumbing::node_to_plumbing(node)
 
             begin
                 plumbing_response = @stub.create(req)
@@ -33,8 +33,8 @@ module SDM
             end
             resp = NodeCreateResponse.new()
             resp.meta = Plumbing::create_response_metadata_to_porcelain(plumbing_response.meta)
-            resp.nodes = Plumbing::repeated_node_to_porcelain(plumbing_response.nodes)
-            resp.tokens = Plumbing::repeated_token_to_porcelain(plumbing_response.tokens)
+            resp.node = Plumbing::node_to_porcelain(plumbing_response.node)
+            resp.token = Plumbing::token_to_porcelain(plumbing_response.token)
             resp
             
         end
@@ -102,10 +102,9 @@ module SDM
             
             req = V1::NodeListRequest.new()
             req.meta = V1::ListRequestMetadata.new()
+            req.meta.limit = 25
             req.filter = filter
-
-            resp = NodeListResponse.new()
-            resp.nodes = Enumerator::Generator.new { |g|
+            resp = Enumerator::Generator.new { |g|
                 loop do
                     begin
                         plumbing_response = @stub.list(req)
@@ -115,47 +114,123 @@ module SDM
                     plumbing_response.nodes.each do |plumbing_item|
                         g.yield Plumbing::node_to_porcelain(plumbing_item)
                     end
-                    break if plumbing_response.meta.next_page == ""
-                    req.meta.page = plumbing_response.meta.next_page
+                    break if plumbing_response.meta.next_cursor == ""
+                    req.meta.cursor = plumbing_response.meta.next_cursor
                 end
             }
             resp
             
         end
         
-            
-        # BatchUpdate is a batched Update call.
-        def batch_update(nodes)
-            
-            req = V1::NodeBatchUpdateRequest.new()
-            req.nodes += Plumbing::repeated_node_to_plumbing(nodes)
-
+    end
+    # Roles are
+    class Roles
+        def initialize(url)
             begin
-                plumbing_response = @stub.batch_update(req)
+                @stub = V1::Roles::Stub.new(url, :this_channel_is_insecure)
             rescue => exception
                 raise Plumbing::error_to_porcelain(exception)
             end
-            resp = NodeBatchUpdateResponse.new()
-            resp.meta = Plumbing::batch_update_response_metadata_to_porcelain(plumbing_response.meta)
-            resp.nodes = Plumbing::repeated_node_to_porcelain(plumbing_response.nodes)
+        end
+        
+            
+        # Create registers a new role.
+        def create(role)
+            
+            req = V1::RoleCreateRequest.new()
+            req.role = Plumbing::role_to_plumbing(role)
+
+            begin
+                plumbing_response = @stub.create(req)
+            rescue => exception
+                raise Plumbing::error_to_porcelain(exception)
+            end
+            resp = RoleCreateResponse.new()
+            resp.meta = Plumbing::create_response_metadata_to_porcelain(plumbing_response.meta)
+            resp.role = Plumbing::role_to_porcelain(plumbing_response.role)
             resp
             
         end
         
             
-        # BatchDelete is a batched Delete call.
-        def batch_delete(ids)
+        # Get reads one role by ID.
+        def get(id)
             
-            req = V1::NodeBatchDeleteRequest.new()
-            req.ids += ids
+            req = V1::RoleGetRequest.new()
+            req.id = id
 
             begin
-                plumbing_response = @stub.batch_delete(req)
+                plumbing_response = @stub.get(req)
             rescue => exception
                 raise Plumbing::error_to_porcelain(exception)
             end
-            resp = NodeBatchDeleteResponse.new()
-            resp.meta = Plumbing::batch_delete_response_metadata_to_porcelain(plumbing_response.meta)
+            resp = RoleGetResponse.new()
+            resp.meta = Plumbing::get_response_metadata_to_porcelain(plumbing_response.meta)
+            resp.role = Plumbing::role_to_porcelain(plumbing_response.role)
+            resp
+            
+        end
+        
+            
+        # Update patches a Role by ID.
+        def update(id, role)
+            
+            req = V1::RoleUpdateRequest.new()
+            req.id = id
+            req.role = Plumbing::role_to_plumbing(role)
+
+            begin
+                plumbing_response = @stub.update(req)
+            rescue => exception
+                raise Plumbing::error_to_porcelain(exception)
+            end
+            resp = RoleUpdateResponse.new()
+            resp.meta = Plumbing::update_response_metadata_to_porcelain(plumbing_response.meta)
+            resp.role = Plumbing::role_to_porcelain(plumbing_response.role)
+            resp
+            
+        end
+        
+            
+        # Delete removes a Role by ID.
+        def delete(id)
+            
+            req = V1::RoleDeleteRequest.new()
+            req.id = id
+
+            begin
+                plumbing_response = @stub.delete(req)
+            rescue => exception
+                raise Plumbing::error_to_porcelain(exception)
+            end
+            resp = RoleDeleteResponse.new()
+            resp.meta = Plumbing::delete_response_metadata_to_porcelain(plumbing_response.meta)
+            resp
+            
+        end
+        
+            
+        # List is a batched Get call.
+        def list(filter)
+            
+            req = V1::RoleListRequest.new()
+            req.meta = V1::ListRequestMetadata.new()
+            req.meta.limit = 25
+            req.filter = filter
+            resp = Enumerator::Generator.new { |g|
+                loop do
+                    begin
+                        plumbing_response = @stub.list(req)
+                    rescue => exception
+                        raise Plumbing::error_to_porcelain(exception)
+                    end
+                    plumbing_response.roles.each do |plumbing_item|
+                        g.yield Plumbing::role_to_porcelain(plumbing_item)
+                    end
+                    break if plumbing_response.meta.next_cursor == ""
+                    req.meta.cursor = plumbing_response.meta.next_cursor
+                end
+            }
             resp
             
         end

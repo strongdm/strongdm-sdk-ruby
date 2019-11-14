@@ -11,12 +11,12 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("nodes.proto", :syntax => :proto3) do
     add_message "v1.NodeCreateRequest" do
       optional :meta, :message, 1, "v1.CreateRequestMetadata"
-      repeated :nodes, :message, 2, "v1.Node"
+      optional :node, :message, 2, "v1.Node"
     end
     add_message "v1.NodeCreateResponse" do
       optional :meta, :message, 1, "v1.CreateResponseMetadata"
-      repeated :nodes, :message, 2, "v1.Node"
-      repeated :tokens, :message, 3, "v1.Token"
+      optional :node, :message, 2, "v1.Node"
+      optional :token, :message, 3, "v1.Token"
     end
     add_message "v1.NodeGetRequest" do
       optional :meta, :message, 1, "v1.GetRequestMetadata"
@@ -49,21 +49,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.NodeListResponse" do
       optional :meta, :message, 1, "v1.ListResponseMetadata"
       repeated :nodes, :message, 2, "v1.Node"
-    end
-    add_message "v1.NodeBatchUpdateRequest" do
-      optional :meta, :message, 1, "v1.BatchUpdateRequestMetadata"
-      repeated :nodes, :message, 2, "v1.Node"
-    end
-    add_message "v1.NodeBatchUpdateResponse" do
-      optional :meta, :message, 1, "v1.BatchUpdateResponseMetadata"
-      repeated :nodes, :message, 2, "v1.Node"
-    end
-    add_message "v1.NodeBatchDeleteRequest" do
-      optional :meta, :message, 1, "v1.BatchDeleteRequestMetadata"
-      repeated :ids, :string, 2
-    end
-    add_message "v1.NodeBatchDeleteResponse" do
-      optional :meta, :message, 1, "v1.BatchDeleteResponseMetadata"
     end
     add_message "v1.Node" do
       oneof :node do
@@ -99,10 +84,6 @@ module V1
   NodeDeleteResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.NodeDeleteResponse").msgclass
   NodeListRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.NodeListRequest").msgclass
   NodeListResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.NodeListResponse").msgclass
-  NodeBatchUpdateRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.NodeBatchUpdateRequest").msgclass
-  NodeBatchUpdateResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.NodeBatchUpdateResponse").msgclass
-  NodeBatchDeleteRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.NodeBatchDeleteRequest").msgclass
-  NodeBatchDeleteResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.NodeBatchDeleteResponse").msgclass
   Node = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Node").msgclass
   Relay = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Relay").msgclass
   Gateway = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Gateway").msgclass

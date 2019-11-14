@@ -45,23 +45,13 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.DeleteResponseMetadata" do
       optional :affected, :int64, 1
     end
-    add_message "v1.BatchUpdateRequestMetadata" do
-    end
-    add_message "v1.BatchUpdateResponseMetadata" do
-      optional :found, :int64, 1
-      optional :affected, :int64, 2
-    end
-    add_message "v1.BatchDeleteRequestMetadata" do
-    end
-    add_message "v1.BatchDeleteResponseMetadata" do
-      optional :found, :int64, 1
-      optional :affected, :int64, 2
-    end
     add_message "v1.ListRequestMetadata" do
-      optional :page, :string, 1
+      optional :cursor, :string, 1
+      optional :page, :int32, 2
+      optional :limit, :int32, 3
     end
     add_message "v1.ListResponseMetadata" do
-      optional :next_page, :string, 1
+      optional :next_cursor, :string, 1
       optional :found, :int64, 2
     end
   end
@@ -83,10 +73,6 @@ module V1
   UpdateResponseMetadata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.UpdateResponseMetadata").msgclass
   DeleteRequestMetadata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DeleteRequestMetadata").msgclass
   DeleteResponseMetadata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DeleteResponseMetadata").msgclass
-  BatchUpdateRequestMetadata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.BatchUpdateRequestMetadata").msgclass
-  BatchUpdateResponseMetadata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.BatchUpdateResponseMetadata").msgclass
-  BatchDeleteRequestMetadata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.BatchDeleteRequestMetadata").msgclass
-  BatchDeleteResponseMetadata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.BatchDeleteResponseMetadata").msgclass
   ListRequestMetadata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ListRequestMetadata").msgclass
   ListResponseMetadata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ListResponseMetadata").msgclass
 end

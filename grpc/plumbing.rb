@@ -3,6 +3,7 @@ require 'google/protobuf/well_known_types'
 require_relative './options_pb'
 require_relative './spec_pb'
 require_relative './nodes_pb'
+require_relative './roles_pb'
 require_relative '../models/porcelain'
 require_relative '../errors/errors'
 
@@ -130,83 +131,19 @@ module SDM
             items
         end
 
-        def self.batch_update_response_metadata_to_porcelain(plumbing)
-            porcelain = BatchUpdateResponseMetadata.new()
-            porcelain.found = plumbing.found
-            porcelain.affected = plumbing.affected
-            porcelain
-        end
-
-        def self.batch_update_response_metadata_to_plumbing(porcelain)
-            plumbing = V1::BatchUpdateResponseMetadata.new()
-            plumbing.found = porcelain.found unless porcelain.found == nil
-            plumbing.affected = porcelain.affected unless porcelain.affected == nil
-            plumbing
-        end
-
-        def self.repeated_batch_update_response_metadata_to_plumbing(porcelains)
-            items = Array.new
-            porcelains.each do |porcelain|
-                plumbing = batch_update_response_metadata_to_plumbing(porcelain)
-                items.append(plumbing)
-            end
-            items
-        end
-
-        def self.repeated_batch_update_response_metadata_to_porcelain(plumbings)
-            items = Array.new
-            plumbings.each do |plumbing|
-                porcelain = batch_update_response_metadata_to_porcelain(plumbing)
-                items.append(porcelain)
-            end
-            items
-        end
-
-        def self.batch_delete_response_metadata_to_porcelain(plumbing)
-            porcelain = BatchDeleteResponseMetadata.new()
-            porcelain.found = plumbing.found
-            porcelain.affected = plumbing.affected
-            porcelain
-        end
-
-        def self.batch_delete_response_metadata_to_plumbing(porcelain)
-            plumbing = V1::BatchDeleteResponseMetadata.new()
-            plumbing.found = porcelain.found unless porcelain.found == nil
-            plumbing.affected = porcelain.affected unless porcelain.affected == nil
-            plumbing
-        end
-
-        def self.repeated_batch_delete_response_metadata_to_plumbing(porcelains)
-            items = Array.new
-            porcelains.each do |porcelain|
-                plumbing = batch_delete_response_metadata_to_plumbing(porcelain)
-                items.append(plumbing)
-            end
-            items
-        end
-
-        def self.repeated_batch_delete_response_metadata_to_porcelain(plumbings)
-            items = Array.new
-            plumbings.each do |plumbing|
-                porcelain = batch_delete_response_metadata_to_porcelain(plumbing)
-                items.append(porcelain)
-            end
-            items
-        end
-
         def self.node_create_response_to_porcelain(plumbing)
             porcelain = NodeCreateResponse.new()
             porcelain.meta = create_response_metadata_to_porcelain(plumbing.meta)
-            porcelain.nodes = repeated_node_to_porcelain(plumbing.nodes)
-            porcelain.tokens = repeated_token_to_porcelain(plumbing.tokens)
+            porcelain.node = node_to_porcelain(plumbing.node)
+            porcelain.token = token_to_porcelain(plumbing.token)
             porcelain
         end
 
         def self.node_create_response_to_plumbing(porcelain)
             plumbing = V1::NodeCreateResponse.new()
             plumbing.meta = create_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-            plumbing.nodes += repeated_node_to_plumbing(porcelain.nodes)
-            plumbing.tokens += repeated_token_to_plumbing(porcelain.tokens)
+            plumbing.node = node_to_plumbing(porcelain.node) unless porcelain.node == nil
+            plumbing.token = token_to_plumbing(porcelain.token) unless porcelain.token == nil
             plumbing
         end
 
@@ -317,100 +254,6 @@ module SDM
             items = Array.new
             plumbings.each do |plumbing|
                 porcelain = node_delete_response_to_porcelain(plumbing)
-                items.append(porcelain)
-            end
-            items
-        end
-
-        def self.node_list_response_to_porcelain(plumbing)
-            porcelain = NodeListResponse.new()
-            porcelain.meta = list_response_metadata_to_porcelain(plumbing.meta)
-            porcelain.nodes = repeated_node_to_porcelain(plumbing.nodes)
-            porcelain
-        end
-
-        def self.node_list_response_to_plumbing(porcelain)
-            plumbing = V1::NodeListResponse.new()
-            plumbing.meta = list_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-            plumbing.nodes += repeated_node_to_plumbing(porcelain.nodes)
-            plumbing
-        end
-
-        def self.repeated_node_list_response_to_plumbing(porcelains)
-            items = Array.new
-            porcelains.each do |porcelain|
-                plumbing = node_list_response_to_plumbing(porcelain)
-                items.append(plumbing)
-            end
-            items
-        end
-
-        def self.repeated_node_list_response_to_porcelain(plumbings)
-            items = Array.new
-            plumbings.each do |plumbing|
-                porcelain = node_list_response_to_porcelain(plumbing)
-                items.append(porcelain)
-            end
-            items
-        end
-
-        def self.node_batch_update_response_to_porcelain(plumbing)
-            porcelain = NodeBatchUpdateResponse.new()
-            porcelain.meta = batch_update_response_metadata_to_porcelain(plumbing.meta)
-            porcelain.nodes = repeated_node_to_porcelain(plumbing.nodes)
-            porcelain
-        end
-
-        def self.node_batch_update_response_to_plumbing(porcelain)
-            plumbing = V1::NodeBatchUpdateResponse.new()
-            plumbing.meta = batch_update_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-            plumbing.nodes += repeated_node_to_plumbing(porcelain.nodes)
-            plumbing
-        end
-
-        def self.repeated_node_batch_update_response_to_plumbing(porcelains)
-            items = Array.new
-            porcelains.each do |porcelain|
-                plumbing = node_batch_update_response_to_plumbing(porcelain)
-                items.append(plumbing)
-            end
-            items
-        end
-
-        def self.repeated_node_batch_update_response_to_porcelain(plumbings)
-            items = Array.new
-            plumbings.each do |plumbing|
-                porcelain = node_batch_update_response_to_porcelain(plumbing)
-                items.append(porcelain)
-            end
-            items
-        end
-
-        def self.node_batch_delete_response_to_porcelain(plumbing)
-            porcelain = NodeBatchDeleteResponse.new()
-            porcelain.meta = batch_delete_response_metadata_to_porcelain(plumbing.meta)
-            porcelain
-        end
-
-        def self.node_batch_delete_response_to_plumbing(porcelain)
-            plumbing = V1::NodeBatchDeleteResponse.new()
-            plumbing.meta = batch_delete_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-            plumbing
-        end
-
-        def self.repeated_node_batch_delete_response_to_plumbing(porcelains)
-            items = Array.new
-            porcelains.each do |porcelain|
-                plumbing = node_batch_delete_response_to_plumbing(porcelain)
-                items.append(plumbing)
-            end
-            items
-        end
-
-        def self.repeated_node_batch_delete_response_to_porcelain(plumbings)
-            items = Array.new
-            plumbings.each do |plumbing|
-                porcelain = node_batch_delete_response_to_porcelain(plumbing)
                 items.append(porcelain)
             end
             items
@@ -549,6 +392,168 @@ module SDM
             items = Array.new
             plumbings.each do |plumbing|
                 porcelain = token_to_porcelain(plumbing)
+                items.append(porcelain)
+            end
+            items
+        end
+
+        def self.role_create_response_to_porcelain(plumbing)
+            porcelain = RoleCreateResponse.new()
+            porcelain.meta = create_response_metadata_to_porcelain(plumbing.meta)
+            porcelain.role = role_to_porcelain(plumbing.role)
+            porcelain
+        end
+
+        def self.role_create_response_to_plumbing(porcelain)
+            plumbing = V1::RoleCreateResponse.new()
+            plumbing.meta = create_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
+            plumbing.role = role_to_plumbing(porcelain.role) unless porcelain.role == nil
+            plumbing
+        end
+
+        def self.repeated_role_create_response_to_plumbing(porcelains)
+            items = Array.new
+            porcelains.each do |porcelain|
+                plumbing = role_create_response_to_plumbing(porcelain)
+                items.append(plumbing)
+            end
+            items
+        end
+
+        def self.repeated_role_create_response_to_porcelain(plumbings)
+            items = Array.new
+            plumbings.each do |plumbing|
+                porcelain = role_create_response_to_porcelain(plumbing)
+                items.append(porcelain)
+            end
+            items
+        end
+
+        def self.role_get_response_to_porcelain(plumbing)
+            porcelain = RoleGetResponse.new()
+            porcelain.meta = get_response_metadata_to_porcelain(plumbing.meta)
+            porcelain.role = role_to_porcelain(plumbing.role)
+            porcelain
+        end
+
+        def self.role_get_response_to_plumbing(porcelain)
+            plumbing = V1::RoleGetResponse.new()
+            plumbing.meta = get_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
+            plumbing.role = role_to_plumbing(porcelain.role) unless porcelain.role == nil
+            plumbing
+        end
+
+        def self.repeated_role_get_response_to_plumbing(porcelains)
+            items = Array.new
+            porcelains.each do |porcelain|
+                plumbing = role_get_response_to_plumbing(porcelain)
+                items.append(plumbing)
+            end
+            items
+        end
+
+        def self.repeated_role_get_response_to_porcelain(plumbings)
+            items = Array.new
+            plumbings.each do |plumbing|
+                porcelain = role_get_response_to_porcelain(plumbing)
+                items.append(porcelain)
+            end
+            items
+        end
+
+        def self.role_update_response_to_porcelain(plumbing)
+            porcelain = RoleUpdateResponse.new()
+            porcelain.meta = update_response_metadata_to_porcelain(plumbing.meta)
+            porcelain.role = role_to_porcelain(plumbing.role)
+            porcelain
+        end
+
+        def self.role_update_response_to_plumbing(porcelain)
+            plumbing = V1::RoleUpdateResponse.new()
+            plumbing.meta = update_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
+            plumbing.role = role_to_plumbing(porcelain.role) unless porcelain.role == nil
+            plumbing
+        end
+
+        def self.repeated_role_update_response_to_plumbing(porcelains)
+            items = Array.new
+            porcelains.each do |porcelain|
+                plumbing = role_update_response_to_plumbing(porcelain)
+                items.append(plumbing)
+            end
+            items
+        end
+
+        def self.repeated_role_update_response_to_porcelain(plumbings)
+            items = Array.new
+            plumbings.each do |plumbing|
+                porcelain = role_update_response_to_porcelain(plumbing)
+                items.append(porcelain)
+            end
+            items
+        end
+
+        def self.role_delete_response_to_porcelain(plumbing)
+            porcelain = RoleDeleteResponse.new()
+            porcelain.meta = delete_response_metadata_to_porcelain(plumbing.meta)
+            porcelain
+        end
+
+        def self.role_delete_response_to_plumbing(porcelain)
+            plumbing = V1::RoleDeleteResponse.new()
+            plumbing.meta = delete_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
+            plumbing
+        end
+
+        def self.repeated_role_delete_response_to_plumbing(porcelains)
+            items = Array.new
+            porcelains.each do |porcelain|
+                plumbing = role_delete_response_to_plumbing(porcelain)
+                items.append(plumbing)
+            end
+            items
+        end
+
+        def self.repeated_role_delete_response_to_porcelain(plumbings)
+            items = Array.new
+            plumbings.each do |plumbing|
+                porcelain = role_delete_response_to_porcelain(plumbing)
+                items.append(porcelain)
+            end
+            items
+        end
+
+        def self.role_to_porcelain(plumbing)
+            porcelain = Role.new()
+            porcelain.id = plumbing.id
+            porcelain.name = plumbing.name
+            porcelain.composite = plumbing.composite
+            porcelain.roles = repeated_role_to_porcelain(plumbing.roles)
+            porcelain
+        end
+
+        def self.role_to_plumbing(porcelain)
+            plumbing = V1::Role.new()
+            plumbing.id = porcelain.id unless porcelain.id == nil
+            plumbing.name = porcelain.name unless porcelain.name == nil
+            plumbing.composite = porcelain.composite unless porcelain.composite == nil
+            plumbing.roles += repeated_role_to_plumbing(porcelain.roles)
+            plumbing
+        end
+
+        def self.repeated_role_to_plumbing(porcelains)
+            items = Array.new
+            porcelains.each do |porcelain|
+                plumbing = role_to_plumbing(porcelain)
+                items.append(plumbing)
+            end
+            items
+        end
+
+        def self.repeated_role_to_porcelain(plumbings)
+            items = Array.new
+            plumbings.each do |plumbing|
+                porcelain = role_to_porcelain(plumbing)
                 items.append(porcelain)
             end
             items

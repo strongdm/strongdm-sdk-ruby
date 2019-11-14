@@ -20,24 +20,12 @@ module SDM
        attr_accessor :affected
     end
     
-    # BatchUpdateResponseMetadata
-    class BatchUpdateResponseMetadata
-       attr_accessor :found
-       attr_accessor :affected
-    end
-    
-    # BatchDeleteResponseMetadata
-    class BatchDeleteResponseMetadata
-       attr_accessor :found
-       attr_accessor :affected
-    end
-    
     # NodeCreateResponse reports how the nodes were created in the system. It can
     # communicate partial successes or failures.
     class NodeCreateResponse
        attr_accessor :meta
-       attr_accessor :nodes
-       attr_accessor :tokens
+       attr_accessor :node
+       attr_accessor :token
     end
     
     # NodeGetResponse returns a requested node.
@@ -55,25 +43,6 @@ module SDM
     
     # NodeDeleteResponse returns information about a node that was deleted.
     class NodeDeleteResponse
-       attr_accessor :meta
-    end
-    
-    # NodeListResponse returns a list of nodes that meet the criteria of a
-    # NodeListRequest.
-    class NodeListResponse
-       attr_accessor :nodes
-    end
-    
-    # NodeBatchUpdateResponse returns a list of nodes updated via
-    # NodeBatchUpdateRequest.
-    class NodeBatchUpdateResponse
-       attr_accessor :meta
-       attr_accessor :nodes
-    end
-    
-    # NodeBatchDeleteResponse returns information about nodes deleted via a
-    # NodeBatchDeleteRequest.
-    class NodeBatchDeleteResponse
        attr_accessor :meta
     end
     
@@ -95,6 +64,39 @@ module SDM
     class Token
        attr_accessor :id
        attr_accessor :token
+    end
+    
+    # RoleCreateResponse reports how the Roles were created in the system. It can
+    # communicate partial successes or failures.
+    class RoleCreateResponse
+       attr_accessor :meta
+       attr_accessor :role
+    end
+    
+    # RoleGetResponse returns a requested Role.
+    class RoleGetResponse
+       attr_accessor :meta
+       attr_accessor :role
+    end
+    
+    # RoleUpdateResponse returns the fields of a Role after it has been updated by
+    # a RoleUpdateRequest.
+    class RoleUpdateResponse
+       attr_accessor :meta
+       attr_accessor :role
+    end
+    
+    # RoleDeleteResponse returns information about a Role that was deleted.
+    class RoleDeleteResponse
+       attr_accessor :meta
+    end
+    
+    # Role is a domain object --
+    class Role
+       attr_accessor :id
+       attr_accessor :name
+       attr_accessor :composite
+       attr_accessor :roles
     end
     
 end
