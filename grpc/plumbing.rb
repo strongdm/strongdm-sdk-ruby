@@ -13,13 +13,11 @@ module SDM
 
         def self.create_response_metadata_to_porcelain(plumbing)
             porcelain = CreateResponseMetadata.new()
-            porcelain.affected = plumbing.affected
             porcelain
         end
 
         def self.create_response_metadata_to_plumbing(porcelain)
             plumbing = V1::CreateResponseMetadata.new()
-            plumbing.affected = porcelain.affected unless porcelain.affected == nil
             plumbing
         end
 
@@ -43,13 +41,11 @@ module SDM
 
         def self.get_response_metadata_to_porcelain(plumbing)
             porcelain = GetResponseMetadata.new()
-            porcelain.found = plumbing.found
             porcelain
         end
 
         def self.get_response_metadata_to_plumbing(porcelain)
             plumbing = V1::GetResponseMetadata.new()
-            plumbing.found = porcelain.found unless porcelain.found == nil
             plumbing
         end
 
@@ -73,13 +69,11 @@ module SDM
 
         def self.update_response_metadata_to_porcelain(plumbing)
             porcelain = UpdateResponseMetadata.new()
-            porcelain.affected = plumbing.affected
             porcelain
         end
 
         def self.update_response_metadata_to_plumbing(porcelain)
             plumbing = V1::UpdateResponseMetadata.new()
-            plumbing.affected = porcelain.affected unless porcelain.affected == nil
             plumbing
         end
 
@@ -103,13 +97,11 @@ module SDM
 
         def self.delete_response_metadata_to_porcelain(plumbing)
             porcelain = DeleteResponseMetadata.new()
-            porcelain.affected = plumbing.affected
             porcelain
         end
 
         def self.delete_response_metadata_to_plumbing(porcelain)
             plumbing = V1::DeleteResponseMetadata.new()
-            plumbing.affected = porcelain.affected unless porcelain.affected == nil
             plumbing
         end
 

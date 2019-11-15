@@ -61,10 +61,9 @@ module SDM
         
             
         # Update patches a node by ID.
-        def update(id, node)
+        def update(node)
             
             req = V1::NodeUpdateRequest.new()
-            req.id = id
             req.node = Plumbing::node_to_plumbing(node)
 
             begin
@@ -175,10 +174,9 @@ module SDM
         
             
         # Update patches a Role by ID.
-        def update(id, role)
+        def update(role)
             
             req = V1::RoleUpdateRequest.new()
-            req.id = id
             req.role = Plumbing::role_to_plumbing(role)
 
             begin

@@ -2,22 +2,18 @@ module SDM
 
     # CreateResponseMetadata
     class CreateResponseMetadata
-       attr_accessor :affected
     end
     
     # GetResponseMetadata
     class GetResponseMetadata
-       attr_accessor :found
     end
     
     # UpdateResponseMetadata
     class UpdateResponseMetadata
-       attr_accessor :affected
     end
     
     # DeleteResponseMetadata
     class DeleteResponseMetadata
-       attr_accessor :affected
     end
     
     # NodeCreateResponse reports how the nodes were created in the system. It can

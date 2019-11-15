@@ -28,22 +28,18 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.CreateRequestMetadata" do
     end
     add_message "v1.CreateResponseMetadata" do
-      optional :affected, :int64, 1
     end
     add_message "v1.GetRequestMetadata" do
     end
     add_message "v1.GetResponseMetadata" do
-      optional :found, :int64, 1
     end
     add_message "v1.UpdateRequestMetadata" do
     end
     add_message "v1.UpdateResponseMetadata" do
-      optional :affected, :int64, 1
     end
     add_message "v1.DeleteRequestMetadata" do
     end
     add_message "v1.DeleteResponseMetadata" do
-      optional :affected, :int64, 1
     end
     add_message "v1.ListRequestMetadata" do
       optional :cursor, :string, 1
@@ -52,7 +48,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     end
     add_message "v1.ListResponseMetadata" do
       optional :next_cursor, :string, 1
-      optional :found, :int64, 2
+      optional :found, :int32, 2
     end
   end
 end
