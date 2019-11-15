@@ -537,7 +537,7 @@ module SDM
             plumbing.id = porcelain.id unless porcelain.id == nil
             plumbing.name = porcelain.name unless porcelain.name == nil
             plumbing.composite = porcelain.composite unless porcelain.composite == nil
-            plumbing.roles += repeated_role_to_plumbing(porcelain.roles)
+            plumbing.roles += repeated_role_to_plumbing(porcelain.roles)  unless porcelain.roles == nil
             plumbing
         end
 
