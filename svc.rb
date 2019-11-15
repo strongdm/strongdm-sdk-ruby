@@ -11,9 +11,10 @@ module SDM
     # Nodes are proxies in strongDM responsible to communicate with servers
     # (relays) and clients (gateways).
     class Nodes
-        def initialize(url)
+        def initialize(url, apiKey)
             begin
                 @stub = V1::Nodes::Stub.new(url, :this_channel_is_insecure)
+                @apiKey = apiKey
             rescue => exception
                 raise Plumbing::error_to_porcelain(exception)
             end
@@ -27,7 +28,7 @@ module SDM
             req.node = Plumbing::node_to_plumbing(node)
 
             begin
-                plumbing_response = @stub.create(req)
+                plumbing_response = @stub.create(req, metadata:{ 'authorization': @apiKey })
             rescue => exception
                 raise Plumbing::error_to_porcelain(exception)
             end
@@ -47,7 +48,7 @@ module SDM
             req.id = id
 
             begin
-                plumbing_response = @stub.get(req)
+                plumbing_response = @stub.get(req, metadata:{ 'authorization': @apiKey })
             rescue => exception
                 raise Plumbing::error_to_porcelain(exception)
             end
@@ -67,7 +68,7 @@ module SDM
             req.node = Plumbing::node_to_plumbing(node)
 
             begin
-                plumbing_response = @stub.update(req)
+                plumbing_response = @stub.update(req, metadata:{ 'authorization': @apiKey })
             rescue => exception
                 raise Plumbing::error_to_porcelain(exception)
             end
@@ -86,7 +87,7 @@ module SDM
             req.id = id
 
             begin
-                plumbing_response = @stub.delete(req)
+                plumbing_response = @stub.delete(req, metadata:{ 'authorization': @apiKey })
             rescue => exception
                 raise Plumbing::error_to_porcelain(exception)
             end
@@ -107,7 +108,7 @@ module SDM
             resp = Enumerator::Generator.new { |g|
                 loop do
                     begin
-                        plumbing_response = @stub.list(req)
+                        plumbing_response = @stub.list(req, metadata:{ 'authorization': @apiKey })
                     rescue => exception
                         raise Plumbing::error_to_porcelain(exception)
                     end
@@ -125,9 +126,10 @@ module SDM
     end
     # Roles are
     class Roles
-        def initialize(url)
+        def initialize(url, apiKey)
             begin
                 @stub = V1::Roles::Stub.new(url, :this_channel_is_insecure)
+                @apiKey = apiKey
             rescue => exception
                 raise Plumbing::error_to_porcelain(exception)
             end
@@ -141,7 +143,7 @@ module SDM
             req.role = Plumbing::role_to_plumbing(role)
 
             begin
-                plumbing_response = @stub.create(req)
+                plumbing_response = @stub.create(req, metadata:{ 'authorization': @apiKey })
             rescue => exception
                 raise Plumbing::error_to_porcelain(exception)
             end
@@ -160,7 +162,7 @@ module SDM
             req.id = id
 
             begin
-                plumbing_response = @stub.get(req)
+                plumbing_response = @stub.get(req, metadata:{ 'authorization': @apiKey })
             rescue => exception
                 raise Plumbing::error_to_porcelain(exception)
             end
@@ -180,7 +182,7 @@ module SDM
             req.role = Plumbing::role_to_plumbing(role)
 
             begin
-                plumbing_response = @stub.update(req)
+                plumbing_response = @stub.update(req, metadata:{ 'authorization': @apiKey })
             rescue => exception
                 raise Plumbing::error_to_porcelain(exception)
             end
@@ -199,7 +201,7 @@ module SDM
             req.id = id
 
             begin
-                plumbing_response = @stub.delete(req)
+                plumbing_response = @stub.delete(req, metadata:{ 'authorization': @apiKey })
             rescue => exception
                 raise Plumbing::error_to_porcelain(exception)
             end
@@ -220,7 +222,7 @@ module SDM
             resp = Enumerator::Generator.new { |g|
                 loop do
                     begin
-                        plumbing_response = @stub.list(req)
+                        plumbing_response = @stub.list(req, metadata:{ 'authorization': @apiKey })
                     rescue => exception
                         raise Plumbing::error_to_porcelain(exception)
                     end
