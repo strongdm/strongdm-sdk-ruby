@@ -586,7 +586,7 @@ module SDM
                     # PermissionError is used to specify a permissions violation
                     when "type.googleapis.com/v1.PermissionError"
                         deserialized = detail.unpack V1::PermissionError
-                        return PermissionError.new(err.message, deserialized.permission, deserialized.entities)
+                        return PermissionError.new(err.message)
         
                     # InternalError is used to specify an internal system error
                     when "type.googleapis.com/v1.InternalError"

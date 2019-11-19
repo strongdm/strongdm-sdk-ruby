@@ -18,8 +18,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.AuthenticationError" do
     end
     add_message "v1.PermissionError" do
-      optional :permission, :string, 1
-      repeated :entities, :string, 2
     end
     add_message "v1.InternalError" do
     end

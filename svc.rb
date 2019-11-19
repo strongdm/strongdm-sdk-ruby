@@ -13,7 +13,12 @@ module SDM
     class Nodes
         def initialize(url, apiKey)
             begin
-                @stub = V1::Nodes::Stub.new(url, :this_channel_is_insecure)
+                if url.end_with?("443")
+                    cred = GRPC::Core::ChannelCredentials.new()
+                    @stub = V1::Nodes::Stub.new(url, cred)
+                else
+                    @stub = V1::Nodes::Stub.new(url, :this_channel_is_insecure)
+                end
                 @apiKey = apiKey
             rescue => exception
                 raise Plumbing::error_to_porcelain(exception)
@@ -127,7 +132,12 @@ module SDM
     class Roles
         def initialize(url, apiKey)
             begin
-                @stub = V1::Roles::Stub.new(url, :this_channel_is_insecure)
+                if url.end_with?("443")
+                    cred = GRPC::Core::ChannelCredentials.new()
+                    @stub = V1::Roles::Stub.new(url, cred)
+                else
+                    @stub = V1::Roles::Stub.new(url, :this_channel_is_insecure)
+                end
                 @apiKey = apiKey
             rescue => exception
                 raise Plumbing::error_to_porcelain(exception)

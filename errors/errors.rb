@@ -36,11 +36,7 @@ module SDM
 
     # PermissionError is used to specify a permissions violation
     class PermissionError < Error
-        attr_reader :permission
-        attr_reader :entities
-        def initialize(msg, permission, entities)
-            @permission = permission
-            @entities = entities
+        def initialize(msg)
             super(msg)
         end
     end
