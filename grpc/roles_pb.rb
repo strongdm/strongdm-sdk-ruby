@@ -53,7 +53,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 1
       optional :name, :string, 2
       optional :composite, :bool, 3
-      repeated :roles, :message, 4, "v1.Role"
     end
   end
 end

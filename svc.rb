@@ -107,7 +107,6 @@ module SDM
             
             req = V1::NodeListRequest.new()
             req.meta = V1::ListRequestMetadata.new()
-            req.meta.limit = 25
             req.filter = filter
             resp = Enumerator::Generator.new { |g|
                 loop do
@@ -128,7 +127,11 @@ module SDM
         end
         
     end
-    # Roles are
+    # Roles are tools for controlling user access to resources. Each role holds a
+    # list of resources which they grant access to. Composite roles are a special
+    # type of role which have no resource associations of their own, but instead
+    # grant access to the combined resources associated with a set of child roles.
+    # Each user can be a member of one role or composite role.
     class Roles
         def initialize(url, apiKey)
             begin
@@ -220,12 +223,11 @@ module SDM
         end
         
             
-        # List is a batched Get call.
+        # List gets a list of Roles matching a given set of criteria.
         def list(filter)
             
             req = V1::RoleListRequest.new()
             req.meta = V1::ListRequestMetadata.new()
-            req.meta.limit = 25
             req.filter = filter
             resp = Enumerator::Generator.new { |g|
                 loop do

@@ -1,18 +1,18 @@
 module SDM
 
-    # CreateResponseMetadata
+    # CreateResponseMetadata is reserved for future use.
     class CreateResponseMetadata
     end
     
-    # GetResponseMetadata
+    # GetResponseMetadata is reserved for future use.
     class GetResponseMetadata
     end
     
-    # UpdateResponseMetadata
+    # UpdateResponseMetadata is reserved for future use.
     class UpdateResponseMetadata
     end
     
-    # DeleteResponseMetadata
+    # DeleteResponseMetadata is reserved for future use.
     class DeleteResponseMetadata
     end
     
@@ -87,12 +87,13 @@ module SDM
        attr_accessor :meta
     end
     
-    # Role is a domain object --
+    # A Role grants users access to a set of resources. Composite roles have no
+    # resource associations of their own, but instead grant access to the combined
+    # resources of their child roles.
     class Role
        attr_accessor :id
        attr_accessor :name
        attr_accessor :composite
-       attr_accessor :roles
     end
     
 end
