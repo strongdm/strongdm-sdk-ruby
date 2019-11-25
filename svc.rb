@@ -27,33 +27,33 @@ module SDM
         
             
         # Create registers a new node.
-        def create(node)
+        def create(node, deadline:nil)
             
             req = V1::NodeCreateRequest.new()
             req.node = Plumbing::node_to_plumbing(node)
 
             begin
-                plumbing_response = @stub.create(req, metadata:{ 'authorization': @apiKey })
+                plumbing_response = @stub.create(req, metadata:{ 'authorization': @apiKey }, deadline:deadline)
             rescue => exception
                 raise Plumbing::error_to_porcelain(exception)
             end
             resp = NodeCreateResponse.new()
             resp.meta = Plumbing::create_response_metadata_to_porcelain(plumbing_response.meta)
             resp.node = Plumbing::node_to_porcelain(plumbing_response.node)
-            resp.token = Plumbing::token_to_porcelain(plumbing_response.token)
+            resp.token = plumbing_response.token
             resp
             
         end
         
             
         # Get reads one node by ID.
-        def get(id)
+        def get(id, deadline:nil)
             
             req = V1::NodeGetRequest.new()
             req.id = id
 
             begin
-                plumbing_response = @stub.get(req, metadata:{ 'authorization': @apiKey })
+                plumbing_response = @stub.get(req, metadata:{ 'authorization': @apiKey }, deadline:deadline)
             rescue => exception
                 raise Plumbing::error_to_porcelain(exception)
             end
@@ -66,13 +66,13 @@ module SDM
         
             
         # Update patches a node by ID.
-        def update(node)
+        def update(node, deadline:nil)
             
             req = V1::NodeUpdateRequest.new()
             req.node = Plumbing::node_to_plumbing(node)
 
             begin
-                plumbing_response = @stub.update(req, metadata:{ 'authorization': @apiKey })
+                plumbing_response = @stub.update(req, metadata:{ 'authorization': @apiKey }, deadline:deadline)
             rescue => exception
                 raise Plumbing::error_to_porcelain(exception)
             end
@@ -85,13 +85,13 @@ module SDM
         
             
         # Delete removes a node by ID.
-        def delete(id)
+        def delete(id, deadline:nil)
             
             req = V1::NodeDeleteRequest.new()
             req.id = id
 
             begin
-                plumbing_response = @stub.delete(req, metadata:{ 'authorization': @apiKey })
+                plumbing_response = @stub.delete(req, metadata:{ 'authorization': @apiKey }, deadline:deadline)
             rescue => exception
                 raise Plumbing::error_to_porcelain(exception)
             end
@@ -103,7 +103,7 @@ module SDM
         
             
         # List is a batched Get call.
-        def list(filter)
+        def list(filter, deadline:nil)
             
             req = V1::NodeListRequest.new()
             req.meta = V1::ListRequestMetadata.new()
@@ -111,7 +111,7 @@ module SDM
             resp = Enumerator::Generator.new { |g|
                 loop do
                     begin
-                        plumbing_response = @stub.list(req, metadata:{ 'authorization': @apiKey })
+                        plumbing_response = @stub.list(req, metadata:{ 'authorization': @apiKey }, deadline:deadline)
                     rescue => exception
                         raise Plumbing::error_to_porcelain(exception)
                     end
@@ -149,13 +149,13 @@ module SDM
         
             
         # Create registers a new role.
-        def create(role)
+        def create(role, deadline:nil)
             
             req = V1::RoleCreateRequest.new()
             req.role = Plumbing::role_to_plumbing(role)
 
             begin
-                plumbing_response = @stub.create(req, metadata:{ 'authorization': @apiKey })
+                plumbing_response = @stub.create(req, metadata:{ 'authorization': @apiKey }, deadline:deadline)
             rescue => exception
                 raise Plumbing::error_to_porcelain(exception)
             end
@@ -168,13 +168,13 @@ module SDM
         
             
         # Get reads one role by ID.
-        def get(id)
+        def get(id, deadline:nil)
             
             req = V1::RoleGetRequest.new()
             req.id = id
 
             begin
-                plumbing_response = @stub.get(req, metadata:{ 'authorization': @apiKey })
+                plumbing_response = @stub.get(req, metadata:{ 'authorization': @apiKey }, deadline:deadline)
             rescue => exception
                 raise Plumbing::error_to_porcelain(exception)
             end
@@ -187,13 +187,13 @@ module SDM
         
             
         # Update patches a Role by ID.
-        def update(role)
+        def update(role, deadline:nil)
             
             req = V1::RoleUpdateRequest.new()
             req.role = Plumbing::role_to_plumbing(role)
 
             begin
-                plumbing_response = @stub.update(req, metadata:{ 'authorization': @apiKey })
+                plumbing_response = @stub.update(req, metadata:{ 'authorization': @apiKey }, deadline:deadline)
             rescue => exception
                 raise Plumbing::error_to_porcelain(exception)
             end
@@ -206,13 +206,13 @@ module SDM
         
             
         # Delete removes a Role by ID.
-        def delete(id)
+        def delete(id, deadline:nil)
             
             req = V1::RoleDeleteRequest.new()
             req.id = id
 
             begin
-                plumbing_response = @stub.delete(req, metadata:{ 'authorization': @apiKey })
+                plumbing_response = @stub.delete(req, metadata:{ 'authorization': @apiKey }, deadline:deadline)
             rescue => exception
                 raise Plumbing::error_to_porcelain(exception)
             end
@@ -224,7 +224,7 @@ module SDM
         
             
         # List gets a list of Roles matching a given set of criteria.
-        def list(filter)
+        def list(filter, deadline:nil)
             
             req = V1::RoleListRequest.new()
             req.meta = V1::ListRequestMetadata.new()
@@ -232,7 +232,7 @@ module SDM
             resp = Enumerator::Generator.new { |g|
                 loop do
                     begin
-                        plumbing_response = @stub.list(req, metadata:{ 'authorization': @apiKey })
+                        plumbing_response = @stub.list(req, metadata:{ 'authorization': @apiKey }, deadline:deadline)
                     rescue => exception
                         raise Plumbing::error_to_porcelain(exception)
                     end

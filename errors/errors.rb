@@ -4,18 +4,18 @@ module SDM
 
     # AlreadyExistsError is used when an entity already exists in the system
     class AlreadyExistsError < Error
-        attr_reader :entities
-        def initialize(msg, entities)
-            @entities = entities
+        attr_reader :entity
+        def initialize(msg, entity)
+            @entity = entity
             super(msg)
         end
     end
 
     # NotFoundError is used when an entity does not exist in the system
     class NotFoundError < Error
-        attr_reader :entities
-        def initialize(msg, entities)
-            @entities = entities
+        attr_reader :entity
+        def initialize(msg, entity)
+            @entity = entity
             super(msg)
         end
     end
@@ -61,6 +61,12 @@ module SDM
         def initialize(msg, code)
             @code = code
             super(msg)
+        end
+    end
+    # DeadlineExceededError indicates an RPC call timed out
+    class DeadlineExceededError < RPCError
+        def initialize(msg)
+            super(msg, 4)
         end
     end
 end

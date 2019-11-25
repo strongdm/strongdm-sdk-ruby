@@ -16,7 +16,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.NodeCreateResponse" do
       optional :meta, :message, 1, "v1.CreateResponseMetadata"
       optional :node, :message, 2, "v1.Node"
-      optional :token, :message, 3, "v1.Token"
+      optional :token, :string, 3
     end
     add_message "v1.NodeGetRequest" do
       optional :meta, :message, 1, "v1.GetRequestMetadata"
@@ -66,10 +66,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :listen_address, :string, 3
       optional :bind_address, :string, 4
     end
-    add_message "v1.Token" do
-      optional :id, :string, 1
-      optional :token, :string, 2
-    end
   end
 end
 
@@ -87,5 +83,4 @@ module V1
   Node = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Node").msgclass
   Relay = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Relay").msgclass
   Gateway = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Gateway").msgclass
-  Token = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Token").msgclass
 end

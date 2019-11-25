@@ -127,7 +127,7 @@ module SDM
             porcelain = NodeCreateResponse.new()
             porcelain.meta = create_response_metadata_to_porcelain(plumbing.meta)
             porcelain.node = node_to_porcelain(plumbing.node)
-            porcelain.token = token_to_porcelain(plumbing.token)
+            porcelain.token = plumbing.token
             porcelain
         end
 
@@ -135,7 +135,7 @@ module SDM
             plumbing = V1::NodeCreateResponse.new()
             plumbing.meta = create_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
             plumbing.node = node_to_plumbing(porcelain.node) unless porcelain.node == nil
-            plumbing.token = token_to_plumbing(porcelain.token) unless porcelain.token == nil
+            plumbing.token = porcelain.token unless porcelain.token == nil
             plumbing
         end
 
@@ -357,38 +357,6 @@ module SDM
             items
         end
 
-        def self.token_to_porcelain(plumbing)
-            porcelain = Token.new()
-            porcelain.id = plumbing.id
-            porcelain.token = plumbing.token
-            porcelain
-        end
-
-        def self.token_to_plumbing(porcelain)
-            plumbing = V1::Token.new()
-            plumbing.id = porcelain.id unless porcelain.id == nil
-            plumbing.token = porcelain.token unless porcelain.token == nil
-            plumbing
-        end
-
-        def self.repeated_token_to_plumbing(porcelains)
-            items = Array.new
-            porcelains.each do |porcelain|
-                plumbing = token_to_plumbing(porcelain)
-                items.append(plumbing)
-            end
-            items
-        end
-
-        def self.repeated_token_to_porcelain(plumbings)
-            items = Array.new
-            plumbings.each do |plumbing|
-                porcelain = token_to_porcelain(plumbing)
-                items.append(porcelain)
-            end
-            items
-        end
-
         def self.role_create_response_to_porcelain(plumbing)
             porcelain = RoleCreateResponse.new()
             porcelain.meta = create_response_metadata_to_porcelain(plumbing.meta)
@@ -552,7 +520,11 @@ module SDM
 
         def self.error_to_porcelain(err)
             if not err .is_a? GRPC::BadStatus
-                return RPCError.new(err.message, err.code)
+                return Error.new(err)
+            end
+
+            if err.code == 4
+                return DeadlineExceededError.new(err.message)
             end
 
             status = err.to_rpc_status
@@ -564,12 +536,12 @@ module SDM
                     # AlreadyExistsError is used when an entity already exists in the system
                     when "type.googleapis.com/v1.AlreadyExistsError"
                         deserialized = detail.unpack V1::AlreadyExistsError
-                        return AlreadyExistsError.new(err.message, deserialized.entities)
+                        return AlreadyExistsError.new(err.message, deserialized.entity)
         
                     # NotFoundError is used when an entity does not exist in the system
                     when "type.googleapis.com/v1.NotFoundError"
                         deserialized = detail.unpack V1::NotFoundError
-                        return NotFoundError.new(err.message, deserialized.entities)
+                        return NotFoundError.new(err.message, deserialized.entity)
         
                     # BadRequestError identifies a bad request sent by the client
                     when "type.googleapis.com/v1.BadRequestError"

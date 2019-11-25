@@ -56,12 +56,6 @@ module SDM
        attr_accessor :bind_address
     end
     
-    # Token holds the bearer token used to start up nodes.
-    class Token
-       attr_accessor :id
-       attr_accessor :token
-    end
-    
     # RoleCreateResponse reports how the Roles were created in the system. It can
     # communicate partial successes or failures.
     class RoleCreateResponse

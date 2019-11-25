@@ -8,10 +8,10 @@ require 'protoc-gen-swagger/options/annotations_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("spec.proto", :syntax => :proto3) do
     add_message "v1.AlreadyExistsError" do
-      repeated :entities, :string, 1
+      optional :entity, :string, 1
     end
     add_message "v1.NotFoundError" do
-      repeated :entities, :string, 1
+      optional :entity, :string, 1
     end
     add_message "v1.BadRequestError" do
     end
@@ -46,7 +46,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     end
     add_message "v1.ListResponseMetadata" do
       optional :next_cursor, :string, 1
-      optional :found, :int32, 2
+      optional :total, :int32, 2
     end
   end
 end
