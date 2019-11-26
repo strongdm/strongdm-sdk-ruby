@@ -524,7 +524,7 @@ module SDM
 
         def self.error_to_porcelain(err)
             if not err .is_a? GRPC::BadStatus
-                return Error.new(err)
+                return RPCError.new(err, 2) # Unknown
             end
 
             if err.code == 4
