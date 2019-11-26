@@ -16,68 +16,95 @@ module SDM
     class DeleteResponseMetadata
     end
     
-    # NodeCreateResponse reports how the nodes were created in the system. It can
-    # communicate partial successes or failures.
+    # NodeCreateResponse reports how the Nodes were created in the system.
     class NodeCreateResponse
+        # Reserved for future use.
        attr_accessor :meta
+        # The created Node.
        attr_accessor :node
+        # The auth token generated for the Node. The Node will use this token to
+        # authenticate with the strongDM API.
        attr_accessor :token
     end
     
-    # NodeGetResponse returns a requested node.
+    # NodeGetResponse returns a requested Node.
     class NodeGetResponse
+        # Reserved for future use.
        attr_accessor :meta
+        # The requested Node.
        attr_accessor :node
     end
     
-    # NodeUpdateResponse returns the fields of a node after it has been updated by
+    # NodeUpdateResponse returns the fields of a Node after it has been updated by
     # a NodeUpdateRequest.
     class NodeUpdateResponse
+        # Reserved for future use.
        attr_accessor :meta
+        # The updated Node.
        attr_accessor :node
     end
     
-    # NodeDeleteResponse returns information about a node that was deleted.
+    # NodeDeleteResponse returns information about a Node that was deleted.
     class NodeDeleteResponse
+        # Reserved for future use.
        attr_accessor :meta
     end
     
     # Relay represents a StrongDM CLI installation running in relay mode.
     class Relay
+        # Unique identifier of the Relay.
        attr_accessor :id
+        # Unique human-readable name of the Relay.
        attr_accessor :name
+        # The current state of the relay. One of: "new", "verifying_restart",
+        # "restarting", "started", "stopped", "dead", "unknown",
+       attr_accessor :state
     end
     
     # Gateway represents a StrongDM CLI installation running in gateway mode.
     class Gateway
+        # Unique identifier of the Relay.
        attr_accessor :id
+        # Unique human-readable name of the Relay.
        attr_accessor :name
+        # The current state of the gateway. One of: "new", "verifying_restart",
+        # "restarting", "started", "stopped", "dead", "unknown",
+       attr_accessor :state
+        # The public hostname/port tuple at which the gateway will be accessible to clients.
        attr_accessor :listen_address
+        # The hostname/port tuple which the gateway daemon will bind to.
        attr_accessor :bind_address
     end
     
     # RoleCreateResponse reports how the Roles were created in the system. It can
     # communicate partial successes or failures.
     class RoleCreateResponse
+        # Reserved for future use.
        attr_accessor :meta
+        # The created Role.
        attr_accessor :role
     end
     
     # RoleGetResponse returns a requested Role.
     class RoleGetResponse
+        # Reserved for future use.
        attr_accessor :meta
+        # The requested Role.
        attr_accessor :role
     end
     
     # RoleUpdateResponse returns the fields of a Role after it has been updated by
     # a RoleUpdateRequest.
     class RoleUpdateResponse
+        # Reserved for future use.
        attr_accessor :meta
+        # The updated Role.
        attr_accessor :role
     end
     
     # RoleDeleteResponse returns information about a Role that was deleted.
     class RoleDeleteResponse
+        # Reserved for future use.
        attr_accessor :meta
     end
     
@@ -85,8 +112,11 @@ module SDM
     # resource associations of their own, but instead grant access to the combined
     # resources of their child roles.
     class Role
+        # Unique identifier of the Role.
        attr_accessor :id
+        # Unique human-readable name of the Role.
        attr_accessor :name
+        # True if the Role is a composite role.
        attr_accessor :composite
     end
     

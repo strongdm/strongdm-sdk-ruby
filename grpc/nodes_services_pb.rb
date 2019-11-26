@@ -6,8 +6,9 @@ require 'nodes_pb'
 
 module V1
   module Nodes
-    # Nodes are proxies in strongDM responsible to communicate with servers
-    # (relays) and clients (gateways).
+    # Nodes are proxies in the strongDM network. They come in two flavors: relays,
+    # which communicate with resources, and gateways, which communicate with
+    # clients.
     class Service
 
       include GRPC::GenericService
@@ -16,15 +17,15 @@ module V1
       self.unmarshal_class_method = :decode
       self.service_name = 'v1.Nodes'
 
-      # Create registers a new node.
+      # Create registers a new Node.
       rpc :Create, NodeCreateRequest, NodeCreateResponse
-      # Get reads one node by ID.
+      # Get reads one Node by ID.
       rpc :Get, NodeGetRequest, NodeGetResponse
-      # Update patches a node by ID.
+      # Update patches a Node by ID.
       rpc :Update, NodeUpdateRequest, NodeUpdateResponse
-      # Delete removes a node by ID.
+      # Delete removes a Node by ID.
       rpc :Delete, NodeDeleteRequest, NodeDeleteResponse
-      # List is a batched Get call.
+      # List gets a list of Nodes matching a given set of criteria.
       rpc :List, NodeListRequest, NodeListResponse
     end
 

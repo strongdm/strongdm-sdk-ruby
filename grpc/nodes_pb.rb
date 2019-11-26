@@ -59,12 +59,14 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.Relay" do
       optional :id, :string, 1
       optional :name, :string, 2
+      optional :state, :string, 3
     end
     add_message "v1.Gateway" do
       optional :id, :string, 1
       optional :name, :string, 2
-      optional :listen_address, :string, 3
-      optional :bind_address, :string, 4
+      optional :state, :string, 3
+      optional :listen_address, :string, 4
+      optional :bind_address, :string, 5
     end
   end
 end

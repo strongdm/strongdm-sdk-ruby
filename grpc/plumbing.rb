@@ -293,6 +293,7 @@ module SDM
             porcelain = Relay.new()
             porcelain.id = plumbing.id
             porcelain.name = plumbing.name
+            porcelain.state = plumbing.state
             porcelain
         end
 
@@ -300,6 +301,7 @@ module SDM
             plumbing = V1::Relay.new()
             plumbing.id = porcelain.id unless porcelain.id == nil
             plumbing.name = porcelain.name unless porcelain.name == nil
+            plumbing.state = porcelain.state unless porcelain.state == nil
             plumbing
         end
 
@@ -325,6 +327,7 @@ module SDM
             porcelain = Gateway.new()
             porcelain.id = plumbing.id
             porcelain.name = plumbing.name
+            porcelain.state = plumbing.state
             porcelain.listen_address = plumbing.listen_address
             porcelain.bind_address = plumbing.bind_address
             porcelain
@@ -334,6 +337,7 @@ module SDM
             plumbing = V1::Gateway.new()
             plumbing.id = porcelain.id unless porcelain.id == nil
             plumbing.name = porcelain.name unless porcelain.name == nil
+            plumbing.state = porcelain.state unless porcelain.state == nil
             plumbing.listen_address = porcelain.listen_address unless porcelain.listen_address == nil
             plumbing.bind_address = porcelain.bind_address unless porcelain.bind_address == nil
             plumbing

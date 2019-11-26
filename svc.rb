@@ -8,10 +8,11 @@ Dir[File.join(__dir__, 'models', '*.rb')].each {|file| require file }
 
 module SDM
 
-    # Nodes are proxies in strongDM responsible to communicate with servers
-    # (relays) and clients (gateways).
+    # Nodes are proxies in the strongDM network. They come in two flavors: relays,
+    # which communicate with resources, and gateways, which communicate with
+    # clients.
     class Nodes
-        def initialize(url, apiKey)
+        def initialize(url, parent)
             begin
                 if url.end_with?("443")
                     cred = GRPC::Core::ChannelCredentials.new()
@@ -19,21 +20,21 @@ module SDM
                 else
                     @stub = V1::Nodes::Stub.new(url, :this_channel_is_insecure)
                 end
-                @apiKey = apiKey
             rescue => exception
                 raise Plumbing::error_to_porcelain(exception)
             end
+            @parent = parent
         end
         
             
-        # Create registers a new node.
+        # Create registers a new Node.
         def create(node, deadline:nil)
             
             req = V1::NodeCreateRequest.new()
             req.node = Plumbing::node_to_plumbing(node)
 
             begin
-                plumbing_response = @stub.create(req, metadata:{ 'authorization': @apiKey }, deadline:deadline)
+                plumbing_response = @stub.create(req, metadata:{ 'authorization': @parent.api_key }, deadline:deadline)
             rescue => exception
                 raise Plumbing::error_to_porcelain(exception)
             end
@@ -46,14 +47,14 @@ module SDM
         end
         
             
-        # Get reads one node by ID.
+        # Get reads one Node by ID.
         def get(id, deadline:nil)
             
             req = V1::NodeGetRequest.new()
             req.id = id
 
             begin
-                plumbing_response = @stub.get(req, metadata:{ 'authorization': @apiKey }, deadline:deadline)
+                plumbing_response = @stub.get(req, metadata:{ 'authorization': @parent.api_key }, deadline:deadline)
             rescue => exception
                 raise Plumbing::error_to_porcelain(exception)
             end
@@ -65,14 +66,14 @@ module SDM
         end
         
             
-        # Update patches a node by ID.
+        # Update patches a Node by ID.
         def update(node, deadline:nil)
             
             req = V1::NodeUpdateRequest.new()
             req.node = Plumbing::node_to_plumbing(node)
 
             begin
-                plumbing_response = @stub.update(req, metadata:{ 'authorization': @apiKey }, deadline:deadline)
+                plumbing_response = @stub.update(req, metadata:{ 'authorization': @parent.api_key }, deadline:deadline)
             rescue => exception
                 raise Plumbing::error_to_porcelain(exception)
             end
@@ -84,14 +85,14 @@ module SDM
         end
         
             
-        # Delete removes a node by ID.
+        # Delete removes a Node by ID.
         def delete(id, deadline:nil)
             
             req = V1::NodeDeleteRequest.new()
             req.id = id
 
             begin
-                plumbing_response = @stub.delete(req, metadata:{ 'authorization': @apiKey }, deadline:deadline)
+                plumbing_response = @stub.delete(req, metadata:{ 'authorization': @parent.api_key }, deadline:deadline)
             rescue => exception
                 raise Plumbing::error_to_porcelain(exception)
             end
@@ -102,16 +103,20 @@ module SDM
         end
         
             
-        # List is a batched Get call.
+        # List gets a list of Nodes matching a given set of criteria.
         def list(filter, deadline:nil)
             
             req = V1::NodeListRequest.new()
             req.meta = V1::ListRequestMetadata.new()
+            page_size_option = @parent._test_options['PageSize']
+            if page_size_option.is_a? Integer
+                req.meta.limit = page_size_option
+            end
             req.filter = filter
             resp = Enumerator::Generator.new { |g|
                 loop do
                     begin
-                        plumbing_response = @stub.list(req, metadata:{ 'authorization': @apiKey }, deadline:deadline)
+                        plumbing_response = @stub.list(req, metadata:{ 'authorization': @parent.api_key }, deadline:deadline)
                     rescue => exception
                         raise Plumbing::error_to_porcelain(exception)
                     end
@@ -127,13 +132,13 @@ module SDM
         end
         
     end
-    # Roles are tools for controlling user access to resources. Each role holds a
+    # Roles are tools for controlling user access to resources. Each Role holds a
     # list of resources which they grant access to. Composite roles are a special
-    # type of role which have no resource associations of their own, but instead
+    # type of Role which have no resource associations of their own, but instead
     # grant access to the combined resources associated with a set of child roles.
-    # Each user can be a member of one role or composite role.
+    # Each user can be a member of one Role or composite role.
     class Roles
-        def initialize(url, apiKey)
+        def initialize(url, parent)
             begin
                 if url.end_with?("443")
                     cred = GRPC::Core::ChannelCredentials.new()
@@ -141,21 +146,21 @@ module SDM
                 else
                     @stub = V1::Roles::Stub.new(url, :this_channel_is_insecure)
                 end
-                @apiKey = apiKey
             rescue => exception
                 raise Plumbing::error_to_porcelain(exception)
             end
+            @parent = parent
         end
         
             
-        # Create registers a new role.
+        # Create registers a new Role.
         def create(role, deadline:nil)
             
             req = V1::RoleCreateRequest.new()
             req.role = Plumbing::role_to_plumbing(role)
 
             begin
-                plumbing_response = @stub.create(req, metadata:{ 'authorization': @apiKey }, deadline:deadline)
+                plumbing_response = @stub.create(req, metadata:{ 'authorization': @parent.api_key }, deadline:deadline)
             rescue => exception
                 raise Plumbing::error_to_porcelain(exception)
             end
@@ -167,14 +172,14 @@ module SDM
         end
         
             
-        # Get reads one role by ID.
+        # Get reads one Role by ID.
         def get(id, deadline:nil)
             
             req = V1::RoleGetRequest.new()
             req.id = id
 
             begin
-                plumbing_response = @stub.get(req, metadata:{ 'authorization': @apiKey }, deadline:deadline)
+                plumbing_response = @stub.get(req, metadata:{ 'authorization': @parent.api_key }, deadline:deadline)
             rescue => exception
                 raise Plumbing::error_to_porcelain(exception)
             end
@@ -193,7 +198,7 @@ module SDM
             req.role = Plumbing::role_to_plumbing(role)
 
             begin
-                plumbing_response = @stub.update(req, metadata:{ 'authorization': @apiKey }, deadline:deadline)
+                plumbing_response = @stub.update(req, metadata:{ 'authorization': @parent.api_key }, deadline:deadline)
             rescue => exception
                 raise Plumbing::error_to_porcelain(exception)
             end
@@ -212,7 +217,7 @@ module SDM
             req.id = id
 
             begin
-                plumbing_response = @stub.delete(req, metadata:{ 'authorization': @apiKey }, deadline:deadline)
+                plumbing_response = @stub.delete(req, metadata:{ 'authorization': @parent.api_key }, deadline:deadline)
             rescue => exception
                 raise Plumbing::error_to_porcelain(exception)
             end
@@ -228,11 +233,15 @@ module SDM
             
             req = V1::RoleListRequest.new()
             req.meta = V1::ListRequestMetadata.new()
+            page_size_option = @parent._test_options['PageSize']
+            if page_size_option.is_a? Integer
+                req.meta.limit = page_size_option
+            end
             req.filter = filter
             resp = Enumerator::Generator.new { |g|
                 loop do
                     begin
-                        plumbing_response = @stub.list(req, metadata:{ 'authorization': @apiKey }, deadline:deadline)
+                        plumbing_response = @stub.list(req, metadata:{ 'authorization': @parent.api_key }, deadline:deadline)
                     rescue => exception
                         raise Plumbing::error_to_porcelain(exception)
                     end
