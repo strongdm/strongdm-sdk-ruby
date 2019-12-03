@@ -48,6 +48,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.RoleListResponse" do
       optional :meta, :message, 1, "v1.ListResponseMetadata"
       repeated :roles, :message, 2, "v1.Role"
+      optional :rate_limit, :message, 3, "v1.RateLimitMetadata"
     end
     add_message "v1.Role" do
       optional :id, :string, 1

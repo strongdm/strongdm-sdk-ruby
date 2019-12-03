@@ -48,6 +48,12 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :next_cursor, :string, 1
       optional :total, :int32, 2
     end
+    add_message "v1.RateLimitMetadata" do
+      optional :limit, :int32, 1
+      optional :remaining, :int32, 2
+      optional :reset_time, :int64, 3
+      optional :bucket, :string, 4
+    end
   end
 end
 
@@ -69,4 +75,5 @@ module V1
   DeleteResponseMetadata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DeleteResponseMetadata").msgclass
   ListRequestMetadata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ListRequestMetadata").msgclass
   ListResponseMetadata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ListResponseMetadata").msgclass
+  RateLimitMetadata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RateLimitMetadata").msgclass
 end
