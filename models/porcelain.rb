@@ -16,6 +16,11 @@ module SDM
     class DeleteResponseMetadata
     end
     
+    # RateLimitMetadata contains information about remaining requests avaialable
+    # to the user over some timeframe.
+    class RateLimitMetadata
+    end
+    
     # NodeCreateResponse reports how the Nodes were created in the system.
     class NodeCreateResponse
         # Reserved for future use.
@@ -25,6 +30,8 @@ module SDM
         # The auth token generated for the Node. The Node will use this token to
         # authenticate with the strongDM API.
        attr_accessor :token
+        # Rate limit information.
+       attr_accessor :rate_limit
     end
     
     # NodeGetResponse returns a requested Node.
@@ -33,6 +40,8 @@ module SDM
        attr_accessor :meta
         # The requested Node.
        attr_accessor :node
+        # Rate limit information.
+       attr_accessor :rate_limit
     end
     
     # NodeUpdateResponse returns the fields of a Node after it has been updated by
@@ -42,12 +51,16 @@ module SDM
        attr_accessor :meta
         # The updated Node.
        attr_accessor :node
+        # Rate limit information.
+       attr_accessor :rate_limit
     end
     
     # NodeDeleteResponse returns information about a Node that was deleted.
     class NodeDeleteResponse
         # Reserved for future use.
        attr_accessor :meta
+        # Rate limit information.
+       attr_accessor :rate_limit
     end
     
     # Relay represents a StrongDM CLI installation running in relay mode.
@@ -83,6 +96,8 @@ module SDM
        attr_accessor :meta
         # The created Role.
        attr_accessor :role
+        # Rate limit information.
+       attr_accessor :rate_limit
     end
     
     # RoleGetResponse returns a requested Role.
@@ -91,6 +106,8 @@ module SDM
        attr_accessor :meta
         # The requested Role.
        attr_accessor :role
+        # Rate limit information.
+       attr_accessor :rate_limit
     end
     
     # RoleUpdateResponse returns the fields of a Role after it has been updated by
@@ -100,12 +117,16 @@ module SDM
        attr_accessor :meta
         # The updated Role.
        attr_accessor :role
+        # Rate limit information.
+       attr_accessor :rate_limit
     end
     
     # RoleDeleteResponse returns information about a Role that was deleted.
     class RoleDeleteResponse
         # Reserved for future use.
        attr_accessor :meta
+        # Rate limit information.
+       attr_accessor :rate_limit
     end
     
     # A Role grants users access to a set of resources. Composite roles have no

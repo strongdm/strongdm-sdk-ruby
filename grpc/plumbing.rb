@@ -123,6 +123,42 @@ module SDM
             items
         end
 
+        def self.rate_limit_metadata_to_porcelain(plumbing)
+            porcelain = RateLimitMetadata.new()
+            porcelain.limit = plumbing.limit
+            porcelain.remaining = plumbing.remaining
+            porcelain.reset_at = google.protobuf._timestamp_to_porcelain(plumbing.reset_at)
+            porcelain.bucket = plumbing.bucket
+            porcelain
+        end
+
+        def self.rate_limit_metadata_to_plumbing(porcelain)
+            plumbing = V1::RateLimitMetadata.new()
+            plumbing.limit = porcelain.limit unless porcelain.limit == nil
+            plumbing.remaining = porcelain.remaining unless porcelain.remaining == nil
+            plumbing.reset_at = google.protobuf._timestamp_to_plumbing(porcelain.reset_at) unless porcelain.reset_at == nil
+            plumbing.bucket = porcelain.bucket unless porcelain.bucket == nil
+            plumbing
+        end
+
+        def self.repeated_rate_limit_metadata_to_plumbing(porcelains)
+            items = Array.new
+            porcelains.each do |porcelain|
+                plumbing = rate_limit_metadata_to_plumbing(porcelain)
+                items.append(plumbing)
+            end
+            items
+        end
+
+        def self.repeated_rate_limit_metadata_to_porcelain(plumbings)
+            items = Array.new
+            plumbings.each do |plumbing|
+                porcelain = rate_limit_metadata_to_porcelain(plumbing)
+                items.append(porcelain)
+            end
+            items
+        end
+
         def self.node_create_response_to_porcelain(plumbing)
             porcelain = NodeCreateResponse.new()
             porcelain.meta = create_response_metadata_to_porcelain(plumbing.meta)

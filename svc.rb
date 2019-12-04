@@ -42,6 +42,7 @@ module SDM
             resp.meta = Plumbing::create_response_metadata_to_porcelain(plumbing_response.meta)
             resp.node = Plumbing::node_to_porcelain(plumbing_response.node)
             resp.token = plumbing_response.token
+            resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
             resp
             
         end
@@ -61,6 +62,7 @@ module SDM
             resp = NodeGetResponse.new()
             resp.meta = Plumbing::get_response_metadata_to_porcelain(plumbing_response.meta)
             resp.node = Plumbing::node_to_porcelain(plumbing_response.node)
+            resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
             resp
             
         end
@@ -80,6 +82,7 @@ module SDM
             resp = NodeUpdateResponse.new()
             resp.meta = Plumbing::update_response_metadata_to_porcelain(plumbing_response.meta)
             resp.node = Plumbing::node_to_porcelain(plumbing_response.node)
+            resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
             resp
             
         end
@@ -98,6 +101,7 @@ module SDM
             end
             resp = NodeDeleteResponse.new()
             resp.meta = Plumbing::delete_response_metadata_to_porcelain(plumbing_response.meta)
+            resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
             resp
             
         end
@@ -167,6 +171,7 @@ module SDM
             resp = RoleCreateResponse.new()
             resp.meta = Plumbing::create_response_metadata_to_porcelain(plumbing_response.meta)
             resp.role = Plumbing::role_to_porcelain(plumbing_response.role)
+            resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
             resp
             
         end
@@ -186,6 +191,7 @@ module SDM
             resp = RoleGetResponse.new()
             resp.meta = Plumbing::get_response_metadata_to_porcelain(plumbing_response.meta)
             resp.role = Plumbing::role_to_porcelain(plumbing_response.role)
+            resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
             resp
             
         end
@@ -205,6 +211,7 @@ module SDM
             resp = RoleUpdateResponse.new()
             resp.meta = Plumbing::update_response_metadata_to_porcelain(plumbing_response.meta)
             resp.role = Plumbing::role_to_porcelain(plumbing_response.role)
+            resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
             resp
             
         end
@@ -223,6 +230,7 @@ module SDM
             end
             resp = RoleDeleteResponse.new()
             resp.meta = Plumbing::delete_response_metadata_to_porcelain(plumbing_response.meta)
+            resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
             resp
             
         end
