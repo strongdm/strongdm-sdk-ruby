@@ -12,11 +12,11 @@ module SDM
     module Plumbing
 
         def self.timestamp_to_porcelain(t)
-            return t
+            return Time.at(t.seconds + t.nanos * (10**-9))
         end
 
         def self.timestamp_to_plumbing(t)
-            return t
+            return Google::Protobuf::Timestamp.new(seconds: t.to_i, nanos: t.nsec)
         end
 
 
