@@ -19,6 +19,16 @@ module SDM
     # RateLimitMetadata contains information about remaining requests avaialable
     # to the user over some timeframe.
     class RateLimitMetadata
+        # How many total requests the user/token is authorized to make before being
+        # rate limited.
+       attr_accessor :limit
+        # How many remaining requests out of the limit are still avaialable.
+       attr_accessor :remaining
+        # The time when remaining will be reset to limit.
+       attr_accessor :reset_at
+        # The bucket this user/token is associated with, which may be shared between
+        # multiple users/tokens.
+       attr_accessor :bucket
     end
     
     # NodeCreateResponse reports how the Nodes were created in the system.
