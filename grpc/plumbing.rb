@@ -11,6 +11,15 @@ require_relative '../errors/errors'
 module SDM
     module Plumbing
 
+        def self.timestamp_to_porcelain(t)
+            return t
+        end
+
+        def self.timestamp_to_plumbing(t)
+            return t
+        end
+
+
         def self.create_response_metadata_to_porcelain(plumbing)
             porcelain = CreateResponseMetadata.new()
             porcelain
@@ -127,7 +136,7 @@ module SDM
             porcelain = RateLimitMetadata.new()
             porcelain.limit = plumbing.limit
             porcelain.remaining = plumbing.remaining
-            porcelain.reset_at = timestamp._timestamp_to_porcelain(plumbing.reset_at)
+            porcelain.reset_at = timestamp_to_porcelain(plumbing.reset_at)
             porcelain.bucket = plumbing.bucket
             porcelain
         end
@@ -136,7 +145,7 @@ module SDM
             plumbing = V1::RateLimitMetadata.new()
             plumbing.limit = porcelain.limit unless porcelain.limit == nil
             plumbing.remaining = porcelain.remaining unless porcelain.remaining == nil
-            plumbing.reset_at = timestamp._timestamp_to_plumbing(porcelain.reset_at) unless porcelain.reset_at == nil
+            plumbing.reset_at = timestamp_to_plumbing(porcelain.reset_at) unless porcelain.reset_at == nil
             plumbing.bucket = porcelain.bucket unless porcelain.bucket == nil
             plumbing
         end
