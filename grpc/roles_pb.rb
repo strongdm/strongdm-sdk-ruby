@@ -16,6 +16,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.RoleCreateResponse" do
       optional :meta, :message, 1, "v1.CreateResponseMetadata"
       optional :role, :message, 2, "v1.Role"
+      optional :rate_limit, :message, 3, "v1.RateLimitMetadata"
     end
     add_message "v1.RoleGetRequest" do
       optional :meta, :message, 1, "v1.GetRequestMetadata"
@@ -24,6 +25,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.RoleGetResponse" do
       optional :meta, :message, 1, "v1.GetResponseMetadata"
       optional :role, :message, 2, "v1.Role"
+      optional :rate_limit, :message, 3, "v1.RateLimitMetadata"
     end
     add_message "v1.RoleUpdateRequest" do
       optional :meta, :message, 1, "v1.UpdateRequestMetadata"
@@ -33,6 +35,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.RoleUpdateResponse" do
       optional :meta, :message, 1, "v1.UpdateResponseMetadata"
       optional :role, :message, 2, "v1.Role"
+      optional :rate_limit, :message, 3, "v1.RateLimitMetadata"
     end
     add_message "v1.RoleDeleteRequest" do
       optional :meta, :message, 1, "v1.DeleteRequestMetadata"
@@ -40,6 +43,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     end
     add_message "v1.RoleDeleteResponse" do
       optional :meta, :message, 1, "v1.DeleteResponseMetadata"
+      optional :rate_limit, :message, 2, "v1.RateLimitMetadata"
     end
     add_message "v1.RoleListRequest" do
       optional :meta, :message, 1, "v1.ListRequestMetadata"

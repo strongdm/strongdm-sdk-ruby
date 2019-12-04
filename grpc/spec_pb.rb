@@ -5,6 +5,7 @@ require 'google/protobuf'
 
 require 'options_pb'
 require 'protoc-gen-swagger/options/annotations_pb'
+require 'google/protobuf/timestamp_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("spec.proto", :syntax => :proto3) do
     add_message "v1.AlreadyExistsError" do
@@ -49,9 +50,9 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :total, :int32, 2
     end
     add_message "v1.RateLimitMetadata" do
-      optional :limit, :int32, 1
-      optional :remaining, :int32, 2
-      optional :reset_time, :int64, 3
+      optional :limit, :int64, 1
+      optional :remaining, :int64, 2
+      optional :reset_at, :message, 3, "google.protobuf.Timestamp"
       optional :bucket, :string, 4
     end
   end

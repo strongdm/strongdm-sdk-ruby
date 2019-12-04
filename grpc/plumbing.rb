@@ -128,6 +128,7 @@ module SDM
             porcelain.meta = create_response_metadata_to_porcelain(plumbing.meta)
             porcelain.node = node_to_porcelain(plumbing.node)
             porcelain.token = plumbing.token
+            porcelain.rate_limit = rate_limit_metadata_to_porcelain(plumbing.rate_limit)
             porcelain
         end
 
@@ -136,6 +137,7 @@ module SDM
             plumbing.meta = create_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
             plumbing.node = node_to_plumbing(porcelain.node) unless porcelain.node == nil
             plumbing.token = porcelain.token unless porcelain.token == nil
+            plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
             plumbing
         end
 
@@ -161,6 +163,7 @@ module SDM
             porcelain = NodeGetResponse.new()
             porcelain.meta = get_response_metadata_to_porcelain(plumbing.meta)
             porcelain.node = node_to_porcelain(plumbing.node)
+            porcelain.rate_limit = rate_limit_metadata_to_porcelain(plumbing.rate_limit)
             porcelain
         end
 
@@ -168,6 +171,7 @@ module SDM
             plumbing = V1::NodeGetResponse.new()
             plumbing.meta = get_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
             plumbing.node = node_to_plumbing(porcelain.node) unless porcelain.node == nil
+            plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
             plumbing
         end
 
@@ -193,6 +197,7 @@ module SDM
             porcelain = NodeUpdateResponse.new()
             porcelain.meta = update_response_metadata_to_porcelain(plumbing.meta)
             porcelain.node = node_to_porcelain(plumbing.node)
+            porcelain.rate_limit = rate_limit_metadata_to_porcelain(plumbing.rate_limit)
             porcelain
         end
 
@@ -200,6 +205,7 @@ module SDM
             plumbing = V1::NodeUpdateResponse.new()
             plumbing.meta = update_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
             plumbing.node = node_to_plumbing(porcelain.node) unless porcelain.node == nil
+            plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
             plumbing
         end
 
@@ -224,12 +230,14 @@ module SDM
         def self.node_delete_response_to_porcelain(plumbing)
             porcelain = NodeDeleteResponse.new()
             porcelain.meta = delete_response_metadata_to_porcelain(plumbing.meta)
+            porcelain.rate_limit = rate_limit_metadata_to_porcelain(plumbing.rate_limit)
             porcelain
         end
 
         def self.node_delete_response_to_plumbing(porcelain)
             plumbing = V1::NodeDeleteResponse.new()
             plumbing.meta = delete_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
+            plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
             plumbing
         end
 
@@ -365,6 +373,7 @@ module SDM
             porcelain = RoleCreateResponse.new()
             porcelain.meta = create_response_metadata_to_porcelain(plumbing.meta)
             porcelain.role = role_to_porcelain(plumbing.role)
+            porcelain.rate_limit = rate_limit_metadata_to_porcelain(plumbing.rate_limit)
             porcelain
         end
 
@@ -372,6 +381,7 @@ module SDM
             plumbing = V1::RoleCreateResponse.new()
             plumbing.meta = create_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
             plumbing.role = role_to_plumbing(porcelain.role) unless porcelain.role == nil
+            plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
             plumbing
         end
 
@@ -397,6 +407,7 @@ module SDM
             porcelain = RoleGetResponse.new()
             porcelain.meta = get_response_metadata_to_porcelain(plumbing.meta)
             porcelain.role = role_to_porcelain(plumbing.role)
+            porcelain.rate_limit = rate_limit_metadata_to_porcelain(plumbing.rate_limit)
             porcelain
         end
 
@@ -404,6 +415,7 @@ module SDM
             plumbing = V1::RoleGetResponse.new()
             plumbing.meta = get_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
             plumbing.role = role_to_plumbing(porcelain.role) unless porcelain.role == nil
+            plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
             plumbing
         end
 
@@ -429,6 +441,7 @@ module SDM
             porcelain = RoleUpdateResponse.new()
             porcelain.meta = update_response_metadata_to_porcelain(plumbing.meta)
             porcelain.role = role_to_porcelain(plumbing.role)
+            porcelain.rate_limit = rate_limit_metadata_to_porcelain(plumbing.rate_limit)
             porcelain
         end
 
@@ -436,6 +449,7 @@ module SDM
             plumbing = V1::RoleUpdateResponse.new()
             plumbing.meta = update_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
             plumbing.role = role_to_plumbing(porcelain.role) unless porcelain.role == nil
+            plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
             plumbing
         end
 
@@ -460,12 +474,14 @@ module SDM
         def self.role_delete_response_to_porcelain(plumbing)
             porcelain = RoleDeleteResponse.new()
             porcelain.meta = delete_response_metadata_to_porcelain(plumbing.meta)
+            porcelain.rate_limit = rate_limit_metadata_to_porcelain(plumbing.rate_limit)
             porcelain
         end
 
         def self.role_delete_response_to_plumbing(porcelain)
             plumbing = V1::RoleDeleteResponse.new()
             plumbing.meta = delete_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
+            plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
             plumbing
         end
 

@@ -17,6 +17,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :meta, :message, 1, "v1.CreateResponseMetadata"
       optional :node, :message, 2, "v1.Node"
       optional :token, :string, 3
+      optional :rate_limit, :message, 4, "v1.RateLimitMetadata"
     end
     add_message "v1.NodeGetRequest" do
       optional :meta, :message, 1, "v1.GetRequestMetadata"
@@ -25,6 +26,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.NodeGetResponse" do
       optional :meta, :message, 1, "v1.GetResponseMetadata"
       optional :node, :message, 2, "v1.Node"
+      optional :rate_limit, :message, 3, "v1.RateLimitMetadata"
     end
     add_message "v1.NodeUpdateRequest" do
       optional :meta, :message, 1, "v1.UpdateRequestMetadata"
@@ -34,6 +36,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.NodeUpdateResponse" do
       optional :meta, :message, 1, "v1.UpdateResponseMetadata"
       optional :node, :message, 2, "v1.Node"
+      optional :rate_limit, :message, 3, "v1.RateLimitMetadata"
     end
     add_message "v1.NodeDeleteRequest" do
       optional :meta, :message, 1, "v1.DeleteRequestMetadata"
@@ -41,6 +44,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     end
     add_message "v1.NodeDeleteResponse" do
       optional :meta, :message, 1, "v1.DeleteResponseMetadata"
+      optional :rate_limit, :message, 2, "v1.RateLimitMetadata"
     end
     add_message "v1.NodeListRequest" do
       optional :meta, :message, 1, "v1.ListRequestMetadata"
@@ -49,6 +53,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.NodeListResponse" do
       optional :meta, :message, 1, "v1.ListResponseMetadata"
       repeated :nodes, :message, 2, "v1.Node"
+      optional :rate_limit, :message, 3, "v1.RateLimitMetadata"
     end
     add_message "v1.Node" do
       oneof :node do
