@@ -631,7 +631,7 @@ module SDM
                     # RateLimitError is used for rate limit excess condition
                     when "type.googleapis.com/v1.RateLimitError"
                         deserialized = detail.unpack V1::RateLimitError
-                        return RateLimitError.new(err.message)
+                        return RateLimitError.new(err.message, rate_limit_metadata_to_porcelain(deserialized.rate_limit))
         
                 end
             end

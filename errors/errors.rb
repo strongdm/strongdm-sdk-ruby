@@ -64,7 +64,9 @@ module SDM
 
     # RateLimitError is used for rate limit excess condition
     class RateLimitError < RPCError
-        def initialize(msg)
+        attr_reader :rate_limit
+        def initialize(msg, rate_limit)
+            @rate_limit = rate_limit
             super(msg, 8)
         end
     end

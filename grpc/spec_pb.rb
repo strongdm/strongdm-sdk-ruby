@@ -23,6 +23,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.InternalError" do
     end
     add_message "v1.RateLimitError" do
+      optional :rate_limit, :message, 1, "v1.RateLimitMetadata"
     end
     add_message "v1.CreateRequestMetadata" do
     end
