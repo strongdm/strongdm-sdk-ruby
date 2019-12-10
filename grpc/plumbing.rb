@@ -596,44 +596,27 @@ module SDM
             if status == nil
                 return RPCError.new(err.message, err.code)
             end
-            status.details.each do |detail|
-                case detail.type_url
-                    # AlreadyExistsError is used when an entity already exists in the system
-                    when "type.googleapis.com/v1.AlreadyExistsError"
-                        deserialized = detail.unpack V1::AlreadyExistsError
-                        return AlreadyExistsError.new(err.message, deserialized.entity)
-        
-                    # NotFoundError is used when an entity does not exist in the system
-                    when "type.googleapis.com/v1.NotFoundError"
-                        deserialized = detail.unpack V1::NotFoundError
-                        return NotFoundError.new(err.message, deserialized.entity)
-        
-                    # BadRequestError identifies a bad request sent by the client
-                    when "type.googleapis.com/v1.BadRequestError"
-                        deserialized = detail.unpack V1::BadRequestError
-                        return BadRequestError.new(err.message)
-        
-                    # AuthenticationError is used to specify an authentication failure condition
-                    when "type.googleapis.com/v1.AuthenticationError"
-                        deserialized = detail.unpack V1::AuthenticationError
-                        return AuthenticationError.new(err.message)
-        
-                    # PermissionError is used to specify a permissions violation
-                    when "type.googleapis.com/v1.PermissionError"
-                        deserialized = detail.unpack V1::PermissionError
-                        return PermissionError.new(err.message)
-        
-                    # InternalError is used to specify an internal system error
-                    when "type.googleapis.com/v1.InternalError"
-                        deserialized = detail.unpack V1::InternalError
-                        return InternalError.new(err.message)
-        
-                    # RateLimitError is used for rate limit excess condition
-                    when "type.googleapis.com/v1.RateLimitError"
-                        deserialized = detail.unpack V1::RateLimitError
-                        return RateLimitError.new(err.message, rate_limit_metadata_to_porcelain(deserialized.rate_limit))
-        
-                end
+            case err.code
+                when 3
+                    return BadRequestError.new(err.message) 
+                when 5
+                    return NotFoundError.new(err.message) 
+                when 6
+                    return AlreadyExistsError.new(err.message) 
+                when 7
+                    return PermissionError.new(err.message) 
+                when 8
+                    status.details.each do |detail|
+                        if detail.type_url == "type.googleapis.com/v1.RateLimitMetadata"
+                            rate_limit = detail.unpack V1::RateLimitMetadata
+                            return RateLimitError.new(err.message, rate_limit_metadata_to_porcelain(rate_limit)) 
+                        end
+                    end
+                    return RateLimitError.new(err.message, nil) 
+                when 13
+                    return InternalError.new(err.message) 
+                when 16
+                    return AuthenticationError.new(err.message) 
             end
             return RPCError.new(err.message, err.code)
         end
