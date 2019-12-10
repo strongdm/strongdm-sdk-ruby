@@ -612,7 +612,6 @@ module SDM
                             return RateLimitError.new(err.message, rate_limit_metadata_to_porcelain(rate_limit)) 
                         end
                     end
-                    return RateLimitError.new(err.message, nil) 
                 when 13
                     return InternalError.new(err.message) 
                 when 16
