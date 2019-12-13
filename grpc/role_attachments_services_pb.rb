@@ -6,6 +6,10 @@ require "role_attachments_pb"
 
 module V1
   module RoleAttachments
+    # RoleAttachments represent relationships between composite roles and the roles
+    # that make up those composite roles. When a composite role is attached to another
+    # role, the permissions granted to members of the composite role are augmented to
+    # include the permissions granted to members of the attached role.
     class Service
       include GRPC::GenericService
 
@@ -17,7 +21,7 @@ module V1
       rpc :Create, RoleAttachmentCreateRequest, RoleAttachmentCreateResponse
       # Get reads one RoleAttachment by ID.
       rpc :Get, RoleAttachmentGetRequest, RoleAttachmentGetResponse
-      # Delete removes an RoleAttachment by ID.
+      # Delete removes a RoleAttachment by ID.
       rpc :Delete, RoleAttachmentDeleteRequest, RoleAttachmentDeleteResponse
       # List gets a list of RoleAttachments matching a given set of criteria.
       rpc :List, RoleAttachmentListRequest, RoleAttachmentListResponse

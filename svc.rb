@@ -121,6 +121,10 @@ module SDM
     end
   end
 
+  # RoleAttachments represent relationships between composite roles and the roles
+  # that make up those composite roles. When a composite role is attached to another
+  # role, the permissions granted to members of the composite role are augmented to
+  # include the permissions granted to members of the attached role.
   class RoleAttachments
     def initialize(url, parent)
       begin
@@ -170,7 +174,7 @@ module SDM
       resp
     end
 
-    # Delete removes an RoleAttachment by ID.
+    # Delete removes a RoleAttachment by ID.
     def delete(id, deadline: nil)
       req = V1::RoleAttachmentDeleteRequest.new()
       req.id = id

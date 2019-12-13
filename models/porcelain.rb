@@ -127,12 +127,14 @@ module SDM
     attr_accessor :rate_limit
   end
 
+  # A RoleAttachment connects a composite role to another role, granting members
+  # of the composite role the permissions granted to the attached role.
   class RoleAttachment
     # Unique identifier of the RoleAttachment.
     attr_accessor :id
-
+    # The id of the composite role of this RoleAttachment.
     attr_accessor :composite_role_id
-
+    # The id of the attached role of this RoleAttachment.
     attr_accessor :attached_role_id
   end
 
