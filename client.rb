@@ -21,8 +21,8 @@ module SDM
     end
 
     def sign(method_name, msg_bytes)
-      current_date = Time.new
-      date = sprintf("%04d-%02d-%02d", current_date.year, current_date.month, current_date.day)
+      current_utc_date = Time.now.utc
+      date = sprintf("%04d-%02d-%02d", current_utc_date.year, current_utc_date.month, current_utc_date.day)
 
       signing_key = OpenSSL::HMAC.digest(OpenSSL::Digest::SHA256.new, @api_secret_key, date)
       signing_key = OpenSSL::HMAC.digest(OpenSSL::Digest::SHA256.new, signing_key, "sdm_api_v1")
