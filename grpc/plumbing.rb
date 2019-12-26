@@ -1,8 +1,10 @@
 require "grpc"
 require "google/protobuf/well_known_types"
 require_relative "./options_pb"
+require_relative "./drivers_pb"
 require_relative "./spec_pb"
 require_relative "./nodes_pb"
+require_relative "./resources_pb"
 require_relative "./role_attachments_pb"
 require_relative "./roles_pb"
 require_relative "../models/porcelain"
@@ -16,6 +18,74 @@ module SDM
 
     def self.timestamp_to_plumbing(t)
       return Google::Protobuf::Timestamp.new(seconds: t.to_i, nanos: t.nsec)
+    end
+
+    def self.driver_to_plumbing(porcelain)
+      plumbing = V1::Driver.new()
+      if porcelain.instance_of? Mysql
+        plumbing.mysql = mysql_to_plumbing(porcelain)
+      end
+      plumbing
+    end
+
+    def self.driver_to_porcelain(plumbing)
+      if plumbing.mysql != nil
+        return mysql_to_porcelain(plumbing.mysql)
+      end
+    end
+
+    def self.repeated_driver_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = driver_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_driver_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = driver_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+
+    def self.mysql_to_porcelain(plumbing)
+      porcelain = Mysql.new()
+      porcelain.username = plumbing.username
+      porcelain.password = plumbing.password
+      porcelain.database = plumbing.database
+      porcelain.port = plumbing.port
+      porcelain
+    end
+
+    def self.mysql_to_plumbing(porcelain)
+      plumbing = V1::Mysql.new()
+      plumbing.username = porcelain.username unless porcelain.username == nil
+      plumbing.password = porcelain.password unless porcelain.password == nil
+      plumbing.database = porcelain.database unless porcelain.database == nil
+      plumbing.port = porcelain.port unless porcelain.port == nil
+      plumbing
+    end
+
+    def self.repeated_mysql_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = mysql_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_mysql_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = mysql_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
     end
 
     def self.create_response_metadata_to_porcelain(plumbing)
@@ -407,6 +477,178 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = gateway_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+
+    def self.resource_create_response_to_porcelain(plumbing)
+      porcelain = ResourceCreateResponse.new()
+      porcelain.meta = create_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.resource = resource_to_porcelain(plumbing.resource)
+      porcelain.rate_limit = rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.resource_create_response_to_plumbing(porcelain)
+      plumbing = V1::ResourceCreateResponse.new()
+      plumbing.meta = create_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
+      plumbing.resource = resource_to_plumbing(porcelain.resource) unless porcelain.resource == nil
+      plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
+      plumbing
+    end
+
+    def self.repeated_resource_create_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = resource_create_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_resource_create_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = resource_create_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+
+    def self.resource_get_response_to_porcelain(plumbing)
+      porcelain = ResourceGetResponse.new()
+      porcelain.meta = get_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.resource = resource_to_porcelain(plumbing.resource)
+      porcelain.rate_limit = rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.resource_get_response_to_plumbing(porcelain)
+      plumbing = V1::ResourceGetResponse.new()
+      plumbing.meta = get_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
+      plumbing.resource = resource_to_plumbing(porcelain.resource) unless porcelain.resource == nil
+      plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
+      plumbing
+    end
+
+    def self.repeated_resource_get_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = resource_get_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_resource_get_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = resource_get_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+
+    def self.resource_update_response_to_porcelain(plumbing)
+      porcelain = ResourceUpdateResponse.new()
+      porcelain.meta = update_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.resource = resource_to_porcelain(plumbing.resource)
+      porcelain.rate_limit = rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.resource_update_response_to_plumbing(porcelain)
+      plumbing = V1::ResourceUpdateResponse.new()
+      plumbing.meta = update_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
+      plumbing.resource = resource_to_plumbing(porcelain.resource) unless porcelain.resource == nil
+      plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
+      plumbing
+    end
+
+    def self.repeated_resource_update_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = resource_update_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_resource_update_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = resource_update_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+
+    def self.resource_delete_response_to_porcelain(plumbing)
+      porcelain = ResourceDeleteResponse.new()
+      porcelain.meta = delete_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.rate_limit = rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.resource_delete_response_to_plumbing(porcelain)
+      plumbing = V1::ResourceDeleteResponse.new()
+      plumbing.meta = delete_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
+      plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
+      plumbing
+    end
+
+    def self.repeated_resource_delete_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = resource_delete_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_resource_delete_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = resource_delete_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+
+    def self.resource_to_porcelain(plumbing)
+      porcelain = Resource.new()
+      porcelain.id = plumbing.id
+      porcelain.name = plumbing.name
+      porcelain.port_override = plumbing.port_override
+      porcelain.healthy = plumbing.healthy
+      porcelain.driver = driver_to_porcelain(plumbing.driver)
+      porcelain
+    end
+
+    def self.resource_to_plumbing(porcelain)
+      plumbing = V1::Resource.new()
+      plumbing.id = porcelain.id unless porcelain.id == nil
+      plumbing.name = porcelain.name unless porcelain.name == nil
+      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
+      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
+      plumbing.driver = driver_to_plumbing(porcelain.driver) unless porcelain.driver == nil
+      plumbing
+    end
+
+    def self.repeated_resource_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = resource_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_resource_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = resource_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items

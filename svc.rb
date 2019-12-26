@@ -121,6 +121,115 @@ module SDM
     end
   end
 
+  class Resources
+    def initialize(url, parent)
+      begin
+        if url.end_with?("443")
+          cred = GRPC::Core::ChannelCredentials.new()
+          @stub = V1::Resources::Stub.new(url, cred)
+        else
+          @stub = V1::Resources::Stub.new(url, :this_channel_is_insecure)
+        end
+      rescue => exception
+        raise Plumbing::error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # Create registers a new Resource.
+    def create(driver, deadline: nil)
+      req = V1::ResourceCreateRequest.new()
+      req.driver = Plumbing::driver_to_plumbing(driver)
+
+      begin
+        plumbing_response = @stub.create(req, metadata: @parent.get_metadata("Resources.Create", req), deadline: deadline)
+      rescue => exception
+        raise Plumbing::error_to_porcelain(exception)
+      end
+      resp = ResourceCreateResponse.new()
+      resp.meta = Plumbing::create_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.resource = Plumbing::resource_to_porcelain(plumbing_response.resource)
+      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Get reads one Resource by ID.
+    def get(id, deadline: nil)
+      req = V1::ResourceGetRequest.new()
+      req.id = id
+
+      begin
+        plumbing_response = @stub.get(req, metadata: @parent.get_metadata("Resources.Get", req), deadline: deadline)
+      rescue => exception
+        raise Plumbing::error_to_porcelain(exception)
+      end
+      resp = ResourceGetResponse.new()
+      resp.meta = Plumbing::get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.resource = Plumbing::resource_to_porcelain(plumbing_response.resource)
+      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Update patches a Resource by ID.
+    def update(resource, deadline: nil)
+      req = V1::ResourceUpdateRequest.new()
+      req.resource = Plumbing::resource_to_plumbing(resource)
+
+      begin
+        plumbing_response = @stub.update(req, metadata: @parent.get_metadata("Resources.Update", req), deadline: deadline)
+      rescue => exception
+        raise Plumbing::error_to_porcelain(exception)
+      end
+      resp = ResourceUpdateResponse.new()
+      resp.meta = Plumbing::update_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.resource = Plumbing::resource_to_porcelain(plumbing_response.resource)
+      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Delete removes a Resource by ID.
+    def delete(id, deadline: nil)
+      req = V1::ResourceDeleteRequest.new()
+      req.id = id
+
+      begin
+        plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("Resources.Delete", req), deadline: deadline)
+      rescue => exception
+        raise Plumbing::error_to_porcelain(exception)
+      end
+      resp = ResourceDeleteResponse.new()
+      resp.meta = Plumbing::delete_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # List gets a list of Resources matching a given set of criteria.
+    def list(filter, deadline: nil)
+      req = V1::ResourceListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      page_size_option = @parent._test_options["PageSize"]
+      if page_size_option.is_a? Integer
+        req.meta.limit = page_size_option
+      end
+      req.filter = filter
+      resp = Enumerator::Generator.new { |g|
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("Resources.List", req), deadline: deadline)
+          rescue => exception
+            raise Plumbing::error_to_porcelain(exception)
+          end
+          plumbing_response.resources.each do |plumbing_item|
+            g.yield Plumbing::resource_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
   # RoleAttachments represent relationships between composite roles and the roles
   # that make up those composite roles. When a composite role is attached to another
   # role, the permissions granted to members of the composite role are augmented to

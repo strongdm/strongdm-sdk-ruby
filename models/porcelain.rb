@@ -1,4 +1,13 @@
 module SDM
+  class Mysql
+    attr_accessor :username
+
+    attr_accessor :password
+
+    attr_accessor :database
+
+    attr_accessor :port
+  end
 
   # CreateResponseMetadata is reserved for future use.
   class CreateResponseMetadata
@@ -97,6 +106,61 @@ module SDM
     attr_accessor :listen_address
     # The hostname/port tuple which the gateway daemon will bind to.
     attr_accessor :bind_address
+  end
+
+  # ResourceCreateResponse reports how the Resources were created in the system.
+  class ResourceCreateResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # The created Resource.
+    attr_accessor :resource
+    # Rate limit information.
+    attr_accessor :rate_limit
+  end
+
+  # ResourceGetResponse returns a requested Resource.
+  class ResourceGetResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # The requested Resource.
+    attr_accessor :resource
+    # Rate limit information.
+    attr_accessor :rate_limit
+  end
+
+  # ResourceUpdateResponse returns the fields of a Resource after it has been updated by
+  # a ResourceUpdateRequest.
+  class ResourceUpdateResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # The updated Resource.
+    attr_accessor :resource
+    # Rate limit information.
+    attr_accessor :rate_limit
+  end
+
+  # ResourceDeleteResponse returns information about a Resource that was deleted.
+  class ResourceDeleteResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+  end
+
+  # A Resource is a proxy in the strongDM network. They come in two flavors: relays,
+  # which communicate with resources, and gateways, which communicate with
+  # clients.
+  class Resource
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # Port number override.
+    attr_accessor :port_override
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # Fields for connecting to the resource.
+    attr_accessor :driver
   end
 
   # RoleAttachmentCreateResponse reports how the RoleAttachments were created in the system.

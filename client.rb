@@ -10,6 +10,7 @@ module SDM
       @api_access_key = api_access_key
       @api_secret_key = Base64.strict_decode64(api_secret_key)
       @nodes = Nodes.new(address, self)
+      @resources = Resources.new(address, self)
       @role_attachments = RoleAttachments.new(address, self)
       @roles = Roles.new(address, self)
 
@@ -42,6 +43,8 @@ module SDM
     # which communicate with resources, and gateways, which communicate with
     # clients.
     attr_reader :nodes
+
+    attr_reader :resources
     # RoleAttachments represent relationships between composite roles and the roles
     # that make up those composite roles. When a composite role is attached to another
     # role, the permissions granted to members of the composite role are augmented to
