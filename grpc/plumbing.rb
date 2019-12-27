@@ -25,12 +25,18 @@ module SDM
       if porcelain.instance_of? Mysql
         plumbing.mysql = mysql_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? Athena
+        plumbing.athena = athena_to_plumbing(porcelain)
+      end
       plumbing
     end
 
     def self.driver_to_porcelain(plumbing)
       if plumbing.mysql != nil
         return mysql_to_porcelain(plumbing.mysql)
+      end
+      if plumbing.athena != nil
+        return athena_to_porcelain(plumbing.athena)
       end
     end
 
@@ -83,6 +89,42 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = mysql_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+
+    def self.athena_to_porcelain(plumbing)
+      porcelain = Athena.new()
+      porcelain.access_key = plumbing.access_key
+      porcelain.secretAccessKey = plumbing.secretAccessKey
+      porcelain.region = plumbing.region
+      porcelain.output = plumbing.output
+      porcelain
+    end
+
+    def self.athena_to_plumbing(porcelain)
+      plumbing = V1::Athena.new()
+      plumbing.access_key = porcelain.access_key unless porcelain.access_key == nil
+      plumbing.secretAccessKey = porcelain.secretAccessKey unless porcelain.secretAccessKey == nil
+      plumbing.region = porcelain.region unless porcelain.region == nil
+      plumbing.output = porcelain.output unless porcelain.output == nil
+      plumbing
+    end
+
+    def self.repeated_athena_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = athena_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_athena_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = athena_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items

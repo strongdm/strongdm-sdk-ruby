@@ -9,6 +9,16 @@ module SDM
     attr_accessor :port
   end
 
+  class Athena
+    attr_accessor :access_key
+
+    attr_accessor :secretAccessKey
+
+    attr_accessor :region
+
+    attr_accessor :output
+  end
+
   # CreateResponseMetadata is reserved for future use.
   class CreateResponseMetadata
   end

@@ -137,9 +137,9 @@ module SDM
     end
 
     # Create registers a new Resource.
-    def create(driver, deadline: nil)
+    def create(resource, deadline: nil)
       req = V1::ResourceCreateRequest.new()
-      req.driver = Plumbing::driver_to_plumbing(driver)
+      req.resource = Plumbing::resource_to_plumbing(resource)
 
       begin
         plumbing_response = @stub.create(req, metadata: @parent.get_metadata("Resources.Create", req), deadline: deadline)

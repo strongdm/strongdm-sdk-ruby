@@ -12,7 +12,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("resources.proto", :syntax => :proto3) do
     add_message "v1.ResourceCreateRequest" do
       optional :meta, :message, 1, "v1.CreateRequestMetadata"
-      optional :driver, :message, 2, "v1.Driver"
+      optional :resource, :message, 2, "v1.Resource"
     end
     add_message "v1.ResourceCreateResponse" do
       optional :meta, :message, 1, "v1.CreateResponseMetadata"

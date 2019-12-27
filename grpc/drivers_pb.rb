@@ -9,13 +9,20 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.Driver" do
       oneof :driver do
         optional :mysql, :message, 1, "v1.Mysql"
+        optional :athena, :message, 2, "v1.Athena"
       end
     end
     add_message "v1.Mysql" do
       optional :username, :string, 1
       optional :password, :string, 2
       optional :database, :string, 3
-      optional :port, :string, 4
+      optional :port, :int32, 4
+    end
+    add_message "v1.Athena" do
+      optional :access_key, :string, 1
+      optional :secretAccessKey, :string, 2
+      optional :region, :string, 3
+      optional :output, :string, 4
     end
   end
 end
@@ -23,4 +30,5 @@ end
 module V1
   Driver = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Driver").msgclass
   Mysql = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Mysql").msgclass
+  Athena = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Athena").msgclass
 end
