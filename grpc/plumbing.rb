@@ -25,6 +25,18 @@ module SDM
       if porcelain.instance_of? Mysql
         plumbing.mysql = mysql_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? AuroraMysql
+        plumbing.aurora_mysql = aurora_mysql_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? Clustrix
+        plumbing.clustrix = clustrix_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? Maria
+        plumbing.maria = maria_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? Memsql
+        plumbing.memsql = memsql_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? Athena
         plumbing.athena = athena_to_plumbing(porcelain)
       end
@@ -34,6 +46,18 @@ module SDM
     def self.driver_to_porcelain(plumbing)
       if plumbing.mysql != nil
         return mysql_to_porcelain(plumbing.mysql)
+      end
+      if plumbing.aurora_mysql != nil
+        return aurora_mysql_to_porcelain(plumbing.aurora_mysql)
+      end
+      if plumbing.clustrix != nil
+        return clustrix_to_porcelain(plumbing.clustrix)
+      end
+      if plumbing.maria != nil
+        return maria_to_porcelain(plumbing.maria)
+      end
+      if plumbing.memsql != nil
+        return memsql_to_porcelain(plumbing.memsql)
       end
       if plumbing.athena != nil
         return athena_to_porcelain(plumbing.athena)
@@ -91,6 +115,158 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = mysql_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+
+    def self.aurora_mysql_to_porcelain(plumbing)
+      porcelain = AuroraMysql.new()
+      porcelain.hostname = plumbing.hostname
+      porcelain.username = plumbing.username
+      porcelain.password = plumbing.password
+      porcelain.database = plumbing.database
+      porcelain.port = plumbing.port
+      porcelain
+    end
+
+    def self.aurora_mysql_to_plumbing(porcelain)
+      plumbing = V1::AuroraMysql.new()
+      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
+      plumbing.username = porcelain.username unless porcelain.username == nil
+      plumbing.password = porcelain.password unless porcelain.password == nil
+      plumbing.database = porcelain.database unless porcelain.database == nil
+      plumbing.port = porcelain.port unless porcelain.port == nil
+      plumbing
+    end
+
+    def self.repeated_aurora_mysql_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = aurora_mysql_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_aurora_mysql_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = aurora_mysql_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+
+    def self.clustrix_to_porcelain(plumbing)
+      porcelain = Clustrix.new()
+      porcelain.hostname = plumbing.hostname
+      porcelain.username = plumbing.username
+      porcelain.password = plumbing.password
+      porcelain.database = plumbing.database
+      porcelain.port = plumbing.port
+      porcelain
+    end
+
+    def self.clustrix_to_plumbing(porcelain)
+      plumbing = V1::Clustrix.new()
+      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
+      plumbing.username = porcelain.username unless porcelain.username == nil
+      plumbing.password = porcelain.password unless porcelain.password == nil
+      plumbing.database = porcelain.database unless porcelain.database == nil
+      plumbing.port = porcelain.port unless porcelain.port == nil
+      plumbing
+    end
+
+    def self.repeated_clustrix_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = clustrix_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_clustrix_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = clustrix_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+
+    def self.maria_to_porcelain(plumbing)
+      porcelain = Maria.new()
+      porcelain.hostname = plumbing.hostname
+      porcelain.username = plumbing.username
+      porcelain.password = plumbing.password
+      porcelain.database = plumbing.database
+      porcelain.port = plumbing.port
+      porcelain
+    end
+
+    def self.maria_to_plumbing(porcelain)
+      plumbing = V1::Maria.new()
+      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
+      plumbing.username = porcelain.username unless porcelain.username == nil
+      plumbing.password = porcelain.password unless porcelain.password == nil
+      plumbing.database = porcelain.database unless porcelain.database == nil
+      plumbing.port = porcelain.port unless porcelain.port == nil
+      plumbing
+    end
+
+    def self.repeated_maria_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = maria_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_maria_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = maria_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+
+    def self.memsql_to_porcelain(plumbing)
+      porcelain = Memsql.new()
+      porcelain.hostname = plumbing.hostname
+      porcelain.username = plumbing.username
+      porcelain.password = plumbing.password
+      porcelain.database = plumbing.database
+      porcelain.port = plumbing.port
+      porcelain
+    end
+
+    def self.memsql_to_plumbing(porcelain)
+      plumbing = V1::Memsql.new()
+      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
+      plumbing.username = porcelain.username unless porcelain.username == nil
+      plumbing.password = porcelain.password unless porcelain.password == nil
+      plumbing.database = porcelain.database unless porcelain.database == nil
+      plumbing.port = porcelain.port unless porcelain.port == nil
+      plumbing
+    end
+
+    def self.repeated_memsql_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = memsql_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_memsql_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = memsql_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items

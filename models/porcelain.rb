@@ -11,6 +11,54 @@ module SDM
     attr_accessor :port
   end
 
+  class AuroraMysql
+    attr_accessor :hostname
+
+    attr_accessor :username
+
+    attr_accessor :password
+
+    attr_accessor :database
+
+    attr_accessor :port
+  end
+
+  class Clustrix
+    attr_accessor :hostname
+
+    attr_accessor :username
+
+    attr_accessor :password
+
+    attr_accessor :database
+
+    attr_accessor :port
+  end
+
+  class Maria
+    attr_accessor :hostname
+
+    attr_accessor :username
+
+    attr_accessor :password
+
+    attr_accessor :database
+
+    attr_accessor :port
+  end
+
+  class Memsql
+    attr_accessor :hostname
+
+    attr_accessor :username
+
+    attr_accessor :password
+
+    attr_accessor :database
+
+    attr_accessor :port
+  end
+
   class Athena
     attr_accessor :hostname
 

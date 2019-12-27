@@ -9,10 +9,42 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.Driver" do
       oneof :driver do
         optional :mysql, :message, 1, "v1.Mysql"
-        optional :athena, :message, 2, "v1.Athena"
+        optional :aurora_mysql, :message, 2, "v1.AuroraMysql"
+        optional :clustrix, :message, 3, "v1.Clustrix"
+        optional :maria, :message, 4, "v1.Maria"
+        optional :memsql, :message, 5, "v1.Memsql"
+        optional :athena, :message, 6, "v1.Athena"
       end
     end
     add_message "v1.Mysql" do
+      optional :hostname, :string, 1
+      optional :username, :string, 2
+      optional :password, :string, 3
+      optional :database, :string, 4
+      optional :port, :int32, 5
+    end
+    add_message "v1.AuroraMysql" do
+      optional :hostname, :string, 1
+      optional :username, :string, 2
+      optional :password, :string, 3
+      optional :database, :string, 4
+      optional :port, :int32, 5
+    end
+    add_message "v1.Clustrix" do
+      optional :hostname, :string, 1
+      optional :username, :string, 2
+      optional :password, :string, 3
+      optional :database, :string, 4
+      optional :port, :int32, 5
+    end
+    add_message "v1.Maria" do
+      optional :hostname, :string, 1
+      optional :username, :string, 2
+      optional :password, :string, 3
+      optional :database, :string, 4
+      optional :port, :int32, 5
+    end
+    add_message "v1.Memsql" do
       optional :hostname, :string, 1
       optional :username, :string, 2
       optional :password, :string, 3
@@ -32,5 +64,9 @@ end
 module V1
   Driver = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Driver").msgclass
   Mysql = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Mysql").msgclass
+  AuroraMysql = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuroraMysql").msgclass
+  Clustrix = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Clustrix").msgclass
+  Maria = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Maria").msgclass
+  Memsql = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Memsql").msgclass
   Athena = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Athena").msgclass
 end
