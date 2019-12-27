@@ -1,4 +1,20 @@
 module SDM
+  class HTTPBasicAuth
+    attr_accessor :url
+
+    attr_accessor :healthcheck_path
+
+    attr_accessor :username
+
+    attr_accessor :password
+
+    attr_accessor :headers_blacklist
+
+    attr_accessor :default_path
+
+    attr_accessor :subdomain
+  end
+
   class Mysql
     attr_accessor :hostname
 

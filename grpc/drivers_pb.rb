@@ -3,11 +3,13 @@
 
 require "google/protobuf"
 
+require "protoc-gen-swagger/options/annotations_pb"
 require "options_pb"
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("drivers.proto", :syntax => :proto3) do
     add_message "v1.Driver" do
       oneof :driver do
+        optional :http_basic_auth, :message, 448320780, "v1.HTTPBasicAuth"
         optional :mysql, :message, 386203715, "v1.Mysql"
         optional :aurora_mysql, :message, 18289005, "v1.AuroraMysql"
         optional :clustrix, :message, 532386964, "v1.Clustrix"
@@ -15,6 +17,15 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :memsql, :message, 269999277, "v1.Memsql"
         optional :athena, :message, 86524680, "v1.Athena"
       end
+    end
+    add_message "v1.HTTPBasicAuth" do
+      optional :url, :string, 1
+      optional :healthcheck_path, :string, 2
+      optional :username, :string, 3
+      optional :password, :string, 4
+      optional :headers_blacklist, :string, 5
+      optional :default_path, :string, 6
+      optional :subdomain, :string, 7
     end
     add_message "v1.Mysql" do
       optional :hostname, :string, 1
@@ -62,6 +73,7 @@ end
 
 module V1
   Driver = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Driver").msgclass
+  HTTPBasicAuth = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.HTTPBasicAuth").msgclass
   Mysql = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Mysql").msgclass
   AuroraMysql = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuroraMysql").msgclass
   Clustrix = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Clustrix").msgclass

@@ -22,6 +22,9 @@ module SDM
 
     def self.driver_to_plumbing(porcelain)
       plumbing = V1::Driver.new()
+      if porcelain.instance_of? HttpBasicAuth
+        plumbing.http_basic_auth = http_basic_auth_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? Mysql
         plumbing.mysql = mysql_to_plumbing(porcelain)
       end
@@ -44,6 +47,9 @@ module SDM
     end
 
     def self.driver_to_porcelain(plumbing)
+      if plumbing.http_basic_auth != nil
+        return http_basic_auth_to_porcelain(plumbing.http_basic_auth)
+      end
       if plumbing.mysql != nil
         return mysql_to_porcelain(plumbing.mysql)
       end
@@ -77,6 +83,48 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = driver_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+
+    def self.http_basic_auth_to_porcelain(plumbing)
+      porcelain = HTTPBasicAuth.new()
+      porcelain.url = plumbing.url
+      porcelain.healthcheck_path = plumbing.healthcheck_path
+      porcelain.username = plumbing.username
+      porcelain.password = plumbing.password
+      porcelain.headers_blacklist = plumbing.headers_blacklist
+      porcelain.default_path = plumbing.default_path
+      porcelain.subdomain = plumbing.subdomain
+      porcelain
+    end
+
+    def self.http_basic_auth_to_plumbing(porcelain)
+      plumbing = V1::HTTPBasicAuth.new()
+      plumbing.url = porcelain.url unless porcelain.url == nil
+      plumbing.healthcheck_path = porcelain.healthcheck_path unless porcelain.healthcheck_path == nil
+      plumbing.username = porcelain.username unless porcelain.username == nil
+      plumbing.password = porcelain.password unless porcelain.password == nil
+      plumbing.headers_blacklist = porcelain.headers_blacklist unless porcelain.headers_blacklist == nil
+      plumbing.default_path = porcelain.default_path unless porcelain.default_path == nil
+      plumbing.subdomain = porcelain.subdomain unless porcelain.subdomain == nil
+      plumbing
+    end
+
+    def self.repeated_http_basic_auth_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = http_basic_auth_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_http_basic_auth_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = http_basic_auth_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
