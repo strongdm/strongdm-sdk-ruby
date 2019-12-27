@@ -25,6 +25,12 @@ module SDM
       if porcelain.instance_of? HttpBasicAuth
         plumbing.http_basic_auth = http_basic_auth_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? HttpNoAuth
+        plumbing.http_no_auth = http_no_auth_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? HttpAuth
+        plumbing.http_auth = http_auth_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? Mysql
         plumbing.mysql = mysql_to_plumbing(porcelain)
       end
@@ -49,6 +55,12 @@ module SDM
     def self.driver_to_porcelain(plumbing)
       if plumbing.http_basic_auth != nil
         return http_basic_auth_to_porcelain(plumbing.http_basic_auth)
+      end
+      if plumbing.http_no_auth != nil
+        return http_no_auth_to_porcelain(plumbing.http_no_auth)
+      end
+      if plumbing.http_auth != nil
+        return http_auth_to_porcelain(plumbing.http_auth)
       end
       if plumbing.mysql != nil
         return mysql_to_porcelain(plumbing.mysql)
@@ -125,6 +137,84 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = http_basic_auth_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+
+    def self.http_no_auth_to_porcelain(plumbing)
+      porcelain = HTTPNoAuth.new()
+      porcelain.url = plumbing.url
+      porcelain.healthcheck_path = plumbing.healthcheck_path
+      porcelain.headers_blacklist = plumbing.headers_blacklist
+      porcelain.default_path = plumbing.default_path
+      porcelain.subdomain = plumbing.subdomain
+      porcelain
+    end
+
+    def self.http_no_auth_to_plumbing(porcelain)
+      plumbing = V1::HTTPNoAuth.new()
+      plumbing.url = porcelain.url unless porcelain.url == nil
+      plumbing.healthcheck_path = porcelain.healthcheck_path unless porcelain.healthcheck_path == nil
+      plumbing.headers_blacklist = porcelain.headers_blacklist unless porcelain.headers_blacklist == nil
+      plumbing.default_path = porcelain.default_path unless porcelain.default_path == nil
+      plumbing.subdomain = porcelain.subdomain unless porcelain.subdomain == nil
+      plumbing
+    end
+
+    def self.repeated_http_no_auth_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = http_no_auth_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_http_no_auth_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = http_no_auth_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+
+    def self.http_auth_to_porcelain(plumbing)
+      porcelain = HTTPAuth.new()
+      porcelain.url = plumbing.url
+      porcelain.healthcheck_path = plumbing.healthcheck_path
+      porcelain.auth_header = plumbing.auth_header
+      porcelain.headers_blacklist = plumbing.headers_blacklist
+      porcelain.default_path = plumbing.default_path
+      porcelain.subdomain = plumbing.subdomain
+      porcelain
+    end
+
+    def self.http_auth_to_plumbing(porcelain)
+      plumbing = V1::HTTPAuth.new()
+      plumbing.url = porcelain.url unless porcelain.url == nil
+      plumbing.healthcheck_path = porcelain.healthcheck_path unless porcelain.healthcheck_path == nil
+      plumbing.auth_header = porcelain.auth_header unless porcelain.auth_header == nil
+      plumbing.headers_blacklist = porcelain.headers_blacklist unless porcelain.headers_blacklist == nil
+      plumbing.default_path = porcelain.default_path unless porcelain.default_path == nil
+      plumbing.subdomain = porcelain.subdomain unless porcelain.subdomain == nil
+      plumbing
+    end
+
+    def self.repeated_http_auth_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = http_auth_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_http_auth_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = http_auth_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items

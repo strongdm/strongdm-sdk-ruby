@@ -10,6 +10,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.Driver" do
       oneof :driver do
         optional :http_basic_auth, :message, 448320780, "v1.HTTPBasicAuth"
+        optional :http_no_auth, :message, 435770653, "v1.HTTPNoAuth"
+        optional :http_auth, :message, 224436590, "v1.HTTPAuth"
         optional :mysql, :message, 386203715, "v1.Mysql"
         optional :aurora_mysql, :message, 18289005, "v1.AuroraMysql"
         optional :clustrix, :message, 532386964, "v1.Clustrix"
@@ -26,6 +28,21 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :headers_blacklist, :string, 5
       optional :default_path, :string, 6
       optional :subdomain, :string, 7
+    end
+    add_message "v1.HTTPNoAuth" do
+      optional :url, :string, 1
+      optional :healthcheck_path, :string, 2
+      optional :headers_blacklist, :string, 3
+      optional :default_path, :string, 4
+      optional :subdomain, :string, 5
+    end
+    add_message "v1.HTTPAuth" do
+      optional :url, :string, 1
+      optional :healthcheck_path, :string, 2
+      optional :auth_header, :string, 3
+      optional :headers_blacklist, :string, 4
+      optional :default_path, :string, 5
+      optional :subdomain, :string, 6
     end
     add_message "v1.Mysql" do
       optional :hostname, :string, 1
@@ -74,6 +91,8 @@ end
 module V1
   Driver = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Driver").msgclass
   HTTPBasicAuth = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.HTTPBasicAuth").msgclass
+  HTTPNoAuth = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.HTTPNoAuth").msgclass
+  HTTPAuth = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.HTTPAuth").msgclass
   Mysql = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Mysql").msgclass
   AuroraMysql = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuroraMysql").msgclass
   Clustrix = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Clustrix").msgclass

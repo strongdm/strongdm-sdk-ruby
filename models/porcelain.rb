@@ -15,6 +15,32 @@ module SDM
     attr_accessor :subdomain
   end
 
+  class HTTPNoAuth
+    attr_accessor :url
+
+    attr_accessor :healthcheck_path
+
+    attr_accessor :headers_blacklist
+
+    attr_accessor :default_path
+
+    attr_accessor :subdomain
+  end
+
+  class HTTPAuth
+    attr_accessor :url
+
+    attr_accessor :healthcheck_path
+
+    attr_accessor :auth_header
+
+    attr_accessor :headers_blacklist
+
+    attr_accessor :default_path
+
+    attr_accessor :subdomain
+  end
+
   class Mysql
     attr_accessor :hostname
 
