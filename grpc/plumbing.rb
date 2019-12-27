@@ -274,7 +274,6 @@ module SDM
 
     def self.athena_to_porcelain(plumbing)
       porcelain = Athena.new()
-      porcelain.hostname = plumbing.hostname
       porcelain.access_key = plumbing.access_key
       porcelain.secretAccessKey = plumbing.secretAccessKey
       porcelain.region = plumbing.region
@@ -284,7 +283,6 @@ module SDM
 
     def self.athena_to_plumbing(porcelain)
       plumbing = V1::Athena.new()
-      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
       plumbing.access_key = porcelain.access_key unless porcelain.access_key == nil
       plumbing.secretAccessKey = porcelain.secretAccessKey unless porcelain.secretAccessKey == nil
       plumbing.region = porcelain.region unless porcelain.region == nil

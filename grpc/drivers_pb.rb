@@ -8,12 +8,12 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("drivers.proto", :syntax => :proto3) do
     add_message "v1.Driver" do
       oneof :driver do
-        optional :mysql, :message, 1, "v1.Mysql"
-        optional :aurora_mysql, :message, 2, "v1.AuroraMysql"
-        optional :clustrix, :message, 3, "v1.Clustrix"
-        optional :maria, :message, 4, "v1.Maria"
-        optional :memsql, :message, 5, "v1.Memsql"
-        optional :athena, :message, 6, "v1.Athena"
+        optional :mysql, :message, 386203715, "v1.Mysql"
+        optional :aurora_mysql, :message, 18289005, "v1.AuroraMysql"
+        optional :clustrix, :message, 532386964, "v1.Clustrix"
+        optional :maria, :message, 466202260, "v1.Maria"
+        optional :memsql, :message, 269999277, "v1.Memsql"
+        optional :athena, :message, 86524680, "v1.Athena"
       end
     end
     add_message "v1.Mysql" do
@@ -52,11 +52,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port, :int32, 5
     end
     add_message "v1.Athena" do
-      optional :hostname, :string, 1
-      optional :access_key, :string, 2
-      optional :secretAccessKey, :string, 3
-      optional :region, :string, 4
-      optional :output, :string, 5
+      optional :access_key, :string, 1
+      optional :secretAccessKey, :string, 2
+      optional :region, :string, 3
+      optional :output, :string, 4
     end
   end
 end
