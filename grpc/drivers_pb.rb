@@ -13,16 +13,18 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       end
     end
     add_message "v1.Mysql" do
-      optional :username, :string, 1
-      optional :password, :string, 2
-      optional :database, :string, 3
-      optional :port, :int32, 4
+      optional :hostname, :string, 1
+      optional :username, :string, 2
+      optional :password, :string, 3
+      optional :database, :string, 4
+      optional :port, :int32, 5
     end
     add_message "v1.Athena" do
-      optional :access_key, :string, 1
-      optional :secretAccessKey, :string, 2
-      optional :region, :string, 3
-      optional :output, :string, 4
+      optional :hostname, :string, 1
+      optional :access_key, :string, 2
+      optional :secretAccessKey, :string, 3
+      optional :region, :string, 4
+      optional :output, :string, 5
     end
   end
 end

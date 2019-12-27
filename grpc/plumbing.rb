@@ -60,6 +60,7 @@ module SDM
 
     def self.mysql_to_porcelain(plumbing)
       porcelain = Mysql.new()
+      porcelain.hostname = plumbing.hostname
       porcelain.username = plumbing.username
       porcelain.password = plumbing.password
       porcelain.database = plumbing.database
@@ -69,6 +70,7 @@ module SDM
 
     def self.mysql_to_plumbing(porcelain)
       plumbing = V1::Mysql.new()
+      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
       plumbing.username = porcelain.username unless porcelain.username == nil
       plumbing.password = porcelain.password unless porcelain.password == nil
       plumbing.database = porcelain.database unless porcelain.database == nil
@@ -96,6 +98,7 @@ module SDM
 
     def self.athena_to_porcelain(plumbing)
       porcelain = Athena.new()
+      porcelain.hostname = plumbing.hostname
       porcelain.access_key = plumbing.access_key
       porcelain.secretAccessKey = plumbing.secretAccessKey
       porcelain.region = plumbing.region
@@ -105,6 +108,7 @@ module SDM
 
     def self.athena_to_plumbing(porcelain)
       plumbing = V1::Athena.new()
+      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
       plumbing.access_key = porcelain.access_key unless porcelain.access_key == nil
       plumbing.secretAccessKey = porcelain.secretAccessKey unless porcelain.secretAccessKey == nil
       plumbing.region = porcelain.region unless porcelain.region == nil

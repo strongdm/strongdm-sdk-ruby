@@ -1,5 +1,7 @@
 module SDM
   class Mysql
+    attr_accessor :hostname
+
     attr_accessor :username
 
     attr_accessor :password
@@ -10,6 +12,8 @@ module SDM
   end
 
   class Athena
+    attr_accessor :hostname
+
     attr_accessor :access_key
 
     attr_accessor :secretAccessKey
