@@ -1,4 +1,30 @@
 module SDM
+  class Kubernetes
+    attr_accessor :hostname
+
+    attr_accessor :port
+
+    attr_accessor :certificate_authority
+
+    attr_accessor :client_certificate
+
+    attr_accessor :client_key
+  end
+
+  class AmazonEKS
+    attr_accessor :endpoint
+
+    attr_accessor :access_key
+
+    attr_accessor :secret_access_key
+
+    attr_accessor :certificate_authority
+
+    attr_accessor :region
+
+    attr_accessor :cluster_name
+  end
+
   class HTTPBasicAuth
     attr_accessor :url
 
@@ -104,7 +130,7 @@ module SDM
   class Athena
     attr_accessor :access_key
 
-    attr_accessor :secretAccessKey
+    attr_accessor :secret_access_key
 
     attr_accessor :region
 

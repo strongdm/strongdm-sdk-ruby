@@ -22,6 +22,12 @@ module SDM
 
     def self.driver_to_plumbing(porcelain)
       plumbing = V1::Driver.new()
+      if porcelain.instance_of? Kubernetes
+        plumbing.kubernetes = kubernetes_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? AmazonEks
+        plumbing.amazon_eks = amazon_eks_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? HttpBasicAuth
         plumbing.http_basic_auth = http_basic_auth_to_plumbing(porcelain)
       end
@@ -53,6 +59,12 @@ module SDM
     end
 
     def self.driver_to_porcelain(plumbing)
+      if plumbing.kubernetes != nil
+        return kubernetes_to_porcelain(plumbing.kubernetes)
+      end
+      if plumbing.amazon_eks != nil
+        return amazon_eks_to_porcelain(plumbing.amazon_eks)
+      end
       if plumbing.http_basic_auth != nil
         return http_basic_auth_to_porcelain(plumbing.http_basic_auth)
       end
@@ -95,6 +107,84 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = driver_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+
+    def self.kubernetes_to_porcelain(plumbing)
+      porcelain = Kubernetes.new()
+      porcelain.hostname = plumbing.hostname
+      porcelain.port = plumbing.port
+      porcelain.certificate_authority = plumbing.certificate_authority
+      porcelain.client_certificate = plumbing.client_certificate
+      porcelain.client_key = plumbing.client_key
+      porcelain
+    end
+
+    def self.kubernetes_to_plumbing(porcelain)
+      plumbing = V1::Kubernetes.new()
+      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
+      plumbing.port = porcelain.port unless porcelain.port == nil
+      plumbing.certificate_authority = porcelain.certificate_authority unless porcelain.certificate_authority == nil
+      plumbing.client_certificate = porcelain.client_certificate unless porcelain.client_certificate == nil
+      plumbing.client_key = porcelain.client_key unless porcelain.client_key == nil
+      plumbing
+    end
+
+    def self.repeated_kubernetes_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = kubernetes_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_kubernetes_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = kubernetes_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+
+    def self.amazon_eks_to_porcelain(plumbing)
+      porcelain = AmazonEKS.new()
+      porcelain.endpoint = plumbing.endpoint
+      porcelain.access_key = plumbing.access_key
+      porcelain.secret_access_key = plumbing.secret_access_key
+      porcelain.certificate_authority = plumbing.certificate_authority
+      porcelain.region = plumbing.region
+      porcelain.cluster_name = plumbing.cluster_name
+      porcelain
+    end
+
+    def self.amazon_eks_to_plumbing(porcelain)
+      plumbing = V1::AmazonEKS.new()
+      plumbing.endpoint = porcelain.endpoint unless porcelain.endpoint == nil
+      plumbing.access_key = porcelain.access_key unless porcelain.access_key == nil
+      plumbing.secret_access_key = porcelain.secret_access_key unless porcelain.secret_access_key == nil
+      plumbing.certificate_authority = porcelain.certificate_authority unless porcelain.certificate_authority == nil
+      plumbing.region = porcelain.region unless porcelain.region == nil
+      plumbing.cluster_name = porcelain.cluster_name unless porcelain.cluster_name == nil
+      plumbing
+    end
+
+    def self.repeated_amazon_eks_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = amazon_eks_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_amazon_eks_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = amazon_eks_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -413,7 +503,7 @@ module SDM
     def self.athena_to_porcelain(plumbing)
       porcelain = Athena.new()
       porcelain.access_key = plumbing.access_key
-      porcelain.secretAccessKey = plumbing.secretAccessKey
+      porcelain.secret_access_key = plumbing.secret_access_key
       porcelain.region = plumbing.region
       porcelain.output = plumbing.output
       porcelain
@@ -422,7 +512,7 @@ module SDM
     def self.athena_to_plumbing(porcelain)
       plumbing = V1::Athena.new()
       plumbing.access_key = porcelain.access_key unless porcelain.access_key == nil
-      plumbing.secretAccessKey = porcelain.secretAccessKey unless porcelain.secretAccessKey == nil
+      plumbing.secret_access_key = porcelain.secret_access_key unless porcelain.secret_access_key == nil
       plumbing.region = porcelain.region unless porcelain.region == nil
       plumbing.output = porcelain.output unless porcelain.output == nil
       plumbing

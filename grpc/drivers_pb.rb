@@ -9,6 +9,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("drivers.proto", :syntax => :proto3) do
     add_message "v1.Driver" do
       oneof :driver do
+        optional :kubernetes, :message, 231451540, "v1.Kubernetes"
+        optional :amazon_eks, :message, 144724720, "v1.AmazonEKS"
         optional :http_basic_auth, :message, 448320780, "v1.HTTPBasicAuth"
         optional :http_no_auth, :message, 435770653, "v1.HTTPNoAuth"
         optional :http_auth, :message, 224436590, "v1.HTTPAuth"
@@ -19,6 +21,21 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :memsql, :message, 269999277, "v1.Memsql"
         optional :athena, :message, 86524680, "v1.Athena"
       end
+    end
+    add_message "v1.Kubernetes" do
+      optional :hostname, :string, 1
+      optional :port, :int32, 2
+      optional :certificate_authority, :string, 3
+      optional :client_certificate, :string, 4
+      optional :client_key, :string, 5
+    end
+    add_message "v1.AmazonEKS" do
+      optional :endpoint, :string, 1
+      optional :access_key, :string, 2
+      optional :secret_access_key, :string, 3
+      optional :certificate_authority, :string, 4
+      optional :region, :string, 5
+      optional :cluster_name, :string, 6
     end
     add_message "v1.HTTPBasicAuth" do
       optional :url, :string, 1
@@ -81,7 +98,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     end
     add_message "v1.Athena" do
       optional :access_key, :string, 1
-      optional :secretAccessKey, :string, 2
+      optional :secret_access_key, :string, 2
       optional :region, :string, 3
       optional :output, :string, 4
     end
@@ -90,6 +107,8 @@ end
 
 module V1
   Driver = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Driver").msgclass
+  Kubernetes = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Kubernetes").msgclass
+  AmazonEKS = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AmazonEKS").msgclass
   HTTPBasicAuth = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.HTTPBasicAuth").msgclass
   HTTPNoAuth = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.HTTPNoAuth").msgclass
   HTTPAuth = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.HTTPAuth").msgclass
