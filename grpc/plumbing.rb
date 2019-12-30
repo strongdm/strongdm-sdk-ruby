@@ -28,6 +28,9 @@ module SDM
       if porcelain.instance_of? AmazonEks
         plumbing.amazon_eks = amazon_eks_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? GoogleGke
+        plumbing.google_gke = google_gke_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? HttpBasicAuth
         plumbing.http_basic_auth = http_basic_auth_to_plumbing(porcelain)
       end
@@ -64,6 +67,9 @@ module SDM
       end
       if plumbing.amazon_eks != nil
         return amazon_eks_to_porcelain(plumbing.amazon_eks)
+      end
+      if plumbing.google_gke != nil
+        return google_gke_to_porcelain(plumbing.google_gke)
       end
       if plumbing.http_basic_auth != nil
         return http_basic_auth_to_porcelain(plumbing.http_basic_auth)
@@ -185,6 +191,40 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = amazon_eks_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+
+    def self.google_gke_to_porcelain(plumbing)
+      porcelain = GoogleGKE.new()
+      porcelain.endpoint = plumbing.endpoint
+      porcelain.certificate_authority = plumbing.certificate_authority
+      porcelain.service_account_key = plumbing.service_account_key
+      porcelain
+    end
+
+    def self.google_gke_to_plumbing(porcelain)
+      plumbing = V1::GoogleGKE.new()
+      plumbing.endpoint = porcelain.endpoint unless porcelain.endpoint == nil
+      plumbing.certificate_authority = porcelain.certificate_authority unless porcelain.certificate_authority == nil
+      plumbing.service_account_key = porcelain.service_account_key unless porcelain.service_account_key == nil
+      plumbing
+    end
+
+    def self.repeated_google_gke_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = google_gke_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_google_gke_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = google_gke_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items

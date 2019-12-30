@@ -11,6 +11,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       oneof :driver do
         optional :kubernetes, :message, 231451540, "v1.Kubernetes"
         optional :amazon_eks, :message, 144724720, "v1.AmazonEKS"
+        optional :google_gke, :message, 138696469, "v1.GoogleGKE"
         optional :http_basic_auth, :message, 448320780, "v1.HTTPBasicAuth"
         optional :http_no_auth, :message, 435770653, "v1.HTTPNoAuth"
         optional :http_auth, :message, 224436590, "v1.HTTPAuth"
@@ -36,6 +37,11 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :certificate_authority, :string, 4
       optional :region, :string, 5
       optional :cluster_name, :string, 6
+    end
+    add_message "v1.GoogleGKE" do
+      optional :endpoint, :string, 1
+      optional :certificate_authority, :string, 2
+      optional :service_account_key, :string, 3
     end
     add_message "v1.HTTPBasicAuth" do
       optional :url, :string, 1
@@ -109,6 +115,7 @@ module V1
   Driver = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Driver").msgclass
   Kubernetes = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Kubernetes").msgclass
   AmazonEKS = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AmazonEKS").msgclass
+  GoogleGKE = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GoogleGKE").msgclass
   HTTPBasicAuth = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.HTTPBasicAuth").msgclass
   HTTPNoAuth = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.HTTPNoAuth").msgclass
   HTTPAuth = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.HTTPAuth").msgclass

@@ -25,6 +25,14 @@ module SDM
     attr_accessor :cluster_name
   end
 
+  class GoogleGKE
+    attr_accessor :endpoint
+
+    attr_accessor :certificate_authority
+
+    attr_accessor :service_account_key
+  end
+
   class HTTPBasicAuth
     attr_accessor :url
 
@@ -284,6 +292,7 @@ module SDM
     # Unique human-readable name of the Resource.
     attr_accessor :name
     # Port number override.
+    # TODO: should this be a part of the Driver since it does not apply to HTTP resources?
     attr_accessor :port_override
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
