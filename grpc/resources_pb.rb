@@ -55,13 +55,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       repeated :resources, :message, 2, "v1.Resource"
       optional :rate_limit, :message, 3, "v1.RateLimitMetadata"
     end
-    add_message "v1.Resource" do
-      optional :id, :string, 1
-      optional :name, :string, 2
-      optional :port_override, :int32, 3
-      optional :healthy, :bool, 4
-      optional :driver, :message, 5, "v1.Driver"
-    end
   end
 end
 
@@ -76,5 +69,4 @@ module V1
   ResourceDeleteResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ResourceDeleteResponse").msgclass
   ResourceListRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ResourceListRequest").msgclass
   ResourceListResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ResourceListResponse").msgclass
-  Resource = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Resource").msgclass
 end

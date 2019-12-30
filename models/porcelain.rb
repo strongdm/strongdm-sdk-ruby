@@ -1,5 +1,14 @@
 module SDM
   class Kubernetes
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # Port number override.
+    attr_accessor :port_override
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
     attr_accessor :hostname
 
     attr_accessor :port
@@ -12,6 +21,15 @@ module SDM
   end
 
   class AmazonEKS
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # Port number override.
+    attr_accessor :port_override
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
     attr_accessor :endpoint
 
     attr_accessor :access_key
@@ -26,6 +44,15 @@ module SDM
   end
 
   class GoogleGKE
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # Port number override.
+    attr_accessor :port_override
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
     attr_accessor :endpoint
 
     attr_accessor :certificate_authority
@@ -34,6 +61,15 @@ module SDM
   end
 
   class HTTPBasicAuth
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # Port number override.
+    attr_accessor :port_override
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
     attr_accessor :url
 
     attr_accessor :healthcheck_path
@@ -50,6 +86,15 @@ module SDM
   end
 
   class HTTPNoAuth
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # Port number override.
+    attr_accessor :port_override
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
     attr_accessor :url
 
     attr_accessor :healthcheck_path
@@ -62,6 +107,15 @@ module SDM
   end
 
   class HTTPAuth
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # Port number override.
+    attr_accessor :port_override
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
     attr_accessor :url
 
     attr_accessor :healthcheck_path
@@ -76,6 +130,15 @@ module SDM
   end
 
   class Mysql
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # Port number override.
+    attr_accessor :port_override
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
     attr_accessor :hostname
 
     attr_accessor :username
@@ -88,6 +151,15 @@ module SDM
   end
 
   class AuroraMysql
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # Port number override.
+    attr_accessor :port_override
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
     attr_accessor :hostname
 
     attr_accessor :username
@@ -100,6 +172,15 @@ module SDM
   end
 
   class Clustrix
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # Port number override.
+    attr_accessor :port_override
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
     attr_accessor :hostname
 
     attr_accessor :username
@@ -112,6 +193,15 @@ module SDM
   end
 
   class Maria
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # Port number override.
+    attr_accessor :port_override
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
     attr_accessor :hostname
 
     attr_accessor :username
@@ -124,6 +214,15 @@ module SDM
   end
 
   class Memsql
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # Port number override.
+    attr_accessor :port_override
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
     attr_accessor :hostname
 
     attr_accessor :username
@@ -136,6 +235,15 @@ module SDM
   end
 
   class Athena
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # Port number override.
+    attr_accessor :port_override
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
     attr_accessor :access_key
 
     attr_accessor :secret_access_key
@@ -281,23 +389,6 @@ module SDM
     attr_accessor :meta
     # Rate limit information.
     attr_accessor :rate_limit
-  end
-
-  # A Resource is a proxy in the strongDM network. They come in two flavors: relays,
-  # which communicate with resources, and gateways, which communicate with
-  # clients.
-  class Resource
-    # Unique identifier of the Resource.
-    attr_accessor :id
-    # Unique human-readable name of the Resource.
-    attr_accessor :name
-    # Port number override.
-    # TODO: should this be a part of the Driver since it does not apply to HTTP resources?
-    attr_accessor :port_override
-    # True if the datasource is reachable and the credentials are valid.
-    attr_accessor :healthy
-    # Fields for connecting to the resource.
-    attr_accessor :driver
   end
 
   # RoleAttachmentCreateResponse reports how the RoleAttachments were created in the system.

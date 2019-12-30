@@ -7,8 +7,8 @@ require "protoc-gen-swagger/options/annotations_pb"
 require "options_pb"
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("drivers.proto", :syntax => :proto3) do
-    add_message "v1.Driver" do
-      oneof :driver do
+    add_message "v1.Resource" do
+      oneof :resource do
         optional :kubernetes, :message, 231451540, "v1.Kubernetes"
         optional :amazon_eks, :message, 144724720, "v1.AmazonEKS"
         optional :google_gke, :message, 138696469, "v1.GoogleGKE"
@@ -24,6 +24,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       end
     end
     add_message "v1.Kubernetes" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :port_override, :int32, 32770
+      optional :healthy, :bool, 32771
       optional :hostname, :string, 1
       optional :port, :int32, 2
       optional :certificate_authority, :string, 3
@@ -31,6 +35,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :client_key, :string, 5
     end
     add_message "v1.AmazonEKS" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :port_override, :int32, 32770
+      optional :healthy, :bool, 32771
       optional :endpoint, :string, 1
       optional :access_key, :string, 2
       optional :secret_access_key, :string, 3
@@ -39,11 +47,19 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :cluster_name, :string, 6
     end
     add_message "v1.GoogleGKE" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :port_override, :int32, 32770
+      optional :healthy, :bool, 32771
       optional :endpoint, :string, 1
       optional :certificate_authority, :string, 2
       optional :service_account_key, :string, 3
     end
     add_message "v1.HTTPBasicAuth" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :port_override, :int32, 32770
+      optional :healthy, :bool, 32771
       optional :url, :string, 1
       optional :healthcheck_path, :string, 2
       optional :username, :string, 3
@@ -53,6 +69,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :subdomain, :string, 7
     end
     add_message "v1.HTTPNoAuth" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :port_override, :int32, 32770
+      optional :healthy, :bool, 32771
       optional :url, :string, 1
       optional :healthcheck_path, :string, 2
       optional :headers_blacklist, :string, 3
@@ -60,6 +80,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :subdomain, :string, 5
     end
     add_message "v1.HTTPAuth" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :port_override, :int32, 32770
+      optional :healthy, :bool, 32771
       optional :url, :string, 1
       optional :healthcheck_path, :string, 2
       optional :auth_header, :string, 3
@@ -68,6 +92,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :subdomain, :string, 6
     end
     add_message "v1.Mysql" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :port_override, :int32, 32770
+      optional :healthy, :bool, 32771
       optional :hostname, :string, 1
       optional :username, :string, 2
       optional :password, :string, 3
@@ -75,6 +103,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port, :int32, 5
     end
     add_message "v1.AuroraMysql" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :port_override, :int32, 32770
+      optional :healthy, :bool, 32771
       optional :hostname, :string, 1
       optional :username, :string, 2
       optional :password, :string, 3
@@ -82,6 +114,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port, :int32, 5
     end
     add_message "v1.Clustrix" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :port_override, :int32, 32770
+      optional :healthy, :bool, 32771
       optional :hostname, :string, 1
       optional :username, :string, 2
       optional :password, :string, 3
@@ -89,6 +125,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port, :int32, 5
     end
     add_message "v1.Maria" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :port_override, :int32, 32770
+      optional :healthy, :bool, 32771
       optional :hostname, :string, 1
       optional :username, :string, 2
       optional :password, :string, 3
@@ -96,6 +136,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port, :int32, 5
     end
     add_message "v1.Memsql" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :port_override, :int32, 32770
+      optional :healthy, :bool, 32771
       optional :hostname, :string, 1
       optional :username, :string, 2
       optional :password, :string, 3
@@ -103,6 +147,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port, :int32, 5
     end
     add_message "v1.Athena" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :port_override, :int32, 32770
+      optional :healthy, :bool, 32771
       optional :access_key, :string, 1
       optional :secret_access_key, :string, 2
       optional :region, :string, 3
@@ -112,7 +160,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
 end
 
 module V1
-  Driver = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Driver").msgclass
+  Resource = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Resource").msgclass
   Kubernetes = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Kubernetes").msgclass
   AmazonEKS = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AmazonEKS").msgclass
   GoogleGKE = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GoogleGKE").msgclass
