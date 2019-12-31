@@ -49,9 +49,15 @@ module SDM
 
     attr_accessor :certificate_authority
 
+    attr_accessor :certificate_authority_filename
+
     attr_accessor :client_certificate
 
+    attr_accessor :client_certificate_filename
+
     attr_accessor :client_key
+
+    attr_accessor :client_key_filename
   end
 
   class KubernetesBasicAuth
@@ -72,9 +78,15 @@ module SDM
 
     attr_accessor :certificate_authority
 
+    attr_accessor :certificate_authority_filename
+
     attr_accessor :client_certificate
 
+    attr_accessor :client_certificate_filename
+
     attr_accessor :client_key
+
+    attr_accessor :client_key_filename
   end
 
   class AmazonEKS
@@ -93,6 +105,8 @@ module SDM
 
     attr_accessor :certificate_authority
 
+    attr_accessor :certificate_authority_filename
+
     attr_accessor :region
 
     attr_accessor :cluster_name
@@ -110,7 +124,11 @@ module SDM
 
     attr_accessor :certificate_authority
 
+    attr_accessor :certificate_authority_filename
+
     attr_accessor :service_account_key
+
+    attr_accessor :service_account_key_filename
   end
 
   class SSH

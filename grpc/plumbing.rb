@@ -254,8 +254,11 @@ module SDM
       porcelain.hostname = plumbing.hostname
       porcelain.port = plumbing.port
       porcelain.certificate_authority = plumbing.certificate_authority
+      porcelain.certificate_authority_filename = plumbing.certificate_authority_filename
       porcelain.client_certificate = plumbing.client_certificate
+      porcelain.client_certificate_filename = plumbing.client_certificate_filename
       porcelain.client_key = plumbing.client_key
+      porcelain.client_key_filename = plumbing.client_key_filename
       porcelain
     end
 
@@ -267,8 +270,11 @@ module SDM
       plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
       plumbing.port = porcelain.port unless porcelain.port == nil
       plumbing.certificate_authority = porcelain.certificate_authority unless porcelain.certificate_authority == nil
+      plumbing.certificate_authority_filename = porcelain.certificate_authority_filename unless porcelain.certificate_authority_filename == nil
       plumbing.client_certificate = porcelain.client_certificate unless porcelain.client_certificate == nil
+      plumbing.client_certificate_filename = porcelain.client_certificate_filename unless porcelain.client_certificate_filename == nil
       plumbing.client_key = porcelain.client_key unless porcelain.client_key == nil
+      plumbing.client_key_filename = porcelain.client_key_filename unless porcelain.client_key_filename == nil
       plumbing
     end
 
@@ -300,8 +306,11 @@ module SDM
       porcelain.username = plumbing.username
       porcelain.password = plumbing.password
       porcelain.certificate_authority = plumbing.certificate_authority
+      porcelain.certificate_authority_filename = plumbing.certificate_authority_filename
       porcelain.client_certificate = plumbing.client_certificate
+      porcelain.client_certificate_filename = plumbing.client_certificate_filename
       porcelain.client_key = plumbing.client_key
+      porcelain.client_key_filename = plumbing.client_key_filename
       porcelain
     end
 
@@ -315,8 +324,11 @@ module SDM
       plumbing.username = porcelain.username unless porcelain.username == nil
       plumbing.password = porcelain.password unless porcelain.password == nil
       plumbing.certificate_authority = porcelain.certificate_authority unless porcelain.certificate_authority == nil
+      plumbing.certificate_authority_filename = porcelain.certificate_authority_filename unless porcelain.certificate_authority_filename == nil
       plumbing.client_certificate = porcelain.client_certificate unless porcelain.client_certificate == nil
+      plumbing.client_certificate_filename = porcelain.client_certificate_filename unless porcelain.client_certificate_filename == nil
       plumbing.client_key = porcelain.client_key unless porcelain.client_key == nil
+      plumbing.client_key_filename = porcelain.client_key_filename unless porcelain.client_key_filename == nil
       plumbing
     end
 
@@ -347,6 +359,7 @@ module SDM
       porcelain.access_key = plumbing.access_key
       porcelain.secret_access_key = plumbing.secret_access_key
       porcelain.certificate_authority = plumbing.certificate_authority
+      porcelain.certificate_authority_filename = plumbing.certificate_authority_filename
       porcelain.region = plumbing.region
       porcelain.cluster_name = plumbing.cluster_name
       porcelain
@@ -361,6 +374,7 @@ module SDM
       plumbing.access_key = porcelain.access_key unless porcelain.access_key == nil
       plumbing.secret_access_key = porcelain.secret_access_key unless porcelain.secret_access_key == nil
       plumbing.certificate_authority = porcelain.certificate_authority unless porcelain.certificate_authority == nil
+      plumbing.certificate_authority_filename = porcelain.certificate_authority_filename unless porcelain.certificate_authority_filename == nil
       plumbing.region = porcelain.region unless porcelain.region == nil
       plumbing.cluster_name = porcelain.cluster_name unless porcelain.cluster_name == nil
       plumbing
@@ -391,7 +405,9 @@ module SDM
       porcelain.healthy = plumbing.healthy
       porcelain.endpoint = plumbing.endpoint
       porcelain.certificate_authority = plumbing.certificate_authority
+      porcelain.certificate_authority_filename = plumbing.certificate_authority_filename
       porcelain.service_account_key = plumbing.service_account_key
+      porcelain.service_account_key_filename = plumbing.service_account_key_filename
       porcelain
     end
 
@@ -402,7 +418,9 @@ module SDM
       plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
       plumbing.endpoint = porcelain.endpoint unless porcelain.endpoint == nil
       plumbing.certificate_authority = porcelain.certificate_authority unless porcelain.certificate_authority == nil
+      plumbing.certificate_authority_filename = porcelain.certificate_authority_filename unless porcelain.certificate_authority_filename == nil
       plumbing.service_account_key = porcelain.service_account_key unless porcelain.service_account_key == nil
+      plumbing.service_account_key_filename = porcelain.service_account_key_filename unless porcelain.service_account_key_filename == nil
       plumbing
     end
 

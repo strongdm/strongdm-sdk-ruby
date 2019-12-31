@@ -53,8 +53,11 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :hostname, :string, 1
       optional :port, :int32, 2
       optional :certificate_authority, :string, 3
-      optional :client_certificate, :string, 4
-      optional :client_key, :string, 5
+      optional :certificate_authority_filename, :string, 4
+      optional :client_certificate, :string, 5
+      optional :client_certificate_filename, :string, 6
+      optional :client_key, :string, 7
+      optional :client_key_filename, :string, 8
     end
     add_message "v1.KubernetesBasicAuth" do
       optional :id, :string, 32768
@@ -65,8 +68,11 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :username, :string, 3
       optional :password, :string, 4
       optional :certificate_authority, :string, 5
-      optional :client_certificate, :string, 6
-      optional :client_key, :string, 7
+      optional :certificate_authority_filename, :string, 6
+      optional :client_certificate, :string, 7
+      optional :client_certificate_filename, :string, 8
+      optional :client_key, :string, 9
+      optional :client_key_filename, :string, 10
     end
     add_message "v1.AmazonEKS" do
       optional :id, :string, 32768
@@ -76,8 +82,9 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :access_key, :string, 2
       optional :secret_access_key, :string, 3
       optional :certificate_authority, :string, 4
-      optional :region, :string, 5
-      optional :cluster_name, :string, 6
+      optional :certificate_authority_filename, :string, 5
+      optional :region, :string, 6
+      optional :cluster_name, :string, 7
     end
     add_message "v1.GoogleGKE" do
       optional :id, :string, 32768
@@ -85,7 +92,9 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :healthy, :bool, 32770
       optional :endpoint, :string, 1
       optional :certificate_authority, :string, 2
-      optional :service_account_key, :string, 3
+      optional :certificate_authority_filename, :string, 3
+      optional :service_account_key, :string, 4
+      optional :service_account_key_filename, :string, 5
     end
     add_message "v1.SSH" do
       optional :id, :string, 32768
