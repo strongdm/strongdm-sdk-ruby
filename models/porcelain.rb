@@ -1,4 +1,40 @@
 module SDM
+  class Redis
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # Port number override.
+    attr_accessor :port_override
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
+    attr_accessor :hostname
+
+    attr_accessor :password
+
+    attr_accessor :port
+  end
+
+  class ElasticacheRedis
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # Port number override.
+    attr_accessor :port_override
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
+    attr_accessor :hostname
+
+    attr_accessor :password
+
+    attr_accessor :port
+
+    attr_accessor :tls_required
+  end
+
   class Kubernetes
     # Unique identifier of the Resource.
     attr_accessor :id

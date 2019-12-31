@@ -22,6 +22,12 @@ module SDM
 
     def self.resource_to_plumbing(porcelain)
       plumbing = V1::Resource.new()
+      if porcelain.instance_of? Redis
+        plumbing.redis = redis_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? ElasticacheRedis
+        plumbing.elasticache_redis = elasticache_redis_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? Kubernetes
         plumbing.kubernetes = kubernetes_to_plumbing(porcelain)
       end
@@ -65,6 +71,12 @@ module SDM
     end
 
     def self.resource_to_porcelain(plumbing)
+      if plumbing.redis != nil
+        return redis_to_porcelain(plumbing.redis)
+      end
+      if plumbing.elasticache_redis != nil
+        return elasticache_redis_to_porcelain(plumbing.elasticache_redis)
+      end
       if plumbing.kubernetes != nil
         return kubernetes_to_porcelain(plumbing.kubernetes)
       end
@@ -119,6 +131,92 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = resource_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+
+    def self.redis_to_porcelain(plumbing)
+      porcelain = Redis.new()
+      porcelain.id = plumbing.id
+      porcelain.name = plumbing.name
+      porcelain.port_override = plumbing.port_override
+      porcelain.healthy = plumbing.healthy
+      porcelain.hostname = plumbing.hostname
+      porcelain.password = plumbing.password
+      porcelain.port = plumbing.port
+      porcelain
+    end
+
+    def self.redis_to_plumbing(porcelain)
+      plumbing = V1::Redis.new()
+      plumbing.id = porcelain.id unless porcelain.id == nil
+      plumbing.name = porcelain.name unless porcelain.name == nil
+      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
+      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
+      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
+      plumbing.password = porcelain.password unless porcelain.password == nil
+      plumbing.port = porcelain.port unless porcelain.port == nil
+      plumbing
+    end
+
+    def self.repeated_redis_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = redis_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_redis_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = redis_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+
+    def self.elasticache_redis_to_porcelain(plumbing)
+      porcelain = ElasticacheRedis.new()
+      porcelain.id = plumbing.id
+      porcelain.name = plumbing.name
+      porcelain.port_override = plumbing.port_override
+      porcelain.healthy = plumbing.healthy
+      porcelain.hostname = plumbing.hostname
+      porcelain.password = plumbing.password
+      porcelain.port = plumbing.port
+      porcelain.tls_required = plumbing.tls_required
+      porcelain
+    end
+
+    def self.elasticache_redis_to_plumbing(porcelain)
+      plumbing = V1::ElasticacheRedis.new()
+      plumbing.id = porcelain.id unless porcelain.id == nil
+      plumbing.name = porcelain.name unless porcelain.name == nil
+      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
+      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
+      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
+      plumbing.password = porcelain.password unless porcelain.password == nil
+      plumbing.port = porcelain.port unless porcelain.port == nil
+      plumbing.tls_required = porcelain.tls_required unless porcelain.tls_required == nil
+      plumbing
+    end
+
+    def self.repeated_elasticache_redis_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = elasticache_redis_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_elasticache_redis_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = elasticache_redis_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items

@@ -9,6 +9,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("drivers.proto", :syntax => :proto3) do
     add_message "v1.Resource" do
       oneof :resource do
+        optional :redis, :message, 138869556, "v1.Redis"
+        optional :elasticache_redis, :message, 28044999, "v1.ElasticacheRedis"
         optional :kubernetes, :message, 231451540, "v1.Kubernetes"
         optional :amazon_eks, :message, 144724720, "v1.AmazonEKS"
         optional :google_gke, :message, 138696469, "v1.GoogleGKE"
@@ -23,6 +25,25 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :memsql, :message, 269999277, "v1.Memsql"
         optional :athena, :message, 86524680, "v1.Athena"
       end
+    end
+    add_message "v1.Redis" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :port_override, :int32, 32770
+      optional :healthy, :bool, 32771
+      optional :hostname, :string, 1
+      optional :password, :string, 2
+      optional :port, :int32, 3
+    end
+    add_message "v1.ElasticacheRedis" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :port_override, :int32, 32770
+      optional :healthy, :bool, 32771
+      optional :hostname, :string, 1
+      optional :password, :string, 2
+      optional :port, :int32, 3
+      optional :tls_required, :bool, 4
     end
     add_message "v1.Kubernetes" do
       optional :id, :string, 32768
@@ -172,6 +193,8 @@ end
 
 module V1
   Resource = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Resource").msgclass
+  Redis = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Redis").msgclass
+  ElasticacheRedis = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ElasticacheRedis").msgclass
   Kubernetes = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Kubernetes").msgclass
   AmazonEKS = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AmazonEKS").msgclass
   GoogleGKE = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GoogleGKE").msgclass
