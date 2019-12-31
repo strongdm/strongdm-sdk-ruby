@@ -4,12 +4,12 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # Port number override.
-    attr_accessor :port_override
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
 
     attr_accessor :hostname
+
+    attr_accessor :port_override
 
     attr_accessor :password
 
@@ -21,12 +21,12 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # Port number override.
-    attr_accessor :port_override
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
 
     attr_accessor :hostname
+
+    attr_accessor :port_override
 
     attr_accessor :password
 
@@ -40,8 +40,6 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # Port number override.
-    attr_accessor :port_override
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
 
@@ -56,13 +54,34 @@ module SDM
     attr_accessor :client_key
   end
 
+  class KubernetesBasicAuth
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
+    attr_accessor :hostname
+
+    attr_accessor :port
+
+    attr_accessor :username
+
+    attr_accessor :password
+
+    attr_accessor :certificate_authority
+
+    attr_accessor :client_certificate
+
+    attr_accessor :client_key
+  end
+
   class AmazonEKS
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # Port number override.
-    attr_accessor :port_override
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
 
@@ -84,8 +103,6 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # Port number override.
-    attr_accessor :port_override
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
 
@@ -101,8 +118,6 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # Port number override.
-    attr_accessor :port_override
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
 
@@ -120,8 +135,6 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # Port number override.
-    attr_accessor :port_override
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
 
@@ -145,8 +158,6 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # Port number override.
-    attr_accessor :port_override
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
 
@@ -166,8 +177,6 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # Port number override.
-    attr_accessor :port_override
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
 
@@ -189,8 +198,6 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # Port number override.
-    attr_accessor :port_override
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
 
@@ -201,6 +208,8 @@ module SDM
     attr_accessor :password
 
     attr_accessor :database
+
+    attr_accessor :port_override
 
     attr_accessor :port
   end
@@ -210,8 +219,6 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # Port number override.
-    attr_accessor :port_override
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
 
@@ -222,6 +229,8 @@ module SDM
     attr_accessor :password
 
     attr_accessor :database
+
+    attr_accessor :port_override
 
     attr_accessor :port
   end
@@ -231,8 +240,6 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # Port number override.
-    attr_accessor :port_override
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
 
@@ -243,6 +250,8 @@ module SDM
     attr_accessor :password
 
     attr_accessor :database
+
+    attr_accessor :port_override
 
     attr_accessor :port
   end
@@ -252,8 +261,6 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # Port number override.
-    attr_accessor :port_override
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
 
@@ -264,6 +271,8 @@ module SDM
     attr_accessor :password
 
     attr_accessor :database
+
+    attr_accessor :port_override
 
     attr_accessor :port
   end
@@ -273,8 +282,6 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # Port number override.
-    attr_accessor :port_override
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
 
@@ -286,6 +293,8 @@ module SDM
 
     attr_accessor :database
 
+    attr_accessor :port_override
+
     attr_accessor :port
   end
 
@@ -294,8 +303,6 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # Port number override.
-    attr_accessor :port_override
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
 
@@ -303,9 +310,11 @@ module SDM
 
     attr_accessor :secret_access_key
 
-    attr_accessor :region
-
     attr_accessor :output
+
+    attr_accessor :port_override
+
+    attr_accessor :region
   end
 
   # CreateResponseMetadata is reserved for future use.

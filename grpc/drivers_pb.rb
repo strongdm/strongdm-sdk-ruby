@@ -12,6 +12,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :redis, :message, 138869556, "v1.Redis"
         optional :elasticache_redis, :message, 28044999, "v1.ElasticacheRedis"
         optional :kubernetes, :message, 231451540, "v1.Kubernetes"
+        optional :kubernetes_basic_auth, :message, 471837167, "v1.KubernetesBasicAuth"
         optional :amazon_eks, :message, 144724720, "v1.AmazonEKS"
         optional :google_gke, :message, 138696469, "v1.GoogleGKE"
         optional :ssh, :message, 257251967, "v1.SSH"
@@ -29,38 +30,48 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.Redis" do
       optional :id, :string, 32768
       optional :name, :string, 32769
-      optional :port_override, :int32, 32770
-      optional :healthy, :bool, 32771
+      optional :healthy, :bool, 32770
       optional :hostname, :string, 1
-      optional :password, :string, 2
-      optional :port, :int32, 3
+      optional :port_override, :int32, 2
+      optional :password, :string, 3
+      optional :port, :int32, 4
     end
     add_message "v1.ElasticacheRedis" do
       optional :id, :string, 32768
       optional :name, :string, 32769
-      optional :port_override, :int32, 32770
-      optional :healthy, :bool, 32771
+      optional :healthy, :bool, 32770
       optional :hostname, :string, 1
-      optional :password, :string, 2
-      optional :port, :int32, 3
-      optional :tls_required, :bool, 4
+      optional :port_override, :int32, 2
+      optional :password, :string, 3
+      optional :port, :int32, 4
+      optional :tls_required, :bool, 5
     end
     add_message "v1.Kubernetes" do
       optional :id, :string, 32768
       optional :name, :string, 32769
-      optional :port_override, :int32, 32770
-      optional :healthy, :bool, 32771
+      optional :healthy, :bool, 32770
       optional :hostname, :string, 1
       optional :port, :int32, 2
       optional :certificate_authority, :string, 3
       optional :client_certificate, :string, 4
       optional :client_key, :string, 5
     end
+    add_message "v1.KubernetesBasicAuth" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :hostname, :string, 1
+      optional :port, :int32, 2
+      optional :username, :string, 3
+      optional :password, :string, 4
+      optional :certificate_authority, :string, 5
+      optional :client_certificate, :string, 6
+      optional :client_key, :string, 7
+    end
     add_message "v1.AmazonEKS" do
       optional :id, :string, 32768
       optional :name, :string, 32769
-      optional :port_override, :int32, 32770
-      optional :healthy, :bool, 32771
+      optional :healthy, :bool, 32770
       optional :endpoint, :string, 1
       optional :access_key, :string, 2
       optional :secret_access_key, :string, 3
@@ -71,8 +82,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.GoogleGKE" do
       optional :id, :string, 32768
       optional :name, :string, 32769
-      optional :port_override, :int32, 32770
-      optional :healthy, :bool, 32771
+      optional :healthy, :bool, 32770
       optional :endpoint, :string, 1
       optional :certificate_authority, :string, 2
       optional :service_account_key, :string, 3
@@ -80,8 +90,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.SSH" do
       optional :id, :string, 32768
       optional :name, :string, 32769
-      optional :port_override, :int32, 32770
-      optional :healthy, :bool, 32771
+      optional :healthy, :bool, 32770
       optional :hostname, :string, 1
       optional :username, :string, 2
       optional :port, :int32, 3
@@ -90,8 +99,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.HTTPBasicAuth" do
       optional :id, :string, 32768
       optional :name, :string, 32769
-      optional :port_override, :int32, 32770
-      optional :healthy, :bool, 32771
+      optional :healthy, :bool, 32770
       optional :url, :string, 1
       optional :healthcheck_path, :string, 2
       optional :username, :string, 3
@@ -103,8 +111,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.HTTPNoAuth" do
       optional :id, :string, 32768
       optional :name, :string, 32769
-      optional :port_override, :int32, 32770
-      optional :healthy, :bool, 32771
+      optional :healthy, :bool, 32770
       optional :url, :string, 1
       optional :healthcheck_path, :string, 2
       optional :headers_blacklist, :string, 3
@@ -114,8 +121,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.HTTPAuth" do
       optional :id, :string, 32768
       optional :name, :string, 32769
-      optional :port_override, :int32, 32770
-      optional :healthy, :bool, 32771
+      optional :healthy, :bool, 32770
       optional :url, :string, 1
       optional :healthcheck_path, :string, 2
       optional :auth_header, :string, 3
@@ -126,67 +132,67 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.Mysql" do
       optional :id, :string, 32768
       optional :name, :string, 32769
-      optional :port_override, :int32, 32770
-      optional :healthy, :bool, 32771
+      optional :healthy, :bool, 32770
       optional :hostname, :string, 1
       optional :username, :string, 2
       optional :password, :string, 3
       optional :database, :string, 4
-      optional :port, :int32, 5
+      optional :port_override, :int32, 5
+      optional :port, :int32, 6
     end
     add_message "v1.AuroraMysql" do
       optional :id, :string, 32768
       optional :name, :string, 32769
-      optional :port_override, :int32, 32770
-      optional :healthy, :bool, 32771
+      optional :healthy, :bool, 32770
       optional :hostname, :string, 1
       optional :username, :string, 2
       optional :password, :string, 3
       optional :database, :string, 4
-      optional :port, :int32, 5
+      optional :port_override, :int32, 5
+      optional :port, :int32, 6
     end
     add_message "v1.Clustrix" do
       optional :id, :string, 32768
       optional :name, :string, 32769
-      optional :port_override, :int32, 32770
-      optional :healthy, :bool, 32771
+      optional :healthy, :bool, 32770
       optional :hostname, :string, 1
       optional :username, :string, 2
       optional :password, :string, 3
       optional :database, :string, 4
-      optional :port, :int32, 5
+      optional :port_override, :int32, 5
+      optional :port, :int32, 6
     end
     add_message "v1.Maria" do
       optional :id, :string, 32768
       optional :name, :string, 32769
-      optional :port_override, :int32, 32770
-      optional :healthy, :bool, 32771
+      optional :healthy, :bool, 32770
       optional :hostname, :string, 1
       optional :username, :string, 2
       optional :password, :string, 3
       optional :database, :string, 4
-      optional :port, :int32, 5
+      optional :port_override, :int32, 5
+      optional :port, :int32, 6
     end
     add_message "v1.Memsql" do
       optional :id, :string, 32768
       optional :name, :string, 32769
-      optional :port_override, :int32, 32770
-      optional :healthy, :bool, 32771
+      optional :healthy, :bool, 32770
       optional :hostname, :string, 1
       optional :username, :string, 2
       optional :password, :string, 3
       optional :database, :string, 4
-      optional :port, :int32, 5
+      optional :port_override, :int32, 5
+      optional :port, :int32, 6
     end
     add_message "v1.Athena" do
       optional :id, :string, 32768
       optional :name, :string, 32769
-      optional :port_override, :int32, 32770
-      optional :healthy, :bool, 32771
+      optional :healthy, :bool, 32770
       optional :access_key, :string, 1
       optional :secret_access_key, :string, 2
-      optional :region, :string, 3
-      optional :output, :string, 4
+      optional :output, :string, 3
+      optional :port_override, :int32, 4
+      optional :region, :string, 5
     end
   end
 end
@@ -196,6 +202,7 @@ module V1
   Redis = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Redis").msgclass
   ElasticacheRedis = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ElasticacheRedis").msgclass
   Kubernetes = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Kubernetes").msgclass
+  KubernetesBasicAuth = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.KubernetesBasicAuth").msgclass
   AmazonEKS = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AmazonEKS").msgclass
   GoogleGKE = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GoogleGKE").msgclass
   SSH = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SSH").msgclass

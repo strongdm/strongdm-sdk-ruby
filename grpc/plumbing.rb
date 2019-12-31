@@ -31,6 +31,9 @@ module SDM
       if porcelain.instance_of? Kubernetes
         plumbing.kubernetes = kubernetes_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? KubernetesBasicAuth
+        plumbing.kubernetes_basic_auth = kubernetes_basic_auth_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? AmazonEks
         plumbing.amazon_eks = amazon_eks_to_plumbing(porcelain)
       end
@@ -79,6 +82,9 @@ module SDM
       end
       if plumbing.kubernetes != nil
         return kubernetes_to_porcelain(plumbing.kubernetes)
+      end
+      if plumbing.kubernetes_basic_auth != nil
+        return kubernetes_basic_auth_to_porcelain(plumbing.kubernetes_basic_auth)
       end
       if plumbing.amazon_eks != nil
         return amazon_eks_to_porcelain(plumbing.amazon_eks)
@@ -140,9 +146,9 @@ module SDM
       porcelain = Redis.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
-      porcelain.port_override = plumbing.port_override
       porcelain.healthy = plumbing.healthy
       porcelain.hostname = plumbing.hostname
+      porcelain.port_override = plumbing.port_override
       porcelain.password = plumbing.password
       porcelain.port = plumbing.port
       porcelain
@@ -152,9 +158,9 @@ module SDM
       plumbing = V1::Redis.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
-      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
       plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
       plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
+      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
       plumbing.password = porcelain.password unless porcelain.password == nil
       plumbing.port = porcelain.port unless porcelain.port == nil
       plumbing
@@ -182,9 +188,9 @@ module SDM
       porcelain = ElasticacheRedis.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
-      porcelain.port_override = plumbing.port_override
       porcelain.healthy = plumbing.healthy
       porcelain.hostname = plumbing.hostname
+      porcelain.port_override = plumbing.port_override
       porcelain.password = plumbing.password
       porcelain.port = plumbing.port
       porcelain.tls_required = plumbing.tls_required
@@ -195,9 +201,9 @@ module SDM
       plumbing = V1::ElasticacheRedis.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
-      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
       plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
       plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
+      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
       plumbing.password = porcelain.password unless porcelain.password == nil
       plumbing.port = porcelain.port unless porcelain.port == nil
       plumbing.tls_required = porcelain.tls_required unless porcelain.tls_required == nil
@@ -226,7 +232,6 @@ module SDM
       porcelain = Kubernetes.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
-      porcelain.port_override = plumbing.port_override
       porcelain.healthy = plumbing.healthy
       porcelain.hostname = plumbing.hostname
       porcelain.port = plumbing.port
@@ -240,7 +245,6 @@ module SDM
       plumbing = V1::Kubernetes.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
-      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
       plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
       plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
       plumbing.port = porcelain.port unless porcelain.port == nil
@@ -268,11 +272,58 @@ module SDM
       items
     end
 
+    def self.kubernetes_basic_auth_to_porcelain(plumbing)
+      porcelain = KubernetesBasicAuth.new()
+      porcelain.id = plumbing.id
+      porcelain.name = plumbing.name
+      porcelain.healthy = plumbing.healthy
+      porcelain.hostname = plumbing.hostname
+      porcelain.port = plumbing.port
+      porcelain.username = plumbing.username
+      porcelain.password = plumbing.password
+      porcelain.certificate_authority = plumbing.certificate_authority
+      porcelain.client_certificate = plumbing.client_certificate
+      porcelain.client_key = plumbing.client_key
+      porcelain
+    end
+
+    def self.kubernetes_basic_auth_to_plumbing(porcelain)
+      plumbing = V1::KubernetesBasicAuth.new()
+      plumbing.id = porcelain.id unless porcelain.id == nil
+      plumbing.name = porcelain.name unless porcelain.name == nil
+      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
+      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
+      plumbing.port = porcelain.port unless porcelain.port == nil
+      plumbing.username = porcelain.username unless porcelain.username == nil
+      plumbing.password = porcelain.password unless porcelain.password == nil
+      plumbing.certificate_authority = porcelain.certificate_authority unless porcelain.certificate_authority == nil
+      plumbing.client_certificate = porcelain.client_certificate unless porcelain.client_certificate == nil
+      plumbing.client_key = porcelain.client_key unless porcelain.client_key == nil
+      plumbing
+    end
+
+    def self.repeated_kubernetes_basic_auth_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = kubernetes_basic_auth_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_kubernetes_basic_auth_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = kubernetes_basic_auth_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+
     def self.amazon_eks_to_porcelain(plumbing)
       porcelain = AmazonEKS.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
-      porcelain.port_override = plumbing.port_override
       porcelain.healthy = plumbing.healthy
       porcelain.endpoint = plumbing.endpoint
       porcelain.access_key = plumbing.access_key
@@ -287,7 +338,6 @@ module SDM
       plumbing = V1::AmazonEKS.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
-      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
       plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
       plumbing.endpoint = porcelain.endpoint unless porcelain.endpoint == nil
       plumbing.access_key = porcelain.access_key unless porcelain.access_key == nil
@@ -320,7 +370,6 @@ module SDM
       porcelain = GoogleGKE.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
-      porcelain.port_override = plumbing.port_override
       porcelain.healthy = plumbing.healthy
       porcelain.endpoint = plumbing.endpoint
       porcelain.certificate_authority = plumbing.certificate_authority
@@ -332,7 +381,6 @@ module SDM
       plumbing = V1::GoogleGKE.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
-      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
       plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
       plumbing.endpoint = porcelain.endpoint unless porcelain.endpoint == nil
       plumbing.certificate_authority = porcelain.certificate_authority unless porcelain.certificate_authority == nil
@@ -362,7 +410,6 @@ module SDM
       porcelain = SSH.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
-      porcelain.port_override = plumbing.port_override
       porcelain.healthy = plumbing.healthy
       porcelain.hostname = plumbing.hostname
       porcelain.username = plumbing.username
@@ -375,7 +422,6 @@ module SDM
       plumbing = V1::SSH.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
-      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
       plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
       plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
       plumbing.username = porcelain.username unless porcelain.username == nil
@@ -406,7 +452,6 @@ module SDM
       porcelain = HTTPBasicAuth.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
-      porcelain.port_override = plumbing.port_override
       porcelain.healthy = plumbing.healthy
       porcelain.url = plumbing.url
       porcelain.healthcheck_path = plumbing.healthcheck_path
@@ -422,7 +467,6 @@ module SDM
       plumbing = V1::HTTPBasicAuth.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
-      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
       plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
       plumbing.url = porcelain.url unless porcelain.url == nil
       plumbing.healthcheck_path = porcelain.healthcheck_path unless porcelain.healthcheck_path == nil
@@ -456,7 +500,6 @@ module SDM
       porcelain = HTTPNoAuth.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
-      porcelain.port_override = plumbing.port_override
       porcelain.healthy = plumbing.healthy
       porcelain.url = plumbing.url
       porcelain.healthcheck_path = plumbing.healthcheck_path
@@ -470,7 +513,6 @@ module SDM
       plumbing = V1::HTTPNoAuth.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
-      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
       plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
       plumbing.url = porcelain.url unless porcelain.url == nil
       plumbing.healthcheck_path = porcelain.healthcheck_path unless porcelain.healthcheck_path == nil
@@ -502,7 +544,6 @@ module SDM
       porcelain = HTTPAuth.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
-      porcelain.port_override = plumbing.port_override
       porcelain.healthy = plumbing.healthy
       porcelain.url = plumbing.url
       porcelain.healthcheck_path = plumbing.healthcheck_path
@@ -517,7 +558,6 @@ module SDM
       plumbing = V1::HTTPAuth.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
-      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
       plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
       plumbing.url = porcelain.url unless porcelain.url == nil
       plumbing.healthcheck_path = porcelain.healthcheck_path unless porcelain.healthcheck_path == nil
@@ -550,12 +590,12 @@ module SDM
       porcelain = Mysql.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
-      porcelain.port_override = plumbing.port_override
       porcelain.healthy = plumbing.healthy
       porcelain.hostname = plumbing.hostname
       porcelain.username = plumbing.username
       porcelain.password = plumbing.password
       porcelain.database = plumbing.database
+      porcelain.port_override = plumbing.port_override
       porcelain.port = plumbing.port
       porcelain
     end
@@ -564,12 +604,12 @@ module SDM
       plumbing = V1::Mysql.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
-      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
       plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
       plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
       plumbing.username = porcelain.username unless porcelain.username == nil
       plumbing.password = porcelain.password unless porcelain.password == nil
       plumbing.database = porcelain.database unless porcelain.database == nil
+      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
       plumbing.port = porcelain.port unless porcelain.port == nil
       plumbing
     end
@@ -596,12 +636,12 @@ module SDM
       porcelain = AuroraMysql.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
-      porcelain.port_override = plumbing.port_override
       porcelain.healthy = plumbing.healthy
       porcelain.hostname = plumbing.hostname
       porcelain.username = plumbing.username
       porcelain.password = plumbing.password
       porcelain.database = plumbing.database
+      porcelain.port_override = plumbing.port_override
       porcelain.port = plumbing.port
       porcelain
     end
@@ -610,12 +650,12 @@ module SDM
       plumbing = V1::AuroraMysql.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
-      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
       plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
       plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
       plumbing.username = porcelain.username unless porcelain.username == nil
       plumbing.password = porcelain.password unless porcelain.password == nil
       plumbing.database = porcelain.database unless porcelain.database == nil
+      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
       plumbing.port = porcelain.port unless porcelain.port == nil
       plumbing
     end
@@ -642,12 +682,12 @@ module SDM
       porcelain = Clustrix.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
-      porcelain.port_override = plumbing.port_override
       porcelain.healthy = plumbing.healthy
       porcelain.hostname = plumbing.hostname
       porcelain.username = plumbing.username
       porcelain.password = plumbing.password
       porcelain.database = plumbing.database
+      porcelain.port_override = plumbing.port_override
       porcelain.port = plumbing.port
       porcelain
     end
@@ -656,12 +696,12 @@ module SDM
       plumbing = V1::Clustrix.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
-      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
       plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
       plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
       plumbing.username = porcelain.username unless porcelain.username == nil
       plumbing.password = porcelain.password unless porcelain.password == nil
       plumbing.database = porcelain.database unless porcelain.database == nil
+      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
       plumbing.port = porcelain.port unless porcelain.port == nil
       plumbing
     end
@@ -688,12 +728,12 @@ module SDM
       porcelain = Maria.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
-      porcelain.port_override = plumbing.port_override
       porcelain.healthy = plumbing.healthy
       porcelain.hostname = plumbing.hostname
       porcelain.username = plumbing.username
       porcelain.password = plumbing.password
       porcelain.database = plumbing.database
+      porcelain.port_override = plumbing.port_override
       porcelain.port = plumbing.port
       porcelain
     end
@@ -702,12 +742,12 @@ module SDM
       plumbing = V1::Maria.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
-      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
       plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
       plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
       plumbing.username = porcelain.username unless porcelain.username == nil
       plumbing.password = porcelain.password unless porcelain.password == nil
       plumbing.database = porcelain.database unless porcelain.database == nil
+      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
       plumbing.port = porcelain.port unless porcelain.port == nil
       plumbing
     end
@@ -734,12 +774,12 @@ module SDM
       porcelain = Memsql.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
-      porcelain.port_override = plumbing.port_override
       porcelain.healthy = plumbing.healthy
       porcelain.hostname = plumbing.hostname
       porcelain.username = plumbing.username
       porcelain.password = plumbing.password
       porcelain.database = plumbing.database
+      porcelain.port_override = plumbing.port_override
       porcelain.port = plumbing.port
       porcelain
     end
@@ -748,12 +788,12 @@ module SDM
       plumbing = V1::Memsql.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
-      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
       plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
       plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
       plumbing.username = porcelain.username unless porcelain.username == nil
       plumbing.password = porcelain.password unless porcelain.password == nil
       plumbing.database = porcelain.database unless porcelain.database == nil
+      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
       plumbing.port = porcelain.port unless porcelain.port == nil
       plumbing
     end
@@ -780,12 +820,12 @@ module SDM
       porcelain = Athena.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
-      porcelain.port_override = plumbing.port_override
       porcelain.healthy = plumbing.healthy
       porcelain.access_key = plumbing.access_key
       porcelain.secret_access_key = plumbing.secret_access_key
-      porcelain.region = plumbing.region
       porcelain.output = plumbing.output
+      porcelain.port_override = plumbing.port_override
+      porcelain.region = plumbing.region
       porcelain
     end
 
@@ -793,12 +833,12 @@ module SDM
       plumbing = V1::Athena.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
-      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
       plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
       plumbing.access_key = porcelain.access_key unless porcelain.access_key == nil
       plumbing.secret_access_key = porcelain.secret_access_key unless porcelain.secret_access_key == nil
-      plumbing.region = porcelain.region unless porcelain.region == nil
       plumbing.output = porcelain.output unless porcelain.output == nil
+      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
+      plumbing.region = porcelain.region unless porcelain.region == nil
       plumbing
     end
 
