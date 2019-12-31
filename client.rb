@@ -1,6 +1,10 @@
 require_relative "./svc"
 require "base64"
 
+DEFAULT_MAX_RETRIES = 3
+DEFAULT_BASE_RETRY_DELAY = 0.0030 # 30 ms
+DEFAULT_MAX_RETRY_DELAY = 300 # 300 seconds
+
 module SDM
 
   # Client bundles all the services together and initializes them.
@@ -9,6 +13,9 @@ module SDM
     def initialize(address, api_access_key, api_secret_key)
       @api_access_key = api_access_key
       @api_secret_key = Base64.strict_decode64(api_secret_key)
+      @max_retries = DEFAULT_MAX_RETRIES
+      @base_retry_delay = DEFAULT_BASE_RETRY_DELAY
+      @max_retry_delay = DEFAULT_MAX_RETRY_DELAY
       @nodes = Nodes.new(address, self)
       @resources = Resources.new(address, self)
       @role_attachments = RoleAttachments.new(address, self)
@@ -36,6 +43,29 @@ module SDM
 
       return Base64.strict_encode64(OpenSSL::HMAC.digest(OpenSSL::Digest::SHA256.new, signing_key, request_hash))
     end
+
+    def jitterSleep(iter)
+      dur_max = @base_retry_delay * 2 ** iter
+      if (dur_max > @max_retry_delay)
+        dur_max = @max_retry_delay
+      end
+      dur = random.random() * dur_max
+      time.sleep(dur.seconds)
+    end
+
+    def shouldRetry(iter, err)
+      if (iter >= @max_retries - 1)
+        return false
+      end
+      if not err.is_a? GRPC::BadStatus
+        return true
+      end
+      return err.code() == 13
+    end
+
+    attr_reader :max_retries
+    attr_reader :base_retry_delay
+    attr_reader :max_retry_delay
 
     # API authentication token (read-only).
     attr_reader :api_access_key

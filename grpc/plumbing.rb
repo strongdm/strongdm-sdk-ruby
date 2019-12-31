@@ -1,5 +1,6 @@
 require "grpc"
 require "google/protobuf/well_known_types"
+require "json"
 require_relative "./options_pb"
 require_relative "./drivers_pb"
 require_relative "./spec_pb"
@@ -12,6 +13,23 @@ require_relative "../errors/errors"
 
 module SDM
   module Plumbing
+    def self.quote_filter_args(filter, *args)
+      parts = (filter + " ").split("?")
+      if parts.length() != args.length() + 1
+        raise BadRequestError.new("incorrect number of replacements")
+      end
+      b = ""
+      parts.each_with_index do |v, i|
+        b += v
+        if i < args.length()
+          s = args[i].to_s()
+          s = JSON.dump(s)
+          b += s
+        end
+      end
+      return b
+    end
+
     def self.timestamp_to_porcelain(t)
       return Time.at(t.seconds + t.nanos * (10 ** -9))
     end

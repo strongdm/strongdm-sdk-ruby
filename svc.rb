@@ -31,10 +31,19 @@ module SDM
       req = V1::NodeCreateRequest.new()
       req.node = Plumbing::node_to_plumbing(node)
 
-      begin
-        plumbing_response = @stub.create(req, metadata: @parent.get_metadata("Nodes.Create", req), deadline: deadline)
-      rescue => exception
-        raise Plumbing::error_to_porcelain(exception)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.create(req, metadata: @parent.get_metadata("Nodes.Create", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            continue
+          end
+          raise Plumbing::error_to_porcelain(exception)
+        end
+        break
       end
       resp = NodeCreateResponse.new()
       resp.meta = Plumbing::create_response_metadata_to_porcelain(plumbing_response.meta)
@@ -49,10 +58,19 @@ module SDM
       req = V1::NodeGetRequest.new()
       req.id = id
 
-      begin
-        plumbing_response = @stub.get(req, metadata: @parent.get_metadata("Nodes.Get", req), deadline: deadline)
-      rescue => exception
-        raise Plumbing::error_to_porcelain(exception)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.get(req, metadata: @parent.get_metadata("Nodes.Get", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            continue
+          end
+          raise Plumbing::error_to_porcelain(exception)
+        end
+        break
       end
       resp = NodeGetResponse.new()
       resp.meta = Plumbing::get_response_metadata_to_porcelain(plumbing_response.meta)
@@ -66,10 +84,19 @@ module SDM
       req = V1::NodeUpdateRequest.new()
       req.node = Plumbing::node_to_plumbing(node)
 
-      begin
-        plumbing_response = @stub.update(req, metadata: @parent.get_metadata("Nodes.Update", req), deadline: deadline)
-      rescue => exception
-        raise Plumbing::error_to_porcelain(exception)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.update(req, metadata: @parent.get_metadata("Nodes.Update", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            continue
+          end
+          raise Plumbing::error_to_porcelain(exception)
+        end
+        break
       end
       resp = NodeUpdateResponse.new()
       resp.meta = Plumbing::update_response_metadata_to_porcelain(plumbing_response.meta)
@@ -83,10 +110,19 @@ module SDM
       req = V1::NodeDeleteRequest.new()
       req.id = id
 
-      begin
-        plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("Nodes.Delete", req), deadline: deadline)
-      rescue => exception
-        raise Plumbing::error_to_porcelain(exception)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("Nodes.Delete", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            continue
+          end
+          raise Plumbing::error_to_porcelain(exception)
+        end
+        break
       end
       resp = NodeDeleteResponse.new()
       resp.meta = Plumbing::delete_response_metadata_to_porcelain(plumbing_response.meta)
@@ -95,21 +131,27 @@ module SDM
     end
 
     # List gets a list of Nodes matching a given set of criteria.
-    def list(filter, deadline: nil)
+    def list(filter, *args, deadline: nil)
       req = V1::NodeListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
       page_size_option = @parent._test_options["PageSize"]
       if page_size_option.is_a? Integer
         req.meta.limit = page_size_option
       end
-      req.filter = filter
+      req.filter = Plumbing::quote_filter_args(filter, *args)
       resp = Enumerator::Generator.new { |g|
+        tries = 0
         loop do
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("Nodes.List", req), deadline: deadline)
           rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              continue
+            end
             raise Plumbing::error_to_porcelain(exception)
           end
+          tries = 0
           plumbing_response.nodes.each do |plumbing_item|
             g.yield Plumbing::node_to_porcelain(plumbing_item)
           end
@@ -141,10 +183,19 @@ module SDM
       req = V1::ResourceCreateRequest.new()
       req.resource = Plumbing::resource_to_plumbing(resource)
 
-      begin
-        plumbing_response = @stub.create(req, metadata: @parent.get_metadata("Resources.Create", req), deadline: deadline)
-      rescue => exception
-        raise Plumbing::error_to_porcelain(exception)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.create(req, metadata: @parent.get_metadata("Resources.Create", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            continue
+          end
+          raise Plumbing::error_to_porcelain(exception)
+        end
+        break
       end
       resp = ResourceCreateResponse.new()
       resp.meta = Plumbing::create_response_metadata_to_porcelain(plumbing_response.meta)
@@ -158,10 +209,19 @@ module SDM
       req = V1::ResourceGetRequest.new()
       req.id = id
 
-      begin
-        plumbing_response = @stub.get(req, metadata: @parent.get_metadata("Resources.Get", req), deadline: deadline)
-      rescue => exception
-        raise Plumbing::error_to_porcelain(exception)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.get(req, metadata: @parent.get_metadata("Resources.Get", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            continue
+          end
+          raise Plumbing::error_to_porcelain(exception)
+        end
+        break
       end
       resp = ResourceGetResponse.new()
       resp.meta = Plumbing::get_response_metadata_to_porcelain(plumbing_response.meta)
@@ -175,10 +235,19 @@ module SDM
       req = V1::ResourceUpdateRequest.new()
       req.resource = Plumbing::resource_to_plumbing(resource)
 
-      begin
-        plumbing_response = @stub.update(req, metadata: @parent.get_metadata("Resources.Update", req), deadline: deadline)
-      rescue => exception
-        raise Plumbing::error_to_porcelain(exception)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.update(req, metadata: @parent.get_metadata("Resources.Update", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            continue
+          end
+          raise Plumbing::error_to_porcelain(exception)
+        end
+        break
       end
       resp = ResourceUpdateResponse.new()
       resp.meta = Plumbing::update_response_metadata_to_porcelain(plumbing_response.meta)
@@ -192,10 +261,19 @@ module SDM
       req = V1::ResourceDeleteRequest.new()
       req.id = id
 
-      begin
-        plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("Resources.Delete", req), deadline: deadline)
-      rescue => exception
-        raise Plumbing::error_to_porcelain(exception)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("Resources.Delete", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            continue
+          end
+          raise Plumbing::error_to_porcelain(exception)
+        end
+        break
       end
       resp = ResourceDeleteResponse.new()
       resp.meta = Plumbing::delete_response_metadata_to_porcelain(plumbing_response.meta)
@@ -204,21 +282,27 @@ module SDM
     end
 
     # List gets a list of Resources matching a given set of criteria.
-    def list(filter, deadline: nil)
+    def list(filter, *args, deadline: nil)
       req = V1::ResourceListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
       page_size_option = @parent._test_options["PageSize"]
       if page_size_option.is_a? Integer
         req.meta.limit = page_size_option
       end
-      req.filter = filter
+      req.filter = Plumbing::quote_filter_args(filter, *args)
       resp = Enumerator::Generator.new { |g|
+        tries = 0
         loop do
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("Resources.List", req), deadline: deadline)
           rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              continue
+            end
             raise Plumbing::error_to_porcelain(exception)
           end
+          tries = 0
           plumbing_response.resources.each do |plumbing_item|
             g.yield Plumbing::resource_to_porcelain(plumbing_item)
           end
@@ -254,10 +338,19 @@ module SDM
       req = V1::RoleAttachmentCreateRequest.new()
       req.role_attachment = Plumbing::role_attachment_to_plumbing(role_attachment)
 
-      begin
-        plumbing_response = @stub.create(req, metadata: @parent.get_metadata("RoleAttachments.Create", req), deadline: deadline)
-      rescue => exception
-        raise Plumbing::error_to_porcelain(exception)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.create(req, metadata: @parent.get_metadata("RoleAttachments.Create", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            continue
+          end
+          raise Plumbing::error_to_porcelain(exception)
+        end
+        break
       end
       resp = RoleAttachmentCreateResponse.new()
       resp.meta = Plumbing::create_response_metadata_to_porcelain(plumbing_response.meta)
@@ -271,10 +364,19 @@ module SDM
       req = V1::RoleAttachmentGetRequest.new()
       req.id = id
 
-      begin
-        plumbing_response = @stub.get(req, metadata: @parent.get_metadata("RoleAttachments.Get", req), deadline: deadline)
-      rescue => exception
-        raise Plumbing::error_to_porcelain(exception)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.get(req, metadata: @parent.get_metadata("RoleAttachments.Get", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            continue
+          end
+          raise Plumbing::error_to_porcelain(exception)
+        end
+        break
       end
       resp = RoleAttachmentGetResponse.new()
       resp.meta = Plumbing::get_response_metadata_to_porcelain(plumbing_response.meta)
@@ -288,10 +390,19 @@ module SDM
       req = V1::RoleAttachmentDeleteRequest.new()
       req.id = id
 
-      begin
-        plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("RoleAttachments.Delete", req), deadline: deadline)
-      rescue => exception
-        raise Plumbing::error_to_porcelain(exception)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("RoleAttachments.Delete", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            continue
+          end
+          raise Plumbing::error_to_porcelain(exception)
+        end
+        break
       end
       resp = RoleAttachmentDeleteResponse.new()
       resp.meta = Plumbing::delete_response_metadata_to_porcelain(plumbing_response.meta)
@@ -300,21 +411,27 @@ module SDM
     end
 
     # List gets a list of RoleAttachments matching a given set of criteria.
-    def list(filter, deadline: nil)
+    def list(filter, *args, deadline: nil)
       req = V1::RoleAttachmentListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
       page_size_option = @parent._test_options["PageSize"]
       if page_size_option.is_a? Integer
         req.meta.limit = page_size_option
       end
-      req.filter = filter
+      req.filter = Plumbing::quote_filter_args(filter, *args)
       resp = Enumerator::Generator.new { |g|
+        tries = 0
         loop do
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("RoleAttachments.List", req), deadline: deadline)
           rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              continue
+            end
             raise Plumbing::error_to_porcelain(exception)
           end
+          tries = 0
           plumbing_response.role_attachments.each do |plumbing_item|
             g.yield Plumbing::role_attachment_to_porcelain(plumbing_item)
           end
@@ -351,10 +468,19 @@ module SDM
       req = V1::RoleCreateRequest.new()
       req.role = Plumbing::role_to_plumbing(role)
 
-      begin
-        plumbing_response = @stub.create(req, metadata: @parent.get_metadata("Roles.Create", req), deadline: deadline)
-      rescue => exception
-        raise Plumbing::error_to_porcelain(exception)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.create(req, metadata: @parent.get_metadata("Roles.Create", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            continue
+          end
+          raise Plumbing::error_to_porcelain(exception)
+        end
+        break
       end
       resp = RoleCreateResponse.new()
       resp.meta = Plumbing::create_response_metadata_to_porcelain(plumbing_response.meta)
@@ -368,10 +494,19 @@ module SDM
       req = V1::RoleGetRequest.new()
       req.id = id
 
-      begin
-        plumbing_response = @stub.get(req, metadata: @parent.get_metadata("Roles.Get", req), deadline: deadline)
-      rescue => exception
-        raise Plumbing::error_to_porcelain(exception)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.get(req, metadata: @parent.get_metadata("Roles.Get", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            continue
+          end
+          raise Plumbing::error_to_porcelain(exception)
+        end
+        break
       end
       resp = RoleGetResponse.new()
       resp.meta = Plumbing::get_response_metadata_to_porcelain(plumbing_response.meta)
@@ -385,10 +520,19 @@ module SDM
       req = V1::RoleUpdateRequest.new()
       req.role = Plumbing::role_to_plumbing(role)
 
-      begin
-        plumbing_response = @stub.update(req, metadata: @parent.get_metadata("Roles.Update", req), deadline: deadline)
-      rescue => exception
-        raise Plumbing::error_to_porcelain(exception)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.update(req, metadata: @parent.get_metadata("Roles.Update", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            continue
+          end
+          raise Plumbing::error_to_porcelain(exception)
+        end
+        break
       end
       resp = RoleUpdateResponse.new()
       resp.meta = Plumbing::update_response_metadata_to_porcelain(plumbing_response.meta)
@@ -402,10 +546,19 @@ module SDM
       req = V1::RoleDeleteRequest.new()
       req.id = id
 
-      begin
-        plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("Roles.Delete", req), deadline: deadline)
-      rescue => exception
-        raise Plumbing::error_to_porcelain(exception)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("Roles.Delete", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            continue
+          end
+          raise Plumbing::error_to_porcelain(exception)
+        end
+        break
       end
       resp = RoleDeleteResponse.new()
       resp.meta = Plumbing::delete_response_metadata_to_porcelain(plumbing_response.meta)
@@ -414,21 +567,27 @@ module SDM
     end
 
     # List gets a list of Roles matching a given set of criteria.
-    def list(filter, deadline: nil)
+    def list(filter, *args, deadline: nil)
       req = V1::RoleListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
       page_size_option = @parent._test_options["PageSize"]
       if page_size_option.is_a? Integer
         req.meta.limit = page_size_option
       end
-      req.filter = filter
+      req.filter = Plumbing::quote_filter_args(filter, *args)
       resp = Enumerator::Generator.new { |g|
+        tries = 0
         loop do
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("Roles.List", req), deadline: deadline)
           rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              continue
+            end
             raise Plumbing::error_to_porcelain(exception)
           end
+          tries = 0
           plumbing_response.roles.each do |plumbing_item|
             g.yield Plumbing::role_to_porcelain(plumbing_item)
           end
