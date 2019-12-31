@@ -31,6 +31,9 @@ module SDM
       if porcelain.instance_of? GoogleGke
         plumbing.google_gke = google_gke_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? Ssh
+        plumbing.ssh = ssh_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? HttpBasicAuth
         plumbing.http_basic_auth = http_basic_auth_to_plumbing(porcelain)
       end
@@ -70,6 +73,9 @@ module SDM
       end
       if plumbing.google_gke != nil
         return google_gke_to_porcelain(plumbing.google_gke)
+      end
+      if plumbing.ssh != nil
+        return ssh_to_porcelain(plumbing.ssh)
       end
       if plumbing.http_basic_auth != nil
         return http_basic_auth_to_porcelain(plumbing.http_basic_auth)
@@ -249,6 +255,50 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = google_gke_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+
+    def self.ssh_to_porcelain(plumbing)
+      porcelain = SSH.new()
+      porcelain.id = plumbing.id
+      porcelain.name = plumbing.name
+      porcelain.port_override = plumbing.port_override
+      porcelain.healthy = plumbing.healthy
+      porcelain.hostname = plumbing.hostname
+      porcelain.username = plumbing.username
+      porcelain.port = plumbing.port
+      porcelain.public_key = plumbing.public_key
+      porcelain
+    end
+
+    def self.ssh_to_plumbing(porcelain)
+      plumbing = V1::SSH.new()
+      plumbing.id = porcelain.id unless porcelain.id == nil
+      plumbing.name = porcelain.name unless porcelain.name == nil
+      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
+      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
+      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
+      plumbing.username = porcelain.username unless porcelain.username == nil
+      plumbing.port = porcelain.port unless porcelain.port == nil
+      plumbing.public_key = porcelain.public_key unless porcelain.public_key == nil
+      plumbing
+    end
+
+    def self.repeated_ssh_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = ssh_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_ssh_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = ssh_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
