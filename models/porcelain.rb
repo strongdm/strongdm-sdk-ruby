@@ -1,4 +1,44 @@
 module SDM
+  class AmazonES
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
+    attr_accessor :endpoint
+
+    attr_accessor :access_key
+
+    attr_accessor :secret_access_key
+
+    attr_accessor :region
+
+    attr_accessor :port_override
+  end
+
+  class Elastic
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
+    attr_accessor :hostname
+
+    attr_accessor :username
+
+    attr_accessor :password
+
+    attr_accessor :port_override
+
+    attr_accessor :port
+
+    attr_accessor :tls_required
+  end
+
   class Redis
     # Unique identifier of the Resource.
     attr_accessor :id
@@ -131,6 +171,78 @@ module SDM
     attr_accessor :service_account_key_filename
   end
 
+  class DynamoDB
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
+    attr_accessor :endpoint
+
+    attr_accessor :access_key
+
+    attr_accessor :secret_access_key
+
+    attr_accessor :region
+
+    attr_accessor :port_override
+  end
+
+  class RDP
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
+    attr_accessor :hostname
+
+    attr_accessor :username
+
+    attr_accessor :password
+
+    attr_accessor :port_override
+
+    attr_accessor :port
+  end
+
+  class BigQuery
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
+    attr_accessor :endpoint
+
+    attr_accessor :private_key
+
+    attr_accessor :project
+
+    attr_accessor :port_override
+
+    attr_accessor :username
+  end
+
+  class Memcached
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
+    attr_accessor :hostname
+
+    attr_accessor :port_override
+
+    attr_accessor :port
+  end
+
   class SSH
     # Unique identifier of the Resource.
     attr_accessor :id
@@ -209,6 +321,27 @@ module SDM
     attr_accessor :default_path
 
     attr_accessor :subdomain
+  end
+
+  class Cassandra
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
+    attr_accessor :hostname
+
+    attr_accessor :username
+
+    attr_accessor :password
+
+    attr_accessor :port_override
+
+    attr_accessor :port
+
+    attr_accessor :tls_required
   end
 
   class Mysql
@@ -312,6 +445,25 @@ module SDM
     attr_accessor :database
 
     attr_accessor :port_override
+
+    attr_accessor :port
+  end
+
+  class Druid
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
+    attr_accessor :hostname
+
+    attr_accessor :port_override
+
+    attr_accessor :username
+
+    attr_accessor :password
 
     attr_accessor :port
   end
