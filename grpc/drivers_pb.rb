@@ -9,52 +9,23 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("drivers.proto", :syntax => :proto3) do
     add_message "v1.Resource" do
       oneof :resource do
-        optional :amazon_es, :message, 336054967, "v1.AmazonES"
-        optional :elastic, :message, 407986328, "v1.Elastic"
         optional :redis, :message, 138869556, "v1.Redis"
         optional :elasticache_redis, :message, 28044999, "v1.ElasticacheRedis"
         optional :kubernetes, :message, 231451540, "v1.Kubernetes"
         optional :kubernetes_basic_auth, :message, 471837167, "v1.KubernetesBasicAuth"
         optional :amazon_eks, :message, 144724720, "v1.AmazonEKS"
         optional :google_gke, :message, 138696469, "v1.GoogleGKE"
-        optional :dynamo_db, :message, 407050300, "v1.DynamoDB"
-        optional :rdp, :message, 487483552, "v1.RDP"
-        optional :big_query, :message, 441535094, "v1.BigQuery"
-        optional :memcached, :message, 514462367, "v1.Memcached"
         optional :ssh, :message, 257251967, "v1.SSH"
         optional :http_basic_auth, :message, 448320780, "v1.HTTPBasicAuth"
         optional :http_no_auth, :message, 435770653, "v1.HTTPNoAuth"
         optional :http_auth, :message, 224436590, "v1.HTTPAuth"
-        optional :cassandra, :message, 454215409, "v1.Cassandra"
         optional :mysql, :message, 386203715, "v1.Mysql"
         optional :aurora_mysql, :message, 18289005, "v1.AuroraMysql"
         optional :clustrix, :message, 532386964, "v1.Clustrix"
         optional :maria, :message, 466202260, "v1.Maria"
         optional :memsql, :message, 269999277, "v1.Memsql"
-        optional :druid, :message, 531952255, "v1.Druid"
         optional :athena, :message, 86524680, "v1.Athena"
       end
-    end
-    add_message "v1.AmazonES" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :endpoint, :string, 1
-      optional :access_key, :string, 2
-      optional :secret_access_key, :string, 3
-      optional :region, :string, 4
-      optional :port_override, :int32, 5
-    end
-    add_message "v1.Elastic" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :hostname, :string, 1
-      optional :username, :string, 2
-      optional :password, :string, 3
-      optional :port_override, :int32, 4
-      optional :port, :int32, 5
-      optional :tls_required, :bool, 6
     end
     add_message "v1.Redis" do
       optional :id, :string, 32768
@@ -125,44 +96,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :service_account_key, :string, 4
       optional :service_account_key_filename, :string, 5
     end
-    add_message "v1.DynamoDB" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :endpoint, :string, 1
-      optional :access_key, :string, 2
-      optional :secret_access_key, :string, 3
-      optional :region, :string, 4
-      optional :port_override, :int32, 5
-    end
-    add_message "v1.RDP" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :hostname, :string, 1
-      optional :username, :string, 2
-      optional :password, :string, 3
-      optional :port_override, :int32, 4
-      optional :port, :int32, 5
-    end
-    add_message "v1.BigQuery" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :endpoint, :string, 1
-      optional :private_key, :string, 2
-      optional :project, :string, 3
-      optional :port_override, :int32, 4
-      optional :username, :string, 5
-    end
-    add_message "v1.Memcached" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :hostname, :string, 1
-      optional :port_override, :int32, 2
-      optional :port, :int32, 3
-    end
     add_message "v1.SSH" do
       optional :id, :string, 32768
       optional :name, :string, 32769
@@ -204,17 +137,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :headers_blacklist, :string, 4
       optional :default_path, :string, 5
       optional :subdomain, :string, 6
-    end
-    add_message "v1.Cassandra" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :hostname, :string, 1
-      optional :username, :string, 2
-      optional :password, :string, 3
-      optional :port_override, :int32, 4
-      optional :port, :int32, 5
-      optional :tls_required, :bool, 6
     end
     add_message "v1.Mysql" do
       optional :id, :string, 32768
@@ -271,16 +193,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port_override, :int32, 5
       optional :port, :int32, 6
     end
-    add_message "v1.Druid" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :hostname, :string, 1
-      optional :port_override, :int32, 2
-      optional :username, :string, 3
-      optional :password, :string, 4
-      optional :port, :int32, 5
-    end
     add_message "v1.Athena" do
       optional :id, :string, 32768
       optional :name, :string, 32769
@@ -296,28 +208,20 @@ end
 
 module V1
   Resource = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Resource").msgclass
-  AmazonES = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AmazonES").msgclass
-  Elastic = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Elastic").msgclass
   Redis = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Redis").msgclass
   ElasticacheRedis = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ElasticacheRedis").msgclass
   Kubernetes = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Kubernetes").msgclass
   KubernetesBasicAuth = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.KubernetesBasicAuth").msgclass
   AmazonEKS = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AmazonEKS").msgclass
   GoogleGKE = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GoogleGKE").msgclass
-  DynamoDB = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DynamoDB").msgclass
-  RDP = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RDP").msgclass
-  BigQuery = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.BigQuery").msgclass
-  Memcached = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Memcached").msgclass
   SSH = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SSH").msgclass
   HTTPBasicAuth = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.HTTPBasicAuth").msgclass
   HTTPNoAuth = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.HTTPNoAuth").msgclass
   HTTPAuth = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.HTTPAuth").msgclass
-  Cassandra = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Cassandra").msgclass
   Mysql = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Mysql").msgclass
   AuroraMysql = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuroraMysql").msgclass
   Clustrix = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Clustrix").msgclass
   Maria = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Maria").msgclass
   Memsql = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Memsql").msgclass
-  Druid = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Druid").msgclass
   Athena = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Athena").msgclass
 end
