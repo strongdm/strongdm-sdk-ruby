@@ -43,7 +43,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :memsql, :message, 269999277, "v1.Memsql"
         optional :druid, :message, 531952255, "v1.Druid"
         optional :sql_server, :message, 393218725, "v1.SQLServer"
-        optional :mongo_hybrid, :message, 239475898, "v1.MongoHybrid"
+        optional :mongo_legacy_host, :message, 239475898, "v1.MongoLegacyHost"
+        optional :mongo_legacy_replicaset, :message, 388991693, "v1.MongoLegacyReplicaset"
         optional :mongo_host, :message, 72181544, "v1.MongoHost"
         optional :mongo_replica_set, :message, 513556939, "v1.MongoReplicaSet"
         optional :athena, :message, 86524680, "v1.Athena"
@@ -64,10 +65,12 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
       optional :hostname, :string, 1
-      optional :port_override, :int32, 2
-      optional :port, :int32, 3
-      optional :username, :string, 4
-      optional :tls_required, :bool, 5
+      optional :password, :string, 2
+      optional :database, :string, 3
+      optional :port_override, :int32, 4
+      optional :port, :int32, 5
+      optional :username, :string, 6
+      optional :tls_required, :bool, 7
     end
     add_message "v1.Teradata" do
       optional :id, :string, 32768
@@ -83,10 +86,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
-      optional :endpoint, :string, 1
-      optional :access_key, :string, 2
-      optional :secret_access_key, :string, 3
-      optional :region, :string, 4
+      optional :region, :string, 1
+      optional :secret_access_key, :string, 2
+      optional :endpoint, :string, 3
+      optional :access_key, :string, 4
       optional :port_override, :int32, 5
     end
     add_message "v1.Elastic" do
@@ -140,12 +143,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port, :int32, 2
       optional :username, :string, 3
       optional :password, :string, 4
-      optional :certificate_authority, :string, 5
-      optional :certificate_authority_filename, :string, 6
-      optional :client_certificate, :string, 7
-      optional :client_certificate_filename, :string, 8
-      optional :client_key, :string, 9
-      optional :client_key_filename, :string, 10
     end
     add_message "v1.AmazonEKS" do
       optional :id, :string, 32768
@@ -185,10 +182,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
-      optional :endpoint, :string, 1
-      optional :access_key, :string, 2
-      optional :secret_access_key, :string, 3
-      optional :region, :string, 4
+      optional :access_key, :string, 1
+      optional :secret_access_key, :string, 2
+      optional :region, :string, 3
+      optional :endpoint, :string, 4
       optional :port_override, :int32, 5
     end
     add_message "v1.RDP" do
@@ -205,10 +202,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
-      optional :endpoint, :string, 1
-      optional :private_key, :string, 2
-      optional :project, :string, 3
-      optional :port_override, :int32, 4
+      optional :private_key, :string, 1
+      optional :project, :string, 2
+      optional :port_override, :int32, 3
+      optional :endpoint, :string, 4
       optional :username, :string, 5
     end
     add_message "v1.Snowflake" do
@@ -417,10 +414,11 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :password, :string, 3
       optional :database, :string, 4
       optional :port_override, :int32, 5
-      optional :port, :int32, 6
-      optional :override_database, :bool, 7
+      optional :schema, :string, 6
+      optional :port, :int32, 7
+      optional :override_database, :bool, 8
     end
-    add_message "v1.MongoHybrid" do
+    add_message "v1.MongoLegacyHost" do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
@@ -432,6 +430,21 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port, :int32, 6
       optional :replica_set, :string, 7
       optional :connect_to_replica, :bool, 8
+      optional :tls_required, :bool, 9
+    end
+    add_message "v1.MongoLegacyReplicaset" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :hostname, :string, 1
+      optional :auth_database, :string, 2
+      optional :port_override, :int32, 3
+      optional :username, :string, 4
+      optional :password, :string, 5
+      optional :port, :int32, 6
+      optional :replica_set, :string, 7
+      optional :connect_to_replica, :bool, 8
+      optional :tls_required, :bool, 9
     end
     add_message "v1.MongoHost" do
       optional :id, :string, 32768
@@ -443,6 +456,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :username, :string, 4
       optional :password, :string, 5
       optional :port, :int32, 6
+      optional :schema, :string, 7
+      optional :tls_required, :bool, 8
     end
     add_message "v1.MongoReplicaSet" do
       optional :id, :string, 32768
@@ -456,6 +471,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port, :int32, 6
       optional :replica_set, :string, 7
       optional :connect_to_replica, :bool, 8
+      optional :tls_required, :bool, 9
     end
     add_message "v1.Athena" do
       optional :id, :string, 32768
@@ -506,7 +522,8 @@ module V1
   Memsql = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Memsql").msgclass
   Druid = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Druid").msgclass
   SQLServer = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SQLServer").msgclass
-  MongoHybrid = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MongoHybrid").msgclass
+  MongoLegacyHost = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MongoLegacyHost").msgclass
+  MongoLegacyReplicaset = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MongoLegacyReplicaset").msgclass
   MongoHost = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MongoHost").msgclass
   MongoReplicaSet = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MongoReplicaSet").msgclass
   Athena = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Athena").msgclass

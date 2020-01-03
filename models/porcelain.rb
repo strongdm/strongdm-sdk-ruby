@@ -28,6 +28,10 @@ module SDM
 
     attr_accessor :hostname
 
+    attr_accessor :password
+
+    attr_accessor :database
+
     attr_accessor :port_override
 
     attr_accessor :port
@@ -64,13 +68,13 @@ module SDM
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
 
-    attr_accessor :endpoint
-
-    attr_accessor :access_key
+    attr_accessor :region
 
     attr_accessor :secret_access_key
 
-    attr_accessor :region
+    attr_accessor :endpoint
+
+    attr_accessor :access_key
 
     attr_accessor :port_override
   end
@@ -172,18 +176,6 @@ module SDM
     attr_accessor :username
 
     attr_accessor :password
-
-    attr_accessor :certificate_authority
-
-    attr_accessor :certificate_authority_filename
-
-    attr_accessor :client_certificate
-
-    attr_accessor :client_certificate_filename
-
-    attr_accessor :client_key
-
-    attr_accessor :client_key_filename
   end
 
   class AmazonEKS
@@ -259,13 +251,13 @@ module SDM
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
 
-    attr_accessor :endpoint
-
     attr_accessor :access_key
 
     attr_accessor :secret_access_key
 
     attr_accessor :region
+
+    attr_accessor :endpoint
 
     attr_accessor :port_override
   end
@@ -297,13 +289,13 @@ module SDM
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
 
-    attr_accessor :endpoint
-
     attr_accessor :private_key
 
     attr_accessor :project
 
     attr_accessor :port_override
+
+    attr_accessor :endpoint
 
     attr_accessor :username
   end
@@ -702,12 +694,14 @@ module SDM
 
     attr_accessor :port_override
 
+    attr_accessor :schema
+
     attr_accessor :port
 
     attr_accessor :override_database
   end
 
-  class MongoHybrid
+  class MongoLegacyHost
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
@@ -730,6 +724,35 @@ module SDM
     attr_accessor :replica_set
 
     attr_accessor :connect_to_replica
+
+    attr_accessor :tls_required
+  end
+
+  class MongoLegacyReplicaset
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
+    attr_accessor :hostname
+
+    attr_accessor :auth_database
+
+    attr_accessor :port_override
+
+    attr_accessor :username
+
+    attr_accessor :password
+
+    attr_accessor :port
+
+    attr_accessor :replica_set
+
+    attr_accessor :connect_to_replica
+
+    attr_accessor :tls_required
   end
 
   class MongoHost
@@ -751,6 +774,10 @@ module SDM
     attr_accessor :password
 
     attr_accessor :port
+
+    attr_accessor :schema
+
+    attr_accessor :tls_required
   end
 
   class MongoReplicaSet
@@ -776,6 +803,8 @@ module SDM
     attr_accessor :replica_set
 
     attr_accessor :connect_to_replica
+
+    attr_accessor :tls_required
   end
 
   class Athena

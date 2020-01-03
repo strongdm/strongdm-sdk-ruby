@@ -142,8 +142,11 @@ module SDM
       if porcelain.instance_of? SqlServer
         plumbing.sql_server = sql_server_to_plumbing(porcelain)
       end
-      if porcelain.instance_of? MongoHybrID
-        plumbing.mongo_hybrid = mongo_hybrid_to_plumbing(porcelain)
+      if porcelain.instance_of? MongoLegacyHost
+        plumbing.mongo_legacy_host = mongo_legacy_host_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? MongoLegacyReplicaset
+        plumbing.mongo_legacy_replicaset = mongo_legacy_replicaset_to_plumbing(porcelain)
       end
       if porcelain.instance_of? MongoHost
         plumbing.mongo_host = mongo_host_to_plumbing(porcelain)
@@ -260,8 +263,11 @@ module SDM
       if plumbing.sql_server != nil
         return sql_server_to_porcelain(plumbing.sql_server)
       end
-      if plumbing.mongo_hybrid != nil
-        return mongo_hybrid_to_porcelain(plumbing.mongo_hybrid)
+      if plumbing.mongo_legacy_host != nil
+        return mongo_legacy_host_to_porcelain(plumbing.mongo_legacy_host)
+      end
+      if plumbing.mongo_legacy_replicaset != nil
+        return mongo_legacy_replicaset_to_porcelain(plumbing.mongo_legacy_replicaset)
       end
       if plumbing.mongo_host != nil
         return mongo_host_to_porcelain(plumbing.mongo_host)
@@ -342,6 +348,8 @@ module SDM
       porcelain.name = plumbing.name
       porcelain.healthy = plumbing.healthy
       porcelain.hostname = plumbing.hostname
+      porcelain.password = plumbing.password
+      porcelain.database = plumbing.database
       porcelain.port_override = plumbing.port_override
       porcelain.port = plumbing.port
       porcelain.username = plumbing.username
@@ -355,6 +363,8 @@ module SDM
       plumbing.name = porcelain.name unless porcelain.name == nil
       plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
       plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
+      plumbing.password = porcelain.password unless porcelain.password == nil
+      plumbing.database = porcelain.database unless porcelain.database == nil
       plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
       plumbing.port = porcelain.port unless porcelain.port == nil
       plumbing.username = porcelain.username unless porcelain.username == nil
@@ -429,10 +439,10 @@ module SDM
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
       porcelain.healthy = plumbing.healthy
+      porcelain.region = plumbing.region
+      porcelain.secret_access_key = plumbing.secret_access_key
       porcelain.endpoint = plumbing.endpoint
       porcelain.access_key = plumbing.access_key
-      porcelain.secret_access_key = plumbing.secret_access_key
-      porcelain.region = plumbing.region
       porcelain.port_override = plumbing.port_override
       porcelain
     end
@@ -442,10 +452,10 @@ module SDM
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
       plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
+      plumbing.region = porcelain.region unless porcelain.region == nil
+      plumbing.secret_access_key = porcelain.secret_access_key unless porcelain.secret_access_key == nil
       plumbing.endpoint = porcelain.endpoint unless porcelain.endpoint == nil
       plumbing.access_key = porcelain.access_key unless porcelain.access_key == nil
-      plumbing.secret_access_key = porcelain.secret_access_key unless porcelain.secret_access_key == nil
-      plumbing.region = porcelain.region unless porcelain.region == nil
       plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
       plumbing
     end
@@ -659,12 +669,6 @@ module SDM
       porcelain.port = plumbing.port
       porcelain.username = plumbing.username
       porcelain.password = plumbing.password
-      porcelain.certificate_authority = plumbing.certificate_authority
-      porcelain.certificate_authority_filename = plumbing.certificate_authority_filename
-      porcelain.client_certificate = plumbing.client_certificate
-      porcelain.client_certificate_filename = plumbing.client_certificate_filename
-      porcelain.client_key = plumbing.client_key
-      porcelain.client_key_filename = plumbing.client_key_filename
       porcelain
     end
 
@@ -677,12 +681,6 @@ module SDM
       plumbing.port = porcelain.port unless porcelain.port == nil
       plumbing.username = porcelain.username unless porcelain.username == nil
       plumbing.password = porcelain.password unless porcelain.password == nil
-      plumbing.certificate_authority = porcelain.certificate_authority unless porcelain.certificate_authority == nil
-      plumbing.certificate_authority_filename = porcelain.certificate_authority_filename unless porcelain.certificate_authority_filename == nil
-      plumbing.client_certificate = porcelain.client_certificate unless porcelain.client_certificate == nil
-      plumbing.client_certificate_filename = porcelain.client_certificate_filename unless porcelain.client_certificate_filename == nil
-      plumbing.client_key = porcelain.client_key unless porcelain.client_key == nil
-      plumbing.client_key_filename = porcelain.client_key_filename unless porcelain.client_key_filename == nil
       plumbing
     end
 
@@ -849,10 +847,10 @@ module SDM
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
       porcelain.healthy = plumbing.healthy
-      porcelain.endpoint = plumbing.endpoint
       porcelain.access_key = plumbing.access_key
       porcelain.secret_access_key = plumbing.secret_access_key
       porcelain.region = plumbing.region
+      porcelain.endpoint = plumbing.endpoint
       porcelain.port_override = plumbing.port_override
       porcelain
     end
@@ -862,10 +860,10 @@ module SDM
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
       plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
-      plumbing.endpoint = porcelain.endpoint unless porcelain.endpoint == nil
       plumbing.access_key = porcelain.access_key unless porcelain.access_key == nil
       plumbing.secret_access_key = porcelain.secret_access_key unless porcelain.secret_access_key == nil
       plumbing.region = porcelain.region unless porcelain.region == nil
+      plumbing.endpoint = porcelain.endpoint unless porcelain.endpoint == nil
       plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
       plumbing
     end
@@ -937,10 +935,10 @@ module SDM
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
       porcelain.healthy = plumbing.healthy
-      porcelain.endpoint = plumbing.endpoint
       porcelain.private_key = plumbing.private_key
       porcelain.project = plumbing.project
       porcelain.port_override = plumbing.port_override
+      porcelain.endpoint = plumbing.endpoint
       porcelain.username = plumbing.username
       porcelain
     end
@@ -950,10 +948,10 @@ module SDM
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
       plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
-      plumbing.endpoint = porcelain.endpoint unless porcelain.endpoint == nil
       plumbing.private_key = porcelain.private_key unless porcelain.private_key == nil
       plumbing.project = porcelain.project unless porcelain.project == nil
       plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
+      plumbing.endpoint = porcelain.endpoint unless porcelain.endpoint == nil
       plumbing.username = porcelain.username unless porcelain.username == nil
       plumbing
     end
@@ -1812,6 +1810,7 @@ module SDM
       porcelain.password = plumbing.password
       porcelain.database = plumbing.database
       porcelain.port_override = plumbing.port_override
+      porcelain.schema = plumbing.schema
       porcelain.port = plumbing.port
       porcelain.override_database = plumbing.override_database
       porcelain
@@ -1827,6 +1826,7 @@ module SDM
       plumbing.password = porcelain.password unless porcelain.password == nil
       plumbing.database = porcelain.database unless porcelain.database == nil
       plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
+      plumbing.schema = porcelain.schema unless porcelain.schema == nil
       plumbing.port = porcelain.port unless porcelain.port == nil
       plumbing.override_database = porcelain.override_database unless porcelain.override_database == nil
       plumbing
@@ -1850,8 +1850,8 @@ module SDM
       items
     end
 
-    def self.mongo_hybrid_to_porcelain(plumbing)
-      porcelain = MongoHybrid.new()
+    def self.mongo_legacy_host_to_porcelain(plumbing)
+      porcelain = MongoLegacyHost.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
       porcelain.healthy = plumbing.healthy
@@ -1863,11 +1863,12 @@ module SDM
       porcelain.port = plumbing.port
       porcelain.replica_set = plumbing.replica_set
       porcelain.connect_to_replica = plumbing.connect_to_replica
+      porcelain.tls_required = plumbing.tls_required
       porcelain
     end
 
-    def self.mongo_hybrid_to_plumbing(porcelain)
-      plumbing = V1::MongoHybrid.new()
+    def self.mongo_legacy_host_to_plumbing(porcelain)
+      plumbing = V1::MongoLegacyHost.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
       plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
@@ -1879,22 +1880,75 @@ module SDM
       plumbing.port = porcelain.port unless porcelain.port == nil
       plumbing.replica_set = porcelain.replica_set unless porcelain.replica_set == nil
       plumbing.connect_to_replica = porcelain.connect_to_replica unless porcelain.connect_to_replica == nil
+      plumbing.tls_required = porcelain.tls_required unless porcelain.tls_required == nil
       plumbing
     end
 
-    def self.repeated_mongo_hybrid_to_plumbing(porcelains)
+    def self.repeated_mongo_legacy_host_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
-        plumbing = mongo_hybrid_to_plumbing(porcelain)
+        plumbing = mongo_legacy_host_to_plumbing(porcelain)
         items.append(plumbing)
       end
       items
     end
 
-    def self.repeated_mongo_hybrid_to_porcelain(plumbings)
+    def self.repeated_mongo_legacy_host_to_porcelain(plumbings)
       items = Array.new
       plumbings.each do |plumbing|
-        porcelain = mongo_hybrid_to_porcelain(plumbing)
+        porcelain = mongo_legacy_host_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+
+    def self.mongo_legacy_replicaset_to_porcelain(plumbing)
+      porcelain = MongoLegacyReplicaset.new()
+      porcelain.id = plumbing.id
+      porcelain.name = plumbing.name
+      porcelain.healthy = plumbing.healthy
+      porcelain.hostname = plumbing.hostname
+      porcelain.auth_database = plumbing.auth_database
+      porcelain.port_override = plumbing.port_override
+      porcelain.username = plumbing.username
+      porcelain.password = plumbing.password
+      porcelain.port = plumbing.port
+      porcelain.replica_set = plumbing.replica_set
+      porcelain.connect_to_replica = plumbing.connect_to_replica
+      porcelain.tls_required = plumbing.tls_required
+      porcelain
+    end
+
+    def self.mongo_legacy_replicaset_to_plumbing(porcelain)
+      plumbing = V1::MongoLegacyReplicaset.new()
+      plumbing.id = porcelain.id unless porcelain.id == nil
+      plumbing.name = porcelain.name unless porcelain.name == nil
+      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
+      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
+      plumbing.auth_database = porcelain.auth_database unless porcelain.auth_database == nil
+      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
+      plumbing.username = porcelain.username unless porcelain.username == nil
+      plumbing.password = porcelain.password unless porcelain.password == nil
+      plumbing.port = porcelain.port unless porcelain.port == nil
+      plumbing.replica_set = porcelain.replica_set unless porcelain.replica_set == nil
+      plumbing.connect_to_replica = porcelain.connect_to_replica unless porcelain.connect_to_replica == nil
+      plumbing.tls_required = porcelain.tls_required unless porcelain.tls_required == nil
+      plumbing
+    end
+
+    def self.repeated_mongo_legacy_replicaset_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = mongo_legacy_replicaset_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_mongo_legacy_replicaset_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = mongo_legacy_replicaset_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -1911,6 +1965,8 @@ module SDM
       porcelain.username = plumbing.username
       porcelain.password = plumbing.password
       porcelain.port = plumbing.port
+      porcelain.schema = plumbing.schema
+      porcelain.tls_required = plumbing.tls_required
       porcelain
     end
 
@@ -1925,6 +1981,8 @@ module SDM
       plumbing.username = porcelain.username unless porcelain.username == nil
       plumbing.password = porcelain.password unless porcelain.password == nil
       plumbing.port = porcelain.port unless porcelain.port == nil
+      plumbing.schema = porcelain.schema unless porcelain.schema == nil
+      plumbing.tls_required = porcelain.tls_required unless porcelain.tls_required == nil
       plumbing
     end
 
@@ -1959,6 +2017,7 @@ module SDM
       porcelain.port = plumbing.port
       porcelain.replica_set = plumbing.replica_set
       porcelain.connect_to_replica = plumbing.connect_to_replica
+      porcelain.tls_required = plumbing.tls_required
       porcelain
     end
 
@@ -1975,6 +2034,7 @@ module SDM
       plumbing.port = porcelain.port unless porcelain.port == nil
       plumbing.replica_set = porcelain.replica_set unless porcelain.replica_set == nil
       plumbing.connect_to_replica = porcelain.connect_to_replica unless porcelain.connect_to_replica == nil
+      plumbing.tls_required = porcelain.tls_required unless porcelain.tls_required == nil
       plumbing
     end
 
