@@ -1,4 +1,61 @@
 module SDM
+  class Sybase
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
+    attr_accessor :hostname
+
+    attr_accessor :username
+
+    attr_accessor :port_override
+
+    attr_accessor :port
+
+    attr_accessor :password
+  end
+
+  class Presto
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
+    attr_accessor :hostname
+
+    attr_accessor :port_override
+
+    attr_accessor :port
+
+    attr_accessor :username
+
+    attr_accessor :tls_required
+  end
+
+  class Teradata
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
+    attr_accessor :hostname
+
+    attr_accessor :username
+
+    attr_accessor :password
+
+    attr_accessor :port_override
+
+    attr_accessor :port
+  end
+
   class AmazonES
     # Unique identifier of the Resource.
     attr_accessor :id
@@ -171,6 +228,29 @@ module SDM
     attr_accessor :service_account_key_filename
   end
 
+  class Oracle
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
+    attr_accessor :hostname
+
+    attr_accessor :username
+
+    attr_accessor :password
+
+    attr_accessor :database
+
+    attr_accessor :port
+
+    attr_accessor :port_override
+
+    attr_accessor :tls_required
+  end
+
   class DynamoDB
     # Unique identifier of the Resource.
     attr_accessor :id
@@ -228,6 +308,27 @@ module SDM
     attr_accessor :username
   end
 
+  class Snowflake
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
+    attr_accessor :hostname
+
+    attr_accessor :username
+
+    attr_accessor :password
+
+    attr_accessor :database
+
+    attr_accessor :schema
+
+    attr_accessor :port_override
+  end
+
   class Memcached
     # Unique identifier of the Resource.
     attr_accessor :id
@@ -241,6 +342,121 @@ module SDM
     attr_accessor :port_override
 
     attr_accessor :port
+  end
+
+  class Postgres
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
+    attr_accessor :hostname
+
+    attr_accessor :username
+
+    attr_accessor :password
+
+    attr_accessor :database
+
+    attr_accessor :port_override
+
+    attr_accessor :port
+
+    attr_accessor :override_database
+  end
+
+  class AuroraPostgres
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
+    attr_accessor :hostname
+
+    attr_accessor :username
+
+    attr_accessor :password
+
+    attr_accessor :database
+
+    attr_accessor :port_override
+
+    attr_accessor :port
+
+    attr_accessor :override_database
+  end
+
+  class Greenplum
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
+    attr_accessor :hostname
+
+    attr_accessor :username
+
+    attr_accessor :password
+
+    attr_accessor :database
+
+    attr_accessor :port_override
+
+    attr_accessor :port
+
+    attr_accessor :override_database
+  end
+
+  class Cockroach
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
+    attr_accessor :hostname
+
+    attr_accessor :username
+
+    attr_accessor :password
+
+    attr_accessor :database
+
+    attr_accessor :port_override
+
+    attr_accessor :port
+
+    attr_accessor :override_database
+  end
+
+  class Redshift
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
+    attr_accessor :hostname
+
+    attr_accessor :username
+
+    attr_accessor :password
+
+    attr_accessor :database
+
+    attr_accessor :port_override
+
+    attr_accessor :port
+
+    attr_accessor :override_database
   end
 
   class SSH
@@ -466,6 +682,100 @@ module SDM
     attr_accessor :password
 
     attr_accessor :port
+  end
+
+  class SQLServer
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
+    attr_accessor :hostname
+
+    attr_accessor :username
+
+    attr_accessor :password
+
+    attr_accessor :database
+
+    attr_accessor :port_override
+
+    attr_accessor :port
+
+    attr_accessor :override_database
+  end
+
+  class MongoHybrid
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
+    attr_accessor :hostname
+
+    attr_accessor :auth_database
+
+    attr_accessor :port_override
+
+    attr_accessor :username
+
+    attr_accessor :password
+
+    attr_accessor :port
+
+    attr_accessor :replica_set
+
+    attr_accessor :connect_to_replica
+  end
+
+  class MongoHost
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
+    attr_accessor :hostname
+
+    attr_accessor :auth_database
+
+    attr_accessor :port_override
+
+    attr_accessor :username
+
+    attr_accessor :password
+
+    attr_accessor :port
+  end
+
+  class MongoReplicaSet
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
+    attr_accessor :hostname
+
+    attr_accessor :auth_database
+
+    attr_accessor :port_override
+
+    attr_accessor :username
+
+    attr_accessor :password
+
+    attr_accessor :port
+
+    attr_accessor :replica_set
+
+    attr_accessor :connect_to_replica
   end
 
   class Athena
