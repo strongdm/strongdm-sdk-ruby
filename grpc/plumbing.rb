@@ -49,7 +49,7 @@ module SDM
       if porcelain.instance_of? Teradata
         plumbing.teradata = teradata_to_plumbing(porcelain)
       end
-      if porcelain.instance_of? AmazonEs
+      if porcelain.instance_of? AmazonES
         plumbing.amazon_es = amazon_es_to_plumbing(porcelain)
       end
       if porcelain.instance_of? Elastic
@@ -67,19 +67,19 @@ module SDM
       if porcelain.instance_of? KubernetesBasicAuth
         plumbing.kubernetes_basic_auth = kubernetes_basic_auth_to_plumbing(porcelain)
       end
-      if porcelain.instance_of? AmazonEks
+      if porcelain.instance_of? AmazonEKS
         plumbing.amazon_eks = amazon_eks_to_plumbing(porcelain)
       end
-      if porcelain.instance_of? GoogleGke
+      if porcelain.instance_of? GoogleGKE
         plumbing.google_gke = google_gke_to_plumbing(porcelain)
       end
       if porcelain.instance_of? Oracle
         plumbing.oracle = oracle_to_plumbing(porcelain)
       end
-      if porcelain.instance_of? DynamoDb
+      if porcelain.instance_of? DynamoDB
         plumbing.dynamo_db = dynamo_db_to_plumbing(porcelain)
       end
-      if porcelain.instance_of? Rdp
+      if porcelain.instance_of? RDP
         plumbing.rdp = rdp_to_plumbing(porcelain)
       end
       if porcelain.instance_of? BigQuery
@@ -106,16 +106,16 @@ module SDM
       if porcelain.instance_of? Redshift
         plumbing.redshift = redshift_to_plumbing(porcelain)
       end
-      if porcelain.instance_of? Ssh
+      if porcelain.instance_of? SSH
         plumbing.ssh = ssh_to_plumbing(porcelain)
       end
-      if porcelain.instance_of? HttpBasicAuth
+      if porcelain.instance_of? HTTPBasicAuth
         plumbing.http_basic_auth = http_basic_auth_to_plumbing(porcelain)
       end
-      if porcelain.instance_of? HttpNoAuth
+      if porcelain.instance_of? HTTPNoAuth
         plumbing.http_no_auth = http_no_auth_to_plumbing(porcelain)
       end
-      if porcelain.instance_of? HttpAuth
+      if porcelain.instance_of? HTTPAuth
         plumbing.http_auth = http_auth_to_plumbing(porcelain)
       end
       if porcelain.instance_of? Cassandra
@@ -136,10 +136,10 @@ module SDM
       if porcelain.instance_of? Memsql
         plumbing.memsql = memsql_to_plumbing(porcelain)
       end
-      if porcelain.instance_of? DruID
+      if porcelain.instance_of? Druid
         plumbing.druid = druid_to_plumbing(porcelain)
       end
-      if porcelain.instance_of? SqlServer
+      if porcelain.instance_of? SQLServer
         plumbing.sql_server = sql_server_to_plumbing(porcelain)
       end
       if porcelain.instance_of? MongoLegacyHost
@@ -279,7 +279,6 @@ module SDM
         return athena_to_porcelain(plumbing.athena)
       end
     end
-
     def self.repeated_resource_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -297,7 +296,6 @@ module SDM
       end
       items
     end
-
     def self.sybase_to_porcelain(plumbing)
       porcelain = Sybase.new()
       porcelain.id = plumbing.id
@@ -323,7 +321,6 @@ module SDM
       plumbing.password = porcelain.password unless porcelain.password == nil
       plumbing
     end
-
     def self.repeated_sybase_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -341,7 +338,6 @@ module SDM
       end
       items
     end
-
     def self.presto_to_porcelain(plumbing)
       porcelain = Presto.new()
       porcelain.id = plumbing.id
@@ -371,7 +367,6 @@ module SDM
       plumbing.tls_required = porcelain.tls_required unless porcelain.tls_required == nil
       plumbing
     end
-
     def self.repeated_presto_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -389,7 +384,6 @@ module SDM
       end
       items
     end
-
     def self.teradata_to_porcelain(plumbing)
       porcelain = Teradata.new()
       porcelain.id = plumbing.id
@@ -415,7 +409,6 @@ module SDM
       plumbing.port = porcelain.port unless porcelain.port == nil
       plumbing
     end
-
     def self.repeated_teradata_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -433,7 +426,6 @@ module SDM
       end
       items
     end
-
     def self.amazon_es_to_porcelain(plumbing)
       porcelain = AmazonES.new()
       porcelain.id = plumbing.id
@@ -459,7 +451,6 @@ module SDM
       plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
       plumbing
     end
-
     def self.repeated_amazon_es_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -477,7 +468,6 @@ module SDM
       end
       items
     end
-
     def self.elastic_to_porcelain(plumbing)
       porcelain = Elastic.new()
       porcelain.id = plumbing.id
@@ -505,7 +495,6 @@ module SDM
       plumbing.tls_required = porcelain.tls_required unless porcelain.tls_required == nil
       plumbing
     end
-
     def self.repeated_elastic_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -523,7 +512,6 @@ module SDM
       end
       items
     end
-
     def self.redis_to_porcelain(plumbing)
       porcelain = Redis.new()
       porcelain.id = plumbing.id
@@ -547,7 +535,6 @@ module SDM
       plumbing.port = porcelain.port unless porcelain.port == nil
       plumbing
     end
-
     def self.repeated_redis_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -565,7 +552,6 @@ module SDM
       end
       items
     end
-
     def self.elasticache_redis_to_porcelain(plumbing)
       porcelain = ElasticacheRedis.new()
       porcelain.id = plumbing.id
@@ -591,7 +577,6 @@ module SDM
       plumbing.tls_required = porcelain.tls_required unless porcelain.tls_required == nil
       plumbing
     end
-
     def self.repeated_elasticache_redis_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -609,7 +594,6 @@ module SDM
       end
       items
     end
-
     def self.kubernetes_to_porcelain(plumbing)
       porcelain = Kubernetes.new()
       porcelain.id = plumbing.id
@@ -641,7 +625,6 @@ module SDM
       plumbing.client_key_filename = porcelain.client_key_filename unless porcelain.client_key_filename == nil
       plumbing
     end
-
     def self.repeated_kubernetes_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -659,7 +642,6 @@ module SDM
       end
       items
     end
-
     def self.kubernetes_basic_auth_to_porcelain(plumbing)
       porcelain = KubernetesBasicAuth.new()
       porcelain.id = plumbing.id
@@ -683,7 +665,6 @@ module SDM
       plumbing.password = porcelain.password unless porcelain.password == nil
       plumbing
     end
-
     def self.repeated_kubernetes_basic_auth_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -701,7 +682,6 @@ module SDM
       end
       items
     end
-
     def self.amazon_eks_to_porcelain(plumbing)
       porcelain = AmazonEKS.new()
       porcelain.id = plumbing.id
@@ -731,7 +711,6 @@ module SDM
       plumbing.cluster_name = porcelain.cluster_name unless porcelain.cluster_name == nil
       plumbing
     end
-
     def self.repeated_amazon_eks_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -749,7 +728,6 @@ module SDM
       end
       items
     end
-
     def self.google_gke_to_porcelain(plumbing)
       porcelain = GoogleGKE.new()
       porcelain.id = plumbing.id
@@ -775,7 +753,6 @@ module SDM
       plumbing.service_account_key_filename = porcelain.service_account_key_filename unless porcelain.service_account_key_filename == nil
       plumbing
     end
-
     def self.repeated_google_gke_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -793,7 +770,6 @@ module SDM
       end
       items
     end
-
     def self.oracle_to_porcelain(plumbing)
       porcelain = Oracle.new()
       porcelain.id = plumbing.id
@@ -823,7 +799,6 @@ module SDM
       plumbing.tls_required = porcelain.tls_required unless porcelain.tls_required == nil
       plumbing
     end
-
     def self.repeated_oracle_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -841,7 +816,6 @@ module SDM
       end
       items
     end
-
     def self.dynamo_db_to_porcelain(plumbing)
       porcelain = DynamoDB.new()
       porcelain.id = plumbing.id
@@ -867,7 +841,6 @@ module SDM
       plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
       plumbing
     end
-
     def self.repeated_dynamo_db_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -885,7 +858,6 @@ module SDM
       end
       items
     end
-
     def self.rdp_to_porcelain(plumbing)
       porcelain = RDP.new()
       porcelain.id = plumbing.id
@@ -911,7 +883,6 @@ module SDM
       plumbing.port = porcelain.port unless porcelain.port == nil
       plumbing
     end
-
     def self.repeated_rdp_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -929,7 +900,6 @@ module SDM
       end
       items
     end
-
     def self.big_query_to_porcelain(plumbing)
       porcelain = BigQuery.new()
       porcelain.id = plumbing.id
@@ -955,7 +925,6 @@ module SDM
       plumbing.username = porcelain.username unless porcelain.username == nil
       plumbing
     end
-
     def self.repeated_big_query_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -973,7 +942,6 @@ module SDM
       end
       items
     end
-
     def self.snowflake_to_porcelain(plumbing)
       porcelain = Snowflake.new()
       porcelain.id = plumbing.id
@@ -1001,7 +969,6 @@ module SDM
       plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
       plumbing
     end
-
     def self.repeated_snowflake_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -1019,7 +986,6 @@ module SDM
       end
       items
     end
-
     def self.memcached_to_porcelain(plumbing)
       porcelain = Memcached.new()
       porcelain.id = plumbing.id
@@ -1041,7 +1007,6 @@ module SDM
       plumbing.port = porcelain.port unless porcelain.port == nil
       plumbing
     end
-
     def self.repeated_memcached_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -1059,7 +1024,6 @@ module SDM
       end
       items
     end
-
     def self.postgres_to_porcelain(plumbing)
       porcelain = Postgres.new()
       porcelain.id = plumbing.id
@@ -1089,7 +1053,6 @@ module SDM
       plumbing.override_database = porcelain.override_database unless porcelain.override_database == nil
       plumbing
     end
-
     def self.repeated_postgres_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -1107,7 +1070,6 @@ module SDM
       end
       items
     end
-
     def self.aurora_postgres_to_porcelain(plumbing)
       porcelain = AuroraPostgres.new()
       porcelain.id = plumbing.id
@@ -1137,7 +1099,6 @@ module SDM
       plumbing.override_database = porcelain.override_database unless porcelain.override_database == nil
       plumbing
     end
-
     def self.repeated_aurora_postgres_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -1155,7 +1116,6 @@ module SDM
       end
       items
     end
-
     def self.greenplum_to_porcelain(plumbing)
       porcelain = Greenplum.new()
       porcelain.id = plumbing.id
@@ -1185,7 +1145,6 @@ module SDM
       plumbing.override_database = porcelain.override_database unless porcelain.override_database == nil
       plumbing
     end
-
     def self.repeated_greenplum_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -1203,7 +1162,6 @@ module SDM
       end
       items
     end
-
     def self.cockroach_to_porcelain(plumbing)
       porcelain = Cockroach.new()
       porcelain.id = plumbing.id
@@ -1233,7 +1191,6 @@ module SDM
       plumbing.override_database = porcelain.override_database unless porcelain.override_database == nil
       plumbing
     end
-
     def self.repeated_cockroach_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -1251,7 +1208,6 @@ module SDM
       end
       items
     end
-
     def self.redshift_to_porcelain(plumbing)
       porcelain = Redshift.new()
       porcelain.id = plumbing.id
@@ -1281,7 +1237,6 @@ module SDM
       plumbing.override_database = porcelain.override_database unless porcelain.override_database == nil
       plumbing
     end
-
     def self.repeated_redshift_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -1299,7 +1254,6 @@ module SDM
       end
       items
     end
-
     def self.ssh_to_porcelain(plumbing)
       porcelain = SSH.new()
       porcelain.id = plumbing.id
@@ -1323,7 +1277,6 @@ module SDM
       plumbing.public_key = porcelain.public_key unless porcelain.public_key == nil
       plumbing
     end
-
     def self.repeated_ssh_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -1341,7 +1294,6 @@ module SDM
       end
       items
     end
-
     def self.http_basic_auth_to_porcelain(plumbing)
       porcelain = HTTPBasicAuth.new()
       porcelain.id = plumbing.id
@@ -1371,7 +1323,6 @@ module SDM
       plumbing.subdomain = porcelain.subdomain unless porcelain.subdomain == nil
       plumbing
     end
-
     def self.repeated_http_basic_auth_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -1389,7 +1340,6 @@ module SDM
       end
       items
     end
-
     def self.http_no_auth_to_porcelain(plumbing)
       porcelain = HTTPNoAuth.new()
       porcelain.id = plumbing.id
@@ -1415,7 +1365,6 @@ module SDM
       plumbing.subdomain = porcelain.subdomain unless porcelain.subdomain == nil
       plumbing
     end
-
     def self.repeated_http_no_auth_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -1433,7 +1382,6 @@ module SDM
       end
       items
     end
-
     def self.http_auth_to_porcelain(plumbing)
       porcelain = HTTPAuth.new()
       porcelain.id = plumbing.id
@@ -1461,7 +1409,6 @@ module SDM
       plumbing.subdomain = porcelain.subdomain unless porcelain.subdomain == nil
       plumbing
     end
-
     def self.repeated_http_auth_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -1479,7 +1426,6 @@ module SDM
       end
       items
     end
-
     def self.cassandra_to_porcelain(plumbing)
       porcelain = Cassandra.new()
       porcelain.id = plumbing.id
@@ -1507,7 +1453,6 @@ module SDM
       plumbing.tls_required = porcelain.tls_required unless porcelain.tls_required == nil
       plumbing
     end
-
     def self.repeated_cassandra_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -1525,7 +1470,6 @@ module SDM
       end
       items
     end
-
     def self.mysql_to_porcelain(plumbing)
       porcelain = Mysql.new()
       porcelain.id = plumbing.id
@@ -1553,7 +1497,6 @@ module SDM
       plumbing.port = porcelain.port unless porcelain.port == nil
       plumbing
     end
-
     def self.repeated_mysql_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -1571,7 +1514,6 @@ module SDM
       end
       items
     end
-
     def self.aurora_mysql_to_porcelain(plumbing)
       porcelain = AuroraMysql.new()
       porcelain.id = plumbing.id
@@ -1599,7 +1541,6 @@ module SDM
       plumbing.port = porcelain.port unless porcelain.port == nil
       plumbing
     end
-
     def self.repeated_aurora_mysql_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -1617,7 +1558,6 @@ module SDM
       end
       items
     end
-
     def self.clustrix_to_porcelain(plumbing)
       porcelain = Clustrix.new()
       porcelain.id = plumbing.id
@@ -1645,7 +1585,6 @@ module SDM
       plumbing.port = porcelain.port unless porcelain.port == nil
       plumbing
     end
-
     def self.repeated_clustrix_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -1663,7 +1602,6 @@ module SDM
       end
       items
     end
-
     def self.maria_to_porcelain(plumbing)
       porcelain = Maria.new()
       porcelain.id = plumbing.id
@@ -1691,7 +1629,6 @@ module SDM
       plumbing.port = porcelain.port unless porcelain.port == nil
       plumbing
     end
-
     def self.repeated_maria_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -1709,7 +1646,6 @@ module SDM
       end
       items
     end
-
     def self.memsql_to_porcelain(plumbing)
       porcelain = Memsql.new()
       porcelain.id = plumbing.id
@@ -1737,7 +1673,6 @@ module SDM
       plumbing.port = porcelain.port unless porcelain.port == nil
       plumbing
     end
-
     def self.repeated_memsql_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -1755,7 +1690,6 @@ module SDM
       end
       items
     end
-
     def self.druid_to_porcelain(plumbing)
       porcelain = Druid.new()
       porcelain.id = plumbing.id
@@ -1781,7 +1715,6 @@ module SDM
       plumbing.port = porcelain.port unless porcelain.port == nil
       plumbing
     end
-
     def self.repeated_druid_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -1799,7 +1732,6 @@ module SDM
       end
       items
     end
-
     def self.sql_server_to_porcelain(plumbing)
       porcelain = SQLServer.new()
       porcelain.id = plumbing.id
@@ -1831,7 +1763,6 @@ module SDM
       plumbing.override_database = porcelain.override_database unless porcelain.override_database == nil
       plumbing
     end
-
     def self.repeated_sql_server_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -1849,7 +1780,6 @@ module SDM
       end
       items
     end
-
     def self.mongo_legacy_host_to_porcelain(plumbing)
       porcelain = MongoLegacyHost.new()
       porcelain.id = plumbing.id
@@ -1883,7 +1813,6 @@ module SDM
       plumbing.tls_required = porcelain.tls_required unless porcelain.tls_required == nil
       plumbing
     end
-
     def self.repeated_mongo_legacy_host_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -1901,7 +1830,6 @@ module SDM
       end
       items
     end
-
     def self.mongo_legacy_replicaset_to_porcelain(plumbing)
       porcelain = MongoLegacyReplicaset.new()
       porcelain.id = plumbing.id
@@ -1935,7 +1863,6 @@ module SDM
       plumbing.tls_required = porcelain.tls_required unless porcelain.tls_required == nil
       plumbing
     end
-
     def self.repeated_mongo_legacy_replicaset_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -1953,7 +1880,6 @@ module SDM
       end
       items
     end
-
     def self.mongo_host_to_porcelain(plumbing)
       porcelain = MongoHost.new()
       porcelain.id = plumbing.id
@@ -1985,7 +1911,6 @@ module SDM
       plumbing.tls_required = porcelain.tls_required unless porcelain.tls_required == nil
       plumbing
     end
-
     def self.repeated_mongo_host_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -2003,7 +1928,6 @@ module SDM
       end
       items
     end
-
     def self.mongo_replica_set_to_porcelain(plumbing)
       porcelain = MongoReplicaSet.new()
       porcelain.id = plumbing.id
@@ -2037,7 +1961,6 @@ module SDM
       plumbing.tls_required = porcelain.tls_required unless porcelain.tls_required == nil
       plumbing
     end
-
     def self.repeated_mongo_replica_set_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -2055,7 +1978,6 @@ module SDM
       end
       items
     end
-
     def self.athena_to_porcelain(plumbing)
       porcelain = Athena.new()
       porcelain.id = plumbing.id
@@ -2081,7 +2003,6 @@ module SDM
       plumbing.region = porcelain.region unless porcelain.region == nil
       plumbing
     end
-
     def self.repeated_athena_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -2099,7 +2020,6 @@ module SDM
       end
       items
     end
-
     def self.create_response_metadata_to_porcelain(plumbing)
       porcelain = CreateResponseMetadata.new()
       porcelain
@@ -2109,7 +2029,6 @@ module SDM
       plumbing = V1::CreateResponseMetadata.new()
       plumbing
     end
-
     def self.repeated_create_response_metadata_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -2127,7 +2046,6 @@ module SDM
       end
       items
     end
-
     def self.get_response_metadata_to_porcelain(plumbing)
       porcelain = GetResponseMetadata.new()
       porcelain
@@ -2137,7 +2055,6 @@ module SDM
       plumbing = V1::GetResponseMetadata.new()
       plumbing
     end
-
     def self.repeated_get_response_metadata_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -2155,7 +2072,6 @@ module SDM
       end
       items
     end
-
     def self.update_response_metadata_to_porcelain(plumbing)
       porcelain = UpdateResponseMetadata.new()
       porcelain
@@ -2165,7 +2081,6 @@ module SDM
       plumbing = V1::UpdateResponseMetadata.new()
       plumbing
     end
-
     def self.repeated_update_response_metadata_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -2183,7 +2098,6 @@ module SDM
       end
       items
     end
-
     def self.delete_response_metadata_to_porcelain(plumbing)
       porcelain = DeleteResponseMetadata.new()
       porcelain
@@ -2193,7 +2107,6 @@ module SDM
       plumbing = V1::DeleteResponseMetadata.new()
       plumbing
     end
-
     def self.repeated_delete_response_metadata_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -2211,7 +2124,6 @@ module SDM
       end
       items
     end
-
     def self.rate_limit_metadata_to_porcelain(plumbing)
       porcelain = RateLimitMetadata.new()
       porcelain.limit = plumbing.limit
@@ -2229,7 +2141,6 @@ module SDM
       plumbing.bucket = porcelain.bucket unless porcelain.bucket == nil
       plumbing
     end
-
     def self.repeated_rate_limit_metadata_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -2247,7 +2158,6 @@ module SDM
       end
       items
     end
-
     def self.node_create_response_to_porcelain(plumbing)
       porcelain = NodeCreateResponse.new()
       porcelain.meta = create_response_metadata_to_porcelain(plumbing.meta)
@@ -2265,7 +2175,6 @@ module SDM
       plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
       plumbing
     end
-
     def self.repeated_node_create_response_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -2283,7 +2192,6 @@ module SDM
       end
       items
     end
-
     def self.node_get_response_to_porcelain(plumbing)
       porcelain = NodeGetResponse.new()
       porcelain.meta = get_response_metadata_to_porcelain(plumbing.meta)
@@ -2299,7 +2207,6 @@ module SDM
       plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
       plumbing
     end
-
     def self.repeated_node_get_response_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -2317,7 +2224,6 @@ module SDM
       end
       items
     end
-
     def self.node_update_response_to_porcelain(plumbing)
       porcelain = NodeUpdateResponse.new()
       porcelain.meta = update_response_metadata_to_porcelain(plumbing.meta)
@@ -2333,7 +2239,6 @@ module SDM
       plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
       plumbing
     end
-
     def self.repeated_node_update_response_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -2351,7 +2256,6 @@ module SDM
       end
       items
     end
-
     def self.node_delete_response_to_porcelain(plumbing)
       porcelain = NodeDeleteResponse.new()
       porcelain.meta = delete_response_metadata_to_porcelain(plumbing.meta)
@@ -2365,7 +2269,6 @@ module SDM
       plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
       plumbing
     end
-
     def self.repeated_node_delete_response_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -2383,7 +2286,6 @@ module SDM
       end
       items
     end
-
     def self.node_to_plumbing(porcelain)
       plumbing = V1::Node.new()
       if porcelain.instance_of? Relay
@@ -2403,7 +2305,6 @@ module SDM
         return gateway_to_porcelain(plumbing.gateway)
       end
     end
-
     def self.repeated_node_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -2421,7 +2322,6 @@ module SDM
       end
       items
     end
-
     def self.relay_to_porcelain(plumbing)
       porcelain = Relay.new()
       porcelain.id = plumbing.id
@@ -2437,7 +2337,6 @@ module SDM
       plumbing.state = porcelain.state unless porcelain.state == nil
       plumbing
     end
-
     def self.repeated_relay_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -2455,7 +2354,6 @@ module SDM
       end
       items
     end
-
     def self.gateway_to_porcelain(plumbing)
       porcelain = Gateway.new()
       porcelain.id = plumbing.id
@@ -2475,7 +2373,6 @@ module SDM
       plumbing.bind_address = porcelain.bind_address unless porcelain.bind_address == nil
       plumbing
     end
-
     def self.repeated_gateway_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -2493,7 +2390,6 @@ module SDM
       end
       items
     end
-
     def self.resource_create_response_to_porcelain(plumbing)
       porcelain = ResourceCreateResponse.new()
       porcelain.meta = create_response_metadata_to_porcelain(plumbing.meta)
@@ -2509,7 +2405,6 @@ module SDM
       plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
       plumbing
     end
-
     def self.repeated_resource_create_response_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -2527,7 +2422,6 @@ module SDM
       end
       items
     end
-
     def self.resource_get_response_to_porcelain(plumbing)
       porcelain = ResourceGetResponse.new()
       porcelain.meta = get_response_metadata_to_porcelain(plumbing.meta)
@@ -2543,7 +2437,6 @@ module SDM
       plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
       plumbing
     end
-
     def self.repeated_resource_get_response_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -2561,7 +2454,6 @@ module SDM
       end
       items
     end
-
     def self.resource_update_response_to_porcelain(plumbing)
       porcelain = ResourceUpdateResponse.new()
       porcelain.meta = update_response_metadata_to_porcelain(plumbing.meta)
@@ -2577,7 +2469,6 @@ module SDM
       plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
       plumbing
     end
-
     def self.repeated_resource_update_response_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -2595,7 +2486,6 @@ module SDM
       end
       items
     end
-
     def self.resource_delete_response_to_porcelain(plumbing)
       porcelain = ResourceDeleteResponse.new()
       porcelain.meta = delete_response_metadata_to_porcelain(plumbing.meta)
@@ -2609,7 +2499,6 @@ module SDM
       plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
       plumbing
     end
-
     def self.repeated_resource_delete_response_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -2627,7 +2516,6 @@ module SDM
       end
       items
     end
-
     def self.role_attachment_create_response_to_porcelain(plumbing)
       porcelain = RoleAttachmentCreateResponse.new()
       porcelain.meta = create_response_metadata_to_porcelain(plumbing.meta)
@@ -2643,7 +2531,6 @@ module SDM
       plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
       plumbing
     end
-
     def self.repeated_role_attachment_create_response_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -2661,7 +2548,6 @@ module SDM
       end
       items
     end
-
     def self.role_attachment_get_response_to_porcelain(plumbing)
       porcelain = RoleAttachmentGetResponse.new()
       porcelain.meta = get_response_metadata_to_porcelain(plumbing.meta)
@@ -2677,7 +2563,6 @@ module SDM
       plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
       plumbing
     end
-
     def self.repeated_role_attachment_get_response_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -2695,7 +2580,6 @@ module SDM
       end
       items
     end
-
     def self.role_attachment_delete_response_to_porcelain(plumbing)
       porcelain = RoleAttachmentDeleteResponse.new()
       porcelain.meta = delete_response_metadata_to_porcelain(plumbing.meta)
@@ -2709,7 +2593,6 @@ module SDM
       plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
       plumbing
     end
-
     def self.repeated_role_attachment_delete_response_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -2727,7 +2610,6 @@ module SDM
       end
       items
     end
-
     def self.role_attachment_to_porcelain(plumbing)
       porcelain = RoleAttachment.new()
       porcelain.id = plumbing.id
@@ -2743,7 +2625,6 @@ module SDM
       plumbing.attached_role_id = porcelain.attached_role_id unless porcelain.attached_role_id == nil
       plumbing
     end
-
     def self.repeated_role_attachment_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -2761,7 +2642,6 @@ module SDM
       end
       items
     end
-
     def self.role_create_response_to_porcelain(plumbing)
       porcelain = RoleCreateResponse.new()
       porcelain.meta = create_response_metadata_to_porcelain(plumbing.meta)
@@ -2777,7 +2657,6 @@ module SDM
       plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
       plumbing
     end
-
     def self.repeated_role_create_response_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -2795,7 +2674,6 @@ module SDM
       end
       items
     end
-
     def self.role_get_response_to_porcelain(plumbing)
       porcelain = RoleGetResponse.new()
       porcelain.meta = get_response_metadata_to_porcelain(plumbing.meta)
@@ -2811,7 +2689,6 @@ module SDM
       plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
       plumbing
     end
-
     def self.repeated_role_get_response_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -2829,7 +2706,6 @@ module SDM
       end
       items
     end
-
     def self.role_update_response_to_porcelain(plumbing)
       porcelain = RoleUpdateResponse.new()
       porcelain.meta = update_response_metadata_to_porcelain(plumbing.meta)
@@ -2845,7 +2721,6 @@ module SDM
       plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
       plumbing
     end
-
     def self.repeated_role_update_response_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -2863,7 +2738,6 @@ module SDM
       end
       items
     end
-
     def self.role_delete_response_to_porcelain(plumbing)
       porcelain = RoleDeleteResponse.new()
       porcelain.meta = delete_response_metadata_to_porcelain(plumbing.meta)
@@ -2877,7 +2751,6 @@ module SDM
       plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
       plumbing
     end
-
     def self.repeated_role_delete_response_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -2895,7 +2768,6 @@ module SDM
       end
       items
     end
-
     def self.role_to_porcelain(plumbing)
       porcelain = Role.new()
       porcelain.id = plumbing.id
@@ -2911,7 +2783,6 @@ module SDM
       plumbing.composite = porcelain.composite unless porcelain.composite == nil
       plumbing
     end
-
     def self.repeated_role_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
@@ -2929,7 +2800,6 @@ module SDM
       end
       items
     end
-
     def self.error_to_porcelain(err)
       if not err.is_a? GRPC::BadStatus
         return RPCError.new(err, 2) # Unknown
