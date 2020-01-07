@@ -7,7 +7,6 @@ Dir[File.join(__dir__, "grpc", "*.rb")].each { |file| require file }
 Dir[File.join(__dir__, "models", "*.rb")].each { |file| require file }
 
 module SDM
-
   # Nodes are proxies in the strongDM network. They come in two flavors: relays,
   # which communicate with resources, and gateways, which communicate with
   # clients.
@@ -27,10 +26,12 @@ module SDM
     end
 
     # Create registers a new Node.
-    def create(node, deadline: nil)
+    def create(
+               node,
+               deadline: nil)
       req = V1::NodeCreateRequest.new()
-      req.node = Plumbing::node_to_plumbing(node)
 
+      req.node = Plumbing::node_to_plumbing(node)
       tries = 0
       plumbing_response = nil
       loop do
@@ -45,6 +46,7 @@ module SDM
         end
         break
       end
+
       resp = NodeCreateResponse.new()
       resp.meta = Plumbing::create_response_metadata_to_porcelain(plumbing_response.meta)
       resp.node = Plumbing::node_to_porcelain(plumbing_response.node)
@@ -54,10 +56,12 @@ module SDM
     end
 
     # Get reads one Node by ID.
-    def get(id, deadline: nil)
+    def get(
+            id,
+            deadline: nil)
       req = V1::NodeGetRequest.new()
-      req.id = id
 
+      req.id = id
       tries = 0
       plumbing_response = nil
       loop do
@@ -72,6 +76,7 @@ module SDM
         end
         break
       end
+
       resp = NodeGetResponse.new()
       resp.meta = Plumbing::get_response_metadata_to_porcelain(plumbing_response.meta)
       resp.node = Plumbing::node_to_porcelain(plumbing_response.node)
@@ -80,10 +85,12 @@ module SDM
     end
 
     # Update patches a Node by ID.
-    def update(node, deadline: nil)
+    def update(
+               node,
+               deadline: nil)
       req = V1::NodeUpdateRequest.new()
-      req.node = Plumbing::node_to_plumbing(node)
 
+      req.node = Plumbing::node_to_plumbing(node)
       tries = 0
       plumbing_response = nil
       loop do
@@ -98,6 +105,7 @@ module SDM
         end
         break
       end
+
       resp = NodeUpdateResponse.new()
       resp.meta = Plumbing::update_response_metadata_to_porcelain(plumbing_response.meta)
       resp.node = Plumbing::node_to_porcelain(plumbing_response.node)
@@ -106,10 +114,12 @@ module SDM
     end
 
     # Delete removes a Node by ID.
-    def delete(id, deadline: nil)
+    def delete(
+               id,
+               deadline: nil)
       req = V1::NodeDeleteRequest.new()
-      req.id = id
 
+      req.id = id
       tries = 0
       plumbing_response = nil
       loop do
@@ -124,6 +134,7 @@ module SDM
         end
         break
       end
+
       resp = NodeDeleteResponse.new()
       resp.meta = Plumbing::delete_response_metadata_to_porcelain(plumbing_response.meta)
       resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
@@ -131,13 +142,17 @@ module SDM
     end
 
     # List gets a list of Nodes matching a given set of criteria.
-    def list(filter, *args, deadline: nil)
+    def list(
+             filter,
+             *args,
+             deadline: nil)
       req = V1::NodeListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
       page_size_option = @parent._test_options["PageSize"]
       if page_size_option.is_a? Integer
         req.meta.limit = page_size_option
       end
+
       req.filter = Plumbing::quote_filter_args(filter, *args)
       resp = Enumerator::Generator.new { |g|
         tries = 0
@@ -179,10 +194,12 @@ module SDM
     end
 
     # Create registers a new Resource.
-    def create(resource, deadline: nil)
+    def create(
+               resource,
+               deadline: nil)
       req = V1::ResourceCreateRequest.new()
-      req.resource = Plumbing::resource_to_plumbing(resource)
 
+      req.resource = Plumbing::resource_to_plumbing(resource)
       tries = 0
       plumbing_response = nil
       loop do
@@ -197,6 +214,7 @@ module SDM
         end
         break
       end
+
       resp = ResourceCreateResponse.new()
       resp.meta = Plumbing::create_response_metadata_to_porcelain(plumbing_response.meta)
       resp.resource = Plumbing::resource_to_porcelain(plumbing_response.resource)
@@ -205,10 +223,12 @@ module SDM
     end
 
     # Get reads one Resource by ID.
-    def get(id, deadline: nil)
+    def get(
+            id,
+            deadline: nil)
       req = V1::ResourceGetRequest.new()
-      req.id = id
 
+      req.id = id
       tries = 0
       plumbing_response = nil
       loop do
@@ -223,6 +243,7 @@ module SDM
         end
         break
       end
+
       resp = ResourceGetResponse.new()
       resp.meta = Plumbing::get_response_metadata_to_porcelain(plumbing_response.meta)
       resp.resource = Plumbing::resource_to_porcelain(plumbing_response.resource)
@@ -231,10 +252,12 @@ module SDM
     end
 
     # Update patches a Resource by ID.
-    def update(resource, deadline: nil)
+    def update(
+               resource,
+               deadline: nil)
       req = V1::ResourceUpdateRequest.new()
-      req.resource = Plumbing::resource_to_plumbing(resource)
 
+      req.resource = Plumbing::resource_to_plumbing(resource)
       tries = 0
       plumbing_response = nil
       loop do
@@ -249,6 +272,7 @@ module SDM
         end
         break
       end
+
       resp = ResourceUpdateResponse.new()
       resp.meta = Plumbing::update_response_metadata_to_porcelain(plumbing_response.meta)
       resp.resource = Plumbing::resource_to_porcelain(plumbing_response.resource)
@@ -257,10 +281,12 @@ module SDM
     end
 
     # Delete removes a Resource by ID.
-    def delete(id, deadline: nil)
+    def delete(
+               id,
+               deadline: nil)
       req = V1::ResourceDeleteRequest.new()
-      req.id = id
 
+      req.id = id
       tries = 0
       plumbing_response = nil
       loop do
@@ -275,6 +301,7 @@ module SDM
         end
         break
       end
+
       resp = ResourceDeleteResponse.new()
       resp.meta = Plumbing::delete_response_metadata_to_porcelain(plumbing_response.meta)
       resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
@@ -282,13 +309,17 @@ module SDM
     end
 
     # List gets a list of Resources matching a given set of criteria.
-    def list(filter, *args, deadline: nil)
+    def list(
+             filter,
+             *args,
+             deadline: nil)
       req = V1::ResourceListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
       page_size_option = @parent._test_options["PageSize"]
       if page_size_option.is_a? Integer
         req.meta.limit = page_size_option
       end
+
       req.filter = Plumbing::quote_filter_args(filter, *args)
       resp = Enumerator::Generator.new { |g|
         tries = 0
@@ -334,10 +365,12 @@ module SDM
     end
 
     # Create registers a new RoleAttachment.
-    def create(role_attachment, deadline: nil)
+    def create(
+               role_attachment,
+               deadline: nil)
       req = V1::RoleAttachmentCreateRequest.new()
-      req.role_attachment = Plumbing::role_attachment_to_plumbing(role_attachment)
 
+      req.role_attachment = Plumbing::role_attachment_to_plumbing(role_attachment)
       tries = 0
       plumbing_response = nil
       loop do
@@ -352,6 +385,7 @@ module SDM
         end
         break
       end
+
       resp = RoleAttachmentCreateResponse.new()
       resp.meta = Plumbing::create_response_metadata_to_porcelain(plumbing_response.meta)
       resp.role_attachment = Plumbing::role_attachment_to_porcelain(plumbing_response.role_attachment)
@@ -360,10 +394,12 @@ module SDM
     end
 
     # Get reads one RoleAttachment by ID.
-    def get(id, deadline: nil)
+    def get(
+            id,
+            deadline: nil)
       req = V1::RoleAttachmentGetRequest.new()
-      req.id = id
 
+      req.id = id
       tries = 0
       plumbing_response = nil
       loop do
@@ -378,6 +414,7 @@ module SDM
         end
         break
       end
+
       resp = RoleAttachmentGetResponse.new()
       resp.meta = Plumbing::get_response_metadata_to_porcelain(plumbing_response.meta)
       resp.role_attachment = Plumbing::role_attachment_to_porcelain(plumbing_response.role_attachment)
@@ -386,10 +423,12 @@ module SDM
     end
 
     # Delete removes a RoleAttachment by ID.
-    def delete(id, deadline: nil)
+    def delete(
+               id,
+               deadline: nil)
       req = V1::RoleAttachmentDeleteRequest.new()
-      req.id = id
 
+      req.id = id
       tries = 0
       plumbing_response = nil
       loop do
@@ -404,6 +443,7 @@ module SDM
         end
         break
       end
+
       resp = RoleAttachmentDeleteResponse.new()
       resp.meta = Plumbing::delete_response_metadata_to_porcelain(plumbing_response.meta)
       resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
@@ -411,13 +451,17 @@ module SDM
     end
 
     # List gets a list of RoleAttachments matching a given set of criteria.
-    def list(filter, *args, deadline: nil)
+    def list(
+             filter,
+             *args,
+             deadline: nil)
       req = V1::RoleAttachmentListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
       page_size_option = @parent._test_options["PageSize"]
       if page_size_option.is_a? Integer
         req.meta.limit = page_size_option
       end
+
       req.filter = Plumbing::quote_filter_args(filter, *args)
       resp = Enumerator::Generator.new { |g|
         tries = 0
@@ -464,10 +508,12 @@ module SDM
     end
 
     # Create registers a new Role.
-    def create(role, deadline: nil)
+    def create(
+               role,
+               deadline: nil)
       req = V1::RoleCreateRequest.new()
-      req.role = Plumbing::role_to_plumbing(role)
 
+      req.role = Plumbing::role_to_plumbing(role)
       tries = 0
       plumbing_response = nil
       loop do
@@ -482,6 +528,7 @@ module SDM
         end
         break
       end
+
       resp = RoleCreateResponse.new()
       resp.meta = Plumbing::create_response_metadata_to_porcelain(plumbing_response.meta)
       resp.role = Plumbing::role_to_porcelain(plumbing_response.role)
@@ -490,10 +537,12 @@ module SDM
     end
 
     # Get reads one Role by ID.
-    def get(id, deadline: nil)
+    def get(
+            id,
+            deadline: nil)
       req = V1::RoleGetRequest.new()
-      req.id = id
 
+      req.id = id
       tries = 0
       plumbing_response = nil
       loop do
@@ -508,6 +557,7 @@ module SDM
         end
         break
       end
+
       resp = RoleGetResponse.new()
       resp.meta = Plumbing::get_response_metadata_to_porcelain(plumbing_response.meta)
       resp.role = Plumbing::role_to_porcelain(plumbing_response.role)
@@ -516,10 +566,12 @@ module SDM
     end
 
     # Update patches a Role by ID.
-    def update(role, deadline: nil)
+    def update(
+               role,
+               deadline: nil)
       req = V1::RoleUpdateRequest.new()
-      req.role = Plumbing::role_to_plumbing(role)
 
+      req.role = Plumbing::role_to_plumbing(role)
       tries = 0
       plumbing_response = nil
       loop do
@@ -534,6 +586,7 @@ module SDM
         end
         break
       end
+
       resp = RoleUpdateResponse.new()
       resp.meta = Plumbing::update_response_metadata_to_porcelain(plumbing_response.meta)
       resp.role = Plumbing::role_to_porcelain(plumbing_response.role)
@@ -542,10 +595,12 @@ module SDM
     end
 
     # Delete removes a Role by ID.
-    def delete(id, deadline: nil)
+    def delete(
+               id,
+               deadline: nil)
       req = V1::RoleDeleteRequest.new()
-      req.id = id
 
+      req.id = id
       tries = 0
       plumbing_response = nil
       loop do
@@ -560,6 +615,7 @@ module SDM
         end
         break
       end
+
       resp = RoleDeleteResponse.new()
       resp.meta = Plumbing::delete_response_metadata_to_porcelain(plumbing_response.meta)
       resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
@@ -567,13 +623,17 @@ module SDM
     end
 
     # List gets a list of Roles matching a given set of criteria.
-    def list(filter, *args, deadline: nil)
+    def list(
+             filter,
+             *args,
+             deadline: nil)
       req = V1::RoleListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
       page_size_option = @parent._test_options["PageSize"]
       if page_size_option.is_a? Integer
         req.meta.limit = page_size_option
       end
+
       req.filter = Plumbing::quote_filter_args(filter, *args)
       resp = Enumerator::Generator.new { |g|
         tries = 0

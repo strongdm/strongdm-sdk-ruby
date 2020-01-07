@@ -37,7 +37,6 @@ module SDM
     def self.timestamp_to_plumbing(t)
       return Google::Protobuf::Timestamp.new(seconds: t.to_i, nanos: t.nsec)
     end
-
     def self.resource_to_plumbing(porcelain)
       plumbing = V1::Resource.new()
       if porcelain.instance_of? Sybase

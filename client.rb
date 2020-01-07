@@ -20,7 +20,6 @@ module SDM
       @resources = Resources.new(address, self)
       @role_attachments = RoleAttachments.new(address, self)
       @roles = Roles.new(address, self)
-
       @_test_options = Hash.new
     end
 
@@ -86,7 +85,6 @@ module SDM
     # grant access to the combined resources associated with a set of child roles.
     # Each user can be a member of one Role or composite role.
     attr_reader :roles
-
     attr_reader :_test_options
   end
 end
