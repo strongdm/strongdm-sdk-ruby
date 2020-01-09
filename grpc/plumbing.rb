@@ -39,14 +39,20 @@ module SDM
     end
     def self.resource_to_plumbing(porcelain)
       plumbing = V1::Resource.new()
-      if porcelain.instance_of? Sybase
-        plumbing.sybase = sybase_to_plumbing(porcelain)
+      if porcelain.instance_of? Athena
+        plumbing.athena = athena_to_plumbing(porcelain)
       end
-      if porcelain.instance_of? Presto
-        plumbing.presto = presto_to_plumbing(porcelain)
+      if porcelain.instance_of? BigQuery
+        plumbing.big_query = big_query_to_plumbing(porcelain)
       end
-      if porcelain.instance_of? Teradata
-        plumbing.teradata = teradata_to_plumbing(porcelain)
+      if porcelain.instance_of? Cassandra
+        plumbing.cassandra = cassandra_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? Druid
+        plumbing.druid = druid_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? DynamoDB
+        plumbing.dynamo_db = dynamo_db_to_plumbing(porcelain)
       end
       if porcelain.instance_of? AmazonES
         plumbing.amazon_es = amazon_es_to_plumbing(porcelain)
@@ -54,11 +60,14 @@ module SDM
       if porcelain.instance_of? Elastic
         plumbing.elastic = elastic_to_plumbing(porcelain)
       end
-      if porcelain.instance_of? Redis
-        plumbing.redis = redis_to_plumbing(porcelain)
+      if porcelain.instance_of? HTTPBasicAuth
+        plumbing.http_basic_auth = http_basic_auth_to_plumbing(porcelain)
       end
-      if porcelain.instance_of? ElasticacheRedis
-        plumbing.elasticache_redis = elasticache_redis_to_plumbing(porcelain)
+      if porcelain.instance_of? HTTPNoAuth
+        plumbing.http_no_auth = http_no_auth_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? HTTPAuth
+        plumbing.http_auth = http_auth_to_plumbing(porcelain)
       end
       if porcelain.instance_of? Kubernetes
         plumbing.kubernetes = kubernetes_to_plumbing(porcelain)
@@ -72,53 +81,20 @@ module SDM
       if porcelain.instance_of? GoogleGKE
         plumbing.google_gke = google_gke_to_plumbing(porcelain)
       end
-      if porcelain.instance_of? Oracle
-        plumbing.oracle = oracle_to_plumbing(porcelain)
-      end
-      if porcelain.instance_of? DynamoDB
-        plumbing.dynamo_db = dynamo_db_to_plumbing(porcelain)
-      end
-      if porcelain.instance_of? RDP
-        plumbing.rdp = rdp_to_plumbing(porcelain)
-      end
-      if porcelain.instance_of? BigQuery
-        plumbing.big_query = big_query_to_plumbing(porcelain)
-      end
-      if porcelain.instance_of? Snowflake
-        plumbing.snowflake = snowflake_to_plumbing(porcelain)
-      end
       if porcelain.instance_of? Memcached
         plumbing.memcached = memcached_to_plumbing(porcelain)
       end
-      if porcelain.instance_of? Postgres
-        plumbing.postgres = postgres_to_plumbing(porcelain)
+      if porcelain.instance_of? MongoLegacyHost
+        plumbing.mongo_legacy_host = mongo_legacy_host_to_plumbing(porcelain)
       end
-      if porcelain.instance_of? AuroraPostgres
-        plumbing.aurora_postgres = aurora_postgres_to_plumbing(porcelain)
+      if porcelain.instance_of? MongoLegacyReplicaset
+        plumbing.mongo_legacy_replicaset = mongo_legacy_replicaset_to_plumbing(porcelain)
       end
-      if porcelain.instance_of? Greenplum
-        plumbing.greenplum = greenplum_to_plumbing(porcelain)
+      if porcelain.instance_of? MongoHost
+        plumbing.mongo_host = mongo_host_to_plumbing(porcelain)
       end
-      if porcelain.instance_of? Cockroach
-        plumbing.cockroach = cockroach_to_plumbing(porcelain)
-      end
-      if porcelain.instance_of? Redshift
-        plumbing.redshift = redshift_to_plumbing(porcelain)
-      end
-      if porcelain.instance_of? SSH
-        plumbing.ssh = ssh_to_plumbing(porcelain)
-      end
-      if porcelain.instance_of? HTTPBasicAuth
-        plumbing.http_basic_auth = http_basic_auth_to_plumbing(porcelain)
-      end
-      if porcelain.instance_of? HTTPNoAuth
-        plumbing.http_no_auth = http_no_auth_to_plumbing(porcelain)
-      end
-      if porcelain.instance_of? HTTPAuth
-        plumbing.http_auth = http_auth_to_plumbing(porcelain)
-      end
-      if porcelain.instance_of? Cassandra
-        plumbing.cassandra = cassandra_to_plumbing(porcelain)
+      if porcelain.instance_of? MongoReplicaSet
+        plumbing.mongo_replica_set = mongo_replica_set_to_plumbing(porcelain)
       end
       if porcelain.instance_of? Mysql
         plumbing.mysql = mysql_to_plumbing(porcelain)
@@ -135,39 +111,69 @@ module SDM
       if porcelain.instance_of? Memsql
         plumbing.memsql = memsql_to_plumbing(porcelain)
       end
-      if porcelain.instance_of? Druid
-        plumbing.druid = druid_to_plumbing(porcelain)
+      if porcelain.instance_of? Oracle
+        plumbing.oracle = oracle_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? Postgres
+        plumbing.postgres = postgres_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? AuroraPostgres
+        plumbing.aurora_postgres = aurora_postgres_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? Greenplum
+        plumbing.greenplum = greenplum_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? Cockroach
+        plumbing.cockroach = cockroach_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? Redshift
+        plumbing.redshift = redshift_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? Presto
+        plumbing.presto = presto_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? RDP
+        plumbing.rdp = rdp_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? Redis
+        plumbing.redis = redis_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? ElasticacheRedis
+        plumbing.elasticache_redis = elasticache_redis_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? Snowflake
+        plumbing.snowflake = snowflake_to_plumbing(porcelain)
       end
       if porcelain.instance_of? SQLServer
         plumbing.sql_server = sql_server_to_plumbing(porcelain)
       end
-      if porcelain.instance_of? MongoLegacyHost
-        plumbing.mongo_legacy_host = mongo_legacy_host_to_plumbing(porcelain)
+      if porcelain.instance_of? SSH
+        plumbing.ssh = ssh_to_plumbing(porcelain)
       end
-      if porcelain.instance_of? MongoLegacyReplicaset
-        plumbing.mongo_legacy_replicaset = mongo_legacy_replicaset_to_plumbing(porcelain)
+      if porcelain.instance_of? Sybase
+        plumbing.sybase = sybase_to_plumbing(porcelain)
       end
-      if porcelain.instance_of? MongoHost
-        plumbing.mongo_host = mongo_host_to_plumbing(porcelain)
-      end
-      if porcelain.instance_of? MongoReplicaSet
-        plumbing.mongo_replica_set = mongo_replica_set_to_plumbing(porcelain)
-      end
-      if porcelain.instance_of? Athena
-        plumbing.athena = athena_to_plumbing(porcelain)
+      if porcelain.instance_of? Teradata
+        plumbing.teradata = teradata_to_plumbing(porcelain)
       end
       plumbing
     end
 
     def self.resource_to_porcelain(plumbing)
-      if plumbing.sybase != nil
-        return sybase_to_porcelain(plumbing.sybase)
+      if plumbing.athena != nil
+        return athena_to_porcelain(plumbing.athena)
       end
-      if plumbing.presto != nil
-        return presto_to_porcelain(plumbing.presto)
+      if plumbing.big_query != nil
+        return big_query_to_porcelain(plumbing.big_query)
       end
-      if plumbing.teradata != nil
-        return teradata_to_porcelain(plumbing.teradata)
+      if plumbing.cassandra != nil
+        return cassandra_to_porcelain(plumbing.cassandra)
+      end
+      if plumbing.druid != nil
+        return druid_to_porcelain(plumbing.druid)
+      end
+      if plumbing.dynamo_db != nil
+        return dynamo_db_to_porcelain(plumbing.dynamo_db)
       end
       if plumbing.amazon_es != nil
         return amazon_es_to_porcelain(plumbing.amazon_es)
@@ -175,11 +181,14 @@ module SDM
       if plumbing.elastic != nil
         return elastic_to_porcelain(plumbing.elastic)
       end
-      if plumbing.redis != nil
-        return redis_to_porcelain(plumbing.redis)
+      if plumbing.http_basic_auth != nil
+        return http_basic_auth_to_porcelain(plumbing.http_basic_auth)
       end
-      if plumbing.elasticache_redis != nil
-        return elasticache_redis_to_porcelain(plumbing.elasticache_redis)
+      if plumbing.http_no_auth != nil
+        return http_no_auth_to_porcelain(plumbing.http_no_auth)
+      end
+      if plumbing.http_auth != nil
+        return http_auth_to_porcelain(plumbing.http_auth)
       end
       if plumbing.kubernetes != nil
         return kubernetes_to_porcelain(plumbing.kubernetes)
@@ -193,53 +202,20 @@ module SDM
       if plumbing.google_gke != nil
         return google_gke_to_porcelain(plumbing.google_gke)
       end
-      if plumbing.oracle != nil
-        return oracle_to_porcelain(plumbing.oracle)
-      end
-      if plumbing.dynamo_db != nil
-        return dynamo_db_to_porcelain(plumbing.dynamo_db)
-      end
-      if plumbing.rdp != nil
-        return rdp_to_porcelain(plumbing.rdp)
-      end
-      if plumbing.big_query != nil
-        return big_query_to_porcelain(plumbing.big_query)
-      end
-      if plumbing.snowflake != nil
-        return snowflake_to_porcelain(plumbing.snowflake)
-      end
       if plumbing.memcached != nil
         return memcached_to_porcelain(plumbing.memcached)
       end
-      if plumbing.postgres != nil
-        return postgres_to_porcelain(plumbing.postgres)
+      if plumbing.mongo_legacy_host != nil
+        return mongo_legacy_host_to_porcelain(plumbing.mongo_legacy_host)
       end
-      if plumbing.aurora_postgres != nil
-        return aurora_postgres_to_porcelain(plumbing.aurora_postgres)
+      if plumbing.mongo_legacy_replicaset != nil
+        return mongo_legacy_replicaset_to_porcelain(plumbing.mongo_legacy_replicaset)
       end
-      if plumbing.greenplum != nil
-        return greenplum_to_porcelain(plumbing.greenplum)
+      if plumbing.mongo_host != nil
+        return mongo_host_to_porcelain(plumbing.mongo_host)
       end
-      if plumbing.cockroach != nil
-        return cockroach_to_porcelain(plumbing.cockroach)
-      end
-      if plumbing.redshift != nil
-        return redshift_to_porcelain(plumbing.redshift)
-      end
-      if plumbing.ssh != nil
-        return ssh_to_porcelain(plumbing.ssh)
-      end
-      if plumbing.http_basic_auth != nil
-        return http_basic_auth_to_porcelain(plumbing.http_basic_auth)
-      end
-      if plumbing.http_no_auth != nil
-        return http_no_auth_to_porcelain(plumbing.http_no_auth)
-      end
-      if plumbing.http_auth != nil
-        return http_auth_to_porcelain(plumbing.http_auth)
-      end
-      if plumbing.cassandra != nil
-        return cassandra_to_porcelain(plumbing.cassandra)
+      if plumbing.mongo_replica_set != nil
+        return mongo_replica_set_to_porcelain(plumbing.mongo_replica_set)
       end
       if plumbing.mysql != nil
         return mysql_to_porcelain(plumbing.mysql)
@@ -256,26 +232,50 @@ module SDM
       if plumbing.memsql != nil
         return memsql_to_porcelain(plumbing.memsql)
       end
-      if plumbing.druid != nil
-        return druid_to_porcelain(plumbing.druid)
+      if plumbing.oracle != nil
+        return oracle_to_porcelain(plumbing.oracle)
+      end
+      if plumbing.postgres != nil
+        return postgres_to_porcelain(plumbing.postgres)
+      end
+      if plumbing.aurora_postgres != nil
+        return aurora_postgres_to_porcelain(plumbing.aurora_postgres)
+      end
+      if plumbing.greenplum != nil
+        return greenplum_to_porcelain(plumbing.greenplum)
+      end
+      if plumbing.cockroach != nil
+        return cockroach_to_porcelain(plumbing.cockroach)
+      end
+      if plumbing.redshift != nil
+        return redshift_to_porcelain(plumbing.redshift)
+      end
+      if plumbing.presto != nil
+        return presto_to_porcelain(plumbing.presto)
+      end
+      if plumbing.rdp != nil
+        return rdp_to_porcelain(plumbing.rdp)
+      end
+      if plumbing.redis != nil
+        return redis_to_porcelain(plumbing.redis)
+      end
+      if plumbing.elasticache_redis != nil
+        return elasticache_redis_to_porcelain(plumbing.elasticache_redis)
+      end
+      if plumbing.snowflake != nil
+        return snowflake_to_porcelain(plumbing.snowflake)
       end
       if plumbing.sql_server != nil
         return sql_server_to_porcelain(plumbing.sql_server)
       end
-      if plumbing.mongo_legacy_host != nil
-        return mongo_legacy_host_to_porcelain(plumbing.mongo_legacy_host)
+      if plumbing.ssh != nil
+        return ssh_to_porcelain(plumbing.ssh)
       end
-      if plumbing.mongo_legacy_replicaset != nil
-        return mongo_legacy_replicaset_to_porcelain(plumbing.mongo_legacy_replicaset)
+      if plumbing.sybase != nil
+        return sybase_to_porcelain(plumbing.sybase)
       end
-      if plumbing.mongo_host != nil
-        return mongo_host_to_porcelain(plumbing.mongo_host)
-      end
-      if plumbing.mongo_replica_set != nil
-        return mongo_replica_set_to_porcelain(plumbing.mongo_replica_set)
-      end
-      if plumbing.athena != nil
-        return athena_to_porcelain(plumbing.athena)
+      if plumbing.teradata != nil
+        return teradata_to_porcelain(plumbing.teradata)
       end
     end
     def self.repeated_resource_to_plumbing(porcelains)
@@ -295,132 +295,214 @@ module SDM
       end
       items
     end
-    def self.sybase_to_porcelain(plumbing)
-      porcelain = Sybase.new()
+    def self.athena_to_porcelain(plumbing)
+      porcelain = Athena.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
       porcelain.healthy = plumbing.healthy
-      porcelain.hostname = plumbing.hostname
-      porcelain.username = plumbing.username
+      porcelain.access_key = plumbing.access_key
+      porcelain.secret_access_key = plumbing.secret_access_key
+      porcelain.output = plumbing.output
       porcelain.port_override = plumbing.port_override
-      porcelain.port = plumbing.port
-      porcelain.password = plumbing.password
+      porcelain.region = plumbing.region
       porcelain
     end
 
-    def self.sybase_to_plumbing(porcelain)
-      plumbing = V1::Sybase.new()
+    def self.athena_to_plumbing(porcelain)
+      plumbing = V1::Athena.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
       plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
-      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
-      plumbing.username = porcelain.username unless porcelain.username == nil
+      plumbing.access_key = porcelain.access_key unless porcelain.access_key == nil
+      plumbing.secret_access_key = porcelain.secret_access_key unless porcelain.secret_access_key == nil
+      plumbing.output = porcelain.output unless porcelain.output == nil
       plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
-      plumbing.port = porcelain.port unless porcelain.port == nil
-      plumbing.password = porcelain.password unless porcelain.password == nil
+      plumbing.region = porcelain.region unless porcelain.region == nil
       plumbing
     end
-    def self.repeated_sybase_to_plumbing(porcelains)
+    def self.repeated_athena_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
-        plumbing = sybase_to_plumbing(porcelain)
+        plumbing = athena_to_plumbing(porcelain)
         items.append(plumbing)
       end
       items
     end
 
-    def self.repeated_sybase_to_porcelain(plumbings)
+    def self.repeated_athena_to_porcelain(plumbings)
       items = Array.new
       plumbings.each do |plumbing|
-        porcelain = sybase_to_porcelain(plumbing)
+        porcelain = athena_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
     end
-    def self.presto_to_porcelain(plumbing)
-      porcelain = Presto.new()
+    def self.big_query_to_porcelain(plumbing)
+      porcelain = BigQuery.new()
+      porcelain.id = plumbing.id
+      porcelain.name = plumbing.name
+      porcelain.healthy = plumbing.healthy
+      porcelain.private_key = plumbing.private_key
+      porcelain.project = plumbing.project
+      porcelain.port_override = plumbing.port_override
+      porcelain.endpoint = plumbing.endpoint
+      porcelain.username = plumbing.username
+      porcelain
+    end
+
+    def self.big_query_to_plumbing(porcelain)
+      plumbing = V1::BigQuery.new()
+      plumbing.id = porcelain.id unless porcelain.id == nil
+      plumbing.name = porcelain.name unless porcelain.name == nil
+      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
+      plumbing.private_key = porcelain.private_key unless porcelain.private_key == nil
+      plumbing.project = porcelain.project unless porcelain.project == nil
+      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
+      plumbing.endpoint = porcelain.endpoint unless porcelain.endpoint == nil
+      plumbing.username = porcelain.username unless porcelain.username == nil
+      plumbing
+    end
+    def self.repeated_big_query_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = big_query_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_big_query_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = big_query_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.cassandra_to_porcelain(plumbing)
+      porcelain = Cassandra.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
       porcelain.healthy = plumbing.healthy
       porcelain.hostname = plumbing.hostname
+      porcelain.username = plumbing.username
       porcelain.password = plumbing.password
-      porcelain.database = plumbing.database
       porcelain.port_override = plumbing.port_override
       porcelain.port = plumbing.port
-      porcelain.username = plumbing.username
       porcelain.tls_required = plumbing.tls_required
       porcelain
     end
 
-    def self.presto_to_plumbing(porcelain)
-      plumbing = V1::Presto.new()
+    def self.cassandra_to_plumbing(porcelain)
+      plumbing = V1::Cassandra.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
       plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
       plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
+      plumbing.username = porcelain.username unless porcelain.username == nil
       plumbing.password = porcelain.password unless porcelain.password == nil
-      plumbing.database = porcelain.database unless porcelain.database == nil
       plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
       plumbing.port = porcelain.port unless porcelain.port == nil
-      plumbing.username = porcelain.username unless porcelain.username == nil
       plumbing.tls_required = porcelain.tls_required unless porcelain.tls_required == nil
       plumbing
     end
-    def self.repeated_presto_to_plumbing(porcelains)
+    def self.repeated_cassandra_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
-        plumbing = presto_to_plumbing(porcelain)
+        plumbing = cassandra_to_plumbing(porcelain)
         items.append(plumbing)
       end
       items
     end
 
-    def self.repeated_presto_to_porcelain(plumbings)
+    def self.repeated_cassandra_to_porcelain(plumbings)
       items = Array.new
       plumbings.each do |plumbing|
-        porcelain = presto_to_porcelain(plumbing)
+        porcelain = cassandra_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
     end
-    def self.teradata_to_porcelain(plumbing)
-      porcelain = Teradata.new()
+    def self.druid_to_porcelain(plumbing)
+      porcelain = Druid.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
       porcelain.healthy = plumbing.healthy
       porcelain.hostname = plumbing.hostname
+      porcelain.port_override = plumbing.port_override
       porcelain.username = plumbing.username
       porcelain.password = plumbing.password
-      porcelain.port_override = plumbing.port_override
       porcelain.port = plumbing.port
       porcelain
     end
 
-    def self.teradata_to_plumbing(porcelain)
-      plumbing = V1::Teradata.new()
+    def self.druid_to_plumbing(porcelain)
+      plumbing = V1::Druid.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
       plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
       plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
+      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
       plumbing.username = porcelain.username unless porcelain.username == nil
       plumbing.password = porcelain.password unless porcelain.password == nil
-      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
       plumbing.port = porcelain.port unless porcelain.port == nil
       plumbing
     end
-    def self.repeated_teradata_to_plumbing(porcelains)
+    def self.repeated_druid_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
-        plumbing = teradata_to_plumbing(porcelain)
+        plumbing = druid_to_plumbing(porcelain)
         items.append(plumbing)
       end
       items
     end
 
-    def self.repeated_teradata_to_porcelain(plumbings)
+    def self.repeated_druid_to_porcelain(plumbings)
       items = Array.new
       plumbings.each do |plumbing|
-        porcelain = teradata_to_porcelain(plumbing)
+        porcelain = druid_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.dynamo_db_to_porcelain(plumbing)
+      porcelain = DynamoDB.new()
+      porcelain.id = plumbing.id
+      porcelain.name = plumbing.name
+      porcelain.healthy = plumbing.healthy
+      porcelain.access_key = plumbing.access_key
+      porcelain.secret_access_key = plumbing.secret_access_key
+      porcelain.region = plumbing.region
+      porcelain.endpoint = plumbing.endpoint
+      porcelain.port_override = plumbing.port_override
+      porcelain
+    end
+
+    def self.dynamo_db_to_plumbing(porcelain)
+      plumbing = V1::DynamoDB.new()
+      plumbing.id = porcelain.id unless porcelain.id == nil
+      plumbing.name = porcelain.name unless porcelain.name == nil
+      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
+      plumbing.access_key = porcelain.access_key unless porcelain.access_key == nil
+      plumbing.secret_access_key = porcelain.secret_access_key unless porcelain.secret_access_key == nil
+      plumbing.region = porcelain.region unless porcelain.region == nil
+      plumbing.endpoint = porcelain.endpoint unless porcelain.endpoint == nil
+      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
+      plumbing
+    end
+    def self.repeated_dynamo_db_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = dynamo_db_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_dynamo_db_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = dynamo_db_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -511,84 +593,134 @@ module SDM
       end
       items
     end
-    def self.redis_to_porcelain(plumbing)
-      porcelain = Redis.new()
+    def self.http_basic_auth_to_porcelain(plumbing)
+      porcelain = HTTPBasicAuth.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
       porcelain.healthy = plumbing.healthy
-      porcelain.hostname = plumbing.hostname
-      porcelain.port_override = plumbing.port_override
+      porcelain.url = plumbing.url
+      porcelain.healthcheck_path = plumbing.healthcheck_path
+      porcelain.username = plumbing.username
       porcelain.password = plumbing.password
-      porcelain.port = plumbing.port
+      porcelain.headers_blacklist = plumbing.headers_blacklist
+      porcelain.default_path = plumbing.default_path
+      porcelain.subdomain = plumbing.subdomain
       porcelain
     end
 
-    def self.redis_to_plumbing(porcelain)
-      plumbing = V1::Redis.new()
+    def self.http_basic_auth_to_plumbing(porcelain)
+      plumbing = V1::HTTPBasicAuth.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
       plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
-      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
-      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
+      plumbing.url = porcelain.url unless porcelain.url == nil
+      plumbing.healthcheck_path = porcelain.healthcheck_path unless porcelain.healthcheck_path == nil
+      plumbing.username = porcelain.username unless porcelain.username == nil
       plumbing.password = porcelain.password unless porcelain.password == nil
-      plumbing.port = porcelain.port unless porcelain.port == nil
+      plumbing.headers_blacklist = porcelain.headers_blacklist unless porcelain.headers_blacklist == nil
+      plumbing.default_path = porcelain.default_path unless porcelain.default_path == nil
+      plumbing.subdomain = porcelain.subdomain unless porcelain.subdomain == nil
       plumbing
     end
-    def self.repeated_redis_to_plumbing(porcelains)
+    def self.repeated_http_basic_auth_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
-        plumbing = redis_to_plumbing(porcelain)
+        plumbing = http_basic_auth_to_plumbing(porcelain)
         items.append(plumbing)
       end
       items
     end
 
-    def self.repeated_redis_to_porcelain(plumbings)
+    def self.repeated_http_basic_auth_to_porcelain(plumbings)
       items = Array.new
       plumbings.each do |plumbing|
-        porcelain = redis_to_porcelain(plumbing)
+        porcelain = http_basic_auth_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
     end
-    def self.elasticache_redis_to_porcelain(plumbing)
-      porcelain = ElasticacheRedis.new()
+    def self.http_no_auth_to_porcelain(plumbing)
+      porcelain = HTTPNoAuth.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
       porcelain.healthy = plumbing.healthy
-      porcelain.hostname = plumbing.hostname
-      porcelain.port_override = plumbing.port_override
-      porcelain.password = plumbing.password
-      porcelain.port = plumbing.port
-      porcelain.tls_required = plumbing.tls_required
+      porcelain.url = plumbing.url
+      porcelain.healthcheck_path = plumbing.healthcheck_path
+      porcelain.headers_blacklist = plumbing.headers_blacklist
+      porcelain.default_path = plumbing.default_path
+      porcelain.subdomain = plumbing.subdomain
       porcelain
     end
 
-    def self.elasticache_redis_to_plumbing(porcelain)
-      plumbing = V1::ElasticacheRedis.new()
+    def self.http_no_auth_to_plumbing(porcelain)
+      plumbing = V1::HTTPNoAuth.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
       plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
-      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
-      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
-      plumbing.password = porcelain.password unless porcelain.password == nil
-      plumbing.port = porcelain.port unless porcelain.port == nil
-      plumbing.tls_required = porcelain.tls_required unless porcelain.tls_required == nil
+      plumbing.url = porcelain.url unless porcelain.url == nil
+      plumbing.healthcheck_path = porcelain.healthcheck_path unless porcelain.healthcheck_path == nil
+      plumbing.headers_blacklist = porcelain.headers_blacklist unless porcelain.headers_blacklist == nil
+      plumbing.default_path = porcelain.default_path unless porcelain.default_path == nil
+      plumbing.subdomain = porcelain.subdomain unless porcelain.subdomain == nil
       plumbing
     end
-    def self.repeated_elasticache_redis_to_plumbing(porcelains)
+    def self.repeated_http_no_auth_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
-        plumbing = elasticache_redis_to_plumbing(porcelain)
+        plumbing = http_no_auth_to_plumbing(porcelain)
         items.append(plumbing)
       end
       items
     end
 
-    def self.repeated_elasticache_redis_to_porcelain(plumbings)
+    def self.repeated_http_no_auth_to_porcelain(plumbings)
       items = Array.new
       plumbings.each do |plumbing|
-        porcelain = elasticache_redis_to_porcelain(plumbing)
+        porcelain = http_no_auth_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.http_auth_to_porcelain(plumbing)
+      porcelain = HTTPAuth.new()
+      porcelain.id = plumbing.id
+      porcelain.name = plumbing.name
+      porcelain.healthy = plumbing.healthy
+      porcelain.url = plumbing.url
+      porcelain.healthcheck_path = plumbing.healthcheck_path
+      porcelain.auth_header = plumbing.auth_header
+      porcelain.headers_blacklist = plumbing.headers_blacklist
+      porcelain.default_path = plumbing.default_path
+      porcelain.subdomain = plumbing.subdomain
+      porcelain
+    end
+
+    def self.http_auth_to_plumbing(porcelain)
+      plumbing = V1::HTTPAuth.new()
+      plumbing.id = porcelain.id unless porcelain.id == nil
+      plumbing.name = porcelain.name unless porcelain.name == nil
+      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
+      plumbing.url = porcelain.url unless porcelain.url == nil
+      plumbing.healthcheck_path = porcelain.healthcheck_path unless porcelain.healthcheck_path == nil
+      plumbing.auth_header = porcelain.auth_header unless porcelain.auth_header == nil
+      plumbing.headers_blacklist = porcelain.headers_blacklist unless porcelain.headers_blacklist == nil
+      plumbing.default_path = porcelain.default_path unless porcelain.default_path == nil
+      plumbing.subdomain = porcelain.subdomain unless porcelain.subdomain == nil
+      plumbing
+    end
+    def self.repeated_http_auth_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = http_auth_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_http_auth_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = http_auth_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -769,6 +901,462 @@ module SDM
       end
       items
     end
+    def self.memcached_to_porcelain(plumbing)
+      porcelain = Memcached.new()
+      porcelain.id = plumbing.id
+      porcelain.name = plumbing.name
+      porcelain.healthy = plumbing.healthy
+      porcelain.hostname = plumbing.hostname
+      porcelain.port_override = plumbing.port_override
+      porcelain.port = plumbing.port
+      porcelain
+    end
+
+    def self.memcached_to_plumbing(porcelain)
+      plumbing = V1::Memcached.new()
+      plumbing.id = porcelain.id unless porcelain.id == nil
+      plumbing.name = porcelain.name unless porcelain.name == nil
+      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
+      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
+      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
+      plumbing.port = porcelain.port unless porcelain.port == nil
+      plumbing
+    end
+    def self.repeated_memcached_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = memcached_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_memcached_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = memcached_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.mongo_legacy_host_to_porcelain(plumbing)
+      porcelain = MongoLegacyHost.new()
+      porcelain.id = plumbing.id
+      porcelain.name = plumbing.name
+      porcelain.healthy = plumbing.healthy
+      porcelain.hostname = plumbing.hostname
+      porcelain.auth_database = plumbing.auth_database
+      porcelain.port_override = plumbing.port_override
+      porcelain.username = plumbing.username
+      porcelain.password = plumbing.password
+      porcelain.port = plumbing.port
+      porcelain.replica_set = plumbing.replica_set
+      porcelain.connect_to_replica = plumbing.connect_to_replica
+      porcelain.tls_required = plumbing.tls_required
+      porcelain
+    end
+
+    def self.mongo_legacy_host_to_plumbing(porcelain)
+      plumbing = V1::MongoLegacyHost.new()
+      plumbing.id = porcelain.id unless porcelain.id == nil
+      plumbing.name = porcelain.name unless porcelain.name == nil
+      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
+      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
+      plumbing.auth_database = porcelain.auth_database unless porcelain.auth_database == nil
+      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
+      plumbing.username = porcelain.username unless porcelain.username == nil
+      plumbing.password = porcelain.password unless porcelain.password == nil
+      plumbing.port = porcelain.port unless porcelain.port == nil
+      plumbing.replica_set = porcelain.replica_set unless porcelain.replica_set == nil
+      plumbing.connect_to_replica = porcelain.connect_to_replica unless porcelain.connect_to_replica == nil
+      plumbing.tls_required = porcelain.tls_required unless porcelain.tls_required == nil
+      plumbing
+    end
+    def self.repeated_mongo_legacy_host_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = mongo_legacy_host_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_mongo_legacy_host_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = mongo_legacy_host_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.mongo_legacy_replicaset_to_porcelain(plumbing)
+      porcelain = MongoLegacyReplicaset.new()
+      porcelain.id = plumbing.id
+      porcelain.name = plumbing.name
+      porcelain.healthy = plumbing.healthy
+      porcelain.hostname = plumbing.hostname
+      porcelain.auth_database = plumbing.auth_database
+      porcelain.port_override = plumbing.port_override
+      porcelain.username = plumbing.username
+      porcelain.password = plumbing.password
+      porcelain.port = plumbing.port
+      porcelain.replica_set = plumbing.replica_set
+      porcelain.connect_to_replica = plumbing.connect_to_replica
+      porcelain.tls_required = plumbing.tls_required
+      porcelain
+    end
+
+    def self.mongo_legacy_replicaset_to_plumbing(porcelain)
+      plumbing = V1::MongoLegacyReplicaset.new()
+      plumbing.id = porcelain.id unless porcelain.id == nil
+      plumbing.name = porcelain.name unless porcelain.name == nil
+      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
+      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
+      plumbing.auth_database = porcelain.auth_database unless porcelain.auth_database == nil
+      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
+      plumbing.username = porcelain.username unless porcelain.username == nil
+      plumbing.password = porcelain.password unless porcelain.password == nil
+      plumbing.port = porcelain.port unless porcelain.port == nil
+      plumbing.replica_set = porcelain.replica_set unless porcelain.replica_set == nil
+      plumbing.connect_to_replica = porcelain.connect_to_replica unless porcelain.connect_to_replica == nil
+      plumbing.tls_required = porcelain.tls_required unless porcelain.tls_required == nil
+      plumbing
+    end
+    def self.repeated_mongo_legacy_replicaset_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = mongo_legacy_replicaset_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_mongo_legacy_replicaset_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = mongo_legacy_replicaset_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.mongo_host_to_porcelain(plumbing)
+      porcelain = MongoHost.new()
+      porcelain.id = plumbing.id
+      porcelain.name = plumbing.name
+      porcelain.healthy = plumbing.healthy
+      porcelain.hostname = plumbing.hostname
+      porcelain.auth_database = plumbing.auth_database
+      porcelain.port_override = plumbing.port_override
+      porcelain.username = plumbing.username
+      porcelain.password = plumbing.password
+      porcelain.port = plumbing.port
+      porcelain.schema = plumbing.schema
+      porcelain.tls_required = plumbing.tls_required
+      porcelain
+    end
+
+    def self.mongo_host_to_plumbing(porcelain)
+      plumbing = V1::MongoHost.new()
+      plumbing.id = porcelain.id unless porcelain.id == nil
+      plumbing.name = porcelain.name unless porcelain.name == nil
+      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
+      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
+      plumbing.auth_database = porcelain.auth_database unless porcelain.auth_database == nil
+      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
+      plumbing.username = porcelain.username unless porcelain.username == nil
+      plumbing.password = porcelain.password unless porcelain.password == nil
+      plumbing.port = porcelain.port unless porcelain.port == nil
+      plumbing.schema = porcelain.schema unless porcelain.schema == nil
+      plumbing.tls_required = porcelain.tls_required unless porcelain.tls_required == nil
+      plumbing
+    end
+    def self.repeated_mongo_host_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = mongo_host_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_mongo_host_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = mongo_host_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.mongo_replica_set_to_porcelain(plumbing)
+      porcelain = MongoReplicaSet.new()
+      porcelain.id = plumbing.id
+      porcelain.name = plumbing.name
+      porcelain.healthy = plumbing.healthy
+      porcelain.hostname = plumbing.hostname
+      porcelain.auth_database = plumbing.auth_database
+      porcelain.port_override = plumbing.port_override
+      porcelain.username = plumbing.username
+      porcelain.password = plumbing.password
+      porcelain.port = plumbing.port
+      porcelain.replica_set = plumbing.replica_set
+      porcelain.connect_to_replica = plumbing.connect_to_replica
+      porcelain.tls_required = plumbing.tls_required
+      porcelain
+    end
+
+    def self.mongo_replica_set_to_plumbing(porcelain)
+      plumbing = V1::MongoReplicaSet.new()
+      plumbing.id = porcelain.id unless porcelain.id == nil
+      plumbing.name = porcelain.name unless porcelain.name == nil
+      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
+      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
+      plumbing.auth_database = porcelain.auth_database unless porcelain.auth_database == nil
+      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
+      plumbing.username = porcelain.username unless porcelain.username == nil
+      plumbing.password = porcelain.password unless porcelain.password == nil
+      plumbing.port = porcelain.port unless porcelain.port == nil
+      plumbing.replica_set = porcelain.replica_set unless porcelain.replica_set == nil
+      plumbing.connect_to_replica = porcelain.connect_to_replica unless porcelain.connect_to_replica == nil
+      plumbing.tls_required = porcelain.tls_required unless porcelain.tls_required == nil
+      plumbing
+    end
+    def self.repeated_mongo_replica_set_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = mongo_replica_set_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_mongo_replica_set_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = mongo_replica_set_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.mysql_to_porcelain(plumbing)
+      porcelain = Mysql.new()
+      porcelain.id = plumbing.id
+      porcelain.name = plumbing.name
+      porcelain.healthy = plumbing.healthy
+      porcelain.hostname = plumbing.hostname
+      porcelain.username = plumbing.username
+      porcelain.password = plumbing.password
+      porcelain.database = plumbing.database
+      porcelain.port_override = plumbing.port_override
+      porcelain.port = plumbing.port
+      porcelain
+    end
+
+    def self.mysql_to_plumbing(porcelain)
+      plumbing = V1::Mysql.new()
+      plumbing.id = porcelain.id unless porcelain.id == nil
+      plumbing.name = porcelain.name unless porcelain.name == nil
+      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
+      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
+      plumbing.username = porcelain.username unless porcelain.username == nil
+      plumbing.password = porcelain.password unless porcelain.password == nil
+      plumbing.database = porcelain.database unless porcelain.database == nil
+      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
+      plumbing.port = porcelain.port unless porcelain.port == nil
+      plumbing
+    end
+    def self.repeated_mysql_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = mysql_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_mysql_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = mysql_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.aurora_mysql_to_porcelain(plumbing)
+      porcelain = AuroraMysql.new()
+      porcelain.id = plumbing.id
+      porcelain.name = plumbing.name
+      porcelain.healthy = plumbing.healthy
+      porcelain.hostname = plumbing.hostname
+      porcelain.username = plumbing.username
+      porcelain.password = plumbing.password
+      porcelain.database = plumbing.database
+      porcelain.port_override = plumbing.port_override
+      porcelain.port = plumbing.port
+      porcelain
+    end
+
+    def self.aurora_mysql_to_plumbing(porcelain)
+      plumbing = V1::AuroraMysql.new()
+      plumbing.id = porcelain.id unless porcelain.id == nil
+      plumbing.name = porcelain.name unless porcelain.name == nil
+      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
+      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
+      plumbing.username = porcelain.username unless porcelain.username == nil
+      plumbing.password = porcelain.password unless porcelain.password == nil
+      plumbing.database = porcelain.database unless porcelain.database == nil
+      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
+      plumbing.port = porcelain.port unless porcelain.port == nil
+      plumbing
+    end
+    def self.repeated_aurora_mysql_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = aurora_mysql_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_aurora_mysql_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = aurora_mysql_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.clustrix_to_porcelain(plumbing)
+      porcelain = Clustrix.new()
+      porcelain.id = plumbing.id
+      porcelain.name = plumbing.name
+      porcelain.healthy = plumbing.healthy
+      porcelain.hostname = plumbing.hostname
+      porcelain.username = plumbing.username
+      porcelain.password = plumbing.password
+      porcelain.database = plumbing.database
+      porcelain.port_override = plumbing.port_override
+      porcelain.port = plumbing.port
+      porcelain
+    end
+
+    def self.clustrix_to_plumbing(porcelain)
+      plumbing = V1::Clustrix.new()
+      plumbing.id = porcelain.id unless porcelain.id == nil
+      plumbing.name = porcelain.name unless porcelain.name == nil
+      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
+      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
+      plumbing.username = porcelain.username unless porcelain.username == nil
+      plumbing.password = porcelain.password unless porcelain.password == nil
+      plumbing.database = porcelain.database unless porcelain.database == nil
+      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
+      plumbing.port = porcelain.port unless porcelain.port == nil
+      plumbing
+    end
+    def self.repeated_clustrix_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = clustrix_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_clustrix_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = clustrix_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.maria_to_porcelain(plumbing)
+      porcelain = Maria.new()
+      porcelain.id = plumbing.id
+      porcelain.name = plumbing.name
+      porcelain.healthy = plumbing.healthy
+      porcelain.hostname = plumbing.hostname
+      porcelain.username = plumbing.username
+      porcelain.password = plumbing.password
+      porcelain.database = plumbing.database
+      porcelain.port_override = plumbing.port_override
+      porcelain.port = plumbing.port
+      porcelain
+    end
+
+    def self.maria_to_plumbing(porcelain)
+      plumbing = V1::Maria.new()
+      plumbing.id = porcelain.id unless porcelain.id == nil
+      plumbing.name = porcelain.name unless porcelain.name == nil
+      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
+      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
+      plumbing.username = porcelain.username unless porcelain.username == nil
+      plumbing.password = porcelain.password unless porcelain.password == nil
+      plumbing.database = porcelain.database unless porcelain.database == nil
+      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
+      plumbing.port = porcelain.port unless porcelain.port == nil
+      plumbing
+    end
+    def self.repeated_maria_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = maria_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_maria_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = maria_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.memsql_to_porcelain(plumbing)
+      porcelain = Memsql.new()
+      porcelain.id = plumbing.id
+      porcelain.name = plumbing.name
+      porcelain.healthy = plumbing.healthy
+      porcelain.hostname = plumbing.hostname
+      porcelain.username = plumbing.username
+      porcelain.password = plumbing.password
+      porcelain.database = plumbing.database
+      porcelain.port_override = plumbing.port_override
+      porcelain.port = plumbing.port
+      porcelain
+    end
+
+    def self.memsql_to_plumbing(porcelain)
+      plumbing = V1::Memsql.new()
+      plumbing.id = porcelain.id unless porcelain.id == nil
+      plumbing.name = porcelain.name unless porcelain.name == nil
+      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
+      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
+      plumbing.username = porcelain.username unless porcelain.username == nil
+      plumbing.password = porcelain.password unless porcelain.password == nil
+      plumbing.database = porcelain.database unless porcelain.database == nil
+      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
+      plumbing.port = porcelain.port unless porcelain.port == nil
+      plumbing
+    end
+    def self.repeated_memsql_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = memsql_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_memsql_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = memsql_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.oracle_to_porcelain(plumbing)
       porcelain = Oracle.new()
       porcelain.id = plumbing.id
@@ -811,214 +1399,6 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = oracle_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
-    def self.dynamo_db_to_porcelain(plumbing)
-      porcelain = DynamoDB.new()
-      porcelain.id = plumbing.id
-      porcelain.name = plumbing.name
-      porcelain.healthy = plumbing.healthy
-      porcelain.access_key = plumbing.access_key
-      porcelain.secret_access_key = plumbing.secret_access_key
-      porcelain.region = plumbing.region
-      porcelain.endpoint = plumbing.endpoint
-      porcelain.port_override = plumbing.port_override
-      porcelain
-    end
-
-    def self.dynamo_db_to_plumbing(porcelain)
-      plumbing = V1::DynamoDB.new()
-      plumbing.id = porcelain.id unless porcelain.id == nil
-      plumbing.name = porcelain.name unless porcelain.name == nil
-      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
-      plumbing.access_key = porcelain.access_key unless porcelain.access_key == nil
-      plumbing.secret_access_key = porcelain.secret_access_key unless porcelain.secret_access_key == nil
-      plumbing.region = porcelain.region unless porcelain.region == nil
-      plumbing.endpoint = porcelain.endpoint unless porcelain.endpoint == nil
-      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
-      plumbing
-    end
-    def self.repeated_dynamo_db_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = dynamo_db_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.repeated_dynamo_db_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = dynamo_db_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
-    def self.rdp_to_porcelain(plumbing)
-      porcelain = RDP.new()
-      porcelain.id = plumbing.id
-      porcelain.name = plumbing.name
-      porcelain.healthy = plumbing.healthy
-      porcelain.hostname = plumbing.hostname
-      porcelain.username = plumbing.username
-      porcelain.password = plumbing.password
-      porcelain.port_override = plumbing.port_override
-      porcelain.port = plumbing.port
-      porcelain
-    end
-
-    def self.rdp_to_plumbing(porcelain)
-      plumbing = V1::RDP.new()
-      plumbing.id = porcelain.id unless porcelain.id == nil
-      plumbing.name = porcelain.name unless porcelain.name == nil
-      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
-      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
-      plumbing.username = porcelain.username unless porcelain.username == nil
-      plumbing.password = porcelain.password unless porcelain.password == nil
-      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
-      plumbing.port = porcelain.port unless porcelain.port == nil
-      plumbing
-    end
-    def self.repeated_rdp_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = rdp_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.repeated_rdp_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = rdp_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
-    def self.big_query_to_porcelain(plumbing)
-      porcelain = BigQuery.new()
-      porcelain.id = plumbing.id
-      porcelain.name = plumbing.name
-      porcelain.healthy = plumbing.healthy
-      porcelain.private_key = plumbing.private_key
-      porcelain.project = plumbing.project
-      porcelain.port_override = plumbing.port_override
-      porcelain.endpoint = plumbing.endpoint
-      porcelain.username = plumbing.username
-      porcelain
-    end
-
-    def self.big_query_to_plumbing(porcelain)
-      plumbing = V1::BigQuery.new()
-      plumbing.id = porcelain.id unless porcelain.id == nil
-      plumbing.name = porcelain.name unless porcelain.name == nil
-      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
-      plumbing.private_key = porcelain.private_key unless porcelain.private_key == nil
-      plumbing.project = porcelain.project unless porcelain.project == nil
-      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
-      plumbing.endpoint = porcelain.endpoint unless porcelain.endpoint == nil
-      plumbing.username = porcelain.username unless porcelain.username == nil
-      plumbing
-    end
-    def self.repeated_big_query_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = big_query_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.repeated_big_query_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = big_query_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
-    def self.snowflake_to_porcelain(plumbing)
-      porcelain = Snowflake.new()
-      porcelain.id = plumbing.id
-      porcelain.name = plumbing.name
-      porcelain.healthy = plumbing.healthy
-      porcelain.hostname = plumbing.hostname
-      porcelain.username = plumbing.username
-      porcelain.password = plumbing.password
-      porcelain.database = plumbing.database
-      porcelain.schema = plumbing.schema
-      porcelain.port_override = plumbing.port_override
-      porcelain
-    end
-
-    def self.snowflake_to_plumbing(porcelain)
-      plumbing = V1::Snowflake.new()
-      plumbing.id = porcelain.id unless porcelain.id == nil
-      plumbing.name = porcelain.name unless porcelain.name == nil
-      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
-      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
-      plumbing.username = porcelain.username unless porcelain.username == nil
-      plumbing.password = porcelain.password unless porcelain.password == nil
-      plumbing.database = porcelain.database unless porcelain.database == nil
-      plumbing.schema = porcelain.schema unless porcelain.schema == nil
-      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
-      plumbing
-    end
-    def self.repeated_snowflake_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = snowflake_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.repeated_snowflake_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = snowflake_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
-    def self.memcached_to_porcelain(plumbing)
-      porcelain = Memcached.new()
-      porcelain.id = plumbing.id
-      porcelain.name = plumbing.name
-      porcelain.healthy = plumbing.healthy
-      porcelain.hostname = plumbing.hostname
-      porcelain.port_override = plumbing.port_override
-      porcelain.port = plumbing.port
-      porcelain
-    end
-
-    def self.memcached_to_plumbing(porcelain)
-      plumbing = V1::Memcached.new()
-      plumbing.id = porcelain.id unless porcelain.id == nil
-      plumbing.name = porcelain.name unless porcelain.name == nil
-      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
-      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
-      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
-      plumbing.port = porcelain.port unless porcelain.port == nil
-      plumbing
-    end
-    def self.repeated_memcached_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = memcached_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.repeated_memcached_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = memcached_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -1253,180 +1633,54 @@ module SDM
       end
       items
     end
-    def self.ssh_to_porcelain(plumbing)
-      porcelain = SSH.new()
+    def self.presto_to_porcelain(plumbing)
+      porcelain = Presto.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
       porcelain.healthy = plumbing.healthy
       porcelain.hostname = plumbing.hostname
-      porcelain.username = plumbing.username
+      porcelain.password = plumbing.password
+      porcelain.database = plumbing.database
+      porcelain.port_override = plumbing.port_override
       porcelain.port = plumbing.port
-      porcelain.public_key = plumbing.public_key
+      porcelain.username = plumbing.username
+      porcelain.tls_required = plumbing.tls_required
       porcelain
     end
 
-    def self.ssh_to_plumbing(porcelain)
-      plumbing = V1::SSH.new()
+    def self.presto_to_plumbing(porcelain)
+      plumbing = V1::Presto.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
       plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
       plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
-      plumbing.username = porcelain.username unless porcelain.username == nil
-      plumbing.port = porcelain.port unless porcelain.port == nil
-      plumbing.public_key = porcelain.public_key unless porcelain.public_key == nil
-      plumbing
-    end
-    def self.repeated_ssh_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = ssh_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.repeated_ssh_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = ssh_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
-    def self.http_basic_auth_to_porcelain(plumbing)
-      porcelain = HTTPBasicAuth.new()
-      porcelain.id = plumbing.id
-      porcelain.name = plumbing.name
-      porcelain.healthy = plumbing.healthy
-      porcelain.url = plumbing.url
-      porcelain.healthcheck_path = plumbing.healthcheck_path
-      porcelain.username = plumbing.username
-      porcelain.password = plumbing.password
-      porcelain.headers_blacklist = plumbing.headers_blacklist
-      porcelain.default_path = plumbing.default_path
-      porcelain.subdomain = plumbing.subdomain
-      porcelain
-    end
-
-    def self.http_basic_auth_to_plumbing(porcelain)
-      plumbing = V1::HTTPBasicAuth.new()
-      plumbing.id = porcelain.id unless porcelain.id == nil
-      plumbing.name = porcelain.name unless porcelain.name == nil
-      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
-      plumbing.url = porcelain.url unless porcelain.url == nil
-      plumbing.healthcheck_path = porcelain.healthcheck_path unless porcelain.healthcheck_path == nil
-      plumbing.username = porcelain.username unless porcelain.username == nil
       plumbing.password = porcelain.password unless porcelain.password == nil
-      plumbing.headers_blacklist = porcelain.headers_blacklist unless porcelain.headers_blacklist == nil
-      plumbing.default_path = porcelain.default_path unless porcelain.default_path == nil
-      plumbing.subdomain = porcelain.subdomain unless porcelain.subdomain == nil
+      plumbing.database = porcelain.database unless porcelain.database == nil
+      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
+      plumbing.port = porcelain.port unless porcelain.port == nil
+      plumbing.username = porcelain.username unless porcelain.username == nil
+      plumbing.tls_required = porcelain.tls_required unless porcelain.tls_required == nil
       plumbing
     end
-    def self.repeated_http_basic_auth_to_plumbing(porcelains)
+    def self.repeated_presto_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
-        plumbing = http_basic_auth_to_plumbing(porcelain)
+        plumbing = presto_to_plumbing(porcelain)
         items.append(plumbing)
       end
       items
     end
 
-    def self.repeated_http_basic_auth_to_porcelain(plumbings)
+    def self.repeated_presto_to_porcelain(plumbings)
       items = Array.new
       plumbings.each do |plumbing|
-        porcelain = http_basic_auth_to_porcelain(plumbing)
+        porcelain = presto_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
     end
-    def self.http_no_auth_to_porcelain(plumbing)
-      porcelain = HTTPNoAuth.new()
-      porcelain.id = plumbing.id
-      porcelain.name = plumbing.name
-      porcelain.healthy = plumbing.healthy
-      porcelain.url = plumbing.url
-      porcelain.healthcheck_path = plumbing.healthcheck_path
-      porcelain.headers_blacklist = plumbing.headers_blacklist
-      porcelain.default_path = plumbing.default_path
-      porcelain.subdomain = plumbing.subdomain
-      porcelain
-    end
-
-    def self.http_no_auth_to_plumbing(porcelain)
-      plumbing = V1::HTTPNoAuth.new()
-      plumbing.id = porcelain.id unless porcelain.id == nil
-      plumbing.name = porcelain.name unless porcelain.name == nil
-      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
-      plumbing.url = porcelain.url unless porcelain.url == nil
-      plumbing.healthcheck_path = porcelain.healthcheck_path unless porcelain.healthcheck_path == nil
-      plumbing.headers_blacklist = porcelain.headers_blacklist unless porcelain.headers_blacklist == nil
-      plumbing.default_path = porcelain.default_path unless porcelain.default_path == nil
-      plumbing.subdomain = porcelain.subdomain unless porcelain.subdomain == nil
-      plumbing
-    end
-    def self.repeated_http_no_auth_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = http_no_auth_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.repeated_http_no_auth_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = http_no_auth_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
-    def self.http_auth_to_porcelain(plumbing)
-      porcelain = HTTPAuth.new()
-      porcelain.id = plumbing.id
-      porcelain.name = plumbing.name
-      porcelain.healthy = plumbing.healthy
-      porcelain.url = plumbing.url
-      porcelain.healthcheck_path = plumbing.healthcheck_path
-      porcelain.auth_header = plumbing.auth_header
-      porcelain.headers_blacklist = plumbing.headers_blacklist
-      porcelain.default_path = plumbing.default_path
-      porcelain.subdomain = plumbing.subdomain
-      porcelain
-    end
-
-    def self.http_auth_to_plumbing(porcelain)
-      plumbing = V1::HTTPAuth.new()
-      plumbing.id = porcelain.id unless porcelain.id == nil
-      plumbing.name = porcelain.name unless porcelain.name == nil
-      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
-      plumbing.url = porcelain.url unless porcelain.url == nil
-      plumbing.healthcheck_path = porcelain.healthcheck_path unless porcelain.healthcheck_path == nil
-      plumbing.auth_header = porcelain.auth_header unless porcelain.auth_header == nil
-      plumbing.headers_blacklist = porcelain.headers_blacklist unless porcelain.headers_blacklist == nil
-      plumbing.default_path = porcelain.default_path unless porcelain.default_path == nil
-      plumbing.subdomain = porcelain.subdomain unless porcelain.subdomain == nil
-      plumbing
-    end
-    def self.repeated_http_auth_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = http_auth_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.repeated_http_auth_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = http_auth_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
-    def self.cassandra_to_porcelain(plumbing)
-      porcelain = Cassandra.new()
+    def self.rdp_to_porcelain(plumbing)
+      porcelain = RDP.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
       porcelain.healthy = plumbing.healthy
@@ -1434,43 +1688,123 @@ module SDM
       porcelain.username = plumbing.username
       porcelain.password = plumbing.password
       porcelain.port_override = plumbing.port_override
+      porcelain.port = plumbing.port
+      porcelain
+    end
+
+    def self.rdp_to_plumbing(porcelain)
+      plumbing = V1::RDP.new()
+      plumbing.id = porcelain.id unless porcelain.id == nil
+      plumbing.name = porcelain.name unless porcelain.name == nil
+      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
+      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
+      plumbing.username = porcelain.username unless porcelain.username == nil
+      plumbing.password = porcelain.password unless porcelain.password == nil
+      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
+      plumbing.port = porcelain.port unless porcelain.port == nil
+      plumbing
+    end
+    def self.repeated_rdp_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = rdp_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_rdp_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = rdp_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.redis_to_porcelain(plumbing)
+      porcelain = Redis.new()
+      porcelain.id = plumbing.id
+      porcelain.name = plumbing.name
+      porcelain.healthy = plumbing.healthy
+      porcelain.hostname = plumbing.hostname
+      porcelain.port_override = plumbing.port_override
+      porcelain.password = plumbing.password
+      porcelain.port = plumbing.port
+      porcelain
+    end
+
+    def self.redis_to_plumbing(porcelain)
+      plumbing = V1::Redis.new()
+      plumbing.id = porcelain.id unless porcelain.id == nil
+      plumbing.name = porcelain.name unless porcelain.name == nil
+      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
+      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
+      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
+      plumbing.password = porcelain.password unless porcelain.password == nil
+      plumbing.port = porcelain.port unless porcelain.port == nil
+      plumbing
+    end
+    def self.repeated_redis_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = redis_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_redis_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = redis_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.elasticache_redis_to_porcelain(plumbing)
+      porcelain = ElasticacheRedis.new()
+      porcelain.id = plumbing.id
+      porcelain.name = plumbing.name
+      porcelain.healthy = plumbing.healthy
+      porcelain.hostname = plumbing.hostname
+      porcelain.port_override = plumbing.port_override
+      porcelain.password = plumbing.password
       porcelain.port = plumbing.port
       porcelain.tls_required = plumbing.tls_required
       porcelain
     end
 
-    def self.cassandra_to_plumbing(porcelain)
-      plumbing = V1::Cassandra.new()
+    def self.elasticache_redis_to_plumbing(porcelain)
+      plumbing = V1::ElasticacheRedis.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
       plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
       plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
-      plumbing.username = porcelain.username unless porcelain.username == nil
-      plumbing.password = porcelain.password unless porcelain.password == nil
       plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
+      plumbing.password = porcelain.password unless porcelain.password == nil
       plumbing.port = porcelain.port unless porcelain.port == nil
       plumbing.tls_required = porcelain.tls_required unless porcelain.tls_required == nil
       plumbing
     end
-    def self.repeated_cassandra_to_plumbing(porcelains)
+    def self.repeated_elasticache_redis_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
-        plumbing = cassandra_to_plumbing(porcelain)
+        plumbing = elasticache_redis_to_plumbing(porcelain)
         items.append(plumbing)
       end
       items
     end
 
-    def self.repeated_cassandra_to_porcelain(plumbings)
+    def self.repeated_elasticache_redis_to_porcelain(plumbings)
       items = Array.new
       plumbings.each do |plumbing|
-        porcelain = cassandra_to_porcelain(plumbing)
+        porcelain = elasticache_redis_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
     end
-    def self.mysql_to_porcelain(plumbing)
-      porcelain = Mysql.new()
+    def self.snowflake_to_porcelain(plumbing)
+      porcelain = Snowflake.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
       porcelain.healthy = plumbing.healthy
@@ -1478,13 +1812,13 @@ module SDM
       porcelain.username = plumbing.username
       porcelain.password = plumbing.password
       porcelain.database = plumbing.database
+      porcelain.schema = plumbing.schema
       porcelain.port_override = plumbing.port_override
-      porcelain.port = plumbing.port
       porcelain
     end
 
-    def self.mysql_to_plumbing(porcelain)
-      plumbing = V1::Mysql.new()
+    def self.snowflake_to_plumbing(porcelain)
+      plumbing = V1::Snowflake.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
       plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
@@ -1492,241 +1826,23 @@ module SDM
       plumbing.username = porcelain.username unless porcelain.username == nil
       plumbing.password = porcelain.password unless porcelain.password == nil
       plumbing.database = porcelain.database unless porcelain.database == nil
+      plumbing.schema = porcelain.schema unless porcelain.schema == nil
       plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
-      plumbing.port = porcelain.port unless porcelain.port == nil
       plumbing
     end
-    def self.repeated_mysql_to_plumbing(porcelains)
+    def self.repeated_snowflake_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
-        plumbing = mysql_to_plumbing(porcelain)
+        plumbing = snowflake_to_plumbing(porcelain)
         items.append(plumbing)
       end
       items
     end
 
-    def self.repeated_mysql_to_porcelain(plumbings)
+    def self.repeated_snowflake_to_porcelain(plumbings)
       items = Array.new
       plumbings.each do |plumbing|
-        porcelain = mysql_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
-    def self.aurora_mysql_to_porcelain(plumbing)
-      porcelain = AuroraMysql.new()
-      porcelain.id = plumbing.id
-      porcelain.name = plumbing.name
-      porcelain.healthy = plumbing.healthy
-      porcelain.hostname = plumbing.hostname
-      porcelain.username = plumbing.username
-      porcelain.password = plumbing.password
-      porcelain.database = plumbing.database
-      porcelain.port_override = plumbing.port_override
-      porcelain.port = plumbing.port
-      porcelain
-    end
-
-    def self.aurora_mysql_to_plumbing(porcelain)
-      plumbing = V1::AuroraMysql.new()
-      plumbing.id = porcelain.id unless porcelain.id == nil
-      plumbing.name = porcelain.name unless porcelain.name == nil
-      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
-      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
-      plumbing.username = porcelain.username unless porcelain.username == nil
-      plumbing.password = porcelain.password unless porcelain.password == nil
-      plumbing.database = porcelain.database unless porcelain.database == nil
-      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
-      plumbing.port = porcelain.port unless porcelain.port == nil
-      plumbing
-    end
-    def self.repeated_aurora_mysql_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = aurora_mysql_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.repeated_aurora_mysql_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = aurora_mysql_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
-    def self.clustrix_to_porcelain(plumbing)
-      porcelain = Clustrix.new()
-      porcelain.id = plumbing.id
-      porcelain.name = plumbing.name
-      porcelain.healthy = plumbing.healthy
-      porcelain.hostname = plumbing.hostname
-      porcelain.username = plumbing.username
-      porcelain.password = plumbing.password
-      porcelain.database = plumbing.database
-      porcelain.port_override = plumbing.port_override
-      porcelain.port = plumbing.port
-      porcelain
-    end
-
-    def self.clustrix_to_plumbing(porcelain)
-      plumbing = V1::Clustrix.new()
-      plumbing.id = porcelain.id unless porcelain.id == nil
-      plumbing.name = porcelain.name unless porcelain.name == nil
-      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
-      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
-      plumbing.username = porcelain.username unless porcelain.username == nil
-      plumbing.password = porcelain.password unless porcelain.password == nil
-      plumbing.database = porcelain.database unless porcelain.database == nil
-      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
-      plumbing.port = porcelain.port unless porcelain.port == nil
-      plumbing
-    end
-    def self.repeated_clustrix_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = clustrix_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.repeated_clustrix_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = clustrix_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
-    def self.maria_to_porcelain(plumbing)
-      porcelain = Maria.new()
-      porcelain.id = plumbing.id
-      porcelain.name = plumbing.name
-      porcelain.healthy = plumbing.healthy
-      porcelain.hostname = plumbing.hostname
-      porcelain.username = plumbing.username
-      porcelain.password = plumbing.password
-      porcelain.database = plumbing.database
-      porcelain.port_override = plumbing.port_override
-      porcelain.port = plumbing.port
-      porcelain
-    end
-
-    def self.maria_to_plumbing(porcelain)
-      plumbing = V1::Maria.new()
-      plumbing.id = porcelain.id unless porcelain.id == nil
-      plumbing.name = porcelain.name unless porcelain.name == nil
-      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
-      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
-      plumbing.username = porcelain.username unless porcelain.username == nil
-      plumbing.password = porcelain.password unless porcelain.password == nil
-      plumbing.database = porcelain.database unless porcelain.database == nil
-      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
-      plumbing.port = porcelain.port unless porcelain.port == nil
-      plumbing
-    end
-    def self.repeated_maria_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = maria_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.repeated_maria_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = maria_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
-    def self.memsql_to_porcelain(plumbing)
-      porcelain = Memsql.new()
-      porcelain.id = plumbing.id
-      porcelain.name = plumbing.name
-      porcelain.healthy = plumbing.healthy
-      porcelain.hostname = plumbing.hostname
-      porcelain.username = plumbing.username
-      porcelain.password = plumbing.password
-      porcelain.database = plumbing.database
-      porcelain.port_override = plumbing.port_override
-      porcelain.port = plumbing.port
-      porcelain
-    end
-
-    def self.memsql_to_plumbing(porcelain)
-      plumbing = V1::Memsql.new()
-      plumbing.id = porcelain.id unless porcelain.id == nil
-      plumbing.name = porcelain.name unless porcelain.name == nil
-      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
-      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
-      plumbing.username = porcelain.username unless porcelain.username == nil
-      plumbing.password = porcelain.password unless porcelain.password == nil
-      plumbing.database = porcelain.database unless porcelain.database == nil
-      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
-      plumbing.port = porcelain.port unless porcelain.port == nil
-      plumbing
-    end
-    def self.repeated_memsql_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = memsql_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.repeated_memsql_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = memsql_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
-    def self.druid_to_porcelain(plumbing)
-      porcelain = Druid.new()
-      porcelain.id = plumbing.id
-      porcelain.name = plumbing.name
-      porcelain.healthy = plumbing.healthy
-      porcelain.hostname = plumbing.hostname
-      porcelain.port_override = plumbing.port_override
-      porcelain.username = plumbing.username
-      porcelain.password = plumbing.password
-      porcelain.port = plumbing.port
-      porcelain
-    end
-
-    def self.druid_to_plumbing(porcelain)
-      plumbing = V1::Druid.new()
-      plumbing.id = porcelain.id unless porcelain.id == nil
-      plumbing.name = porcelain.name unless porcelain.name == nil
-      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
-      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
-      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
-      plumbing.username = porcelain.username unless porcelain.username == nil
-      plumbing.password = porcelain.password unless porcelain.password == nil
-      plumbing.port = porcelain.port unless porcelain.port == nil
-      plumbing
-    end
-    def self.repeated_druid_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = druid_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.repeated_druid_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = druid_to_porcelain(plumbing)
+        porcelain = snowflake_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -1779,242 +1895,126 @@ module SDM
       end
       items
     end
-    def self.mongo_legacy_host_to_porcelain(plumbing)
-      porcelain = MongoLegacyHost.new()
+    def self.ssh_to_porcelain(plumbing)
+      porcelain = SSH.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
       porcelain.healthy = plumbing.healthy
       porcelain.hostname = plumbing.hostname
-      porcelain.auth_database = plumbing.auth_database
-      porcelain.port_override = plumbing.port_override
       porcelain.username = plumbing.username
-      porcelain.password = plumbing.password
       porcelain.port = plumbing.port
-      porcelain.replica_set = plumbing.replica_set
-      porcelain.connect_to_replica = plumbing.connect_to_replica
-      porcelain.tls_required = plumbing.tls_required
+      porcelain.public_key = plumbing.public_key
       porcelain
     end
 
-    def self.mongo_legacy_host_to_plumbing(porcelain)
-      plumbing = V1::MongoLegacyHost.new()
+    def self.ssh_to_plumbing(porcelain)
+      plumbing = V1::SSH.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
       plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
       plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
-      plumbing.auth_database = porcelain.auth_database unless porcelain.auth_database == nil
-      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
       plumbing.username = porcelain.username unless porcelain.username == nil
-      plumbing.password = porcelain.password unless porcelain.password == nil
       plumbing.port = porcelain.port unless porcelain.port == nil
-      plumbing.replica_set = porcelain.replica_set unless porcelain.replica_set == nil
-      plumbing.connect_to_replica = porcelain.connect_to_replica unless porcelain.connect_to_replica == nil
-      plumbing.tls_required = porcelain.tls_required unless porcelain.tls_required == nil
+      plumbing.public_key = porcelain.public_key unless porcelain.public_key == nil
       plumbing
     end
-    def self.repeated_mongo_legacy_host_to_plumbing(porcelains)
+    def self.repeated_ssh_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
-        plumbing = mongo_legacy_host_to_plumbing(porcelain)
+        plumbing = ssh_to_plumbing(porcelain)
         items.append(plumbing)
       end
       items
     end
 
-    def self.repeated_mongo_legacy_host_to_porcelain(plumbings)
+    def self.repeated_ssh_to_porcelain(plumbings)
       items = Array.new
       plumbings.each do |plumbing|
-        porcelain = mongo_legacy_host_to_porcelain(plumbing)
+        porcelain = ssh_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
     end
-    def self.mongo_legacy_replicaset_to_porcelain(plumbing)
-      porcelain = MongoLegacyReplicaset.new()
+    def self.sybase_to_porcelain(plumbing)
+      porcelain = Sybase.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
       porcelain.healthy = plumbing.healthy
       porcelain.hostname = plumbing.hostname
-      porcelain.auth_database = plumbing.auth_database
-      porcelain.port_override = plumbing.port_override
       porcelain.username = plumbing.username
-      porcelain.password = plumbing.password
+      porcelain.port_override = plumbing.port_override
       porcelain.port = plumbing.port
-      porcelain.replica_set = plumbing.replica_set
-      porcelain.connect_to_replica = plumbing.connect_to_replica
-      porcelain.tls_required = plumbing.tls_required
+      porcelain.password = plumbing.password
       porcelain
     end
 
-    def self.mongo_legacy_replicaset_to_plumbing(porcelain)
-      plumbing = V1::MongoLegacyReplicaset.new()
+    def self.sybase_to_plumbing(porcelain)
+      plumbing = V1::Sybase.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
       plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
       plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
-      plumbing.auth_database = porcelain.auth_database unless porcelain.auth_database == nil
-      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
       plumbing.username = porcelain.username unless porcelain.username == nil
-      plumbing.password = porcelain.password unless porcelain.password == nil
+      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
       plumbing.port = porcelain.port unless porcelain.port == nil
-      plumbing.replica_set = porcelain.replica_set unless porcelain.replica_set == nil
-      plumbing.connect_to_replica = porcelain.connect_to_replica unless porcelain.connect_to_replica == nil
-      plumbing.tls_required = porcelain.tls_required unless porcelain.tls_required == nil
+      plumbing.password = porcelain.password unless porcelain.password == nil
       plumbing
     end
-    def self.repeated_mongo_legacy_replicaset_to_plumbing(porcelains)
+    def self.repeated_sybase_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
-        plumbing = mongo_legacy_replicaset_to_plumbing(porcelain)
+        plumbing = sybase_to_plumbing(porcelain)
         items.append(plumbing)
       end
       items
     end
 
-    def self.repeated_mongo_legacy_replicaset_to_porcelain(plumbings)
+    def self.repeated_sybase_to_porcelain(plumbings)
       items = Array.new
       plumbings.each do |plumbing|
-        porcelain = mongo_legacy_replicaset_to_porcelain(plumbing)
+        porcelain = sybase_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
     end
-    def self.mongo_host_to_porcelain(plumbing)
-      porcelain = MongoHost.new()
+    def self.teradata_to_porcelain(plumbing)
+      porcelain = Teradata.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
       porcelain.healthy = plumbing.healthy
       porcelain.hostname = plumbing.hostname
-      porcelain.auth_database = plumbing.auth_database
-      porcelain.port_override = plumbing.port_override
       porcelain.username = plumbing.username
       porcelain.password = plumbing.password
+      porcelain.port_override = plumbing.port_override
       porcelain.port = plumbing.port
-      porcelain.schema = plumbing.schema
-      porcelain.tls_required = plumbing.tls_required
       porcelain
     end
 
-    def self.mongo_host_to_plumbing(porcelain)
-      plumbing = V1::MongoHost.new()
+    def self.teradata_to_plumbing(porcelain)
+      plumbing = V1::Teradata.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
       plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
       plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
-      plumbing.auth_database = porcelain.auth_database unless porcelain.auth_database == nil
-      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
       plumbing.username = porcelain.username unless porcelain.username == nil
       plumbing.password = porcelain.password unless porcelain.password == nil
-      plumbing.port = porcelain.port unless porcelain.port == nil
-      plumbing.schema = porcelain.schema unless porcelain.schema == nil
-      plumbing.tls_required = porcelain.tls_required unless porcelain.tls_required == nil
-      plumbing
-    end
-    def self.repeated_mongo_host_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = mongo_host_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.repeated_mongo_host_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = mongo_host_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
-    def self.mongo_replica_set_to_porcelain(plumbing)
-      porcelain = MongoReplicaSet.new()
-      porcelain.id = plumbing.id
-      porcelain.name = plumbing.name
-      porcelain.healthy = plumbing.healthy
-      porcelain.hostname = plumbing.hostname
-      porcelain.auth_database = plumbing.auth_database
-      porcelain.port_override = plumbing.port_override
-      porcelain.username = plumbing.username
-      porcelain.password = plumbing.password
-      porcelain.port = plumbing.port
-      porcelain.replica_set = plumbing.replica_set
-      porcelain.connect_to_replica = plumbing.connect_to_replica
-      porcelain.tls_required = plumbing.tls_required
-      porcelain
-    end
-
-    def self.mongo_replica_set_to_plumbing(porcelain)
-      plumbing = V1::MongoReplicaSet.new()
-      plumbing.id = porcelain.id unless porcelain.id == nil
-      plumbing.name = porcelain.name unless porcelain.name == nil
-      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
-      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
-      plumbing.auth_database = porcelain.auth_database unless porcelain.auth_database == nil
       plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
-      plumbing.username = porcelain.username unless porcelain.username == nil
-      plumbing.password = porcelain.password unless porcelain.password == nil
       plumbing.port = porcelain.port unless porcelain.port == nil
-      plumbing.replica_set = porcelain.replica_set unless porcelain.replica_set == nil
-      plumbing.connect_to_replica = porcelain.connect_to_replica unless porcelain.connect_to_replica == nil
-      plumbing.tls_required = porcelain.tls_required unless porcelain.tls_required == nil
       plumbing
     end
-    def self.repeated_mongo_replica_set_to_plumbing(porcelains)
+    def self.repeated_teradata_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
-        plumbing = mongo_replica_set_to_plumbing(porcelain)
+        plumbing = teradata_to_plumbing(porcelain)
         items.append(plumbing)
       end
       items
     end
 
-    def self.repeated_mongo_replica_set_to_porcelain(plumbings)
+    def self.repeated_teradata_to_porcelain(plumbings)
       items = Array.new
       plumbings.each do |plumbing|
-        porcelain = mongo_replica_set_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
-    def self.athena_to_porcelain(plumbing)
-      porcelain = Athena.new()
-      porcelain.id = plumbing.id
-      porcelain.name = plumbing.name
-      porcelain.healthy = plumbing.healthy
-      porcelain.access_key = plumbing.access_key
-      porcelain.secret_access_key = plumbing.secret_access_key
-      porcelain.output = plumbing.output
-      porcelain.port_override = plumbing.port_override
-      porcelain.region = plumbing.region
-      porcelain
-    end
-
-    def self.athena_to_plumbing(porcelain)
-      plumbing = V1::Athena.new()
-      plumbing.id = porcelain.id unless porcelain.id == nil
-      plumbing.name = porcelain.name unless porcelain.name == nil
-      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
-      plumbing.access_key = porcelain.access_key unless porcelain.access_key == nil
-      plumbing.secret_access_key = porcelain.secret_access_key unless porcelain.secret_access_key == nil
-      plumbing.output = porcelain.output unless porcelain.output == nil
-      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
-      plumbing.region = porcelain.region unless porcelain.region == nil
-      plumbing
-    end
-    def self.repeated_athena_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = athena_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.repeated_athena_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = athena_to_porcelain(plumbing)
+        porcelain = teradata_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
