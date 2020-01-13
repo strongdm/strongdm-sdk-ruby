@@ -1,4 +1,99 @@
 module SDM
+  # CreateResponseMetadata is reserved for future use.
+  class CreateResponseMetadata
+  end
+
+  # GetResponseMetadata is reserved for future use.
+  class GetResponseMetadata
+  end
+
+  # UpdateResponseMetadata is reserved for future use.
+  class UpdateResponseMetadata
+  end
+
+  # DeleteResponseMetadata is reserved for future use.
+  class DeleteResponseMetadata
+  end
+
+  # RateLimitMetadata contains information about remaining requests avaialable
+  # to the user over some timeframe.
+  class RateLimitMetadata
+    # How many total requests the user/token is authorized to make before being
+    # rate limited.
+    attr_accessor :limit
+    # How many remaining requests out of the limit are still avaialable.
+    attr_accessor :remaining
+    # The time when remaining will be reset to limit.
+    attr_accessor :reset_at
+    # The bucket this user/token is associated with, which may be shared between
+    # multiple users/tokens.
+    attr_accessor :bucket
+  end
+
+  # AccountCreateResponse reports how the Accounts were created in the system.
+  class AccountCreateResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # The created Account.
+    attr_accessor :account
+    # The auth token generated for the Account. The Account will use this token to
+    # authenticate with the strongDM API.
+    attr_accessor :token
+    # Rate limit information.
+    attr_accessor :rate_limit
+  end
+
+  # AccountGetResponse returns a requested Account.
+  class AccountGetResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # The requested Account.
+    attr_accessor :account
+    # Rate limit information.
+    attr_accessor :rate_limit
+  end
+
+  # AccountUpdateResponse returns the fields of a Account after it has been updated by
+  # a AccountUpdateRequest.
+  class AccountUpdateResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # The updated Account.
+    attr_accessor :account
+    # Rate limit information.
+    attr_accessor :rate_limit
+  end
+
+  # AccountDeleteResponse returns information about a Account that was deleted.
+  class AccountDeleteResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+  end
+
+  # A User can connect to resources they are granted directly, or granted
+  # via roles.
+  class User
+    # Unique identifier of the User.
+    attr_accessor :id
+    # The User's email address. Must be unique.
+    attr_accessor :email
+    # The User's first name.
+    attr_accessor :first_name
+    # The User's last name.
+    attr_accessor :last_name
+  end
+
+  # A Service is a service account that can connect to resources they are granted
+  # directly, or granted via roles. Services are typically automated jobs.
+  class Service
+    # Unique identifier of the Service.
+    attr_accessor :id
+    # Unique human-readable name of the Service.
+    attr_accessor :name
+  end
+
   class Athena
     # Unique identifier of the Resource.
     attr_accessor :id
@@ -824,37 +919,6 @@ module SDM
     attr_accessor :port_override
 
     attr_accessor :port
-  end
-
-  # CreateResponseMetadata is reserved for future use.
-  class CreateResponseMetadata
-  end
-
-  # GetResponseMetadata is reserved for future use.
-  class GetResponseMetadata
-  end
-
-  # UpdateResponseMetadata is reserved for future use.
-  class UpdateResponseMetadata
-  end
-
-  # DeleteResponseMetadata is reserved for future use.
-  class DeleteResponseMetadata
-  end
-
-  # RateLimitMetadata contains information about remaining requests avaialable
-  # to the user over some timeframe.
-  class RateLimitMetadata
-    # How many total requests the user/token is authorized to make before being
-    # rate limited.
-    attr_accessor :limit
-    # How many remaining requests out of the limit are still avaialable.
-    attr_accessor :remaining
-    # The time when remaining will be reset to limit.
-    attr_accessor :reset_at
-    # The bucket this user/token is associated with, which may be shared between
-    # multiple users/tokens.
-    attr_accessor :bucket
   end
 
   # NodeCreateResponse reports how the Nodes were created in the system.

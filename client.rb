@@ -16,6 +16,7 @@ module SDM
       @max_retries = DEFAULT_MAX_RETRIES
       @base_retry_delay = DEFAULT_BASE_RETRY_DELAY
       @max_retry_delay = DEFAULT_MAX_RETRY_DELAY
+      @accounts = Accounts.new(address, self)
       @nodes = Nodes.new(address, self)
       @resources = Resources.new(address, self)
       @role_attachments = RoleAttachments.new(address, self)
@@ -68,6 +69,8 @@ module SDM
 
     # API authentication token (read-only).
     attr_reader :api_access_key
+    # Accounts are users, services or tokens who connect to and act within the strongDM network.
+    attr_reader :accounts
     # Nodes are proxies in the strongDM network. They come in two flavors: relays,
     # which communicate with resources, and gateways, which communicate with
     # clients.

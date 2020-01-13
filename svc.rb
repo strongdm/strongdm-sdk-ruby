@@ -7,6 +7,175 @@ Dir[File.join(__dir__, "grpc", "*.rb")].each { |file| require file }
 Dir[File.join(__dir__, "models", "*.rb")].each { |file| require file }
 
 module SDM
+  # Accounts are users, services or tokens who connect to and act within the strongDM network.
+  class Accounts
+    def initialize(url, parent)
+      begin
+        if url.end_with?("443")
+          cred = GRPC::Core::ChannelCredentials.new()
+          @stub = V1::Accounts::Stub.new(url, cred)
+        else
+          @stub = V1::Accounts::Stub.new(url, :this_channel_is_insecure)
+        end
+      rescue => exception
+        raise Plumbing::error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # Create registers a new Account.
+    def create(
+               account,
+               deadline: nil)
+      req = V1::AccountCreateRequest.new()
+
+      req.account = Plumbing::account_to_plumbing(account)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.create(req, metadata: @parent.get_metadata("Accounts.Create", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            continue
+          end
+          raise Plumbing::error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = AccountCreateResponse.new()
+      resp.meta = Plumbing::create_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.account = Plumbing::account_to_porcelain(plumbing_response.account)
+      resp.token = plumbing_response.token
+      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Get reads one Account by ID.
+    def get(
+            id,
+            deadline: nil)
+      req = V1::AccountGetRequest.new()
+
+      req.id = id
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.get(req, metadata: @parent.get_metadata("Accounts.Get", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            continue
+          end
+          raise Plumbing::error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = AccountGetResponse.new()
+      resp.meta = Plumbing::get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.account = Plumbing::account_to_porcelain(plumbing_response.account)
+      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Update patches a Account by ID.
+    def update(
+               account,
+               deadline: nil)
+      req = V1::AccountUpdateRequest.new()
+
+      req.account = Plumbing::account_to_plumbing(account)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.update(req, metadata: @parent.get_metadata("Accounts.Update", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            continue
+          end
+          raise Plumbing::error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = AccountUpdateResponse.new()
+      resp.meta = Plumbing::update_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.account = Plumbing::account_to_porcelain(plumbing_response.account)
+      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Delete removes a Account by ID.
+    def delete(
+               id,
+               deadline: nil)
+      req = V1::AccountDeleteRequest.new()
+
+      req.id = id
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("Accounts.Delete", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            continue
+          end
+          raise Plumbing::error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = AccountDeleteResponse.new()
+      resp.meta = Plumbing::delete_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # List gets a list of Accounts matching a given set of criteria.
+    def list(
+             filter,
+             *args,
+             deadline: nil)
+      req = V1::AccountListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      page_size_option = @parent._test_options["PageSize"]
+      if page_size_option.is_a? Integer
+        req.meta.limit = page_size_option
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("Accounts.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              continue
+            end
+            raise Plumbing::error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.accounts.each do |plumbing_item|
+            g.yield Plumbing::account_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
   # Nodes are proxies in the strongDM network. They come in two flavors: relays,
   # which communicate with resources, and gateways, which communicate with
   # clients.
