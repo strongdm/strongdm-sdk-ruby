@@ -11,6 +11,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :expose_as_porcelain, :bool, 1941302
       optional :iterable, :bool, 1941303
       optional :required, :bool, 1941304
+      optional :id_type, :string, 1941305
     end
     add_message "v1.MessageOptions" do
       optional :model_name, :string, 1941300
