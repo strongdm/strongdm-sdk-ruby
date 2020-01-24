@@ -1,3 +1,4 @@
+
 module SDM
   # CreateResponseMetadata is reserved for future use.
   class CreateResponseMetadata
@@ -415,8 +416,6 @@ module SDM
 
     attr_accessor :replica_set
 
-    attr_accessor :connect_to_replica
-
     attr_accessor :tls_required
   end
 
@@ -466,8 +465,6 @@ module SDM
     attr_accessor :password
 
     attr_accessor :port
-
-    attr_accessor :schema
 
     attr_accessor :tls_required
   end

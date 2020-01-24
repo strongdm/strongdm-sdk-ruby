@@ -218,8 +218,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :password, :string, 5
       optional :port, :int32, 6
       optional :replica_set, :string, 7
-      optional :connect_to_replica, :bool, 8
-      optional :tls_required, :bool, 9
+      optional :tls_required, :bool, 8
     end
     add_message "v1.MongoLegacyReplicaset" do
       optional :id, :string, 32768
@@ -245,7 +244,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :username, :string, 4
       optional :password, :string, 5
       optional :port, :int32, 6
-      optional :schema, :string, 7
       optional :tls_required, :bool, 8
     end
     add_message "v1.MongoReplicaSet" do

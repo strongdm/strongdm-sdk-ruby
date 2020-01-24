@@ -1,3 +1,4 @@
+
 require "grpc"
 require "google/protobuf/well_known_types"
 require "json"
@@ -1318,7 +1319,6 @@ module SDM
       porcelain.password = plumbing.password
       porcelain.port = plumbing.port
       porcelain.replica_set = plumbing.replica_set
-      porcelain.connect_to_replica = plumbing.connect_to_replica
       porcelain.tls_required = plumbing.tls_required
       porcelain
     end
@@ -1335,7 +1335,6 @@ module SDM
       plumbing.password = porcelain.password unless porcelain.password == nil
       plumbing.port = porcelain.port unless porcelain.port == nil
       plumbing.replica_set = porcelain.replica_set unless porcelain.replica_set == nil
-      plumbing.connect_to_replica = porcelain.connect_to_replica unless porcelain.connect_to_replica == nil
       plumbing.tls_required = porcelain.tls_required unless porcelain.tls_required == nil
       plumbing
     end
@@ -1417,7 +1416,6 @@ module SDM
       porcelain.username = plumbing.username
       porcelain.password = plumbing.password
       porcelain.port = plumbing.port
-      porcelain.schema = plumbing.schema
       porcelain.tls_required = plumbing.tls_required
       porcelain
     end
@@ -1433,7 +1431,6 @@ module SDM
       plumbing.username = porcelain.username unless porcelain.username == nil
       plumbing.password = porcelain.password unless porcelain.password == nil
       plumbing.port = porcelain.port unless porcelain.port == nil
-      plumbing.schema = porcelain.schema unless porcelain.schema == nil
       plumbing.tls_required = porcelain.tls_required unless porcelain.tls_required == nil
       plumbing
     end
