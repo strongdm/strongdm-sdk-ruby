@@ -23,6 +23,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :kubernetes_basic_auth, :message, 801, "v1.KubernetesBasicAuth"
         optional :amazon_eks, :message, 802, "v1.AmazonEKS"
         optional :google_gke, :message, 803, "v1.GoogleGKE"
+        optional :kubernetes_service_account, :message, 804, "v1.KubernetesServiceAccount"
         optional :memcached, :message, 900, "v1.Memcached"
         optional :mongo_legacy_host, :message, 1000, "v1.MongoLegacyHost"
         optional :mongo_legacy_replicaset, :message, 1001, "v1.MongoLegacyReplicaset"
@@ -198,6 +199,14 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :certificate_authority_filename, :string, 3
       optional :service_account_key, :string, 4
       optional :service_account_key_filename, :string, 5
+    end
+    add_message "v1.KubernetesServiceAccount" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :hostname, :string, 1
+      optional :port, :int32, 2
+      optional :token, :string, 3
     end
     add_message "v1.Memcached" do
       optional :id, :string, 32768
@@ -500,6 +509,7 @@ module V1
   KubernetesBasicAuth = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.KubernetesBasicAuth").msgclass
   AmazonEKS = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AmazonEKS").msgclass
   GoogleGKE = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GoogleGKE").msgclass
+  KubernetesServiceAccount = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.KubernetesServiceAccount").msgclass
   Memcached = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Memcached").msgclass
   MongoLegacyHost = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MongoLegacyHost").msgclass
   MongoLegacyReplicaset = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MongoLegacyReplicaset").msgclass

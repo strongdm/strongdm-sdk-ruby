@@ -379,6 +379,21 @@ module SDM
     attr_accessor :service_account_key_filename
   end
 
+  class KubernetesServiceAccount
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
+    attr_accessor :hostname
+
+    attr_accessor :port
+
+    attr_accessor :token
+  end
+
   class Memcached
     # Unique identifier of the Resource.
     attr_accessor :id
