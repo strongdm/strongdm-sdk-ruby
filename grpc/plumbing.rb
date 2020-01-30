@@ -10,6 +10,7 @@ require_relative "./nodes_pb"
 require_relative "./resources_pb"
 require_relative "./role_attachments_pb"
 require_relative "./roles_pb"
+require_relative "./user_grants_pb"
 require_relative "../models/porcelain"
 require_relative "../errors/errors"
 
@@ -3065,6 +3066,132 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = role_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.user_grant_create_response_to_porcelain(plumbing)
+      porcelain = UserGrantCreateResponse.new()
+      porcelain.meta = create_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.user_grant = user_grant_to_porcelain(plumbing.user_grant)
+      porcelain.rate_limit = rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.user_grant_create_response_to_plumbing(porcelain)
+      plumbing = V1::UserGrantCreateResponse.new()
+      plumbing.meta = create_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
+      plumbing.user_grant = user_grant_to_plumbing(porcelain.user_grant) unless porcelain.user_grant == nil
+      plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
+      plumbing
+    end
+    def self.repeated_user_grant_create_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = user_grant_create_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_user_grant_create_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = user_grant_create_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.user_grant_get_response_to_porcelain(plumbing)
+      porcelain = UserGrantGetResponse.new()
+      porcelain.meta = get_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.user_grant = user_grant_to_porcelain(plumbing.user_grant)
+      porcelain.rate_limit = rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.user_grant_get_response_to_plumbing(porcelain)
+      plumbing = V1::UserGrantGetResponse.new()
+      plumbing.meta = get_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
+      plumbing.user_grant = user_grant_to_plumbing(porcelain.user_grant) unless porcelain.user_grant == nil
+      plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
+      plumbing
+    end
+    def self.repeated_user_grant_get_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = user_grant_get_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_user_grant_get_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = user_grant_get_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.user_grant_delete_response_to_porcelain(plumbing)
+      porcelain = UserGrantDeleteResponse.new()
+      porcelain.meta = delete_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.rate_limit = rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.user_grant_delete_response_to_plumbing(porcelain)
+      plumbing = V1::UserGrantDeleteResponse.new()
+      plumbing.meta = delete_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
+      plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
+      plumbing
+    end
+    def self.repeated_user_grant_delete_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = user_grant_delete_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_user_grant_delete_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = user_grant_delete_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.user_grant_to_porcelain(plumbing)
+      porcelain = UserGrant.new()
+      porcelain.id = plumbing.id
+      porcelain.resource_id = plumbing.resource_id
+      porcelain.user_id = plumbing.user_id
+      porcelain
+    end
+
+    def self.user_grant_to_plumbing(porcelain)
+      plumbing = V1::UserGrant.new()
+      plumbing.id = porcelain.id unless porcelain.id == nil
+      plumbing.resource_id = porcelain.resource_id unless porcelain.resource_id == nil
+      plumbing.user_id = porcelain.user_id unless porcelain.user_id == nil
+      plumbing
+    end
+    def self.repeated_user_grant_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = user_grant_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_user_grant_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = user_grant_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items

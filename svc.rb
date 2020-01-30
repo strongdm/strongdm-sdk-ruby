@@ -828,4 +828,146 @@ module SDM
       resp
     end
   end
+
+  # UserGrants represent relationships between composite roles and the roles
+  # that make up those composite roles. When a composite role is attached to another
+  # role, the permissions granted to members of the composite role are augmented to
+  # include the permissions granted to members of the attached role.
+  class UserGrants
+    def initialize(url, parent)
+      begin
+        if url.end_with?("443")
+          cred = GRPC::Core::ChannelCredentials.new()
+          @stub = V1::UserGrants::Stub.new(url, cred)
+        else
+          @stub = V1::UserGrants::Stub.new(url, :this_channel_is_insecure)
+        end
+      rescue => exception
+        raise Plumbing::error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # Create registers a new UserGrant.
+    def create(
+               user_grant,
+               deadline: nil)
+      req = V1::UserGrantCreateRequest.new()
+
+      req.user_grant = Plumbing::user_grant_to_plumbing(user_grant)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.create(req, metadata: @parent.get_metadata("UserGrants.Create", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            continue
+          end
+          raise Plumbing::error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = UserGrantCreateResponse.new()
+      resp.meta = Plumbing::create_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.user_grant = Plumbing::user_grant_to_porcelain(plumbing_response.user_grant)
+      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Get reads one UserGrant by ID.
+    def get(
+            id,
+            deadline: nil)
+      req = V1::UserGrantGetRequest.new()
+
+      req.id = id
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.get(req, metadata: @parent.get_metadata("UserGrants.Get", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            continue
+          end
+          raise Plumbing::error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = UserGrantGetResponse.new()
+      resp.meta = Plumbing::get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.user_grant = Plumbing::user_grant_to_porcelain(plumbing_response.user_grant)
+      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Delete removes a UserGrant by ID.
+    def delete(
+               id,
+               deadline: nil)
+      req = V1::UserGrantDeleteRequest.new()
+
+      req.id = id
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("UserGrants.Delete", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            continue
+          end
+          raise Plumbing::error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = UserGrantDeleteResponse.new()
+      resp.meta = Plumbing::delete_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # List gets a list of UserGrants matching a given set of criteria.
+    def list(
+             filter,
+             *args,
+             deadline: nil)
+      req = V1::UserGrantListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      page_size_option = @parent._test_options["PageSize"]
+      if page_size_option.is_a? Integer
+        req.meta.limit = page_size_option
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("UserGrants.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              continue
+            end
+            raise Plumbing::error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.user_grants.each do |plumbing_item|
+            g.yield Plumbing::user_grant_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
 end

@@ -1130,4 +1130,44 @@ module SDM
     # True if the Role is a composite role.
     attr_accessor :composite
   end
+
+  # UserGrantCreateResponse reports how the UserGrants were created in the system.
+  class UserGrantCreateResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # The created UserGrant.
+    attr_accessor :user_grant
+    # Rate limit information.
+    attr_accessor :rate_limit
+  end
+
+  # UserGrantGetResponse returns a requested UserGrant.
+  class UserGrantGetResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # The requested UserGrant.
+    attr_accessor :user_grant
+    # Rate limit information.
+    attr_accessor :rate_limit
+  end
+
+  # UserGrantDeleteResponse returns information about a UserGrant that was deleted.
+  class UserGrantDeleteResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+  end
+
+  # A UserGrant connects a composite role to another role, granting members
+  # of the composite role the permissions granted to the attached role.
+  class UserGrant
+    # Unique identifier of the UserGrant.
+    # TODO: add strong ID
+    attr_accessor :id
+    # The id of the composite role of this UserGrant.
+    attr_accessor :resource_id
+    # The id of the attached role of this UserGrant.
+    attr_accessor :user_id
+  end
 end
