@@ -277,6 +277,8 @@ module SDM
       porcelain.id = plumbing.id
       porcelain.resource_id = plumbing.resource_id
       porcelain.account_id = plumbing.account_id
+      porcelain.start_from = timestamp_to_porcelain(plumbing.start_from)
+      porcelain.valid_until = timestamp_to_porcelain(plumbing.valid_until)
       porcelain
     end
 
@@ -285,6 +287,8 @@ module SDM
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.resource_id = porcelain.resource_id unless porcelain.resource_id == nil
       plumbing.account_id = porcelain.account_id unless porcelain.account_id == nil
+      plumbing.start_from = timestamp_to_plumbing(porcelain.start_from) unless porcelain.start_from == nil
+      plumbing.valid_until = timestamp_to_plumbing(porcelain.valid_until) unless porcelain.valid_until == nil
       plumbing
     end
     def self.repeated_account_grant_to_plumbing(porcelains)

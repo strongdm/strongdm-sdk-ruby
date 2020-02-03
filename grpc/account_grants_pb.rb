@@ -5,6 +5,7 @@ require "google/protobuf"
 
 require "google/api/annotations_pb"
 require "protoc-gen-swagger/options/annotations_pb"
+require "google/protobuf/timestamp_pb"
 require "options_pb"
 require "spec_pb"
 Google::Protobuf::DescriptorPool.generated_pool.build do
@@ -48,6 +49,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 1
       optional :resource_id, :string, 2
       optional :account_id, :string, 3
+      optional :start_from, :message, 4, "google.protobuf.Timestamp"
+      optional :valid_until, :message, 5, "google.protobuf.Timestamp"
     end
   end
 end

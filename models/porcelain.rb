@@ -63,12 +63,17 @@ module SDM
   # of the composite role the permissions granted to the attached role.
   class AccountGrant
     # Unique identifier of the AccountGrant.
-    # TODO: add strong ID
     attr_accessor :id
     # The id of the composite role of this AccountGrant.
     attr_accessor :resource_id
     # The id of the attached role of this AccountGrant.
     attr_accessor :account_id
+    # The timestamp when the resource will be granted. Optional. Both start_at
+    # and end_at must be defined together, or not defined at all.
+    attr_accessor :start_from
+    # The timestamp when the resource grant will expire. Optional. Both
+    # start_at and end_at must be defined together, or not defined at all.
+    attr_accessor :valid_until
   end
 
   # AccountCreateResponse reports how the Accounts were created in the system.
