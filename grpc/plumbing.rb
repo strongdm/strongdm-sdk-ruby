@@ -34,10 +34,16 @@ module SDM
     end
 
     def self.timestamp_to_porcelain(t)
+      if t == nil
+        return nil
+      end
       return Time.at(t.seconds + t.nanos * (10 ** -9))
     end
 
     def self.timestamp_to_plumbing(t)
+      if t == nil
+        return nil
+      end
       return Google::Protobuf::Timestamp.new(seconds: t.to_i, nanos: t.nsec)
     end
     def self.create_response_metadata_to_porcelain(plumbing)
