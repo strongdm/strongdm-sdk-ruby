@@ -17,6 +17,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :model_name, :string, 1941300
       optional :porcelain, :bool, 1941301
       optional :error, :int32, 1941302
+      optional :options_field, :string, 1941303
     end
     add_message "v1.OneofOptions" do
       optional :model_name, :string, 1941380

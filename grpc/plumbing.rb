@@ -4,12 +4,14 @@ require "google/protobuf/well_known_types"
 require "json"
 require_relative "./options_pb"
 require_relative "./spec_pb"
+require_relative "./account_attachments_pb"
 require_relative "./account_grants_pb"
 require_relative "./accounts_pb"
 require_relative "./drivers_pb"
 require_relative "./nodes_pb"
 require_relative "./resources_pb"
 require_relative "./role_attachments_pb"
+require_relative "./role_grants_pb"
 require_relative "./roles_pb"
 require_relative "../models/porcelain"
 require_relative "../errors/errors"
@@ -47,11 +49,17 @@ module SDM
       return Google::Protobuf::Timestamp.new(seconds: t.to_i, nanos: t.nsec)
     end
     def self.create_response_metadata_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = CreateResponseMetadata.new()
       porcelain
     end
 
     def self.create_response_metadata_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::CreateResponseMetadata.new()
       plumbing
     end
@@ -73,11 +81,17 @@ module SDM
       items
     end
     def self.get_response_metadata_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = GetResponseMetadata.new()
       porcelain
     end
 
     def self.get_response_metadata_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::GetResponseMetadata.new()
       plumbing
     end
@@ -99,11 +113,17 @@ module SDM
       items
     end
     def self.update_response_metadata_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = UpdateResponseMetadata.new()
       porcelain
     end
 
     def self.update_response_metadata_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::UpdateResponseMetadata.new()
       plumbing
     end
@@ -125,11 +145,17 @@ module SDM
       items
     end
     def self.delete_response_metadata_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = DeleteResponseMetadata.new()
       porcelain
     end
 
     def self.delete_response_metadata_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::DeleteResponseMetadata.new()
       plumbing
     end
@@ -151,6 +177,9 @@ module SDM
       items
     end
     def self.rate_limit_metadata_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = RateLimitMetadata.new()
       porcelain.limit = plumbing.limit
       porcelain.remaining = plumbing.remaining
@@ -160,6 +189,9 @@ module SDM
     end
 
     def self.rate_limit_metadata_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::RateLimitMetadata.new()
       plumbing.limit = porcelain.limit unless porcelain.limit == nil
       plumbing.remaining = porcelain.remaining unless porcelain.remaining == nil
@@ -184,7 +216,194 @@ module SDM
       end
       items
     end
+    def self.account_attachment_create_options_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AccountAttachmentCreateOptions.new()
+      porcelain.overwrite = plumbing.overwrite
+      porcelain
+    end
+
+    def self.account_attachment_create_options_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AccountAttachmentCreateOptions.new()
+      plumbing.overwrite = porcelain.overwrite unless porcelain.overwrite == nil
+      plumbing
+    end
+    def self.repeated_account_attachment_create_options_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = account_attachment_create_options_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_account_attachment_create_options_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = account_attachment_create_options_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.account_attachment_create_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AccountAttachmentCreateResponse.new()
+      porcelain.meta = create_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.account_attachment = account_attachment_to_porcelain(plumbing.account_attachment)
+      porcelain.rate_limit = rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.account_attachment_create_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AccountAttachmentCreateResponse.new()
+      plumbing.meta = create_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
+      plumbing.account_attachment = account_attachment_to_plumbing(porcelain.account_attachment) unless porcelain.account_attachment == nil
+      plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
+      plumbing
+    end
+    def self.repeated_account_attachment_create_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = account_attachment_create_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_account_attachment_create_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = account_attachment_create_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.account_attachment_get_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AccountAttachmentGetResponse.new()
+      porcelain.meta = get_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.account_attachment = account_attachment_to_porcelain(plumbing.account_attachment)
+      porcelain.rate_limit = rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.account_attachment_get_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AccountAttachmentGetResponse.new()
+      plumbing.meta = get_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
+      plumbing.account_attachment = account_attachment_to_plumbing(porcelain.account_attachment) unless porcelain.account_attachment == nil
+      plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
+      plumbing
+    end
+    def self.repeated_account_attachment_get_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = account_attachment_get_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_account_attachment_get_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = account_attachment_get_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.account_attachment_delete_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AccountAttachmentDeleteResponse.new()
+      porcelain.meta = delete_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.rate_limit = rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.account_attachment_delete_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AccountAttachmentDeleteResponse.new()
+      plumbing.meta = delete_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
+      plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
+      plumbing
+    end
+    def self.repeated_account_attachment_delete_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = account_attachment_delete_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_account_attachment_delete_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = account_attachment_delete_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.account_attachment_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AccountAttachment.new()
+      porcelain.id = plumbing.id
+      porcelain.account_id = plumbing.account_id
+      porcelain.role_id = plumbing.role_id
+      porcelain
+    end
+
+    def self.account_attachment_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AccountAttachment.new()
+      plumbing.id = porcelain.id unless porcelain.id == nil
+      plumbing.account_id = porcelain.account_id unless porcelain.account_id == nil
+      plumbing.role_id = porcelain.role_id unless porcelain.role_id == nil
+      plumbing
+    end
+    def self.repeated_account_attachment_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = account_attachment_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_account_attachment_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = account_attachment_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.account_grant_create_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = AccountGrantCreateResponse.new()
       porcelain.meta = create_response_metadata_to_porcelain(plumbing.meta)
       porcelain.account_grant = account_grant_to_porcelain(plumbing.account_grant)
@@ -193,6 +412,9 @@ module SDM
     end
 
     def self.account_grant_create_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::AccountGrantCreateResponse.new()
       plumbing.meta = create_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
       plumbing.account_grant = account_grant_to_plumbing(porcelain.account_grant) unless porcelain.account_grant == nil
@@ -217,6 +439,9 @@ module SDM
       items
     end
     def self.account_grant_get_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = AccountGrantGetResponse.new()
       porcelain.meta = get_response_metadata_to_porcelain(plumbing.meta)
       porcelain.account_grant = account_grant_to_porcelain(plumbing.account_grant)
@@ -225,6 +450,9 @@ module SDM
     end
 
     def self.account_grant_get_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::AccountGrantGetResponse.new()
       plumbing.meta = get_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
       plumbing.account_grant = account_grant_to_plumbing(porcelain.account_grant) unless porcelain.account_grant == nil
@@ -249,6 +477,9 @@ module SDM
       items
     end
     def self.account_grant_delete_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = AccountGrantDeleteResponse.new()
       porcelain.meta = delete_response_metadata_to_porcelain(plumbing.meta)
       porcelain.rate_limit = rate_limit_metadata_to_porcelain(plumbing.rate_limit)
@@ -256,6 +487,9 @@ module SDM
     end
 
     def self.account_grant_delete_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::AccountGrantDeleteResponse.new()
       plumbing.meta = delete_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
       plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
@@ -279,6 +513,9 @@ module SDM
       items
     end
     def self.account_grant_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = AccountGrant.new()
       porcelain.id = plumbing.id
       porcelain.resource_id = plumbing.resource_id
@@ -289,6 +526,9 @@ module SDM
     end
 
     def self.account_grant_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::AccountGrant.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.resource_id = porcelain.resource_id unless porcelain.resource_id == nil
@@ -315,6 +555,9 @@ module SDM
       items
     end
     def self.account_create_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = AccountCreateResponse.new()
       porcelain.meta = create_response_metadata_to_porcelain(plumbing.meta)
       porcelain.account = account_to_porcelain(plumbing.account)
@@ -324,6 +567,9 @@ module SDM
     end
 
     def self.account_create_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::AccountCreateResponse.new()
       plumbing.meta = create_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
       plumbing.account = account_to_plumbing(porcelain.account) unless porcelain.account == nil
@@ -349,6 +595,9 @@ module SDM
       items
     end
     def self.account_get_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = AccountGetResponse.new()
       porcelain.meta = get_response_metadata_to_porcelain(plumbing.meta)
       porcelain.account = account_to_porcelain(plumbing.account)
@@ -357,6 +606,9 @@ module SDM
     end
 
     def self.account_get_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::AccountGetResponse.new()
       plumbing.meta = get_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
       plumbing.account = account_to_plumbing(porcelain.account) unless porcelain.account == nil
@@ -381,6 +633,9 @@ module SDM
       items
     end
     def self.account_update_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = AccountUpdateResponse.new()
       porcelain.meta = update_response_metadata_to_porcelain(plumbing.meta)
       porcelain.account = account_to_porcelain(plumbing.account)
@@ -389,6 +644,9 @@ module SDM
     end
 
     def self.account_update_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::AccountUpdateResponse.new()
       plumbing.meta = update_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
       plumbing.account = account_to_plumbing(porcelain.account) unless porcelain.account == nil
@@ -413,6 +671,9 @@ module SDM
       items
     end
     def self.account_delete_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = AccountDeleteResponse.new()
       porcelain.meta = delete_response_metadata_to_porcelain(plumbing.meta)
       porcelain.rate_limit = rate_limit_metadata_to_porcelain(plumbing.rate_limit)
@@ -420,6 +681,9 @@ module SDM
     end
 
     def self.account_delete_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::AccountDeleteResponse.new()
       plumbing.meta = delete_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
       plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
@@ -443,6 +707,9 @@ module SDM
       items
     end
     def self.account_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::Account.new()
       if porcelain.instance_of? User
         plumbing.user = user_to_plumbing(porcelain)
@@ -454,6 +721,9 @@ module SDM
     end
 
     def self.account_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       if plumbing.user != nil
         return user_to_porcelain(plumbing.user)
       end
@@ -479,6 +749,9 @@ module SDM
       items
     end
     def self.user_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = User.new()
       porcelain.id = plumbing.id
       porcelain.email = plumbing.email
@@ -488,6 +761,9 @@ module SDM
     end
 
     def self.user_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::User.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.email = porcelain.email unless porcelain.email == nil
@@ -513,6 +789,9 @@ module SDM
       items
     end
     def self.service_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = Service.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -520,6 +799,9 @@ module SDM
     end
 
     def self.service_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::Service.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -543,6 +825,9 @@ module SDM
       items
     end
     def self.resource_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::Resource.new()
       if porcelain.instance_of? Athena
         plumbing.athena = athena_to_plumbing(porcelain)
@@ -661,6 +946,9 @@ module SDM
       if porcelain.instance_of? Sybase
         plumbing.sybase = sybase_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? SybaseIQ
+        plumbing.sybase_iq = sybase_iq_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? Teradata
         plumbing.teradata = teradata_to_plumbing(porcelain)
       end
@@ -668,6 +956,9 @@ module SDM
     end
 
     def self.resource_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       if plumbing.athena != nil
         return athena_to_porcelain(plumbing.athena)
       end
@@ -785,6 +1076,9 @@ module SDM
       if plumbing.sybase != nil
         return sybase_to_porcelain(plumbing.sybase)
       end
+      if plumbing.sybase_iq != nil
+        return sybase_iq_to_porcelain(plumbing.sybase_iq)
+      end
       if plumbing.teradata != nil
         return teradata_to_porcelain(plumbing.teradata)
       end
@@ -807,6 +1101,9 @@ module SDM
       items
     end
     def self.athena_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = Athena.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -820,6 +1117,9 @@ module SDM
     end
 
     def self.athena_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::Athena.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -849,6 +1149,9 @@ module SDM
       items
     end
     def self.big_query_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = BigQuery.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -862,6 +1165,9 @@ module SDM
     end
 
     def self.big_query_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::BigQuery.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -891,6 +1197,9 @@ module SDM
       items
     end
     def self.cassandra_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = Cassandra.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -905,6 +1214,9 @@ module SDM
     end
 
     def self.cassandra_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::Cassandra.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -935,6 +1247,9 @@ module SDM
       items
     end
     def self.druid_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = Druid.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -948,6 +1263,9 @@ module SDM
     end
 
     def self.druid_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::Druid.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -977,6 +1295,9 @@ module SDM
       items
     end
     def self.dynamo_db_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = DynamoDB.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -990,6 +1311,9 @@ module SDM
     end
 
     def self.dynamo_db_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::DynamoDB.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -1019,6 +1343,9 @@ module SDM
       items
     end
     def self.amazon_es_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = AmazonES.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -1032,6 +1359,9 @@ module SDM
     end
 
     def self.amazon_es_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::AmazonES.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -1061,6 +1391,9 @@ module SDM
       items
     end
     def self.elastic_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = Elastic.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -1075,6 +1408,9 @@ module SDM
     end
 
     def self.elastic_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::Elastic.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -1105,6 +1441,9 @@ module SDM
       items
     end
     def self.http_basic_auth_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = HTTPBasicAuth.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -1120,6 +1459,9 @@ module SDM
     end
 
     def self.http_basic_auth_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::HTTPBasicAuth.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -1151,6 +1493,9 @@ module SDM
       items
     end
     def self.http_no_auth_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = HTTPNoAuth.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -1164,6 +1509,9 @@ module SDM
     end
 
     def self.http_no_auth_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::HTTPNoAuth.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -1193,6 +1541,9 @@ module SDM
       items
     end
     def self.http_auth_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = HTTPAuth.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -1207,6 +1558,9 @@ module SDM
     end
 
     def self.http_auth_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::HTTPAuth.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -1237,6 +1591,9 @@ module SDM
       items
     end
     def self.kubernetes_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = Kubernetes.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -1253,6 +1610,9 @@ module SDM
     end
 
     def self.kubernetes_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::Kubernetes.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -1285,6 +1645,9 @@ module SDM
       items
     end
     def self.kubernetes_basic_auth_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = KubernetesBasicAuth.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -1297,6 +1660,9 @@ module SDM
     end
 
     def self.kubernetes_basic_auth_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::KubernetesBasicAuth.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -1325,6 +1691,9 @@ module SDM
       items
     end
     def self.amazon_eks_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = AmazonEKS.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -1340,6 +1709,9 @@ module SDM
     end
 
     def self.amazon_eks_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::AmazonEKS.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -1371,6 +1743,9 @@ module SDM
       items
     end
     def self.google_gke_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = GoogleGKE.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -1384,6 +1759,9 @@ module SDM
     end
 
     def self.google_gke_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::GoogleGKE.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -1413,6 +1791,9 @@ module SDM
       items
     end
     def self.kubernetes_service_account_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = KubernetesServiceAccount.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -1424,6 +1805,9 @@ module SDM
     end
 
     def self.kubernetes_service_account_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::KubernetesServiceAccount.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -1451,6 +1835,9 @@ module SDM
       items
     end
     def self.memcached_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = Memcached.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -1462,6 +1849,9 @@ module SDM
     end
 
     def self.memcached_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::Memcached.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -1489,6 +1879,9 @@ module SDM
       items
     end
     def self.mongo_legacy_host_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = MongoLegacyHost.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -1505,6 +1898,9 @@ module SDM
     end
 
     def self.mongo_legacy_host_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::MongoLegacyHost.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -1537,6 +1933,9 @@ module SDM
       items
     end
     def self.mongo_legacy_replicaset_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = MongoLegacyReplicaset.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -1554,6 +1953,9 @@ module SDM
     end
 
     def self.mongo_legacy_replicaset_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::MongoLegacyReplicaset.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -1587,6 +1989,9 @@ module SDM
       items
     end
     def self.mongo_host_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = MongoHost.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -1602,6 +2007,9 @@ module SDM
     end
 
     def self.mongo_host_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::MongoHost.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -1633,6 +2041,9 @@ module SDM
       items
     end
     def self.mongo_replica_set_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = MongoReplicaSet.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -1650,6 +2061,9 @@ module SDM
     end
 
     def self.mongo_replica_set_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::MongoReplicaSet.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -1683,6 +2097,9 @@ module SDM
       items
     end
     def self.mysql_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = Mysql.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -1697,6 +2114,9 @@ module SDM
     end
 
     def self.mysql_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::Mysql.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -1727,6 +2147,9 @@ module SDM
       items
     end
     def self.aurora_mysql_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = AuroraMysql.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -1741,6 +2164,9 @@ module SDM
     end
 
     def self.aurora_mysql_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::AuroraMysql.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -1771,6 +2197,9 @@ module SDM
       items
     end
     def self.clustrix_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = Clustrix.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -1785,6 +2214,9 @@ module SDM
     end
 
     def self.clustrix_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::Clustrix.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -1815,6 +2247,9 @@ module SDM
       items
     end
     def self.maria_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = Maria.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -1829,6 +2264,9 @@ module SDM
     end
 
     def self.maria_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::Maria.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -1859,6 +2297,9 @@ module SDM
       items
     end
     def self.memsql_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = Memsql.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -1873,6 +2314,9 @@ module SDM
     end
 
     def self.memsql_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::Memsql.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -1903,6 +2347,9 @@ module SDM
       items
     end
     def self.oracle_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = Oracle.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -1918,6 +2365,9 @@ module SDM
     end
 
     def self.oracle_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::Oracle.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -1949,6 +2399,9 @@ module SDM
       items
     end
     def self.postgres_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = Postgres.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -1964,6 +2417,9 @@ module SDM
     end
 
     def self.postgres_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::Postgres.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -1995,6 +2451,9 @@ module SDM
       items
     end
     def self.aurora_postgres_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = AuroraPostgres.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -2010,6 +2469,9 @@ module SDM
     end
 
     def self.aurora_postgres_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::AuroraPostgres.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -2041,6 +2503,9 @@ module SDM
       items
     end
     def self.greenplum_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = Greenplum.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -2056,6 +2521,9 @@ module SDM
     end
 
     def self.greenplum_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::Greenplum.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -2087,6 +2555,9 @@ module SDM
       items
     end
     def self.cockroach_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = Cockroach.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -2102,6 +2573,9 @@ module SDM
     end
 
     def self.cockroach_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::Cockroach.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -2133,6 +2607,9 @@ module SDM
       items
     end
     def self.redshift_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = Redshift.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -2148,6 +2625,9 @@ module SDM
     end
 
     def self.redshift_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::Redshift.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -2179,6 +2659,9 @@ module SDM
       items
     end
     def self.presto_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = Presto.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -2194,6 +2677,9 @@ module SDM
     end
 
     def self.presto_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::Presto.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -2225,6 +2711,9 @@ module SDM
       items
     end
     def self.rdp_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = RDP.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -2238,6 +2727,9 @@ module SDM
     end
 
     def self.rdp_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::RDP.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -2267,6 +2759,9 @@ module SDM
       items
     end
     def self.redis_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = Redis.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -2279,6 +2774,9 @@ module SDM
     end
 
     def self.redis_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::Redis.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -2307,6 +2805,9 @@ module SDM
       items
     end
     def self.elasticache_redis_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = ElasticacheRedis.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -2320,6 +2821,9 @@ module SDM
     end
 
     def self.elasticache_redis_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::ElasticacheRedis.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -2349,6 +2853,9 @@ module SDM
       items
     end
     def self.snowflake_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = Snowflake.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -2363,6 +2870,9 @@ module SDM
     end
 
     def self.snowflake_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::Snowflake.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -2393,6 +2903,9 @@ module SDM
       items
     end
     def self.sql_server_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = SQLServer.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -2409,6 +2922,9 @@ module SDM
     end
 
     def self.sql_server_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::SQLServer.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -2441,6 +2957,9 @@ module SDM
       items
     end
     def self.ssh_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = SSH.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -2453,6 +2972,9 @@ module SDM
     end
 
     def self.ssh_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::SSH.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -2481,6 +3003,9 @@ module SDM
       items
     end
     def self.sybase_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = Sybase.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -2494,6 +3019,9 @@ module SDM
     end
 
     def self.sybase_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::Sybase.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -2522,7 +3050,58 @@ module SDM
       end
       items
     end
+    def self.sybase_iq_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = SybaseIQ.new()
+      porcelain.id = plumbing.id
+      porcelain.name = plumbing.name
+      porcelain.healthy = plumbing.healthy
+      porcelain.hostname = plumbing.hostname
+      porcelain.username = plumbing.username
+      porcelain.port_override = plumbing.port_override
+      porcelain.port = plumbing.port
+      porcelain.password = plumbing.password
+      porcelain
+    end
+
+    def self.sybase_iq_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::SybaseIQ.new()
+      plumbing.id = porcelain.id unless porcelain.id == nil
+      plumbing.name = porcelain.name unless porcelain.name == nil
+      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
+      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
+      plumbing.username = porcelain.username unless porcelain.username == nil
+      plumbing.port_override = porcelain.port_override unless porcelain.port_override == nil
+      plumbing.port = porcelain.port unless porcelain.port == nil
+      plumbing.password = porcelain.password unless porcelain.password == nil
+      plumbing
+    end
+    def self.repeated_sybase_iq_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = sybase_iq_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_sybase_iq_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = sybase_iq_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.teradata_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = Teradata.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -2536,6 +3115,9 @@ module SDM
     end
 
     def self.teradata_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::Teradata.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -2565,6 +3147,9 @@ module SDM
       items
     end
     def self.node_create_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = NodeCreateResponse.new()
       porcelain.meta = create_response_metadata_to_porcelain(plumbing.meta)
       porcelain.node = node_to_porcelain(plumbing.node)
@@ -2574,6 +3159,9 @@ module SDM
     end
 
     def self.node_create_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::NodeCreateResponse.new()
       plumbing.meta = create_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
       plumbing.node = node_to_plumbing(porcelain.node) unless porcelain.node == nil
@@ -2599,6 +3187,9 @@ module SDM
       items
     end
     def self.node_get_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = NodeGetResponse.new()
       porcelain.meta = get_response_metadata_to_porcelain(plumbing.meta)
       porcelain.node = node_to_porcelain(plumbing.node)
@@ -2607,6 +3198,9 @@ module SDM
     end
 
     def self.node_get_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::NodeGetResponse.new()
       plumbing.meta = get_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
       plumbing.node = node_to_plumbing(porcelain.node) unless porcelain.node == nil
@@ -2631,6 +3225,9 @@ module SDM
       items
     end
     def self.node_update_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = NodeUpdateResponse.new()
       porcelain.meta = update_response_metadata_to_porcelain(plumbing.meta)
       porcelain.node = node_to_porcelain(plumbing.node)
@@ -2639,6 +3236,9 @@ module SDM
     end
 
     def self.node_update_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::NodeUpdateResponse.new()
       plumbing.meta = update_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
       plumbing.node = node_to_plumbing(porcelain.node) unless porcelain.node == nil
@@ -2663,6 +3263,9 @@ module SDM
       items
     end
     def self.node_delete_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = NodeDeleteResponse.new()
       porcelain.meta = delete_response_metadata_to_porcelain(plumbing.meta)
       porcelain.rate_limit = rate_limit_metadata_to_porcelain(plumbing.rate_limit)
@@ -2670,6 +3273,9 @@ module SDM
     end
 
     def self.node_delete_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::NodeDeleteResponse.new()
       plumbing.meta = delete_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
       plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
@@ -2693,6 +3299,9 @@ module SDM
       items
     end
     def self.node_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::Node.new()
       if porcelain.instance_of? Relay
         plumbing.relay = relay_to_plumbing(porcelain)
@@ -2704,6 +3313,9 @@ module SDM
     end
 
     def self.node_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       if plumbing.relay != nil
         return relay_to_porcelain(plumbing.relay)
       end
@@ -2729,6 +3341,9 @@ module SDM
       items
     end
     def self.relay_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = Relay.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -2737,6 +3352,9 @@ module SDM
     end
 
     def self.relay_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::Relay.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -2761,6 +3379,9 @@ module SDM
       items
     end
     def self.gateway_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = Gateway.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -2771,6 +3392,9 @@ module SDM
     end
 
     def self.gateway_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::Gateway.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
@@ -2797,6 +3421,9 @@ module SDM
       items
     end
     def self.resource_create_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = ResourceCreateResponse.new()
       porcelain.meta = create_response_metadata_to_porcelain(plumbing.meta)
       porcelain.resource = resource_to_porcelain(plumbing.resource)
@@ -2805,6 +3432,9 @@ module SDM
     end
 
     def self.resource_create_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::ResourceCreateResponse.new()
       plumbing.meta = create_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
       plumbing.resource = resource_to_plumbing(porcelain.resource) unless porcelain.resource == nil
@@ -2829,6 +3459,9 @@ module SDM
       items
     end
     def self.resource_get_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = ResourceGetResponse.new()
       porcelain.meta = get_response_metadata_to_porcelain(plumbing.meta)
       porcelain.resource = resource_to_porcelain(plumbing.resource)
@@ -2837,6 +3470,9 @@ module SDM
     end
 
     def self.resource_get_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::ResourceGetResponse.new()
       plumbing.meta = get_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
       plumbing.resource = resource_to_plumbing(porcelain.resource) unless porcelain.resource == nil
@@ -2861,6 +3497,9 @@ module SDM
       items
     end
     def self.resource_update_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = ResourceUpdateResponse.new()
       porcelain.meta = update_response_metadata_to_porcelain(plumbing.meta)
       porcelain.resource = resource_to_porcelain(plumbing.resource)
@@ -2869,6 +3508,9 @@ module SDM
     end
 
     def self.resource_update_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::ResourceUpdateResponse.new()
       plumbing.meta = update_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
       plumbing.resource = resource_to_plumbing(porcelain.resource) unless porcelain.resource == nil
@@ -2893,6 +3535,9 @@ module SDM
       items
     end
     def self.resource_delete_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = ResourceDeleteResponse.new()
       porcelain.meta = delete_response_metadata_to_porcelain(plumbing.meta)
       porcelain.rate_limit = rate_limit_metadata_to_porcelain(plumbing.rate_limit)
@@ -2900,6 +3545,9 @@ module SDM
     end
 
     def self.resource_delete_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::ResourceDeleteResponse.new()
       plumbing.meta = delete_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
       plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
@@ -2923,6 +3571,9 @@ module SDM
       items
     end
     def self.role_attachment_create_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = RoleAttachmentCreateResponse.new()
       porcelain.meta = create_response_metadata_to_porcelain(plumbing.meta)
       porcelain.role_attachment = role_attachment_to_porcelain(plumbing.role_attachment)
@@ -2931,6 +3582,9 @@ module SDM
     end
 
     def self.role_attachment_create_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::RoleAttachmentCreateResponse.new()
       plumbing.meta = create_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
       plumbing.role_attachment = role_attachment_to_plumbing(porcelain.role_attachment) unless porcelain.role_attachment == nil
@@ -2955,6 +3609,9 @@ module SDM
       items
     end
     def self.role_attachment_get_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = RoleAttachmentGetResponse.new()
       porcelain.meta = get_response_metadata_to_porcelain(plumbing.meta)
       porcelain.role_attachment = role_attachment_to_porcelain(plumbing.role_attachment)
@@ -2963,6 +3620,9 @@ module SDM
     end
 
     def self.role_attachment_get_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::RoleAttachmentGetResponse.new()
       plumbing.meta = get_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
       plumbing.role_attachment = role_attachment_to_plumbing(porcelain.role_attachment) unless porcelain.role_attachment == nil
@@ -2987,6 +3647,9 @@ module SDM
       items
     end
     def self.role_attachment_delete_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = RoleAttachmentDeleteResponse.new()
       porcelain.meta = delete_response_metadata_to_porcelain(plumbing.meta)
       porcelain.rate_limit = rate_limit_metadata_to_porcelain(plumbing.rate_limit)
@@ -2994,6 +3657,9 @@ module SDM
     end
 
     def self.role_attachment_delete_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::RoleAttachmentDeleteResponse.new()
       plumbing.meta = delete_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
       plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
@@ -3017,6 +3683,9 @@ module SDM
       items
     end
     def self.role_attachment_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = RoleAttachment.new()
       porcelain.id = plumbing.id
       porcelain.composite_role_id = plumbing.composite_role_id
@@ -3025,6 +3694,9 @@ module SDM
     end
 
     def self.role_attachment_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::RoleAttachment.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.composite_role_id = porcelain.composite_role_id unless porcelain.composite_role_id == nil
@@ -3048,7 +3720,160 @@ module SDM
       end
       items
     end
+    def self.role_grant_create_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = RoleGrantCreateResponse.new()
+      porcelain.meta = create_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.role_grant = role_grant_to_porcelain(plumbing.role_grant)
+      porcelain.rate_limit = rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.role_grant_create_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::RoleGrantCreateResponse.new()
+      plumbing.meta = create_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
+      plumbing.role_grant = role_grant_to_plumbing(porcelain.role_grant) unless porcelain.role_grant == nil
+      plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
+      plumbing
+    end
+    def self.repeated_role_grant_create_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = role_grant_create_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_role_grant_create_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = role_grant_create_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.role_grant_get_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = RoleGrantGetResponse.new()
+      porcelain.meta = get_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.role_grant = role_grant_to_porcelain(plumbing.role_grant)
+      porcelain.rate_limit = rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.role_grant_get_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::RoleGrantGetResponse.new()
+      plumbing.meta = get_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
+      plumbing.role_grant = role_grant_to_plumbing(porcelain.role_grant) unless porcelain.role_grant == nil
+      plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
+      plumbing
+    end
+    def self.repeated_role_grant_get_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = role_grant_get_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_role_grant_get_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = role_grant_get_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.role_grant_delete_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = RoleGrantDeleteResponse.new()
+      porcelain.meta = delete_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.rate_limit = rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.role_grant_delete_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::RoleGrantDeleteResponse.new()
+      plumbing.meta = delete_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
+      plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
+      plumbing
+    end
+    def self.repeated_role_grant_delete_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = role_grant_delete_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_role_grant_delete_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = role_grant_delete_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.role_grant_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = RoleGrant.new()
+      porcelain.id = plumbing.id
+      porcelain.resource_id = plumbing.resource_id
+      porcelain.role_id = plumbing.role_id
+      porcelain
+    end
+
+    def self.role_grant_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::RoleGrant.new()
+      plumbing.id = porcelain.id unless porcelain.id == nil
+      plumbing.resource_id = porcelain.resource_id unless porcelain.resource_id == nil
+      plumbing.role_id = porcelain.role_id unless porcelain.role_id == nil
+      plumbing
+    end
+    def self.repeated_role_grant_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = role_grant_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_role_grant_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = role_grant_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.role_create_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = RoleCreateResponse.new()
       porcelain.meta = create_response_metadata_to_porcelain(plumbing.meta)
       porcelain.role = role_to_porcelain(plumbing.role)
@@ -3057,6 +3882,9 @@ module SDM
     end
 
     def self.role_create_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::RoleCreateResponse.new()
       plumbing.meta = create_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
       plumbing.role = role_to_plumbing(porcelain.role) unless porcelain.role == nil
@@ -3081,6 +3909,9 @@ module SDM
       items
     end
     def self.role_get_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = RoleGetResponse.new()
       porcelain.meta = get_response_metadata_to_porcelain(plumbing.meta)
       porcelain.role = role_to_porcelain(plumbing.role)
@@ -3089,6 +3920,9 @@ module SDM
     end
 
     def self.role_get_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::RoleGetResponse.new()
       plumbing.meta = get_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
       plumbing.role = role_to_plumbing(porcelain.role) unless porcelain.role == nil
@@ -3113,6 +3947,9 @@ module SDM
       items
     end
     def self.role_update_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = RoleUpdateResponse.new()
       porcelain.meta = update_response_metadata_to_porcelain(plumbing.meta)
       porcelain.role = role_to_porcelain(plumbing.role)
@@ -3121,6 +3958,9 @@ module SDM
     end
 
     def self.role_update_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::RoleUpdateResponse.new()
       plumbing.meta = update_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
       plumbing.role = role_to_plumbing(porcelain.role) unless porcelain.role == nil
@@ -3145,6 +3985,9 @@ module SDM
       items
     end
     def self.role_delete_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = RoleDeleteResponse.new()
       porcelain.meta = delete_response_metadata_to_porcelain(plumbing.meta)
       porcelain.rate_limit = rate_limit_metadata_to_porcelain(plumbing.rate_limit)
@@ -3152,6 +3995,9 @@ module SDM
     end
 
     def self.role_delete_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::RoleDeleteResponse.new()
       plumbing.meta = delete_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
       plumbing.rate_limit = rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
@@ -3175,6 +4021,9 @@ module SDM
       items
     end
     def self.role_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
       porcelain = Role.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
@@ -3183,6 +4032,9 @@ module SDM
     end
 
     def self.role_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
       plumbing = V1::Role.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil

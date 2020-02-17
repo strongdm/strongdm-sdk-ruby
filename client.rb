@@ -17,11 +17,13 @@ module SDM
       @max_retries = DEFAULT_MAX_RETRIES
       @base_retry_delay = DEFAULT_BASE_RETRY_DELAY
       @max_retry_delay = DEFAULT_MAX_RETRY_DELAY
+      @account_attachments = AccountAttachments.new(address, self)
       @account_grants = AccountGrants.new(address, self)
       @accounts = Accounts.new(address, self)
       @nodes = Nodes.new(address, self)
       @resources = Resources.new(address, self)
       @role_attachments = RoleAttachments.new(address, self)
+      @role_grants = RoleGrants.new(address, self)
       @roles = Roles.new(address, self)
       @_test_options = Hash.new
     end
@@ -71,6 +73,8 @@ module SDM
 
     # API authentication token (read-only).
     attr_reader :api_access_key
+    # AccountAttachments represent relationships between an account and a role.
+    attr_reader :account_attachments
     # AccountGrants represent relationships between composite roles and the roles
     # that make up those composite roles. When a composite role is attached to another
     # role, the permissions granted to members of the composite role are augmented to
@@ -89,6 +93,11 @@ module SDM
     # role, the permissions granted to members of the composite role are augmented to
     # include the permissions granted to members of the attached role.
     attr_reader :role_attachments
+    # RoleGrants represent relationships between composite roles and the roles
+    # that make up those composite roles. When a composite role is attached to another
+    # role, the permissions granted to members of the composite role are augmented to
+    # include the permissions granted to members of the attached role.
+    attr_reader :role_grants
     # Roles are tools for controlling user access to resources. Each Role holds a
     # list of resources which they grant access to. Composite roles are a special
     # type of Role which have no resource associations of their own, but instead

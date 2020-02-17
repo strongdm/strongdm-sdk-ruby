@@ -48,6 +48,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :sql_server, :message, 1800, "v1.SQLServer"
         optional :ssh, :message, 1900, "v1.SSH"
         optional :sybase, :message, 2000, "v1.Sybase"
+        optional :sybase_iq, :message, 2001, "v1.SybaseIQ"
         optional :teradata, :message, 2100, "v1.Teradata"
       end
     end
@@ -480,6 +481,16 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port, :int32, 4
       optional :password, :string, 5
     end
+    add_message "v1.SybaseIQ" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :hostname, :string, 1
+      optional :username, :string, 2
+      optional :port_override, :int32, 3
+      optional :port, :int32, 4
+      optional :password, :string, 5
+    end
     add_message "v1.Teradata" do
       optional :id, :string, 32768
       optional :name, :string, 32769
@@ -534,5 +545,6 @@ module V1
   SQLServer = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SQLServer").msgclass
   SSH = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SSH").msgclass
   Sybase = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Sybase").msgclass
+  SybaseIQ = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SybaseIQ").msgclass
   Teradata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Teradata").msgclass
 end
