@@ -141,8 +141,8 @@ module SDM
     end
   end
 
-  # A AccountAttachment connects a composite role to another role, granting members
-  # of the composite role the permissions granted to the attached role.
+  # A AccountAttachment connects an account to a role, granting the account
+  # the permissions granted to that role.
   class AccountAttachment
     # Unique identifier of the AccountAttachment.
     attr_accessor :id
@@ -236,8 +236,8 @@ module SDM
     end
   end
 
-  # A AccountGrant connects a composite role to another role, granting members
-  # of the composite role the permissions granted to the attached role.
+  # An AccountGrant connects an account to a resource, granting the account
+  # the ability to connect to that resource.
   class AccountGrant
     # Unique identifier of the AccountGrant.
     attr_accessor :id
@@ -3008,12 +3008,12 @@ module SDM
 
   # Gateway represents a StrongDM CLI installation running in gateway mode.
   class Gateway
-    # Unique identifier of the Relay.
+    # Unique identifier of the Gateway.
     attr_accessor :id
-    # Unique human-readable name of the Relay.
+    # Unique human-readable name of the Gateway.
     attr_accessor :name
     # The current state of the gateway. One of: "new", "verifying_restart",
-    # "restarting", "started", "stopped", "dead", "unknown",
+    # "restarting", "started", "stopped", "dead", "unknown"
     attr_accessor :state
     # The public hostname/port tuple at which the gateway will be accessible to clients.
     attr_accessor :listen_address
@@ -3304,7 +3304,7 @@ module SDM
   end
 
   # A RoleGrant connects a resource to a role, granting members of the role
-  # access to it.
+  # access to the resource.
   class RoleGrant
     # Unique identifier of the RoleGrant.
     attr_accessor :id

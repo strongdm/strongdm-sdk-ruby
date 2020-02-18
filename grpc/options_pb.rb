@@ -18,6 +18,11 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :porcelain, :bool, 1941301
       optional :error, :int32, 1941302
       optional :options_field, :string, 1941303
+      optional :terraform_docs, :message, 1941304, "v1.TerraformDocs"
+    end
+    add_message "v1.TerraformDocs" do
+      optional :resource_example_path, :string, 1941300
+      optional :data_source_example_path, :string, 1941301
     end
     add_message "v1.OneofOptions" do
       optional :model_name, :string, 1941380
@@ -31,6 +36,7 @@ end
 module V1
   FieldOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.FieldOptions").msgclass
   MessageOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MessageOptions").msgclass
+  TerraformDocs = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.TerraformDocs").msgclass
   OneofOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.OneofOptions").msgclass
   ServiceOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ServiceOptions").msgclass
 end
