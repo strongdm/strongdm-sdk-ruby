@@ -1,3 +1,17 @@
+# Copyright 2020 StrongDM Inc
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
 
 module SDM
   # CreateResponseMetadata is reserved for future use.
@@ -1120,6 +1134,48 @@ module SDM
     end
   end
 
+  class KubernetesServiceAccount
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
+    attr_accessor :hostname
+
+    attr_accessor :port
+
+    attr_accessor :token
+
+    def initialize(
+                   id: nil,
+                   name: nil,
+                   healthy: nil,
+                   hostname: nil,
+                   port: nil,
+                   token: nil)
+      if id != nil
+        @id = id
+      end
+      if name != nil
+        @name = name
+      end
+      if healthy != nil
+        @healthy = healthy
+      end
+      if hostname != nil
+        @hostname = hostname
+      end
+      if port != nil
+        @port = port
+      end
+      if token != nil
+        @token = token
+      end
+    end
+  end
+
   class AmazonEKS
     # Unique identifier of the Resource.
     attr_accessor :id
@@ -1240,7 +1296,127 @@ module SDM
     end
   end
 
-  class KubernetesServiceAccount
+  class AKS
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
+    attr_accessor :hostname
+
+    attr_accessor :port
+
+    attr_accessor :certificate_authority
+
+    attr_accessor :certificate_authority_filename
+
+    attr_accessor :client_certificate
+
+    attr_accessor :client_certificate_filename
+
+    attr_accessor :client_key
+
+    attr_accessor :client_key_filename
+
+    def initialize(
+                   id: nil,
+                   name: nil,
+                   healthy: nil,
+                   hostname: nil,
+                   port: nil,
+                   certificate_authority: nil,
+                   certificate_authority_filename: nil,
+                   client_certificate: nil,
+                   client_certificate_filename: nil,
+                   client_key: nil,
+                   client_key_filename: nil)
+      if id != nil
+        @id = id
+      end
+      if name != nil
+        @name = name
+      end
+      if healthy != nil
+        @healthy = healthy
+      end
+      if hostname != nil
+        @hostname = hostname
+      end
+      if port != nil
+        @port = port
+      end
+      if certificate_authority != nil
+        @certificate_authority = certificate_authority
+      end
+      if certificate_authority_filename != nil
+        @certificate_authority_filename = certificate_authority_filename
+      end
+      if client_certificate != nil
+        @client_certificate = client_certificate
+      end
+      if client_certificate_filename != nil
+        @client_certificate_filename = client_certificate_filename
+      end
+      if client_key != nil
+        @client_key = client_key
+      end
+      if client_key_filename != nil
+        @client_key_filename = client_key_filename
+      end
+    end
+  end
+
+  class AKSBasicAuth
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
+    attr_accessor :hostname
+
+    attr_accessor :port
+
+    attr_accessor :username
+
+    attr_accessor :password
+
+    def initialize(
+                   id: nil,
+                   name: nil,
+                   healthy: nil,
+                   hostname: nil,
+                   port: nil,
+                   username: nil,
+                   password: nil)
+      if id != nil
+        @id = id
+      end
+      if name != nil
+        @name = name
+      end
+      if healthy != nil
+        @healthy = healthy
+      end
+      if hostname != nil
+        @hostname = hostname
+      end
+      if port != nil
+        @port = port
+      end
+      if username != nil
+        @username = username
+      end
+      if password != nil
+        @password = password
+      end
+    end
+  end
+
+  class AKSServiceAccount
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.

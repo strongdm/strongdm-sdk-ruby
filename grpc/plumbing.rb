@@ -1,3 +1,17 @@
+# Copyright 2020 StrongDM Inc
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
 
 require "grpc"
 require "google/protobuf/well_known_types"
@@ -865,14 +879,23 @@ module SDM
       if porcelain.instance_of? KubernetesBasicAuth
         plumbing.kubernetes_basic_auth = kubernetes_basic_auth_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? KubernetesServiceAccount
+        plumbing.kubernetes_service_account = kubernetes_service_account_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? AmazonEKS
         plumbing.amazon_eks = amazon_eks_to_plumbing(porcelain)
       end
       if porcelain.instance_of? GoogleGKE
         plumbing.google_gke = google_gke_to_plumbing(porcelain)
       end
-      if porcelain.instance_of? KubernetesServiceAccount
-        plumbing.kubernetes_service_account = kubernetes_service_account_to_plumbing(porcelain)
+      if porcelain.instance_of? AKS
+        plumbing.aks = aks_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? AKSBasicAuth
+        plumbing.aks_basic_auth = aks_basic_auth_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? AKSServiceAccount
+        plumbing.aks_service_account = aks_service_account_to_plumbing(porcelain)
       end
       if porcelain.instance_of? Memcached
         plumbing.memcached = memcached_to_plumbing(porcelain)
@@ -995,14 +1018,23 @@ module SDM
       if plumbing.kubernetes_basic_auth != nil
         return kubernetes_basic_auth_to_porcelain(plumbing.kubernetes_basic_auth)
       end
+      if plumbing.kubernetes_service_account != nil
+        return kubernetes_service_account_to_porcelain(plumbing.kubernetes_service_account)
+      end
       if plumbing.amazon_eks != nil
         return amazon_eks_to_porcelain(plumbing.amazon_eks)
       end
       if plumbing.google_gke != nil
         return google_gke_to_porcelain(plumbing.google_gke)
       end
-      if plumbing.kubernetes_service_account != nil
-        return kubernetes_service_account_to_porcelain(plumbing.kubernetes_service_account)
+      if plumbing.aks != nil
+        return aks_to_porcelain(plumbing.aks)
+      end
+      if plumbing.aks_basic_auth != nil
+        return aks_basic_auth_to_porcelain(plumbing.aks_basic_auth)
+      end
+      if plumbing.aks_service_account != nil
+        return aks_service_account_to_porcelain(plumbing.aks_service_account)
       end
       if plumbing.memcached != nil
         return memcached_to_porcelain(plumbing.memcached)
@@ -1690,6 +1722,50 @@ module SDM
       end
       items
     end
+    def self.kubernetes_service_account_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = KubernetesServiceAccount.new()
+      porcelain.id = plumbing.id
+      porcelain.name = plumbing.name
+      porcelain.healthy = plumbing.healthy
+      porcelain.hostname = plumbing.hostname
+      porcelain.port = plumbing.port
+      porcelain.token = plumbing.token
+      porcelain
+    end
+
+    def self.kubernetes_service_account_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::KubernetesServiceAccount.new()
+      plumbing.id = porcelain.id unless porcelain.id == nil
+      plumbing.name = porcelain.name unless porcelain.name == nil
+      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
+      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
+      plumbing.port = porcelain.port unless porcelain.port == nil
+      plumbing.token = porcelain.token unless porcelain.token == nil
+      plumbing
+    end
+    def self.repeated_kubernetes_service_account_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = kubernetes_service_account_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_kubernetes_service_account_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = kubernetes_service_account_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.amazon_eks_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -1790,11 +1866,111 @@ module SDM
       end
       items
     end
-    def self.kubernetes_service_account_to_porcelain(plumbing)
+    def self.aks_to_porcelain(plumbing)
       if plumbing == nil
         return nil
       end
-      porcelain = KubernetesServiceAccount.new()
+      porcelain = AKS.new()
+      porcelain.id = plumbing.id
+      porcelain.name = plumbing.name
+      porcelain.healthy = plumbing.healthy
+      porcelain.hostname = plumbing.hostname
+      porcelain.port = plumbing.port
+      porcelain.certificate_authority = plumbing.certificate_authority
+      porcelain.certificate_authority_filename = plumbing.certificate_authority_filename
+      porcelain.client_certificate = plumbing.client_certificate
+      porcelain.client_certificate_filename = plumbing.client_certificate_filename
+      porcelain.client_key = plumbing.client_key
+      porcelain.client_key_filename = plumbing.client_key_filename
+      porcelain
+    end
+
+    def self.aks_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AKS.new()
+      plumbing.id = porcelain.id unless porcelain.id == nil
+      plumbing.name = porcelain.name unless porcelain.name == nil
+      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
+      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
+      plumbing.port = porcelain.port unless porcelain.port == nil
+      plumbing.certificate_authority = porcelain.certificate_authority unless porcelain.certificate_authority == nil
+      plumbing.certificate_authority_filename = porcelain.certificate_authority_filename unless porcelain.certificate_authority_filename == nil
+      plumbing.client_certificate = porcelain.client_certificate unless porcelain.client_certificate == nil
+      plumbing.client_certificate_filename = porcelain.client_certificate_filename unless porcelain.client_certificate_filename == nil
+      plumbing.client_key = porcelain.client_key unless porcelain.client_key == nil
+      plumbing.client_key_filename = porcelain.client_key_filename unless porcelain.client_key_filename == nil
+      plumbing
+    end
+    def self.repeated_aks_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = aks_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_aks_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = aks_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.aks_basic_auth_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AKSBasicAuth.new()
+      porcelain.id = plumbing.id
+      porcelain.name = plumbing.name
+      porcelain.healthy = plumbing.healthy
+      porcelain.hostname = plumbing.hostname
+      porcelain.port = plumbing.port
+      porcelain.username = plumbing.username
+      porcelain.password = plumbing.password
+      porcelain
+    end
+
+    def self.aks_basic_auth_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AKSBasicAuth.new()
+      plumbing.id = porcelain.id unless porcelain.id == nil
+      plumbing.name = porcelain.name unless porcelain.name == nil
+      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
+      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
+      plumbing.port = porcelain.port unless porcelain.port == nil
+      plumbing.username = porcelain.username unless porcelain.username == nil
+      plumbing.password = porcelain.password unless porcelain.password == nil
+      plumbing
+    end
+    def self.repeated_aks_basic_auth_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = aks_basic_auth_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.repeated_aks_basic_auth_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = aks_basic_auth_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.aks_service_account_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AKSServiceAccount.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
       porcelain.healthy = plumbing.healthy
@@ -1804,11 +1980,11 @@ module SDM
       porcelain
     end
 
-    def self.kubernetes_service_account_to_plumbing(porcelain)
+    def self.aks_service_account_to_plumbing(porcelain)
       if porcelain == nil
         return nil
       end
-      plumbing = V1::KubernetesServiceAccount.new()
+      plumbing = V1::AKSServiceAccount.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
       plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
@@ -1817,19 +1993,19 @@ module SDM
       plumbing.token = porcelain.token unless porcelain.token == nil
       plumbing
     end
-    def self.repeated_kubernetes_service_account_to_plumbing(porcelains)
+    def self.repeated_aks_service_account_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
-        plumbing = kubernetes_service_account_to_plumbing(porcelain)
+        plumbing = aks_service_account_to_plumbing(porcelain)
         items.append(plumbing)
       end
       items
     end
 
-    def self.repeated_kubernetes_service_account_to_porcelain(plumbings)
+    def self.repeated_aks_service_account_to_porcelain(plumbings)
       items = Array.new
       plumbings.each do |plumbing|
-        porcelain = kubernetes_service_account_to_porcelain(plumbing)
+        porcelain = aks_service_account_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
