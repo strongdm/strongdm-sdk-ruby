@@ -53,10 +53,11 @@ module SDM
     attr_accessor :bucket
 
     def initialize(
-                   limit: nil,
-                   remaining: nil,
-                   reset_at: nil,
-                   bucket: nil)
+      limit: nil,
+      remaining: nil,
+      reset_at: nil,
+      bucket: nil
+    )
       if limit != nil
         @limit = limit
       end
@@ -79,7 +80,8 @@ module SDM
     attr_accessor :overwrite
 
     def initialize(
-                   overwrite: nil)
+      overwrite: nil
+    )
       if overwrite != nil
         @overwrite = overwrite
       end
@@ -96,9 +98,10 @@ module SDM
     attr_accessor :rate_limit
 
     def initialize(
-                   meta: nil,
-                   account_attachment: nil,
-                   rate_limit: nil)
+      meta: nil,
+      account_attachment: nil,
+      rate_limit: nil
+    )
       if meta != nil
         @meta = meta
       end
@@ -121,9 +124,10 @@ module SDM
     attr_accessor :rate_limit
 
     def initialize(
-                   meta: nil,
-                   account_attachment: nil,
-                   rate_limit: nil)
+      meta: nil,
+      account_attachment: nil,
+      rate_limit: nil
+    )
       if meta != nil
         @meta = meta
       end
@@ -144,8 +148,9 @@ module SDM
     attr_accessor :rate_limit
 
     def initialize(
-                   meta: nil,
-                   rate_limit: nil)
+      meta: nil,
+      rate_limit: nil
+    )
       if meta != nil
         @meta = meta
       end
@@ -166,9 +171,10 @@ module SDM
     attr_accessor :role_id
 
     def initialize(
-                   id: nil,
-                   account_id: nil,
-                   role_id: nil)
+      id: nil,
+      account_id: nil,
+      role_id: nil
+    )
       if id != nil
         @id = id
       end
@@ -191,9 +197,10 @@ module SDM
     attr_accessor :rate_limit
 
     def initialize(
-                   meta: nil,
-                   account_grant: nil,
-                   rate_limit: nil)
+      meta: nil,
+      account_grant: nil,
+      rate_limit: nil
+    )
       if meta != nil
         @meta = meta
       end
@@ -216,9 +223,10 @@ module SDM
     attr_accessor :rate_limit
 
     def initialize(
-                   meta: nil,
-                   account_grant: nil,
-                   rate_limit: nil)
+      meta: nil,
+      account_grant: nil,
+      rate_limit: nil
+    )
       if meta != nil
         @meta = meta
       end
@@ -239,8 +247,9 @@ module SDM
     attr_accessor :rate_limit
 
     def initialize(
-                   meta: nil,
-                   rate_limit: nil)
+      meta: nil,
+      rate_limit: nil
+    )
       if meta != nil
         @meta = meta
       end
@@ -267,11 +276,12 @@ module SDM
     attr_accessor :valid_until
 
     def initialize(
-                   id: nil,
-                   resource_id: nil,
-                   account_id: nil,
-                   start_from: nil,
-                   valid_until: nil)
+      id: nil,
+      resource_id: nil,
+      account_id: nil,
+      start_from: nil,
+      valid_until: nil
+    )
       if id != nil
         @id = id
       end
@@ -303,10 +313,11 @@ module SDM
     attr_accessor :rate_limit
 
     def initialize(
-                   meta: nil,
-                   account: nil,
-                   token: nil,
-                   rate_limit: nil)
+      meta: nil,
+      account: nil,
+      token: nil,
+      rate_limit: nil
+    )
       if meta != nil
         @meta = meta
       end
@@ -332,9 +343,10 @@ module SDM
     attr_accessor :rate_limit
 
     def initialize(
-                   meta: nil,
-                   account: nil,
-                   rate_limit: nil)
+      meta: nil,
+      account: nil,
+      rate_limit: nil
+    )
       if meta != nil
         @meta = meta
       end
@@ -358,9 +370,10 @@ module SDM
     attr_accessor :rate_limit
 
     def initialize(
-                   meta: nil,
-                   account: nil,
-                   rate_limit: nil)
+      meta: nil,
+      account: nil,
+      rate_limit: nil
+    )
       if meta != nil
         @meta = meta
       end
@@ -381,8 +394,9 @@ module SDM
     attr_accessor :rate_limit
 
     def initialize(
-                   meta: nil,
-                   rate_limit: nil)
+      meta: nil,
+      rate_limit: nil
+    )
       if meta != nil
         @meta = meta
       end
@@ -405,10 +419,11 @@ module SDM
     attr_accessor :last_name
 
     def initialize(
-                   id: nil,
-                   email: nil,
-                   first_name: nil,
-                   last_name: nil)
+      id: nil,
+      email: nil,
+      first_name: nil,
+      last_name: nil
+    )
       if id != nil
         @id = id
       end
@@ -433,8 +448,9 @@ module SDM
     attr_accessor :name
 
     def initialize(
-                   id: nil,
-                   name: nil)
+      id: nil,
+      name: nil
+    )
       if id != nil
         @id = id
       end
@@ -463,14 +479,15 @@ module SDM
     attr_accessor :region
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   access_key: nil,
-                   secret_access_key: nil,
-                   output: nil,
-                   port_override: nil,
-                   region: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      access_key: nil,
+      secret_access_key: nil,
+      output: nil,
+      port_override: nil,
+      region: nil
+    )
       if id != nil
         @id = id
       end
@@ -517,14 +534,15 @@ module SDM
     attr_accessor :username
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   private_key: nil,
-                   project: nil,
-                   port_override: nil,
-                   endpoint: nil,
-                   username: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      private_key: nil,
+      project: nil,
+      port_override: nil,
+      endpoint: nil,
+      username: nil
+    )
       if id != nil
         @id = id
       end
@@ -573,15 +591,16 @@ module SDM
     attr_accessor :tls_required
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   hostname: nil,
-                   username: nil,
-                   password: nil,
-                   port_override: nil,
-                   port: nil,
-                   tls_required: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      hostname: nil,
+      username: nil,
+      password: nil,
+      port_override: nil,
+      port: nil,
+      tls_required: nil
+    )
       if id != nil
         @id = id
       end
@@ -631,14 +650,15 @@ module SDM
     attr_accessor :port
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   hostname: nil,
-                   port_override: nil,
-                   username: nil,
-                   password: nil,
-                   port: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      hostname: nil,
+      port_override: nil,
+      username: nil,
+      password: nil,
+      port: nil
+    )
       if id != nil
         @id = id
       end
@@ -685,14 +705,15 @@ module SDM
     attr_accessor :port_override
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   access_key: nil,
-                   secret_access_key: nil,
-                   region: nil,
-                   endpoint: nil,
-                   port_override: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      access_key: nil,
+      secret_access_key: nil,
+      region: nil,
+      endpoint: nil,
+      port_override: nil
+    )
       if id != nil
         @id = id
       end
@@ -739,14 +760,15 @@ module SDM
     attr_accessor :port_override
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   region: nil,
-                   secret_access_key: nil,
-                   endpoint: nil,
-                   access_key: nil,
-                   port_override: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      region: nil,
+      secret_access_key: nil,
+      endpoint: nil,
+      access_key: nil,
+      port_override: nil
+    )
       if id != nil
         @id = id
       end
@@ -795,15 +817,16 @@ module SDM
     attr_accessor :tls_required
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   hostname: nil,
-                   username: nil,
-                   password: nil,
-                   port_override: nil,
-                   port: nil,
-                   tls_required: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      hostname: nil,
+      username: nil,
+      password: nil,
+      port_override: nil,
+      port: nil,
+      tls_required: nil
+    )
       if id != nil
         @id = id
       end
@@ -857,16 +880,17 @@ module SDM
     attr_accessor :subdomain
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   url: nil,
-                   healthcheck_path: nil,
-                   username: nil,
-                   password: nil,
-                   headers_blacklist: nil,
-                   default_path: nil,
-                   subdomain: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      url: nil,
+      healthcheck_path: nil,
+      username: nil,
+      password: nil,
+      headers_blacklist: nil,
+      default_path: nil,
+      subdomain: nil
+    )
       if id != nil
         @id = id
       end
@@ -919,14 +943,15 @@ module SDM
     attr_accessor :subdomain
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   url: nil,
-                   healthcheck_path: nil,
-                   headers_blacklist: nil,
-                   default_path: nil,
-                   subdomain: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      url: nil,
+      healthcheck_path: nil,
+      headers_blacklist: nil,
+      default_path: nil,
+      subdomain: nil
+    )
       if id != nil
         @id = id
       end
@@ -975,15 +1000,16 @@ module SDM
     attr_accessor :subdomain
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   url: nil,
-                   healthcheck_path: nil,
-                   auth_header: nil,
-                   headers_blacklist: nil,
-                   default_path: nil,
-                   subdomain: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      url: nil,
+      healthcheck_path: nil,
+      auth_header: nil,
+      headers_blacklist: nil,
+      default_path: nil,
+      subdomain: nil
+    )
       if id != nil
         @id = id
       end
@@ -1039,17 +1065,18 @@ module SDM
     attr_accessor :client_key_filename
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   hostname: nil,
-                   port: nil,
-                   certificate_authority: nil,
-                   certificate_authority_filename: nil,
-                   client_certificate: nil,
-                   client_certificate_filename: nil,
-                   client_key: nil,
-                   client_key_filename: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      hostname: nil,
+      port: nil,
+      certificate_authority: nil,
+      certificate_authority_filename: nil,
+      client_certificate: nil,
+      client_certificate_filename: nil,
+      client_key: nil,
+      client_key_filename: nil
+    )
       if id != nil
         @id = id
       end
@@ -1103,13 +1130,14 @@ module SDM
     attr_accessor :password
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   hostname: nil,
-                   port: nil,
-                   username: nil,
-                   password: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      hostname: nil,
+      port: nil,
+      username: nil,
+      password: nil
+    )
       if id != nil
         @id = id
       end
@@ -1149,12 +1177,13 @@ module SDM
     attr_accessor :token
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   hostname: nil,
-                   port: nil,
-                   token: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      hostname: nil,
+      port: nil,
+      token: nil
+    )
       if id != nil
         @id = id
       end
@@ -1199,16 +1228,17 @@ module SDM
     attr_accessor :cluster_name
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   endpoint: nil,
-                   access_key: nil,
-                   secret_access_key: nil,
-                   certificate_authority: nil,
-                   certificate_authority_filename: nil,
-                   region: nil,
-                   cluster_name: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      endpoint: nil,
+      access_key: nil,
+      secret_access_key: nil,
+      certificate_authority: nil,
+      certificate_authority_filename: nil,
+      region: nil,
+      cluster_name: nil
+    )
       if id != nil
         @id = id
       end
@@ -1261,14 +1291,15 @@ module SDM
     attr_accessor :service_account_key_filename
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   endpoint: nil,
-                   certificate_authority: nil,
-                   certificate_authority_filename: nil,
-                   service_account_key: nil,
-                   service_account_key_filename: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      endpoint: nil,
+      certificate_authority: nil,
+      certificate_authority_filename: nil,
+      service_account_key: nil,
+      service_account_key_filename: nil
+    )
       if id != nil
         @id = id
       end
@@ -1321,17 +1352,18 @@ module SDM
     attr_accessor :client_key_filename
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   hostname: nil,
-                   port: nil,
-                   certificate_authority: nil,
-                   certificate_authority_filename: nil,
-                   client_certificate: nil,
-                   client_certificate_filename: nil,
-                   client_key: nil,
-                   client_key_filename: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      hostname: nil,
+      port: nil,
+      certificate_authority: nil,
+      certificate_authority_filename: nil,
+      client_certificate: nil,
+      client_certificate_filename: nil,
+      client_key: nil,
+      client_key_filename: nil
+    )
       if id != nil
         @id = id
       end
@@ -1385,13 +1417,14 @@ module SDM
     attr_accessor :password
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   hostname: nil,
-                   port: nil,
-                   username: nil,
-                   password: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      hostname: nil,
+      port: nil,
+      username: nil,
+      password: nil
+    )
       if id != nil
         @id = id
       end
@@ -1431,12 +1464,13 @@ module SDM
     attr_accessor :token
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   hostname: nil,
-                   port: nil,
-                   token: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      hostname: nil,
+      port: nil,
+      token: nil
+    )
       if id != nil
         @id = id
       end
@@ -1473,12 +1507,13 @@ module SDM
     attr_accessor :port
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   hostname: nil,
-                   port_override: nil,
-                   port: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      hostname: nil,
+      port_override: nil,
+      port: nil
+    )
       if id != nil
         @id = id
       end
@@ -1525,17 +1560,18 @@ module SDM
     attr_accessor :tls_required
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   hostname: nil,
-                   auth_database: nil,
-                   port_override: nil,
-                   username: nil,
-                   password: nil,
-                   port: nil,
-                   replica_set: nil,
-                   tls_required: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      hostname: nil,
+      auth_database: nil,
+      port_override: nil,
+      username: nil,
+      password: nil,
+      port: nil,
+      replica_set: nil,
+      tls_required: nil
+    )
       if id != nil
         @id = id
       end
@@ -1599,18 +1635,19 @@ module SDM
     attr_accessor :tls_required
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   hostname: nil,
-                   auth_database: nil,
-                   port_override: nil,
-                   username: nil,
-                   password: nil,
-                   port: nil,
-                   replica_set: nil,
-                   connect_to_replica: nil,
-                   tls_required: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      hostname: nil,
+      auth_database: nil,
+      port_override: nil,
+      username: nil,
+      password: nil,
+      port: nil,
+      replica_set: nil,
+      connect_to_replica: nil,
+      tls_required: nil
+    )
       if id != nil
         @id = id
       end
@@ -1673,16 +1710,17 @@ module SDM
     attr_accessor :tls_required
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   hostname: nil,
-                   auth_database: nil,
-                   port_override: nil,
-                   username: nil,
-                   password: nil,
-                   port: nil,
-                   tls_required: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      hostname: nil,
+      auth_database: nil,
+      port_override: nil,
+      username: nil,
+      password: nil,
+      port: nil,
+      tls_required: nil
+    )
       if id != nil
         @id = id
       end
@@ -1743,18 +1781,19 @@ module SDM
     attr_accessor :tls_required
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   hostname: nil,
-                   auth_database: nil,
-                   port_override: nil,
-                   username: nil,
-                   password: nil,
-                   port: nil,
-                   replica_set: nil,
-                   connect_to_replica: nil,
-                   tls_required: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      hostname: nil,
+      auth_database: nil,
+      port_override: nil,
+      username: nil,
+      password: nil,
+      port: nil,
+      replica_set: nil,
+      connect_to_replica: nil,
+      tls_required: nil
+    )
       if id != nil
         @id = id
       end
@@ -1815,15 +1854,16 @@ module SDM
     attr_accessor :port
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   hostname: nil,
-                   username: nil,
-                   password: nil,
-                   database: nil,
-                   port_override: nil,
-                   port: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      hostname: nil,
+      username: nil,
+      password: nil,
+      database: nil,
+      port_override: nil,
+      port: nil
+    )
       if id != nil
         @id = id
       end
@@ -1875,15 +1915,16 @@ module SDM
     attr_accessor :port
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   hostname: nil,
-                   username: nil,
-                   password: nil,
-                   database: nil,
-                   port_override: nil,
-                   port: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      hostname: nil,
+      username: nil,
+      password: nil,
+      database: nil,
+      port_override: nil,
+      port: nil
+    )
       if id != nil
         @id = id
       end
@@ -1935,15 +1976,16 @@ module SDM
     attr_accessor :port
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   hostname: nil,
-                   username: nil,
-                   password: nil,
-                   database: nil,
-                   port_override: nil,
-                   port: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      hostname: nil,
+      username: nil,
+      password: nil,
+      database: nil,
+      port_override: nil,
+      port: nil
+    )
       if id != nil
         @id = id
       end
@@ -1995,15 +2037,16 @@ module SDM
     attr_accessor :port
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   hostname: nil,
-                   username: nil,
-                   password: nil,
-                   database: nil,
-                   port_override: nil,
-                   port: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      hostname: nil,
+      username: nil,
+      password: nil,
+      database: nil,
+      port_override: nil,
+      port: nil
+    )
       if id != nil
         @id = id
       end
@@ -2055,15 +2098,16 @@ module SDM
     attr_accessor :port
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   hostname: nil,
-                   username: nil,
-                   password: nil,
-                   database: nil,
-                   port_override: nil,
-                   port: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      hostname: nil,
+      username: nil,
+      password: nil,
+      database: nil,
+      port_override: nil,
+      port: nil
+    )
       if id != nil
         @id = id
       end
@@ -2117,16 +2161,17 @@ module SDM
     attr_accessor :tls_required
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   hostname: nil,
-                   username: nil,
-                   password: nil,
-                   database: nil,
-                   port: nil,
-                   port_override: nil,
-                   tls_required: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      hostname: nil,
+      username: nil,
+      password: nil,
+      database: nil,
+      port: nil,
+      port_override: nil,
+      tls_required: nil
+    )
       if id != nil
         @id = id
       end
@@ -2183,16 +2228,17 @@ module SDM
     attr_accessor :override_database
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   hostname: nil,
-                   username: nil,
-                   password: nil,
-                   database: nil,
-                   port_override: nil,
-                   port: nil,
-                   override_database: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      hostname: nil,
+      username: nil,
+      password: nil,
+      database: nil,
+      port_override: nil,
+      port: nil,
+      override_database: nil
+    )
       if id != nil
         @id = id
       end
@@ -2249,16 +2295,17 @@ module SDM
     attr_accessor :override_database
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   hostname: nil,
-                   username: nil,
-                   password: nil,
-                   database: nil,
-                   port_override: nil,
-                   port: nil,
-                   override_database: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      hostname: nil,
+      username: nil,
+      password: nil,
+      database: nil,
+      port_override: nil,
+      port: nil,
+      override_database: nil
+    )
       if id != nil
         @id = id
       end
@@ -2315,16 +2362,17 @@ module SDM
     attr_accessor :override_database
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   hostname: nil,
-                   username: nil,
-                   password: nil,
-                   database: nil,
-                   port_override: nil,
-                   port: nil,
-                   override_database: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      hostname: nil,
+      username: nil,
+      password: nil,
+      database: nil,
+      port_override: nil,
+      port: nil,
+      override_database: nil
+    )
       if id != nil
         @id = id
       end
@@ -2381,16 +2429,17 @@ module SDM
     attr_accessor :override_database
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   hostname: nil,
-                   username: nil,
-                   password: nil,
-                   database: nil,
-                   port_override: nil,
-                   port: nil,
-                   override_database: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      hostname: nil,
+      username: nil,
+      password: nil,
+      database: nil,
+      port_override: nil,
+      port: nil,
+      override_database: nil
+    )
       if id != nil
         @id = id
       end
@@ -2447,16 +2496,17 @@ module SDM
     attr_accessor :override_database
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   hostname: nil,
-                   username: nil,
-                   password: nil,
-                   database: nil,
-                   port_override: nil,
-                   port: nil,
-                   override_database: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      hostname: nil,
+      username: nil,
+      password: nil,
+      database: nil,
+      port_override: nil,
+      port: nil,
+      override_database: nil
+    )
       if id != nil
         @id = id
       end
@@ -2513,16 +2563,17 @@ module SDM
     attr_accessor :tls_required
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   hostname: nil,
-                   password: nil,
-                   database: nil,
-                   port_override: nil,
-                   port: nil,
-                   username: nil,
-                   tls_required: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      hostname: nil,
+      password: nil,
+      database: nil,
+      port_override: nil,
+      port: nil,
+      username: nil,
+      tls_required: nil
+    )
       if id != nil
         @id = id
       end
@@ -2575,14 +2626,15 @@ module SDM
     attr_accessor :port
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   hostname: nil,
-                   username: nil,
-                   password: nil,
-                   port_override: nil,
-                   port: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      hostname: nil,
+      username: nil,
+      password: nil,
+      port_override: nil,
+      port: nil
+    )
       if id != nil
         @id = id
       end
@@ -2627,13 +2679,14 @@ module SDM
     attr_accessor :port
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   hostname: nil,
-                   port_override: nil,
-                   password: nil,
-                   port: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      hostname: nil,
+      port_override: nil,
+      password: nil,
+      port: nil
+    )
       if id != nil
         @id = id
       end
@@ -2677,14 +2730,15 @@ module SDM
     attr_accessor :tls_required
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   hostname: nil,
-                   port_override: nil,
-                   password: nil,
-                   port: nil,
-                   tls_required: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      hostname: nil,
+      port_override: nil,
+      password: nil,
+      port: nil,
+      tls_required: nil
+    )
       if id != nil
         @id = id
       end
@@ -2733,15 +2787,16 @@ module SDM
     attr_accessor :port_override
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   hostname: nil,
-                   username: nil,
-                   password: nil,
-                   database: nil,
-                   schema: nil,
-                   port_override: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      hostname: nil,
+      username: nil,
+      password: nil,
+      database: nil,
+      schema: nil,
+      port_override: nil
+    )
       if id != nil
         @id = id
       end
@@ -2797,17 +2852,18 @@ module SDM
     attr_accessor :override_database
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   hostname: nil,
-                   username: nil,
-                   password: nil,
-                   database: nil,
-                   port_override: nil,
-                   schema: nil,
-                   port: nil,
-                   override_database: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      hostname: nil,
+      username: nil,
+      password: nil,
+      database: nil,
+      port_override: nil,
+      schema: nil,
+      port: nil,
+      override_database: nil
+    )
       if id != nil
         @id = id
       end
@@ -2861,13 +2917,14 @@ module SDM
     attr_accessor :public_key
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   hostname: nil,
-                   username: nil,
-                   port: nil,
-                   public_key: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      hostname: nil,
+      username: nil,
+      port: nil,
+      public_key: nil
+    )
       if id != nil
         @id = id
       end
@@ -2911,14 +2968,15 @@ module SDM
     attr_accessor :password
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   hostname: nil,
-                   username: nil,
-                   port_override: nil,
-                   port: nil,
-                   password: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      hostname: nil,
+      username: nil,
+      port_override: nil,
+      port: nil,
+      password: nil
+    )
       if id != nil
         @id = id
       end
@@ -2965,14 +3023,15 @@ module SDM
     attr_accessor :password
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   hostname: nil,
-                   username: nil,
-                   port_override: nil,
-                   port: nil,
-                   password: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      hostname: nil,
+      username: nil,
+      port_override: nil,
+      port: nil,
+      password: nil
+    )
       if id != nil
         @id = id
       end
@@ -3019,14 +3078,15 @@ module SDM
     attr_accessor :port
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   healthy: nil,
-                   hostname: nil,
-                   username: nil,
-                   password: nil,
-                   port_override: nil,
-                   port: nil)
+      id: nil,
+      name: nil,
+      healthy: nil,
+      hostname: nil,
+      username: nil,
+      password: nil,
+      port_override: nil,
+      port: nil
+    )
       if id != nil
         @id = id
       end
@@ -3067,10 +3127,11 @@ module SDM
     attr_accessor :rate_limit
 
     def initialize(
-                   meta: nil,
-                   node: nil,
-                   token: nil,
-                   rate_limit: nil)
+      meta: nil,
+      node: nil,
+      token: nil,
+      rate_limit: nil
+    )
       if meta != nil
         @meta = meta
       end
@@ -3096,9 +3157,10 @@ module SDM
     attr_accessor :rate_limit
 
     def initialize(
-                   meta: nil,
-                   node: nil,
-                   rate_limit: nil)
+      meta: nil,
+      node: nil,
+      rate_limit: nil
+    )
       if meta != nil
         @meta = meta
       end
@@ -3122,9 +3184,10 @@ module SDM
     attr_accessor :rate_limit
 
     def initialize(
-                   meta: nil,
-                   node: nil,
-                   rate_limit: nil)
+      meta: nil,
+      node: nil,
+      rate_limit: nil
+    )
       if meta != nil
         @meta = meta
       end
@@ -3145,8 +3208,9 @@ module SDM
     attr_accessor :rate_limit
 
     def initialize(
-                   meta: nil,
-                   rate_limit: nil)
+      meta: nil,
+      rate_limit: nil
+    )
       if meta != nil
         @meta = meta
       end
@@ -3167,9 +3231,10 @@ module SDM
     attr_accessor :state
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   state: nil)
+      id: nil,
+      name: nil,
+      state: nil
+    )
       if id != nil
         @id = id
       end
@@ -3197,11 +3262,12 @@ module SDM
     attr_accessor :bind_address
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   state: nil,
-                   listen_address: nil,
-                   bind_address: nil)
+      id: nil,
+      name: nil,
+      state: nil,
+      listen_address: nil,
+      bind_address: nil
+    )
       if id != nil
         @id = id
       end
@@ -3230,9 +3296,10 @@ module SDM
     attr_accessor :rate_limit
 
     def initialize(
-                   meta: nil,
-                   resource: nil,
-                   rate_limit: nil)
+      meta: nil,
+      resource: nil,
+      rate_limit: nil
+    )
       if meta != nil
         @meta = meta
       end
@@ -3255,9 +3322,10 @@ module SDM
     attr_accessor :rate_limit
 
     def initialize(
-                   meta: nil,
-                   resource: nil,
-                   rate_limit: nil)
+      meta: nil,
+      resource: nil,
+      rate_limit: nil
+    )
       if meta != nil
         @meta = meta
       end
@@ -3281,9 +3349,10 @@ module SDM
     attr_accessor :rate_limit
 
     def initialize(
-                   meta: nil,
-                   resource: nil,
-                   rate_limit: nil)
+      meta: nil,
+      resource: nil,
+      rate_limit: nil
+    )
       if meta != nil
         @meta = meta
       end
@@ -3304,8 +3373,9 @@ module SDM
     attr_accessor :rate_limit
 
     def initialize(
-                   meta: nil,
-                   rate_limit: nil)
+      meta: nil,
+      rate_limit: nil
+    )
       if meta != nil
         @meta = meta
       end
@@ -3325,9 +3395,10 @@ module SDM
     attr_accessor :rate_limit
 
     def initialize(
-                   meta: nil,
-                   role_attachment: nil,
-                   rate_limit: nil)
+      meta: nil,
+      role_attachment: nil,
+      rate_limit: nil
+    )
       if meta != nil
         @meta = meta
       end
@@ -3350,9 +3421,10 @@ module SDM
     attr_accessor :rate_limit
 
     def initialize(
-                   meta: nil,
-                   role_attachment: nil,
-                   rate_limit: nil)
+      meta: nil,
+      role_attachment: nil,
+      rate_limit: nil
+    )
       if meta != nil
         @meta = meta
       end
@@ -3373,8 +3445,9 @@ module SDM
     attr_accessor :rate_limit
 
     def initialize(
-                   meta: nil,
-                   rate_limit: nil)
+      meta: nil,
+      rate_limit: nil
+    )
       if meta != nil
         @meta = meta
       end
@@ -3395,9 +3468,10 @@ module SDM
     attr_accessor :attached_role_id
 
     def initialize(
-                   id: nil,
-                   composite_role_id: nil,
-                   attached_role_id: nil)
+      id: nil,
+      composite_role_id: nil,
+      attached_role_id: nil
+    )
       if id != nil
         @id = id
       end
@@ -3420,9 +3494,10 @@ module SDM
     attr_accessor :rate_limit
 
     def initialize(
-                   meta: nil,
-                   role_grant: nil,
-                   rate_limit: nil)
+      meta: nil,
+      role_grant: nil,
+      rate_limit: nil
+    )
       if meta != nil
         @meta = meta
       end
@@ -3445,9 +3520,10 @@ module SDM
     attr_accessor :rate_limit
 
     def initialize(
-                   meta: nil,
-                   role_grant: nil,
-                   rate_limit: nil)
+      meta: nil,
+      role_grant: nil,
+      rate_limit: nil
+    )
       if meta != nil
         @meta = meta
       end
@@ -3468,8 +3544,9 @@ module SDM
     attr_accessor :rate_limit
 
     def initialize(
-                   meta: nil,
-                   rate_limit: nil)
+      meta: nil,
+      rate_limit: nil
+    )
       if meta != nil
         @meta = meta
       end
@@ -3490,9 +3567,10 @@ module SDM
     attr_accessor :role_id
 
     def initialize(
-                   id: nil,
-                   resource_id: nil,
-                   role_id: nil)
+      id: nil,
+      resource_id: nil,
+      role_id: nil
+    )
       if id != nil
         @id = id
       end
@@ -3516,9 +3594,10 @@ module SDM
     attr_accessor :rate_limit
 
     def initialize(
-                   meta: nil,
-                   role: nil,
-                   rate_limit: nil)
+      meta: nil,
+      role: nil,
+      rate_limit: nil
+    )
       if meta != nil
         @meta = meta
       end
@@ -3541,9 +3620,10 @@ module SDM
     attr_accessor :rate_limit
 
     def initialize(
-                   meta: nil,
-                   role: nil,
-                   rate_limit: nil)
+      meta: nil,
+      role: nil,
+      rate_limit: nil
+    )
       if meta != nil
         @meta = meta
       end
@@ -3567,9 +3647,10 @@ module SDM
     attr_accessor :rate_limit
 
     def initialize(
-                   meta: nil,
-                   role: nil,
-                   rate_limit: nil)
+      meta: nil,
+      role: nil,
+      rate_limit: nil
+    )
       if meta != nil
         @meta = meta
       end
@@ -3590,8 +3671,9 @@ module SDM
     attr_accessor :rate_limit
 
     def initialize(
-                   meta: nil,
-                   rate_limit: nil)
+      meta: nil,
+      rate_limit: nil
+    )
       if meta != nil
         @meta = meta
       end
@@ -3613,9 +3695,10 @@ module SDM
     attr_accessor :composite
 
     def initialize(
-                   id: nil,
-                   name: nil,
-                   composite: nil)
+      id: nil,
+      name: nil,
+      composite: nil
+    )
       if id != nil
         @id = id
       end

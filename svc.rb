@@ -40,9 +40,10 @@ module SDM
 
     # Create registers a new AccountAttachment.
     def create(
-               account_attachment,
-               options: nil,
-               deadline: nil)
+      account_attachment,
+      options: nil,
+      deadline: nil
+    )
       req = V1::AccountAttachmentCreateRequest.new()
 
       req.account_attachment = Plumbing::account_attachment_to_plumbing(account_attachment)
@@ -71,8 +72,9 @@ module SDM
 
     # Get reads one AccountAttachment by ID.
     def get(
-            id,
-            deadline: nil)
+      id,
+      deadline: nil
+    )
       req = V1::AccountAttachmentGetRequest.new()
 
       req.id = id
@@ -100,8 +102,9 @@ module SDM
 
     # Delete removes a AccountAttachment by ID.
     def delete(
-               id,
-               deadline: nil)
+      id,
+      deadline: nil
+    )
       req = V1::AccountAttachmentDeleteRequest.new()
 
       req.id = id
@@ -128,9 +131,10 @@ module SDM
 
     # List gets a list of AccountAttachments matching a given set of criteria.
     def list(
-             filter,
-             *args,
-             deadline: nil)
+      filter,
+      *args,
+      deadline: nil
+    )
       req = V1::AccountAttachmentListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
       page_size_option = @parent._test_options["PageSize"]
@@ -184,8 +188,9 @@ module SDM
 
     # Create registers a new AccountGrant.
     def create(
-               account_grant,
-               deadline: nil)
+      account_grant,
+      deadline: nil
+    )
       req = V1::AccountGrantCreateRequest.new()
 
       req.account_grant = Plumbing::account_grant_to_plumbing(account_grant)
@@ -213,8 +218,9 @@ module SDM
 
     # Get reads one AccountGrant by ID.
     def get(
-            id,
-            deadline: nil)
+      id,
+      deadline: nil
+    )
       req = V1::AccountGrantGetRequest.new()
 
       req.id = id
@@ -242,8 +248,9 @@ module SDM
 
     # Delete removes a AccountGrant by ID.
     def delete(
-               id,
-               deadline: nil)
+      id,
+      deadline: nil
+    )
       req = V1::AccountGrantDeleteRequest.new()
 
       req.id = id
@@ -270,9 +277,10 @@ module SDM
 
     # List gets a list of AccountGrants matching a given set of criteria.
     def list(
-             filter,
-             *args,
-             deadline: nil)
+      filter,
+      *args,
+      deadline: nil
+    )
       req = V1::AccountGrantListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
       page_size_option = @parent._test_options["PageSize"]
@@ -323,8 +331,9 @@ module SDM
 
     # Create registers a new Account.
     def create(
-               account,
-               deadline: nil)
+      account,
+      deadline: nil
+    )
       req = V1::AccountCreateRequest.new()
 
       req.account = Plumbing::account_to_plumbing(account)
@@ -353,8 +362,9 @@ module SDM
 
     # Get reads one Account by ID.
     def get(
-            id,
-            deadline: nil)
+      id,
+      deadline: nil
+    )
       req = V1::AccountGetRequest.new()
 
       req.id = id
@@ -382,8 +392,9 @@ module SDM
 
     # Update patches a Account by ID.
     def update(
-               account,
-               deadline: nil)
+      account,
+      deadline: nil
+    )
       req = V1::AccountUpdateRequest.new()
 
       req.account = Plumbing::account_to_plumbing(account)
@@ -411,8 +422,9 @@ module SDM
 
     # Delete removes a Account by ID.
     def delete(
-               id,
-               deadline: nil)
+      id,
+      deadline: nil
+    )
       req = V1::AccountDeleteRequest.new()
 
       req.id = id
@@ -439,9 +451,10 @@ module SDM
 
     # List gets a list of Accounts matching a given set of criteria.
     def list(
-             filter,
-             *args,
-             deadline: nil)
+      filter,
+      *args,
+      deadline: nil
+    )
       req = V1::AccountListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
       page_size_option = @parent._test_options["PageSize"]
@@ -494,8 +507,9 @@ module SDM
 
     # Create registers a new Node.
     def create(
-               node,
-               deadline: nil)
+      node,
+      deadline: nil
+    )
       req = V1::NodeCreateRequest.new()
 
       req.node = Plumbing::node_to_plumbing(node)
@@ -524,8 +538,9 @@ module SDM
 
     # Get reads one Node by ID.
     def get(
-            id,
-            deadline: nil)
+      id,
+      deadline: nil
+    )
       req = V1::NodeGetRequest.new()
 
       req.id = id
@@ -553,8 +568,9 @@ module SDM
 
     # Update patches a Node by ID.
     def update(
-               node,
-               deadline: nil)
+      node,
+      deadline: nil
+    )
       req = V1::NodeUpdateRequest.new()
 
       req.node = Plumbing::node_to_plumbing(node)
@@ -582,8 +598,9 @@ module SDM
 
     # Delete removes a Node by ID.
     def delete(
-               id,
-               deadline: nil)
+      id,
+      deadline: nil
+    )
       req = V1::NodeDeleteRequest.new()
 
       req.id = id
@@ -610,9 +627,10 @@ module SDM
 
     # List gets a list of Nodes matching a given set of criteria.
     def list(
-             filter,
-             *args,
-             deadline: nil)
+      filter,
+      *args,
+      deadline: nil
+    )
       req = V1::NodeListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
       page_size_option = @parent._test_options["PageSize"]
@@ -662,8 +680,9 @@ module SDM
 
     # Create registers a new Resource.
     def create(
-               resource,
-               deadline: nil)
+      resource,
+      deadline: nil
+    )
       req = V1::ResourceCreateRequest.new()
 
       req.resource = Plumbing::resource_to_plumbing(resource)
@@ -691,8 +710,9 @@ module SDM
 
     # Get reads one Resource by ID.
     def get(
-            id,
-            deadline: nil)
+      id,
+      deadline: nil
+    )
       req = V1::ResourceGetRequest.new()
 
       req.id = id
@@ -720,8 +740,9 @@ module SDM
 
     # Update patches a Resource by ID.
     def update(
-               resource,
-               deadline: nil)
+      resource,
+      deadline: nil
+    )
       req = V1::ResourceUpdateRequest.new()
 
       req.resource = Plumbing::resource_to_plumbing(resource)
@@ -749,8 +770,9 @@ module SDM
 
     # Delete removes a Resource by ID.
     def delete(
-               id,
-               deadline: nil)
+      id,
+      deadline: nil
+    )
       req = V1::ResourceDeleteRequest.new()
 
       req.id = id
@@ -777,9 +799,10 @@ module SDM
 
     # List gets a list of Resources matching a given set of criteria.
     def list(
-             filter,
-             *args,
-             deadline: nil)
+      filter,
+      *args,
+      deadline: nil
+    )
       req = V1::ResourceListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
       page_size_option = @parent._test_options["PageSize"]
@@ -833,8 +856,9 @@ module SDM
 
     # Create registers a new RoleAttachment.
     def create(
-               role_attachment,
-               deadline: nil)
+      role_attachment,
+      deadline: nil
+    )
       req = V1::RoleAttachmentCreateRequest.new()
 
       req.role_attachment = Plumbing::role_attachment_to_plumbing(role_attachment)
@@ -862,8 +886,9 @@ module SDM
 
     # Get reads one RoleAttachment by ID.
     def get(
-            id,
-            deadline: nil)
+      id,
+      deadline: nil
+    )
       req = V1::RoleAttachmentGetRequest.new()
 
       req.id = id
@@ -891,8 +916,9 @@ module SDM
 
     # Delete removes a RoleAttachment by ID.
     def delete(
-               id,
-               deadline: nil)
+      id,
+      deadline: nil
+    )
       req = V1::RoleAttachmentDeleteRequest.new()
 
       req.id = id
@@ -919,9 +945,10 @@ module SDM
 
     # List gets a list of RoleAttachments matching a given set of criteria.
     def list(
-             filter,
-             *args,
-             deadline: nil)
+      filter,
+      *args,
+      deadline: nil
+    )
       req = V1::RoleAttachmentListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
       page_size_option = @parent._test_options["PageSize"]
@@ -975,8 +1002,9 @@ module SDM
 
     # Create registers a new RoleGrant.
     def create(
-               role_grant,
-               deadline: nil)
+      role_grant,
+      deadline: nil
+    )
       req = V1::RoleGrantCreateRequest.new()
 
       req.role_grant = Plumbing::role_grant_to_plumbing(role_grant)
@@ -1004,8 +1032,9 @@ module SDM
 
     # Get reads one RoleGrant by ID.
     def get(
-            id,
-            deadline: nil)
+      id,
+      deadline: nil
+    )
       req = V1::RoleGrantGetRequest.new()
 
       req.id = id
@@ -1033,8 +1062,9 @@ module SDM
 
     # Delete removes a RoleGrant by ID.
     def delete(
-               id,
-               deadline: nil)
+      id,
+      deadline: nil
+    )
       req = V1::RoleGrantDeleteRequest.new()
 
       req.id = id
@@ -1061,9 +1091,10 @@ module SDM
 
     # List gets a list of RoleGrants matching a given set of criteria.
     def list(
-             filter,
-             *args,
-             deadline: nil)
+      filter,
+      *args,
+      deadline: nil
+    )
       req = V1::RoleGrantListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
       page_size_option = @parent._test_options["PageSize"]
@@ -1118,8 +1149,9 @@ module SDM
 
     # Create registers a new Role.
     def create(
-               role,
-               deadline: nil)
+      role,
+      deadline: nil
+    )
       req = V1::RoleCreateRequest.new()
 
       req.role = Plumbing::role_to_plumbing(role)
@@ -1147,8 +1179,9 @@ module SDM
 
     # Get reads one Role by ID.
     def get(
-            id,
-            deadline: nil)
+      id,
+      deadline: nil
+    )
       req = V1::RoleGetRequest.new()
 
       req.id = id
@@ -1176,8 +1209,9 @@ module SDM
 
     # Update patches a Role by ID.
     def update(
-               role,
-               deadline: nil)
+      role,
+      deadline: nil
+    )
       req = V1::RoleUpdateRequest.new()
 
       req.role = Plumbing::role_to_plumbing(role)
@@ -1205,8 +1239,9 @@ module SDM
 
     # Delete removes a Role by ID.
     def delete(
-               id,
-               deadline: nil)
+      id,
+      deadline: nil
+    )
       req = V1::RoleDeleteRequest.new()
 
       req.id = id
@@ -1233,9 +1268,10 @@ module SDM
 
     # List gets a list of Roles matching a given set of criteria.
     def list(
-             filter,
-             *args,
-             deadline: nil)
+      filter,
+      *args,
+      deadline: nil
+    )
       req = V1::RoleListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
       page_size_option = @parent._test_options["PageSize"]
