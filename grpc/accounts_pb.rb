@@ -80,10 +80,12 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :email, :string, 2
       optional :first_name, :string, 3
       optional :last_name, :string, 4
+      optional :suspended, :bool, 5
     end
     add_message "v1.Service" do
       optional :id, :string, 1
       optional :name, :string, 2
+      optional :suspended, :bool, 3
     end
   end
 end

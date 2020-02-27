@@ -160,8 +160,7 @@ module SDM
     end
   end
 
-  # A AccountAttachment connects an account to a role, granting the account
-  # the permissions granted to that role.
+  # AccountAttachments assign an account to a role.
   class AccountAttachment
     # Unique identifier of the AccountAttachment.
     attr_accessor :id
@@ -259,8 +258,7 @@ module SDM
     end
   end
 
-  # An AccountGrant connects an account to a resource, granting the account
-  # the ability to connect to that resource.
+  # AccountGrants connect a resource directly to an account, giving the account the permission to connect to that resource.
   class AccountGrant
     # Unique identifier of the AccountGrant.
     attr_accessor :id
@@ -417,12 +415,15 @@ module SDM
     attr_accessor :first_name
     # The User's last name.
     attr_accessor :last_name
+    # The User's suspended state.
+    attr_accessor :suspended
 
     def initialize(
       id: nil,
       email: nil,
       first_name: nil,
-      last_name: nil
+      last_name: nil,
+      suspended: nil
     )
       if id != nil
         @id = id
@@ -436,6 +437,9 @@ module SDM
       if last_name != nil
         @last_name = last_name
       end
+      if suspended != nil
+        @suspended = suspended
+      end
     end
   end
 
@@ -446,16 +450,22 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Service.
     attr_accessor :name
+    # The Service's suspended state.
+    attr_accessor :suspended
 
     def initialize(
       id: nil,
-      name: nil
+      name: nil,
+      suspended: nil
     )
       if id != nil
         @id = id
       end
       if name != nil
         @name = name
+      end
+      if suspended != nil
+        @suspended = suspended
       end
     end
   end
@@ -3224,7 +3234,7 @@ module SDM
   class Relay
     # Unique identifier of the Relay.
     attr_accessor :id
-    # Unique human-readable name of the Relay.
+    # Unique human-readable name of the Relay. Generated if not provided on create.
     attr_accessor :name
     # The current state of the relay. One of: "new", "verifying_restart",
     # "restarting", "started", "stopped", "dead", "unknown",
@@ -3251,7 +3261,7 @@ module SDM
   class Gateway
     # Unique identifier of the Gateway.
     attr_accessor :id
-    # Unique human-readable name of the Gateway.
+    # Unique human-readable name of the Gateway. Generated if not provided on create.
     attr_accessor :name
     # The current state of the gateway. One of: "new", "verifying_restart",
     # "restarting", "started", "stopped", "dead", "unknown"
@@ -3259,6 +3269,7 @@ module SDM
     # The public hostname/port tuple at which the gateway will be accessible to clients.
     attr_accessor :listen_address
     # The hostname/port tuple which the gateway daemon will bind to.
+    # If not provided on create, set to "0.0.0.0:<listen_address_port>".
     attr_accessor :bind_address
 
     def initialize(
@@ -3457,8 +3468,7 @@ module SDM
     end
   end
 
-  # A RoleAttachment connects a composite role to another role, granting members
-  # of the composite role the permissions granted to the attached role.
+  # A RoleAttachment assigns a role to a composite role.
   class RoleAttachment
     # Unique identifier of the RoleAttachment.
     attr_accessor :id
@@ -3557,7 +3567,7 @@ module SDM
   end
 
   # A RoleGrant connects a resource to a role, granting members of the role
-  # access to the resource.
+  # access to that resource.
   class RoleGrant
     # Unique identifier of the RoleGrant.
     attr_accessor :id
@@ -3683,9 +3693,7 @@ module SDM
     end
   end
 
-  # A Role grants users access to a set of resources. Composite roles have no
-  # resource associations of their own, but instead grant access to the combined
-  # resources of their child roles.
+  # A Role is a collection of permissions, and typically corresponds to a team, Active Directory OU, or other organizational unit. Users are granted access to resources by assigning them to roles.
   class Role
     # Unique identifier of the Role.
     attr_accessor :id

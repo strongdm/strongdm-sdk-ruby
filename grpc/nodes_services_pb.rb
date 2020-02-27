@@ -20,9 +20,10 @@ require "nodes_pb"
 
 module V1
   module Nodes
-    # Nodes are proxies in the strongDM network. They come in two flavors: relays,
-    # which communicate with resources, and gateways, which communicate with
-    # clients.
+    # Nodes make up the strongDM network, and allow your users to connect securely to your resources.
+    # There are two types of nodes:
+    # 1. **Relay:** creates connectivity to your datasources, while maintaining the egress-only nature of your firewall
+    # 1. **Gateways:** a relay that also listens for connections from strongDM clients
     class Service
       include GRPC::GenericService
 

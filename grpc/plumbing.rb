@@ -771,6 +771,7 @@ module SDM
       porcelain.email = plumbing.email
       porcelain.first_name = plumbing.first_name
       porcelain.last_name = plumbing.last_name
+      porcelain.suspended = plumbing.suspended
       porcelain
     end
 
@@ -783,6 +784,7 @@ module SDM
       plumbing.email = porcelain.email unless porcelain.email == nil
       plumbing.first_name = porcelain.first_name unless porcelain.first_name == nil
       plumbing.last_name = porcelain.last_name unless porcelain.last_name == nil
+      plumbing.suspended = porcelain.suspended unless porcelain.suspended == nil
       plumbing
     end
     def self.repeated_user_to_plumbing(porcelains)
@@ -809,6 +811,7 @@ module SDM
       porcelain = Service.new()
       porcelain.id = plumbing.id
       porcelain.name = plumbing.name
+      porcelain.suspended = plumbing.suspended
       porcelain
     end
 
@@ -819,6 +822,7 @@ module SDM
       plumbing = V1::Service.new()
       plumbing.id = porcelain.id unless porcelain.id == nil
       plumbing.name = porcelain.name unless porcelain.name == nil
+      plumbing.suspended = porcelain.suspended unless porcelain.suspended == nil
       plumbing
     end
     def self.repeated_service_to_plumbing(porcelains)

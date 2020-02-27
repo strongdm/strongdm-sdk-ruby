@@ -22,7 +22,7 @@ Dir[File.join(__dir__, "grpc", "*.rb")].each { |file| require file }
 Dir[File.join(__dir__, "models", "*.rb")].each { |file| require file }
 
 module SDM
-  # AccountAttachments represent relationships between an account and a role.
+  # AccountAttachments assign an account to a role.
   class AccountAttachments
     def initialize(url, parent)
       begin
@@ -167,10 +167,7 @@ module SDM
     end
   end
 
-  # AccountGrants represent relationships between composite roles and the roles
-  # that make up those composite roles. When a composite role is attached to another
-  # role, the permissions granted to members of the composite role are augmented to
-  # include the permissions granted to members of the attached role.
+  # AccountGrants connect a resource directly to an account, giving the account the permission to connect to that resource.
   class AccountGrants
     def initialize(url, parent)
       begin
@@ -313,7 +310,10 @@ module SDM
     end
   end
 
-  # Accounts are users, services or tokens who connect to and act within the strongDM network.
+  # Accounts are users that have access to strongDM.
+  # There are two types of accounts:
+  # 1. **Regular users:** humans who are authenticated through username and password or SSO
+  # 2. **Service users:** machines that are authneticated using a service token
   class Accounts
     def initialize(url, parent)
       begin
@@ -487,9 +487,10 @@ module SDM
     end
   end
 
-  # Nodes are proxies in the strongDM network. They come in two flavors: relays,
-  # which communicate with resources, and gateways, which communicate with
-  # clients.
+  # Nodes make up the strongDM network, and allow your users to connect securely to your resources.
+  # There are two types of nodes:
+  # 1. **Relay:** creates connectivity to your datasources, while maintaining the egress-only nature of your firewall
+  # 1. **Gateways:** a relay that also listens for connections from strongDM clients
   class Nodes
     def initialize(url, parent)
       begin

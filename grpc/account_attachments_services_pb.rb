@@ -20,7 +20,7 @@ require "account_attachments_pb"
 
 module V1
   module AccountAttachments
-    # AccountAttachments represent relationships between an account and a role.
+    # AccountAttachments assign an account to a role.
     class Service
       include GRPC::GenericService
 
