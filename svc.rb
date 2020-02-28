@@ -24,13 +24,13 @@ Dir[File.join(__dir__, "models", "*.rb")].each { |file| require file }
 module SDM
   # AccountAttachments assign an account to a role.
   class AccountAttachments
-    def initialize(url, parent)
+    def initialize(host, insecure, parent)
       begin
-        if url.end_with?("443")
-          cred = GRPC::Core::ChannelCredentials.new()
-          @stub = V1::AccountAttachments::Stub.new(url, cred)
+        if insecure
+          @stub = V1::AccountAttachments::Stub.new(host, :this_channel_is_insecure)
         else
-          @stub = V1::AccountAttachments::Stub.new(url, :this_channel_is_insecure)
+          cred = GRPC::Core::ChannelCredentials.new()
+          @stub = V1::AccountAttachments::Stub.new(host, cred)
         end
       rescue => exception
         raise Plumbing::error_to_porcelain(exception)
@@ -169,13 +169,13 @@ module SDM
 
   # AccountGrants connect a resource directly to an account, giving the account the permission to connect to that resource.
   class AccountGrants
-    def initialize(url, parent)
+    def initialize(host, insecure, parent)
       begin
-        if url.end_with?("443")
-          cred = GRPC::Core::ChannelCredentials.new()
-          @stub = V1::AccountGrants::Stub.new(url, cred)
+        if insecure
+          @stub = V1::AccountGrants::Stub.new(host, :this_channel_is_insecure)
         else
-          @stub = V1::AccountGrants::Stub.new(url, :this_channel_is_insecure)
+          cred = GRPC::Core::ChannelCredentials.new()
+          @stub = V1::AccountGrants::Stub.new(host, cred)
         end
       rescue => exception
         raise Plumbing::error_to_porcelain(exception)
@@ -315,13 +315,13 @@ module SDM
   # 1. **Regular users:** humans who are authenticated through username and password or SSO
   # 2. **Service users:** machines that are authneticated using a service token
   class Accounts
-    def initialize(url, parent)
+    def initialize(host, insecure, parent)
       begin
-        if url.end_with?("443")
-          cred = GRPC::Core::ChannelCredentials.new()
-          @stub = V1::Accounts::Stub.new(url, cred)
+        if insecure
+          @stub = V1::Accounts::Stub.new(host, :this_channel_is_insecure)
         else
-          @stub = V1::Accounts::Stub.new(url, :this_channel_is_insecure)
+          cred = GRPC::Core::ChannelCredentials.new()
+          @stub = V1::Accounts::Stub.new(host, cred)
         end
       rescue => exception
         raise Plumbing::error_to_porcelain(exception)
@@ -492,13 +492,13 @@ module SDM
   # 1. **Relay:** creates connectivity to your datasources, while maintaining the egress-only nature of your firewall
   # 1. **Gateways:** a relay that also listens for connections from strongDM clients
   class Nodes
-    def initialize(url, parent)
+    def initialize(host, insecure, parent)
       begin
-        if url.end_with?("443")
-          cred = GRPC::Core::ChannelCredentials.new()
-          @stub = V1::Nodes::Stub.new(url, cred)
+        if insecure
+          @stub = V1::Nodes::Stub.new(host, :this_channel_is_insecure)
         else
-          @stub = V1::Nodes::Stub.new(url, :this_channel_is_insecure)
+          cred = GRPC::Core::ChannelCredentials.new()
+          @stub = V1::Nodes::Stub.new(host, cred)
         end
       rescue => exception
         raise Plumbing::error_to_porcelain(exception)
@@ -665,13 +665,13 @@ module SDM
   end
 
   class Resources
-    def initialize(url, parent)
+    def initialize(host, insecure, parent)
       begin
-        if url.end_with?("443")
-          cred = GRPC::Core::ChannelCredentials.new()
-          @stub = V1::Resources::Stub.new(url, cred)
+        if insecure
+          @stub = V1::Resources::Stub.new(host, :this_channel_is_insecure)
         else
-          @stub = V1::Resources::Stub.new(url, :this_channel_is_insecure)
+          cred = GRPC::Core::ChannelCredentials.new()
+          @stub = V1::Resources::Stub.new(host, cred)
         end
       rescue => exception
         raise Plumbing::error_to_porcelain(exception)
@@ -841,13 +841,13 @@ module SDM
   # role, the permissions granted to members of the composite role are augmented to
   # include the permissions granted to members of the attached role.
   class RoleAttachments
-    def initialize(url, parent)
+    def initialize(host, insecure, parent)
       begin
-        if url.end_with?("443")
-          cred = GRPC::Core::ChannelCredentials.new()
-          @stub = V1::RoleAttachments::Stub.new(url, cred)
+        if insecure
+          @stub = V1::RoleAttachments::Stub.new(host, :this_channel_is_insecure)
         else
-          @stub = V1::RoleAttachments::Stub.new(url, :this_channel_is_insecure)
+          cred = GRPC::Core::ChannelCredentials.new()
+          @stub = V1::RoleAttachments::Stub.new(host, cred)
         end
       rescue => exception
         raise Plumbing::error_to_porcelain(exception)
@@ -987,13 +987,13 @@ module SDM
   # role, the permissions granted to members of the composite role are augmented to
   # include the permissions granted to members of the attached role.
   class RoleGrants
-    def initialize(url, parent)
+    def initialize(host, insecure, parent)
       begin
-        if url.end_with?("443")
-          cred = GRPC::Core::ChannelCredentials.new()
-          @stub = V1::RoleGrants::Stub.new(url, cred)
+        if insecure
+          @stub = V1::RoleGrants::Stub.new(host, :this_channel_is_insecure)
         else
-          @stub = V1::RoleGrants::Stub.new(url, :this_channel_is_insecure)
+          cred = GRPC::Core::ChannelCredentials.new()
+          @stub = V1::RoleGrants::Stub.new(host, cred)
         end
       rescue => exception
         raise Plumbing::error_to_porcelain(exception)
@@ -1134,13 +1134,13 @@ module SDM
   # grant access to the combined resources associated with a set of child roles.
   # Each user can be a member of one Role or composite role.
   class Roles
-    def initialize(url, parent)
+    def initialize(host, insecure, parent)
       begin
-        if url.end_with?("443")
-          cred = GRPC::Core::ChannelCredentials.new()
-          @stub = V1::Roles::Stub.new(url, cred)
+        if insecure
+          @stub = V1::Roles::Stub.new(host, :this_channel_is_insecure)
         else
-          @stub = V1::Roles::Stub.new(url, :this_channel_is_insecure)
+          cred = GRPC::Core::ChannelCredentials.new()
+          @stub = V1::Roles::Stub.new(host, cred)
         end
       rescue => exception
         raise Plumbing::error_to_porcelain(exception)

@@ -24,21 +24,21 @@ module SDM
 
   # Client bundles all the services together and initializes them.
   class Client
-    # Creates a new strongDM API client. The `address` parameter expects a hostname/port tuple.
-    def initialize(address, api_access_key, api_secret_key)
+    # Creates a new strongDM API client.
+    def initialize(api_access_key, api_secret_key, host: "api.strongdm.com:443", insecure: false)
       @api_access_key = api_access_key
       @api_secret_key = Base64.strict_decode64(api_secret_key)
       @max_retries = DEFAULT_MAX_RETRIES
       @base_retry_delay = DEFAULT_BASE_RETRY_DELAY
       @max_retry_delay = DEFAULT_MAX_RETRY_DELAY
-      @account_attachments = AccountAttachments.new(address, self)
-      @account_grants = AccountGrants.new(address, self)
-      @accounts = Accounts.new(address, self)
-      @nodes = Nodes.new(address, self)
-      @resources = Resources.new(address, self)
-      @role_attachments = RoleAttachments.new(address, self)
-      @role_grants = RoleGrants.new(address, self)
-      @roles = Roles.new(address, self)
+      @account_attachments = AccountAttachments.new(host, insecure, self)
+      @account_grants = AccountGrants.new(host, insecure, self)
+      @accounts = Accounts.new(host, insecure, self)
+      @nodes = Nodes.new(host, insecure, self)
+      @resources = Resources.new(host, insecure, self)
+      @role_attachments = RoleAttachments.new(host, insecure, self)
+      @role_grants = RoleGrants.new(host, insecure, self)
+      @roles = Roles.new(host, insecure, self)
       @_test_options = Hash.new
     end
 
