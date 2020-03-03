@@ -27,6 +27,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :required, :bool, 1941304
       optional :id_type, :string, 1941305
       optional :sdk_only, :bool, 1941306
+      optional :computed, :bool, 1941307
     end
     add_message "v1.MessageOptions" do
       optional :model_name, :string, 1941300
@@ -41,6 +42,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     end
     add_message "v1.OneofOptions" do
       optional :model_name, :string, 1941380
+      repeated :common_fields, :string, 1941381
     end
     add_message "v1.ServiceOptions" do
       optional :main_noun, :string, 1941400

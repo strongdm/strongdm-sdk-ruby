@@ -18,7 +18,6 @@
 require "google/protobuf"
 
 require "google/api/annotations_pb"
-require "protoc-gen-swagger/options/annotations_pb"
 require "options_pb"
 require "spec_pb"
 require "drivers_pb"
