@@ -1,0 +1,14 @@
+GEM
+  specs:
+    ipaddr (1.2.2)
+    openssl (2.1.2)
+      ipaddr
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  openssl
+
+BUNDLED WITH
+   1.17.2
