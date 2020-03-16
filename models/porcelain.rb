@@ -2928,8 +2928,6 @@ module SDM
 
     attr_accessor :public_key
 
-    attr_accessor :port_forwarding
-
     def initialize(
       id: nil,
       name: nil,
@@ -2937,8 +2935,7 @@ module SDM
       hostname: nil,
       username: nil,
       port: nil,
-      public_key: nil,
-      port_forwarding: nil
+      public_key: nil
     )
       if id != nil
         @id = id
@@ -2960,9 +2957,6 @@ module SDM
       end
       if public_key != nil
         @public_key = public_key
-      end
-      if port_forwarding != nil
-        @port_forwarding = port_forwarding
       end
     end
   end

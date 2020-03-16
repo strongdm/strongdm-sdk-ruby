@@ -517,7 +517,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :username, :string, 2
       optional :port, :int32, 3
       optional :public_key, :string, 4
-      optional :port_forwarding, :bool, 5
     end
     add_message "v1.Sybase" do
       optional :id, :string, 32768
