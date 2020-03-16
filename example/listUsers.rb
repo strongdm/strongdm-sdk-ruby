@@ -13,7 +13,7 @@
 # limitations under the License.
 #
 require "OpenSSL"
-require_relative "../gclient.rb"
+require_relative "../client.rb"
 client = SDM::Client.new(ENV["SDM_API_ACCESS_KEY"], ENV["SDM_API_SECRET_KEY"])
 users = client.accounts.list("")
 users.each { |user|
