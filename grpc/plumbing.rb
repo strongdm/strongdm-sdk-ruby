@@ -3150,6 +3150,7 @@ module SDM
       porcelain.username = plumbing.username
       porcelain.port = plumbing.port
       porcelain.public_key = plumbing.public_key
+      porcelain.port_forwarding = plumbing.port_forwarding
       porcelain
     end
 
@@ -3165,6 +3166,7 @@ module SDM
       plumbing.username = porcelain.username unless porcelain.username == nil
       plumbing.port = porcelain.port unless porcelain.port == nil
       plumbing.public_key = porcelain.public_key unless porcelain.public_key == nil
+      plumbing.port_forwarding = porcelain.port_forwarding unless porcelain.port_forwarding == nil
       plumbing
     end
     def self.repeated_ssh_to_plumbing(porcelains)
