@@ -1,6 +1,5 @@
-This example lists all users of an organization:
+Prior to running examples, run:
 
 ```ShellSession
 $ bundler install
-$ ruby listUsers.rb
 ```
