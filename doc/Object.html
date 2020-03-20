@@ -64,7 +64,17 @@
 
     
     
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
     
+    <li ><a href="#method-i-main">#main</a>
+    
+  </ul>
+</div>
+
   </div>
 </nav>
 
@@ -114,6 +124,160 @@
     
 
     
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-main" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">main</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>panicButton.rb suspends all users except for one admin, in the fake use
+case of a critical break in or something usage: ruby panicButton.rb
+adminuser@email.com to revert back to pre-panic state: ruby panicButton.rb
+revert</p>
+          
+          
+
+          
+          <div class="method-source-code" id="main-source">
+            <pre><span class="ruby-comment"># File examples/panicButton.rb, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">main</span>
+    <span class="ruby-identifier">access_key</span> = <span class="ruby-constant">ENV</span>[<span class="ruby-string">&quot;SDM_API_ACCESS_KEY&quot;</span>]
+    <span class="ruby-identifier">secret_key</span> = <span class="ruby-constant">ENV</span>[<span class="ruby-string">&quot;SDM_API_SECRET_KEY&quot;</span>]
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">access_key</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">secret_key</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;SDM_API_ACCESS_KEY and SDM_API_SECRET_KEY must be provided&quot;</span>
+        <span class="ruby-keyword">return</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">client</span> = <span class="ruby-constant">SDM</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">access_key</span>, <span class="ruby-identifier">secret_key</span>)
+
+    <span class="ruby-keyword">if</span> <span class="ruby-constant">ARGV</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-keyword">and</span> <span class="ruby-constant">ARGV</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;revert&quot;</span>
+        <span class="ruby-identifier">state_file</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-string">&quot;state.json&quot;</span>)
+        <span class="ruby-identifier">state</span> = <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">load</span>(<span class="ruby-identifier">state_file</span>)
+
+        <span class="ruby-identifier">reinstated_count</span> = <span class="ruby-value">0</span>
+
+        <span class="ruby-identifier">users</span> = <span class="ruby-identifier">client</span>.<span class="ruby-identifier">accounts</span>.<span class="ruby-identifier">list</span>(<span class="ruby-string">&#39;&#39;</span>)
+        <span class="ruby-identifier">users</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">user</span><span class="ruby-operator">|</span>
+            <span class="ruby-keyword">if</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">suspended</span>
+                <span class="ruby-identifier">reinstated_count</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+                <span class="ruby-identifier">user</span>.<span class="ruby-identifier">suspended</span> = <span class="ruby-keyword">false</span>
+                <span class="ruby-identifier">client</span>.<span class="ruby-identifier">accounts</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">user</span>)
+            <span class="ruby-keyword">end</span>
+        }
+        <span class="ruby-identifier">state</span>[<span class="ruby-string">&quot;attachments&quot;</span>].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">attachment</span><span class="ruby-operator">|</span>
+            <span class="ruby-keyword">begin</span>
+                <span class="ruby-identifier">a</span> = <span class="ruby-constant">SDM</span><span class="ruby-operator">::</span><span class="ruby-constant">AccountAttachment</span>.<span class="ruby-identifier">new</span>()
+                <span class="ruby-identifier">a</span>.<span class="ruby-identifier">account_id</span> = <span class="ruby-identifier">attachment</span>[<span class="ruby-string">&quot;account_id&quot;</span>]
+                <span class="ruby-identifier">a</span>.<span class="ruby-identifier">role_id</span> = <span class="ruby-identifier">attachment</span>[<span class="ruby-string">&quot;role_id&quot;</span>]
+                <span class="ruby-identifier">client</span>.<span class="ruby-identifier">account_attachments</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">a</span>)
+            <span class="ruby-keyword">rescue</span> <span class="ruby-constant">SDM</span><span class="ruby-operator">::</span><span class="ruby-constant">AlreadyExistsError</span>
+            <span class="ruby-keyword">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ex</span>
+                <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;skipping creation of attachment due to error: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">to_s</span>
+            <span class="ruby-keyword">end</span>
+        }
+        <span class="ruby-identifier">state</span>[<span class="ruby-string">&quot;grants&quot;</span>].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">attachment</span><span class="ruby-operator">|</span>
+            <span class="ruby-keyword">begin</span>
+                <span class="ruby-identifier">g</span> = <span class="ruby-constant">SDM</span><span class="ruby-operator">::</span><span class="ruby-constant">AccountGrant</span>.<span class="ruby-identifier">new</span>()
+                <span class="ruby-identifier">g</span>.<span class="ruby-identifier">account_id</span> = <span class="ruby-identifier">attachment</span>[<span class="ruby-string">&quot;account_id&quot;</span>]
+                <span class="ruby-identifier">g</span>.<span class="ruby-identifier">resource_id</span> = <span class="ruby-identifier">attachment</span>[<span class="ruby-string">&quot;resource_id&quot;</span>]
+                <span class="ruby-identifier">client</span>.<span class="ruby-identifier">account_grants</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">g</span>)
+            <span class="ruby-keyword">rescue</span> <span class="ruby-constant">SDM</span><span class="ruby-operator">::</span><span class="ruby-constant">AlreadyExistsError</span>
+            <span class="ruby-keyword">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ex</span>
+                <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;skipping creation of grant due to error: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">to_s</span>
+            <span class="ruby-keyword">end</span>
+        }
+
+        <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;reinstated &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">reinstated_count</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot; users&quot;</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;recreated &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">state</span>[<span class="ruby-string">&quot;attachments&quot;</span>].<span class="ruby-identifier">size</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot; account attachments&quot;</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;recreated &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">state</span>[<span class="ruby-string">&quot;grants&quot;</span>].<span class="ruby-identifier">size</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot; account grants&quot;</span>
+
+        <span class="ruby-keyword">return</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">admin_email</span> = <span class="ruby-string">&quot;&quot;</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-constant">ARGV</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+        <span class="ruby-identifier">admin_email</span> = <span class="ruby-constant">ARGV</span>[<span class="ruby-value">0</span>]
+    <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;please provide an admin email to preserve&quot;</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">admin_user_id</span> = <span class="ruby-string">&quot;&quot;</span>
+    <span class="ruby-identifier">users</span> = <span class="ruby-identifier">client</span>.<span class="ruby-identifier">accounts</span>.<span class="ruby-identifier">list</span>(<span class="ruby-string">&quot;email:?&quot;</span>, <span class="ruby-identifier">admin_email</span>)
+    <span class="ruby-identifier">users</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">user</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">admin_user_id</span> = <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>
+    }
+
+    <span class="ruby-identifier">account_attachments</span> = <span class="ruby-identifier">client</span>.<span class="ruby-identifier">account_attachments</span>.<span class="ruby-identifier">list</span>(<span class="ruby-string">&#39;&#39;</span>)
+    <span class="ruby-identifier">account_grants</span> = <span class="ruby-identifier">client</span>.<span class="ruby-identifier">account_grants</span>.<span class="ruby-identifier">list</span>(<span class="ruby-string">&#39;&#39;</span>)
+
+    <span class="ruby-identifier">state</span> = {
+        <span class="ruby-string">&#39;attachments&#39;</span><span class="ruby-operator">:</span> <span class="ruby-identifier">account_attachments</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+            <span class="ruby-keyword">if</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">account_id</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">admin_user_id</span>
+                <span class="ruby-identifier">out</span> = {
+                    <span class="ruby-string">&#39;account_id&#39;</span><span class="ruby-operator">:</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">account_id</span>,
+                    <span class="ruby-string">&#39;role_id&#39;</span><span class="ruby-operator">:</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">role_id</span>,
+                }
+            <span class="ruby-keyword">end</span>
+        }.<span class="ruby-identifier">reject</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>},
+        <span class="ruby-string">&#39;grants&#39;</span><span class="ruby-operator">:</span> <span class="ruby-identifier">account_grants</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+            <span class="ruby-keyword">if</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">account_id</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">admin_user_id</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">valid_until</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+                <span class="ruby-identifier">out</span> = {
+                    <span class="ruby-string">&#39;account_id&#39;</span><span class="ruby-operator">:</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">account_id</span>,
+                    <span class="ruby-string">&#39;resource_id&#39;</span><span class="ruby-operator">:</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">resource_id</span>,
+                }
+            <span class="ruby-keyword">end</span>
+        }.<span class="ruby-identifier">reject</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>},
+    }
+
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;storing &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">state</span>[<span class="ruby-value">:attachments</span>].<span class="ruby-identifier">size</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot; account attachments in state&quot;</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;storing &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">state</span>[<span class="ruby-value">:grants</span>].<span class="ruby-identifier">size</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot; account grants in state&quot;</span>
+
+    <span class="ruby-identifier">state_file</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-string">&quot;state.json&quot;</span>, <span class="ruby-string">&quot;w&quot;</span>)
+    <span class="ruby-identifier">state_file</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">state</span>.<span class="ruby-identifier">to_json</span>)
+
+    <span class="ruby-identifier">suspended_count</span> = <span class="ruby-value">0</span>
+    <span class="ruby-identifier">users</span> = <span class="ruby-identifier">client</span>.<span class="ruby-identifier">accounts</span>.<span class="ruby-identifier">list</span>(<span class="ruby-string">&#39;&#39;</span>)
+    <span class="ruby-identifier">users</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">user</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">instance_of?</span> <span class="ruby-constant">SDM</span><span class="ruby-operator">::</span><span class="ruby-constant">User</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">email</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">admin_email</span>
+            <span class="ruby-keyword">next</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">user</span>.<span class="ruby-identifier">suspended</span> = <span class="ruby-keyword">true</span>
+        <span class="ruby-keyword">begin</span>
+            <span class="ruby-identifier">client</span>.<span class="ruby-identifier">accounts</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">user</span>)
+            <span class="ruby-identifier">suspended_count</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+        <span class="ruby-keyword">rescue</span> <span class="ruby-constant">StandardError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ex</span>
+            <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;skipping user &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot; on account of error: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">to_s</span>
+        <span class="ruby-keyword">end</span>
+    }
+
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;suspended &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">suspended_count</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot; users&quot;</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
   </section>
 </main>
 
