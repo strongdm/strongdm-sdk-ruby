@@ -1,6 +1,7 @@
 require 'yaml'
 require 'strongdm'
 require 'oktakit'
+require 'optparse'
 
 SDM_API_ACCESS_KEY = ENV.fetch('SDM_API_ACCESS_KEY', '')
 SDM_API_SECRET_KEY = ENV.fetch('SDM_API_SECRET_KEY','')
@@ -13,16 +14,23 @@ def okta_sync
 		exit
 	end
 
+	plan = false
+	OptionParser.new do |opts|
+		opts.banner = 'Usage oktaSync.rb [options]'
+		opts.on('-p', '--plan', 'calculate changes but do not apply them') do |p|
+			plan = p
+		end
+	end.parse!
+
 	client = SDM::Client.new(SDM_API_ACCESS_KEY, SDM_API_SECRET_KEY, host:"localhost:8889", insecure:true)
 	okta_client = Oktakit.new(token: OKTA_CLIENT_TOKEN, api_endpoint: OKTA_CLIENT_ORGURL+"/api/v1")
 	matchers = YAML.load(File.read("matchers.yml"))
 
-	options = {
+	all_users = okta_client.list_users({
 		'query':{
 			'search': "profile.department eq \"Engineering\" and (status eq \"ACTIVE\")"
 		}
-	}
-	all_users = okta_client.list_users(options)
+	})
 
 	okta_users = Array.new()
 	all_users[0].each{ |u|
@@ -68,7 +76,11 @@ def okta_sync
 		desRes = [] if not desired[aid]
 		curRes.each { |r|
 			if not (desRes.include? r[:resource_id])
-				client.account_grants.delete(r[:id])
+				if plan
+					puts "Plan: revoke %s from user %s\n" % [r[:resource_id], aid]
+				else
+					client.account_grants.delete(r[:id])
+				end
 				revocations += 1
 			end
 		}
@@ -83,7 +95,11 @@ def okta_sync
 				ag = SDM::AccountGrant.new()
 				ag.account_id = aid
 				ag.resource_id = r
-				client.account_grants.create(ag)
+				if plan
+					puts "Plan: grant %s to user %s\n" % [r, aid]
+				else
+					client.account_grants.create(ag)
+				end
 				grants +=1
 			end
 		}
