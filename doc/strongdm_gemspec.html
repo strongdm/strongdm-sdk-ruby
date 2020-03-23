@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>strongdm.gemspec - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./LICENSE.html">LICENSE</a>
+  
+    <li><a href="./README_md.html">README</a>
+  
+    <li><a href="./examples/Gemfile.html">Gemfile</a>
+  
+    <li><a href="./examples/Gemfile_lock.html">Gemfile.lock</a>
+  
+    <li><a href="./examples/README_md.html">README</a>
+  
+    <li><a href="./lib/version.html">version</a>
+  
+    <li><a href="./strongdm_gemspec.html">strongdm.gemspec</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page strongdm.gemspec">
+
+<p>require File.expand_path(“../lib/version.rb”, __FILE__)</p>
+
+<p>Gem::Specification.new do |s|</p>
+
+<pre class="ruby"><span class="ruby-identifier">s</span>.<span class="ruby-identifier">name</span>        = <span class="ruby-string">&quot;strongdm&quot;</span>
+<span class="ruby-identifier">s</span>.<span class="ruby-identifier">version</span>     = <span class="ruby-constant">SDM</span><span class="ruby-operator">::</span><span class="ruby-constant">VERSION</span>
+<span class="ruby-identifier">s</span>.<span class="ruby-identifier">platform</span>    = <span class="ruby-constant">Gem</span><span class="ruby-operator">::</span><span class="ruby-constant">Platform</span><span class="ruby-operator">::</span><span class="ruby-constant">RUBY</span>
+<span class="ruby-identifier">s</span>.<span class="ruby-identifier">authors</span>     = [<span class="ruby-string">&#39;strongDM Team&#39;</span>]
+<span class="ruby-identifier">s</span>.<span class="ruby-identifier">email</span>       = [<span class="ruby-string">&#39;sdk-feedback@strongdm.com&#39;</span>]
+<span class="ruby-identifier">s</span>.<span class="ruby-identifier">homepage</span>    = <span class="ruby-string">&quot;http://rubygems.org/gems/strongdm&quot;</span>
+<span class="ruby-identifier">s</span>.<span class="ruby-identifier">summary</span>     = <span class="ruby-string">&quot;strongDM SDK for the Ruby programming language.&quot;</span>
+<span class="ruby-identifier">s</span>.<span class="ruby-identifier">description</span> = <span class="ruby-string">&quot;strongDM Ruby Library for automating interactions with strongDM.&quot;</span>
+<span class="ruby-identifier">s</span>.<span class="ruby-identifier">licenses</span>    = [<span class="ruby-string">&quot;Apache-2.0&quot;</span>]
+<span class="ruby-identifier">s</span>.<span class="ruby-identifier">required_ruby_version</span> = <span class="ruby-string">&quot;&gt;= 2.3.0&quot;</span>
+<span class="ruby-identifier">s</span>.<span class="ruby-identifier">required_rubygems_version</span> = <span class="ruby-string">&quot;&gt;= 1.3.6&quot;</span>
+
+<span class="ruby-identifier">s</span>.<span class="ruby-identifier">add_runtime_dependency</span> <span class="ruby-string">&quot;grpc&quot;</span>, <span class="ruby-string">&quot;~&gt; 1.27.0&quot;</span>, <span class="ruby-string">&quot;&gt;= 1.27.0&quot;</span>
+<span class="ruby-identifier">s</span>.<span class="ruby-identifier">add_runtime_dependency</span> <span class="ruby-string">&quot;grpc-tools&quot;</span>, <span class="ruby-string">&quot;~&gt; 1.27.0&quot;</span>, <span class="ruby-string">&quot;&gt;= 1.27.0&quot;</span>
+<span class="ruby-identifier">s</span>.<span class="ruby-identifier">add_runtime_dependency</span> <span class="ruby-string">&quot;openssl&quot;</span>, <span class="ruby-string">&quot;~&gt; 2.1.2&quot;</span>, <span class="ruby-string">&quot;&gt;= 2.1.2&quot;</span>
+
+<span class="ruby-identifier">s</span>.<span class="ruby-identifier">files</span>        = <span class="ruby-node">`git ls-files | grep -v &quot;strongdm-#{SDM::VERSION}.gem&quot;`</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;\n&quot;</span>)
+<span class="ruby-identifier">s</span>.<span class="ruby-identifier">require_path</span> = <span class="ruby-string">&#39;lib&#39;</span>
+</pre>
+
+<p>end</p>
+
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
