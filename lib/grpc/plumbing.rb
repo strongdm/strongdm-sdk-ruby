@@ -972,9 +972,6 @@ module SDM
       if porcelain.instance_of? SSH
         plumbing.ssh = ssh_to_plumbing(porcelain)
       end
-      if porcelain.instance_of? SSHCert
-        plumbing.ssh_cert = ssh_cert_to_plumbing(porcelain)
-      end
       if porcelain.instance_of? Sybase
         plumbing.sybase = sybase_to_plumbing(porcelain)
       end
@@ -1113,9 +1110,6 @@ module SDM
       end
       if plumbing.ssh != nil
         return ssh_to_porcelain(plumbing.ssh)
-      end
-      if plumbing.ssh_cert != nil
-        return ssh_cert_to_porcelain(plumbing.ssh_cert)
       end
       if plumbing.sybase != nil
         return sybase_to_porcelain(plumbing.sybase)
@@ -3188,52 +3182,6 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = ssh_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
-    def self.ssh_cert_to_porcelain(plumbing)
-      if plumbing == nil
-        return nil
-      end
-      porcelain = SSHCert.new()
-      porcelain.id = plumbing.id
-      porcelain.name = plumbing.name
-      porcelain.healthy = plumbing.healthy
-      porcelain.hostname = plumbing.hostname
-      porcelain.username = plumbing.username
-      porcelain.port = plumbing.port
-      porcelain.port_forwarding = plumbing.port_forwarding
-      porcelain
-    end
-
-    def self.ssh_cert_to_plumbing(porcelain)
-      if porcelain == nil
-        return nil
-      end
-      plumbing = V1::SSHCert.new()
-      plumbing.id = porcelain.id unless porcelain.id == nil
-      plumbing.name = porcelain.name unless porcelain.name == nil
-      plumbing.healthy = porcelain.healthy unless porcelain.healthy == nil
-      plumbing.hostname = porcelain.hostname unless porcelain.hostname == nil
-      plumbing.username = porcelain.username unless porcelain.username == nil
-      plumbing.port = porcelain.port unless porcelain.port == nil
-      plumbing.port_forwarding = porcelain.port_forwarding unless porcelain.port_forwarding == nil
-      plumbing
-    end
-    def self.repeated_ssh_cert_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = ssh_cert_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.repeated_ssh_cert_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = ssh_cert_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items

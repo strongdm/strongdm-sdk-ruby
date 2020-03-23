@@ -2967,55 +2967,6 @@ module SDM
     end
   end
 
-  class SSHCert
-    # Unique identifier of the Resource.
-    attr_accessor :id
-    # Unique human-readable name of the Resource.
-    attr_accessor :name
-    # True if the datasource is reachable and the credentials are valid.
-    attr_accessor :healthy
-
-    attr_accessor :hostname
-
-    attr_accessor :username
-
-    attr_accessor :port
-
-    attr_accessor :port_forwarding
-
-    def initialize(
-      id: nil,
-      name: nil,
-      healthy: nil,
-      hostname: nil,
-      username: nil,
-      port: nil,
-      port_forwarding: nil
-    )
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if username != nil
-        @username = username
-      end
-      if port != nil
-        @port = port
-      end
-      if port_forwarding != nil
-        @port_forwarding = port_forwarding
-      end
-    end
-  end
-
   class Sybase
     # Unique identifier of the Resource.
     attr_accessor :id
