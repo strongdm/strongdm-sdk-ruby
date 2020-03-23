@@ -8,13 +8,18 @@
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../";
+  var index_rel_prefix = "../";
 </script>
 
-<script src="../js/jquery.js"></script>
-<script src="../js/darkfish.js"></script>
+<script src="../js/navigation.js" defer></script>
+<script src="../js/search.js" defer></script>
+<script src="../js/search_index.js" defer></script>
+<script src="../js/searcher.js" defer></script>
+<script src="../js/darkfish.js" defer></script>
 
 <link href="../css/fonts.css" rel="stylesheet">
 <link href="../css/rdoc.css" rel="stylesheet">
+
 
 
 
@@ -93,16 +98,10 @@
 
   <section class="description">
     
-<p><a href="RoleAttachments.html">RoleAttachments</a> represent relationships
-between composite roles and the roles that make up those composite roles.
-When a composite role is attached to another role, the permissions granted
-to members of the composite role are augmented to include the permissions
-granted to members of the attached role.</p>
+<p><a href="RoleAttachments.html"><code>RoleAttachments</code></a> represent relationships between composite roles and the roles that make up those composite roles. When a composite role is attached to another role, the permissions granted to members of the composite role are augmented to include the permissions granted to members of the attached role.</p>
 
   </section>
 
-  
-  
   
   <section id="5Buntitled-5D" class="documentation-section">
     
@@ -140,7 +139,7 @@ granted to members of the attached role.</p>
           
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File lib/svc.rb, line 860</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">host</span>, <span class="ruby-identifier">insecure</span>, <span class="ruby-identifier">parent</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">host</span>, <span class="ruby-identifier">insecure</span>, <span class="ruby-identifier">parent</span>)
     <span class="ruby-keyword">begin</span>
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">insecure</span>
             <span class="ruby-ivar">@stub</span> = <span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">RoleAttachments</span><span class="ruby-operator">::</span><span class="ruby-constant">Stub</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">host</span>, <span class="ruby-value">:this_channel_is_insecure</span>)
@@ -148,7 +147,7 @@ granted to members of the attached role.</p>
             <span class="ruby-identifier">cred</span> = <span class="ruby-constant">GRPC</span><span class="ruby-operator">::</span><span class="ruby-constant">Core</span><span class="ruby-operator">::</span><span class="ruby-constant">ChannelCredentials</span>.<span class="ruby-identifier">new</span>()
             <span class="ruby-ivar">@stub</span> = <span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">RoleAttachments</span><span class="ruby-operator">::</span><span class="ruby-constant">Stub</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">host</span>, <span class="ruby-identifier">cred</span>)
         <span class="ruby-keyword">end</span>
-    <span class="ruby-keyword">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exception</span>
+    <span class="ruby-keyword">rescue</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">exception</span>
         <span class="ruby-identifier">raise</span> <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">error_to_porcelain</span>(<span class="ruby-identifier">exception</span>)
     <span class="ruby-keyword">end</span>
     <span class="ruby-ivar">@parent</span> = <span class="ruby-identifier">parent</span>
@@ -184,16 +183,17 @@ granted to members of the attached role.</p>
 
         <div class="method-description">
           
-          <p>Create registers a new <a href="RoleAttachment.html">RoleAttachment</a>.</p>
+          <p>Create registers a new <a href="RoleAttachment.html"><code>RoleAttachment</code></a>.</p>
           
           
 
           
           <div class="method-source-code" id="create-source">
             <pre><span class="ruby-comment"># File lib/svc.rb, line 874</span>
-        <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>(
-<span class="ruby-identifier">role_attachment</span>  ,
- <span class="ruby-identifier">deadline</span><span class="ruby-value">:nil</span>)
+        <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create</span>(
+<span class="ruby-identifier">role_attachment</span> \
+,
+ <span class="ruby-value">deadline:</span><span class="ruby-keyword">nil</span>)
             <span class="ruby-identifier">req</span> = <span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">RoleAttachmentCreateRequest</span>.<span class="ruby-identifier">new</span>()
                         
             <span class="ruby-identifier">req</span>.<span class="ruby-identifier">role_attachment</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">role_attachment_to_plumbing</span>(<span class="ruby-identifier">role_attachment</span>)
@@ -201,8 +201,8 @@ granted to members of the attached role.</p>
             <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-keyword">nil</span>
             <span class="ruby-identifier">loop</span> <span class="ruby-keyword">do</span>
                 <span class="ruby-keyword">begin</span>
-                    <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-ivar">@stub</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">req</span>, <span class="ruby-identifier">metadata</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">get_metadata</span>(<span class="ruby-string">&#39;RoleAttachments.Create&#39;</span>, <span class="ruby-identifier">req</span>), <span class="ruby-identifier">deadline</span><span class="ruby-value">:deadline</span>)
-                <span class="ruby-keyword">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exception</span>
+                    <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-ivar">@stub</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">req</span>, <span class="ruby-value">metadata:</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">get_metadata</span>(<span class="ruby-string">&#39;RoleAttachments.Create&#39;</span>, <span class="ruby-identifier">req</span>), <span class="ruby-value">deadline:</span><span class="ruby-identifier">deadline</span>)
+                <span class="ruby-keyword">rescue</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">exception</span>
                     <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">shouldRetry</span>(<span class="ruby-identifier">tries</span>, <span class="ruby-identifier">exception</span>))
                         <span class="ruby-identifier">tries</span><span class="ruby-operator">+</span><span class="ruby-operator">+</span>
                         <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">jitterSleep</span>(<span class="ruby-identifier">tries</span>)
@@ -243,16 +243,17 @@ granted to members of the attached role.</p>
 
         <div class="method-description">
           
-          <p>Delete removes a <a href="RoleAttachment.html">RoleAttachment</a> by ID.</p>
+          <p>Delete removes a <a href="RoleAttachment.html"><code>RoleAttachment</code></a> by ID.</p>
           
           
 
           
           <div class="method-source-code" id="delete-source">
             <pre><span class="ruby-comment"># File lib/svc.rb, line 936</span>
-        <span class="ruby-keyword">def</span> <span class="ruby-identifier">delete</span>(
-<span class="ruby-identifier">id</span>  ,
- <span class="ruby-identifier">deadline</span><span class="ruby-value">:nil</span>)
+        <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">delete</span>(
+<span class="ruby-identifier">id</span> \
+,
+ <span class="ruby-value">deadline:</span><span class="ruby-keyword">nil</span>)
             <span class="ruby-identifier">req</span> = <span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">RoleAttachmentDeleteRequest</span>.<span class="ruby-identifier">new</span>()
                         
             <span class="ruby-identifier">req</span>.<span class="ruby-identifier">id</span> = <span class="ruby-identifier">id</span>
@@ -260,8 +261,8 @@ granted to members of the attached role.</p>
             <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-keyword">nil</span>
             <span class="ruby-identifier">loop</span> <span class="ruby-keyword">do</span>
                 <span class="ruby-keyword">begin</span>
-                    <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-ivar">@stub</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">req</span>, <span class="ruby-identifier">metadata</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">get_metadata</span>(<span class="ruby-string">&#39;RoleAttachments.Delete&#39;</span>, <span class="ruby-identifier">req</span>), <span class="ruby-identifier">deadline</span><span class="ruby-value">:deadline</span>)
-                <span class="ruby-keyword">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exception</span>
+                    <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-ivar">@stub</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">req</span>, <span class="ruby-value">metadata:</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">get_metadata</span>(<span class="ruby-string">&#39;RoleAttachments.Delete&#39;</span>, <span class="ruby-identifier">req</span>), <span class="ruby-value">deadline:</span><span class="ruby-identifier">deadline</span>)
+                <span class="ruby-keyword">rescue</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">exception</span>
                     <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">shouldRetry</span>(<span class="ruby-identifier">tries</span>, <span class="ruby-identifier">exception</span>))
                         <span class="ruby-identifier">tries</span><span class="ruby-operator">+</span><span class="ruby-operator">+</span>
                         <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">jitterSleep</span>(<span class="ruby-identifier">tries</span>)
@@ -301,16 +302,17 @@ granted to members of the attached role.</p>
 
         <div class="method-description">
           
-          <p>Get reads one <a href="RoleAttachment.html">RoleAttachment</a> by ID.</p>
+          <p>Get reads one <a href="RoleAttachment.html"><code>RoleAttachment</code></a> by ID.</p>
           
           
 
           
           <div class="method-source-code" id="get-source">
             <pre><span class="ruby-comment"># File lib/svc.rb, line 905</span>
-        <span class="ruby-keyword">def</span> <span class="ruby-identifier">get</span>(
-<span class="ruby-identifier">id</span>  ,
- <span class="ruby-identifier">deadline</span><span class="ruby-value">:nil</span>)
+        <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get</span>(
+<span class="ruby-identifier">id</span> \
+,
+ <span class="ruby-value">deadline:</span><span class="ruby-keyword">nil</span>)
             <span class="ruby-identifier">req</span> = <span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">RoleAttachmentGetRequest</span>.<span class="ruby-identifier">new</span>()
                         
             <span class="ruby-identifier">req</span>.<span class="ruby-identifier">id</span> = <span class="ruby-identifier">id</span>
@@ -318,8 +320,8 @@ granted to members of the attached role.</p>
             <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-keyword">nil</span>
             <span class="ruby-identifier">loop</span> <span class="ruby-keyword">do</span>
                 <span class="ruby-keyword">begin</span>
-                    <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-ivar">@stub</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">req</span>, <span class="ruby-identifier">metadata</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">get_metadata</span>(<span class="ruby-string">&#39;RoleAttachments.Get&#39;</span>, <span class="ruby-identifier">req</span>), <span class="ruby-identifier">deadline</span><span class="ruby-value">:deadline</span>)
-                <span class="ruby-keyword">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exception</span>
+                    <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-ivar">@stub</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">req</span>, <span class="ruby-value">metadata:</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">get_metadata</span>(<span class="ruby-string">&#39;RoleAttachments.Get&#39;</span>, <span class="ruby-identifier">req</span>), <span class="ruby-value">deadline:</span><span class="ruby-identifier">deadline</span>)
+                <span class="ruby-keyword">rescue</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">exception</span>
                     <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">shouldRetry</span>(<span class="ruby-identifier">tries</span>, <span class="ruby-identifier">exception</span>))
                         <span class="ruby-identifier">tries</span><span class="ruby-operator">+</span><span class="ruby-operator">+</span>
                         <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">jitterSleep</span>(<span class="ruby-identifier">tries</span>)
@@ -360,18 +362,18 @@ granted to members of the attached role.</p>
 
         <div class="method-description">
           
-          <p>List gets a list of <a href="RoleAttachments.html">RoleAttachments</a>
-matching a given set of criteria.</p>
+          <p>List gets a list of <a href="RoleAttachments.html"><code>RoleAttachments</code></a> matching a given set of criteria.</p>
           
           
 
           
           <div class="method-source-code" id="list-source">
             <pre><span class="ruby-comment"># File lib/svc.rb, line 966</span>
-        <span class="ruby-keyword">def</span> <span class="ruby-identifier">list</span>(
-<span class="ruby-identifier">filter</span>  ,
+        <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">list</span>(
+<span class="ruby-identifier">filter</span> \
+,
 <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>,
- <span class="ruby-identifier">deadline</span><span class="ruby-value">:nil</span>)
+ <span class="ruby-value">deadline:</span><span class="ruby-keyword">nil</span>)
             <span class="ruby-identifier">req</span> = <span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">RoleAttachmentListRequest</span>.<span class="ruby-identifier">new</span>()
             <span class="ruby-identifier">req</span>.<span class="ruby-identifier">meta</span> = <span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">ListRequestMetadata</span>.<span class="ruby-identifier">new</span>()
             <span class="ruby-identifier">page_size_option</span> = <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">_test_options</span>[<span class="ruby-string">&#39;PageSize&#39;</span>]
@@ -384,8 +386,8 @@ matching a given set of criteria.</p>
                 <span class="ruby-identifier">tries</span> = <span class="ruby-value">0</span>
                 <span class="ruby-identifier">loop</span> <span class="ruby-keyword">do</span>
                     <span class="ruby-keyword">begin</span>
-                        <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-ivar">@stub</span>.<span class="ruby-identifier">list</span>(<span class="ruby-identifier">req</span>, <span class="ruby-identifier">metadata</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">get_metadata</span>(<span class="ruby-string">&#39;RoleAttachments.List&#39;</span>, <span class="ruby-identifier">req</span>), <span class="ruby-identifier">deadline</span><span class="ruby-value">:deadline</span>)
-                    <span class="ruby-keyword">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exception</span>
+                        <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-ivar">@stub</span>.<span class="ruby-identifier">list</span>(<span class="ruby-identifier">req</span>, <span class="ruby-value">metadata:</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">get_metadata</span>(<span class="ruby-string">&#39;RoleAttachments.List&#39;</span>, <span class="ruby-identifier">req</span>), <span class="ruby-value">deadline:</span><span class="ruby-identifier">deadline</span>)
+                    <span class="ruby-keyword">rescue</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">exception</span>
                         <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">shouldRetry</span>(<span class="ruby-identifier">tries</span>, <span class="ruby-identifier">exception</span>))
                             <span class="ruby-identifier">tries</span><span class="ruby-operator">+</span><span class="ruby-operator">+</span>
                             <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">jitterSleep</span>(<span class="ruby-identifier">tries</span>)
@@ -416,12 +418,13 @@ matching a given set of criteria.</p>
     </section>
   
   </section>
+
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
-  <p><a href="http://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.1.
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

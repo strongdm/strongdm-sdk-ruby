@@ -8,13 +8,18 @@
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../";
+  var index_rel_prefix = "../";
 </script>
 
-<script src="../js/jquery.js"></script>
-<script src="../js/darkfish.js"></script>
+<script src="../js/navigation.js" defer></script>
+<script src="../js/search.js" defer></script>
+<script src="../js/search_index.js" defer></script>
+<script src="../js/searcher.js" defer></script>
+<script src="../js/darkfish.js" defer></script>
 
 <link href="../css/fonts.css" rel="stylesheet">
 <link href="../css/rdoc.css" rel="stylesheet">
+
 
 
 
@@ -93,13 +98,10 @@
 
   <section class="description">
     
-<p><a href="AccountAttachments.html">AccountAttachments</a> assign an account
-to a role.</p>
+<p><a href="AccountAttachments.html"><code>AccountAttachments</code></a> assign an account to a role.</p>
 
   </section>
 
-  
-  
   
   <section id="5Buntitled-5D" class="documentation-section">
     
@@ -137,7 +139,7 @@ to a role.</p>
           
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File lib/svc.rb, line 29</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">host</span>, <span class="ruby-identifier">insecure</span>, <span class="ruby-identifier">parent</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">host</span>, <span class="ruby-identifier">insecure</span>, <span class="ruby-identifier">parent</span>)
     <span class="ruby-keyword">begin</span>
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">insecure</span>
             <span class="ruby-ivar">@stub</span> = <span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">AccountAttachments</span><span class="ruby-operator">::</span><span class="ruby-constant">Stub</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">host</span>, <span class="ruby-value">:this_channel_is_insecure</span>)
@@ -145,7 +147,7 @@ to a role.</p>
             <span class="ruby-identifier">cred</span> = <span class="ruby-constant">GRPC</span><span class="ruby-operator">::</span><span class="ruby-constant">Core</span><span class="ruby-operator">::</span><span class="ruby-constant">ChannelCredentials</span>.<span class="ruby-identifier">new</span>()
             <span class="ruby-ivar">@stub</span> = <span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">AccountAttachments</span><span class="ruby-operator">::</span><span class="ruby-constant">Stub</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">host</span>, <span class="ruby-identifier">cred</span>)
         <span class="ruby-keyword">end</span>
-    <span class="ruby-keyword">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exception</span>
+    <span class="ruby-keyword">rescue</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">exception</span>
         <span class="ruby-identifier">raise</span> <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">error_to_porcelain</span>(<span class="ruby-identifier">exception</span>)
     <span class="ruby-keyword">end</span>
     <span class="ruby-ivar">@parent</span> = <span class="ruby-identifier">parent</span>
@@ -181,18 +183,18 @@ to a role.</p>
 
         <div class="method-description">
           
-          <p>Create registers a new <a
-href="AccountAttachment.html">AccountAttachment</a>.</p>
+          <p>Create registers a new <a href="AccountAttachment.html"><code>AccountAttachment</code></a>.</p>
           
           
 
           
           <div class="method-source-code" id="create-source">
             <pre><span class="ruby-comment"># File lib/svc.rb, line 43</span>
-        <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>(
-<span class="ruby-identifier">account_attachment</span>  ,
-                    <span class="ruby-identifier">options</span><span class="ruby-value">:nil</span>,
- <span class="ruby-identifier">deadline</span><span class="ruby-value">:nil</span>)
+        <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create</span>(
+<span class="ruby-identifier">account_attachment</span> \
+,
+                    <span class="ruby-value">options:</span><span class="ruby-keyword">nil</span>,
+ <span class="ruby-value">deadline:</span><span class="ruby-keyword">nil</span>)
             <span class="ruby-identifier">req</span> = <span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">AccountAttachmentCreateRequest</span>.<span class="ruby-identifier">new</span>()
                         
             <span class="ruby-identifier">req</span>.<span class="ruby-identifier">account_attachment</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">account_attachment_to_plumbing</span>(<span class="ruby-identifier">account_attachment</span>)
@@ -201,8 +203,8 @@ href="AccountAttachment.html">AccountAttachment</a>.</p>
             <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-keyword">nil</span>
             <span class="ruby-identifier">loop</span> <span class="ruby-keyword">do</span>
                 <span class="ruby-keyword">begin</span>
-                    <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-ivar">@stub</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">req</span>, <span class="ruby-identifier">metadata</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">get_metadata</span>(<span class="ruby-string">&#39;AccountAttachments.Create&#39;</span>, <span class="ruby-identifier">req</span>), <span class="ruby-identifier">deadline</span><span class="ruby-value">:deadline</span>)
-                <span class="ruby-keyword">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exception</span>
+                    <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-ivar">@stub</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">req</span>, <span class="ruby-value">metadata:</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">get_metadata</span>(<span class="ruby-string">&#39;AccountAttachments.Create&#39;</span>, <span class="ruby-identifier">req</span>), <span class="ruby-value">deadline:</span><span class="ruby-identifier">deadline</span>)
+                <span class="ruby-keyword">rescue</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">exception</span>
                     <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">shouldRetry</span>(<span class="ruby-identifier">tries</span>, <span class="ruby-identifier">exception</span>))
                         <span class="ruby-identifier">tries</span><span class="ruby-operator">+</span><span class="ruby-operator">+</span>
                         <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">jitterSleep</span>(<span class="ruby-identifier">tries</span>)
@@ -243,17 +245,17 @@ href="AccountAttachment.html">AccountAttachment</a>.</p>
 
         <div class="method-description">
           
-          <p>Delete removes a <a href="AccountAttachment.html">AccountAttachment</a> by
-ID.</p>
+          <p>Delete removes a <a href="AccountAttachment.html"><code>AccountAttachment</code></a> by ID.</p>
           
           
 
           
           <div class="method-source-code" id="delete-source">
             <pre><span class="ruby-comment"># File lib/svc.rb, line 107</span>
-        <span class="ruby-keyword">def</span> <span class="ruby-identifier">delete</span>(
-<span class="ruby-identifier">id</span>  ,
- <span class="ruby-identifier">deadline</span><span class="ruby-value">:nil</span>)
+        <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">delete</span>(
+<span class="ruby-identifier">id</span> \
+,
+ <span class="ruby-value">deadline:</span><span class="ruby-keyword">nil</span>)
             <span class="ruby-identifier">req</span> = <span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">AccountAttachmentDeleteRequest</span>.<span class="ruby-identifier">new</span>()
                         
             <span class="ruby-identifier">req</span>.<span class="ruby-identifier">id</span> = <span class="ruby-identifier">id</span>
@@ -261,8 +263,8 @@ ID.</p>
             <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-keyword">nil</span>
             <span class="ruby-identifier">loop</span> <span class="ruby-keyword">do</span>
                 <span class="ruby-keyword">begin</span>
-                    <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-ivar">@stub</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">req</span>, <span class="ruby-identifier">metadata</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">get_metadata</span>(<span class="ruby-string">&#39;AccountAttachments.Delete&#39;</span>, <span class="ruby-identifier">req</span>), <span class="ruby-identifier">deadline</span><span class="ruby-value">:deadline</span>)
-                <span class="ruby-keyword">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exception</span>
+                    <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-ivar">@stub</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">req</span>, <span class="ruby-value">metadata:</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">get_metadata</span>(<span class="ruby-string">&#39;AccountAttachments.Delete&#39;</span>, <span class="ruby-identifier">req</span>), <span class="ruby-value">deadline:</span><span class="ruby-identifier">deadline</span>)
+                <span class="ruby-keyword">rescue</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">exception</span>
                     <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">shouldRetry</span>(<span class="ruby-identifier">tries</span>, <span class="ruby-identifier">exception</span>))
                         <span class="ruby-identifier">tries</span><span class="ruby-operator">+</span><span class="ruby-operator">+</span>
                         <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">jitterSleep</span>(<span class="ruby-identifier">tries</span>)
@@ -302,16 +304,17 @@ ID.</p>
 
         <div class="method-description">
           
-          <p>Get reads one <a href="AccountAttachment.html">AccountAttachment</a> by ID.</p>
+          <p>Get reads one <a href="AccountAttachment.html"><code>AccountAttachment</code></a> by ID.</p>
           
           
 
           
           <div class="method-source-code" id="get-source">
             <pre><span class="ruby-comment"># File lib/svc.rb, line 76</span>
-        <span class="ruby-keyword">def</span> <span class="ruby-identifier">get</span>(
-<span class="ruby-identifier">id</span>  ,
- <span class="ruby-identifier">deadline</span><span class="ruby-value">:nil</span>)
+        <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get</span>(
+<span class="ruby-identifier">id</span> \
+,
+ <span class="ruby-value">deadline:</span><span class="ruby-keyword">nil</span>)
             <span class="ruby-identifier">req</span> = <span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">AccountAttachmentGetRequest</span>.<span class="ruby-identifier">new</span>()
                         
             <span class="ruby-identifier">req</span>.<span class="ruby-identifier">id</span> = <span class="ruby-identifier">id</span>
@@ -319,8 +322,8 @@ ID.</p>
             <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-keyword">nil</span>
             <span class="ruby-identifier">loop</span> <span class="ruby-keyword">do</span>
                 <span class="ruby-keyword">begin</span>
-                    <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-ivar">@stub</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">req</span>, <span class="ruby-identifier">metadata</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">get_metadata</span>(<span class="ruby-string">&#39;AccountAttachments.Get&#39;</span>, <span class="ruby-identifier">req</span>), <span class="ruby-identifier">deadline</span><span class="ruby-value">:deadline</span>)
-                <span class="ruby-keyword">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exception</span>
+                    <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-ivar">@stub</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">req</span>, <span class="ruby-value">metadata:</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">get_metadata</span>(<span class="ruby-string">&#39;AccountAttachments.Get&#39;</span>, <span class="ruby-identifier">req</span>), <span class="ruby-value">deadline:</span><span class="ruby-identifier">deadline</span>)
+                <span class="ruby-keyword">rescue</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">exception</span>
                     <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">shouldRetry</span>(<span class="ruby-identifier">tries</span>, <span class="ruby-identifier">exception</span>))
                         <span class="ruby-identifier">tries</span><span class="ruby-operator">+</span><span class="ruby-operator">+</span>
                         <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">jitterSleep</span>(<span class="ruby-identifier">tries</span>)
@@ -361,19 +364,18 @@ ID.</p>
 
         <div class="method-description">
           
-          <p>List gets a list of <a
-href="AccountAttachments.html">AccountAttachments</a> matching a given set
-of criteria.</p>
+          <p>List gets a list of <a href="AccountAttachments.html"><code>AccountAttachments</code></a> matching a given set of criteria.</p>
           
           
 
           
           <div class="method-source-code" id="list-source">
             <pre><span class="ruby-comment"># File lib/svc.rb, line 137</span>
-        <span class="ruby-keyword">def</span> <span class="ruby-identifier">list</span>(
-<span class="ruby-identifier">filter</span>  ,
+        <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">list</span>(
+<span class="ruby-identifier">filter</span> \
+,
 <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>,
- <span class="ruby-identifier">deadline</span><span class="ruby-value">:nil</span>)
+ <span class="ruby-value">deadline:</span><span class="ruby-keyword">nil</span>)
             <span class="ruby-identifier">req</span> = <span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">AccountAttachmentListRequest</span>.<span class="ruby-identifier">new</span>()
             <span class="ruby-identifier">req</span>.<span class="ruby-identifier">meta</span> = <span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">ListRequestMetadata</span>.<span class="ruby-identifier">new</span>()
             <span class="ruby-identifier">page_size_option</span> = <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">_test_options</span>[<span class="ruby-string">&#39;PageSize&#39;</span>]
@@ -386,8 +388,8 @@ of criteria.</p>
                 <span class="ruby-identifier">tries</span> = <span class="ruby-value">0</span>
                 <span class="ruby-identifier">loop</span> <span class="ruby-keyword">do</span>
                     <span class="ruby-keyword">begin</span>
-                        <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-ivar">@stub</span>.<span class="ruby-identifier">list</span>(<span class="ruby-identifier">req</span>, <span class="ruby-identifier">metadata</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">get_metadata</span>(<span class="ruby-string">&#39;AccountAttachments.List&#39;</span>, <span class="ruby-identifier">req</span>), <span class="ruby-identifier">deadline</span><span class="ruby-value">:deadline</span>)
-                    <span class="ruby-keyword">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exception</span>
+                        <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-ivar">@stub</span>.<span class="ruby-identifier">list</span>(<span class="ruby-identifier">req</span>, <span class="ruby-value">metadata:</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">get_metadata</span>(<span class="ruby-string">&#39;AccountAttachments.List&#39;</span>, <span class="ruby-identifier">req</span>), <span class="ruby-value">deadline:</span><span class="ruby-identifier">deadline</span>)
+                    <span class="ruby-keyword">rescue</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">exception</span>
                         <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">shouldRetry</span>(<span class="ruby-identifier">tries</span>, <span class="ruby-identifier">exception</span>))
                             <span class="ruby-identifier">tries</span><span class="ruby-operator">+</span><span class="ruby-operator">+</span>
                             <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">jitterSleep</span>(<span class="ruby-identifier">tries</span>)
@@ -418,12 +420,13 @@ of criteria.</p>
     </section>
   
   </section>
+
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
-  <p><a href="http://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.1.
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

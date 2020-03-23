@@ -8,13 +8,18 @@
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../";
+  var index_rel_prefix = "../";
 </script>
 
-<script src="../js/jquery.js"></script>
-<script src="../js/darkfish.js"></script>
+<script src="../js/navigation.js" defer></script>
+<script src="../js/search.js" defer></script>
+<script src="../js/search_index.js" defer></script>
+<script src="../js/searcher.js" defer></script>
+<script src="../js/darkfish.js" defer></script>
 
 <link href="../css/fonts.css" rel="stylesheet">
 <link href="../css/rdoc.css" rel="stylesheet">
+
 
 
 
@@ -93,13 +98,10 @@
 
   <section class="description">
     
-<p><a href="Client.html">Client</a> bundles all the services together and
-initializes them.</p>
+<p><a href="Client.html"><code>Client</code></a> bundles all the services together and initializes them.</p>
 
   </section>
 
-  
-  
   
   <section id="5Buntitled-5D" class="documentation-section">
     
@@ -136,8 +138,7 @@ initializes them.</p>
 
         <div class="method-description">
         
-        <p><a href="AccountAttachments.html">AccountAttachments</a> assign an account
-to a role.</p>
+        <p><a href="AccountAttachments.html"><code>AccountAttachments</code></a> assign an account to a role.</p>
         
         </div>
       </div>
@@ -150,9 +151,7 @@ to a role.</p>
 
         <div class="method-description">
         
-        <p><a href="AccountGrants.html">AccountGrants</a> connect a resource directly
-to an account, giving the account the permission to connect to that
-resource.</p>
+        <p><a href="AccountGrants.html"><code>AccountGrants</code></a> connect a resource directly to an account, giving the account the permission to connect to that resource.</p>
         
         </div>
       </div>
@@ -165,11 +164,9 @@ resource.</p>
 
         <div class="method-description">
         
-        <p><a href="Accounts.html">Accounts</a> are users that have access to
-strongDM. There are two types of accounts:</p>
+        <p><a href="Accounts.html"><code>Accounts</code></a> are users that have access to strongDM. There are two types of accounts:</p>
 <ol><li>
-<p>**Regular users:** humans who are authenticated through username and
-password or SSO</p>
+<p>**Regular users:** humans who are authenticated through username and password or SSO</p>
 </li><li>
 <p>**Service users:** machines that are authneticated using a service token</p>
 </li></ol>
@@ -237,14 +234,11 @@ password or SSO</p>
 
         <div class="method-description">
         
-        <p><a href="Nodes.html">Nodes</a> make up the strongDM network, and allow your
-users to connect securely to your resources. There are two types of nodes:</p>
+        <p><a href="Nodes.html"><code>Nodes</code></a> make up the strongDM network, and allow your users to connect securely to your resources. There are two types of nodes:</p>
 <ol><li>
-<p>*<strong>Relay:</strong>* creates connectivity to your datasources, while
-maintaining the egress-only nature of your firewall</p>
+<p>*<strong>Relay:</strong>* creates connectivity to your datasources, while maintaining the egress-only nature of your firewall</p>
 </li><li>
-<p>*<strong>Gateways:</strong>* a relay that also listens for connections from
-strongDM clients</p>
+<p>*<strong>Gateways:</strong>* a relay that also listens for connections from strongDM clients</p>
 </li></ol>
         
         </div>
@@ -271,11 +265,7 @@ strongDM clients</p>
 
         <div class="method-description">
         
-        <p><a href="RoleAttachments.html">RoleAttachments</a> represent relationships
-between composite roles and the roles that make up those composite roles.
-When a composite role is attached to another role, the permissions granted
-to members of the composite role are augmented to include the permissions
-granted to members of the attached role.</p>
+        <p><a href="RoleAttachments.html"><code>RoleAttachments</code></a> represent relationships between composite roles and the roles that make up those composite roles. When a composite role is attached to another role, the permissions granted to members of the composite role are augmented to include the permissions granted to members of the attached role.</p>
         
         </div>
       </div>
@@ -288,11 +278,7 @@ granted to members of the attached role.</p>
 
         <div class="method-description">
         
-        <p><a href="RoleGrants.html">RoleGrants</a> represent relationships between
-composite roles and the roles that make up those composite roles. When a
-composite role is attached to another role, the permissions granted to
-members of the composite role are augmented to include the permissions
-granted to members of the attached role.</p>
+        <p><a href="RoleGrants.html"><code>RoleGrants</code></a> represent relationships between composite roles and the roles that make up those composite roles. When a composite role is attached to another role, the permissions granted to members of the composite role are augmented to include the permissions granted to members of the attached role.</p>
         
         </div>
       </div>
@@ -305,13 +291,7 @@ granted to members of the attached role.</p>
 
         <div class="method-description">
         
-        <p><a href="Roles.html">Roles</a> are tools for controlling user access to
-resources. Each <a href="Role.html">Role</a> holds a list of resources
-which they grant access to. Composite roles are a special type of <a
-href="Role.html">Role</a> which have no resource associations of their own,
-but instead grant access to the combined resources associated with a set of
-child roles. Each user can be a member of one <a href="Role.html">Role</a>
-or composite role.</p>
+        <p><a href="Roles.html"><code>Roles</code></a> are tools for controlling user access to resources. Each <a href="Role.html"><code>Role</code></a> holds a list of resources which they grant access to. Composite roles are a special type of <a href="Role.html"><code>Role</code></a> which have no resource associations of their own, but instead grant access to the combined resources associated with a set of child roles. Each user can be a member of one <a href="Role.html"><code>Role</code></a> or composite role.</p>
         
         </div>
       </div>
@@ -330,7 +310,7 @@ or composite role.</p>
         
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">(api_access_key, api_secret_key, host:"api.strongdm.com:443", insecure:false)</span>
+            class="method-args">(api_access_key, api_secret_key, host:&quot;api.strongdm.com:443&quot;, insecure:false)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -346,7 +326,7 @@ or composite role.</p>
           
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File lib/strongdm.rb, line 31</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">api_access_key</span>, <span class="ruby-identifier">api_secret_key</span>, <span class="ruby-identifier">host</span><span class="ruby-value">:&quot;api.strongdm.com:443&quot;</span>, <span class="ruby-identifier">insecure</span><span class="ruby-value">:false</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">api_access_key</span>, <span class="ruby-identifier">api_secret_key</span>, <span class="ruby-value">host:</span><span class="ruby-string">&quot;api.strongdm.com:443&quot;</span>, <span class="ruby-value">insecure:</span><span class="ruby-keyword">false</span>)
     <span class="ruby-ivar">@api_access_key</span> = <span class="ruby-identifier">api_access_key</span>
     <span class="ruby-ivar">@api_secret_key</span> = <span class="ruby-constant">Base64</span>.<span class="ruby-identifier">strict_decode64</span>(<span class="ruby-identifier">api_secret_key</span>)
     <span class="ruby-ivar">@max_retries</span> = <span class="ruby-constant">DEFAULT_MAX_RETRIES</span>
@@ -400,8 +380,8 @@ or composite role.</p>
           
           <div class="method-source-code" id="get_metadata-source">
             <pre><span class="ruby-comment"># File lib/strongdm.rb, line 48</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_metadata</span>(<span class="ruby-identifier">method_name</span>, <span class="ruby-identifier">req</span>)
-    <span class="ruby-keyword">return</span> { <span class="ruby-string">&#39;x-sdm-authentication&#39;</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@api_access_key</span>,<span class="ruby-string">&#39;x-sdm-signature&#39;</span><span class="ruby-operator">:</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">sign</span>(<span class="ruby-identifier">method_name</span>, <span class="ruby-identifier">req</span>.<span class="ruby-identifier">to_proto</span>)}
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_metadata</span>(<span class="ruby-identifier">method_name</span>, <span class="ruby-identifier">req</span>)
+    <span class="ruby-keyword">return</span> { <span class="ruby-value">&#39;x-sdm-authentication&#39;:</span> <span class="ruby-ivar">@api_access_key</span>,<span class="ruby-value">&#39;x-sdm-signature&#39;:</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">sign</span>(<span class="ruby-identifier">method_name</span>, <span class="ruby-identifier">req</span>.<span class="ruby-identifier">to_proto</span>)}
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -433,7 +413,7 @@ or composite role.</p>
           
           <div class="method-source-code" id="jitterSleep-source">
             <pre><span class="ruby-comment"># File lib/strongdm.rb, line 68</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">jitterSleep</span>(<span class="ruby-identifier">iter</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">jitterSleep</span>(<span class="ruby-identifier">iter</span>)
     <span class="ruby-identifier">dur_max</span> = <span class="ruby-ivar">@base_retry_delay</span> <span class="ruby-operator">*</span> <span class="ruby-value">2</span><span class="ruby-operator">**</span><span class="ruby-identifier">iter</span>
     <span class="ruby-keyword">if</span> (<span class="ruby-identifier">dur_max</span> <span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@max_retry_delay</span>)
         <span class="ruby-identifier">dur_max</span> = <span class="ruby-ivar">@max_retry_delay</span>
@@ -471,8 +451,8 @@ or composite role.</p>
           
           <div class="method-source-code" id="shouldRetry-source">
             <pre><span class="ruby-comment"># File lib/strongdm.rb, line 77</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">shouldRetry</span>(<span class="ruby-identifier">iter</span>, <span class="ruby-identifier">err</span>)
-    <span class="ruby-keyword">if</span> (<span class="ruby-identifier">iter</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-ivar">@max_retries</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">shouldRetry</span>(<span class="ruby-identifier">iter</span>, <span class="ruby-identifier">err</span>)
+    <span class="ruby-keyword">if</span> (<span class="ruby-identifier">iter</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-ivar">@max_retries</span><span class="ruby-value">-1</span>)
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
     <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">if</span> <span class="ruby-keyword">not</span> <span class="ruby-identifier">err</span> .<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">GRPC</span><span class="ruby-operator">::</span><span class="ruby-constant">BadStatus</span>
@@ -510,7 +490,7 @@ or composite role.</p>
           
           <div class="method-source-code" id="sign-source">
             <pre><span class="ruby-comment"># File lib/strongdm.rb, line 52</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">sign</span>(<span class="ruby-identifier">method_name</span>, <span class="ruby-identifier">msg_bytes</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">sign</span>(<span class="ruby-identifier">method_name</span>, <span class="ruby-identifier">msg_bytes</span>)
     <span class="ruby-identifier">current_utc_date</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">utc</span>
     <span class="ruby-identifier">date</span> = <span class="ruby-identifier">sprintf</span>(<span class="ruby-string">&quot;%04d-%02d-%02d&quot;</span>,<span class="ruby-identifier">current_utc_date</span>.<span class="ruby-identifier">year</span>, <span class="ruby-identifier">current_utc_date</span>.<span class="ruby-identifier">month</span>, <span class="ruby-identifier">current_utc_date</span>.<span class="ruby-identifier">day</span>)
 
@@ -538,12 +518,13 @@ or composite role.</p>
     </section>
   
   </section>
+
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
-  <p><a href="http://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.1.
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 
