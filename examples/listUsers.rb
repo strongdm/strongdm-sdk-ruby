@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
 require "strongdm"
 
 client = SDM::Client.new(ENV["SDM_API_ACCESS_KEY"], ENV["SDM_API_SECRET_KEY"])
