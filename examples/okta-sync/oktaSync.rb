@@ -14,17 +14,45 @@ def okta_sync
 		exit
 	end
 
+	report = {
+		:start => Time.now,
+		# :complete
+
+		:oktaUsersCount => 0,
+		:oktaUsers => [],
+
+		:sdmUsersCount => 0,
+		:sdmUsers => [],
+
+		:bothUsersCount => 0,
+
+		:sdmResourcesCount => 0,
+		:sdmResources => {},
+
+		:permissionsGranted => 0,
+		:permissionsRevoked => 0,
+		:grants => [],
+		:revocations => [],
+
+		:matchers => {},
+	}
+
 	plan = false
+	verbose = false
 	OptionParser.new do |opts|
 		opts.banner = 'Usage oktaSync.rb [options]'
 		opts.on('-p', '--plan', 'calculate changes but do not apply them') do |p|
 			plan = p
+		end
+		opts.on('-v', '--verbose', 'print detailed report') do |v|
+			verbose = v
 		end
 	end.parse!
 
 	client = SDM::Client.new(SDM_API_ACCESS_KEY, SDM_API_SECRET_KEY, host:"localhost:8889", insecure:true)
 	okta_client = Oktakit.new(token: OKTA_CLIENT_TOKEN, api_endpoint: OKTA_CLIENT_ORGURL+"/api/v1")
 	matchers = YAML.load(File.read("matchers.yml"))
+	report[:matchers] = matchers
 
 	all_users = okta_client.list_users({
 		'query':{
@@ -41,8 +69,12 @@ def okta_sync
 		}
 		okta_users.push({:login => u.profile.login, :first_name => u.profile.firstName, :last_name => u.profile.LastName, :groups => group_names})
 	}
+	report[:oktaUsers] = okta_users
+	report[:oktaUsersCount] = okta_users.size
 
-	accounts = client.accounts.list('type:user').map{ |a| [a.email, a.id] }.to_h
+	accounts = client.accounts.list('type:user').map{ |a| [a.email, a] }.to_h
+	report[:sdmUsers] = accounts
+	report[:sdmUsersCount] = accounts.size
 	grants = client.account_grants.list('').map{ |ag| ag }
 
 	current = {}
@@ -56,19 +88,22 @@ def okta_sync
 	matchers["groups"].each{ |group|
 		group["resources"].each { |resourceQuery|
 			client.resources.list(resourceQuery).each { |res|
+				report[:sdmResources][res.id] = res
 				okta_users.each { |u|
 					if u[:groups].include? group["name"]
-						aid = accounts[u[:login]]
-						if aid != nil
+						account = accounts[u[:login]]
+						if account != nil
 							overlapping += 1
-							desired[aid] = [] if not desired[aid]
-							desired[aid].push(res.id)
+							desired[account.id] = [] if not desired[account.id]
+							desired[account.id].push(res.id)
 						end
 					end
 				}
 			}
 		}
 	}
+	report[:bothUsersCount] = overlapping
+	report[:sdmResourcesCount] = report[:sdmResources].size
 
 	revocations = 0
 	current.each { |aid, curRes|
@@ -81,10 +116,12 @@ def okta_sync
 				else
 					client.account_grants.delete(r[:id])
 				end
+				report[:revocations].push(r[:id])
 				revocations += 1
 			end
 		}
 	}
+	report[:permissionsRevoked] = revocations
 
 	grants = 0
 	desired.each { |aid, desRes|
@@ -100,12 +137,20 @@ def okta_sync
 				else
 					client.account_grants.create(ag)
 				end
+				report[:grants].push(ag)
 				grants +=1
 			end
 		}
 	}
+	report[:permissionsGranted] = grants
 
-	puts "%d Okta users, %d strongDM users, %d overlapping users, %d grants, %d revocations" % [okta_users.size, accounts.size, overlapping, grants, revocations]
+	report[:complete] = Time.now
+
+	if verbose
+		puts report.to_json
+	else
+		puts "%d Okta users, %d strongDM users, %d overlapping users, %d grants, %d revocations" % [okta_users.size, accounts.size, overlapping, grants, revocations]
+	end
 end
 
 begin
