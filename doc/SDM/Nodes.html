@@ -8,13 +8,18 @@
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../";
+  var index_rel_prefix = "../";
 </script>
 
-<script src="../js/jquery.js"></script>
-<script src="../js/darkfish.js"></script>
+<script src="../js/navigation.js" defer></script>
+<script src="../js/search.js" defer></script>
+<script src="../js/search_index.js" defer></script>
+<script src="../js/searcher.js" defer></script>
+<script src="../js/darkfish.js" defer></script>
 
 <link href="../css/fonts.css" rel="stylesheet">
 <link href="../css/rdoc.css" rel="stylesheet">
+
 
 
 
@@ -95,20 +100,15 @@
 
   <section class="description">
     
-<p><a href="Nodes.html">Nodes</a> make up the strongDM network, and allow your
-users to connect securely to your resources. There are two types of nodes:</p>
+<p><a href="Nodes.html"><code>Nodes</code></a> make up the strongDM network, and allow your users to connect securely to your resources. There are two types of nodes:</p>
 <ol><li>
-<p>*<strong>Relay:</strong>* creates connectivity to your datasources, while
-maintaining the egress-only nature of your firewall</p>
+<p>*<strong>Relay:</strong>* creates connectivity to your datasources, while maintaining the egress-only nature of your firewall</p>
 </li><li>
-<p>*<strong>Gateways:</strong>* a relay that also listens for connections from
-strongDM clients</p>
+<p>*<strong>Gateways:</strong>* a relay that also listens for connections from strongDM clients</p>
 </li></ol>
 
   </section>
 
-  
-  
   
   <section id="5Buntitled-5D" class="documentation-section">
     
@@ -146,7 +146,7 @@ strongDM clients</p>
           
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File lib/svc.rb, line 504</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">host</span>, <span class="ruby-identifier">insecure</span>, <span class="ruby-identifier">parent</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">host</span>, <span class="ruby-identifier">insecure</span>, <span class="ruby-identifier">parent</span>)
     <span class="ruby-keyword">begin</span>
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">insecure</span>
             <span class="ruby-ivar">@stub</span> = <span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">Nodes</span><span class="ruby-operator">::</span><span class="ruby-constant">Stub</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">host</span>, <span class="ruby-value">:this_channel_is_insecure</span>)
@@ -154,7 +154,7 @@ strongDM clients</p>
             <span class="ruby-identifier">cred</span> = <span class="ruby-constant">GRPC</span><span class="ruby-operator">::</span><span class="ruby-constant">Core</span><span class="ruby-operator">::</span><span class="ruby-constant">ChannelCredentials</span>.<span class="ruby-identifier">new</span>()
             <span class="ruby-ivar">@stub</span> = <span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">Nodes</span><span class="ruby-operator">::</span><span class="ruby-constant">Stub</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">host</span>, <span class="ruby-identifier">cred</span>)
         <span class="ruby-keyword">end</span>
-    <span class="ruby-keyword">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exception</span>
+    <span class="ruby-keyword">rescue</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">exception</span>
         <span class="ruby-identifier">raise</span> <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">error_to_porcelain</span>(<span class="ruby-identifier">exception</span>)
     <span class="ruby-keyword">end</span>
     <span class="ruby-ivar">@parent</span> = <span class="ruby-identifier">parent</span>
@@ -197,9 +197,10 @@ strongDM clients</p>
           
           <div class="method-source-code" id="create-source">
             <pre><span class="ruby-comment"># File lib/svc.rb, line 518</span>
-        <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>(
-<span class="ruby-identifier">node</span>  ,
- <span class="ruby-identifier">deadline</span><span class="ruby-value">:nil</span>)
+        <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create</span>(
+<span class="ruby-identifier">node</span> \
+,
+ <span class="ruby-value">deadline:</span><span class="ruby-keyword">nil</span>)
             <span class="ruby-identifier">req</span> = <span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">NodeCreateRequest</span>.<span class="ruby-identifier">new</span>()
                         
             <span class="ruby-identifier">req</span>.<span class="ruby-identifier">node</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">node_to_plumbing</span>(<span class="ruby-identifier">node</span>)
@@ -207,8 +208,8 @@ strongDM clients</p>
             <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-keyword">nil</span>
             <span class="ruby-identifier">loop</span> <span class="ruby-keyword">do</span>
                 <span class="ruby-keyword">begin</span>
-                    <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-ivar">@stub</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">req</span>, <span class="ruby-identifier">metadata</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">get_metadata</span>(<span class="ruby-string">&#39;Nodes.Create&#39;</span>, <span class="ruby-identifier">req</span>), <span class="ruby-identifier">deadline</span><span class="ruby-value">:deadline</span>)
-                <span class="ruby-keyword">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exception</span>
+                    <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-ivar">@stub</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">req</span>, <span class="ruby-value">metadata:</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">get_metadata</span>(<span class="ruby-string">&#39;Nodes.Create&#39;</span>, <span class="ruby-identifier">req</span>), <span class="ruby-value">deadline:</span><span class="ruby-identifier">deadline</span>)
+                <span class="ruby-keyword">rescue</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">exception</span>
                     <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">shouldRetry</span>(<span class="ruby-identifier">tries</span>, <span class="ruby-identifier">exception</span>))
                         <span class="ruby-identifier">tries</span><span class="ruby-operator">+</span><span class="ruby-operator">+</span>
                         <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">jitterSleep</span>(<span class="ruby-identifier">tries</span>)
@@ -257,9 +258,10 @@ strongDM clients</p>
           
           <div class="method-source-code" id="delete-source">
             <pre><span class="ruby-comment"># File lib/svc.rb, line 612</span>
-        <span class="ruby-keyword">def</span> <span class="ruby-identifier">delete</span>(
-<span class="ruby-identifier">id</span>  ,
- <span class="ruby-identifier">deadline</span><span class="ruby-value">:nil</span>)
+        <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">delete</span>(
+<span class="ruby-identifier">id</span> \
+,
+ <span class="ruby-value">deadline:</span><span class="ruby-keyword">nil</span>)
             <span class="ruby-identifier">req</span> = <span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">NodeDeleteRequest</span>.<span class="ruby-identifier">new</span>()
                         
             <span class="ruby-identifier">req</span>.<span class="ruby-identifier">id</span> = <span class="ruby-identifier">id</span>
@@ -267,8 +269,8 @@ strongDM clients</p>
             <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-keyword">nil</span>
             <span class="ruby-identifier">loop</span> <span class="ruby-keyword">do</span>
                 <span class="ruby-keyword">begin</span>
-                    <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-ivar">@stub</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">req</span>, <span class="ruby-identifier">metadata</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">get_metadata</span>(<span class="ruby-string">&#39;Nodes.Delete&#39;</span>, <span class="ruby-identifier">req</span>), <span class="ruby-identifier">deadline</span><span class="ruby-value">:deadline</span>)
-                <span class="ruby-keyword">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exception</span>
+                    <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-ivar">@stub</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">req</span>, <span class="ruby-value">metadata:</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">get_metadata</span>(<span class="ruby-string">&#39;Nodes.Delete&#39;</span>, <span class="ruby-identifier">req</span>), <span class="ruby-value">deadline:</span><span class="ruby-identifier">deadline</span>)
+                <span class="ruby-keyword">rescue</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">exception</span>
                     <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">shouldRetry</span>(<span class="ruby-identifier">tries</span>, <span class="ruby-identifier">exception</span>))
                         <span class="ruby-identifier">tries</span><span class="ruby-operator">+</span><span class="ruby-operator">+</span>
                         <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">jitterSleep</span>(<span class="ruby-identifier">tries</span>)
@@ -315,9 +317,10 @@ strongDM clients</p>
           
           <div class="method-source-code" id="get-source">
             <pre><span class="ruby-comment"># File lib/svc.rb, line 550</span>
-        <span class="ruby-keyword">def</span> <span class="ruby-identifier">get</span>(
-<span class="ruby-identifier">id</span>  ,
- <span class="ruby-identifier">deadline</span><span class="ruby-value">:nil</span>)
+        <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get</span>(
+<span class="ruby-identifier">id</span> \
+,
+ <span class="ruby-value">deadline:</span><span class="ruby-keyword">nil</span>)
             <span class="ruby-identifier">req</span> = <span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">NodeGetRequest</span>.<span class="ruby-identifier">new</span>()
                         
             <span class="ruby-identifier">req</span>.<span class="ruby-identifier">id</span> = <span class="ruby-identifier">id</span>
@@ -325,8 +328,8 @@ strongDM clients</p>
             <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-keyword">nil</span>
             <span class="ruby-identifier">loop</span> <span class="ruby-keyword">do</span>
                 <span class="ruby-keyword">begin</span>
-                    <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-ivar">@stub</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">req</span>, <span class="ruby-identifier">metadata</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">get_metadata</span>(<span class="ruby-string">&#39;Nodes.Get&#39;</span>, <span class="ruby-identifier">req</span>), <span class="ruby-identifier">deadline</span><span class="ruby-value">:deadline</span>)
-                <span class="ruby-keyword">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exception</span>
+                    <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-ivar">@stub</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">req</span>, <span class="ruby-value">metadata:</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">get_metadata</span>(<span class="ruby-string">&#39;Nodes.Get&#39;</span>, <span class="ruby-identifier">req</span>), <span class="ruby-value">deadline:</span><span class="ruby-identifier">deadline</span>)
+                <span class="ruby-keyword">rescue</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">exception</span>
                     <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">shouldRetry</span>(<span class="ruby-identifier">tries</span>, <span class="ruby-identifier">exception</span>))
                         <span class="ruby-identifier">tries</span><span class="ruby-operator">+</span><span class="ruby-operator">+</span>
                         <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">jitterSleep</span>(<span class="ruby-identifier">tries</span>)
@@ -367,18 +370,18 @@ strongDM clients</p>
 
         <div class="method-description">
           
-          <p>List gets a list of <a href="Nodes.html">Nodes</a> matching a given set of
-criteria.</p>
+          <p>List gets a list of <a href="Nodes.html"><code>Nodes</code></a> matching a given set of criteria.</p>
           
           
 
           
           <div class="method-source-code" id="list-source">
             <pre><span class="ruby-comment"># File lib/svc.rb, line 642</span>
-        <span class="ruby-keyword">def</span> <span class="ruby-identifier">list</span>(
-<span class="ruby-identifier">filter</span>  ,
+        <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">list</span>(
+<span class="ruby-identifier">filter</span> \
+,
 <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>,
- <span class="ruby-identifier">deadline</span><span class="ruby-value">:nil</span>)
+ <span class="ruby-value">deadline:</span><span class="ruby-keyword">nil</span>)
             <span class="ruby-identifier">req</span> = <span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">NodeListRequest</span>.<span class="ruby-identifier">new</span>()
             <span class="ruby-identifier">req</span>.<span class="ruby-identifier">meta</span> = <span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">ListRequestMetadata</span>.<span class="ruby-identifier">new</span>()
             <span class="ruby-identifier">page_size_option</span> = <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">_test_options</span>[<span class="ruby-string">&#39;PageSize&#39;</span>]
@@ -391,8 +394,8 @@ criteria.</p>
                 <span class="ruby-identifier">tries</span> = <span class="ruby-value">0</span>
                 <span class="ruby-identifier">loop</span> <span class="ruby-keyword">do</span>
                     <span class="ruby-keyword">begin</span>
-                        <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-ivar">@stub</span>.<span class="ruby-identifier">list</span>(<span class="ruby-identifier">req</span>, <span class="ruby-identifier">metadata</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">get_metadata</span>(<span class="ruby-string">&#39;Nodes.List&#39;</span>, <span class="ruby-identifier">req</span>), <span class="ruby-identifier">deadline</span><span class="ruby-value">:deadline</span>)
-                    <span class="ruby-keyword">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exception</span>
+                        <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-ivar">@stub</span>.<span class="ruby-identifier">list</span>(<span class="ruby-identifier">req</span>, <span class="ruby-value">metadata:</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">get_metadata</span>(<span class="ruby-string">&#39;Nodes.List&#39;</span>, <span class="ruby-identifier">req</span>), <span class="ruby-value">deadline:</span><span class="ruby-identifier">deadline</span>)
+                    <span class="ruby-keyword">rescue</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">exception</span>
                         <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">shouldRetry</span>(<span class="ruby-identifier">tries</span>, <span class="ruby-identifier">exception</span>))
                             <span class="ruby-identifier">tries</span><span class="ruby-operator">+</span><span class="ruby-operator">+</span>
                             <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">jitterSleep</span>(<span class="ruby-identifier">tries</span>)
@@ -440,9 +443,10 @@ criteria.</p>
           
           <div class="method-source-code" id="update-source">
             <pre><span class="ruby-comment"># File lib/svc.rb, line 581</span>
-        <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>(
-<span class="ruby-identifier">node</span>  ,
- <span class="ruby-identifier">deadline</span><span class="ruby-value">:nil</span>)
+        <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update</span>(
+<span class="ruby-identifier">node</span> \
+,
+ <span class="ruby-value">deadline:</span><span class="ruby-keyword">nil</span>)
             <span class="ruby-identifier">req</span> = <span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">NodeUpdateRequest</span>.<span class="ruby-identifier">new</span>()
                         
             <span class="ruby-identifier">req</span>.<span class="ruby-identifier">node</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">node_to_plumbing</span>(<span class="ruby-identifier">node</span>)
@@ -450,8 +454,8 @@ criteria.</p>
             <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-keyword">nil</span>
             <span class="ruby-identifier">loop</span> <span class="ruby-keyword">do</span>
                 <span class="ruby-keyword">begin</span>
-                    <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-ivar">@stub</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">req</span>, <span class="ruby-identifier">metadata</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">get_metadata</span>(<span class="ruby-string">&#39;Nodes.Update&#39;</span>, <span class="ruby-identifier">req</span>), <span class="ruby-identifier">deadline</span><span class="ruby-value">:deadline</span>)
-                <span class="ruby-keyword">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">exception</span>
+                    <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-ivar">@stub</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">req</span>, <span class="ruby-value">metadata:</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">get_metadata</span>(<span class="ruby-string">&#39;Nodes.Update&#39;</span>, <span class="ruby-identifier">req</span>), <span class="ruby-value">deadline:</span><span class="ruby-identifier">deadline</span>)
+                <span class="ruby-keyword">rescue</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">exception</span>
                     <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">shouldRetry</span>(<span class="ruby-identifier">tries</span>, <span class="ruby-identifier">exception</span>))
                         <span class="ruby-identifier">tries</span><span class="ruby-operator">+</span><span class="ruby-operator">+</span>
                         <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">jitterSleep</span>(<span class="ruby-identifier">tries</span>)
@@ -482,12 +486,13 @@ criteria.</p>
     </section>
   
   </section>
+
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
-  <p><a href="http://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.1.
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 
