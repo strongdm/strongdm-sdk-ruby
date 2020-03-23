@@ -35,7 +35,7 @@ all_users[0].each{ |u|
 	okta_users.push({:login => u.profile.login, :first_name => u.profile.firstName, :last_name => u.profile.LastName, :groups => group_names})
 }
 
-client = SDM::Client.new(SDM_API_ACCESS_KEY, SDM_API_SECRET_KEY, host:"localhost:8889", insecure:true)
+client = SDM::Client.new(SDM_API_ACCESS_KEY, SDM_API_SECRET_KEY)
 accounts = client.accounts.list('type:user').map{ |a| [a.email, a.id] }.to_h
 grants = client.account_grants.list('').map{ |ag| ag }
 
