@@ -20,11 +20,27 @@ module SDM
   class CreateResponseMetadata
     def initialize()
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   # GetResponseMetadata is reserved for future use.
   class GetResponseMetadata
     def initialize()
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -32,11 +48,27 @@ module SDM
   class UpdateResponseMetadata
     def initialize()
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   # DeleteResponseMetadata is reserved for future use.
   class DeleteResponseMetadata
     def initialize()
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -73,6 +105,14 @@ module SDM
         @bucket = bucket
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   # AccountAttachmentCreateOptions specifies extra options for creating an
@@ -87,6 +127,14 @@ module SDM
       if overwrite != nil
         @overwrite = overwrite
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -114,6 +162,14 @@ module SDM
         @rate_limit = rate_limit
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   # AccountAttachmentGetResponse returns a requested AccountAttachment.
@@ -140,6 +196,14 @@ module SDM
         @rate_limit = rate_limit
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   # AccountAttachmentDeleteResponse returns information about a AccountAttachment that was deleted.
@@ -159,6 +223,14 @@ module SDM
       if rate_limit != nil
         @rate_limit = rate_limit
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -186,6 +258,14 @@ module SDM
         @role_id = role_id
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   # AccountGrantCreateResponse reports how the AccountGrants were created in the system.
@@ -211,6 +291,14 @@ module SDM
       if rate_limit != nil
         @rate_limit = rate_limit
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -238,6 +326,14 @@ module SDM
         @rate_limit = rate_limit
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   # AccountGrantDeleteResponse returns information about a AccountGrant that was deleted.
@@ -257,6 +353,14 @@ module SDM
       if rate_limit != nil
         @rate_limit = rate_limit
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -298,6 +402,14 @@ module SDM
         @valid_until = valid_until
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   # AccountCreateResponse reports how the Accounts were created in the system.
@@ -331,6 +443,14 @@ module SDM
         @rate_limit = rate_limit
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   # AccountGetResponse returns a requested Account.
@@ -356,6 +476,14 @@ module SDM
       if rate_limit != nil
         @rate_limit = rate_limit
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -384,6 +512,14 @@ module SDM
         @rate_limit = rate_limit
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   # AccountDeleteResponse returns information about a Account that was deleted.
@@ -403,6 +539,14 @@ module SDM
       if rate_limit != nil
         @rate_limit = rate_limit
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -443,6 +587,14 @@ module SDM
         @suspended = suspended
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   # A Service is a service account that can connect to resources they are granted
@@ -469,6 +621,14 @@ module SDM
       if suspended != nil
         @suspended = suspended
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -525,6 +685,14 @@ module SDM
         @region = region
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   class BigQuery
@@ -579,6 +747,14 @@ module SDM
       if username != nil
         @username = username
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -641,6 +817,14 @@ module SDM
         @tls_required = tls_required
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   class Druid
@@ -695,6 +879,14 @@ module SDM
       if port != nil
         @port = port
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -751,6 +943,14 @@ module SDM
         @port_override = port_override
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   class AmazonES
@@ -805,6 +1005,14 @@ module SDM
       if port_override != nil
         @port_override = port_override
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -866,6 +1074,14 @@ module SDM
       if tls_required != nil
         @tls_required = tls_required
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -934,6 +1150,14 @@ module SDM
         @subdomain = subdomain
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   class HTTPNoAuth
@@ -988,6 +1212,14 @@ module SDM
       if subdomain != nil
         @subdomain = subdomain
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -1049,6 +1281,14 @@ module SDM
       if subdomain != nil
         @subdomain = subdomain
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -1123,6 +1363,14 @@ module SDM
         @client_key_filename = client_key_filename
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   class KubernetesBasicAuth
@@ -1172,6 +1420,14 @@ module SDM
         @password = password
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   class KubernetesServiceAccount
@@ -1214,6 +1470,14 @@ module SDM
       if token != nil
         @token = token
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -1282,6 +1546,14 @@ module SDM
         @cluster_name = cluster_name
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   class GoogleGKE
@@ -1336,6 +1608,14 @@ module SDM
       if service_account_key_filename != nil
         @service_account_key_filename = service_account_key_filename
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -1410,6 +1690,14 @@ module SDM
         @client_key_filename = client_key_filename
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   class AKSBasicAuth
@@ -1459,6 +1747,14 @@ module SDM
         @password = password
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   class AKSServiceAccount
@@ -1502,6 +1798,14 @@ module SDM
         @token = token
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   class Memcached
@@ -1544,6 +1848,14 @@ module SDM
       if port != nil
         @port = port
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -1617,6 +1929,14 @@ module SDM
       if tls_required != nil
         @tls_required = tls_required
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -1697,6 +2017,14 @@ module SDM
         @tls_required = tls_required
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   class MongoHost
@@ -1763,6 +2091,14 @@ module SDM
       if tls_required != nil
         @tls_required = tls_required
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -1843,6 +2179,14 @@ module SDM
         @tls_required = tls_required
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   class Mysql
@@ -1903,6 +2247,14 @@ module SDM
       if port != nil
         @port = port
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -1965,6 +2317,14 @@ module SDM
         @port = port
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   class Clustrix
@@ -2025,6 +2385,14 @@ module SDM
       if port != nil
         @port = port
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -2087,6 +2455,14 @@ module SDM
         @port = port
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   class Memsql
@@ -2147,6 +2523,14 @@ module SDM
       if port != nil
         @port = port
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -2215,6 +2599,14 @@ module SDM
         @tls_required = tls_required
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   class Postgres
@@ -2281,6 +2673,14 @@ module SDM
       if override_database != nil
         @override_database = override_database
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -2349,6 +2749,14 @@ module SDM
         @override_database = override_database
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   class Greenplum
@@ -2415,6 +2823,14 @@ module SDM
       if override_database != nil
         @override_database = override_database
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -2483,6 +2899,14 @@ module SDM
         @override_database = override_database
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   class Redshift
@@ -2549,6 +2973,14 @@ module SDM
       if override_database != nil
         @override_database = override_database
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -2617,6 +3049,14 @@ module SDM
         @tls_required = tls_required
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   class RDP
@@ -2672,6 +3112,14 @@ module SDM
         @port = port
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   class Redis
@@ -2720,6 +3168,14 @@ module SDM
       if port != nil
         @port = port
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -2775,6 +3231,14 @@ module SDM
       if tls_required != nil
         @tls_required = tls_required
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -2836,6 +3300,14 @@ module SDM
       if port_override != nil
         @port_override = port_override
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -2910,6 +3382,14 @@ module SDM
         @override_database = override_database
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   class SSH
@@ -2964,6 +3444,14 @@ module SDM
       if port_forwarding != nil
         @port_forwarding = port_forwarding
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -3020,6 +3508,14 @@ module SDM
         @password = password
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   class SybaseIQ
@@ -3074,6 +3570,14 @@ module SDM
       if password != nil
         @password = password
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -3130,6 +3634,14 @@ module SDM
         @port = port
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   # NodeCreateResponse reports how the Nodes were created in the system.
@@ -3163,6 +3675,14 @@ module SDM
         @rate_limit = rate_limit
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   # NodeGetResponse returns a requested Node.
@@ -3188,6 +3708,14 @@ module SDM
       if rate_limit != nil
         @rate_limit = rate_limit
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -3216,6 +3744,14 @@ module SDM
         @rate_limit = rate_limit
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   # NodeDeleteResponse returns information about a Node that was deleted.
@@ -3235,6 +3771,14 @@ module SDM
       if rate_limit != nil
         @rate_limit = rate_limit
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -3262,6 +3806,14 @@ module SDM
       if state != nil
         @state = state
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -3303,6 +3855,14 @@ module SDM
         @bind_address = bind_address
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   # ResourceCreateResponse reports how the Resources were created in the system.
@@ -3329,6 +3889,14 @@ module SDM
         @rate_limit = rate_limit
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   # ResourceGetResponse returns a requested Resource.
@@ -3354,6 +3922,14 @@ module SDM
       if rate_limit != nil
         @rate_limit = rate_limit
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -3382,6 +3958,14 @@ module SDM
         @rate_limit = rate_limit
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   # ResourceDeleteResponse returns information about a Resource that was deleted.
@@ -3401,6 +3985,14 @@ module SDM
       if rate_limit != nil
         @rate_limit = rate_limit
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -3428,6 +4020,14 @@ module SDM
         @rate_limit = rate_limit
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   # RoleAttachmentGetResponse returns a requested RoleAttachment.
@@ -3454,6 +4054,14 @@ module SDM
         @rate_limit = rate_limit
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   # RoleAttachmentDeleteResponse returns information about a RoleAttachment that was deleted.
@@ -3473,6 +4081,14 @@ module SDM
       if rate_limit != nil
         @rate_limit = rate_limit
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -3500,6 +4116,14 @@ module SDM
         @attached_role_id = attached_role_id
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   # RoleGrantCreateResponse reports how the RoleGrants were created in the system.
@@ -3525,6 +4149,14 @@ module SDM
       if rate_limit != nil
         @rate_limit = rate_limit
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -3552,6 +4184,14 @@ module SDM
         @rate_limit = rate_limit
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   # RoleGrantDeleteResponse returns information about a RoleGrant that was deleted.
@@ -3571,6 +4211,14 @@ module SDM
       if rate_limit != nil
         @rate_limit = rate_limit
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -3599,6 +4247,14 @@ module SDM
         @role_id = role_id
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   # RoleCreateResponse reports how the Roles were created in the system. It can
@@ -3626,6 +4282,14 @@ module SDM
         @rate_limit = rate_limit
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   # RoleGetResponse returns a requested Role.
@@ -3651,6 +4315,14 @@ module SDM
       if rate_limit != nil
         @rate_limit = rate_limit
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -3679,6 +4351,14 @@ module SDM
         @rate_limit = rate_limit
       end
     end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
   end
 
   # RoleDeleteResponse returns information about a Role that was deleted.
@@ -3698,6 +4378,14 @@ module SDM
       if rate_limit != nil
         @rate_limit = rate_limit
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 
@@ -3724,6 +4412,14 @@ module SDM
       if composite != nil
         @composite = composite
       end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
     end
   end
 end

@@ -77,6 +77,8 @@
     
     <li ><a href="#method-i-main">#main</a>
     
+    <li ><a href="#method-i-okta_sync">#okta_sync</a>
+    
   </ul>
 </div>
 
@@ -120,6 +122,26 @@
         <dd>
         
       
+        <dt id="OKTA_CLIENT_ORGURL">OKTA_CLIENT_ORGURL
+        
+        <dd>
+        
+      
+        <dt id="OKTA_CLIENT_TOKEN">OKTA_CLIENT_TOKEN
+        
+        <dd>
+        
+      
+        <dt id="SDM_API_ACCESS_KEY">SDM_API_ACCESS_KEY
+        
+        <dd>
+        
+      
+        <dt id="SDM_API_SECRET_KEY">SDM_API_SECRET_KEY
+        
+        <dd>
+        
+      
       </dl>
     </section>
     
@@ -152,7 +174,7 @@
 
           
           <div class="method-source-code" id="main-source">
-            <pre><span class="ruby-comment"># File examples/panicButton.rb, line 53</span>
+            <pre><span class="ruby-comment"># File examples/panicButton.rb, line 25</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">main</span>
   <span class="ruby-identifier">access_key</span> = <span class="ruby-constant">ENV</span>[<span class="ruby-string">&quot;SDM_API_ACCESS_KEY&quot;</span>]
   <span class="ruby-identifier">secret_key</span> = <span class="ruby-constant">ENV</span>[<span class="ruby-string">&quot;SDM_API_SECRET_KEY&quot;</span>]
@@ -264,6 +286,179 @@
   }
 
   <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;suspended &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">suspended_count</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot; users&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-okta_sync" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">okta_sync</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="okta_sync-source">
+            <pre><span class="ruby-comment"># File examples/okta-sync/oktaSync.rb, line 25</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">okta_sync</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">SDM_API_ACCESS_KEY</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;&quot;</span> <span class="ruby-operator">||</span> <span class="ruby-constant">SDM_API_SECRET_KEY</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;&quot;</span> <span class="ruby-operator">||</span> <span class="ruby-constant">OKTA_CLIENT_TOKEN</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;&quot;</span> <span class="ruby-operator">||</span> <span class="ruby-constant">OKTA_CLIENT_ORGURL</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;&quot;</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;SDM_API_ACCESS_KEY, SDM_API_SECRET_KEY, OKTA_CLIENT_TOKEN, and OKTA_CLIENT_ORGURL must be set&quot;</span>
+    <span class="ruby-identifier">exit</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">report</span> = {
+    <span class="ruby-value">:start</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>,
+
+    <span class="ruby-value">:oktaUsersCount</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">0</span>,
+    <span class="ruby-value">:oktaUsers</span> <span class="ruby-operator">=&gt;</span> [],
+
+    <span class="ruby-value">:sdmUsersCount</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">0</span>,
+    <span class="ruby-value">:sdmUsers</span> <span class="ruby-operator">=&gt;</span> [],
+
+    <span class="ruby-value">:bothUsersCount</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">0</span>,
+
+    <span class="ruby-value">:sdmResourcesCount</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">0</span>,
+    <span class="ruby-value">:sdmResources</span> <span class="ruby-operator">=&gt;</span> {},
+
+    <span class="ruby-value">:permissionsGranted</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">0</span>,
+    <span class="ruby-value">:permissionsRevoked</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">0</span>,
+    <span class="ruby-value">:grants</span> <span class="ruby-operator">=&gt;</span> [],
+    <span class="ruby-value">:revocations</span> <span class="ruby-operator">=&gt;</span> [],
+
+    <span class="ruby-value">:matchers</span> <span class="ruby-operator">=&gt;</span> {},
+  }
+
+  <span class="ruby-identifier">plan</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-identifier">verbose</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-constant">OptionParser</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">opts</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">banner</span> = <span class="ruby-string">&quot;Usage oktaSync.rb [options]&quot;</span>
+    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&quot;-p&quot;</span>, <span class="ruby-string">&quot;--plan&quot;</span>, <span class="ruby-string">&quot;calculate changes but do not apply them&quot;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">plan</span> = <span class="ruby-identifier">p</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&quot;-v&quot;</span>, <span class="ruby-string">&quot;--verbose&quot;</span>, <span class="ruby-string">&quot;print detailed report&quot;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">verbose</span> = <span class="ruby-identifier">v</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>.<span class="ruby-identifier">parse!</span>
+
+  <span class="ruby-identifier">client</span> = <span class="ruby-constant">SDM</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">SDM_API_ACCESS_KEY</span>, <span class="ruby-constant">SDM_API_SECRET_KEY</span>)
+  <span class="ruby-identifier">okta_client</span> = <span class="ruby-constant">Oktakit</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">token:</span> <span class="ruby-constant">OKTA_CLIENT_TOKEN</span>, <span class="ruby-value">api_endpoint:</span> <span class="ruby-constant">OKTA_CLIENT_ORGURL</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;/api/v1&quot;</span>)
+  <span class="ruby-identifier">matchers</span> = <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-string">&quot;matchers.yml&quot;</span>))
+  <span class="ruby-identifier">report</span>[<span class="ruby-value">:matchers</span>] = <span class="ruby-identifier">matchers</span>
+
+  <span class="ruby-identifier">all_users</span> = <span class="ruby-identifier">okta_client</span>.<span class="ruby-identifier">list_users</span>({
+    <span class="ruby-value">&#39;query&#39;:</span> {
+      <span class="ruby-value">&#39;search&#39;:</span> <span class="ruby-string">&quot;profile.department eq \&quot;Engineering\&quot; and (status eq \&quot;ACTIVE\&quot;)&quot;</span>,
+    },
+  })
+
+  <span class="ruby-identifier">okta_users</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
+  <span class="ruby-identifier">all_users</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">u</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">groups</span> = <span class="ruby-identifier">okta_client</span>.<span class="ruby-identifier">get_member_groups</span>(<span class="ruby-identifier">u</span>.<span class="ruby-identifier">id</span>)
+    <span class="ruby-identifier">group_names</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
+    <span class="ruby-identifier">groups</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">ug</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">group_names</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">ug</span>.<span class="ruby-identifier">profile</span>.<span class="ruby-identifier">name</span>)
+    }
+    <span class="ruby-identifier">okta_users</span>.<span class="ruby-identifier">push</span>({ <span class="ruby-value">:login</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">u</span>.<span class="ruby-identifier">profile</span>.<span class="ruby-identifier">login</span>, <span class="ruby-value">:first_name</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">u</span>.<span class="ruby-identifier">profile</span>.<span class="ruby-identifier">firstName</span>, <span class="ruby-value">:last_name</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">u</span>.<span class="ruby-identifier">profile</span>.<span class="ruby-constant">LastName</span>, <span class="ruby-value">:groups</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">group_names</span> })
+  }
+  <span class="ruby-identifier">report</span>[<span class="ruby-value">:oktaUsers</span>] = <span class="ruby-identifier">okta_users</span>
+  <span class="ruby-identifier">report</span>[<span class="ruby-value">:oktaUsersCount</span>] = <span class="ruby-identifier">okta_users</span>.<span class="ruby-identifier">size</span>
+
+  <span class="ruby-identifier">accounts</span> = <span class="ruby-identifier">client</span>.<span class="ruby-identifier">accounts</span>.<span class="ruby-identifier">list</span>(<span class="ruby-string">&quot;type:user&quot;</span>).<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span> [<span class="ruby-identifier">a</span>.<span class="ruby-identifier">email</span>, <span class="ruby-identifier">a</span>] }.<span class="ruby-identifier">to_h</span>
+  <span class="ruby-identifier">report</span>[<span class="ruby-value">:sdmUsers</span>] = <span class="ruby-identifier">accounts</span>
+  <span class="ruby-identifier">report</span>[<span class="ruby-value">:sdmUsersCount</span>] = <span class="ruby-identifier">accounts</span>.<span class="ruby-identifier">size</span>
+  <span class="ruby-identifier">grants</span> = <span class="ruby-identifier">client</span>.<span class="ruby-identifier">account_grants</span>.<span class="ruby-identifier">list</span>(<span class="ruby-string">&quot;&quot;</span>).<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">ag</span><span class="ruby-operator">|</span> <span class="ruby-identifier">ag</span> }
+
+  <span class="ruby-identifier">current</span> = {}
+  <span class="ruby-identifier">grants</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">g</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">current</span>[<span class="ruby-identifier">g</span>.<span class="ruby-identifier">account_id</span>] = [] <span class="ruby-keyword">if</span> <span class="ruby-keyword">not</span> <span class="ruby-identifier">current</span>[<span class="ruby-identifier">g</span>.<span class="ruby-identifier">account_id</span>]
+    <span class="ruby-identifier">current</span>[<span class="ruby-identifier">g</span>.<span class="ruby-identifier">account_id</span>].<span class="ruby-identifier">push</span>({ <span class="ruby-value">:resource_id</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">g</span>.<span class="ruby-identifier">resource_id</span>, <span class="ruby-value">:id</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">g</span>.<span class="ruby-identifier">id</span> })
+  }
+
+  <span class="ruby-identifier">desired</span> = {}
+  <span class="ruby-identifier">overlapping</span> = <span class="ruby-value">0</span>
+  <span class="ruby-identifier">matchers</span>[<span class="ruby-string">&quot;groups&quot;</span>].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">group</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">group</span>[<span class="ruby-string">&quot;resources&quot;</span>].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">resourceQuery</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">client</span>.<span class="ruby-identifier">resources</span>.<span class="ruby-identifier">list</span>(<span class="ruby-identifier">resourceQuery</span>).<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">res</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">report</span>[<span class="ruby-value">:sdmResources</span>][<span class="ruby-identifier">res</span>.<span class="ruby-identifier">id</span>] = <span class="ruby-identifier">res</span>
+        <span class="ruby-identifier">okta_users</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">u</span><span class="ruby-operator">|</span>
+          <span class="ruby-keyword">if</span> <span class="ruby-identifier">u</span>[<span class="ruby-value">:groups</span>].<span class="ruby-identifier">include?</span> <span class="ruby-identifier">group</span>[<span class="ruby-string">&quot;name&quot;</span>]
+            <span class="ruby-identifier">account</span> = <span class="ruby-identifier">accounts</span>[<span class="ruby-identifier">u</span>[<span class="ruby-value">:login</span>]]
+            <span class="ruby-keyword">if</span> <span class="ruby-identifier">account</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+              <span class="ruby-identifier">overlapping</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+              <span class="ruby-identifier">desired</span>[<span class="ruby-identifier">account</span>.<span class="ruby-identifier">id</span>] = [] <span class="ruby-keyword">if</span> <span class="ruby-keyword">not</span> <span class="ruby-identifier">desired</span>[<span class="ruby-identifier">account</span>.<span class="ruby-identifier">id</span>]
+              <span class="ruby-identifier">desired</span>[<span class="ruby-identifier">account</span>.<span class="ruby-identifier">id</span>].<span class="ruby-identifier">push</span>(<span class="ruby-identifier">res</span>.<span class="ruby-identifier">id</span>)
+            <span class="ruby-keyword">end</span>
+          <span class="ruby-keyword">end</span>
+        }
+      }
+    }
+  }
+  <span class="ruby-identifier">report</span>[<span class="ruby-value">:bothUsersCount</span>] = <span class="ruby-identifier">overlapping</span>
+  <span class="ruby-identifier">report</span>[<span class="ruby-value">:sdmResourcesCount</span>] = <span class="ruby-identifier">report</span>[<span class="ruby-value">:sdmResources</span>].<span class="ruby-identifier">size</span>
+
+  <span class="ruby-identifier">revocations</span> = <span class="ruby-value">0</span>
+  <span class="ruby-identifier">current</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">aid</span>, <span class="ruby-identifier">curRes</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">desRes</span> = <span class="ruby-identifier">desired</span>[<span class="ruby-identifier">aid</span>]
+    <span class="ruby-identifier">desRes</span> = [] <span class="ruby-keyword">if</span> <span class="ruby-keyword">not</span> <span class="ruby-identifier">desired</span>[<span class="ruby-identifier">aid</span>]
+    <span class="ruby-identifier">curRes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">r</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-keyword">not</span>(<span class="ruby-identifier">desRes</span>.<span class="ruby-identifier">include?</span> <span class="ruby-identifier">r</span>[<span class="ruby-value">:resource_id</span>])
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">plan</span>
+          <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Plan: revoke %s from user %s\n&quot;</span> <span class="ruby-operator">%</span> [<span class="ruby-identifier">r</span>[<span class="ruby-value">:resource_id</span>], <span class="ruby-identifier">aid</span>]
+        <span class="ruby-keyword">else</span>
+          <span class="ruby-identifier">client</span>.<span class="ruby-identifier">account_grants</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">r</span>[<span class="ruby-value">:id</span>])
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">report</span>[<span class="ruby-value">:revocations</span>].<span class="ruby-identifier">push</span>(<span class="ruby-identifier">r</span>[<span class="ruby-value">:id</span>])
+        <span class="ruby-identifier">revocations</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+      <span class="ruby-keyword">end</span>
+    }
+  }
+  <span class="ruby-identifier">report</span>[<span class="ruby-value">:permissionsRevoked</span>] = <span class="ruby-identifier">revocations</span>
+
+  <span class="ruby-identifier">grants</span> = <span class="ruby-value">0</span>
+  <span class="ruby-identifier">desired</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">aid</span>, <span class="ruby-identifier">desRes</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">curRes</span> = <span class="ruby-identifier">current</span>[<span class="ruby-identifier">aid</span>]
+    <span class="ruby-identifier">curRes</span> = [] <span class="ruby-keyword">if</span> <span class="ruby-keyword">not</span> <span class="ruby-identifier">current</span>[<span class="ruby-identifier">aid</span>]
+    <span class="ruby-identifier">desRes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">r</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-keyword">not</span>(<span class="ruby-identifier">curRes</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">c</span>[<span class="ruby-value">:resource_id</span>] }.<span class="ruby-identifier">include?</span> <span class="ruby-identifier">r</span>)
+        <span class="ruby-identifier">ag</span> = <span class="ruby-constant">SDM</span><span class="ruby-operator">::</span><span class="ruby-constant">AccountGrant</span>.<span class="ruby-identifier">new</span>()
+        <span class="ruby-identifier">ag</span>.<span class="ruby-identifier">account_id</span> = <span class="ruby-identifier">aid</span>
+        <span class="ruby-identifier">ag</span>.<span class="ruby-identifier">resource_id</span> = <span class="ruby-identifier">r</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">plan</span>
+          <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Plan: grant %s to user %s\n&quot;</span> <span class="ruby-operator">%</span> [<span class="ruby-identifier">r</span>, <span class="ruby-identifier">aid</span>]
+        <span class="ruby-keyword">else</span>
+          <span class="ruby-identifier">client</span>.<span class="ruby-identifier">account_grants</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">ag</span>)
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">report</span>[<span class="ruby-value">:grants</span>].<span class="ruby-identifier">push</span>(<span class="ruby-identifier">ag</span>)
+        <span class="ruby-identifier">grants</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+      <span class="ruby-keyword">end</span>
+    }
+  }
+  <span class="ruby-identifier">report</span>[<span class="ruby-value">:permissionsGranted</span>] = <span class="ruby-identifier">grants</span>
+
+  <span class="ruby-identifier">report</span>[<span class="ruby-value">:complete</span>] = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">verbose</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-identifier">report</span>.<span class="ruby-identifier">to_json</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;%d Okta users, %d strongDM users, %d overlapping users, %d grants, %d revocations&quot;</span> <span class="ruby-operator">%</span> [<span class="ruby-identifier">okta_users</span>.<span class="ruby-identifier">size</span>, <span class="ruby-identifier">accounts</span>.<span class="ruby-identifier">size</span>, <span class="ruby-identifier">overlapping</span>, <span class="ruby-identifier">grants</span>, <span class="ruby-identifier">revocations</span>]
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
