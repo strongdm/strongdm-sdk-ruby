@@ -215,6 +215,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :certificate_authority_filename, :string, 5
       optional :region, :string, 6
       optional :cluster_name, :string, 7
+      optional :role_arn, :string, 8
     end
     add_message "v1.GoogleGKE" do
       optional :id, :string, 32768

@@ -1503,6 +1503,8 @@ module SDM
 
     attr_accessor :cluster_name
 
+    attr_accessor :role_arn
+
     def initialize(
       id: nil,
       name: nil,
@@ -1513,7 +1515,8 @@ module SDM
       certificate_authority: nil,
       certificate_authority_filename: nil,
       region: nil,
-      cluster_name: nil
+      cluster_name: nil,
+      role_arn: nil
     )
       if id != nil
         @id = id
@@ -1544,6 +1547,9 @@ module SDM
       end
       if cluster_name != nil
         @cluster_name = cluster_name
+      end
+      if role_arn != nil
+        @role_arn = role_arn
       end
     end
 
