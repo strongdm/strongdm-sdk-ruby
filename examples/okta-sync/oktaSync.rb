@@ -12,10 +12,39 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+# Copyright 2020 StrongDM Inc
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# Copyright 2020 StrongDM Inc
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
 require "yaml"
 require "strongdm"
 require "oktakit"
 require "optparse"
+require "json"
 
 SDM_API_ACCESS_KEY = ENV.fetch("SDM_API_ACCESS_KEY", "")
 SDM_API_SECRET_KEY = ENV.fetch("SDM_API_SECRET_KEY", "")
@@ -93,7 +122,7 @@ def okta_sync
   current = {}
   grants.each { |g|
     current[g.account_id] = [] if not current[g.account_id]
-    current[g.account_id].push({ :resource_id => g.resource_id, :id => g.id })
+    current[g.account_id].push(g)
   }
 
   desired = {}
@@ -118,18 +147,21 @@ def okta_sync
   report[:bothUsersCount] = overlapping
   report[:sdmResourcesCount] = report[:sdmResources].size
 
+  accounts_in_roles = client.account_attachments.list("").map { |aa| [aa.account_id, true] }.to_h
+
   revocations = 0
   current.each { |aid, curRes|
+    next if accounts_in_roles[aid]
     desRes = desired[aid]
     desRes = [] if not desired[aid]
     curRes.each { |r|
-      if not(desRes.include? r[:resource_id])
+      if not(desRes.include? r.resource_id)
         if plan
-          puts "Plan: revoke %s from user %s\n" % [r[:resource_id], aid]
+          puts "Plan: revoke %s from user %s\n" % [r.resource_id, aid]
         else
-          client.account_grants.delete(r[:id])
+          client.account_grants.delete(r.id)
         end
-        report[:revocations].push(r[:id])
+        report[:revocations].push(r)
         revocations += 1
       end
     }
@@ -141,14 +173,14 @@ def okta_sync
     curRes = current[aid]
     curRes = [] if not current[aid]
     desRes.each { |r|
-      if not(curRes.map { |c| c[:resource_id] }.include? r)
+      if not(curRes.map { |c| c.resource_id }.include? r)
         ag = SDM::AccountGrant.new()
         ag.account_id = aid
         ag.resource_id = r
         if plan
           puts "Plan: grant %s to user %s\n" % [r, aid]
         else
-          client.account_grants.create(ag)
+          ag = client.account_grants.create(ag).account_grant
         end
         report[:grants].push(ag)
         grants += 1
@@ -160,14 +192,10 @@ def okta_sync
   report[:complete] = Time.now
 
   if verbose
-    puts report.to_json
+    puts JSON.pretty_generate(report)
   else
     puts "%d Okta users, %d strongDM users, %d overlapping users, %d grants, %d revocations" % [okta_users.size, accounts.size, overlapping, grants, revocations]
   end
 end
 
-begin
-  okta_sync
-rescue StandardError => ex
-  puts "cannot synchronize with okta: " + ex.to_s
-end
+okta_sync
