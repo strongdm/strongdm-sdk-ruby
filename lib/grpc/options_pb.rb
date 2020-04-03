@@ -29,6 +29,9 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :sdk_only, :bool, 1941306
       optional :computed, :bool, 1941307
       optional :force_new, :bool, 1941308
+      optional :custom_converter, :string, 1941309
+      optional :custom_go_porcelain_type, :string, 1941310
+      optional :custom_java_porcelain_type, :string, 1941311
     end
     add_message "v1.MessageOptions" do
       optional :model_name, :string, 1941300

@@ -11,11 +11,8 @@
   var index_rel_prefix = "../";
 </script>
 
-<script src="../js/navigation.js" defer></script>
-<script src="../js/search.js" defer></script>
-<script src="../js/search_index.js" defer></script>
-<script src="../js/searcher.js" defer></script>
-<script src="../js/darkfish.js" defer></script>
+<script src="../js/jquery.js"></script>
+<script src="../js/darkfish.js"></script>
 
 <link href="../css/fonts.css" rel="stylesheet">
 <link href="../css/rdoc.css" rel="stylesheet">
@@ -155,7 +152,7 @@
             <span class="ruby-ivar">@stub</span> = <span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">Nodes</span><span class="ruby-operator">::</span><span class="ruby-constant">Stub</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">host</span>, <span class="ruby-identifier">cred</span>)
         <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">rescue</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">exception</span>
-        <span class="ruby-identifier">raise</span> <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">error_to_porcelain</span>(<span class="ruby-identifier">exception</span>)
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">convert_error_to_porcelain</span>(<span class="ruby-identifier">exception</span>)
     <span class="ruby-keyword">end</span>
     <span class="ruby-ivar">@parent</span> = <span class="ruby-identifier">parent</span>
 <span class="ruby-keyword">end</span></pre>
@@ -203,7 +200,7 @@
  <span class="ruby-value">deadline:</span><span class="ruby-keyword">nil</span>)
             <span class="ruby-identifier">req</span> = <span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">NodeCreateRequest</span>.<span class="ruby-identifier">new</span>()
                         
-            <span class="ruby-identifier">req</span>.<span class="ruby-identifier">node</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">node_to_plumbing</span>(<span class="ruby-identifier">node</span>)
+            <span class="ruby-identifier">req</span>.<span class="ruby-identifier">node</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">convert_node_to_plumbing</span>(<span class="ruby-identifier">node</span>)
             <span class="ruby-identifier">tries</span> = <span class="ruby-value">0</span>
             <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-keyword">nil</span>
             <span class="ruby-identifier">loop</span> <span class="ruby-keyword">do</span>
@@ -215,17 +212,17 @@
                         <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">jitterSleep</span>(<span class="ruby-identifier">tries</span>)
                         <span class="ruby-keyword">next</span>
                     <span class="ruby-keyword">end</span>
-                    <span class="ruby-identifier">raise</span> <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">error_to_porcelain</span>(<span class="ruby-identifier">exception</span>)
+                    <span class="ruby-identifier">raise</span> <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">convert_error_to_porcelain</span>(<span class="ruby-identifier">exception</span>)
                 <span class="ruby-keyword">end</span>
                 <span class="ruby-keyword">break</span>
             <span class="ruby-keyword">end</span>
 
                         
             <span class="ruby-identifier">resp</span> = <span class="ruby-constant">NodeCreateResponse</span>.<span class="ruby-identifier">new</span>()
-            <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">meta</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">create_response_metadata_to_porcelain</span>(<span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">meta</span>)
-            <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">node</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">node_to_porcelain</span>(<span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">node</span>)
-            <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">token</span> = <span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">token</span>
-            <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">rate_limit</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">rate_limit_metadata_to_porcelain</span>(<span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">rate_limit</span>)
+            <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">meta</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">convert_create_response_metadata_to_porcelain</span>(<span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">meta</span>)
+            <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">node</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">convert_node_to_porcelain</span>(<span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">node</span>)
+            <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">token</span> = (<span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">token</span>)
+            <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">rate_limit</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">convert_rate_limit_metadata_to_porcelain</span>(<span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">rate_limit</span>)
             <span class="ruby-identifier">resp</span>
         <span class="ruby-keyword">end</span></pre>
           </div>
@@ -264,7 +261,7 @@
  <span class="ruby-value">deadline:</span><span class="ruby-keyword">nil</span>)
             <span class="ruby-identifier">req</span> = <span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">NodeDeleteRequest</span>.<span class="ruby-identifier">new</span>()
                         
-            <span class="ruby-identifier">req</span>.<span class="ruby-identifier">id</span> = <span class="ruby-identifier">id</span>
+            <span class="ruby-identifier">req</span>.<span class="ruby-identifier">id</span> = (<span class="ruby-identifier">id</span>)
             <span class="ruby-identifier">tries</span> = <span class="ruby-value">0</span>
             <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-keyword">nil</span>
             <span class="ruby-identifier">loop</span> <span class="ruby-keyword">do</span>
@@ -276,15 +273,15 @@
                         <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">jitterSleep</span>(<span class="ruby-identifier">tries</span>)
                         <span class="ruby-keyword">next</span>
                     <span class="ruby-keyword">end</span>
-                    <span class="ruby-identifier">raise</span> <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">error_to_porcelain</span>(<span class="ruby-identifier">exception</span>)
+                    <span class="ruby-identifier">raise</span> <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">convert_error_to_porcelain</span>(<span class="ruby-identifier">exception</span>)
                 <span class="ruby-keyword">end</span>
                 <span class="ruby-keyword">break</span>
             <span class="ruby-keyword">end</span>
 
                         
             <span class="ruby-identifier">resp</span> = <span class="ruby-constant">NodeDeleteResponse</span>.<span class="ruby-identifier">new</span>()
-            <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">meta</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">delete_response_metadata_to_porcelain</span>(<span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">meta</span>)
-            <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">rate_limit</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">rate_limit_metadata_to_porcelain</span>(<span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">rate_limit</span>)
+            <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">meta</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">convert_delete_response_metadata_to_porcelain</span>(<span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">meta</span>)
+            <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">rate_limit</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">convert_rate_limit_metadata_to_porcelain</span>(<span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">rate_limit</span>)
             <span class="ruby-identifier">resp</span>
         <span class="ruby-keyword">end</span></pre>
           </div>
@@ -323,7 +320,7 @@
  <span class="ruby-value">deadline:</span><span class="ruby-keyword">nil</span>)
             <span class="ruby-identifier">req</span> = <span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">NodeGetRequest</span>.<span class="ruby-identifier">new</span>()
                         
-            <span class="ruby-identifier">req</span>.<span class="ruby-identifier">id</span> = <span class="ruby-identifier">id</span>
+            <span class="ruby-identifier">req</span>.<span class="ruby-identifier">id</span> = (<span class="ruby-identifier">id</span>)
             <span class="ruby-identifier">tries</span> = <span class="ruby-value">0</span>
             <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-keyword">nil</span>
             <span class="ruby-identifier">loop</span> <span class="ruby-keyword">do</span>
@@ -335,16 +332,16 @@
                         <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">jitterSleep</span>(<span class="ruby-identifier">tries</span>)
                         <span class="ruby-keyword">next</span>
                     <span class="ruby-keyword">end</span>
-                    <span class="ruby-identifier">raise</span> <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">error_to_porcelain</span>(<span class="ruby-identifier">exception</span>)
+                    <span class="ruby-identifier">raise</span> <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">convert_error_to_porcelain</span>(<span class="ruby-identifier">exception</span>)
                 <span class="ruby-keyword">end</span>
                 <span class="ruby-keyword">break</span>
             <span class="ruby-keyword">end</span>
 
                         
             <span class="ruby-identifier">resp</span> = <span class="ruby-constant">NodeGetResponse</span>.<span class="ruby-identifier">new</span>()
-            <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">meta</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">get_response_metadata_to_porcelain</span>(<span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">meta</span>)
-            <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">node</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">node_to_porcelain</span>(<span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">node</span>)
-            <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">rate_limit</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">rate_limit_metadata_to_porcelain</span>(<span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">rate_limit</span>)
+            <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">meta</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">convert_get_response_metadata_to_porcelain</span>(<span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">meta</span>)
+            <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">node</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">convert_node_to_porcelain</span>(<span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">node</span>)
+            <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">rate_limit</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">convert_rate_limit_metadata_to_porcelain</span>(<span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">rate_limit</span>)
             <span class="ruby-identifier">resp</span>
         <span class="ruby-keyword">end</span></pre>
           </div>
@@ -401,11 +398,11 @@
                             <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">jitterSleep</span>(<span class="ruby-identifier">tries</span>)
                             <span class="ruby-keyword">next</span>
                         <span class="ruby-keyword">end</span>
-                        <span class="ruby-identifier">raise</span> <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">error_to_porcelain</span>(<span class="ruby-identifier">exception</span>)
+                        <span class="ruby-identifier">raise</span> <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">convert_error_to_porcelain</span>(<span class="ruby-identifier">exception</span>)
                     <span class="ruby-keyword">end</span>
                     <span class="ruby-identifier">tries</span> = <span class="ruby-value">0</span>
                     <span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing_item</span><span class="ruby-operator">|</span>
-                        <span class="ruby-identifier">g</span>.<span class="ruby-identifier">yield</span> <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">node_to_porcelain</span>(<span class="ruby-identifier">plumbing_item</span>)
+                        <span class="ruby-identifier">g</span>.<span class="ruby-identifier">yield</span> <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">convert_node_to_porcelain</span>(<span class="ruby-identifier">plumbing_item</span>)
                     <span class="ruby-keyword">end</span>
                     <span class="ruby-keyword">break</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">meta</span>.<span class="ruby-identifier">next_cursor</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;&quot;</span>
                     <span class="ruby-identifier">req</span>.<span class="ruby-identifier">meta</span>.<span class="ruby-identifier">cursor</span> = <span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">meta</span>.<span class="ruby-identifier">next_cursor</span>
@@ -449,7 +446,7 @@
  <span class="ruby-value">deadline:</span><span class="ruby-keyword">nil</span>)
             <span class="ruby-identifier">req</span> = <span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">NodeUpdateRequest</span>.<span class="ruby-identifier">new</span>()
                         
-            <span class="ruby-identifier">req</span>.<span class="ruby-identifier">node</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">node_to_plumbing</span>(<span class="ruby-identifier">node</span>)
+            <span class="ruby-identifier">req</span>.<span class="ruby-identifier">node</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">convert_node_to_plumbing</span>(<span class="ruby-identifier">node</span>)
             <span class="ruby-identifier">tries</span> = <span class="ruby-value">0</span>
             <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-keyword">nil</span>
             <span class="ruby-identifier">loop</span> <span class="ruby-keyword">do</span>
@@ -461,16 +458,16 @@
                         <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">jitterSleep</span>(<span class="ruby-identifier">tries</span>)
                         <span class="ruby-keyword">next</span>
                     <span class="ruby-keyword">end</span>
-                    <span class="ruby-identifier">raise</span> <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">error_to_porcelain</span>(<span class="ruby-identifier">exception</span>)
+                    <span class="ruby-identifier">raise</span> <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">convert_error_to_porcelain</span>(<span class="ruby-identifier">exception</span>)
                 <span class="ruby-keyword">end</span>
                 <span class="ruby-keyword">break</span>
             <span class="ruby-keyword">end</span>
 
                         
             <span class="ruby-identifier">resp</span> = <span class="ruby-constant">NodeUpdateResponse</span>.<span class="ruby-identifier">new</span>()
-            <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">meta</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">update_response_metadata_to_porcelain</span>(<span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">meta</span>)
-            <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">node</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">node_to_porcelain</span>(<span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">node</span>)
-            <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">rate_limit</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">rate_limit_metadata_to_porcelain</span>(<span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">rate_limit</span>)
+            <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">meta</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">convert_update_response_metadata_to_porcelain</span>(<span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">meta</span>)
+            <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">node</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">convert_node_to_porcelain</span>(<span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">node</span>)
+            <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">rate_limit</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">convert_rate_limit_metadata_to_porcelain</span>(<span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">rate_limit</span>)
             <span class="ruby-identifier">resp</span>
         <span class="ruby-keyword">end</span></pre>
           </div>
@@ -492,7 +489,7 @@
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.0.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 
