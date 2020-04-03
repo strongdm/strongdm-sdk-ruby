@@ -1839,6 +1839,7 @@ module SDM
       porcelain.certificate_authority_filename = (plumbing.certificate_authority_filename)
       porcelain.region = (plumbing.region)
       porcelain.cluster_name = (plumbing.cluster_name)
+      porcelain.role_arn = (plumbing.role_arn)
       porcelain
     end
 
@@ -1858,6 +1859,7 @@ module SDM
       plumbing.certificate_authority_filename = (porcelain.certificate_authority_filename) unless porcelain.certificate_authority_filename == nil
       plumbing.region = (porcelain.region) unless porcelain.region == nil
       plumbing.cluster_name = (porcelain.cluster_name) unless porcelain.cluster_name == nil
+      plumbing.role_arn = (porcelain.role_arn) unless porcelain.role_arn == nil
       plumbing
     end
     def self.convert_repeated_amazon_eks_to_plumbing(porcelains)

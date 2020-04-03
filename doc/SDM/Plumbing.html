@@ -1968,7 +1968,7 @@
 
           
           <div class="method-source-code" id="convert_aks_basic_auth_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2003</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2005</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_aks_basic_auth_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -2013,7 +2013,7 @@
 
           
           <div class="method-source-code" id="convert_aks_basic_auth_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 1987</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 1989</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_aks_basic_auth_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -2058,7 +2058,7 @@
 
           
           <div class="method-source-code" id="convert_aks_service_account_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2050</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2052</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_aks_service_account_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -2102,7 +2102,7 @@
 
           
           <div class="method-source-code" id="convert_aks_service_account_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2035</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2037</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_aks_service_account_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -2146,7 +2146,7 @@
 
           
           <div class="method-source-code" id="convert_aks_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 1951</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 1953</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_aks_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -2195,7 +2195,7 @@
 
           
           <div class="method-source-code" id="convert_aks_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 1931</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 1933</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_aks_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -2244,7 +2244,7 @@
 
           
           <div class="method-source-code" id="convert_amazon_eks_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 1846</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 1847</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_amazon_eks_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -2261,6 +2261,7 @@
     <span class="ruby-identifier">plumbing</span>.<span class="ruby-identifier">certificate_authority_filename</span> = (<span class="ruby-identifier">porcelain</span>.<span class="ruby-identifier">certificate_authority_filename</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">porcelain</span>.<span class="ruby-identifier">certificate_authority_filename</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
     <span class="ruby-identifier">plumbing</span>.<span class="ruby-identifier">region</span> = (<span class="ruby-identifier">porcelain</span>.<span class="ruby-identifier">region</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">porcelain</span>.<span class="ruby-identifier">region</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
     <span class="ruby-identifier">plumbing</span>.<span class="ruby-identifier">cluster_name</span> = (<span class="ruby-identifier">porcelain</span>.<span class="ruby-identifier">cluster_name</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">porcelain</span>.<span class="ruby-identifier">cluster_name</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">plumbing</span>.<span class="ruby-identifier">role_arn</span> = (<span class="ruby-identifier">porcelain</span>.<span class="ruby-identifier">role_arn</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">porcelain</span>.<span class="ruby-identifier">role_arn</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
     <span class="ruby-identifier">plumbing</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -2309,6 +2310,7 @@
     <span class="ruby-identifier">porcelain</span>.<span class="ruby-identifier">certificate_authority_filename</span> = (<span class="ruby-identifier">plumbing</span>.<span class="ruby-identifier">certificate_authority_filename</span>)
     <span class="ruby-identifier">porcelain</span>.<span class="ruby-identifier">region</span> = (<span class="ruby-identifier">plumbing</span>.<span class="ruby-identifier">region</span>)
     <span class="ruby-identifier">porcelain</span>.<span class="ruby-identifier">cluster_name</span> = (<span class="ruby-identifier">plumbing</span>.<span class="ruby-identifier">cluster_name</span>)
+    <span class="ruby-identifier">porcelain</span>.<span class="ruby-identifier">role_arn</span> = (<span class="ruby-identifier">plumbing</span>.<span class="ruby-identifier">role_arn</span>)
     <span class="ruby-identifier">porcelain</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -2524,7 +2526,7 @@
 
           
           <div class="method-source-code" id="convert_aurora_mysql_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2423</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2425</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_aurora_mysql_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -2571,7 +2573,7 @@
 
           
           <div class="method-source-code" id="convert_aurora_mysql_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2405</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2407</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_aurora_mysql_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -2618,7 +2620,7 @@
 
           
           <div class="method-source-code" id="convert_aurora_postgres_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2740</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2742</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_aurora_postgres_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -2666,7 +2668,7 @@
 
           
           <div class="method-source-code" id="convert_aurora_postgres_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2721</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2723</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_aurora_postgres_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -2900,7 +2902,7 @@
 
           
           <div class="method-source-code" id="convert_clustrix_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2475</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2477</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_clustrix_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -2947,7 +2949,7 @@
 
           
           <div class="method-source-code" id="convert_clustrix_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2457</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2459</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_clustrix_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -2994,7 +2996,7 @@
 
           
           <div class="method-source-code" id="convert_cockroach_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2848</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2850</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_cockroach_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -3042,7 +3044,7 @@
 
           
           <div class="method-source-code" id="convert_cockroach_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2829</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2831</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_cockroach_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -3516,7 +3518,7 @@
 
           
           <div class="method-source-code" id="convert_elasticache_redis_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3106</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3108</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_elasticache_redis_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -3562,7 +3564,7 @@
 
           
           <div class="method-source-code" id="convert_elasticache_redis_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3089</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3091</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_elasticache_redis_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -3608,7 +3610,7 @@
 
           
           <div class="method-source-code" id="convert_error_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4359</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4361</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_error_to_porcelain</span>(<span class="ruby-identifier">err</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-keyword">not</span> <span class="ruby-identifier">err</span> .<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">GRPC</span><span class="ruby-operator">::</span><span class="ruby-constant">BadStatus</span>
         <span class="ruby-keyword">return</span> <span class="ruby-constant">RPCError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">err</span>, <span class="ruby-value">2</span>) <span class="ruby-comment"># Unknown</span>
@@ -3674,7 +3676,7 @@
 
           
           <div class="method-source-code" id="convert_gateway_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3692</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3694</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_gateway_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -3716,7 +3718,7 @@
 
           
           <div class="method-source-code" id="convert_gateway_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3679</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3681</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_gateway_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -3832,7 +3834,7 @@
 
           
           <div class="method-source-code" id="convert_google_gke_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 1898</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 1900</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_google_gke_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -3878,7 +3880,7 @@
 
           
           <div class="method-source-code" id="convert_google_gke_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 1881</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 1883</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_google_gke_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -3924,7 +3926,7 @@
 
           
           <div class="method-source-code" id="convert_greenplum_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2794</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2796</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_greenplum_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -3972,7 +3974,7 @@
 
           
           <div class="method-source-code" id="convert_greenplum_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2775</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2777</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_greenplum_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -4578,7 +4580,7 @@
 
           
           <div class="method-source-code" id="convert_maria_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2527</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2529</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_maria_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -4625,7 +4627,7 @@
 
           
           <div class="method-source-code" id="convert_maria_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2509</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2511</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_maria_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -4672,7 +4674,7 @@
 
           
           <div class="method-source-code" id="convert_memcached_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2096</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2098</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_memcached_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -4716,7 +4718,7 @@
 
           
           <div class="method-source-code" id="convert_memcached_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2081</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2083</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_memcached_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -4760,7 +4762,7 @@
 
           
           <div class="method-source-code" id="convert_memsql_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2579</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2581</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_memsql_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -4807,7 +4809,7 @@
 
           
           <div class="method-source-code" id="convert_memsql_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2561</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2563</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_memsql_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -4854,7 +4856,7 @@
 
           
           <div class="method-source-code" id="convert_mongo_host_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2260</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2262</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_mongo_host_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -4902,7 +4904,7 @@
 
           
           <div class="method-source-code" id="convert_mongo_host_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2241</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2243</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_mongo_host_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -4950,7 +4952,7 @@
 
           
           <div class="method-source-code" id="convert_mongo_legacy_host_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2147</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2149</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_mongo_legacy_host_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -4999,7 +5001,7 @@
 
           
           <div class="method-source-code" id="convert_mongo_legacy_host_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2127</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2129</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_mongo_legacy_host_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -5048,7 +5050,7 @@
 
           
           <div class="method-source-code" id="convert_mongo_legacy_replicaset_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2204</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2206</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_mongo_legacy_replicaset_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -5098,7 +5100,7 @@
 
           
           <div class="method-source-code" id="convert_mongo_legacy_replicaset_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2183</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2185</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_mongo_legacy_replicaset_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -5148,7 +5150,7 @@
 
           
           <div class="method-source-code" id="convert_mongo_replica_set_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2316</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2318</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_mongo_replica_set_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -5198,7 +5200,7 @@
 
           
           <div class="method-source-code" id="convert_mongo_replica_set_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2295</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2297</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_mongo_replica_set_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -5248,7 +5250,7 @@
 
           
           <div class="method-source-code" id="convert_mysql_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2371</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2373</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_mysql_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -5295,7 +5297,7 @@
 
           
           <div class="method-source-code" id="convert_mysql_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2353</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2355</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_mysql_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -5342,7 +5344,7 @@
 
           
           <div class="method-source-code" id="convert_node_create_response_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3459</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3461</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_node_create_response_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -5383,7 +5385,7 @@
 
           
           <div class="method-source-code" id="convert_node_create_response_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3447</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3449</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_node_create_response_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -5424,7 +5426,7 @@
 
           
           <div class="method-source-code" id="convert_node_delete_response_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3573</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3575</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_node_delete_response_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -5463,7 +5465,7 @@
 
           
           <div class="method-source-code" id="convert_node_delete_response_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3563</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3565</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_node_delete_response_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -5502,7 +5504,7 @@
 
           
           <div class="method-source-code" id="convert_node_get_response_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3498</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3500</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_node_get_response_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -5542,7 +5544,7 @@
 
           
           <div class="method-source-code" id="convert_node_get_response_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3487</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3489</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_node_get_response_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -5582,7 +5584,7 @@
 
           
           <div class="method-source-code" id="convert_node_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3599</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3601</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_node_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -5625,7 +5627,7 @@
 
           
           <div class="method-source-code" id="convert_node_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3613</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3615</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_node_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -5666,7 +5668,7 @@
 
           
           <div class="method-source-code" id="convert_node_update_response_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3536</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3538</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_node_update_response_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -5706,7 +5708,7 @@
 
           
           <div class="method-source-code" id="convert_node_update_response_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3525</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3527</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_node_update_response_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -5746,7 +5748,7 @@
 
           
           <div class="method-source-code" id="convert_oracle_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2632</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2634</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_oracle_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -5794,7 +5796,7 @@
 
           
           <div class="method-source-code" id="convert_oracle_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2613</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2615</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_oracle_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -5842,7 +5844,7 @@
 
           
           <div class="method-source-code" id="convert_postgres_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2686</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2688</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_postgres_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -5890,7 +5892,7 @@
 
           
           <div class="method-source-code" id="convert_postgres_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2667</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2669</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_postgres_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -5938,7 +5940,7 @@
 
           
           <div class="method-source-code" id="convert_presto_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2956</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2958</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_presto_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -5986,7 +5988,7 @@
 
           
           <div class="method-source-code" id="convert_presto_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2937</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2939</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_presto_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -6116,7 +6118,7 @@
 
           
           <div class="method-source-code" id="convert_rdp_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3008</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3010</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_rdp_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -6162,7 +6164,7 @@
 
           
           <div class="method-source-code" id="convert_rdp_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2991</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2993</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_rdp_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -6208,7 +6210,7 @@
 
           
           <div class="method-source-code" id="convert_redis_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3057</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3059</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_redis_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -6253,7 +6255,7 @@
 
           
           <div class="method-source-code" id="convert_redis_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3041</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3043</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_redis_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -6298,7 +6300,7 @@
 
           
           <div class="method-source-code" id="convert_redshift_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2902</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2904</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_redshift_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -6346,7 +6348,7 @@
 
           
           <div class="method-source-code" id="convert_redshift_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2883</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2885</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_redshift_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -6394,7 +6396,7 @@
 
           
           <div class="method-source-code" id="convert_relay_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3652</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3654</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_relay_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -6434,7 +6436,7 @@
 
           
           <div class="method-source-code" id="convert_relay_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3641</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3643</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_relay_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -7538,7 +7540,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_aks_basic_auth_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2018</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2020</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_aks_basic_auth_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -7576,7 +7578,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_aks_basic_auth_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2027</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2029</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_aks_basic_auth_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -7614,7 +7616,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_aks_service_account_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2064</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2066</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_aks_service_account_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -7652,7 +7654,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_aks_service_account_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2073</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2075</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_aks_service_account_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -7690,7 +7692,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_aks_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 1970</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 1972</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_aks_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -7728,7 +7730,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_aks_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 1979</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 1981</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_aks_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -7766,7 +7768,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_amazon_eks_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 1864</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 1866</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_amazon_eks_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -7804,7 +7806,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_amazon_eks_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 1873</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 1875</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_amazon_eks_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -7994,7 +7996,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_aurora_mysql_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2440</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2442</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_aurora_mysql_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -8032,7 +8034,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_aurora_mysql_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2449</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2451</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_aurora_mysql_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -8070,7 +8072,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_aurora_postgres_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2758</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2760</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_aurora_postgres_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -8108,7 +8110,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_aurora_postgres_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2767</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2769</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_aurora_postgres_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -8298,7 +8300,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_clustrix_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2492</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2494</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_clustrix_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -8336,7 +8338,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_clustrix_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2501</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2503</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_clustrix_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -8374,7 +8376,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_cockroach_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2866</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2868</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_cockroach_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -8412,7 +8414,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_cockroach_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2875</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2877</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_cockroach_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -8830,7 +8832,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_elasticache_redis_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3122</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3124</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_elasticache_redis_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -8868,7 +8870,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_elasticache_redis_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3131</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3133</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_elasticache_redis_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -8906,7 +8908,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_gateway_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3704</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3706</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_gateway_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -8944,7 +8946,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_gateway_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3713</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3715</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_gateway_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -9058,7 +9060,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_google_gke_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 1914</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 1916</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_google_gke_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -9096,7 +9098,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_google_gke_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 1923</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 1925</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_google_gke_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -9134,7 +9136,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_greenplum_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2812</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2814</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_greenplum_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -9172,7 +9174,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_greenplum_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2821</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2823</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_greenplum_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -9666,7 +9668,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_maria_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2544</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2546</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_maria_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -9704,7 +9706,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_maria_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2553</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2555</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_maria_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -9742,7 +9744,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_memcached_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2110</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2112</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_memcached_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -9780,7 +9782,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_memcached_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2119</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2121</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_memcached_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -9818,7 +9820,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_memsql_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2596</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2598</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_memsql_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -9856,7 +9858,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_memsql_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2605</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2607</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_memsql_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -9894,7 +9896,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_mongo_host_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2278</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2280</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_mongo_host_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -9932,7 +9934,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_mongo_host_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2287</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2289</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_mongo_host_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -9970,7 +9972,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_mongo_legacy_host_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2166</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2168</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_mongo_legacy_host_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -10008,7 +10010,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_mongo_legacy_host_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2175</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2177</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_mongo_legacy_host_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -10046,7 +10048,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_mongo_legacy_replicaset_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2224</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2226</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_mongo_legacy_replicaset_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -10084,7 +10086,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_mongo_legacy_replicaset_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2233</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2235</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_mongo_legacy_replicaset_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -10122,7 +10124,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_mongo_replica_set_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2336</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2338</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_mongo_replica_set_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -10160,7 +10162,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_mongo_replica_set_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2345</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2347</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_mongo_replica_set_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -10198,7 +10200,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_mysql_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2388</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2390</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_mysql_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -10236,7 +10238,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_mysql_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2397</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2399</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_mysql_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -10274,7 +10276,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_node_create_response_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3470</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3472</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_node_create_response_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -10312,7 +10314,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_node_create_response_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3479</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3481</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_node_create_response_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -10350,7 +10352,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_node_delete_response_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3582</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3584</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_node_delete_response_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -10388,7 +10390,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_node_delete_response_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3591</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3593</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_node_delete_response_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -10426,7 +10428,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_node_get_response_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3508</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3510</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_node_get_response_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -10464,7 +10466,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_node_get_response_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3517</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3519</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_node_get_response_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -10502,7 +10504,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_node_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3624</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3626</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_node_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -10540,7 +10542,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_node_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3633</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3635</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_node_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -10578,7 +10580,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_node_update_response_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3546</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3548</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_node_update_response_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -10616,7 +10618,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_node_update_response_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3555</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3557</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_node_update_response_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -10654,7 +10656,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_oracle_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2650</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2652</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_oracle_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -10692,7 +10694,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_oracle_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2659</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2661</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_oracle_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -10730,7 +10732,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_postgres_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2704</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2706</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_postgres_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -10768,7 +10770,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_postgres_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2713</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2715</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_postgres_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -10806,7 +10808,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_presto_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2974</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2976</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_presto_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -10844,7 +10846,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_presto_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2983</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2985</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_presto_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -10958,7 +10960,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_rdp_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3024</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3026</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_rdp_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -10996,7 +10998,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_rdp_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3033</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3035</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_rdp_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -11034,7 +11036,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_redis_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3072</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3074</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_redis_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -11072,7 +11074,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_redis_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3081</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3083</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_redis_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -11110,7 +11112,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_redshift_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2920</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2922</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_redshift_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -11148,7 +11150,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_redshift_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2929</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 2931</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_redshift_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -11186,7 +11188,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_relay_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3662</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3664</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_relay_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -11224,7 +11226,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_relay_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3671</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3673</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_relay_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -11262,7 +11264,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_resource_create_response_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3742</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3744</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_resource_create_response_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -11300,7 +11302,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_resource_create_response_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3751</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3753</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_resource_create_response_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -11338,7 +11340,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_resource_delete_response_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3854</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3856</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_resource_delete_response_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -11376,7 +11378,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_resource_delete_response_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3863</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3865</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_resource_delete_response_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -11414,7 +11416,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_resource_get_response_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3780</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3782</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_resource_get_response_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -11452,7 +11454,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_resource_get_response_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3789</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3791</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_resource_get_response_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -11566,7 +11568,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_resource_update_response_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3818</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3820</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_resource_update_response_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -11604,7 +11606,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_resource_update_response_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3827</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3829</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_resource_update_response_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -11642,7 +11644,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_role_attachment_create_response_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3892</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3894</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_role_attachment_create_response_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -11680,7 +11682,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_role_attachment_create_response_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3901</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3903</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_role_attachment_create_response_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -11718,7 +11720,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_role_attachment_delete_response_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3966</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3968</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_role_attachment_delete_response_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -11756,7 +11758,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_role_attachment_delete_response_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3975</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3977</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_role_attachment_delete_response_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -11794,7 +11796,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_role_attachment_get_response_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3930</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3932</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_role_attachment_get_response_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -11832,7 +11834,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_role_attachment_get_response_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3939</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3941</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_role_attachment_get_response_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -11870,7 +11872,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_role_attachment_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4004</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4006</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_role_attachment_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -11908,7 +11910,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_role_attachment_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4013</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4015</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_role_attachment_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -11946,7 +11948,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_role_create_response_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4192</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4194</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_role_create_response_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -11984,7 +11986,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_role_create_response_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4201</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4203</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_role_create_response_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -12022,7 +12024,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_role_delete_response_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4304</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4306</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_role_delete_response_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -12060,7 +12062,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_role_delete_response_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4313</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4315</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_role_delete_response_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -12098,7 +12100,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_role_get_response_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4230</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4232</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_role_get_response_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -12136,7 +12138,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_role_get_response_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4239</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4241</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_role_get_response_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -12174,7 +12176,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_role_grant_create_response_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4042</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4044</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_role_grant_create_response_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -12212,7 +12214,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_role_grant_create_response_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4051</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4053</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_role_grant_create_response_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -12250,7 +12252,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_role_grant_delete_response_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4116</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4118</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_role_grant_delete_response_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -12288,7 +12290,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_role_grant_delete_response_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4125</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4127</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_role_grant_delete_response_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -12326,7 +12328,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_role_grant_get_response_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4080</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4082</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_role_grant_get_response_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -12364,7 +12366,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_role_grant_get_response_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4089</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4091</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_role_grant_get_response_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -12402,7 +12404,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_role_grant_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4154</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4156</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_role_grant_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -12440,7 +12442,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_role_grant_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4163</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4165</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_role_grant_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -12478,7 +12480,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_role_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4342</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4344</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_role_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -12516,7 +12518,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_role_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4351</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4353</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_role_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -12554,7 +12556,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_role_update_response_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4268</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4270</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_role_update_response_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -12592,7 +12594,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_role_update_response_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4277</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4279</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_role_update_response_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -12706,7 +12708,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_snowflake_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3174</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3176</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_snowflake_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -12744,7 +12746,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_snowflake_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3183</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3185</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_snowflake_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -12782,7 +12784,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_sql_server_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3230</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3232</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_sql_server_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -12820,7 +12822,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_sql_server_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3239</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3241</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_sql_server_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -12858,7 +12860,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_ssh_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3280</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3282</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_ssh_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -12896,7 +12898,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_ssh_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3289</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3291</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_ssh_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -12934,7 +12936,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_sybase_iq_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3380</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3382</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_sybase_iq_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -12972,7 +12974,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_sybase_iq_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3389</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3391</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_sybase_iq_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -13010,7 +13012,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_sybase_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3330</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3332</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_sybase_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -13048,7 +13050,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_sybase_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3339</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3341</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_sybase_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -13086,7 +13088,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_teradata_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3430</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3432</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_teradata_to_plumbing</span>(<span class="ruby-identifier">porcelains</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">porcelains</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">porcelain</span><span class="ruby-operator">|</span>
@@ -13124,7 +13126,7 @@
 
           
           <div class="method-source-code" id="convert_repeated_teradata_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3439</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3441</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_repeated_teradata_to_porcelain</span>(<span class="ruby-identifier">plumbings</span>)
     <span class="ruby-identifier">items</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
     <span class="ruby-identifier">plumbings</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing</span><span class="ruby-operator">|</span>
@@ -13314,7 +13316,7 @@
 
           
           <div class="method-source-code" id="convert_resource_create_response_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3732</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3734</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_resource_create_response_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -13354,7 +13356,7 @@
 
           
           <div class="method-source-code" id="convert_resource_create_response_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3721</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3723</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_resource_create_response_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -13394,7 +13396,7 @@
 
           
           <div class="method-source-code" id="convert_resource_delete_response_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3845</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3847</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_resource_delete_response_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -13433,7 +13435,7 @@
 
           
           <div class="method-source-code" id="convert_resource_delete_response_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3835</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3837</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_resource_delete_response_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -13472,7 +13474,7 @@
 
           
           <div class="method-source-code" id="convert_resource_get_response_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3770</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3772</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_resource_get_response_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -13512,7 +13514,7 @@
 
           
           <div class="method-source-code" id="convert_resource_get_response_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3759</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3761</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_resource_get_response_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -13888,7 +13890,7 @@
 
           
           <div class="method-source-code" id="convert_resource_update_response_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3808</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3810</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_resource_update_response_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -13928,7 +13930,7 @@
 
           
           <div class="method-source-code" id="convert_resource_update_response_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3797</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3799</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_resource_update_response_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -13968,7 +13970,7 @@
 
           
           <div class="method-source-code" id="convert_role_attachment_create_response_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3882</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3884</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_role_attachment_create_response_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -14008,7 +14010,7 @@
 
           
           <div class="method-source-code" id="convert_role_attachment_create_response_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3871</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3873</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_role_attachment_create_response_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -14048,7 +14050,7 @@
 
           
           <div class="method-source-code" id="convert_role_attachment_delete_response_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3957</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3959</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_role_attachment_delete_response_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -14087,7 +14089,7 @@
 
           
           <div class="method-source-code" id="convert_role_attachment_delete_response_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3947</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3949</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_role_attachment_delete_response_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -14126,7 +14128,7 @@
 
           
           <div class="method-source-code" id="convert_role_attachment_get_response_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3920</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3922</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_role_attachment_get_response_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -14166,7 +14168,7 @@
 
           
           <div class="method-source-code" id="convert_role_attachment_get_response_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3909</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3911</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_role_attachment_get_response_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -14206,7 +14208,7 @@
 
           
           <div class="method-source-code" id="convert_role_attachment_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3994</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3996</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_role_attachment_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -14246,7 +14248,7 @@
 
           
           <div class="method-source-code" id="convert_role_attachment_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3983</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3985</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_role_attachment_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -14286,7 +14288,7 @@
 
           
           <div class="method-source-code" id="convert_role_create_response_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4182</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4184</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_role_create_response_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -14326,7 +14328,7 @@
 
           
           <div class="method-source-code" id="convert_role_create_response_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4171</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4173</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_role_create_response_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -14366,7 +14368,7 @@
 
           
           <div class="method-source-code" id="convert_role_delete_response_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4295</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4297</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_role_delete_response_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -14405,7 +14407,7 @@
 
           
           <div class="method-source-code" id="convert_role_delete_response_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4285</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4287</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_role_delete_response_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -14444,7 +14446,7 @@
 
           
           <div class="method-source-code" id="convert_role_get_response_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4220</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4222</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_role_get_response_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -14484,7 +14486,7 @@
 
           
           <div class="method-source-code" id="convert_role_get_response_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4209</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4211</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_role_get_response_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -14524,7 +14526,7 @@
 
           
           <div class="method-source-code" id="convert_role_grant_create_response_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4032</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4034</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_role_grant_create_response_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -14564,7 +14566,7 @@
 
           
           <div class="method-source-code" id="convert_role_grant_create_response_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4021</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4023</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_role_grant_create_response_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -14604,7 +14606,7 @@
 
           
           <div class="method-source-code" id="convert_role_grant_delete_response_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4107</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4109</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_role_grant_delete_response_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -14643,7 +14645,7 @@
 
           
           <div class="method-source-code" id="convert_role_grant_delete_response_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4097</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4099</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_role_grant_delete_response_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -14682,7 +14684,7 @@
 
           
           <div class="method-source-code" id="convert_role_grant_get_response_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4070</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4072</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_role_grant_get_response_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -14722,7 +14724,7 @@
 
           
           <div class="method-source-code" id="convert_role_grant_get_response_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4059</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4061</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_role_grant_get_response_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -14762,7 +14764,7 @@
 
           
           <div class="method-source-code" id="convert_role_grant_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4144</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4146</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_role_grant_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -14802,7 +14804,7 @@
 
           
           <div class="method-source-code" id="convert_role_grant_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4133</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4135</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_role_grant_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -14842,7 +14844,7 @@
 
           
           <div class="method-source-code" id="convert_role_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4332</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4334</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_role_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -14882,7 +14884,7 @@
 
           
           <div class="method-source-code" id="convert_role_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4321</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4323</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_role_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -14922,7 +14924,7 @@
 
           
           <div class="method-source-code" id="convert_role_update_response_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4258</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4260</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_role_update_response_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -14962,7 +14964,7 @@
 
           
           <div class="method-source-code" id="convert_role_update_response_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4247</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 4249</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_role_update_response_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -15082,7 +15084,7 @@
 
           
           <div class="method-source-code" id="convert_snowflake_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3157</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3159</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_snowflake_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -15129,7 +15131,7 @@
 
           
           <div class="method-source-code" id="convert_snowflake_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3139</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3141</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_snowflake_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -15176,7 +15178,7 @@
 
           
           <div class="method-source-code" id="convert_sql_server_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3211</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3213</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_sql_server_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -15225,7 +15227,7 @@
 
           
           <div class="method-source-code" id="convert_sql_server_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3191</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3193</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_sql_server_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -15274,7 +15276,7 @@
 
           
           <div class="method-source-code" id="convert_ssh_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3264</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3266</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_ssh_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -15320,7 +15322,7 @@
 
           
           <div class="method-source-code" id="convert_ssh_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3247</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3249</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_ssh_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -15366,7 +15368,7 @@
 
           
           <div class="method-source-code" id="convert_sybase_iq_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3364</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3366</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_sybase_iq_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -15412,7 +15414,7 @@
 
           
           <div class="method-source-code" id="convert_sybase_iq_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3347</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3349</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_sybase_iq_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -15458,7 +15460,7 @@
 
           
           <div class="method-source-code" id="convert_sybase_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3314</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3316</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_sybase_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -15504,7 +15506,7 @@
 
           
           <div class="method-source-code" id="convert_sybase_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3297</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3299</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_sybase_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -15633,7 +15635,7 @@
 
           
           <div class="method-source-code" id="convert_teradata_to_plumbing-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3414</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3416</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_teradata_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -15679,7 +15681,7 @@
 
           
           <div class="method-source-code" id="convert_teradata_to_porcelain-source">
-            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3397</span>
+            <pre><span class="ruby-comment"># File lib/grpc/plumbing.rb, line 3399</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">convert_teradata_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
