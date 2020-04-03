@@ -32,6 +32,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :custom_converter, :string, 1941309
       optional :custom_go_porcelain_type, :string, 1941310
       optional :custom_java_porcelain_type, :string, 1941311
+      optional :custom_terraform_porcelain_type, :string, 1941312
     end
     add_message "v1.MessageOptions" do
       optional :model_name, :string, 1941300
