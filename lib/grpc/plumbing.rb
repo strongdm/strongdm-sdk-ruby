@@ -23,6 +23,7 @@ require_relative "./spec_pb"
 require_relative "./account_attachments_pb"
 require_relative "./account_grants_pb"
 require_relative "./accounts_pb"
+require_relative "./tags_pb"
 require_relative "./drivers_pb"
 require_relative "./nodes_pb"
 require_relative "./resources_pb"
@@ -82,7 +83,7 @@ module SDM
       end
       tags = V1::Tags.new()
       t.each do |key, value|
-        pair = V1::Pair.new()
+        pair = V1::Tags::Pair.new()
         pair.name = key
         pair.value = value
         tags.pairs.push(pair)

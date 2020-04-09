@@ -169,7 +169,7 @@ module SDM
     end
   end
 
-  # AccountGrants connect a resource directly to an account, giving the account the permission to connect to that resource.
+  # AccountGrants assign a resource directly to an account, giving the account the permission to connect to that resource.
   class AccountGrants
     def initialize(host, insecure, parent)
       begin

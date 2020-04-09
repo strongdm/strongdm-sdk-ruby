@@ -29,10 +29,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :sdk_only, :bool, 1941306
       optional :computed, :bool, 1941307
       optional :force_new, :bool, 1941308
-      optional :custom_converter, :string, 1941309
-      optional :custom_go_porcelain_type, :string, 1941310
-      optional :custom_java_porcelain_type, :string, 1941311
-      optional :custom_terraform_porcelain_type, :string, 1941312
     end
     add_message "v1.MessageOptions" do
       optional :model_name, :string, 1941300
@@ -40,6 +36,13 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :error, :int32, 1941302
       optional :options_field, :string, 1941303
       optional :terraform_docs, :message, 1941304, "v1.TerraformDocs"
+      optional :custom, :message, 1941305, "v1.CustomPorcelainMessageOptions"
+    end
+    add_message "v1.CustomPorcelainMessageOptions" do
+      optional :converter, :string, 1941309
+      optional :go_porcelain_type, :string, 1941310
+      optional :java_porcelain_type, :string, 1941311
+      optional :terraform_porcelain_type, :string, 1941312
     end
     add_message "v1.TerraformDocs" do
       optional :resource_example_path, :string, 1941300
@@ -58,6 +61,7 @@ end
 module V1
   FieldOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.FieldOptions").msgclass
   MessageOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MessageOptions").msgclass
+  CustomPorcelainMessageOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.CustomPorcelainMessageOptions").msgclass
   TerraformDocs = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.TerraformDocs").msgclass
   OneofOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.OneofOptions").msgclass
   ServiceOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ServiceOptions").msgclass

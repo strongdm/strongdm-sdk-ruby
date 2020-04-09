@@ -19,6 +19,7 @@ require "google/protobuf"
 
 require "protoc-gen-swagger/options/annotations_pb"
 require "options_pb"
+require "tags_pb"
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("drivers.proto", :syntax => :proto3) do
     add_message "v1.Resource" do
@@ -594,13 +595,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port_override, :int32, 4
       optional :port, :int32, 5
     end
-    add_message "v1.Tags" do
-      repeated :pairs, :message, 1, "v1.Pair"
-    end
-    add_message "v1.Pair" do
-      optional :name, :string, 1
-      optional :value, :string, 2
-    end
   end
 end
 
@@ -650,6 +644,4 @@ module V1
   Sybase = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Sybase").msgclass
   SybaseIQ = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SybaseIQ").msgclass
   Teradata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Teradata").msgclass
-  Tags = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Tags").msgclass
-  Pair = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Pair").msgclass
 end
