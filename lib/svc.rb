@@ -35,7 +35,7 @@ module SDM
           @stub = V1::AccountAttachments::Stub.new(host, cred)
         end
       rescue => exception
-        raise Plumbing::error_to_porcelain(exception)
+        raise Plumbing::convert_error_to_porcelain(exception)
       end
       @parent = parent
     end
@@ -48,8 +48,8 @@ module SDM
     )
       req = V1::AccountAttachmentCreateRequest.new()
 
-      req.account_attachment = Plumbing::account_attachment_to_plumbing(account_attachment)
-      req.options = Plumbing::account_attachment_create_options_to_plumbing(options)
+      req.account_attachment = Plumbing::convert_account_attachment_to_plumbing(account_attachment)
+      req.options = Plumbing::convert_account_attachment_create_options_to_plumbing(options)
       tries = 0
       plumbing_response = nil
       loop do
@@ -60,15 +60,15 @@ module SDM
             tries + +@parent.jitterSleep(tries)
             next
           end
-          raise Plumbing::error_to_porcelain(exception)
+          raise Plumbing::convert_error_to_porcelain(exception)
         end
         break
       end
 
       resp = AccountAttachmentCreateResponse.new()
-      resp.meta = Plumbing::create_response_metadata_to_porcelain(plumbing_response.meta)
-      resp.account_attachment = Plumbing::account_attachment_to_porcelain(plumbing_response.account_attachment)
-      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.meta = Plumbing::convert_create_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.account_attachment = Plumbing::convert_account_attachment_to_porcelain(plumbing_response.account_attachment)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
       resp
     end
 
@@ -79,7 +79,7 @@ module SDM
     )
       req = V1::AccountAttachmentGetRequest.new()
 
-      req.id = id
+      req.id = (id)
       tries = 0
       plumbing_response = nil
       loop do
@@ -90,15 +90,15 @@ module SDM
             tries + +@parent.jitterSleep(tries)
             next
           end
-          raise Plumbing::error_to_porcelain(exception)
+          raise Plumbing::convert_error_to_porcelain(exception)
         end
         break
       end
 
       resp = AccountAttachmentGetResponse.new()
-      resp.meta = Plumbing::get_response_metadata_to_porcelain(plumbing_response.meta)
-      resp.account_attachment = Plumbing::account_attachment_to_porcelain(plumbing_response.account_attachment)
-      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.account_attachment = Plumbing::convert_account_attachment_to_porcelain(plumbing_response.account_attachment)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
       resp
     end
 
@@ -109,7 +109,7 @@ module SDM
     )
       req = V1::AccountAttachmentDeleteRequest.new()
 
-      req.id = id
+      req.id = (id)
       tries = 0
       plumbing_response = nil
       loop do
@@ -120,14 +120,14 @@ module SDM
             tries + +@parent.jitterSleep(tries)
             next
           end
-          raise Plumbing::error_to_porcelain(exception)
+          raise Plumbing::convert_error_to_porcelain(exception)
         end
         break
       end
 
       resp = AccountAttachmentDeleteResponse.new()
-      resp.meta = Plumbing::delete_response_metadata_to_porcelain(plumbing_response.meta)
-      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
       resp
     end
 
@@ -155,11 +155,11 @@ module SDM
               tries + +@parent.jitterSleep(tries)
               next
             end
-            raise Plumbing::error_to_porcelain(exception)
+            raise Plumbing::convert_error_to_porcelain(exception)
           end
           tries = 0
           plumbing_response.account_attachments.each do |plumbing_item|
-            g.yield Plumbing::account_attachment_to_porcelain(plumbing_item)
+            g.yield Plumbing::convert_account_attachment_to_porcelain(plumbing_item)
           end
           break if plumbing_response.meta.next_cursor == ""
           req.meta.cursor = plumbing_response.meta.next_cursor
@@ -169,7 +169,7 @@ module SDM
     end
   end
 
-  # AccountGrants connect a resource directly to an account, giving the account the permission to connect to that resource.
+  # AccountGrants assign a resource directly to an account, giving the account the permission to connect to that resource.
   class AccountGrants
     def initialize(host, insecure, parent)
       begin
@@ -180,7 +180,7 @@ module SDM
           @stub = V1::AccountGrants::Stub.new(host, cred)
         end
       rescue => exception
-        raise Plumbing::error_to_porcelain(exception)
+        raise Plumbing::convert_error_to_porcelain(exception)
       end
       @parent = parent
     end
@@ -192,7 +192,7 @@ module SDM
     )
       req = V1::AccountGrantCreateRequest.new()
 
-      req.account_grant = Plumbing::account_grant_to_plumbing(account_grant)
+      req.account_grant = Plumbing::convert_account_grant_to_plumbing(account_grant)
       tries = 0
       plumbing_response = nil
       loop do
@@ -203,15 +203,15 @@ module SDM
             tries + +@parent.jitterSleep(tries)
             next
           end
-          raise Plumbing::error_to_porcelain(exception)
+          raise Plumbing::convert_error_to_porcelain(exception)
         end
         break
       end
 
       resp = AccountGrantCreateResponse.new()
-      resp.meta = Plumbing::create_response_metadata_to_porcelain(plumbing_response.meta)
-      resp.account_grant = Plumbing::account_grant_to_porcelain(plumbing_response.account_grant)
-      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.meta = Plumbing::convert_create_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.account_grant = Plumbing::convert_account_grant_to_porcelain(plumbing_response.account_grant)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
       resp
     end
 
@@ -222,7 +222,7 @@ module SDM
     )
       req = V1::AccountGrantGetRequest.new()
 
-      req.id = id
+      req.id = (id)
       tries = 0
       plumbing_response = nil
       loop do
@@ -233,15 +233,15 @@ module SDM
             tries + +@parent.jitterSleep(tries)
             next
           end
-          raise Plumbing::error_to_porcelain(exception)
+          raise Plumbing::convert_error_to_porcelain(exception)
         end
         break
       end
 
       resp = AccountGrantGetResponse.new()
-      resp.meta = Plumbing::get_response_metadata_to_porcelain(plumbing_response.meta)
-      resp.account_grant = Plumbing::account_grant_to_porcelain(plumbing_response.account_grant)
-      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.account_grant = Plumbing::convert_account_grant_to_porcelain(plumbing_response.account_grant)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
       resp
     end
 
@@ -252,7 +252,7 @@ module SDM
     )
       req = V1::AccountGrantDeleteRequest.new()
 
-      req.id = id
+      req.id = (id)
       tries = 0
       plumbing_response = nil
       loop do
@@ -263,14 +263,14 @@ module SDM
             tries + +@parent.jitterSleep(tries)
             next
           end
-          raise Plumbing::error_to_porcelain(exception)
+          raise Plumbing::convert_error_to_porcelain(exception)
         end
         break
       end
 
       resp = AccountGrantDeleteResponse.new()
-      resp.meta = Plumbing::delete_response_metadata_to_porcelain(plumbing_response.meta)
-      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
       resp
     end
 
@@ -298,11 +298,11 @@ module SDM
               tries + +@parent.jitterSleep(tries)
               next
             end
-            raise Plumbing::error_to_porcelain(exception)
+            raise Plumbing::convert_error_to_porcelain(exception)
           end
           tries = 0
           plumbing_response.account_grants.each do |plumbing_item|
-            g.yield Plumbing::account_grant_to_porcelain(plumbing_item)
+            g.yield Plumbing::convert_account_grant_to_porcelain(plumbing_item)
           end
           break if plumbing_response.meta.next_cursor == ""
           req.meta.cursor = plumbing_response.meta.next_cursor
@@ -326,7 +326,7 @@ module SDM
           @stub = V1::Accounts::Stub.new(host, cred)
         end
       rescue => exception
-        raise Plumbing::error_to_porcelain(exception)
+        raise Plumbing::convert_error_to_porcelain(exception)
       end
       @parent = parent
     end
@@ -338,7 +338,7 @@ module SDM
     )
       req = V1::AccountCreateRequest.new()
 
-      req.account = Plumbing::account_to_plumbing(account)
+      req.account = Plumbing::convert_account_to_plumbing(account)
       tries = 0
       plumbing_response = nil
       loop do
@@ -349,16 +349,16 @@ module SDM
             tries + +@parent.jitterSleep(tries)
             next
           end
-          raise Plumbing::error_to_porcelain(exception)
+          raise Plumbing::convert_error_to_porcelain(exception)
         end
         break
       end
 
       resp = AccountCreateResponse.new()
-      resp.meta = Plumbing::create_response_metadata_to_porcelain(plumbing_response.meta)
-      resp.account = Plumbing::account_to_porcelain(plumbing_response.account)
-      resp.token = plumbing_response.token
-      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.meta = Plumbing::convert_create_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.account = Plumbing::convert_account_to_porcelain(plumbing_response.account)
+      resp.token = (plumbing_response.token)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
       resp
     end
 
@@ -369,7 +369,7 @@ module SDM
     )
       req = V1::AccountGetRequest.new()
 
-      req.id = id
+      req.id = (id)
       tries = 0
       plumbing_response = nil
       loop do
@@ -380,15 +380,15 @@ module SDM
             tries + +@parent.jitterSleep(tries)
             next
           end
-          raise Plumbing::error_to_porcelain(exception)
+          raise Plumbing::convert_error_to_porcelain(exception)
         end
         break
       end
 
       resp = AccountGetResponse.new()
-      resp.meta = Plumbing::get_response_metadata_to_porcelain(plumbing_response.meta)
-      resp.account = Plumbing::account_to_porcelain(plumbing_response.account)
-      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.account = Plumbing::convert_account_to_porcelain(plumbing_response.account)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
       resp
     end
 
@@ -399,7 +399,7 @@ module SDM
     )
       req = V1::AccountUpdateRequest.new()
 
-      req.account = Plumbing::account_to_plumbing(account)
+      req.account = Plumbing::convert_account_to_plumbing(account)
       tries = 0
       plumbing_response = nil
       loop do
@@ -410,15 +410,15 @@ module SDM
             tries + +@parent.jitterSleep(tries)
             next
           end
-          raise Plumbing::error_to_porcelain(exception)
+          raise Plumbing::convert_error_to_porcelain(exception)
         end
         break
       end
 
       resp = AccountUpdateResponse.new()
-      resp.meta = Plumbing::update_response_metadata_to_porcelain(plumbing_response.meta)
-      resp.account = Plumbing::account_to_porcelain(plumbing_response.account)
-      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.meta = Plumbing::convert_update_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.account = Plumbing::convert_account_to_porcelain(plumbing_response.account)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
       resp
     end
 
@@ -429,7 +429,7 @@ module SDM
     )
       req = V1::AccountDeleteRequest.new()
 
-      req.id = id
+      req.id = (id)
       tries = 0
       plumbing_response = nil
       loop do
@@ -440,14 +440,14 @@ module SDM
             tries + +@parent.jitterSleep(tries)
             next
           end
-          raise Plumbing::error_to_porcelain(exception)
+          raise Plumbing::convert_error_to_porcelain(exception)
         end
         break
       end
 
       resp = AccountDeleteResponse.new()
-      resp.meta = Plumbing::delete_response_metadata_to_porcelain(plumbing_response.meta)
-      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
       resp
     end
 
@@ -475,11 +475,11 @@ module SDM
               tries + +@parent.jitterSleep(tries)
               next
             end
-            raise Plumbing::error_to_porcelain(exception)
+            raise Plumbing::convert_error_to_porcelain(exception)
           end
           tries = 0
           plumbing_response.accounts.each do |plumbing_item|
-            g.yield Plumbing::account_to_porcelain(plumbing_item)
+            g.yield Plumbing::convert_account_to_porcelain(plumbing_item)
           end
           break if plumbing_response.meta.next_cursor == ""
           req.meta.cursor = plumbing_response.meta.next_cursor
@@ -503,7 +503,7 @@ module SDM
           @stub = V1::Nodes::Stub.new(host, cred)
         end
       rescue => exception
-        raise Plumbing::error_to_porcelain(exception)
+        raise Plumbing::convert_error_to_porcelain(exception)
       end
       @parent = parent
     end
@@ -515,7 +515,7 @@ module SDM
     )
       req = V1::NodeCreateRequest.new()
 
-      req.node = Plumbing::node_to_plumbing(node)
+      req.node = Plumbing::convert_node_to_plumbing(node)
       tries = 0
       plumbing_response = nil
       loop do
@@ -526,16 +526,16 @@ module SDM
             tries + +@parent.jitterSleep(tries)
             next
           end
-          raise Plumbing::error_to_porcelain(exception)
+          raise Plumbing::convert_error_to_porcelain(exception)
         end
         break
       end
 
       resp = NodeCreateResponse.new()
-      resp.meta = Plumbing::create_response_metadata_to_porcelain(plumbing_response.meta)
-      resp.node = Plumbing::node_to_porcelain(plumbing_response.node)
-      resp.token = plumbing_response.token
-      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.meta = Plumbing::convert_create_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.node = Plumbing::convert_node_to_porcelain(plumbing_response.node)
+      resp.token = (plumbing_response.token)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
       resp
     end
 
@@ -546,7 +546,7 @@ module SDM
     )
       req = V1::NodeGetRequest.new()
 
-      req.id = id
+      req.id = (id)
       tries = 0
       plumbing_response = nil
       loop do
@@ -557,15 +557,15 @@ module SDM
             tries + +@parent.jitterSleep(tries)
             next
           end
-          raise Plumbing::error_to_porcelain(exception)
+          raise Plumbing::convert_error_to_porcelain(exception)
         end
         break
       end
 
       resp = NodeGetResponse.new()
-      resp.meta = Plumbing::get_response_metadata_to_porcelain(plumbing_response.meta)
-      resp.node = Plumbing::node_to_porcelain(plumbing_response.node)
-      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.node = Plumbing::convert_node_to_porcelain(plumbing_response.node)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
       resp
     end
 
@@ -576,7 +576,7 @@ module SDM
     )
       req = V1::NodeUpdateRequest.new()
 
-      req.node = Plumbing::node_to_plumbing(node)
+      req.node = Plumbing::convert_node_to_plumbing(node)
       tries = 0
       plumbing_response = nil
       loop do
@@ -587,15 +587,15 @@ module SDM
             tries + +@parent.jitterSleep(tries)
             next
           end
-          raise Plumbing::error_to_porcelain(exception)
+          raise Plumbing::convert_error_to_porcelain(exception)
         end
         break
       end
 
       resp = NodeUpdateResponse.new()
-      resp.meta = Plumbing::update_response_metadata_to_porcelain(plumbing_response.meta)
-      resp.node = Plumbing::node_to_porcelain(plumbing_response.node)
-      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.meta = Plumbing::convert_update_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.node = Plumbing::convert_node_to_porcelain(plumbing_response.node)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
       resp
     end
 
@@ -606,7 +606,7 @@ module SDM
     )
       req = V1::NodeDeleteRequest.new()
 
-      req.id = id
+      req.id = (id)
       tries = 0
       plumbing_response = nil
       loop do
@@ -617,14 +617,14 @@ module SDM
             tries + +@parent.jitterSleep(tries)
             next
           end
-          raise Plumbing::error_to_porcelain(exception)
+          raise Plumbing::convert_error_to_porcelain(exception)
         end
         break
       end
 
       resp = NodeDeleteResponse.new()
-      resp.meta = Plumbing::delete_response_metadata_to_porcelain(plumbing_response.meta)
-      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
       resp
     end
 
@@ -652,11 +652,11 @@ module SDM
               tries + +@parent.jitterSleep(tries)
               next
             end
-            raise Plumbing::error_to_porcelain(exception)
+            raise Plumbing::convert_error_to_porcelain(exception)
           end
           tries = 0
           plumbing_response.nodes.each do |plumbing_item|
-            g.yield Plumbing::node_to_porcelain(plumbing_item)
+            g.yield Plumbing::convert_node_to_porcelain(plumbing_item)
           end
           break if plumbing_response.meta.next_cursor == ""
           req.meta.cursor = plumbing_response.meta.next_cursor
@@ -676,7 +676,7 @@ module SDM
           @stub = V1::Resources::Stub.new(host, cred)
         end
       rescue => exception
-        raise Plumbing::error_to_porcelain(exception)
+        raise Plumbing::convert_error_to_porcelain(exception)
       end
       @parent = parent
     end
@@ -688,7 +688,7 @@ module SDM
     )
       req = V1::ResourceCreateRequest.new()
 
-      req.resource = Plumbing::resource_to_plumbing(resource)
+      req.resource = Plumbing::convert_resource_to_plumbing(resource)
       tries = 0
       plumbing_response = nil
       loop do
@@ -699,15 +699,15 @@ module SDM
             tries + +@parent.jitterSleep(tries)
             next
           end
-          raise Plumbing::error_to_porcelain(exception)
+          raise Plumbing::convert_error_to_porcelain(exception)
         end
         break
       end
 
       resp = ResourceCreateResponse.new()
-      resp.meta = Plumbing::create_response_metadata_to_porcelain(plumbing_response.meta)
-      resp.resource = Plumbing::resource_to_porcelain(plumbing_response.resource)
-      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.meta = Plumbing::convert_create_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.resource = Plumbing::convert_resource_to_porcelain(plumbing_response.resource)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
       resp
     end
 
@@ -718,7 +718,7 @@ module SDM
     )
       req = V1::ResourceGetRequest.new()
 
-      req.id = id
+      req.id = (id)
       tries = 0
       plumbing_response = nil
       loop do
@@ -729,15 +729,15 @@ module SDM
             tries + +@parent.jitterSleep(tries)
             next
           end
-          raise Plumbing::error_to_porcelain(exception)
+          raise Plumbing::convert_error_to_porcelain(exception)
         end
         break
       end
 
       resp = ResourceGetResponse.new()
-      resp.meta = Plumbing::get_response_metadata_to_porcelain(plumbing_response.meta)
-      resp.resource = Plumbing::resource_to_porcelain(plumbing_response.resource)
-      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.resource = Plumbing::convert_resource_to_porcelain(plumbing_response.resource)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
       resp
     end
 
@@ -748,7 +748,7 @@ module SDM
     )
       req = V1::ResourceUpdateRequest.new()
 
-      req.resource = Plumbing::resource_to_plumbing(resource)
+      req.resource = Plumbing::convert_resource_to_plumbing(resource)
       tries = 0
       plumbing_response = nil
       loop do
@@ -759,15 +759,15 @@ module SDM
             tries + +@parent.jitterSleep(tries)
             next
           end
-          raise Plumbing::error_to_porcelain(exception)
+          raise Plumbing::convert_error_to_porcelain(exception)
         end
         break
       end
 
       resp = ResourceUpdateResponse.new()
-      resp.meta = Plumbing::update_response_metadata_to_porcelain(plumbing_response.meta)
-      resp.resource = Plumbing::resource_to_porcelain(plumbing_response.resource)
-      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.meta = Plumbing::convert_update_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.resource = Plumbing::convert_resource_to_porcelain(plumbing_response.resource)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
       resp
     end
 
@@ -778,7 +778,7 @@ module SDM
     )
       req = V1::ResourceDeleteRequest.new()
 
-      req.id = id
+      req.id = (id)
       tries = 0
       plumbing_response = nil
       loop do
@@ -789,14 +789,14 @@ module SDM
             tries + +@parent.jitterSleep(tries)
             next
           end
-          raise Plumbing::error_to_porcelain(exception)
+          raise Plumbing::convert_error_to_porcelain(exception)
         end
         break
       end
 
       resp = ResourceDeleteResponse.new()
-      resp.meta = Plumbing::delete_response_metadata_to_porcelain(plumbing_response.meta)
-      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
       resp
     end
 
@@ -824,11 +824,11 @@ module SDM
               tries + +@parent.jitterSleep(tries)
               next
             end
-            raise Plumbing::error_to_porcelain(exception)
+            raise Plumbing::convert_error_to_porcelain(exception)
           end
           tries = 0
           plumbing_response.resources.each do |plumbing_item|
-            g.yield Plumbing::resource_to_porcelain(plumbing_item)
+            g.yield Plumbing::convert_resource_to_porcelain(plumbing_item)
           end
           break if plumbing_response.meta.next_cursor == ""
           req.meta.cursor = plumbing_response.meta.next_cursor
@@ -852,7 +852,7 @@ module SDM
           @stub = V1::RoleAttachments::Stub.new(host, cred)
         end
       rescue => exception
-        raise Plumbing::error_to_porcelain(exception)
+        raise Plumbing::convert_error_to_porcelain(exception)
       end
       @parent = parent
     end
@@ -864,7 +864,7 @@ module SDM
     )
       req = V1::RoleAttachmentCreateRequest.new()
 
-      req.role_attachment = Plumbing::role_attachment_to_plumbing(role_attachment)
+      req.role_attachment = Plumbing::convert_role_attachment_to_plumbing(role_attachment)
       tries = 0
       plumbing_response = nil
       loop do
@@ -875,15 +875,15 @@ module SDM
             tries + +@parent.jitterSleep(tries)
             next
           end
-          raise Plumbing::error_to_porcelain(exception)
+          raise Plumbing::convert_error_to_porcelain(exception)
         end
         break
       end
 
       resp = RoleAttachmentCreateResponse.new()
-      resp.meta = Plumbing::create_response_metadata_to_porcelain(plumbing_response.meta)
-      resp.role_attachment = Plumbing::role_attachment_to_porcelain(plumbing_response.role_attachment)
-      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.meta = Plumbing::convert_create_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.role_attachment = Plumbing::convert_role_attachment_to_porcelain(plumbing_response.role_attachment)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
       resp
     end
 
@@ -894,7 +894,7 @@ module SDM
     )
       req = V1::RoleAttachmentGetRequest.new()
 
-      req.id = id
+      req.id = (id)
       tries = 0
       plumbing_response = nil
       loop do
@@ -905,15 +905,15 @@ module SDM
             tries + +@parent.jitterSleep(tries)
             next
           end
-          raise Plumbing::error_to_porcelain(exception)
+          raise Plumbing::convert_error_to_porcelain(exception)
         end
         break
       end
 
       resp = RoleAttachmentGetResponse.new()
-      resp.meta = Plumbing::get_response_metadata_to_porcelain(plumbing_response.meta)
-      resp.role_attachment = Plumbing::role_attachment_to_porcelain(plumbing_response.role_attachment)
-      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.role_attachment = Plumbing::convert_role_attachment_to_porcelain(plumbing_response.role_attachment)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
       resp
     end
 
@@ -924,7 +924,7 @@ module SDM
     )
       req = V1::RoleAttachmentDeleteRequest.new()
 
-      req.id = id
+      req.id = (id)
       tries = 0
       plumbing_response = nil
       loop do
@@ -935,14 +935,14 @@ module SDM
             tries + +@parent.jitterSleep(tries)
             next
           end
-          raise Plumbing::error_to_porcelain(exception)
+          raise Plumbing::convert_error_to_porcelain(exception)
         end
         break
       end
 
       resp = RoleAttachmentDeleteResponse.new()
-      resp.meta = Plumbing::delete_response_metadata_to_porcelain(plumbing_response.meta)
-      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
       resp
     end
 
@@ -970,11 +970,11 @@ module SDM
               tries + +@parent.jitterSleep(tries)
               next
             end
-            raise Plumbing::error_to_porcelain(exception)
+            raise Plumbing::convert_error_to_porcelain(exception)
           end
           tries = 0
           plumbing_response.role_attachments.each do |plumbing_item|
-            g.yield Plumbing::role_attachment_to_porcelain(plumbing_item)
+            g.yield Plumbing::convert_role_attachment_to_porcelain(plumbing_item)
           end
           break if plumbing_response.meta.next_cursor == ""
           req.meta.cursor = plumbing_response.meta.next_cursor
@@ -998,7 +998,7 @@ module SDM
           @stub = V1::RoleGrants::Stub.new(host, cred)
         end
       rescue => exception
-        raise Plumbing::error_to_porcelain(exception)
+        raise Plumbing::convert_error_to_porcelain(exception)
       end
       @parent = parent
     end
@@ -1010,7 +1010,7 @@ module SDM
     )
       req = V1::RoleGrantCreateRequest.new()
 
-      req.role_grant = Plumbing::role_grant_to_plumbing(role_grant)
+      req.role_grant = Plumbing::convert_role_grant_to_plumbing(role_grant)
       tries = 0
       plumbing_response = nil
       loop do
@@ -1021,15 +1021,15 @@ module SDM
             tries + +@parent.jitterSleep(tries)
             next
           end
-          raise Plumbing::error_to_porcelain(exception)
+          raise Plumbing::convert_error_to_porcelain(exception)
         end
         break
       end
 
       resp = RoleGrantCreateResponse.new()
-      resp.meta = Plumbing::create_response_metadata_to_porcelain(plumbing_response.meta)
-      resp.role_grant = Plumbing::role_grant_to_porcelain(plumbing_response.role_grant)
-      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.meta = Plumbing::convert_create_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.role_grant = Plumbing::convert_role_grant_to_porcelain(plumbing_response.role_grant)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
       resp
     end
 
@@ -1040,7 +1040,7 @@ module SDM
     )
       req = V1::RoleGrantGetRequest.new()
 
-      req.id = id
+      req.id = (id)
       tries = 0
       plumbing_response = nil
       loop do
@@ -1051,15 +1051,15 @@ module SDM
             tries + +@parent.jitterSleep(tries)
             next
           end
-          raise Plumbing::error_to_porcelain(exception)
+          raise Plumbing::convert_error_to_porcelain(exception)
         end
         break
       end
 
       resp = RoleGrantGetResponse.new()
-      resp.meta = Plumbing::get_response_metadata_to_porcelain(plumbing_response.meta)
-      resp.role_grant = Plumbing::role_grant_to_porcelain(plumbing_response.role_grant)
-      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.role_grant = Plumbing::convert_role_grant_to_porcelain(plumbing_response.role_grant)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
       resp
     end
 
@@ -1070,7 +1070,7 @@ module SDM
     )
       req = V1::RoleGrantDeleteRequest.new()
 
-      req.id = id
+      req.id = (id)
       tries = 0
       plumbing_response = nil
       loop do
@@ -1081,14 +1081,14 @@ module SDM
             tries + +@parent.jitterSleep(tries)
             next
           end
-          raise Plumbing::error_to_porcelain(exception)
+          raise Plumbing::convert_error_to_porcelain(exception)
         end
         break
       end
 
       resp = RoleGrantDeleteResponse.new()
-      resp.meta = Plumbing::delete_response_metadata_to_porcelain(plumbing_response.meta)
-      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
       resp
     end
 
@@ -1116,11 +1116,11 @@ module SDM
               tries + +@parent.jitterSleep(tries)
               next
             end
-            raise Plumbing::error_to_porcelain(exception)
+            raise Plumbing::convert_error_to_porcelain(exception)
           end
           tries = 0
           plumbing_response.role_grants.each do |plumbing_item|
-            g.yield Plumbing::role_grant_to_porcelain(plumbing_item)
+            g.yield Plumbing::convert_role_grant_to_porcelain(plumbing_item)
           end
           break if plumbing_response.meta.next_cursor == ""
           req.meta.cursor = plumbing_response.meta.next_cursor
@@ -1145,7 +1145,7 @@ module SDM
           @stub = V1::Roles::Stub.new(host, cred)
         end
       rescue => exception
-        raise Plumbing::error_to_porcelain(exception)
+        raise Plumbing::convert_error_to_porcelain(exception)
       end
       @parent = parent
     end
@@ -1157,7 +1157,7 @@ module SDM
     )
       req = V1::RoleCreateRequest.new()
 
-      req.role = Plumbing::role_to_plumbing(role)
+      req.role = Plumbing::convert_role_to_plumbing(role)
       tries = 0
       plumbing_response = nil
       loop do
@@ -1168,15 +1168,15 @@ module SDM
             tries + +@parent.jitterSleep(tries)
             next
           end
-          raise Plumbing::error_to_porcelain(exception)
+          raise Plumbing::convert_error_to_porcelain(exception)
         end
         break
       end
 
       resp = RoleCreateResponse.new()
-      resp.meta = Plumbing::create_response_metadata_to_porcelain(plumbing_response.meta)
-      resp.role = Plumbing::role_to_porcelain(plumbing_response.role)
-      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.meta = Plumbing::convert_create_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.role = Plumbing::convert_role_to_porcelain(plumbing_response.role)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
       resp
     end
 
@@ -1187,7 +1187,7 @@ module SDM
     )
       req = V1::RoleGetRequest.new()
 
-      req.id = id
+      req.id = (id)
       tries = 0
       plumbing_response = nil
       loop do
@@ -1198,15 +1198,15 @@ module SDM
             tries + +@parent.jitterSleep(tries)
             next
           end
-          raise Plumbing::error_to_porcelain(exception)
+          raise Plumbing::convert_error_to_porcelain(exception)
         end
         break
       end
 
       resp = RoleGetResponse.new()
-      resp.meta = Plumbing::get_response_metadata_to_porcelain(plumbing_response.meta)
-      resp.role = Plumbing::role_to_porcelain(plumbing_response.role)
-      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.role = Plumbing::convert_role_to_porcelain(plumbing_response.role)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
       resp
     end
 
@@ -1217,7 +1217,7 @@ module SDM
     )
       req = V1::RoleUpdateRequest.new()
 
-      req.role = Plumbing::role_to_plumbing(role)
+      req.role = Plumbing::convert_role_to_plumbing(role)
       tries = 0
       plumbing_response = nil
       loop do
@@ -1228,15 +1228,15 @@ module SDM
             tries + +@parent.jitterSleep(tries)
             next
           end
-          raise Plumbing::error_to_porcelain(exception)
+          raise Plumbing::convert_error_to_porcelain(exception)
         end
         break
       end
 
       resp = RoleUpdateResponse.new()
-      resp.meta = Plumbing::update_response_metadata_to_porcelain(plumbing_response.meta)
-      resp.role = Plumbing::role_to_porcelain(plumbing_response.role)
-      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.meta = Plumbing::convert_update_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.role = Plumbing::convert_role_to_porcelain(plumbing_response.role)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
       resp
     end
 
@@ -1247,7 +1247,7 @@ module SDM
     )
       req = V1::RoleDeleteRequest.new()
 
-      req.id = id
+      req.id = (id)
       tries = 0
       plumbing_response = nil
       loop do
@@ -1258,14 +1258,14 @@ module SDM
             tries + +@parent.jitterSleep(tries)
             next
           end
-          raise Plumbing::error_to_porcelain(exception)
+          raise Plumbing::convert_error_to_porcelain(exception)
         end
         break
       end
 
       resp = RoleDeleteResponse.new()
-      resp.meta = Plumbing::delete_response_metadata_to_porcelain(plumbing_response.meta)
-      resp.rate_limit = Plumbing::rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
       resp
     end
 
@@ -1293,11 +1293,11 @@ module SDM
               tries + +@parent.jitterSleep(tries)
               next
             end
-            raise Plumbing::error_to_porcelain(exception)
+            raise Plumbing::convert_error_to_porcelain(exception)
           end
           tries = 0
           plumbing_response.roles.each do |plumbing_item|
-            g.yield Plumbing::role_to_porcelain(plumbing_item)
+            g.yield Plumbing::convert_role_to_porcelain(plumbing_item)
           end
           break if plumbing_response.meta.next_cursor == ""
           req.meta.cursor = plumbing_response.meta.next_cursor

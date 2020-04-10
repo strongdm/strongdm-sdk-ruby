@@ -92,7 +92,7 @@ module SDM
     attr_reader :api_access_key
     # AccountAttachments assign an account to a role.
     attr_reader :account_attachments
-    # AccountGrants connect a resource directly to an account, giving the account the permission to connect to that resource.
+    # AccountGrants assign a resource directly to an account, giving the account the permission to connect to that resource.
     attr_reader :account_grants
     # Accounts are users that have access to strongDM.
     # There are two types of accounts:
