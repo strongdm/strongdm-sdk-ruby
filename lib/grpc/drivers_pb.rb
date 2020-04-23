@@ -19,6 +19,7 @@ require "google/protobuf"
 
 require "protoc-gen-swagger/options/annotations_pb"
 require "options_pb"
+require "tags_pb"
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("drivers.proto", :syntax => :proto3) do
     add_message "v1.Resource" do
@@ -73,6 +74,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :access_key, :string, 1
       optional :secret_access_key, :string, 2
       optional :output, :string, 3
@@ -83,6 +85,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :private_key, :string, 1
       optional :project, :string, 2
       optional :port_override, :int32, 3
@@ -93,6 +96,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :hostname, :string, 1
       optional :username, :string, 2
       optional :password, :string, 3
@@ -104,6 +108,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :hostname, :string, 1
       optional :port_override, :int32, 2
       optional :username, :string, 3
@@ -114,6 +119,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :access_key, :string, 1
       optional :secret_access_key, :string, 2
       optional :region, :string, 3
@@ -124,6 +130,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :region, :string, 1
       optional :secret_access_key, :string, 2
       optional :endpoint, :string, 3
@@ -134,6 +141,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :hostname, :string, 1
       optional :username, :string, 2
       optional :password, :string, 3
@@ -145,6 +153,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :url, :string, 1
       optional :healthcheck_path, :string, 2
       optional :username, :string, 3
@@ -157,6 +166,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :url, :string, 1
       optional :healthcheck_path, :string, 2
       optional :headers_blacklist, :string, 3
@@ -167,6 +177,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :url, :string, 1
       optional :healthcheck_path, :string, 2
       optional :auth_header, :string, 3
@@ -178,6 +189,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :hostname, :string, 1
       optional :port, :int32, 2
       optional :certificate_authority, :string, 3
@@ -191,6 +203,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :hostname, :string, 1
       optional :port, :int32, 2
       optional :username, :string, 3
@@ -200,6 +213,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :hostname, :string, 1
       optional :port, :int32, 2
       optional :token, :string, 3
@@ -208,6 +222,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :endpoint, :string, 1
       optional :access_key, :string, 2
       optional :secret_access_key, :string, 3
@@ -221,6 +236,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :endpoint, :string, 1
       optional :certificate_authority, :string, 2
       optional :certificate_authority_filename, :string, 3
@@ -231,6 +247,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :hostname, :string, 1
       optional :port, :int32, 2
       optional :certificate_authority, :string, 3
@@ -244,6 +261,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :hostname, :string, 1
       optional :port, :int32, 2
       optional :username, :string, 3
@@ -253,6 +271,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :hostname, :string, 1
       optional :port, :int32, 2
       optional :token, :string, 3
@@ -261,6 +280,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :hostname, :string, 1
       optional :port_override, :int32, 2
       optional :port, :int32, 3
@@ -269,6 +289,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :hostname, :string, 1
       optional :auth_database, :string, 2
       optional :port_override, :int32, 3
@@ -282,6 +303,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :hostname, :string, 1
       optional :auth_database, :string, 2
       optional :port_override, :int32, 3
@@ -296,6 +318,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :hostname, :string, 1
       optional :auth_database, :string, 2
       optional :port_override, :int32, 3
@@ -308,6 +331,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :hostname, :string, 1
       optional :auth_database, :string, 2
       optional :port_override, :int32, 3
@@ -322,6 +346,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :hostname, :string, 1
       optional :username, :string, 2
       optional :password, :string, 3
@@ -333,6 +358,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :hostname, :string, 1
       optional :username, :string, 2
       optional :password, :string, 3
@@ -344,6 +370,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :hostname, :string, 1
       optional :username, :string, 2
       optional :password, :string, 3
@@ -355,6 +382,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :hostname, :string, 1
       optional :username, :string, 2
       optional :password, :string, 3
@@ -366,6 +394,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :hostname, :string, 1
       optional :username, :string, 2
       optional :password, :string, 3
@@ -377,6 +406,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :hostname, :string, 1
       optional :username, :string, 2
       optional :password, :string, 3
@@ -389,6 +419,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :hostname, :string, 1
       optional :username, :string, 2
       optional :password, :string, 3
@@ -401,6 +432,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :hostname, :string, 1
       optional :username, :string, 2
       optional :password, :string, 3
@@ -413,6 +445,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :hostname, :string, 1
       optional :username, :string, 2
       optional :password, :string, 3
@@ -425,6 +458,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :hostname, :string, 1
       optional :username, :string, 2
       optional :password, :string, 3
@@ -437,6 +471,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :hostname, :string, 1
       optional :username, :string, 2
       optional :password, :string, 3
@@ -449,6 +484,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :hostname, :string, 1
       optional :password, :string, 2
       optional :database, :string, 3
@@ -461,6 +497,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :hostname, :string, 1
       optional :username, :string, 2
       optional :password, :string, 3
@@ -471,6 +508,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :hostname, :string, 1
       optional :port_override, :int32, 2
       optional :password, :string, 3
@@ -480,6 +518,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :hostname, :string, 1
       optional :port_override, :int32, 2
       optional :password, :string, 3
@@ -490,6 +529,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :hostname, :string, 1
       optional :username, :string, 2
       optional :password, :string, 3
@@ -501,6 +541,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :hostname, :string, 1
       optional :username, :string, 2
       optional :password, :string, 3
@@ -514,6 +555,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :hostname, :string, 1
       optional :username, :string, 2
       optional :port, :int32, 3
@@ -524,6 +566,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :hostname, :string, 1
       optional :username, :string, 2
       optional :port_override, :int32, 3
@@ -534,6 +577,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :hostname, :string, 1
       optional :username, :string, 2
       optional :port_override, :int32, 3
@@ -544,6 +588,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
       optional :hostname, :string, 1
       optional :username, :string, 2
       optional :password, :string, 3

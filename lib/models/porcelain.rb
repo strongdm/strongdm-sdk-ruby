@@ -639,6 +639,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :access_key
 
@@ -654,6 +656,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       access_key: nil,
       secret_access_key: nil,
       output: nil,
@@ -668,6 +671,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if access_key != nil
         @access_key = access_key
@@ -702,6 +708,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :private_key
 
@@ -717,6 +725,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       private_key: nil,
       project: nil,
       port_override: nil,
@@ -731,6 +740,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if private_key != nil
         @private_key = private_key
@@ -765,6 +777,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :hostname
 
@@ -782,6 +796,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -797,6 +812,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if hostname != nil
         @hostname = hostname
@@ -834,6 +852,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :hostname
 
@@ -849,6 +869,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       hostname: nil,
       port_override: nil,
       username: nil,
@@ -863,6 +884,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if hostname != nil
         @hostname = hostname
@@ -897,6 +921,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :access_key
 
@@ -912,6 +938,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       access_key: nil,
       secret_access_key: nil,
       region: nil,
@@ -926,6 +953,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if access_key != nil
         @access_key = access_key
@@ -960,6 +990,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :region
 
@@ -975,6 +1007,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       region: nil,
       secret_access_key: nil,
       endpoint: nil,
@@ -989,6 +1022,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if region != nil
         @region = region
@@ -1023,6 +1059,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :hostname
 
@@ -1040,6 +1078,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -1055,6 +1094,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if hostname != nil
         @hostname = hostname
@@ -1092,6 +1134,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :url
 
@@ -1111,6 +1155,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       url: nil,
       healthcheck_path: nil,
       username: nil,
@@ -1127,6 +1172,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if url != nil
         @url = url
@@ -1167,6 +1215,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :url
 
@@ -1182,6 +1232,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       url: nil,
       healthcheck_path: nil,
       headers_blacklist: nil,
@@ -1196,6 +1247,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if url != nil
         @url = url
@@ -1230,6 +1284,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :url
 
@@ -1247,6 +1303,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       url: nil,
       healthcheck_path: nil,
       auth_header: nil,
@@ -1262,6 +1319,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if url != nil
         @url = url
@@ -1299,6 +1359,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :hostname
 
@@ -1320,6 +1382,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       hostname: nil,
       port: nil,
       certificate_authority: nil,
@@ -1337,6 +1400,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if hostname != nil
         @hostname = hostname
@@ -1380,6 +1446,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :hostname
 
@@ -1393,6 +1461,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       hostname: nil,
       port: nil,
       username: nil,
@@ -1406,6 +1475,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if hostname != nil
         @hostname = hostname
@@ -1437,6 +1509,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :hostname
 
@@ -1448,6 +1522,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       hostname: nil,
       port: nil,
       token: nil
@@ -1460,6 +1535,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if hostname != nil
         @hostname = hostname
@@ -1488,6 +1566,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :endpoint
 
@@ -1509,6 +1589,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       endpoint: nil,
       access_key: nil,
       secret_access_key: nil,
@@ -1526,6 +1607,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if endpoint != nil
         @endpoint = endpoint
@@ -1569,6 +1653,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :endpoint
 
@@ -1584,6 +1670,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       endpoint: nil,
       certificate_authority: nil,
       certificate_authority_filename: nil,
@@ -1598,6 +1685,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if endpoint != nil
         @endpoint = endpoint
@@ -1632,6 +1722,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :hostname
 
@@ -1653,6 +1745,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       hostname: nil,
       port: nil,
       certificate_authority: nil,
@@ -1670,6 +1763,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if hostname != nil
         @hostname = hostname
@@ -1713,6 +1809,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :hostname
 
@@ -1726,6 +1824,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       hostname: nil,
       port: nil,
       username: nil,
@@ -1739,6 +1838,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if hostname != nil
         @hostname = hostname
@@ -1770,6 +1872,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :hostname
 
@@ -1781,6 +1885,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       hostname: nil,
       port: nil,
       token: nil
@@ -1793,6 +1898,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if hostname != nil
         @hostname = hostname
@@ -1821,6 +1929,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :hostname
 
@@ -1832,6 +1942,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       hostname: nil,
       port_override: nil,
       port: nil
@@ -1844,6 +1955,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if hostname != nil
         @hostname = hostname
@@ -1872,6 +1986,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :hostname
 
@@ -1893,6 +2009,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       hostname: nil,
       auth_database: nil,
       port_override: nil,
@@ -1910,6 +2027,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if hostname != nil
         @hostname = hostname
@@ -1953,6 +2073,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :hostname
 
@@ -1976,6 +2098,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       hostname: nil,
       auth_database: nil,
       port_override: nil,
@@ -1994,6 +2117,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if hostname != nil
         @hostname = hostname
@@ -2040,6 +2166,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :hostname
 
@@ -2059,6 +2187,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       hostname: nil,
       auth_database: nil,
       port_override: nil,
@@ -2075,6 +2204,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if hostname != nil
         @hostname = hostname
@@ -2115,6 +2247,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :hostname
 
@@ -2138,6 +2272,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       hostname: nil,
       auth_database: nil,
       port_override: nil,
@@ -2156,6 +2291,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if hostname != nil
         @hostname = hostname
@@ -2202,6 +2340,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :hostname
 
@@ -2219,6 +2359,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -2234,6 +2375,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if hostname != nil
         @hostname = hostname
@@ -2271,6 +2415,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :hostname
 
@@ -2288,6 +2434,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -2303,6 +2450,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if hostname != nil
         @hostname = hostname
@@ -2340,6 +2490,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :hostname
 
@@ -2357,6 +2509,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -2372,6 +2525,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if hostname != nil
         @hostname = hostname
@@ -2409,6 +2565,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :hostname
 
@@ -2426,6 +2584,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -2441,6 +2600,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if hostname != nil
         @hostname = hostname
@@ -2478,6 +2640,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :hostname
 
@@ -2495,6 +2659,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -2510,6 +2675,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if hostname != nil
         @hostname = hostname
@@ -2547,6 +2715,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :hostname
 
@@ -2566,6 +2736,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -2582,6 +2753,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if hostname != nil
         @hostname = hostname
@@ -2622,6 +2796,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :hostname
 
@@ -2641,6 +2817,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -2657,6 +2834,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if hostname != nil
         @hostname = hostname
@@ -2697,6 +2877,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :hostname
 
@@ -2716,6 +2898,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -2732,6 +2915,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if hostname != nil
         @hostname = hostname
@@ -2772,6 +2958,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :hostname
 
@@ -2791,6 +2979,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -2807,6 +2996,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if hostname != nil
         @hostname = hostname
@@ -2847,6 +3039,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :hostname
 
@@ -2866,6 +3060,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -2882,6 +3077,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if hostname != nil
         @hostname = hostname
@@ -2922,6 +3120,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :hostname
 
@@ -2941,6 +3141,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -2957,6 +3158,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if hostname != nil
         @hostname = hostname
@@ -2997,6 +3201,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :hostname
 
@@ -3016,6 +3222,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       hostname: nil,
       password: nil,
       database: nil,
@@ -3032,6 +3239,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if hostname != nil
         @hostname = hostname
@@ -3072,6 +3282,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :hostname
 
@@ -3087,6 +3299,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -3101,6 +3314,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if hostname != nil
         @hostname = hostname
@@ -3135,6 +3351,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :hostname
 
@@ -3148,6 +3366,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       hostname: nil,
       port_override: nil,
       password: nil,
@@ -3161,6 +3380,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if hostname != nil
         @hostname = hostname
@@ -3192,6 +3414,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :hostname
 
@@ -3207,6 +3431,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       hostname: nil,
       port_override: nil,
       password: nil,
@@ -3221,6 +3446,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if hostname != nil
         @hostname = hostname
@@ -3255,6 +3483,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :hostname
 
@@ -3272,6 +3502,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -3287,6 +3518,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if hostname != nil
         @hostname = hostname
@@ -3324,6 +3558,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :hostname
 
@@ -3345,6 +3581,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -3362,6 +3599,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if hostname != nil
         @hostname = hostname
@@ -3405,6 +3645,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :hostname
 
@@ -3420,6 +3662,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       hostname: nil,
       username: nil,
       port: nil,
@@ -3434,6 +3677,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if hostname != nil
         @hostname = hostname
@@ -3468,6 +3714,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :hostname
 
@@ -3483,6 +3731,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       hostname: nil,
       username: nil,
       port_override: nil,
@@ -3497,6 +3746,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if hostname != nil
         @hostname = hostname
@@ -3531,6 +3783,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :hostname
 
@@ -3546,6 +3800,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       hostname: nil,
       username: nil,
       port_override: nil,
@@ -3560,6 +3815,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if hostname != nil
         @hostname = hostname
@@ -3594,6 +3852,8 @@ module SDM
     attr_accessor :name
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     attr_accessor :hostname
 
@@ -3609,6 +3869,7 @@ module SDM
       id: nil,
       name: nil,
       healthy: nil,
+      tags: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -3623,6 +3884,9 @@ module SDM
       end
       if healthy != nil
         @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
       end
       if hostname != nil
         @hostname = hostname
