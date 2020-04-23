@@ -20,7 +20,7 @@ require "account_grants_pb"
 
 module V1
   module AccountGrants
-    # AccountGrants assign a resource directly to an account, giving the account the permission to connect to that resource.
+    # AccountGrants connect a resource directly to an account, giving the account the permission to connect to that resource.
     class Service
       include GRPC::GenericService
 
