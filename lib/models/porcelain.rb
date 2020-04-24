@@ -4059,7 +4059,8 @@ module SDM
     # Unique human-readable name of the Relay. Generated if not provided on create.
     attr_accessor :name
     # The current state of the relay. One of: "new", "verifying_restart",
-    # "restarting", "started", "stopped", "dead", "unknown",
+    # "awaiting_restart", "restarting", "started", "stopped", "dead",
+    # "unknown".
     attr_accessor :state
 
     def initialize(
