@@ -977,6 +977,9 @@ module SDM
       if porcelain.instance_of? Redshift
         plumbing.redshift = convert_redshift_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? Citus
+        plumbing.citus = convert_citus_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? Presto
         plumbing.presto = convert_presto_to_plumbing(porcelain)
       end
@@ -1115,6 +1118,9 @@ module SDM
       end
       if plumbing.redshift != nil
         return convert_redshift_to_porcelain(plumbing.redshift)
+      end
+      if plumbing.citus != nil
+        return convert_citus_to_porcelain(plumbing.citus)
       end
       if plumbing.presto != nil
         return convert_presto_to_porcelain(plumbing.presto)
@@ -2932,6 +2938,60 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_redshift_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_citus_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = Citus.new()
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.username = (plumbing.username)
+      porcelain.password = (plumbing.password)
+      porcelain.database = (plumbing.database)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.port = (plumbing.port)
+      porcelain.override_database = (plumbing.override_database)
+      porcelain
+    end
+
+    def self.convert_citus_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::Citus.new()
+      plumbing.id = (porcelain.id) unless porcelain.id == nil
+      plumbing.name = (porcelain.name) unless porcelain.name == nil
+      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
+      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.password = (porcelain.password) unless porcelain.password == nil
+      plumbing.database = (porcelain.database) unless porcelain.database == nil
+      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
+      plumbing.port = (porcelain.port) unless porcelain.port == nil
+      plumbing.override_database = (porcelain.override_database) unless porcelain.override_database == nil
+      plumbing
+    end
+    def self.convert_repeated_citus_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_citus_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_citus_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_citus_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items

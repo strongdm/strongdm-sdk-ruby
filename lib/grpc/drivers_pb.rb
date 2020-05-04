@@ -58,6 +58,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :greenplum, :message, 1302, "v1.Greenplum"
         optional :cockroach, :message, 1303, "v1.Cockroach"
         optional :redshift, :message, 1304, "v1.Redshift"
+        optional :citus, :message, 1305, "v1.Citus"
         optional :presto, :message, 1400, "v1.Presto"
         optional :rdp, :message, 1500, "v1.RDP"
         optional :redis, :message, 1600, "v1.Redis"
@@ -480,6 +481,19 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port, :int32, 6
       optional :override_database, :bool, 7
     end
+    add_message "v1.Citus" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :hostname, :string, 1
+      optional :username, :string, 2
+      optional :password, :string, 3
+      optional :database, :string, 4
+      optional :port_override, :int32, 5
+      optional :port, :int32, 6
+      optional :override_database, :bool, 7
+    end
     add_message "v1.Presto" do
       optional :id, :string, 32768
       optional :name, :string, 32769
@@ -634,6 +648,7 @@ module V1
   Greenplum = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Greenplum").msgclass
   Cockroach = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Cockroach").msgclass
   Redshift = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Redshift").msgclass
+  Citus = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Citus").msgclass
   Presto = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Presto").msgclass
   RDP = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RDP").msgclass
   Redis = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Redis").msgclass

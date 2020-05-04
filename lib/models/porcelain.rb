@@ -3194,6 +3194,87 @@ module SDM
     end
   end
 
+  class Citus
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    attr_accessor :hostname
+
+    attr_accessor :username
+
+    attr_accessor :password
+
+    attr_accessor :database
+
+    attr_accessor :port_override
+
+    attr_accessor :port
+
+    attr_accessor :override_database
+
+    def initialize(
+      id: nil,
+      name: nil,
+      healthy: nil,
+      tags: nil,
+      hostname: nil,
+      username: nil,
+      password: nil,
+      database: nil,
+      port_override: nil,
+      port: nil,
+      override_database: nil
+    )
+      if id != nil
+        @id = id
+      end
+      if name != nil
+        @name = name
+      end
+      if healthy != nil
+        @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
+      end
+      if hostname != nil
+        @hostname = hostname
+      end
+      if username != nil
+        @username = username
+      end
+      if password != nil
+        @password = password
+      end
+      if database != nil
+        @database = database
+      end
+      if port_override != nil
+        @port_override = port_override
+      end
+      if port != nil
+        @port = port
+      end
+      if override_database != nil
+        @override_database = override_database
+      end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class Presto
     # Unique identifier of the Resource.
     attr_accessor :id
