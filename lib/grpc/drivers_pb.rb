@@ -199,6 +199,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :client_certificate_filename, :string, 6
       optional :client_key, :string, 7
       optional :client_key_filename, :string, 8
+      optional :healthcheck_namespace, :string, 9
     end
     add_message "v1.KubernetesBasicAuth" do
       optional :id, :string, 32768
@@ -209,6 +210,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port, :int32, 2
       optional :username, :string, 3
       optional :password, :string, 4
+      optional :healthcheck_namespace, :string, 5
     end
     add_message "v1.KubernetesServiceAccount" do
       optional :id, :string, 32768
@@ -218,6 +220,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :hostname, :string, 1
       optional :port, :int32, 2
       optional :token, :string, 3
+      optional :healthcheck_namespace, :string, 4
     end
     add_message "v1.AmazonEKS" do
       optional :id, :string, 32768
@@ -232,6 +235,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :region, :string, 6
       optional :cluster_name, :string, 7
       optional :role_arn, :string, 8
+      optional :healthcheck_namespace, :string, 9
     end
     add_message "v1.GoogleGKE" do
       optional :id, :string, 32768
@@ -243,6 +247,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :certificate_authority_filename, :string, 3
       optional :service_account_key, :string, 4
       optional :service_account_key_filename, :string, 5
+      optional :healthcheck_namespace, :string, 6
     end
     add_message "v1.AKS" do
       optional :id, :string, 32768
@@ -257,6 +262,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :client_certificate_filename, :string, 6
       optional :client_key, :string, 7
       optional :client_key_filename, :string, 8
+      optional :healthcheck_namespace, :string, 9
     end
     add_message "v1.AKSBasicAuth" do
       optional :id, :string, 32768
@@ -267,6 +273,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port, :int32, 2
       optional :username, :string, 3
       optional :password, :string, 4
+      optional :healthcheck_namespace, :string, 5
     end
     add_message "v1.AKSServiceAccount" do
       optional :id, :string, 32768
@@ -276,6 +283,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :hostname, :string, 1
       optional :port, :int32, 2
       optional :token, :string, 3
+      optional :healthcheck_namespace, :string, 4
     end
     add_message "v1.Memcached" do
       optional :id, :string, 32768

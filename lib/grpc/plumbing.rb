@@ -1697,6 +1697,7 @@ module SDM
       porcelain.client_certificate_filename = (plumbing.client_certificate_filename)
       porcelain.client_key = (plumbing.client_key)
       porcelain.client_key_filename = (plumbing.client_key_filename)
+      porcelain.healthcheck_namespace = (plumbing.healthcheck_namespace)
       porcelain
     end
 
@@ -1717,6 +1718,7 @@ module SDM
       plumbing.client_certificate_filename = (porcelain.client_certificate_filename) unless porcelain.client_certificate_filename == nil
       plumbing.client_key = (porcelain.client_key) unless porcelain.client_key == nil
       plumbing.client_key_filename = (porcelain.client_key_filename) unless porcelain.client_key_filename == nil
+      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace) unless porcelain.healthcheck_namespace == nil
       plumbing
     end
     def self.convert_repeated_kubernetes_to_plumbing(porcelains)
@@ -1749,6 +1751,7 @@ module SDM
       porcelain.port = (plumbing.port)
       porcelain.username = (plumbing.username)
       porcelain.password = (plumbing.password)
+      porcelain.healthcheck_namespace = (plumbing.healthcheck_namespace)
       porcelain
     end
 
@@ -1765,6 +1768,7 @@ module SDM
       plumbing.port = (porcelain.port) unless porcelain.port == nil
       plumbing.username = (porcelain.username) unless porcelain.username == nil
       plumbing.password = (porcelain.password) unless porcelain.password == nil
+      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace) unless porcelain.healthcheck_namespace == nil
       plumbing
     end
     def self.convert_repeated_kubernetes_basic_auth_to_plumbing(porcelains)
@@ -1796,6 +1800,7 @@ module SDM
       porcelain.hostname = (plumbing.hostname)
       porcelain.port = (plumbing.port)
       porcelain.token = (plumbing.token)
+      porcelain.healthcheck_namespace = (plumbing.healthcheck_namespace)
       porcelain
     end
 
@@ -1811,6 +1816,7 @@ module SDM
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.port = (porcelain.port) unless porcelain.port == nil
       plumbing.token = (porcelain.token) unless porcelain.token == nil
+      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace) unless porcelain.healthcheck_namespace == nil
       plumbing
     end
     def self.convert_repeated_kubernetes_service_account_to_plumbing(porcelains)
@@ -1847,6 +1853,7 @@ module SDM
       porcelain.region = (plumbing.region)
       porcelain.cluster_name = (plumbing.cluster_name)
       porcelain.role_arn = (plumbing.role_arn)
+      porcelain.healthcheck_namespace = (plumbing.healthcheck_namespace)
       porcelain
     end
 
@@ -1867,6 +1874,7 @@ module SDM
       plumbing.region = (porcelain.region) unless porcelain.region == nil
       plumbing.cluster_name = (porcelain.cluster_name) unless porcelain.cluster_name == nil
       plumbing.role_arn = (porcelain.role_arn) unless porcelain.role_arn == nil
+      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace) unless porcelain.healthcheck_namespace == nil
       plumbing
     end
     def self.convert_repeated_amazon_eks_to_plumbing(porcelains)
@@ -1900,6 +1908,7 @@ module SDM
       porcelain.certificate_authority_filename = (plumbing.certificate_authority_filename)
       porcelain.service_account_key = (plumbing.service_account_key)
       porcelain.service_account_key_filename = (plumbing.service_account_key_filename)
+      porcelain.healthcheck_namespace = (plumbing.healthcheck_namespace)
       porcelain
     end
 
@@ -1917,6 +1926,7 @@ module SDM
       plumbing.certificate_authority_filename = (porcelain.certificate_authority_filename) unless porcelain.certificate_authority_filename == nil
       plumbing.service_account_key = (porcelain.service_account_key) unless porcelain.service_account_key == nil
       plumbing.service_account_key_filename = (porcelain.service_account_key_filename) unless porcelain.service_account_key_filename == nil
+      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace) unless porcelain.healthcheck_namespace == nil
       plumbing
     end
     def self.convert_repeated_google_gke_to_plumbing(porcelains)
@@ -1953,6 +1963,7 @@ module SDM
       porcelain.client_certificate_filename = (plumbing.client_certificate_filename)
       porcelain.client_key = (plumbing.client_key)
       porcelain.client_key_filename = (plumbing.client_key_filename)
+      porcelain.healthcheck_namespace = (plumbing.healthcheck_namespace)
       porcelain
     end
 
@@ -1973,6 +1984,7 @@ module SDM
       plumbing.client_certificate_filename = (porcelain.client_certificate_filename) unless porcelain.client_certificate_filename == nil
       plumbing.client_key = (porcelain.client_key) unless porcelain.client_key == nil
       plumbing.client_key_filename = (porcelain.client_key_filename) unless porcelain.client_key_filename == nil
+      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace) unless porcelain.healthcheck_namespace == nil
       plumbing
     end
     def self.convert_repeated_aks_to_plumbing(porcelains)
@@ -2005,6 +2017,7 @@ module SDM
       porcelain.port = (plumbing.port)
       porcelain.username = (plumbing.username)
       porcelain.password = (plumbing.password)
+      porcelain.healthcheck_namespace = (plumbing.healthcheck_namespace)
       porcelain
     end
 
@@ -2021,6 +2034,7 @@ module SDM
       plumbing.port = (porcelain.port) unless porcelain.port == nil
       plumbing.username = (porcelain.username) unless porcelain.username == nil
       plumbing.password = (porcelain.password) unless porcelain.password == nil
+      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace) unless porcelain.healthcheck_namespace == nil
       plumbing
     end
     def self.convert_repeated_aks_basic_auth_to_plumbing(porcelains)
@@ -2052,6 +2066,7 @@ module SDM
       porcelain.hostname = (plumbing.hostname)
       porcelain.port = (plumbing.port)
       porcelain.token = (plumbing.token)
+      porcelain.healthcheck_namespace = (plumbing.healthcheck_namespace)
       porcelain
     end
 
@@ -2067,6 +2082,7 @@ module SDM
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.port = (porcelain.port) unless porcelain.port == nil
       plumbing.token = (porcelain.token) unless porcelain.token == nil
+      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace) unless porcelain.healthcheck_namespace == nil
       plumbing
     end
     def self.convert_repeated_aks_service_account_to_plumbing(porcelains)
