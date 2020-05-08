@@ -1378,6 +1378,8 @@ module SDM
 
     attr_accessor :client_key_filename
 
+    attr_accessor :healthcheck_namespace
+
     def initialize(
       id: nil,
       name: nil,
@@ -1390,7 +1392,8 @@ module SDM
       client_certificate: nil,
       client_certificate_filename: nil,
       client_key: nil,
-      client_key_filename: nil
+      client_key_filename: nil,
+      healthcheck_namespace: nil
     )
       if id != nil
         @id = id
@@ -1428,6 +1431,9 @@ module SDM
       if client_key_filename != nil
         @client_key_filename = client_key_filename
       end
+      if healthcheck_namespace != nil
+        @healthcheck_namespace = healthcheck_namespace
+      end
     end
 
     def to_json(options = {})
@@ -1457,6 +1463,8 @@ module SDM
 
     attr_accessor :password
 
+    attr_accessor :healthcheck_namespace
+
     def initialize(
       id: nil,
       name: nil,
@@ -1465,7 +1473,8 @@ module SDM
       hostname: nil,
       port: nil,
       username: nil,
-      password: nil
+      password: nil,
+      healthcheck_namespace: nil
     )
       if id != nil
         @id = id
@@ -1490,6 +1499,9 @@ module SDM
       end
       if password != nil
         @password = password
+      end
+      if healthcheck_namespace != nil
+        @healthcheck_namespace = healthcheck_namespace
       end
     end
 
@@ -1518,6 +1530,8 @@ module SDM
 
     attr_accessor :token
 
+    attr_accessor :healthcheck_namespace
+
     def initialize(
       id: nil,
       name: nil,
@@ -1525,7 +1539,8 @@ module SDM
       tags: nil,
       hostname: nil,
       port: nil,
-      token: nil
+      token: nil,
+      healthcheck_namespace: nil
     )
       if id != nil
         @id = id
@@ -1547,6 +1562,9 @@ module SDM
       end
       if token != nil
         @token = token
+      end
+      if healthcheck_namespace != nil
+        @healthcheck_namespace = healthcheck_namespace
       end
     end
 
@@ -1585,6 +1603,8 @@ module SDM
 
     attr_accessor :role_arn
 
+    attr_accessor :healthcheck_namespace
+
     def initialize(
       id: nil,
       name: nil,
@@ -1597,7 +1617,8 @@ module SDM
       certificate_authority_filename: nil,
       region: nil,
       cluster_name: nil,
-      role_arn: nil
+      role_arn: nil,
+      healthcheck_namespace: nil
     )
       if id != nil
         @id = id
@@ -1635,6 +1656,9 @@ module SDM
       if role_arn != nil
         @role_arn = role_arn
       end
+      if healthcheck_namespace != nil
+        @healthcheck_namespace = healthcheck_namespace
+      end
     end
 
     def to_json(options = {})
@@ -1666,6 +1690,8 @@ module SDM
 
     attr_accessor :service_account_key_filename
 
+    attr_accessor :healthcheck_namespace
+
     def initialize(
       id: nil,
       name: nil,
@@ -1675,7 +1701,8 @@ module SDM
       certificate_authority: nil,
       certificate_authority_filename: nil,
       service_account_key: nil,
-      service_account_key_filename: nil
+      service_account_key_filename: nil,
+      healthcheck_namespace: nil
     )
       if id != nil
         @id = id
@@ -1703,6 +1730,9 @@ module SDM
       end
       if service_account_key_filename != nil
         @service_account_key_filename = service_account_key_filename
+      end
+      if healthcheck_namespace != nil
+        @healthcheck_namespace = healthcheck_namespace
       end
     end
 
@@ -1741,6 +1771,8 @@ module SDM
 
     attr_accessor :client_key_filename
 
+    attr_accessor :healthcheck_namespace
+
     def initialize(
       id: nil,
       name: nil,
@@ -1753,7 +1785,8 @@ module SDM
       client_certificate: nil,
       client_certificate_filename: nil,
       client_key: nil,
-      client_key_filename: nil
+      client_key_filename: nil,
+      healthcheck_namespace: nil
     )
       if id != nil
         @id = id
@@ -1791,6 +1824,9 @@ module SDM
       if client_key_filename != nil
         @client_key_filename = client_key_filename
       end
+      if healthcheck_namespace != nil
+        @healthcheck_namespace = healthcheck_namespace
+      end
     end
 
     def to_json(options = {})
@@ -1820,6 +1856,8 @@ module SDM
 
     attr_accessor :password
 
+    attr_accessor :healthcheck_namespace
+
     def initialize(
       id: nil,
       name: nil,
@@ -1828,7 +1866,8 @@ module SDM
       hostname: nil,
       port: nil,
       username: nil,
-      password: nil
+      password: nil,
+      healthcheck_namespace: nil
     )
       if id != nil
         @id = id
@@ -1853,6 +1892,9 @@ module SDM
       end
       if password != nil
         @password = password
+      end
+      if healthcheck_namespace != nil
+        @healthcheck_namespace = healthcheck_namespace
       end
     end
 
@@ -1881,6 +1923,8 @@ module SDM
 
     attr_accessor :token
 
+    attr_accessor :healthcheck_namespace
+
     def initialize(
       id: nil,
       name: nil,
@@ -1888,7 +1932,8 @@ module SDM
       tags: nil,
       hostname: nil,
       port: nil,
-      token: nil
+      token: nil,
+      healthcheck_namespace: nil
     )
       if id != nil
         @id = id
@@ -1910,6 +1955,9 @@ module SDM
       end
       if token != nil
         @token = token
+      end
+      if healthcheck_namespace != nil
+        @healthcheck_namespace = healthcheck_namespace
       end
     end
 
@@ -3194,6 +3242,87 @@ module SDM
     end
   end
 
+  class Citus
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    attr_accessor :hostname
+
+    attr_accessor :username
+
+    attr_accessor :password
+
+    attr_accessor :database
+
+    attr_accessor :port_override
+
+    attr_accessor :port
+
+    attr_accessor :override_database
+
+    def initialize(
+      id: nil,
+      name: nil,
+      healthy: nil,
+      tags: nil,
+      hostname: nil,
+      username: nil,
+      password: nil,
+      database: nil,
+      port_override: nil,
+      port: nil,
+      override_database: nil
+    )
+      if id != nil
+        @id = id
+      end
+      if name != nil
+        @name = name
+      end
+      if healthy != nil
+        @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
+      end
+      if hostname != nil
+        @hostname = hostname
+      end
+      if username != nil
+        @username = username
+      end
+      if password != nil
+        @password = password
+      end
+      if database != nil
+        @database = database
+      end
+      if port_override != nil
+        @port_override = port_override
+      end
+      if port != nil
+        @port = port
+      end
+      if override_database != nil
+        @override_database = override_database
+      end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class Presto
     # Unique identifier of the Resource.
     attr_accessor :id
@@ -3707,6 +3836,69 @@ module SDM
     end
   end
 
+  class SSHCert
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    attr_accessor :hostname
+
+    attr_accessor :username
+
+    attr_accessor :port
+
+    attr_accessor :port_forwarding
+
+    def initialize(
+      id: nil,
+      name: nil,
+      healthy: nil,
+      tags: nil,
+      hostname: nil,
+      username: nil,
+      port: nil,
+      port_forwarding: nil
+    )
+      if id != nil
+        @id = id
+      end
+      if name != nil
+        @name = name
+      end
+      if healthy != nil
+        @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
+      end
+      if hostname != nil
+        @hostname = hostname
+      end
+      if username != nil
+        @username = username
+      end
+      if port != nil
+        @port = port
+      end
+      if port_forwarding != nil
+        @port_forwarding = port_forwarding
+      end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class Sybase
     # Unique identifier of the Resource.
     attr_accessor :id
@@ -4059,7 +4251,8 @@ module SDM
     # Unique human-readable name of the Relay. Generated if not provided on create.
     attr_accessor :name
     # The current state of the relay. One of: "new", "verifying_restart",
-    # "restarting", "started", "stopped", "dead", "unknown",
+    # "awaiting_restart", "restarting", "started", "stopped", "dead",
+    # "unknown".
     attr_accessor :state
 
     def initialize(

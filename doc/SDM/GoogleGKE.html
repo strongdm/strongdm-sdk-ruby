@@ -148,6 +148,19 @@
         </div>
       </div>
       
+      <div id="attribute-i-healthcheck_namespace" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">healthcheck_namespace</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
       <div id="attribute-i-healthy" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">healthy</span><span
@@ -240,7 +253,7 @@
         
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">( id:nil \ , name:nil \ , healthy:nil \ , tags:nil \ , endpoint:nil \ , certificate_authority:nil \ , certificate_authority_filename:nil \ , service_account_key:nil \ , service_account_key_filename:nil \ )</span>
+            class="method-args">( id:nil \ , name:nil \ , healthy:nil \ , tags:nil \ , endpoint:nil \ , certificate_authority:nil \ , certificate_authority_filename:nil \ , service_account_key:nil \ , service_account_key_filename:nil \ , healthcheck_namespace:nil \ )</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -255,7 +268,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 1742</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 1772</span>
                 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(
                         <span class="ruby-value">id:</span><span class="ruby-keyword">nil</span> \
 ,
@@ -274,6 +287,8 @@
                         <span class="ruby-value">service_account_key:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">service_account_key_filename:</span><span class="ruby-keyword">nil</span> \
+,
+                        <span class="ruby-value">healthcheck_namespace:</span><span class="ruby-keyword">nil</span> \
                 )
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">id</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">id</span>
@@ -301,6 +316,9 @@
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">service_account_key_filename</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@service_account_key_filename</span> = <span class="ruby-identifier">service_account_key_filename</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">healthcheck_namespace</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@healthcheck_namespace</span> = <span class="ruby-identifier">healthcheck_namespace</span>
                         <span class="ruby-keyword">end</span>
                 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -340,7 +358,7 @@
 
           
           <div class="method-source-code" id="to_json-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 1789</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 1824</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_json</span>(<span class="ruby-identifier">options</span>={})
         <span class="ruby-identifier">hash</span> = {}
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">instance_variables</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">var</span><span class="ruby-operator">|</span>

@@ -29,6 +29,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :sdk_only, :bool, 1941306
       optional :computed, :bool, 1941307
       optional :force_new, :bool, 1941308
+      optional :write_only, :bool, 1941309
+      optional :sensitive, :bool, 1941310
     end
     add_message "v1.MessageOptions" do
       optional :model_name, :string, 1941300
@@ -43,6 +45,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :go_porcelain_type, :string, 1941310
       optional :java_porcelain_type, :string, 1941311
       optional :terraform_porcelain_type, :string, 1941312
+      optional :openapi_porcelain_type, :string, 1941313
     end
     add_message "v1.TerraformDocs" do
       optional :resource_example_path, :string, 1941300

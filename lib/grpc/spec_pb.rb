@@ -18,7 +18,6 @@
 require "google/protobuf"
 
 require "options_pb"
-require "protoc-gen-swagger/options/annotations_pb"
 require "google/protobuf/timestamp_pb"
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("spec.proto", :syntax => :proto3) do

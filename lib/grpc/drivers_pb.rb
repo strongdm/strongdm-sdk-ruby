@@ -58,6 +58,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :greenplum, :message, 1302, "v1.Greenplum"
         optional :cockroach, :message, 1303, "v1.Cockroach"
         optional :redshift, :message, 1304, "v1.Redshift"
+        optional :citus, :message, 1305, "v1.Citus"
         optional :presto, :message, 1400, "v1.Presto"
         optional :rdp, :message, 1500, "v1.RDP"
         optional :redis, :message, 1600, "v1.Redis"
@@ -65,6 +66,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :snowflake, :message, 1700, "v1.Snowflake"
         optional :sql_server, :message, 1800, "v1.SQLServer"
         optional :ssh, :message, 1900, "v1.SSH"
+        optional :ssh_cert, :message, 1901, "v1.SSHCert"
         optional :sybase, :message, 2000, "v1.Sybase"
         optional :sybase_iq, :message, 2001, "v1.SybaseIQ"
         optional :teradata, :message, 2100, "v1.Teradata"
@@ -198,6 +200,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :client_certificate_filename, :string, 6
       optional :client_key, :string, 7
       optional :client_key_filename, :string, 8
+      optional :healthcheck_namespace, :string, 9
     end
     add_message "v1.KubernetesBasicAuth" do
       optional :id, :string, 32768
@@ -208,6 +211,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port, :int32, 2
       optional :username, :string, 3
       optional :password, :string, 4
+      optional :healthcheck_namespace, :string, 5
     end
     add_message "v1.KubernetesServiceAccount" do
       optional :id, :string, 32768
@@ -217,6 +221,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :hostname, :string, 1
       optional :port, :int32, 2
       optional :token, :string, 3
+      optional :healthcheck_namespace, :string, 4
     end
     add_message "v1.AmazonEKS" do
       optional :id, :string, 32768
@@ -231,6 +236,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :region, :string, 6
       optional :cluster_name, :string, 7
       optional :role_arn, :string, 8
+      optional :healthcheck_namespace, :string, 9
     end
     add_message "v1.GoogleGKE" do
       optional :id, :string, 32768
@@ -242,6 +248,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :certificate_authority_filename, :string, 3
       optional :service_account_key, :string, 4
       optional :service_account_key_filename, :string, 5
+      optional :healthcheck_namespace, :string, 6
     end
     add_message "v1.AKS" do
       optional :id, :string, 32768
@@ -256,6 +263,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :client_certificate_filename, :string, 6
       optional :client_key, :string, 7
       optional :client_key_filename, :string, 8
+      optional :healthcheck_namespace, :string, 9
     end
     add_message "v1.AKSBasicAuth" do
       optional :id, :string, 32768
@@ -266,6 +274,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port, :int32, 2
       optional :username, :string, 3
       optional :password, :string, 4
+      optional :healthcheck_namespace, :string, 5
     end
     add_message "v1.AKSServiceAccount" do
       optional :id, :string, 32768
@@ -275,6 +284,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :hostname, :string, 1
       optional :port, :int32, 2
       optional :token, :string, 3
+      optional :healthcheck_namespace, :string, 4
     end
     add_message "v1.Memcached" do
       optional :id, :string, 32768
@@ -480,6 +490,19 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port, :int32, 6
       optional :override_database, :bool, 7
     end
+    add_message "v1.Citus" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :hostname, :string, 1
+      optional :username, :string, 2
+      optional :password, :string, 3
+      optional :database, :string, 4
+      optional :port_override, :int32, 5
+      optional :port, :int32, 6
+      optional :override_database, :bool, 7
+    end
     add_message "v1.Presto" do
       optional :id, :string, 32768
       optional :name, :string, 32769
@@ -562,6 +585,16 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :public_key, :string, 4
       optional :port_forwarding, :bool, 5
     end
+    add_message "v1.SSHCert" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :hostname, :string, 1
+      optional :username, :string, 2
+      optional :port, :int32, 3
+      optional :port_forwarding, :bool, 4
+    end
     add_message "v1.Sybase" do
       optional :id, :string, 32768
       optional :name, :string, 32769
@@ -634,6 +667,7 @@ module V1
   Greenplum = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Greenplum").msgclass
   Cockroach = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Cockroach").msgclass
   Redshift = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Redshift").msgclass
+  Citus = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Citus").msgclass
   Presto = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Presto").msgclass
   RDP = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RDP").msgclass
   Redis = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Redis").msgclass
@@ -641,6 +675,7 @@ module V1
   Snowflake = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Snowflake").msgclass
   SQLServer = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SQLServer").msgclass
   SSH = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SSH").msgclass
+  SSHCert = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SSHCert").msgclass
   Sybase = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Sybase").msgclass
   SybaseIQ = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SybaseIQ").msgclass
   Teradata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Teradata").msgclass
