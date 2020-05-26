@@ -884,6 +884,9 @@ module SDM
       if porcelain.instance_of? Cassandra
         plumbing.cassandra = convert_cassandra_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? DB2
+        plumbing.db_2 = convert_db_2_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? Druid
         plumbing.druid = convert_druid_to_plumbing(porcelain)
       end
@@ -1028,6 +1031,9 @@ module SDM
       end
       if plumbing.cassandra != nil
         return convert_cassandra_to_porcelain(plumbing.cassandra)
+      end
+      if plumbing.db_2 != nil
+        return convert_db_2_to_porcelain(plumbing.db_2)
       end
       if plumbing.druid != nil
         return convert_druid_to_porcelain(plumbing.druid)
@@ -1324,6 +1330,58 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_cassandra_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_db_2_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = DB2.new()
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.username = (plumbing.username)
+      porcelain.password = (plumbing.password)
+      porcelain.database = (plumbing.database)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.port = (plumbing.port)
+      porcelain
+    end
+
+    def self.convert_db_2_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::DB2.new()
+      plumbing.id = (porcelain.id) unless porcelain.id == nil
+      plumbing.name = (porcelain.name) unless porcelain.name == nil
+      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
+      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.password = (porcelain.password) unless porcelain.password == nil
+      plumbing.database = (porcelain.database) unless porcelain.database == nil
+      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
+      plumbing.port = (porcelain.port) unless porcelain.port == nil
+      plumbing
+    end
+    def self.convert_repeated_db_2_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_db_2_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_db_2_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_db_2_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
