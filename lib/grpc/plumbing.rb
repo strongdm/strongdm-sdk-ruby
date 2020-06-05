@@ -22,8 +22,8 @@ require_relative "./options_pb"
 require_relative "./spec_pb"
 require_relative "./account_attachments_pb"
 require_relative "./account_grants_pb"
-require_relative "./accounts_pb"
 require_relative "./tags_pb"
+require_relative "./accounts_pb"
 require_relative "./drivers_pb"
 require_relative "./nodes_pb"
 require_relative "./resources_pb"
@@ -800,6 +800,7 @@ module SDM
       porcelain.first_name = (plumbing.first_name)
       porcelain.last_name = (plumbing.last_name)
       porcelain.suspended = (plumbing.suspended)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain
     end
 
@@ -813,6 +814,7 @@ module SDM
       plumbing.first_name = (porcelain.first_name) unless porcelain.first_name == nil
       plumbing.last_name = (porcelain.last_name) unless porcelain.last_name == nil
       plumbing.suspended = (porcelain.suspended) unless porcelain.suspended == nil
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing
     end
     def self.convert_repeated_user_to_plumbing(porcelains)
@@ -840,6 +842,7 @@ module SDM
       porcelain.id = (plumbing.id)
       porcelain.name = (plumbing.name)
       porcelain.suspended = (plumbing.suspended)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain
     end
 
@@ -851,6 +854,7 @@ module SDM
       plumbing.id = (porcelain.id) unless porcelain.id == nil
       plumbing.name = (porcelain.name) unless porcelain.name == nil
       plumbing.suspended = (porcelain.suspended) unless porcelain.suspended == nil
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing
     end
     def self.convert_repeated_service_to_plumbing(porcelains)
@@ -3400,6 +3404,7 @@ module SDM
       porcelain.port = (plumbing.port)
       porcelain.public_key = (plumbing.public_key)
       porcelain.port_forwarding = (plumbing.port_forwarding)
+      porcelain.allow_deprecated_key_exchanges = (plumbing.allow_deprecated_key_exchanges)
       porcelain
     end
 
@@ -3417,6 +3422,7 @@ module SDM
       plumbing.port = (porcelain.port) unless porcelain.port == nil
       plumbing.public_key = (porcelain.public_key) unless porcelain.public_key == nil
       plumbing.port_forwarding = (porcelain.port_forwarding) unless porcelain.port_forwarding == nil
+      plumbing.allow_deprecated_key_exchanges = (porcelain.allow_deprecated_key_exchanges) unless porcelain.allow_deprecated_key_exchanges == nil
       plumbing
     end
     def self.convert_repeated_ssh_to_plumbing(porcelains)
@@ -3449,6 +3455,7 @@ module SDM
       porcelain.username = (plumbing.username)
       porcelain.port = (plumbing.port)
       porcelain.port_forwarding = (plumbing.port_forwarding)
+      porcelain.allow_deprecated_key_exchanges = (plumbing.allow_deprecated_key_exchanges)
       porcelain
     end
 
@@ -3465,6 +3472,7 @@ module SDM
       plumbing.username = (porcelain.username) unless porcelain.username == nil
       plumbing.port = (porcelain.port) unless porcelain.port == nil
       plumbing.port_forwarding = (porcelain.port_forwarding) unless porcelain.port_forwarding == nil
+      plumbing.allow_deprecated_key_exchanges = (porcelain.allow_deprecated_key_exchanges) unless porcelain.allow_deprecated_key_exchanges == nil
       plumbing
     end
     def self.convert_repeated_ssh_cert_to_plumbing(porcelains)
@@ -3836,6 +3844,7 @@ module SDM
       porcelain.id = (plumbing.id)
       porcelain.name = (plumbing.name)
       porcelain.state = (plumbing.state)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain
     end
 
@@ -3847,6 +3856,7 @@ module SDM
       plumbing.id = (porcelain.id) unless porcelain.id == nil
       plumbing.name = (porcelain.name) unless porcelain.name == nil
       plumbing.state = (porcelain.state) unless porcelain.state == nil
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing
     end
     def self.convert_repeated_relay_to_plumbing(porcelains)
@@ -3876,6 +3886,7 @@ module SDM
       porcelain.state = (plumbing.state)
       porcelain.listen_address = (plumbing.listen_address)
       porcelain.bind_address = (plumbing.bind_address)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain
     end
 
@@ -3889,6 +3900,7 @@ module SDM
       plumbing.state = (porcelain.state) unless porcelain.state == nil
       plumbing.listen_address = (porcelain.listen_address) unless porcelain.listen_address == nil
       plumbing.bind_address = (porcelain.bind_address) unless porcelain.bind_address == nil
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing
     end
     def self.convert_repeated_gateway_to_plumbing(porcelains)
@@ -4516,6 +4528,7 @@ module SDM
       porcelain.id = (plumbing.id)
       porcelain.name = (plumbing.name)
       porcelain.composite = (plumbing.composite)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain
     end
 
@@ -4527,6 +4540,7 @@ module SDM
       plumbing.id = (porcelain.id) unless porcelain.id == nil
       plumbing.name = (porcelain.name) unless porcelain.name == nil
       plumbing.composite = (porcelain.composite) unless porcelain.composite == nil
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing
     end
     def self.convert_repeated_role_to_plumbing(porcelains)

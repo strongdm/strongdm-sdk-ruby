@@ -109,6 +109,19 @@
       </header>
 
       
+      <div id="attribute-i-allow_deprecated_key_exchanges" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">allow_deprecated_key_exchanges</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
       <div id="attribute-i-healthy" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">healthy</span><span
@@ -227,7 +240,7 @@
         
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">( id:nil \ , name:nil \ , healthy:nil \ , tags:nil \ , hostname:nil \ , username:nil \ , port:nil \ , port_forwarding:nil \ )</span>
+            class="method-args">( id:nil \ , name:nil \ , healthy:nil \ , tags:nil \ , hostname:nil \ , username:nil \ , port:nil \ , port_forwarding:nil \ , allow_deprecated_key_exchanges:nil \ )</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -242,7 +255,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 4223</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 4246</span>
                 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(
                         <span class="ruby-value">id:</span><span class="ruby-keyword">nil</span> \
 ,
@@ -259,6 +272,8 @@
                         <span class="ruby-value">port:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">port_forwarding:</span><span class="ruby-keyword">nil</span> \
+,
+                        <span class="ruby-value">allow_deprecated_key_exchanges:</span><span class="ruby-keyword">nil</span> \
                 )
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">id</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">id</span>
@@ -283,6 +298,9 @@
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">port_forwarding</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@port_forwarding</span> = <span class="ruby-identifier">port_forwarding</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">allow_deprecated_key_exchanges</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@allow_deprecated_key_exchanges</span> = <span class="ruby-identifier">allow_deprecated_key_exchanges</span>
                         <span class="ruby-keyword">end</span>
                 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -322,7 +340,7 @@
 
           
           <div class="method-source-code" id="to_json-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 4265</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 4293</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_json</span>(<span class="ruby-identifier">options</span>={})
         <span class="ruby-identifier">hash</span> = {}
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">instance_variables</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">var</span><span class="ruby-operator">|</span>

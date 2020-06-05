@@ -21,6 +21,7 @@ require "google/api/annotations_pb"
 require "protoc-gen-swagger/options/annotations_pb"
 require "options_pb"
 require "spec_pb"
+require "tags_pb"
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("accounts.proto", :syntax => :proto3) do
     add_message "v1.AccountCreateRequest" do
@@ -81,11 +82,13 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :first_name, :string, 3
       optional :last_name, :string, 4
       optional :suspended, :bool, 5
+      optional :tags, :message, 6, "v1.Tags"
     end
     add_message "v1.Service" do
       optional :id, :string, 1
       optional :name, :string, 2
       optional :suspended, :bool, 3
+      optional :tags, :message, 4, "v1.Tags"
     end
   end
 end

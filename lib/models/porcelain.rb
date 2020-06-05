@@ -563,13 +563,16 @@ module SDM
     attr_accessor :last_name
     # The User's suspended state.
     attr_accessor :suspended
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     def initialize(
       id: nil,
       email: nil,
       first_name: nil,
       last_name: nil,
-      suspended: nil
+      suspended: nil,
+      tags: nil
     )
       if id != nil
         @id = id
@@ -585,6 +588,9 @@ module SDM
       end
       if suspended != nil
         @suspended = suspended
+      end
+      if tags != nil
+        @tags = tags
       end
     end
 
@@ -606,11 +612,14 @@ module SDM
     attr_accessor :name
     # The Service's suspended state.
     attr_accessor :suspended
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     def initialize(
       id: nil,
       name: nil,
-      suspended: nil
+      suspended: nil,
+      tags: nil
     )
       if id != nil
         @id = id
@@ -620,6 +629,9 @@ module SDM
       end
       if suspended != nil
         @suspended = suspended
+      end
+      if tags != nil
+        @tags = tags
       end
     end
 
@@ -3862,6 +3874,8 @@ module SDM
 
     attr_accessor :port_forwarding
 
+    attr_accessor :allow_deprecated_key_exchanges
+
     def initialize(
       id: nil,
       name: nil,
@@ -3871,7 +3885,8 @@ module SDM
       username: nil,
       port: nil,
       public_key: nil,
-      port_forwarding: nil
+      port_forwarding: nil,
+      allow_deprecated_key_exchanges: nil
     )
       if id != nil
         @id = id
@@ -3899,6 +3914,9 @@ module SDM
       end
       if port_forwarding != nil
         @port_forwarding = port_forwarding
+      end
+      if allow_deprecated_key_exchanges != nil
+        @allow_deprecated_key_exchanges = allow_deprecated_key_exchanges
       end
     end
 
@@ -3929,6 +3947,8 @@ module SDM
 
     attr_accessor :port_forwarding
 
+    attr_accessor :allow_deprecated_key_exchanges
+
     def initialize(
       id: nil,
       name: nil,
@@ -3937,7 +3957,8 @@ module SDM
       hostname: nil,
       username: nil,
       port: nil,
-      port_forwarding: nil
+      port_forwarding: nil,
+      allow_deprecated_key_exchanges: nil
     )
       if id != nil
         @id = id
@@ -3962,6 +3983,9 @@ module SDM
       end
       if port_forwarding != nil
         @port_forwarding = port_forwarding
+      end
+      if allow_deprecated_key_exchanges != nil
+        @allow_deprecated_key_exchanges = allow_deprecated_key_exchanges
       end
     end
 
@@ -4329,11 +4353,14 @@ module SDM
     # "awaiting_restart", "restarting", "started", "stopped", "dead",
     # "unknown".
     attr_accessor :state
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     def initialize(
       id: nil,
       name: nil,
-      state: nil
+      state: nil,
+      tags: nil
     )
       if id != nil
         @id = id
@@ -4343,6 +4370,9 @@ module SDM
       end
       if state != nil
         @state = state
+      end
+      if tags != nil
+        @tags = tags
       end
     end
 
@@ -4369,13 +4399,16 @@ module SDM
     # The hostname/port tuple which the gateway daemon will bind to.
     # If not provided on create, set to "0.0.0.0:<listen_address_port>".
     attr_accessor :bind_address
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     def initialize(
       id: nil,
       name: nil,
       state: nil,
       listen_address: nil,
-      bind_address: nil
+      bind_address: nil,
+      tags: nil
     )
       if id != nil
         @id = id
@@ -4391,6 +4424,9 @@ module SDM
       end
       if bind_address != nil
         @bind_address = bind_address
+      end
+      if tags != nil
+        @tags = tags
       end
     end
 
@@ -4935,11 +4971,14 @@ module SDM
     attr_accessor :name
     # True if the Role is a composite role.
     attr_accessor :composite
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
 
     def initialize(
       id: nil,
       name: nil,
-      composite: nil
+      composite: nil,
+      tags: nil
     )
       if id != nil
         @id = id
@@ -4949,6 +4988,9 @@ module SDM
       end
       if composite != nil
         @composite = composite
+      end
+      if tags != nil
+        @tags = tags
       end
     end
 
