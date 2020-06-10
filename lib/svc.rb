@@ -43,13 +43,11 @@ module SDM
     # Create registers a new AccountAttachment.
     def create(
       account_attachment,
-      options: nil,
       deadline: nil
     )
       req = V1::AccountAttachmentCreateRequest.new()
 
       req.account_attachment = Plumbing::convert_account_attachment_to_plumbing(account_attachment)
-      req.options = Plumbing::convert_account_attachment_create_options_to_plumbing(options)
       tries = 0
       plumbing_response = nil
       loop do

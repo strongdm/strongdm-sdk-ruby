@@ -26,10 +26,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.AccountAttachmentCreateRequest" do
       optional :meta, :message, 1, "v1.CreateRequestMetadata"
       optional :account_attachment, :message, 2, "v1.AccountAttachment"
-      optional :options, :message, 3, "v1.AccountAttachmentCreateOptions"
-    end
-    add_message "v1.AccountAttachmentCreateOptions" do
-      optional :overwrite, :bool, 1
     end
     add_message "v1.AccountAttachmentCreateResponse" do
       optional :meta, :message, 1, "v1.CreateResponseMetadata"
@@ -72,7 +68,6 @@ end
 
 module V1
   AccountAttachmentCreateRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AccountAttachmentCreateRequest").msgclass
-  AccountAttachmentCreateOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AccountAttachmentCreateOptions").msgclass
   AccountAttachmentCreateResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AccountAttachmentCreateResponse").msgclass
   AccountAttachmentGetRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AccountAttachmentGetRequest").msgclass
   AccountAttachmentGetResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AccountAttachmentGetResponse").msgclass

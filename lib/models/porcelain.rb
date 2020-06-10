@@ -115,29 +115,6 @@ module SDM
     end
   end
 
-  # AccountAttachmentCreateOptions specifies extra options for creating an
-  # AccountAttachment.
-  class AccountAttachmentCreateOptions
-    # Overwrite clears all account grants before the attachment.
-    attr_accessor :overwrite
-
-    def initialize(
-      overwrite: nil
-    )
-      if overwrite != nil
-        @overwrite = overwrite
-      end
-    end
-
-    def to_json(options = {})
-      hash = {}
-      self.instance_variables.each do |var|
-        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
-      end
-      hash.to_json
-    end
-  end
-
   # AccountAttachmentCreateResponse reports how the AccountAttachments were created in the system.
   class AccountAttachmentCreateResponse
     # Reserved for future use.

@@ -258,40 +258,6 @@ module SDM
       end
       items
     end
-    def self.convert_account_attachment_create_options_to_porcelain(plumbing)
-      if plumbing == nil
-        return nil
-      end
-      porcelain = AccountAttachmentCreateOptions.new()
-      porcelain.overwrite = (plumbing.overwrite)
-      porcelain
-    end
-
-    def self.convert_account_attachment_create_options_to_plumbing(porcelain)
-      if porcelain == nil
-        return nil
-      end
-      plumbing = V1::AccountAttachmentCreateOptions.new()
-      plumbing.overwrite = (porcelain.overwrite) unless porcelain.overwrite == nil
-      plumbing
-    end
-    def self.convert_repeated_account_attachment_create_options_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = convert_account_attachment_create_options_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.convert_repeated_account_attachment_create_options_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = convert_account_attachment_create_options_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
     def self.convert_account_attachment_create_response_to_porcelain(plumbing)
       if plumbing == nil
         return nil
