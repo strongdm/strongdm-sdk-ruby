@@ -75,6 +75,10 @@
 
   <ul class="link-list" role="directory">
     
+    <li ><a href="#method-i-first">#first</a>
+    
+    <li ><a href="#method-i-ldap_sync">#ldap_sync</a>
+    
     <li ><a href="#method-i-main">#main</a>
     
     <li ><a href="#method-i-okta_sync">#okta_sync</a>
@@ -122,6 +126,21 @@
         <dd>
         
       
+        <dt id="LDAP_BIND_DN">LDAP_BIND_DN
+        
+        <dd>
+        
+      
+        <dt id="LDAP_HOST">LDAP_HOST
+        
+        <dd>
+        
+      
+        <dt id="LDAP_PASSWORD">LDAP_PASSWORD
+        
+        <dd>
+        
+      
         <dt id="OKTA_CLIENT_ORGURL">OKTA_CLIENT_ORGURL
         
         <dd>
@@ -134,7 +153,21 @@
       
         <dt id="SDM_API_ACCESS_KEY">SDM_API_ACCESS_KEY
         
-        <dd>
+        <dd><p>organizationalUnits:</p>
+
+<pre>- dn: OU=Other-OU,DC=j42,DC=xyz
+  role: Other-OU
+  resources:
+    - name:*Other-OU*
+    - name:*Multi*
+- dn: OU=admins,DC=j42,DC=xyz
+  role: admins
+  resources:
+    - name:*admins*
+- dn: OU=People,DC=j42,DC=xyz
+  role: People
+  resources:
+    - name:*People*</pre>
         
       
         <dt id="SDM_API_SECRET_KEY">SDM_API_SECRET_KEY
@@ -153,6 +186,296 @@
        <header>
          <h3>Public Instance Methods</h3>
        </header>
+
+    
+      <div id="method-i-first" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">first</span><span
+            class="method-args">(attrib)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>gets the first item in a list or generator</p>
+          
+          
+
+          
+          <div class="method-source-code" id="first-source">
+            <pre><span class="ruby-comment"># File examples/ldap-sync/ldapSync.rb, line 58</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">first</span>(<span class="ruby-identifier">attrib</span>)
+  <span class="ruby-identifier">result</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">attrib</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">result</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+      <span class="ruby-identifier">result</span> = <span class="ruby-identifier">item</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">result</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-ldap_sync" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">ldap_sync</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="ldap_sync-source">
+            <pre><span class="ruby-comment"># File examples/ldap-sync/ldapSync.rb, line 68</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ldap_sync</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">SDM_API_ACCESS_KEY</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;&#39;</span> <span class="ruby-operator">||</span> <span class="ruby-constant">SDM_API_SECRET_KEY</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;&#39;</span> <span class="ruby-operator">||</span> <span class="ruby-constant">LDAP_BIND_DN</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;&#39;</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&#39;SDM_API_ACCESS_KEY, SDM_API_SECRET_KEY, and LDAP_BIND_DN must be set&#39;</span>
+    <span class="ruby-identifier">exit</span> <span class="ruby-value">1</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">plan</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-identifier">verbose</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-identifier">configPath</span> = <span class="ruby-string">&#39;config.yml&#39;</span>
+  <span class="ruby-constant">OptionParser</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">opts</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">banner</span> = <span class="ruby-string">&quot;Usage ldapSync.rb [options]&quot;</span>
+    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&quot;-p&quot;</span>, <span class="ruby-string">&quot;--plan&quot;</span>, <span class="ruby-string">&quot;calculate changes but do not apply them&quot;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">plan</span> = <span class="ruby-identifier">p</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&quot;-v&quot;</span>, <span class="ruby-string">&quot;--verbose&quot;</span>, <span class="ruby-string">&quot;print detailed report&quot;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">verbose</span> = <span class="ruby-identifier">v</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&quot;-c&quot;</span>, <span class="ruby-string">&quot;--config FILE&quot;</span>, <span class="ruby-string">&quot;specify path to config YAML file (default: &#39;config.yml&#39;)&quot;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">configPath</span> = <span class="ruby-identifier">v</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>.<span class="ruby-identifier">parse!</span>
+
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-identifier">config</span> = <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">configPath</span>))
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">StandardError</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">ex</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-identifier">ex</span>, <span class="ruby-node">&quot;failed to parse #{configPath}&quot;</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-identifier">sdmClient</span> = <span class="ruby-constant">SDM</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">SDM_API_ACCESS_KEY</span>, <span class="ruby-constant">SDM_API_SECRET_KEY</span>, <span class="ruby-value">host:</span> <span class="ruby-string">&#39;api.strongdmdev.com:443&#39;</span>)
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">SDM</span><span class="ruby-operator">::</span><span class="ruby-constant">RPCError</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">ex</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-identifier">ex</span>, <span class="ruby-string">&#39;failed to create StrongDM client&#39;</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">ldap</span> = <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">LDAP</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">ldap</span>.<span class="ruby-identifier">host</span> = <span class="ruby-constant">LDAP_HOST</span>
+  <span class="ruby-identifier">ldap</span>.<span class="ruby-identifier">auth</span> <span class="ruby-constant">LDAP_BIND_DN</span>, <span class="ruby-constant">LDAP_PASSWORD</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-keyword">not</span> <span class="ruby-identifier">ldap</span>.<span class="ruby-identifier">bind</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&#39;failed to bind LDAP connection - authentication error&#39;</span>
+    <span class="ruby-identifier">exit</span> <span class="ruby-value">1</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">sdmRoles</span> = { } <span class="ruby-comment"># map of name to ID</span>
+  <span class="ruby-identifier">sdmAccounts</span> = { } <span class="ruby-comment"># map of email to id</span>
+  <span class="ruby-identifier">sdmResources</span> = { } <span class="ruby-comment"># map of ID to name</span>
+  <span class="ruby-identifier">sdmAccountsById</span> = { } <span class="ruby-comment"># map of id to { :email, :firstName, :lastName }</span>
+  <span class="ruby-identifier">sdmAccountsWithAttachments</span> = { } <span class="ruby-comment"># map of email to id of all accounts that are in the roles we&#39;re interested in</span>
+  <span class="ruby-identifier">sdmAccountAttachments</span> = { } <span class="ruby-comment"># map of role name to list of emails</span>
+  <span class="ruby-identifier">sdmRoleGrants</span> = { } <span class="ruby-comment"># map of role name to list of { :resourceId, :grantId }</span>
+  <span class="ruby-identifier">ldapRoles</span> = [] <span class="ruby-comment"># list of names</span>
+  <span class="ruby-identifier">ldapAccounts</span> = { } <span class="ruby-comment"># map of email to { :firstName, :lastName }</span>
+  <span class="ruby-identifier">ldapAccountAttachments</span> = { } <span class="ruby-comment"># map of role name to list of emails</span>
+  <span class="ruby-identifier">desiredRoleGrants</span> = { } <span class="ruby-comment"># map of role name to list of resource IDs</span>
+
+  <span class="ruby-comment"># get SDM accounts</span>
+  <span class="ruby-identifier">sdmClient</span>.<span class="ruby-identifier">accounts</span>.<span class="ruby-identifier">list</span>(<span class="ruby-string">&#39;&#39;</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">account</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">sdmAccounts</span>[<span class="ruby-identifier">account</span>.<span class="ruby-identifier">email</span>] = <span class="ruby-identifier">account</span>.<span class="ruby-identifier">id</span>
+    <span class="ruby-identifier">sdmAccountsById</span>[<span class="ruby-identifier">account</span>.<span class="ruby-identifier">id</span>] = { <span class="ruby-value">:email</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">account</span>.<span class="ruby-identifier">email</span>, <span class="ruby-value">:firstName</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">account</span>.<span class="ruby-identifier">first_name</span>, <span class="ruby-value">:lastName</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">account</span>.<span class="ruby-identifier">last_name</span> }
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># get SDM resources</span>
+  <span class="ruby-identifier">sdmClient</span>.<span class="ruby-identifier">resources</span>.<span class="ruby-identifier">list</span>(<span class="ruby-string">&#39;&#39;</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">resource</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">sdmResources</span>[<span class="ruby-identifier">resource</span>.<span class="ruby-identifier">id</span>] = <span class="ruby-identifier">resource</span>.<span class="ruby-identifier">name</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># loop through OUs</span>
+  <span class="ruby-identifier">config</span>[<span class="ruby-string">&#39;organizationalUnits&#39;</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ou</span><span class="ruby-operator">|</span>
+
+    <span class="ruby-comment"># get SDM state for this OU</span>
+    <span class="ruby-identifier">role</span> = <span class="ruby-identifier">first</span>(<span class="ruby-identifier">sdmClient</span>.<span class="ruby-identifier">roles</span>.<span class="ruby-identifier">list</span>(<span class="ruby-string">&#39;name:?&#39;</span>, <span class="ruby-identifier">ou</span>[<span class="ruby-string">&#39;role&#39;</span>]))
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">role</span>
+      <span class="ruby-identifier">sdmRoles</span>[<span class="ruby-identifier">role</span>.<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">role</span>.<span class="ruby-identifier">id</span>
+
+      <span class="ruby-comment"># get accounts attached to this role</span>
+      <span class="ruby-identifier">accountEmails</span> = []
+      <span class="ruby-identifier">sdmClient</span>.<span class="ruby-identifier">account_attachments</span>.<span class="ruby-identifier">list</span>(<span class="ruby-string">&#39;roleid:?&#39;</span>, <span class="ruby-identifier">role</span>.<span class="ruby-identifier">id</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attachment</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">sdmAccount</span> = <span class="ruby-identifier">sdmAccountsById</span>[<span class="ruby-identifier">attachment</span>.<span class="ruby-identifier">account_id</span>]
+        <span class="ruby-identifier">email</span> = <span class="ruby-identifier">sdmAccount</span>[<span class="ruby-value">:email</span>]
+        <span class="ruby-identifier">sdmAccountsWithAttachments</span>[<span class="ruby-identifier">email</span>] = <span class="ruby-identifier">attachment</span>.<span class="ruby-identifier">account_id</span>
+        <span class="ruby-identifier">accountEmails</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">email</span>)
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-identifier">sdmAccountAttachments</span>[<span class="ruby-identifier">role</span>.<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">accountEmails</span>
+
+      <span class="ruby-comment"># get resources granted to this role</span>
+      <span class="ruby-identifier">roleGrants</span> = []
+      <span class="ruby-identifier">sdmClient</span>.<span class="ruby-identifier">role_grants</span>.<span class="ruby-identifier">list</span>(<span class="ruby-string">&#39;roleid:?&#39;</span>, <span class="ruby-identifier">role</span>.<span class="ruby-identifier">id</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">grant</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">roleGrants</span>.<span class="ruby-identifier">push</span>({ <span class="ruby-value">:resourceId</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">grant</span>.<span class="ruby-identifier">resource_id</span>, <span class="ruby-value">:grantId</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">grant</span>.<span class="ruby-identifier">id</span> })
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-identifier">sdmRoleGrants</span>[<span class="ruby-identifier">role</span>.<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">roleGrants</span>
+
+      <span class="ruby-comment"># get resources that we want to grant to this role</span>
+      <span class="ruby-identifier">filteredResources</span> = { } <span class="ruby-comment"># map of resource ID to true (to prevent duplicates)</span>
+      <span class="ruby-identifier">filters</span> = <span class="ruby-identifier">ou</span>[<span class="ruby-string">&#39;resources&#39;</span>] <span class="ruby-comment"># list of filter strings</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">filters</span>
+        <span class="ruby-identifier">filters</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">filter</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">sdmClient</span>.<span class="ruby-identifier">resources</span>.<span class="ruby-identifier">list</span>(<span class="ruby-identifier">filter</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">resource</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">filteredResources</span>[<span class="ruby-identifier">resource</span>.<span class="ruby-identifier">id</span>] = <span class="ruby-keyword">true</span>
+          <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">desiredRoleGrants</span>[<span class="ruby-identifier">role</span>.<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">filteredResources</span>.<span class="ruby-identifier">keys</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-comment"># get LDAP state for this OU</span>
+    <span class="ruby-identifier">ldapRoles</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">ou</span>[<span class="ruby-string">&#39;role&#39;</span>].<span class="ruby-identifier">to_s</span>)
+    <span class="ruby-identifier">roleAccounts</span> = []
+    <span class="ruby-identifier">ldap</span>.<span class="ruby-identifier">search</span>(<span class="ruby-value">:base</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">ou</span>[<span class="ruby-string">&#39;dn&#39;</span>], <span class="ruby-value">:filter</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">LDAP</span><span class="ruby-operator">::</span><span class="ruby-constant">Filter</span>.<span class="ruby-identifier">eq</span>(<span class="ruby-string">&#39;objectclass&#39;</span>, <span class="ruby-string">&#39;user&#39;</span>), <span class="ruby-value">:return_result</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">false</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">entry</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">ldapAccounts</span>[<span class="ruby-identifier">first</span>(<span class="ruby-identifier">entry</span>.<span class="ruby-identifier">mail</span>).<span class="ruby-identifier">to_s</span>] = {
+        <span class="ruby-value">:firstName</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">first</span>(<span class="ruby-identifier">entry</span>.<span class="ruby-identifier">givenname</span>).<span class="ruby-identifier">to_s</span>,
+        <span class="ruby-value">:lastName</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">first</span>(<span class="ruby-identifier">entry</span>.<span class="ruby-identifier">sn</span>).<span class="ruby-identifier">to_s</span>,
+      }
+      <span class="ruby-identifier">roleAccounts</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">first</span>(<span class="ruby-identifier">entry</span>.<span class="ruby-identifier">mail</span>).<span class="ruby-identifier">to_s</span>)
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">ldapAccountAttachments</span>[<span class="ruby-identifier">ou</span>[<span class="ruby-string">&#39;role&#39;</span>].<span class="ruby-identifier">to_s</span>] = <span class="ruby-identifier">roleAccounts</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># compute diff</span>
+  <span class="ruby-identifier">report</span> = {
+    <span class="ruby-value">:createRoles</span> <span class="ruby-operator">=&gt;</span> [],
+    <span class="ruby-value">:deleteAccounts</span> <span class="ruby-operator">=&gt;</span> [],
+    <span class="ruby-value">:updateAccounts</span> <span class="ruby-operator">=&gt;</span> [],
+    <span class="ruby-value">:createAccounts</span> <span class="ruby-operator">=&gt;</span> [],
+    <span class="ruby-value">:createAccountAttachments</span> <span class="ruby-operator">=&gt;</span> [],
+    <span class="ruby-value">:deleteAccountAttachments</span> <span class="ruby-operator">=&gt;</span> [],
+    <span class="ruby-value">:deleteRoleGrants</span> <span class="ruby-operator">=&gt;</span> [],
+    <span class="ruby-value">:createRoleGrants</span> <span class="ruby-operator">=&gt;</span> [],
+  }
+  <span class="ruby-comment"># createRoles</span>
+  <span class="ruby-identifier">ldapRoles</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">roleName</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">sdmRoles</span>[<span class="ruby-identifier">roleName</span>]
+    <span class="ruby-identifier">report</span>[<span class="ruby-value">:createRoles</span>].<span class="ruby-identifier">push</span>(<span class="ruby-identifier">roleName</span>)
+    <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">plan</span>
+    <span class="ruby-identifier">response</span> = <span class="ruby-identifier">sdmClient</span>.<span class="ruby-identifier">roles</span>.<span class="ruby-identifier">create</span>(<span class="ruby-constant">SDM</span><span class="ruby-operator">::</span><span class="ruby-constant">Role</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">name:</span> <span class="ruby-identifier">roleName</span>))
+    <span class="ruby-identifier">sdmRoles</span>[<span class="ruby-identifier">roleName</span>] = <span class="ruby-identifier">response</span>.<span class="ruby-identifier">role</span>.<span class="ruby-identifier">id</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-comment"># deleteAccounts</span>
+  <span class="ruby-identifier">sdmAccountsWithAttachments</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">email</span>, <span class="ruby-identifier">id</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">ldapAccounts</span>[<span class="ruby-identifier">email</span>]
+    <span class="ruby-identifier">report</span>[<span class="ruby-value">:deleteAccounts</span>].<span class="ruby-identifier">push</span>(<span class="ruby-identifier">email</span>)
+    <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">plan</span>
+    <span class="ruby-identifier">sdmClient</span>.<span class="ruby-identifier">accounts</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">id</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-comment"># updateAccounts</span>
+  <span class="ruby-identifier">sdmAccountsWithAttachments</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">email</span>, <span class="ruby-identifier">id</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">ldapAccount</span> = <span class="ruby-identifier">ldapAccounts</span>[<span class="ruby-identifier">email</span>]
+    <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">not</span> <span class="ruby-identifier">ldapAccount</span>
+    <span class="ruby-identifier">sdmAccount</span> = <span class="ruby-identifier">sdmAccountsById</span>[<span class="ruby-identifier">id</span>]
+    <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">sdmAccount</span>[<span class="ruby-value">:firstName</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">ldapAccount</span>[<span class="ruby-value">:firstName</span>] <span class="ruby-keyword">and</span> <span class="ruby-identifier">sdmAccount</span>[<span class="ruby-value">:lastName</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">ldapAccount</span>[<span class="ruby-value">:lastName</span>]
+    <span class="ruby-identifier">report</span>[<span class="ruby-value">:updateAccounts</span>].<span class="ruby-identifier">push</span>(<span class="ruby-identifier">email</span>)
+    <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">plan</span>
+    <span class="ruby-identifier">sdmClient</span>.<span class="ruby-identifier">accounts</span>.<span class="ruby-identifier">update</span>(<span class="ruby-constant">SDM</span><span class="ruby-operator">::</span><span class="ruby-constant">User</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">id:</span> <span class="ruby-identifier">id</span>, <span class="ruby-value">first_name:</span> <span class="ruby-identifier">ldapAccount</span>[<span class="ruby-value">:firstName</span>], <span class="ruby-value">last_name:</span> <span class="ruby-identifier">ldapAccount</span>[<span class="ruby-value">:lastName</span>]))
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-comment"># createAccounts</span>
+  <span class="ruby-identifier">ldapAccounts</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">email</span>, <span class="ruby-identifier">account</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">sdmAccounts</span>[<span class="ruby-identifier">email</span>]
+    <span class="ruby-identifier">report</span>[<span class="ruby-value">:createAccounts</span>].<span class="ruby-identifier">push</span>(<span class="ruby-identifier">email</span>)
+    <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">plan</span>
+    <span class="ruby-identifier">response</span> = <span class="ruby-identifier">sdmClient</span>.<span class="ruby-identifier">accounts</span>.<span class="ruby-identifier">create</span>(<span class="ruby-constant">SDM</span><span class="ruby-operator">::</span><span class="ruby-constant">User</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">email:</span> <span class="ruby-identifier">email</span>, <span class="ruby-value">first_name:</span> <span class="ruby-identifier">account</span>[<span class="ruby-value">:firstName</span>], <span class="ruby-value">last_name:</span> <span class="ruby-identifier">account</span>[<span class="ruby-value">:lastName</span>]))
+    <span class="ruby-identifier">sdmAccounts</span>[<span class="ruby-identifier">response</span>.<span class="ruby-identifier">account</span>.<span class="ruby-identifier">email</span>] = <span class="ruby-identifier">response</span>.<span class="ruby-identifier">account</span>.<span class="ruby-identifier">id</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-comment"># deleteAccountAttachments</span>
+  <span class="ruby-identifier">sdmAccountAttachments</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">roleName</span>, <span class="ruby-identifier">accounts</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">roleId</span> = <span class="ruby-identifier">sdmRoles</span>[<span class="ruby-identifier">roleName</span>]
+    <span class="ruby-identifier">ldapAccountsInRole</span> = <span class="ruby-identifier">ldapAccountAttachments</span>[<span class="ruby-identifier">roleName</span>]
+    <span class="ruby-identifier">accounts</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">email</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">ldapAccountsInRole</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">ldapAccountsInRole</span>.<span class="ruby-identifier">include?</span> <span class="ruby-identifier">email</span>
+      <span class="ruby-identifier">report</span>[<span class="ruby-value">:deleteAccountAttachments</span>].<span class="ruby-identifier">push</span>({ <span class="ruby-value">:role</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">roleName</span>, <span class="ruby-value">:account</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">email</span> })
+      <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">plan</span>
+      <span class="ruby-identifier">accountId</span> = <span class="ruby-identifier">sdmAccounts</span>[<span class="ruby-identifier">email</span>]
+      <span class="ruby-identifier">attachment</span> = <span class="ruby-identifier">first</span>(<span class="ruby-identifier">sdmClient</span>.<span class="ruby-identifier">account_attachments</span>.<span class="ruby-identifier">list</span>(<span class="ruby-string">&#39;accountid:? roleid:?&#39;</span>, <span class="ruby-identifier">accountId</span>, <span class="ruby-identifier">roleId</span>))
+      <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">not</span> <span class="ruby-identifier">attachment</span> <span class="ruby-comment"># already deleted by the deleteAccounts step</span>
+      <span class="ruby-identifier">sdmClient</span>.<span class="ruby-identifier">account_attachments</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">attachment</span>.<span class="ruby-identifier">id</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-comment"># createAccountAttachments</span>
+  <span class="ruby-identifier">ldapAccountAttachments</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">roleName</span>, <span class="ruby-identifier">accounts</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">roleId</span> = <span class="ruby-identifier">sdmRoles</span>[<span class="ruby-identifier">roleName</span>]
+    <span class="ruby-identifier">sdmAccountsInRole</span> = <span class="ruby-identifier">sdmAccountAttachments</span>[<span class="ruby-identifier">roleName</span>]
+    <span class="ruby-identifier">accounts</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">email</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">sdmAccountsInRole</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">sdmAccountsInRole</span>.<span class="ruby-identifier">include?</span> <span class="ruby-identifier">email</span>
+      <span class="ruby-identifier">report</span>[<span class="ruby-value">:createAccountAttachments</span>].<span class="ruby-identifier">push</span>({ <span class="ruby-value">:role</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">roleName</span>, <span class="ruby-value">:account</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">email</span> })
+      <span class="ruby-identifier">accountId</span> = <span class="ruby-identifier">sdmAccounts</span>[<span class="ruby-identifier">email</span>]
+      <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">plan</span>
+      <span class="ruby-identifier">sdmClient</span>.<span class="ruby-identifier">account_attachments</span>.<span class="ruby-identifier">create</span>(<span class="ruby-constant">SDM</span><span class="ruby-operator">::</span><span class="ruby-constant">AccountAttachment</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">account_id:</span> <span class="ruby-identifier">accountId</span>, <span class="ruby-value">role_id:</span> <span class="ruby-identifier">roleId</span>))
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-comment"># deleteRoleGrants</span>
+  <span class="ruby-identifier">sdmRoleGrants</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">roleName</span>, <span class="ruby-identifier">roleGrants</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">desired</span> = <span class="ruby-identifier">desiredRoleGrants</span>[<span class="ruby-identifier">roleName</span>]
+    <span class="ruby-identifier">roleGrants</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">grant</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">desired</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">desired</span>.<span class="ruby-identifier">include?</span> <span class="ruby-identifier">grant</span>[<span class="ruby-value">:resourceId</span>]
+      <span class="ruby-identifier">resourceName</span> = <span class="ruby-identifier">sdmResources</span>[<span class="ruby-identifier">grant</span>[<span class="ruby-value">:resourceId</span>]]
+      <span class="ruby-identifier">report</span>[<span class="ruby-value">:deleteRoleGrants</span>].<span class="ruby-identifier">push</span>({ <span class="ruby-value">:role</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">roleName</span>, <span class="ruby-value">:resource</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">resourceName</span>})
+      <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">plan</span>
+      <span class="ruby-identifier">sdmClient</span>.<span class="ruby-identifier">role_grants</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">grant</span>[<span class="ruby-value">:grantId</span>])
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-comment"># createRoleGrants</span>
+  <span class="ruby-identifier">desiredRoleGrants</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">roleName</span>, <span class="ruby-identifier">roleGrants</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">roleId</span>  = <span class="ruby-identifier">sdmRoles</span>[<span class="ruby-identifier">roleName</span>]
+    <span class="ruby-identifier">existing</span> = <span class="ruby-identifier">sdmRoleGrants</span>[<span class="ruby-identifier">roleName</span>]
+    <span class="ruby-identifier">roleGrants</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">resourceId</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">existing</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">existing</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">existingGrant</span><span class="ruby-operator">|</span> <span class="ruby-identifier">existingGrant</span>[<span class="ruby-value">:resourceId</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">resourceId</span> }
+      <span class="ruby-identifier">resourceName</span> = <span class="ruby-identifier">sdmResources</span>[<span class="ruby-identifier">resourceId</span>]
+      <span class="ruby-identifier">report</span>[<span class="ruby-value">:createRoleGrants</span>].<span class="ruby-identifier">push</span>({ <span class="ruby-value">:role</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">roleName</span>, <span class="ruby-value">:resource</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">resourceName</span> })
+      <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">plan</span>
+      <span class="ruby-identifier">sdmClient</span>.<span class="ruby-identifier">role_grants</span>.<span class="ruby-identifier">create</span>(<span class="ruby-constant">SDM</span><span class="ruby-operator">::</span><span class="ruby-constant">RoleGrant</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">role_id:</span> <span class="ruby-identifier">roleId</span>, <span class="ruby-value">resource_id:</span> <span class="ruby-identifier">resourceId</span>))
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">verbose</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">pretty_generate</span>(<span class="ruby-identifier">report</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Create #{report[:createRoles].length} roles&quot;</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Delete #{report[:deleteAccounts].length} accounts&quot;</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Create #{report[:createAccounts].length} accounts&quot;</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Delete #{report[:deleteAccountAttachments].length} account attachments&quot;</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Create #{report[:createAccountAttachments].length} account attachments&quot;</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Delete #{report[:deleteRoleGrants].length} role grants&quot;</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Create #{report[:createRoleGrants].length} role grants&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
 
     
       <div id="method-i-main" class="method-detail ">
@@ -479,7 +802,7 @@
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 
