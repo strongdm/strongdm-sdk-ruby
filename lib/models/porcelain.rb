@@ -850,8 +850,6 @@ module SDM
 
     attr_accessor :password
 
-    attr_accessor :database
-
     attr_accessor :port_override
 
     attr_accessor :port
@@ -866,7 +864,6 @@ module SDM
       hostname: nil,
       username: nil,
       password: nil,
-      database: nil,
       port_override: nil,
       port: nil,
       tls_required: nil
@@ -891,9 +888,6 @@ module SDM
       end
       if password != nil
         @password = password
-      end
-      if database != nil
-        @database = database
       end
       if port_override != nil
         @port_override = port_override

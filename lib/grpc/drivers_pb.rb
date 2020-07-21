@@ -116,9 +116,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :hostname, :string, 1
       optional :username, :string, 2
       optional :password, :string, 3
-      optional :database, :string, 4
-      optional :port_override, :int32, 5
-      optional :port, :int32, 6
+      optional :port_override, :int32, 4
+      optional :port, :int32, 5
       optional :tls_required, :bool, 7
     end
     add_message "v1.DB2LUW" do

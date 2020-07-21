@@ -1322,7 +1322,6 @@ module SDM
       porcelain.hostname = (plumbing.hostname)
       porcelain.username = (plumbing.username)
       porcelain.password = (plumbing.password)
-      porcelain.database = (plumbing.database)
       porcelain.port_override = (plumbing.port_override)
       porcelain.port = (plumbing.port)
       porcelain.tls_required = (plumbing.tls_required)
@@ -1341,7 +1340,6 @@ module SDM
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.username = (porcelain.username) unless porcelain.username == nil
       plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.database = (porcelain.database) unless porcelain.database == nil
       plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
       plumbing.port = (porcelain.port) unless porcelain.port == nil
       plumbing.tls_required = (porcelain.tls_required) unless porcelain.tls_required == nil
