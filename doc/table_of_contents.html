@@ -44,7 +44,17 @@
 
       <li><a href="README_md.html#label-strongDM+SDK+for+Ruby">strongDM SDK for Ruby</a>
 
-      <li><a href="README_md.html#label-Quick+Start">Quick Start</a>
+      <li><a href="README_md.html#label-Installation">Installation</a>
+
+      <li><a href="README_md.html#label-Authentication">Authentication</a>
+
+      <li><a href="README_md.html#label-List+Users">List Users</a>
+
+      <li><a href="README_md.html#label-Useful+Links">Useful Links</a>
+
+      <li><a href="README_md.html#label-License">License</a>
+
+      <li><a href="README_md.html#label-Contributing">Contributing</a>
 
     </ul>
 
@@ -56,32 +66,7 @@
   </li>
   
   <li class="file">
-    <a href="examples/Gemfile_lock.html">Gemfile.lock</a>
-
-  </li>
-  
-  <li class="file">
-    <a href="examples/README_md.html">README</a>
-
-  </li>
-  
-  <li class="file">
-    <a href="examples/okta-sync/Gemfile.html">Gemfile</a>
-
-  </li>
-  
-  <li class="file">
-    <a href="examples/okta-sync/Gemfile_lock.html">Gemfile.lock</a>
-
-  </li>
-  
-  <li class="file">
     <a href="lib/version.html">version</a>
-
-  </li>
-  
-  <li class="file">
-    <a href="strongdm_gemspec.html">strongdm.gemspec</a>
 
   </li>
   
@@ -267,7 +252,12 @@
   </li>
 
   <li class="class">
-    <a href="SDM/DB2.html">SDM::DB2</a>
+    <a href="SDM/DB2I.html">SDM::DB2I</a>
+
+  </li>
+
+  <li class="class">
+    <a href="SDM/DB2LUW.html">SDM::DB2LUW</a>
 
   </li>
 
@@ -1007,12 +997,22 @@
     <span class="container">SDM::Plumbing</span>
 
   <li class="method">
-    <a href="SDM/Plumbing.html#method-c-convert_db_2_to_plumbing">::convert_db_2_to_plumbing</a>
+    <a href="SDM/Plumbing.html#method-c-convert_db_2_i_to_plumbing">::convert_db_2_i_to_plumbing</a>
     &mdash;
     <span class="container">SDM::Plumbing</span>
 
   <li class="method">
-    <a href="SDM/Plumbing.html#method-c-convert_db_2_to_porcelain">::convert_db_2_to_porcelain</a>
+    <a href="SDM/Plumbing.html#method-c-convert_db_2_i_to_porcelain">::convert_db_2_i_to_porcelain</a>
+    &mdash;
+    <span class="container">SDM::Plumbing</span>
+
+  <li class="method">
+    <a href="SDM/Plumbing.html#method-c-convert_db_2_luw_to_plumbing">::convert_db_2_luw_to_plumbing</a>
+    &mdash;
+    <span class="container">SDM::Plumbing</span>
+
+  <li class="method">
+    <a href="SDM/Plumbing.html#method-c-convert_db_2_luw_to_porcelain">::convert_db_2_luw_to_porcelain</a>
     &mdash;
     <span class="container">SDM::Plumbing</span>
 
@@ -1652,12 +1652,22 @@
     <span class="container">SDM::Plumbing</span>
 
   <li class="method">
-    <a href="SDM/Plumbing.html#method-c-convert_repeated_db_2_to_plumbing">::convert_repeated_db_2_to_plumbing</a>
+    <a href="SDM/Plumbing.html#method-c-convert_repeated_db_2_i_to_plumbing">::convert_repeated_db_2_i_to_plumbing</a>
     &mdash;
     <span class="container">SDM::Plumbing</span>
 
   <li class="method">
-    <a href="SDM/Plumbing.html#method-c-convert_repeated_db_2_to_porcelain">::convert_repeated_db_2_to_porcelain</a>
+    <a href="SDM/Plumbing.html#method-c-convert_repeated_db_2_i_to_porcelain">::convert_repeated_db_2_i_to_porcelain</a>
+    &mdash;
+    <span class="container">SDM::Plumbing</span>
+
+  <li class="method">
+    <a href="SDM/Plumbing.html#method-c-convert_repeated_db_2_luw_to_plumbing">::convert_repeated_db_2_luw_to_plumbing</a>
+    &mdash;
+    <span class="container">SDM::Plumbing</span>
+
+  <li class="method">
+    <a href="SDM/Plumbing.html#method-c-convert_repeated_db_2_luw_to_porcelain">::convert_repeated_db_2_luw_to_porcelain</a>
     &mdash;
     <span class="container">SDM::Plumbing</span>
 
@@ -2602,11 +2612,6 @@
     <span class="container">SDM::Plumbing</span>
 
   <li class="method">
-    <a href="SDM/AccountGrantDeleteResponse.html#method-c-new">::new</a>
-    &mdash;
-    <span class="container">SDM::AccountGrantDeleteResponse</span>
-
-  <li class="method">
     <a href="SDM/Resources.html#method-c-new">::new</a>
     &mdash;
     <span class="container">SDM::Resources</span>
@@ -2625,6 +2630,11 @@
     <a href="SDM/Roles.html#method-c-new">::new</a>
     &mdash;
     <span class="container">SDM::Roles</span>
+
+  <li class="method">
+    <a href="SDM/Nodes.html#method-c-new">::new</a>
+    &mdash;
+    <span class="container">SDM::Nodes</span>
 
   <li class="method">
     <a href="SDM/Accounts.html#method-c-new">::new</a>
@@ -2882,6 +2892,11 @@
     <span class="container">SDM::MongoReplicaSet</span>
 
   <li class="method">
+    <a href="SDM/RPCError.html#method-c-new">::new</a>
+    &mdash;
+    <span class="container">SDM::RPCError</span>
+
+  <li class="method">
     <a href="SDM/MongoHost.html#method-c-new">::new</a>
     &mdash;
     <span class="container">SDM::MongoHost</span>
@@ -2977,9 +2992,14 @@
     <span class="container">SDM::Druid</span>
 
   <li class="method">
-    <a href="SDM/DB2.html#method-c-new">::new</a>
+    <a href="SDM/DB2LUW.html#method-c-new">::new</a>
     &mdash;
-    <span class="container">SDM::DB2</span>
+    <span class="container">SDM::DB2LUW</span>
+
+  <li class="method">
+    <a href="SDM/DB2I.html#method-c-new">::new</a>
+    &mdash;
+    <span class="container">SDM::DB2I</span>
 
   <li class="method">
     <a href="SDM/Cassandra.html#method-c-new">::new</a>
@@ -3032,9 +3052,9 @@
     <span class="container">SDM::AccountGrant</span>
 
   <li class="method">
-    <a href="SDM/Nodes.html#method-c-new">::new</a>
+    <a href="SDM/AccountGrantDeleteResponse.html#method-c-new">::new</a>
     &mdash;
-    <span class="container">SDM::Nodes</span>
+    <span class="container">SDM::AccountGrantDeleteResponse</span>
 
   <li class="method">
     <a href="SDM/AccountGrantGetResponse.html#method-c-new">::new</a>
@@ -3132,44 +3152,9 @@
     <span class="container">SDM::DeadlineExceededError</span>
 
   <li class="method">
-    <a href="SDM/RPCError.html#method-c-new">::new</a>
-    &mdash;
-    <span class="container">SDM::RPCError</span>
-
-  <li class="method">
     <a href="SDM/Plumbing.html#method-c-quote_filter_args">::quote_filter_args</a>
     &mdash;
     <span class="container">SDM::Plumbing</span>
-
-  <li class="method">
-    <a href="SDM/AccountGrants.html#method-i-create">#create</a>
-    &mdash;
-    <span class="container">SDM::AccountGrants</span>
-
-  <li class="method">
-    <a href="SDM/Accounts.html#method-i-create">#create</a>
-    &mdash;
-    <span class="container">SDM::Accounts</span>
-
-  <li class="method">
-    <a href="SDM/Resources.html#method-i-create">#create</a>
-    &mdash;
-    <span class="container">SDM::Resources</span>
-
-  <li class="method">
-    <a href="SDM/Nodes.html#method-i-create">#create</a>
-    &mdash;
-    <span class="container">SDM::Nodes</span>
-
-  <li class="method">
-    <a href="SDM/Roles.html#method-i-create">#create</a>
-    &mdash;
-    <span class="container">SDM::Roles</span>
-
-  <li class="method">
-    <a href="SDM/RoleGrants.html#method-i-create">#create</a>
-    &mdash;
-    <span class="container">SDM::RoleGrants</span>
 
   <li class="method">
     <a href="SDM/RoleAttachments.html#method-i-create">#create</a>
@@ -3182,34 +3167,34 @@
     <span class="container">SDM::AccountAttachments</span>
 
   <li class="method">
-    <a href="SDM/AccountAttachments.html#method-i-delete">#delete</a>
-    &mdash;
-    <span class="container">SDM::AccountAttachments</span>
-
-  <li class="method">
-    <a href="SDM/Resources.html#method-i-delete">#delete</a>
-    &mdash;
-    <span class="container">SDM::Resources</span>
-
-  <li class="method">
-    <a href="SDM/AccountGrants.html#method-i-delete">#delete</a>
+    <a href="SDM/AccountGrants.html#method-i-create">#create</a>
     &mdash;
     <span class="container">SDM::AccountGrants</span>
 
   <li class="method">
-    <a href="SDM/Roles.html#method-i-delete">#delete</a>
+    <a href="SDM/Accounts.html#method-i-create">#create</a>
     &mdash;
-    <span class="container">SDM::Roles</span>
+    <span class="container">SDM::Accounts</span>
 
   <li class="method">
-    <a href="SDM/Nodes.html#method-i-delete">#delete</a>
+    <a href="SDM/Nodes.html#method-i-create">#create</a>
     &mdash;
     <span class="container">SDM::Nodes</span>
 
   <li class="method">
-    <a href="SDM/Accounts.html#method-i-delete">#delete</a>
+    <a href="SDM/Resources.html#method-i-create">#create</a>
     &mdash;
-    <span class="container">SDM::Accounts</span>
+    <span class="container">SDM::Resources</span>
+
+  <li class="method">
+    <a href="SDM/RoleGrants.html#method-i-create">#create</a>
+    &mdash;
+    <span class="container">SDM::RoleGrants</span>
+
+  <li class="method">
+    <a href="SDM/Roles.html#method-i-create">#create</a>
+    &mdash;
+    <span class="container">SDM::Roles</span>
 
   <li class="method">
     <a href="SDM/RoleGrants.html#method-i-delete">#delete</a>
@@ -3217,24 +3202,39 @@
     <span class="container">SDM::RoleGrants</span>
 
   <li class="method">
+    <a href="SDM/AccountAttachments.html#method-i-delete">#delete</a>
+    &mdash;
+    <span class="container">SDM::AccountAttachments</span>
+
+  <li class="method">
     <a href="SDM/RoleAttachments.html#method-i-delete">#delete</a>
     &mdash;
     <span class="container">SDM::RoleAttachments</span>
 
   <li class="method">
-    <a href="Object.html#method-i-first">#first</a>
-    &mdash;
-    <span class="container">Object</span>
-
-  <li class="method">
-    <a href="SDM/RoleGrants.html#method-i-get">#get</a>
-    &mdash;
-    <span class="container">SDM::RoleGrants</span>
-
-  <li class="method">
-    <a href="SDM/Resources.html#method-i-get">#get</a>
+    <a href="SDM/Resources.html#method-i-delete">#delete</a>
     &mdash;
     <span class="container">SDM::Resources</span>
+
+  <li class="method">
+    <a href="SDM/Roles.html#method-i-delete">#delete</a>
+    &mdash;
+    <span class="container">SDM::Roles</span>
+
+  <li class="method">
+    <a href="SDM/Accounts.html#method-i-delete">#delete</a>
+    &mdash;
+    <span class="container">SDM::Accounts</span>
+
+  <li class="method">
+    <a href="SDM/Nodes.html#method-i-delete">#delete</a>
+    &mdash;
+    <span class="container">SDM::Nodes</span>
+
+  <li class="method">
+    <a href="SDM/AccountGrants.html#method-i-delete">#delete</a>
+    &mdash;
+    <span class="container">SDM::AccountGrants</span>
 
   <li class="method">
     <a href="SDM/AccountAttachments.html#method-i-get">#get</a>
@@ -3242,9 +3242,24 @@
     <span class="container">SDM::AccountAttachments</span>
 
   <li class="method">
+    <a href="SDM/RoleGrants.html#method-i-get">#get</a>
+    &mdash;
+    <span class="container">SDM::RoleGrants</span>
+
+  <li class="method">
     <a href="SDM/AccountGrants.html#method-i-get">#get</a>
     &mdash;
     <span class="container">SDM::AccountGrants</span>
+
+  <li class="method">
+    <a href="SDM/Roles.html#method-i-get">#get</a>
+    &mdash;
+    <span class="container">SDM::Roles</span>
+
+  <li class="method">
+    <a href="SDM/Resources.html#method-i-get">#get</a>
+    &mdash;
+    <span class="container">SDM::Resources</span>
 
   <li class="method">
     <a href="SDM/Accounts.html#method-i-get">#get</a>
@@ -3262,11 +3277,6 @@
     <span class="container">SDM::Nodes</span>
 
   <li class="method">
-    <a href="SDM/Roles.html#method-i-get">#get</a>
-    &mdash;
-    <span class="container">SDM::Roles</span>
-
-  <li class="method">
     <a href="SDM/Client.html#method-i-get_metadata">#get_metadata</a>
     &mdash;
     <span class="container">SDM::Client</span>
@@ -3277,24 +3287,14 @@
     <span class="container">SDM::Client</span>
 
   <li class="method">
-    <a href="Object.html#method-i-ldap_sync">#ldap_sync</a>
-    &mdash;
-    <span class="container">Object</span>
-
-  <li class="method">
     <a href="SDM/Accounts.html#method-i-list">#list</a>
     &mdash;
     <span class="container">SDM::Accounts</span>
 
   <li class="method">
-    <a href="SDM/Resources.html#method-i-list">#list</a>
+    <a href="SDM/AccountAttachments.html#method-i-list">#list</a>
     &mdash;
-    <span class="container">SDM::Resources</span>
-
-  <li class="method">
-    <a href="SDM/Roles.html#method-i-list">#list</a>
-    &mdash;
-    <span class="container">SDM::Roles</span>
+    <span class="container">SDM::AccountAttachments</span>
 
   <li class="method">
     <a href="SDM/Nodes.html#method-i-list">#list</a>
@@ -3307,29 +3307,24 @@
     <span class="container">SDM::AccountGrants</span>
 
   <li class="method">
-    <a href="SDM/RoleAttachments.html#method-i-list">#list</a>
-    &mdash;
-    <span class="container">SDM::RoleAttachments</span>
-
-  <li class="method">
-    <a href="SDM/AccountAttachments.html#method-i-list">#list</a>
-    &mdash;
-    <span class="container">SDM::AccountAttachments</span>
-
-  <li class="method">
     <a href="SDM/RoleGrants.html#method-i-list">#list</a>
     &mdash;
     <span class="container">SDM::RoleGrants</span>
 
   <li class="method">
-    <a href="Object.html#method-i-main">#main</a>
+    <a href="SDM/Roles.html#method-i-list">#list</a>
     &mdash;
-    <span class="container">Object</span>
+    <span class="container">SDM::Roles</span>
 
   <li class="method">
-    <a href="Object.html#method-i-okta_sync">#okta_sync</a>
+    <a href="SDM/Resources.html#method-i-list">#list</a>
     &mdash;
-    <span class="container">Object</span>
+    <span class="container">SDM::Resources</span>
+
+  <li class="method">
+    <a href="SDM/RoleAttachments.html#method-i-list">#list</a>
+    &mdash;
+    <span class="container">SDM::RoleAttachments</span>
 
   <li class="method">
     <a href="SDM/Client.html#method-i-shouldRetry">#shouldRetry</a>
@@ -3340,6 +3335,31 @@
     <a href="SDM/Client.html#method-i-sign">#sign</a>
     &mdash;
     <span class="container">SDM::Client</span>
+
+  <li class="method">
+    <a href="SDM/Redshift.html#method-i-to_json">#to_json</a>
+    &mdash;
+    <span class="container">SDM::Redshift</span>
+
+  <li class="method">
+    <a href="SDM/GetResponseMetadata.html#method-i-to_json">#to_json</a>
+    &mdash;
+    <span class="container">SDM::GetResponseMetadata</span>
+
+  <li class="method">
+    <a href="SDM/Citus.html#method-i-to_json">#to_json</a>
+    &mdash;
+    <span class="container">SDM::Citus</span>
+
+  <li class="method">
+    <a href="SDM/Presto.html#method-i-to_json">#to_json</a>
+    &mdash;
+    <span class="container">SDM::Presto</span>
+
+  <li class="method">
+    <a href="SDM/CreateResponseMetadata.html#method-i-to_json">#to_json</a>
+    &mdash;
+    <span class="container">SDM::CreateResponseMetadata</span>
 
   <li class="method">
     <a href="SDM/RDP.html#method-i-to_json">#to_json</a>
@@ -3462,9 +3482,9 @@
     <span class="container">SDM::RoleAttachment</span>
 
   <li class="method">
-    <a href="SDM/BigQuery.html#method-i-to_json">#to_json</a>
+    <a href="SDM/RoleGrantCreateResponse.html#method-i-to_json">#to_json</a>
     &mdash;
-    <span class="container">SDM::BigQuery</span>
+    <span class="container">SDM::RoleGrantCreateResponse</span>
 
   <li class="method">
     <a href="SDM/RoleGrantGetResponse.html#method-i-to_json">#to_json</a>
@@ -3527,16 +3547,6 @@
     <span class="container">SDM::AccountGrantDeleteResponse</span>
 
   <li class="method">
-    <a href="SDM/AccountGrantGetResponse.html#method-i-to_json">#to_json</a>
-    &mdash;
-    <span class="container">SDM::AccountGrantGetResponse</span>
-
-  <li class="method">
-    <a href="SDM/AccountGrantCreateResponse.html#method-i-to_json">#to_json</a>
-    &mdash;
-    <span class="container">SDM::AccountGrantCreateResponse</span>
-
-  <li class="method">
     <a href="SDM/AccountUpdateResponse.html#method-i-to_json">#to_json</a>
     &mdash;
     <span class="container">SDM::AccountUpdateResponse</span>
@@ -3547,9 +3557,24 @@
     <span class="container">SDM::AccountDeleteResponse</span>
 
   <li class="method">
-    <a href="SDM/RoleGrantCreateResponse.html#method-i-to_json">#to_json</a>
+    <a href="SDM/AccountGrantGetResponse.html#method-i-to_json">#to_json</a>
     &mdash;
-    <span class="container">SDM::RoleGrantCreateResponse</span>
+    <span class="container">SDM::AccountGrantGetResponse</span>
+
+  <li class="method">
+    <a href="SDM/AccountAttachmentGetResponse.html#method-i-to_json">#to_json</a>
+    &mdash;
+    <span class="container">SDM::AccountAttachmentGetResponse</span>
+
+  <li class="method">
+    <a href="SDM/DB2I.html#method-i-to_json">#to_json</a>
+    &mdash;
+    <span class="container">SDM::DB2I</span>
+
+  <li class="method">
+    <a href="SDM/AccountAttachmentCreateResponse.html#method-i-to_json">#to_json</a>
+    &mdash;
+    <span class="container">SDM::AccountAttachmentCreateResponse</span>
 
   <li class="method">
     <a href="SDM/RateLimitMetadata.html#method-i-to_json">#to_json</a>
@@ -3557,24 +3582,9 @@
     <span class="container">SDM::RateLimitMetadata</span>
 
   <li class="method">
-    <a href="SDM/Cassandra.html#method-i-to_json">#to_json</a>
+    <a href="SDM/DB2LUW.html#method-i-to_json">#to_json</a>
     &mdash;
-    <span class="container">SDM::Cassandra</span>
-
-  <li class="method">
-    <a href="SDM/DB2.html#method-i-to_json">#to_json</a>
-    &mdash;
-    <span class="container">SDM::DB2</span>
-
-  <li class="method">
-    <a href="SDM/DeleteResponseMetadata.html#method-i-to_json">#to_json</a>
-    &mdash;
-    <span class="container">SDM::DeleteResponseMetadata</span>
-
-  <li class="method">
-    <a href="SDM/UpdateResponseMetadata.html#method-i-to_json">#to_json</a>
-    &mdash;
-    <span class="container">SDM::UpdateResponseMetadata</span>
+    <span class="container">SDM::DB2LUW</span>
 
   <li class="method">
     <a href="SDM/Druid.html#method-i-to_json">#to_json</a>
@@ -3712,9 +3722,9 @@
     <span class="container">SDM::Postgres</span>
 
   <li class="method">
-    <a href="SDM/GetResponseMetadata.html#method-i-to_json">#to_json</a>
+    <a href="SDM/DeleteResponseMetadata.html#method-i-to_json">#to_json</a>
     &mdash;
-    <span class="container">SDM::GetResponseMetadata</span>
+    <span class="container">SDM::DeleteResponseMetadata</span>
 
   <li class="method">
     <a href="SDM/AuroraPostgres.html#method-i-to_json">#to_json</a>
@@ -3727,9 +3737,9 @@
     <span class="container">SDM::Greenplum</span>
 
   <li class="method">
-    <a href="SDM/CreateResponseMetadata.html#method-i-to_json">#to_json</a>
+    <a href="SDM/UpdateResponseMetadata.html#method-i-to_json">#to_json</a>
     &mdash;
-    <span class="container">SDM::CreateResponseMetadata</span>
+    <span class="container">SDM::UpdateResponseMetadata</span>
 
   <li class="method">
     <a href="SDM/Cockroach.html#method-i-to_json">#to_json</a>
@@ -3737,19 +3747,34 @@
     <span class="container">SDM::Cockroach</span>
 
   <li class="method">
-    <a href="SDM/Redshift.html#method-i-to_json">#to_json</a>
+    <a href="SDM/AccountAttachmentDeleteResponse.html#method-i-to_json">#to_json</a>
     &mdash;
-    <span class="container">SDM::Redshift</span>
+    <span class="container">SDM::AccountAttachmentDeleteResponse</span>
 
   <li class="method">
-    <a href="SDM/Citus.html#method-i-to_json">#to_json</a>
+    <a href="SDM/Athena.html#method-i-to_json">#to_json</a>
     &mdash;
-    <span class="container">SDM::Citus</span>
+    <span class="container">SDM::Athena</span>
 
   <li class="method">
-    <a href="SDM/Presto.html#method-i-to_json">#to_json</a>
+    <a href="SDM/BigQuery.html#method-i-to_json">#to_json</a>
     &mdash;
-    <span class="container">SDM::Presto</span>
+    <span class="container">SDM::BigQuery</span>
+
+  <li class="method">
+    <a href="SDM/Cassandra.html#method-i-to_json">#to_json</a>
+    &mdash;
+    <span class="container">SDM::Cassandra</span>
+
+  <li class="method">
+    <a href="SDM/AccountGrantCreateResponse.html#method-i-to_json">#to_json</a>
+    &mdash;
+    <span class="container">SDM::AccountGrantCreateResponse</span>
+
+  <li class="method">
+    <a href="SDM/AccountAttachment.html#method-i-to_json">#to_json</a>
+    &mdash;
+    <span class="container">SDM::AccountAttachment</span>
 
   <li class="method">
     <a href="SDM/User.html#method-i-to_json">#to_json</a>
@@ -3762,39 +3787,14 @@
     <span class="container">SDM::Service</span>
 
   <li class="method">
-    <a href="SDM/AccountAttachmentCreateResponse.html#method-i-to_json">#to_json</a>
+    <a href="SDM/Nodes.html#method-i-update">#update</a>
     &mdash;
-    <span class="container">SDM::AccountAttachmentCreateResponse</span>
-
-  <li class="method">
-    <a href="SDM/Athena.html#method-i-to_json">#to_json</a>
-    &mdash;
-    <span class="container">SDM::Athena</span>
-
-  <li class="method">
-    <a href="SDM/AccountAttachment.html#method-i-to_json">#to_json</a>
-    &mdash;
-    <span class="container">SDM::AccountAttachment</span>
-
-  <li class="method">
-    <a href="SDM/AccountAttachmentDeleteResponse.html#method-i-to_json">#to_json</a>
-    &mdash;
-    <span class="container">SDM::AccountAttachmentDeleteResponse</span>
-
-  <li class="method">
-    <a href="SDM/AccountAttachmentGetResponse.html#method-i-to_json">#to_json</a>
-    &mdash;
-    <span class="container">SDM::AccountAttachmentGetResponse</span>
+    <span class="container">SDM::Nodes</span>
 
   <li class="method">
     <a href="SDM/Roles.html#method-i-update">#update</a>
     &mdash;
     <span class="container">SDM::Roles</span>
-
-  <li class="method">
-    <a href="SDM/Nodes.html#method-i-update">#update</a>
-    &mdash;
-    <span class="container">SDM::Nodes</span>
 
   <li class="method">
     <a href="SDM/Accounts.html#method-i-update">#update</a>
@@ -3812,7 +3812,7 @@
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.2.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

@@ -27,7 +27,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :athena, :message, 100, "v1.Athena"
         optional :big_query, :message, 200, "v1.BigQuery"
         optional :cassandra, :message, 300, "v1.Cassandra"
-        optional :db_2, :message, 2200, "v1.DB2"
+        optional :db_2_i, :message, 2400, "v1.DB2I"
+        optional :db_2_luw, :message, 2200, "v1.DB2LUW"
         optional :druid, :message, 400, "v1.Druid"
         optional :dynamo_db, :message, 500, "v1.DynamoDB"
         optional :amazon_es, :message, 600, "v1.AmazonES"
@@ -107,7 +108,20 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port, :int32, 5
       optional :tls_required, :bool, 6
     end
-    add_message "v1.DB2" do
+    add_message "v1.DB2I" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :hostname, :string, 1
+      optional :username, :string, 2
+      optional :password, :string, 3
+      optional :database, :string, 4
+      optional :port_override, :int32, 5
+      optional :port, :int32, 6
+      optional :tls_required, :bool, 7
+    end
+    add_message "v1.DB2LUW" do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
@@ -651,7 +665,8 @@ module V1
   Athena = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Athena").msgclass
   BigQuery = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.BigQuery").msgclass
   Cassandra = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Cassandra").msgclass
-  DB2 = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DB2").msgclass
+  DB2I = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DB2I").msgclass
+  DB2LUW = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DB2LUW").msgclass
   Druid = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Druid").msgclass
   DynamoDB = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DynamoDB").msgclass
   AmazonES = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AmazonES").msgclass

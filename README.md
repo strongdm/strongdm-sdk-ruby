@@ -1,23 +1,25 @@
 # strongDM SDK for Ruby
 
-The official strongDM SDK for the Ruby programming language.
+This is the official [strongDM](https://www.strongdm.com/) SDK for the Ruby programming language.
 
-## Quick Start
-
-First, install the gem:
+## Installation
 
 ```bash
 $ gem install strongdm
 ```
 
-Next, go to https://app.strongdm.com and create an API key. Set the `SDM_API_ACCESS_KEY` and `SDM_API_SECRET_KEY` environment variables.
+## Authentication
 
+If you don't already have them you will need to generate a set of API keys, instructions are here: [API Credentials](https://www.strongdm.com/docs/admin-guide/api-credentials/)
+
+Add the keys as environment variables; the SDK will need to access these keys for every request.
 ```bash
 $ export SDM_API_ACCESS_KEY=<YOUR ACCESS KEY>
 $ export SDM_API_SECRET_KEY=<YOUR SECRET KEY>
 ```
 
-Run some example code.
+## List Users
+The following code lists all registered users:
 
 ```ruby
 require "strongdm"
@@ -28,3 +30,16 @@ users.each do |user|
 	p user
 end
 ```
+
+## Useful Links
+
+* Documentation:  [strongdm gem](https://www.rubydoc.info/gems/strongdm)
+* Examples: [GitHub - strongdm/strongdm-sdk-ruby-examples](https://github.com/strongdm/strongdm-sdk-ruby-examples)
+
+## License
+
+[Apache 2](https://github.com/strongdm/strongdm-sdk-ruby/blob/master/LICENSE)
+
+## Contributing 
+
+Currently, strongDM does not accept pull requests for this repository. Please submit any feedback to <support@strongdm.com>.

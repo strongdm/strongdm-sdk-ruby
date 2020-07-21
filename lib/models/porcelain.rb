@@ -834,7 +834,88 @@ module SDM
     end
   end
 
-  class DB2
+  class DB2I
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    attr_accessor :hostname
+
+    attr_accessor :username
+
+    attr_accessor :password
+
+    attr_accessor :database
+
+    attr_accessor :port_override
+
+    attr_accessor :port
+
+    attr_accessor :tls_required
+
+    def initialize(
+      id: nil,
+      name: nil,
+      healthy: nil,
+      tags: nil,
+      hostname: nil,
+      username: nil,
+      password: nil,
+      database: nil,
+      port_override: nil,
+      port: nil,
+      tls_required: nil
+    )
+      if id != nil
+        @id = id
+      end
+      if name != nil
+        @name = name
+      end
+      if healthy != nil
+        @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
+      end
+      if hostname != nil
+        @hostname = hostname
+      end
+      if username != nil
+        @username = username
+      end
+      if password != nil
+        @password = password
+      end
+      if database != nil
+        @database = database
+      end
+      if port_override != nil
+        @port_override = port_override
+      end
+      if port != nil
+        @port = port
+      end
+      if tls_required != nil
+        @tls_required = tls_required
+      end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  class DB2LUW
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.

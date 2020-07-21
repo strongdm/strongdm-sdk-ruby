@@ -854,8 +854,11 @@ module SDM
       if porcelain.instance_of? Cassandra
         plumbing.cassandra = convert_cassandra_to_plumbing(porcelain)
       end
-      if porcelain.instance_of? DB2
-        plumbing.db_2 = convert_db_2_to_plumbing(porcelain)
+      if porcelain.instance_of? DB2I
+        plumbing.db_2_i = convert_db_2_i_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? DB2LUW
+        plumbing.db_2_luw = convert_db_2_luw_to_plumbing(porcelain)
       end
       if porcelain.instance_of? Druid
         plumbing.druid = convert_druid_to_plumbing(porcelain)
@@ -1002,8 +1005,11 @@ module SDM
       if plumbing.cassandra != nil
         return convert_cassandra_to_porcelain(plumbing.cassandra)
       end
-      if plumbing.db_2 != nil
-        return convert_db_2_to_porcelain(plumbing.db_2)
+      if plumbing.db_2_i != nil
+        return convert_db_2_i_to_porcelain(plumbing.db_2_i)
+      end
+      if plumbing.db_2_luw != nil
+        return convert_db_2_luw_to_porcelain(plumbing.db_2_luw)
       end
       if plumbing.druid != nil
         return convert_druid_to_porcelain(plumbing.druid)
@@ -1304,11 +1310,65 @@ module SDM
       end
       items
     end
-    def self.convert_db_2_to_porcelain(plumbing)
+    def self.convert_db_2_i_to_porcelain(plumbing)
       if plumbing == nil
         return nil
       end
-      porcelain = DB2.new()
+      porcelain = DB2I.new()
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.username = (plumbing.username)
+      porcelain.password = (plumbing.password)
+      porcelain.database = (plumbing.database)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.port = (plumbing.port)
+      porcelain.tls_required = (plumbing.tls_required)
+      porcelain
+    end
+
+    def self.convert_db_2_i_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::DB2I.new()
+      plumbing.id = (porcelain.id) unless porcelain.id == nil
+      plumbing.name = (porcelain.name) unless porcelain.name == nil
+      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
+      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.password = (porcelain.password) unless porcelain.password == nil
+      plumbing.database = (porcelain.database) unless porcelain.database == nil
+      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
+      plumbing.port = (porcelain.port) unless porcelain.port == nil
+      plumbing.tls_required = (porcelain.tls_required) unless porcelain.tls_required == nil
+      plumbing
+    end
+    def self.convert_repeated_db_2_i_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_db_2_i_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_db_2_i_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_db_2_i_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_db_2_luw_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = DB2LUW.new()
       porcelain.id = (plumbing.id)
       porcelain.name = (plumbing.name)
       porcelain.healthy = (plumbing.healthy)
@@ -1322,11 +1382,11 @@ module SDM
       porcelain
     end
 
-    def self.convert_db_2_to_plumbing(porcelain)
+    def self.convert_db_2_luw_to_plumbing(porcelain)
       if porcelain == nil
         return nil
       end
-      plumbing = V1::DB2.new()
+      plumbing = V1::DB2LUW.new()
       plumbing.id = (porcelain.id) unless porcelain.id == nil
       plumbing.name = (porcelain.name) unless porcelain.name == nil
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
@@ -1339,19 +1399,19 @@ module SDM
       plumbing.port = (porcelain.port) unless porcelain.port == nil
       plumbing
     end
-    def self.convert_repeated_db_2_to_plumbing(porcelains)
+    def self.convert_repeated_db_2_luw_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
-        plumbing = convert_db_2_to_plumbing(porcelain)
+        plumbing = convert_db_2_luw_to_plumbing(porcelain)
         items.append(plumbing)
       end
       items
     end
 
-    def self.convert_repeated_db_2_to_porcelain(plumbings)
+    def self.convert_repeated_db_2_luw_to_porcelain(plumbings)
       items = Array.new
       plumbings.each do |plumbing|
-        porcelain = convert_db_2_to_porcelain(plumbing)
+        porcelain = convert_db_2_luw_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
