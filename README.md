@@ -35,6 +35,10 @@ end
 
 * Documentation:  [strongdm gem](https://www.rubydoc.info/gems/strongdm)
 * Examples: [GitHub - strongdm/strongdm-sdk-ruby-examples](https://github.com/strongdm/strongdm-sdk-ruby-examples)
+	1. [Managing Resources](https://github.com/strongdm/strongdm-sdk-ruby-examples/tree/master/1_managing_resources)
+	2. [Managing Accounts](https://github.com/strongdm/strongdm-sdk-ruby-examples/tree/master/2_managing_accounts)
+	3. [Managing Roles](https://github.com/strongdm/strongdm-sdk-ruby-examples/tree/master/3_managing_roles)
+	4. [Managing Gateways](https://github.com/strongdm/strongdm-sdk-ruby-examples/tree/master/4_managing_gateways)
 
 ## License
 
@@ -42,4 +46,4 @@ end
 
 ## Contributing 
 
-Currently, strongDM does not accept pull requests for this repository. Please submit any feedback to <support@strongdm.com>.
+Currently, we are not accepting pull requests directly to this repository, but our users are some of the most resourceful and ambitious folks out there. So, if you have something to contribute, find a bug, or just want to give us some feedback, please email <support@strongdm.com>.
