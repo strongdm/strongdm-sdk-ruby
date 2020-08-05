@@ -221,11 +221,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :hostname, :string, 1
       optional :port, :int32, 2
       optional :certificate_authority, :string, 3
-      optional :certificate_authority_filename, :string, 4
       optional :client_certificate, :string, 5
-      optional :client_certificate_filename, :string, 6
       optional :client_key, :string, 7
-      optional :client_key_filename, :string, 8
       optional :healthcheck_namespace, :string, 9
     end
     add_message "v1.KubernetesBasicAuth" do
@@ -258,7 +255,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :access_key, :string, 2
       optional :secret_access_key, :string, 3
       optional :certificate_authority, :string, 4
-      optional :certificate_authority_filename, :string, 5
       optional :region, :string, 6
       optional :cluster_name, :string, 7
       optional :role_arn, :string, 8
@@ -271,9 +267,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :endpoint, :string, 1
       optional :certificate_authority, :string, 2
-      optional :certificate_authority_filename, :string, 3
       optional :service_account_key, :string, 4
-      optional :service_account_key_filename, :string, 5
       optional :healthcheck_namespace, :string, 6
     end
     add_message "v1.AKS" do
@@ -284,11 +278,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :hostname, :string, 1
       optional :port, :int32, 2
       optional :certificate_authority, :string, 3
-      optional :certificate_authority_filename, :string, 4
       optional :client_certificate, :string, 5
-      optional :client_certificate_filename, :string, 6
       optional :client_key, :string, 7
-      optional :client_key_filename, :string, 8
       optional :healthcheck_namespace, :string, 9
     end
     add_message "v1.AKSBasicAuth" do

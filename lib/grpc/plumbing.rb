@@ -1765,63 +1765,57 @@ module SDM
             items
         end
 
-        def self.convert_repeated_http_auth_to_porcelain(plumbings)
-            items = Array.new
-            plumbings.each do |plumbing|
-                porcelain = convert_http_auth_to_porcelain(plumbing)
-                items.append(porcelain)
-            end
-            items
-        end
-        def self.convert_kubernetes_to_porcelain(plumbing)
-            if plumbing == nil
-                return nil
-            end
-            porcelain = Kubernetes.new()
-            porcelain.id = (plumbing.id)
-            porcelain.name = (plumbing.name)
-            porcelain.healthy = (plumbing.healthy)
-            porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
-            porcelain.hostname = (plumbing.hostname)
-            porcelain.port = (plumbing.port)
-            porcelain.certificate_authority = (plumbing.certificate_authority)
-            porcelain.certificate_authority_filename = (plumbing.certificate_authority_filename)
-            porcelain.client_certificate = (plumbing.client_certificate)
-            porcelain.client_certificate_filename = (plumbing.client_certificate_filename)
-            porcelain.client_key = (plumbing.client_key)
-            porcelain.client_key_filename = (plumbing.client_key_filename)
-            porcelain.healthcheck_namespace = (plumbing.healthcheck_namespace)
-            porcelain
-        end
+    def self.convert_repeated_http_auth_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_http_auth_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_kubernetes_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = Kubernetes.new()
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.port = (plumbing.port)
+      porcelain.certificate_authority = (plumbing.certificate_authority)
+      porcelain.client_certificate = (plumbing.client_certificate)
+      porcelain.client_key = (plumbing.client_key)
+      porcelain.healthcheck_namespace = (plumbing.healthcheck_namespace)
+      porcelain
+    end
 
-        def self.convert_kubernetes_to_plumbing(porcelain)
-            if porcelain == nil
-                return nil
-            end
-            plumbing = V1::Kubernetes.new()
-            plumbing.id = (porcelain.id) unless porcelain.id == nil
-            plumbing.name = (porcelain.name) unless porcelain.name == nil
-            plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-            plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-            plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-            plumbing.port = (porcelain.port) unless porcelain.port == nil
-            plumbing.certificate_authority = (porcelain.certificate_authority) unless porcelain.certificate_authority == nil
-            plumbing.certificate_authority_filename = (porcelain.certificate_authority_filename) unless porcelain.certificate_authority_filename == nil
-            plumbing.client_certificate = (porcelain.client_certificate) unless porcelain.client_certificate == nil
-            plumbing.client_certificate_filename = (porcelain.client_certificate_filename) unless porcelain.client_certificate_filename == nil
-            plumbing.client_key = (porcelain.client_key) unless porcelain.client_key == nil
-            plumbing.client_key_filename = (porcelain.client_key_filename) unless porcelain.client_key_filename == nil
-            plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace) unless porcelain.healthcheck_namespace == nil
-            plumbing
-        end
-        def self.convert_repeated_kubernetes_to_plumbing(porcelains)
-            items = Array.new
-            porcelains.each do |porcelain|
-                plumbing = convert_kubernetes_to_plumbing(porcelain)
-                items.append(plumbing)
-            end
-            items
-        end
+    def self.convert_kubernetes_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::Kubernetes.new()
+      plumbing.id = (porcelain.id) unless porcelain.id == nil
+      plumbing.name = (porcelain.name) unless porcelain.name == nil
+      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
+      plumbing.port = (porcelain.port) unless porcelain.port == nil
+      plumbing.certificate_authority = (porcelain.certificate_authority) unless porcelain.certificate_authority == nil
+      plumbing.client_certificate = (porcelain.client_certificate) unless porcelain.client_certificate == nil
+      plumbing.client_key = (porcelain.client_key) unless porcelain.client_key == nil
+      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace) unless porcelain.healthcheck_namespace == nil
+      plumbing
+    end
+    def self.convert_repeated_kubernetes_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_kubernetes_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
 
         def self.convert_repeated_kubernetes_to_porcelain(plumbings)
             items = Array.new
@@ -1921,173 +1915,161 @@ module SDM
             items
         end
 
-        def self.convert_repeated_kubernetes_service_account_to_porcelain(plumbings)
-            items = Array.new
-            plumbings.each do |plumbing|
-                porcelain = convert_kubernetes_service_account_to_porcelain(plumbing)
-                items.append(porcelain)
-            end
-            items
-        end
-        def self.convert_amazon_eks_to_porcelain(plumbing)
-            if plumbing == nil
-                return nil
-            end
-            porcelain = AmazonEKS.new()
-            porcelain.id = (plumbing.id)
-            porcelain.name = (plumbing.name)
-            porcelain.healthy = (plumbing.healthy)
-            porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
-            porcelain.endpoint = (plumbing.endpoint)
-            porcelain.access_key = (plumbing.access_key)
-            porcelain.secret_access_key = (plumbing.secret_access_key)
-            porcelain.certificate_authority = (plumbing.certificate_authority)
-            porcelain.certificate_authority_filename = (plumbing.certificate_authority_filename)
-            porcelain.region = (plumbing.region)
-            porcelain.cluster_name = (plumbing.cluster_name)
-            porcelain.role_arn = (plumbing.role_arn)
-            porcelain.healthcheck_namespace = (plumbing.healthcheck_namespace)
-            porcelain
-        end
+    def self.convert_repeated_kubernetes_service_account_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_kubernetes_service_account_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_amazon_eks_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AmazonEKS.new()
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.endpoint = (plumbing.endpoint)
+      porcelain.access_key = (plumbing.access_key)
+      porcelain.secret_access_key = (plumbing.secret_access_key)
+      porcelain.certificate_authority = (plumbing.certificate_authority)
+      porcelain.region = (plumbing.region)
+      porcelain.cluster_name = (plumbing.cluster_name)
+      porcelain.role_arn = (plumbing.role_arn)
+      porcelain.healthcheck_namespace = (plumbing.healthcheck_namespace)
+      porcelain
+    end
 
-        def self.convert_amazon_eks_to_plumbing(porcelain)
-            if porcelain == nil
-                return nil
-            end
-            plumbing = V1::AmazonEKS.new()
-            plumbing.id = (porcelain.id) unless porcelain.id == nil
-            plumbing.name = (porcelain.name) unless porcelain.name == nil
-            plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-            plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-            plumbing.endpoint = (porcelain.endpoint) unless porcelain.endpoint == nil
-            plumbing.access_key = (porcelain.access_key) unless porcelain.access_key == nil
-            plumbing.secret_access_key = (porcelain.secret_access_key) unless porcelain.secret_access_key == nil
-            plumbing.certificate_authority = (porcelain.certificate_authority) unless porcelain.certificate_authority == nil
-            plumbing.certificate_authority_filename = (porcelain.certificate_authority_filename) unless porcelain.certificate_authority_filename == nil
-            plumbing.region = (porcelain.region) unless porcelain.region == nil
-            plumbing.cluster_name = (porcelain.cluster_name) unless porcelain.cluster_name == nil
-            plumbing.role_arn = (porcelain.role_arn) unless porcelain.role_arn == nil
-            plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace) unless porcelain.healthcheck_namespace == nil
-            plumbing
-        end
-        def self.convert_repeated_amazon_eks_to_plumbing(porcelains)
-            items = Array.new
-            porcelains.each do |porcelain|
-                plumbing = convert_amazon_eks_to_plumbing(porcelain)
-                items.append(plumbing)
-            end
-            items
-        end
+    def self.convert_amazon_eks_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AmazonEKS.new()
+      plumbing.id = (porcelain.id) unless porcelain.id == nil
+      plumbing.name = (porcelain.name) unless porcelain.name == nil
+      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.endpoint = (porcelain.endpoint) unless porcelain.endpoint == nil
+      plumbing.access_key = (porcelain.access_key) unless porcelain.access_key == nil
+      plumbing.secret_access_key = (porcelain.secret_access_key) unless porcelain.secret_access_key == nil
+      plumbing.certificate_authority = (porcelain.certificate_authority) unless porcelain.certificate_authority == nil
+      plumbing.region = (porcelain.region) unless porcelain.region == nil
+      plumbing.cluster_name = (porcelain.cluster_name) unless porcelain.cluster_name == nil
+      plumbing.role_arn = (porcelain.role_arn) unless porcelain.role_arn == nil
+      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace) unless porcelain.healthcheck_namespace == nil
+      plumbing
+    end
+    def self.convert_repeated_amazon_eks_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_amazon_eks_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
 
-        def self.convert_repeated_amazon_eks_to_porcelain(plumbings)
-            items = Array.new
-            plumbings.each do |plumbing|
-                porcelain = convert_amazon_eks_to_porcelain(plumbing)
-                items.append(porcelain)
-            end
-            items
-        end
-        def self.convert_google_gke_to_porcelain(plumbing)
-            if plumbing == nil
-                return nil
-            end
-            porcelain = GoogleGKE.new()
-            porcelain.id = (plumbing.id)
-            porcelain.name = (plumbing.name)
-            porcelain.healthy = (plumbing.healthy)
-            porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
-            porcelain.endpoint = (plumbing.endpoint)
-            porcelain.certificate_authority = (plumbing.certificate_authority)
-            porcelain.certificate_authority_filename = (plumbing.certificate_authority_filename)
-            porcelain.service_account_key = (plumbing.service_account_key)
-            porcelain.service_account_key_filename = (plumbing.service_account_key_filename)
-            porcelain.healthcheck_namespace = (plumbing.healthcheck_namespace)
-            porcelain
-        end
+    def self.convert_repeated_amazon_eks_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_amazon_eks_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_google_gke_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = GoogleGKE.new()
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.endpoint = (plumbing.endpoint)
+      porcelain.certificate_authority = (plumbing.certificate_authority)
+      porcelain.service_account_key = (plumbing.service_account_key)
+      porcelain.healthcheck_namespace = (plumbing.healthcheck_namespace)
+      porcelain
+    end
 
-        def self.convert_google_gke_to_plumbing(porcelain)
-            if porcelain == nil
-                return nil
-            end
-            plumbing = V1::GoogleGKE.new()
-            plumbing.id = (porcelain.id) unless porcelain.id == nil
-            plumbing.name = (porcelain.name) unless porcelain.name == nil
-            plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-            plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-            plumbing.endpoint = (porcelain.endpoint) unless porcelain.endpoint == nil
-            plumbing.certificate_authority = (porcelain.certificate_authority) unless porcelain.certificate_authority == nil
-            plumbing.certificate_authority_filename = (porcelain.certificate_authority_filename) unless porcelain.certificate_authority_filename == nil
-            plumbing.service_account_key = (porcelain.service_account_key) unless porcelain.service_account_key == nil
-            plumbing.service_account_key_filename = (porcelain.service_account_key_filename) unless porcelain.service_account_key_filename == nil
-            plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace) unless porcelain.healthcheck_namespace == nil
-            plumbing
-        end
-        def self.convert_repeated_google_gke_to_plumbing(porcelains)
-            items = Array.new
-            porcelains.each do |porcelain|
-                plumbing = convert_google_gke_to_plumbing(porcelain)
-                items.append(plumbing)
-            end
-            items
-        end
+    def self.convert_google_gke_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::GoogleGKE.new()
+      plumbing.id = (porcelain.id) unless porcelain.id == nil
+      plumbing.name = (porcelain.name) unless porcelain.name == nil
+      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.endpoint = (porcelain.endpoint) unless porcelain.endpoint == nil
+      plumbing.certificate_authority = (porcelain.certificate_authority) unless porcelain.certificate_authority == nil
+      plumbing.service_account_key = (porcelain.service_account_key) unless porcelain.service_account_key == nil
+      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace) unless porcelain.healthcheck_namespace == nil
+      plumbing
+    end
+    def self.convert_repeated_google_gke_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_google_gke_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
 
-        def self.convert_repeated_google_gke_to_porcelain(plumbings)
-            items = Array.new
-            plumbings.each do |plumbing|
-                porcelain = convert_google_gke_to_porcelain(plumbing)
-                items.append(porcelain)
-            end
-            items
-        end
-        def self.convert_aks_to_porcelain(plumbing)
-            if plumbing == nil
-                return nil
-            end
-            porcelain = AKS.new()
-            porcelain.id = (plumbing.id)
-            porcelain.name = (plumbing.name)
-            porcelain.healthy = (plumbing.healthy)
-            porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
-            porcelain.hostname = (plumbing.hostname)
-            porcelain.port = (plumbing.port)
-            porcelain.certificate_authority = (plumbing.certificate_authority)
-            porcelain.certificate_authority_filename = (plumbing.certificate_authority_filename)
-            porcelain.client_certificate = (plumbing.client_certificate)
-            porcelain.client_certificate_filename = (plumbing.client_certificate_filename)
-            porcelain.client_key = (plumbing.client_key)
-            porcelain.client_key_filename = (plumbing.client_key_filename)
-            porcelain.healthcheck_namespace = (plumbing.healthcheck_namespace)
-            porcelain
-        end
+    def self.convert_repeated_google_gke_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_google_gke_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_aks_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AKS.new()
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.port = (plumbing.port)
+      porcelain.certificate_authority = (plumbing.certificate_authority)
+      porcelain.client_certificate = (plumbing.client_certificate)
+      porcelain.client_key = (plumbing.client_key)
+      porcelain.healthcheck_namespace = (plumbing.healthcheck_namespace)
+      porcelain
+    end
 
-        def self.convert_aks_to_plumbing(porcelain)
-            if porcelain == nil
-                return nil
-            end
-            plumbing = V1::AKS.new()
-            plumbing.id = (porcelain.id) unless porcelain.id == nil
-            plumbing.name = (porcelain.name) unless porcelain.name == nil
-            plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-            plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-            plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-            plumbing.port = (porcelain.port) unless porcelain.port == nil
-            plumbing.certificate_authority = (porcelain.certificate_authority) unless porcelain.certificate_authority == nil
-            plumbing.certificate_authority_filename = (porcelain.certificate_authority_filename) unless porcelain.certificate_authority_filename == nil
-            plumbing.client_certificate = (porcelain.client_certificate) unless porcelain.client_certificate == nil
-            plumbing.client_certificate_filename = (porcelain.client_certificate_filename) unless porcelain.client_certificate_filename == nil
-            plumbing.client_key = (porcelain.client_key) unless porcelain.client_key == nil
-            plumbing.client_key_filename = (porcelain.client_key_filename) unless porcelain.client_key_filename == nil
-            plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace) unless porcelain.healthcheck_namespace == nil
-            plumbing
-        end
-        def self.convert_repeated_aks_to_plumbing(porcelains)
-            items = Array.new
-            porcelains.each do |porcelain|
-                plumbing = convert_aks_to_plumbing(porcelain)
-                items.append(plumbing)
-            end
-            items
-        end
+    def self.convert_aks_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AKS.new()
+      plumbing.id = (porcelain.id) unless porcelain.id == nil
+      plumbing.name = (porcelain.name) unless porcelain.name == nil
+      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
+      plumbing.port = (porcelain.port) unless porcelain.port == nil
+      plumbing.certificate_authority = (porcelain.certificate_authority) unless porcelain.certificate_authority == nil
+      plumbing.client_certificate = (porcelain.client_certificate) unless porcelain.client_certificate == nil
+      plumbing.client_key = (porcelain.client_key) unless porcelain.client_key == nil
+      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace) unless porcelain.healthcheck_namespace == nil
+      plumbing
+    end
+    def self.convert_repeated_aks_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_aks_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
 
         def self.convert_repeated_aks_to_porcelain(plumbings)
             items = Array.new

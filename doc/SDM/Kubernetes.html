@@ -122,19 +122,6 @@
         </div>
       </div>
       
-      <div id="attribute-i-certificate_authority_filename" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">certificate_authority_filename</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
       <div id="attribute-i-client_certificate" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">client_certificate</span><span
@@ -148,35 +135,9 @@
         </div>
       </div>
       
-      <div id="attribute-i-client_certificate_filename" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">client_certificate_filename</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
       <div id="attribute-i-client_key" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">client_key</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-client_key_filename" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">client_key_filename</span><span
             class="attribute-access-type">[RW]</span>
         </div>
 
@@ -292,7 +253,7 @@
         
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">( id:nil \ , name:nil \ , healthy:nil \ , tags:nil \ , hostname:nil \ , port:nil \ , certificate_authority:nil \ , certificate_authority_filename:nil \ , client_certificate:nil \ , client_certificate_filename:nil \ , client_key:nil \ , client_key_filename:nil \ , healthcheck_namespace:nil \ )</span>
+            class="method-args">( id:nil \ , name:nil \ , healthy:nil \ , tags:nil \ , hostname:nil \ , port:nil \ , certificate_authority:nil \ , client_certificate:nil \ , client_key:nil \ , healthcheck_namespace:nil \ )</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -307,7 +268,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 1587</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 1581</span>
                 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(
                         <span class="ruby-value">id:</span><span class="ruby-keyword">nil</span> \
 ,
@@ -323,15 +284,9 @@
 ,
                         <span class="ruby-value">certificate_authority:</span><span class="ruby-keyword">nil</span> \
 ,
-                        <span class="ruby-value">certificate_authority_filename:</span><span class="ruby-keyword">nil</span> \
-,
                         <span class="ruby-value">client_certificate:</span><span class="ruby-keyword">nil</span> \
 ,
-                        <span class="ruby-value">client_certificate_filename:</span><span class="ruby-keyword">nil</span> \
-,
                         <span class="ruby-value">client_key:</span><span class="ruby-keyword">nil</span> \
-,
-                        <span class="ruby-value">client_key_filename:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">healthcheck_namespace:</span><span class="ruby-keyword">nil</span> \
                 )
@@ -356,20 +311,11 @@
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">certificate_authority</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@certificate_authority</span> = <span class="ruby-identifier">certificate_authority</span>
                         <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">certificate_authority_filename</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@certificate_authority_filename</span> = <span class="ruby-identifier">certificate_authority_filename</span>
-                        <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">client_certificate</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@client_certificate</span> = <span class="ruby-identifier">client_certificate</span>
                         <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">client_certificate_filename</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@client_certificate_filename</span> = <span class="ruby-identifier">client_certificate_filename</span>
-                        <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">client_key</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@client_key</span> = <span class="ruby-identifier">client_key</span>
-                        <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">client_key_filename</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@client_key_filename</span> = <span class="ruby-identifier">client_key_filename</span>
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">healthcheck_namespace</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@healthcheck_namespace</span> = <span class="ruby-identifier">healthcheck_namespace</span>
@@ -412,7 +358,7 @@
 
           
           <div class="method-source-code" id="to_json-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 1654</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 1633</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_json</span>(<span class="ruby-identifier">options</span>={})
         <span class="ruby-identifier">hash</span> = {}
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">instance_variables</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">var</span><span class="ruby-operator">|</span>
