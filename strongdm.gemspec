@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.platform = Gem::Platform::RUBY
   s.authors = ["strongDM Team"]
   s.email = ["sdk-feedback@strongdm.com"]
-  s.homepage = "http://rubygems.org/gems/strongdm"
+  s.homepage = "https://github.com/strongdm/strongdm-sdk-ruby"
   s.summary = "strongDM SDK for the Ruby programming language."
   s.description = "strongDM Ruby Library for automating interactions with strongDM."
   s.licenses = ["Apache-2.0"]
