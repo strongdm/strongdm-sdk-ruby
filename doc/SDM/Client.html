@@ -200,6 +200,19 @@
         </div>
       </div>
       
+      <div id="attribute-i-control_panel" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">control_panel</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p><a href="ControlPanel.html"><code>ControlPanel</code></a> contains all administrative controls.</p>
+        
+        </div>
+      </div>
+      
       <div id="attribute-i-max_retries" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">max_retries</span><span
@@ -335,6 +348,7 @@
     <span class="ruby-ivar">@account_attachments</span> = <span class="ruby-constant">AccountAttachments</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">host</span>, <span class="ruby-identifier">insecure</span>, <span class="ruby-keyword">self</span>)
     <span class="ruby-ivar">@account_grants</span> = <span class="ruby-constant">AccountGrants</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">host</span>, <span class="ruby-identifier">insecure</span>, <span class="ruby-keyword">self</span>)
     <span class="ruby-ivar">@accounts</span> = <span class="ruby-constant">Accounts</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">host</span>, <span class="ruby-identifier">insecure</span>, <span class="ruby-keyword">self</span>)
+    <span class="ruby-ivar">@control_panel</span> = <span class="ruby-constant">ControlPanel</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">host</span>, <span class="ruby-identifier">insecure</span>, <span class="ruby-keyword">self</span>)
     <span class="ruby-ivar">@nodes</span> = <span class="ruby-constant">Nodes</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">host</span>, <span class="ruby-identifier">insecure</span>, <span class="ruby-keyword">self</span>)
     <span class="ruby-ivar">@resources</span> = <span class="ruby-constant">Resources</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">host</span>, <span class="ruby-identifier">insecure</span>, <span class="ruby-keyword">self</span>)
     <span class="ruby-ivar">@role_attachments</span> = <span class="ruby-constant">RoleAttachments</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">host</span>, <span class="ruby-identifier">insecure</span>, <span class="ruby-keyword">self</span>)
@@ -379,7 +393,7 @@
 
           
           <div class="method-source-code" id="get_metadata-source">
-            <pre><span class="ruby-comment"># File lib/strongdm.rb, line 48</span>
+            <pre><span class="ruby-comment"># File lib/strongdm.rb, line 49</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_metadata</span>(<span class="ruby-identifier">method_name</span>, <span class="ruby-identifier">req</span>)
     <span class="ruby-keyword">return</span> { <span class="ruby-value">&#39;x-sdm-authentication&#39;:</span> <span class="ruby-ivar">@api_access_key</span>,<span class="ruby-value">&#39;x-sdm-signature&#39;:</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">sign</span>(<span class="ruby-identifier">method_name</span>, <span class="ruby-identifier">req</span>.<span class="ruby-identifier">to_proto</span>)}
 <span class="ruby-keyword">end</span></pre>
@@ -412,7 +426,7 @@
 
           
           <div class="method-source-code" id="jitterSleep-source">
-            <pre><span class="ruby-comment"># File lib/strongdm.rb, line 68</span>
+            <pre><span class="ruby-comment"># File lib/strongdm.rb, line 69</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">jitterSleep</span>(<span class="ruby-identifier">iter</span>)
     <span class="ruby-identifier">dur_max</span> = <span class="ruby-ivar">@base_retry_delay</span> <span class="ruby-operator">*</span> <span class="ruby-value">2</span><span class="ruby-operator">**</span><span class="ruby-identifier">iter</span>
     <span class="ruby-keyword">if</span> (<span class="ruby-identifier">dur_max</span> <span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@max_retry_delay</span>)
@@ -450,7 +464,7 @@
 
           
           <div class="method-source-code" id="shouldRetry-source">
-            <pre><span class="ruby-comment"># File lib/strongdm.rb, line 77</span>
+            <pre><span class="ruby-comment"># File lib/strongdm.rb, line 78</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">shouldRetry</span>(<span class="ruby-identifier">iter</span>, <span class="ruby-identifier">err</span>)
     <span class="ruby-keyword">if</span> (<span class="ruby-identifier">iter</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-ivar">@max_retries</span><span class="ruby-value">-1</span>)
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
@@ -489,7 +503,7 @@
 
           
           <div class="method-source-code" id="sign-source">
-            <pre><span class="ruby-comment"># File lib/strongdm.rb, line 52</span>
+            <pre><span class="ruby-comment"># File lib/strongdm.rb, line 53</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">sign</span>(<span class="ruby-identifier">method_name</span>, <span class="ruby-identifier">msg_bytes</span>)
     <span class="ruby-identifier">current_utc_date</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">utc</span>
     <span class="ruby-identifier">date</span> = <span class="ruby-identifier">sprintf</span>(<span class="ruby-string">&quot;%04d-%02d-%02d&quot;</span>,<span class="ruby-identifier">current_utc_date</span>.<span class="ruby-identifier">year</span>, <span class="ruby-identifier">current_utc_date</span>.<span class="ruby-identifier">month</span>, <span class="ruby-identifier">current_utc_date</span>.<span class="ruby-identifier">day</span>)

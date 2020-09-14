@@ -486,6 +486,51 @@ module SDM
     end
   end
 
+  # ControlPanel contains all administrative controls.
+  class ControlPanel
+    def initialize(host, insecure, parent)
+      begin
+        if insecure
+          @stub = V1::ControlPanel::Stub.new(host, :this_channel_is_insecure)
+        else
+          cred = GRPC::Core::ChannelCredentials.new()
+          @stub = V1::ControlPanel::Stub.new(host, cred)
+        end
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # GetSSHCAPublicKey retrieves the SSH CA public key.
+    def get_sshca_public_key(
+      deadline: nil
+    )
+      req = V1::ControlPanelGetSSHCAPublicKeyRequest.new()
+
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.get_sshca_public_key(req, metadata: @parent.get_metadata("ControlPanel.GetSSHCAPublicKey", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = ControlPanelGetSSHCAPublicKeyResponse.new()
+      resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.public_key = (plumbing_response.public_key)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+  end
+
   # Nodes make up the strongDM network, and allow your users to connect securely to your resources. There are two types of nodes:
   # - **Gateways** are the entry points into network. They listen for connection from the strongDM client, and provide access to databases and servers.
   # - **Relays** are used to extend the strongDM network into segmented subnets. They provide access to databases and servers but do not listen for incoming connections.

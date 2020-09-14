@@ -24,6 +24,7 @@ require_relative "./account_attachments_pb"
 require_relative "./account_grants_pb"
 require_relative "./tags_pb"
 require_relative "./accounts_pb"
+require_relative "./control_panel_pb"
 require_relative "./drivers_pb"
 require_relative "./nodes_pb"
 require_relative "./resources_pb"
@@ -836,6 +837,44 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_service_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_control_panel_get_sshca_public_key_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = ControlPanelGetSSHCAPublicKeyResponse.new()
+      porcelain.meta = convert_get_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.public_key = (plumbing.public_key)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_control_panel_get_sshca_public_key_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::ControlPanelGetSSHCAPublicKeyResponse.new()
+      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
+      plumbing.public_key = (porcelain.public_key) unless porcelain.public_key == nil
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
+      plumbing
+    end
+    def self.convert_repeated_control_panel_get_sshca_public_key_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_control_panel_get_sshca_public_key_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_control_panel_get_sshca_public_key_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_control_panel_get_sshca_public_key_response_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items

@@ -621,6 +621,42 @@ module SDM
     end
   end
 
+  # ControlPanelGetSSHCAPublicKeyResponse represents a request for an
+  # organization's SSH Certificate Authority public key.
+  class ControlPanelGetSSHCAPublicKeyResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # The public key of the SSH Certificate Authority, in OpenSSH RSA public
+    # key format.
+    attr_accessor :public_key
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      meta: nil,
+      public_key: nil,
+      rate_limit: nil
+    )
+      if meta != nil
+        @meta = meta
+      end
+      if public_key != nil
+        @public_key = public_key
+      end
+      if rate_limit != nil
+        @rate_limit = rate_limit
+      end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class Athena
     # Unique identifier of the Resource.
     attr_accessor :id

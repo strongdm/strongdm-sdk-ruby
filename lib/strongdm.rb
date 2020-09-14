@@ -37,6 +37,7 @@ module SDM
       @account_attachments = AccountAttachments.new(host, insecure, self)
       @account_grants = AccountGrants.new(host, insecure, self)
       @accounts = Accounts.new(host, insecure, self)
+      @control_panel = ControlPanel.new(host, insecure, self)
       @nodes = Nodes.new(host, insecure, self)
       @resources = Resources.new(host, insecure, self)
       @role_attachments = RoleAttachments.new(host, insecure, self)
@@ -98,6 +99,8 @@ module SDM
     # 1. **Users:** humans who are authenticated through username and password or SSO.
     # 2. **Service Accounts:** machines that are authenticated using a service token.
     attr_reader :accounts
+    # ControlPanel contains all administrative controls.
+    attr_reader :control_panel
     # Nodes make up the strongDM network, and allow your users to connect securely to your resources. There are two types of nodes:
     # - **Gateways** are the entry points into network. They listen for connection from the strongDM client, and provide access to databases and servers.
     # - **Relays** are used to extend the strongDM network into segmented subnets. They provide access to databases and servers but do not listen for incoming connections.
