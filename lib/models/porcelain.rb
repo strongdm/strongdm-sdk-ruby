@@ -5035,4 +5035,184 @@ module SDM
       hash.to_json
     end
   end
+
+  # SecretStoreCreateResponse reports how the SecretStores were created in the system.
+  class SecretStoreCreateResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # The created SecretStore.
+    attr_accessor :secret_store
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      meta: nil,
+      secret_store: nil,
+      rate_limit: nil
+    )
+      if meta != nil
+        @meta = meta
+      end
+      if secret_store != nil
+        @secret_store = secret_store
+      end
+      if rate_limit != nil
+        @rate_limit = rate_limit
+      end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # SecretStoreGetResponse returns a requested SecretStore.
+  class SecretStoreGetResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # The requested SecretStore.
+    attr_accessor :secret_store
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      meta: nil,
+      secret_store: nil,
+      rate_limit: nil
+    )
+      if meta != nil
+        @meta = meta
+      end
+      if secret_store != nil
+        @secret_store = secret_store
+      end
+      if rate_limit != nil
+        @rate_limit = rate_limit
+      end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # SecretStoreUpdateResponse returns the fields of a SecretStore after it has been updated by
+  # a SecretStoreUpdateRequest.
+  class SecretStoreUpdateResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # The updated SecretStore.
+    attr_accessor :secret_store
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      meta: nil,
+      secret_store: nil,
+      rate_limit: nil
+    )
+      if meta != nil
+        @meta = meta
+      end
+      if secret_store != nil
+        @secret_store = secret_store
+      end
+      if rate_limit != nil
+        @rate_limit = rate_limit
+      end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # SecretStoreDeleteResponse returns information about a SecretStore that was deleted.
+  class SecretStoreDeleteResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      meta: nil,
+      rate_limit: nil
+    )
+      if meta != nil
+        @meta = meta
+      end
+      if rate_limit != nil
+        @rate_limit = rate_limit
+      end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # A SecretStore is a ...
+  class SecretStore
+    # option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+    # example: { value: '{ "id": "r-7", "name": "happy-goat"}' }
+    # };
+    # Unique identifier of the SecretStore.
+    attr_accessor :id
+    # Unique human-readable name of the SecretStore.
+    attr_accessor :name
+
+    attr_accessor :server_address
+
+    attr_accessor :kind
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      id: nil,
+      name: nil,
+      server_address: nil,
+      kind: nil,
+      tags: nil
+    )
+      if id != nil
+        @id = id
+      end
+      if name != nil
+        @name = name
+      end
+      if server_address != nil
+        @server_address = server_address
+      end
+      if kind != nil
+        @kind = kind
+      end
+      if tags != nil
+        @tags = tags
+      end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
 end

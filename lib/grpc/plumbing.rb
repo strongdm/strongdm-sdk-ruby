@@ -31,6 +31,7 @@ require_relative "./resources_pb"
 require_relative "./role_attachments_pb"
 require_relative "./role_grants_pb"
 require_relative "./roles_pb"
+require_relative "./secretstores_pb"
 require_relative "../models/porcelain"
 require_relative "../errors/errors"
 
@@ -4601,6 +4602,198 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_role_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_secret_store_create_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = SecretStoreCreateResponse.new()
+      porcelain.meta = convert_create_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.secret_store = convert_secret_store_to_porcelain(plumbing.secret_store)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_secret_store_create_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::SecretStoreCreateResponse.new()
+      plumbing.meta = convert_create_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
+      plumbing.secret_store = convert_secret_store_to_plumbing(porcelain.secret_store) unless porcelain.secret_store == nil
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
+      plumbing
+    end
+    def self.convert_repeated_secret_store_create_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_secret_store_create_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_secret_store_create_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_secret_store_create_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_secret_store_get_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = SecretStoreGetResponse.new()
+      porcelain.meta = convert_get_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.secret_store = convert_secret_store_to_porcelain(plumbing.secret_store)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_secret_store_get_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::SecretStoreGetResponse.new()
+      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
+      plumbing.secret_store = convert_secret_store_to_plumbing(porcelain.secret_store) unless porcelain.secret_store == nil
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
+      plumbing
+    end
+    def self.convert_repeated_secret_store_get_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_secret_store_get_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_secret_store_get_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_secret_store_get_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_secret_store_update_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = SecretStoreUpdateResponse.new()
+      porcelain.meta = convert_update_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.secret_store = convert_secret_store_to_porcelain(plumbing.secret_store)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_secret_store_update_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::SecretStoreUpdateResponse.new()
+      plumbing.meta = convert_update_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
+      plumbing.secret_store = convert_secret_store_to_plumbing(porcelain.secret_store) unless porcelain.secret_store == nil
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
+      plumbing
+    end
+    def self.convert_repeated_secret_store_update_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_secret_store_update_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_secret_store_update_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_secret_store_update_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_secret_store_delete_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = SecretStoreDeleteResponse.new()
+      porcelain.meta = convert_delete_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_secret_store_delete_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::SecretStoreDeleteResponse.new()
+      plumbing.meta = convert_delete_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
+      plumbing
+    end
+    def self.convert_repeated_secret_store_delete_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_secret_store_delete_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_secret_store_delete_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_secret_store_delete_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_secret_store_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = SecretStore.new()
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.server_address = (plumbing.server_address)
+      porcelain.kind = (plumbing.kind)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_secret_store_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::SecretStore.new()
+      plumbing.id = (porcelain.id) unless porcelain.id == nil
+      plumbing.name = (porcelain.name) unless porcelain.name == nil
+      plumbing.server_address = (porcelain.server_address) unless porcelain.server_address == nil
+      plumbing.kind = (porcelain.kind) unless porcelain.kind == nil
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing
+    end
+    def self.convert_repeated_secret_store_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_secret_store_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_secret_store_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_secret_store_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items

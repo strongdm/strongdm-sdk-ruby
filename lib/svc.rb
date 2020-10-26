@@ -1347,4 +1347,176 @@ module SDM
       resp
     end
   end
+
+  # SecretStores are ...
+  class SecretStores
+    def initialize(host, insecure, parent)
+      begin
+        if insecure
+          @stub = V1::SecretStores::Stub.new(host, :this_channel_is_insecure)
+        else
+          cred = GRPC::Core::ChannelCredentials.new()
+          @stub = V1::SecretStores::Stub.new(host, cred)
+        end
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    def create(
+      secret_store,
+      deadline: nil
+    )
+      req = V1::SecretStoreCreateRequest.new()
+
+      req.secret_store = Plumbing::convert_secret_store_to_plumbing(secret_store)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.create(req, metadata: @parent.get_metadata("SecretStores.Create", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = SecretStoreCreateResponse.new()
+      resp.meta = Plumbing::convert_create_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.secret_store = Plumbing::convert_secret_store_to_porcelain(plumbing_response.secret_store)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Get reads one SecretStore by ID.
+    def get(
+      id,
+      deadline: nil
+    )
+      req = V1::SecretStoreGetRequest.new()
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.get(req, metadata: @parent.get_metadata("SecretStores.Get", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = SecretStoreGetResponse.new()
+      resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.secret_store = Plumbing::convert_secret_store_to_porcelain(plumbing_response.secret_store)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Update patches a SecretStore by ID.
+    def update(
+      secret_store,
+      deadline: nil
+    )
+      req = V1::SecretStoreUpdateRequest.new()
+
+      req.secret_store = Plumbing::convert_secret_store_to_plumbing(secret_store)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.update(req, metadata: @parent.get_metadata("SecretStores.Update", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = SecretStoreUpdateResponse.new()
+      resp.meta = Plumbing::convert_update_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.secret_store = Plumbing::convert_secret_store_to_porcelain(plumbing_response.secret_store)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Delete removes a SecretStore by ID.
+    def delete(
+      id,
+      deadline: nil
+    )
+      req = V1::SecretStoreDeleteRequest.new()
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("SecretStores.Delete", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = SecretStoreDeleteResponse.new()
+      resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # List gets a list of SecretStores matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::SecretStoreListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      page_size_option = @parent._test_options["PageSize"]
+      if page_size_option.is_a? Integer
+        req.meta.limit = page_size_option
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("SecretStores.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.secret_stores.each do |plumbing_item|
+            g.yield Plumbing::convert_secret_store_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
 end

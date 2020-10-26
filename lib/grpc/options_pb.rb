@@ -31,6 +31,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :force_new, :bool, 1941308
       optional :write_only, :bool, 1941309
       optional :sensitive, :bool, 1941310
+      optional :cast_to, :string, 1941311
     end
     add_message "v1.MessageOptions" do
       optional :model_name, :string, 1941300
