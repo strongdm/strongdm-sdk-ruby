@@ -31,7 +31,7 @@ require_relative "./resources_pb"
 require_relative "./role_attachments_pb"
 require_relative "./role_grants_pb"
 require_relative "./roles_pb"
-require_relative "./secretstores_pb"
+require_relative "./secret_stores_pb"
 require_relative "../models/porcelain"
 require_relative "../errors/errors"
 
