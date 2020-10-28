@@ -124,7 +124,7 @@ module SDM
     # grant access to the combined resources associated with a set of child roles.
     # Each user can be a member of one Role or composite role.
     attr_reader :roles
-    # SecretStores are ...
+    # SecretStores are servers where resource secrets (passwords, keys) are stored.
     attr_reader :secret_stores
     attr_reader :_test_options
   end

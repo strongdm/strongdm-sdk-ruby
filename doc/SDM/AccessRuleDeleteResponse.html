@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class SDM::SecretStore - RDoc Documentation</title>
+<title>class SDM::AccessRuleDeleteResponse - RDoc Documentation</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../";
@@ -85,14 +85,14 @@
   </div>
 </nav>
 
-<main role="main" aria-labelledby="class-SDM::SecretStore">
-  <h1 id="class-SDM::SecretStore" class="class">
-    class SDM::SecretStore
+<main role="main" aria-labelledby="class-SDM::AccessRuleDeleteResponse">
+  <h1 id="class-SDM::AccessRuleDeleteResponse" class="class">
+    class SDM::AccessRuleDeleteResponse
   </h1>
 
   <section class="description">
     
-<p>A <a href="SecretStore.html"><code>SecretStore</code></a> is a server where resource secrets (passwords, keys) are stored.  Coming soon support for HashiCorp Vault and AWS Secret Store. Contact support@strongdm.com to request access to the beta.</p>
+<p><a href="AccessRuleDeleteResponse.html"><code>AccessRuleDeleteResponse</code></a> returns information about a AccessRule that was deleted.</p>
 
   </section>
 
@@ -111,67 +111,28 @@
       </header>
 
       
-      <div id="attribute-i-id" class="method-detail">
+      <div id="attribute-i-meta" class="method-detail">
         <div class="method-heading attribute-method-heading">
-          <span class="method-name">id</span><span
+          <span class="method-name">meta</span><span
             class="attribute-access-type">[RW]</span>
         </div>
 
         <div class="method-description">
         
-        <p>option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = { example: { value: &#39;{ “id”: “r-7”, “name”: “happy-goat”}&#39; } }; Unique identifier of the <a href="SecretStore.html"><code>SecretStore</code></a>.</p>
+        <p>Reserved for future use.</p>
         
         </div>
       </div>
       
-      <div id="attribute-i-kind" class="method-detail">
+      <div id="attribute-i-rate_limit" class="method-detail">
         <div class="method-heading attribute-method-heading">
-          <span class="method-name">kind</span><span
+          <span class="method-name">rate_limit</span><span
             class="attribute-access-type">[RW]</span>
         </div>
 
         <div class="method-description">
         
-        
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-name" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">name</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>Unique human-readable name of the <a href="SecretStore.html"><code>SecretStore</code></a>.</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-server_address" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">server_address</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-tags" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">tags</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>Tags is a map of key, value pairs.</p>
+        <p>Rate limit information.</p>
         
         </div>
       </div>
@@ -190,7 +151,7 @@
         
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">( id:nil \ , name:nil \ , server_address:nil \ , kind:nil \ , tags:nil \ )</span>
+            class="method-args">( meta:nil \ , rate_limit:nil \ )</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -205,32 +166,17 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 5477</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 153</span>
                 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(
-                        <span class="ruby-value">id:</span><span class="ruby-keyword">nil</span> \
+                        <span class="ruby-value">meta:</span><span class="ruby-keyword">nil</span> \
 ,
-                        <span class="ruby-value">name:</span><span class="ruby-keyword">nil</span> \
-,
-                        <span class="ruby-value">server_address:</span><span class="ruby-keyword">nil</span> \
-,
-                        <span class="ruby-value">kind:</span><span class="ruby-keyword">nil</span> \
-,
-                        <span class="ruby-value">tags:</span><span class="ruby-keyword">nil</span> \
+                        <span class="ruby-value">rate_limit:</span><span class="ruby-keyword">nil</span> \
                 )
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">id</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">id</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">meta</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@meta</span> = <span class="ruby-identifier">meta</span>
                         <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@name</span> = <span class="ruby-identifier">name</span>
-                        <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">server_address</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@server_address</span> = <span class="ruby-identifier">server_address</span>
-                        <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">kind</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@kind</span> = <span class="ruby-identifier">kind</span>
-                        <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">tags</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@tags</span> = <span class="ruby-identifier">tags</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">rate_limit</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@rate_limit</span> = <span class="ruby-identifier">rate_limit</span>
                         <span class="ruby-keyword">end</span>
                 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -270,7 +216,7 @@
 
           
           <div class="method-source-code" id="to_json-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 5504</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 165</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_json</span>(<span class="ruby-identifier">options</span>={})
         <span class="ruby-identifier">hash</span> = {}
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">instance_variables</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">var</span><span class="ruby-operator">|</span>

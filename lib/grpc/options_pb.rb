@@ -40,6 +40,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :options_field, :string, 1941303
       optional :terraform_docs, :message, 1941304, "v1.TerraformDocs"
       optional :custom, :message, 1941305, "v1.CustomPorcelainMessageOptions"
+      optional :private_sdk, :bool, 1941306
     end
     add_message "v1.CustomPorcelainMessageOptions" do
       optional :converter, :string, 1941309
@@ -58,6 +59,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     end
     add_message "v1.ServiceOptions" do
       optional :main_noun, :string, 1941400
+      optional :private_sdk, :bool, 1941401
     end
   end
 end

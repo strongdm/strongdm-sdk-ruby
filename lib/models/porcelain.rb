@@ -5167,7 +5167,8 @@ module SDM
     end
   end
 
-  # A SecretStore is a ...
+  # A SecretStore is a server where resource secrets (passwords, keys) are stored.
+  # Coming soon support for HashiCorp Vault and AWS Secret Store. Contact support@strongdm.com to request access to the beta.
   class SecretStore
     # option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
     # example: { value: '{ "id": "r-7", "name": "happy-goat"}' }

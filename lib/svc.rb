@@ -1348,7 +1348,7 @@ module SDM
     end
   end
 
-  # SecretStores are ...
+  # SecretStores are servers where resource secrets (passwords, keys) are stored.
   class SecretStores
     def initialize(host, insecure, parent)
       begin
