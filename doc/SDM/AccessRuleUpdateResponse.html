@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class SDM::SecretStoreGetResponse - RDoc Documentation</title>
+<title>class SDM::AccessRuleUpdateResponse - RDoc Documentation</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../";
@@ -85,14 +85,14 @@
   </div>
 </nav>
 
-<main role="main" aria-labelledby="class-SDM::SecretStoreGetResponse">
-  <h1 id="class-SDM::SecretStoreGetResponse" class="class">
-    class SDM::SecretStoreGetResponse
+<main role="main" aria-labelledby="class-SDM::AccessRuleUpdateResponse">
+  <h1 id="class-SDM::AccessRuleUpdateResponse" class="class">
+    class SDM::AccessRuleUpdateResponse
   </h1>
 
   <section class="description">
     
-<p><a href="SecretStoreGetResponse.html"><code>SecretStoreGetResponse</code></a> returns a requested SecretStore.</p>
+<p><a href="AccessRuleUpdateResponse.html"><code>AccessRuleUpdateResponse</code></a> returns the fields of an Access Rule after it has been updated by a AccessRuleUpdateRequest.</p>
 
   </section>
 
@@ -110,6 +110,19 @@
         <h3>Attributes</h3>
       </header>
 
+      
+      <div id="attribute-i-access_rule" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">access_rule</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>The updated AccessRule.</p>
+        
+        </div>
+      </div>
       
       <div id="attribute-i-meta" class="method-detail">
         <div class="method-heading attribute-method-heading">
@@ -137,19 +150,6 @@
         </div>
       </div>
       
-      <div id="attribute-i-secret_store" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">secret_store</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        <p>The requested SecretStore.</p>
-        
-        </div>
-      </div>
-      
     </section>
     
 
@@ -164,7 +164,7 @@
         
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">( meta:nil \ , secret_store:nil \ , rate_limit:nil \ )</span>
+            class="method-args">( meta:nil \ , access_rule:nil \ , rate_limit:nil \ )</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -179,19 +179,19 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 5376</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 123</span>
                 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(
                         <span class="ruby-value">meta:</span><span class="ruby-keyword">nil</span> \
 ,
-                        <span class="ruby-value">secret_store:</span><span class="ruby-keyword">nil</span> \
+                        <span class="ruby-value">access_rule:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">rate_limit:</span><span class="ruby-keyword">nil</span> \
                 )
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">meta</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@meta</span> = <span class="ruby-identifier">meta</span>
                         <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">secret_store</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@secret_store</span> = <span class="ruby-identifier">secret_store</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">access_rule</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@access_rule</span> = <span class="ruby-identifier">access_rule</span>
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">rate_limit</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@rate_limit</span> = <span class="ruby-identifier">rate_limit</span>
@@ -234,7 +234,7 @@
 
           
           <div class="method-source-code" id="to_json-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 5393</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 140</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_json</span>(<span class="ruby-identifier">options</span>={})
         <span class="ruby-identifier">hash</span> = {}
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">instance_variables</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">var</span><span class="ruby-operator">|</span>

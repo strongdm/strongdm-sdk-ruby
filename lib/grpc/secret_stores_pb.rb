@@ -70,11 +70,25 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :rate_limit, :message, 3, "v1.RateLimitMetadata"
     end
     add_message "v1.SecretStore" do
+      oneof :secret_store do
+        optional :vault_tls, :message, 1, "v1.VaultTLSStore"
+        optional :vault_token, :message, 2, "v1.VaultTokenStore"
+      end
+    end
+    add_message "v1.VaultTokenStore" do
       optional :id, :string, 1
       optional :name, :string, 2
       optional :server_address, :string, 3
-      optional :kind, :string, 4
-      optional :tags, :message, 5, "v1.Tags"
+      optional :tags, :message, 4, "v1.Tags"
+    end
+    add_message "v1.VaultTLSStore" do
+      optional :id, :string, 1
+      optional :name, :string, 2
+      optional :server_address, :string, 3
+      optional :ca_cert_path, :string, 4
+      optional :client_cert_path, :string, 5
+      optional :client_key_path, :string, 6
+      optional :tags, :message, 7, "v1.Tags"
     end
   end
 end
@@ -91,4 +105,6 @@ module V1
   SecretStoreListRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SecretStoreListRequest").msgclass
   SecretStoreListResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SecretStoreListResponse").msgclass
   SecretStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SecretStore").msgclass
+  VaultTokenStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.VaultTokenStore").msgclass
+  VaultTLSStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.VaultTLSStore").msgclass
 end

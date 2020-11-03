@@ -29,12 +29,18 @@ module V1
       self.unmarshal_class_method = :decode
       self.service_name = "v1.AccessRules"
 
+      # Plan registers a new AccessRule.
+      rpc :Plan, AccessRulePlanRequest, AccessRulePlanResponse
       # Create registers a new AccessRule.
       rpc :Create, AccessRuleCreateRequest, AccessRuleCreateResponse
       # Get reads one AccessRule by ID.
       rpc :Get, AccessRuleGetRequest, AccessRuleGetResponse
+      # Update patches a AccessRule by ID.
+      rpc :Update, AccessRuleUpdateRequest, AccessRuleUpdateResponse
       # Delete removes a AccessRule by ID.
       rpc :Delete, AccessRuleDeleteRequest, AccessRuleDeleteResponse
+      # List gets a list of Access Rules matching a given set of criteria.
+      rpc :List, AccessRuleListRequest, AccessRuleListResponse
     end
 
     Stub = Service.rpc_stub_class

@@ -5167,9 +5167,7 @@ module SDM
     end
   end
 
-  # A SecretStore is a server where resource secrets (passwords, keys) are stored.
-  # Coming soon support for HashiCorp Vault and AWS Secret Store. Contact support@strongdm.com to request access to the beta.
-  class SecretStore
+  class VaultTokenStore
     # option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
     # example: { value: '{ "id": "r-7", "name": "happy-goat"}' }
     # };
@@ -5179,8 +5177,6 @@ module SDM
     attr_accessor :name
 
     attr_accessor :server_address
-
-    attr_accessor :kind
     # Tags is a map of key, value pairs.
     attr_accessor :tags
 
@@ -5188,7 +5184,6 @@ module SDM
       id: nil,
       name: nil,
       server_address: nil,
-      kind: nil,
       tags: nil
     )
       if id != nil
@@ -5200,8 +5195,65 @@ module SDM
       if server_address != nil
         @server_address = server_address
       end
-      if kind != nil
-        @kind = kind
+      if tags != nil
+        @tags = tags
+      end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  class VaultTLSStore
+    # option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+    # example: { value: '{ "id": "r-7", "name": "happy-goat"}' }
+    # };
+    # Unique identifier of the SecretStore.
+    attr_accessor :id
+    # Unique human-readable name of the SecretStore.
+    attr_accessor :name
+
+    attr_accessor :server_address
+
+    attr_accessor :ca_cert_path
+
+    attr_accessor :client_cert_path
+
+    attr_accessor :client_key_path
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      id: nil,
+      name: nil,
+      server_address: nil,
+      ca_cert_path: nil,
+      client_cert_path: nil,
+      client_key_path: nil,
+      tags: nil
+    )
+      if id != nil
+        @id = id
+      end
+      if name != nil
+        @name = name
+      end
+      if server_address != nil
+        @server_address = server_address
+      end
+      if ca_cert_path != nil
+        @ca_cert_path = ca_cert_path
+      end
+      if client_cert_path != nil
+        @client_cert_path = client_cert_path
+      end
+      if client_key_path != nil
+        @client_key_path = client_key_path
       end
       if tags != nil
         @tags = tags
