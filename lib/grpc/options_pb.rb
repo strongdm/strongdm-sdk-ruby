@@ -31,7 +31,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :force_new, :bool, 1941308
       optional :write_only, :bool, 1941309
       optional :sensitive, :bool, 1941310
-      optional :cast_to, :string, 1941311
+      optional :cli_name, :string, 1941311
+      optional :json_name, :string, 1941312
     end
     add_message "v1.MessageOptions" do
       optional :model_name, :string, 1941300
@@ -41,6 +42,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :terraform_docs, :message, 1941304, "v1.TerraformDocs"
       optional :custom, :message, 1941305, "v1.CustomPorcelainMessageOptions"
       optional :private_sdk, :bool, 1941306
+      optional :cli_name, :string, 1941307
+      optional :json_name, :string, 1941308
     end
     add_message "v1.CustomPorcelainMessageOptions" do
       optional :converter, :string, 1941309

@@ -910,6 +910,20 @@
     
 
     
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="CA_cert_path">CA_cert_path
+        
+        <dd>
+        
+      
+      </dl>
+    </section>
+    
 
     
 
@@ -16492,10 +16506,10 @@
     <span class="ruby-keyword">end</span>
     <span class="ruby-identifier">plumbing</span> = <span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">SecretStore</span>.<span class="ruby-identifier">new</span>()
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> .<span class="ruby-identifier">instance_of?</span> <span class="ruby-constant">VaultTLSStore</span>
-        <span class="ruby-identifier">plumbing</span>.<span class="ruby-identifier">vault_tls</span> = <span class="ruby-identifier">convert_vault_tls_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
+        <span class="ruby-identifier">plumbing</span>.<span class="ruby-identifier">vault_tls</span> = <span class="ruby-identifier">convert_vault_tls_store_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">porcelain</span> .<span class="ruby-identifier">instance_of?</span> <span class="ruby-constant">VaultTokenStore</span>
-        <span class="ruby-identifier">plumbing</span>.<span class="ruby-identifier">vault_token</span> = <span class="ruby-identifier">convert_vault_token_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
+        <span class="ruby-identifier">plumbing</span>.<span class="ruby-identifier">vault_token</span> = <span class="ruby-identifier">convert_vault_token_store_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>)
     <span class="ruby-keyword">end</span>
     <span class="ruby-identifier">plumbing</span>
 <span class="ruby-keyword">end</span></pre>
@@ -16534,10 +16548,10 @@
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
     <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span>.<span class="ruby-identifier">vault_tls</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-        <span class="ruby-keyword">return</span> <span class="ruby-identifier">convert_vault_tls_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>.<span class="ruby-identifier">vault_tls</span>)
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">convert_vault_tls_store_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>.<span class="ruby-identifier">vault_tls</span>)
     <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing</span>.<span class="ruby-identifier">vault_token</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-        <span class="ruby-keyword">return</span> <span class="ruby-identifier">convert_vault_token_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>.<span class="ruby-identifier">vault_token</span>)
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">convert_vault_token_store_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>.<span class="ruby-identifier">vault_token</span>)
     <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -17709,7 +17723,7 @@
     <span class="ruby-identifier">plumbing</span>.<span class="ruby-identifier">id</span> = (<span class="ruby-identifier">porcelain</span>.<span class="ruby-identifier">id</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">porcelain</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
     <span class="ruby-identifier">plumbing</span>.<span class="ruby-identifier">name</span> = (<span class="ruby-identifier">porcelain</span>.<span class="ruby-identifier">name</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">porcelain</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
     <span class="ruby-identifier">plumbing</span>.<span class="ruby-identifier">server_address</span> = (<span class="ruby-identifier">porcelain</span>.<span class="ruby-identifier">server_address</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">porcelain</span>.<span class="ruby-identifier">server_address</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
-    <span class="ruby-identifier">plumbing</span>.<span class="ruby-identifier">ca_cert_path</span> = (<span class="ruby-identifier">porcelain</span>.<span class="ruby-identifier">ca_cert_path</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">porcelain</span>.<span class="ruby-identifier">ca_cert_path</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">plumbing</span>.<span class="ruby-constant">CA_cert_path</span> = (<span class="ruby-identifier">porcelain</span>.<span class="ruby-identifier">ca_cert_path</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">porcelain</span>.<span class="ruby-identifier">ca_cert_path</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
     <span class="ruby-identifier">plumbing</span>.<span class="ruby-identifier">client_cert_path</span> = (<span class="ruby-identifier">porcelain</span>.<span class="ruby-identifier">client_cert_path</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">porcelain</span>.<span class="ruby-identifier">client_cert_path</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
     <span class="ruby-identifier">plumbing</span>.<span class="ruby-identifier">client_key_path</span> = (<span class="ruby-identifier">porcelain</span>.<span class="ruby-identifier">client_key_path</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">porcelain</span>.<span class="ruby-identifier">client_key_path</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
     <span class="ruby-identifier">plumbing</span>.<span class="ruby-identifier">tags</span> = <span class="ruby-identifier">convert_tags_to_plumbing</span>(<span class="ruby-identifier">porcelain</span>.<span class="ruby-identifier">tags</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">porcelain</span>.<span class="ruby-identifier">tags</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
@@ -17753,7 +17767,7 @@
     <span class="ruby-identifier">porcelain</span>.<span class="ruby-identifier">id</span> = (<span class="ruby-identifier">plumbing</span>.<span class="ruby-identifier">id</span>)
     <span class="ruby-identifier">porcelain</span>.<span class="ruby-identifier">name</span> = (<span class="ruby-identifier">plumbing</span>.<span class="ruby-identifier">name</span>)
     <span class="ruby-identifier">porcelain</span>.<span class="ruby-identifier">server_address</span> = (<span class="ruby-identifier">plumbing</span>.<span class="ruby-identifier">server_address</span>)
-    <span class="ruby-identifier">porcelain</span>.<span class="ruby-identifier">ca_cert_path</span> = (<span class="ruby-identifier">plumbing</span>.<span class="ruby-identifier">ca_cert_path</span>)
+    <span class="ruby-identifier">porcelain</span>.<span class="ruby-identifier">ca_cert_path</span> = (<span class="ruby-identifier">plumbing</span>.<span class="ruby-constant">CA_cert_path</span>)
     <span class="ruby-identifier">porcelain</span>.<span class="ruby-identifier">client_cert_path</span> = (<span class="ruby-identifier">plumbing</span>.<span class="ruby-identifier">client_cert_path</span>)
     <span class="ruby-identifier">porcelain</span>.<span class="ruby-identifier">client_key_path</span> = (<span class="ruby-identifier">plumbing</span>.<span class="ruby-identifier">client_key_path</span>)
     <span class="ruby-identifier">porcelain</span>.<span class="ruby-identifier">tags</span> = <span class="ruby-identifier">convert_tags_to_porcelain</span>(<span class="ruby-identifier">plumbing</span>.<span class="ruby-identifier">tags</span>)

@@ -4764,10 +4764,10 @@ module SDM
       end
       plumbing = V1::SecretStore.new()
       if porcelain.instance_of? VaultTLSStore
-        plumbing.vault_tls = convert_vault_tls_to_plumbing(porcelain)
+        plumbing.vault_tls = convert_vault_tls_store_to_plumbing(porcelain)
       end
       if porcelain.instance_of? VaultTokenStore
-        plumbing.vault_token = convert_vault_token_to_plumbing(porcelain)
+        plumbing.vault_token = convert_vault_token_store_to_plumbing(porcelain)
       end
       plumbing
     end
@@ -4777,10 +4777,10 @@ module SDM
         return nil
       end
       if plumbing.vault_tls != nil
-        return convert_vault_tls_to_porcelain(plumbing.vault_tls)
+        return convert_vault_tls_store_to_porcelain(plumbing.vault_tls)
       end
       if plumbing.vault_token != nil
-        return convert_vault_token_to_porcelain(plumbing.vault_token)
+        return convert_vault_token_store_to_porcelain(plumbing.vault_token)
       end
     end
     def self.convert_repeated_secret_store_to_plumbing(porcelains)
@@ -4848,7 +4848,7 @@ module SDM
       porcelain.id = (plumbing.id)
       porcelain.name = (plumbing.name)
       porcelain.server_address = (plumbing.server_address)
-      porcelain.ca_cert_path = (plumbing.ca_cert_path)
+      porcelain.ca_cert_path = (plumbing.CA_cert_path)
       porcelain.client_cert_path = (plumbing.client_cert_path)
       porcelain.client_key_path = (plumbing.client_key_path)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
@@ -4863,7 +4863,7 @@ module SDM
       plumbing.id = (porcelain.id) unless porcelain.id == nil
       plumbing.name = (porcelain.name) unless porcelain.name == nil
       plumbing.server_address = (porcelain.server_address) unless porcelain.server_address == nil
-      plumbing.ca_cert_path = (porcelain.ca_cert_path) unless porcelain.ca_cert_path == nil
+      plumbing.CA_cert_path = (porcelain.ca_cert_path) unless porcelain.ca_cert_path == nil
       plumbing.client_cert_path = (porcelain.client_cert_path) unless porcelain.client_cert_path == nil
       plumbing.client_key_path = (porcelain.client_key_path) unless porcelain.client_key_path == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil

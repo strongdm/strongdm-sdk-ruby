@@ -85,7 +85,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 1
       optional :name, :string, 2
       optional :server_address, :string, 3
-      optional :ca_cert_path, :string, 4
+      optional :CA_cert_path, :string, 4
       optional :client_cert_path, :string, 5
       optional :client_key_path, :string, 6
       optional :tags, :message, 7, "v1.Tags"
