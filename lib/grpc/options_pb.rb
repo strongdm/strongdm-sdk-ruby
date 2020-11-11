@@ -32,7 +32,9 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :write_only, :bool, 1941309
       optional :sensitive, :bool, 1941310
       optional :cli_name, :string, 1941311
-      optional :json_name, :string, 1941312
+      optional :cli_json_name, :string, 1941312
+      optional :json_gateway_name, :string, 1941313
+      optional :hide_from_json_gateway, :bool, 1941314
     end
     add_message "v1.MessageOptions" do
       optional :model_name, :string, 1941300
@@ -43,7 +45,9 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :custom, :message, 1941305, "v1.CustomPorcelainMessageOptions"
       optional :private_sdk, :bool, 1941306
       optional :cli_name, :string, 1941307
-      optional :json_name, :string, 1941308
+      optional :cli_json_name, :string, 1941308
+      optional :json_gateway_name, :string, 1941309
+      optional :hide_from_json_gateway, :bool, 1941310
     end
     add_message "v1.CustomPorcelainMessageOptions" do
       optional :converter, :string, 1941309

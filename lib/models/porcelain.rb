@@ -5168,9 +5168,6 @@ module SDM
   end
 
   class VaultTokenStore
-    # option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
-    # example: { value: '{ "id": "r-7", "name": "happy-goat"}' }
-    # };
     # Unique identifier of the SecretStore.
     attr_accessor :id
     # Unique human-readable name of the SecretStore.
@@ -5210,9 +5207,6 @@ module SDM
   end
 
   class VaultTLSStore
-    # option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
-    # example: { value: '{ "id": "r-7", "name": "happy-goat"}' }
-    # };
     # Unique identifier of the SecretStore.
     attr_accessor :id
     # Unique human-readable name of the SecretStore.
