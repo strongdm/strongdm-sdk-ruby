@@ -19,6 +19,10 @@ require "google/protobuf"
 
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("options.proto", :syntax => :proto3) do
+    add_message "v1.MethodOptions" do
+      optional :method, :string, 1941300
+      optional :url, :string, 1941301
+    end
     add_message "v1.FieldOptions" do
       optional :name, :string, 1941300
       optional :sql_nullable, :bool, 1941301
@@ -35,6 +39,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :cli_json_name, :string, 1941312
       optional :json_gateway_name, :string, 1941313
       optional :hide_from_json_gateway, :bool, 1941314
+      optional :read_only, :bool, 1941315
     end
     add_message "v1.MessageOptions" do
       optional :model_name, :string, 1941300
@@ -72,6 +77,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
 end
 
 module V1
+  MethodOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MethodOptions").msgclass
   FieldOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.FieldOptions").msgclass
   MessageOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MessageOptions").msgclass
   CustomPorcelainMessageOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.CustomPorcelainMessageOptions").msgclass

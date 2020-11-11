@@ -17,8 +17,6 @@
 
 require "google/protobuf"
 
-require "google/api/annotations_pb"
-require "protoc-gen-openapiv2/options/annotations_pb"
 require "options_pb"
 require "spec_pb"
 require "tags_pb"
