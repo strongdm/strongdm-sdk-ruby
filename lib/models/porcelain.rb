@@ -666,6 +666,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :access_key
 
@@ -682,6 +684,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       access_key: nil,
       secret_access_key: nil,
       output: nil,
@@ -699,6 +702,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if access_key != nil
         @access_key = access_key
@@ -735,6 +741,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :private_key
 
@@ -751,6 +759,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       private_key: nil,
       project: nil,
       port_override: nil,
@@ -768,6 +777,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if private_key != nil
         @private_key = private_key
@@ -804,6 +816,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -822,6 +836,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -840,6 +855,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -879,6 +897,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -897,6 +917,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -915,6 +936,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -954,6 +978,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -972,6 +998,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -990,6 +1017,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -1029,6 +1059,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -1045,6 +1077,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       port_override: nil,
       username: nil,
@@ -1062,6 +1095,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -1098,6 +1134,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :access_key
 
@@ -1114,6 +1152,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       access_key: nil,
       secret_access_key: nil,
       region: nil,
@@ -1131,6 +1170,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if access_key != nil
         @access_key = access_key
@@ -1167,6 +1209,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :region
 
@@ -1183,6 +1227,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       region: nil,
       secret_access_key: nil,
       endpoint: nil,
@@ -1200,6 +1245,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if region != nil
         @region = region
@@ -1236,6 +1284,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -1254,6 +1304,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -1272,6 +1323,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -1311,6 +1365,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :url
 
@@ -1331,6 +1387,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       url: nil,
       healthcheck_path: nil,
       username: nil,
@@ -1350,6 +1407,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if url != nil
         @url = url
@@ -1392,6 +1452,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :url
 
@@ -1408,6 +1470,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       url: nil,
       healthcheck_path: nil,
       headers_blacklist: nil,
@@ -1425,6 +1488,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if url != nil
         @url = url
@@ -1461,6 +1527,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :url
 
@@ -1479,6 +1547,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       url: nil,
       healthcheck_path: nil,
       auth_header: nil,
@@ -1497,6 +1566,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if url != nil
         @url = url
@@ -1536,6 +1608,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -1554,6 +1628,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       port: nil,
       certificate_authority: nil,
@@ -1572,6 +1647,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -1611,6 +1689,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -1627,6 +1707,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       port: nil,
       username: nil,
@@ -1644,6 +1725,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -1680,6 +1764,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -1694,6 +1780,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       port: nil,
       token: nil,
@@ -1710,6 +1797,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -1743,6 +1833,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :endpoint
 
@@ -1765,6 +1857,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       endpoint: nil,
       access_key: nil,
       secret_access_key: nil,
@@ -1785,6 +1878,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if endpoint != nil
         @endpoint = endpoint
@@ -1830,6 +1926,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :endpoint
 
@@ -1844,6 +1942,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       endpoint: nil,
       certificate_authority: nil,
       service_account_key: nil,
@@ -1860,6 +1959,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if endpoint != nil
         @endpoint = endpoint
@@ -1893,6 +1995,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -1911,6 +2015,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       port: nil,
       certificate_authority: nil,
@@ -1929,6 +2034,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -1968,6 +2076,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -1984,6 +2094,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       port: nil,
       username: nil,
@@ -2001,6 +2112,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -2037,6 +2151,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -2051,6 +2167,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       port: nil,
       token: nil,
@@ -2067,6 +2184,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -2100,6 +2220,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -2112,6 +2234,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       port_override: nil,
       port: nil
@@ -2127,6 +2250,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -2157,6 +2283,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -2179,6 +2307,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       auth_database: nil,
       port_override: nil,
@@ -2199,6 +2328,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -2244,6 +2376,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -2268,6 +2402,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       auth_database: nil,
       port_override: nil,
@@ -2289,6 +2424,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -2337,6 +2475,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -2357,6 +2497,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       auth_database: nil,
       port_override: nil,
@@ -2376,6 +2517,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -2418,6 +2562,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -2442,6 +2588,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       auth_database: nil,
       port_override: nil,
@@ -2463,6 +2610,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -2511,6 +2661,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -2529,6 +2681,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -2547,6 +2700,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -2586,6 +2742,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -2604,6 +2762,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -2622,6 +2781,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -2661,6 +2823,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -2679,6 +2843,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -2697,6 +2862,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -2736,6 +2904,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -2754,6 +2924,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -2772,6 +2943,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -2811,6 +2985,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -2829,6 +3005,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -2847,6 +3024,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -2886,6 +3066,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -2906,6 +3088,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -2925,6 +3108,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -2967,6 +3153,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -2987,6 +3175,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -3006,6 +3195,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -3048,6 +3240,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -3068,6 +3262,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -3087,6 +3282,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -3129,6 +3327,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -3149,6 +3349,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -3168,6 +3369,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -3210,6 +3414,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -3230,6 +3436,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -3249,6 +3456,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -3291,6 +3501,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -3311,6 +3523,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -3330,6 +3543,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -3372,6 +3588,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -3392,6 +3610,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -3411,6 +3630,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -3453,6 +3675,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -3473,6 +3697,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       password: nil,
       database: nil,
@@ -3492,6 +3717,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -3534,6 +3762,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -3550,6 +3780,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -3567,6 +3798,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -3603,6 +3837,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -3617,6 +3853,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       port_override: nil,
       password: nil,
@@ -3633,6 +3870,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -3666,6 +3906,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -3682,6 +3924,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       port_override: nil,
       password: nil,
@@ -3699,6 +3942,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -3735,6 +3981,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -3753,6 +4001,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -3771,6 +4020,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -3810,6 +4062,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -3832,6 +4086,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -3852,6 +4107,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -3897,6 +4155,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -3915,6 +4175,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       username: nil,
       port: nil,
@@ -3933,6 +4194,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -3972,6 +4236,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -3988,6 +4254,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       username: nil,
       port: nil,
@@ -4005,6 +4272,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -4041,6 +4311,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -4057,6 +4329,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       username: nil,
       port_override: nil,
@@ -4074,6 +4347,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -4110,6 +4386,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -4126,6 +4404,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       username: nil,
       port_override: nil,
@@ -4143,6 +4422,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname
@@ -4179,6 +4461,8 @@ module SDM
     attr_accessor :healthy
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
 
     attr_accessor :hostname
 
@@ -4195,6 +4479,7 @@ module SDM
       name: nil,
       healthy: nil,
       tags: nil,
+      secret_store_id: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -4212,6 +4497,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
       end
       if hostname != nil
         @hostname = hostname

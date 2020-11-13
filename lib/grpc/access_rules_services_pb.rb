@@ -41,6 +41,8 @@ module V1
       rpc :Delete, AccessRuleDeleteRequest, AccessRuleDeleteResponse
       # List gets a list of Access Rules matching a given set of criteria.
       rpc :List, AccessRuleListRequest, AccessRuleListResponse
+      # Apply resets a role and apply all given access rules.
+      rpc :Apply, ApplyAccessRuleRequest, ApplyAccessRuleResponse
     end
 
     Stub = Service.rpc_stub_class

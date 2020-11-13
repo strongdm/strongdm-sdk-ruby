@@ -84,6 +84,15 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :affected_resources, :int64, 2
       optional :rate_limit, :message, 3, "v1.RateLimitMetadata"
     end
+    add_message "v1.ApplyAccessRuleRequest" do
+      optional :meta, :message, 1, "v1.CreateRequestMetadata"
+      optional :role_id, :string, 2
+      repeated :access_rules, :message, 3, "v1.AccessRule"
+    end
+    add_message "v1.ApplyAccessRuleResponse" do
+      optional :meta, :message, 1, "v1.CreateResponseMetadata"
+      optional :rate_limit, :message, 2, "v1.RateLimitMetadata"
+    end
   end
 end
 
@@ -101,4 +110,6 @@ module V1
   AccessRule = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AccessRule").msgclass
   AccessRulePlanRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AccessRulePlanRequest").msgclass
   AccessRulePlanResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AccessRulePlanResponse").msgclass
+  ApplyAccessRuleRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ApplyAccessRuleRequest").msgclass
+  ApplyAccessRuleResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ApplyAccessRuleResponse").msgclass
 end
