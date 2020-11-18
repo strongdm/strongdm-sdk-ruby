@@ -40,6 +40,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :json_gateway_name, :string, 1941313
       optional :hide_from_json_gateway, :bool, 1941314
       optional :read_only, :bool, 1941315
+      optional :is_credential, :bool, 1941316
+      optional :sql_type, :string, 1941317
     end
     add_message "v1.MessageOptions" do
       optional :model_name, :string, 1941300

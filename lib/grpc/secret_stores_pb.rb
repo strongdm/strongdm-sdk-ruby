@@ -71,6 +71,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       oneof :secret_store do
         optional :vault_tls, :message, 1, "v1.VaultTLSStore"
         optional :vault_token, :message, 2, "v1.VaultTokenStore"
+        optional :aws, :message, 3, "v1.AWSStore"
       end
     end
     add_message "v1.VaultTokenStore" do
@@ -87,6 +88,12 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :client_cert_path, :string, 5
       optional :client_key_path, :string, 6
       optional :tags, :message, 7, "v1.Tags"
+    end
+    add_message "v1.AWSStore" do
+      optional :id, :string, 1
+      optional :name, :string, 2
+      optional :region, :string, 3
+      optional :tags, :message, 4, "v1.Tags"
     end
   end
 end
@@ -105,4 +112,5 @@ module V1
   SecretStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SecretStore").msgclass
   VaultTokenStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.VaultTokenStore").msgclass
   VaultTLSStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.VaultTLSStore").msgclass
+  AWSStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AWSStore").msgclass
 end
