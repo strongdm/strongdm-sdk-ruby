@@ -24,6 +24,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.Resource" do
       oneof :resource do
         optional :athena, :message, 100, "v1.Athena"
+        optional :aws, :message, 2300, "v1.AWS"
         optional :big_query, :message, 200, "v1.BigQuery"
         optional :cassandra, :message, 300, "v1.Cassandra"
         optional :db_2_i, :message, 2400, "v1.DB2I"
@@ -84,6 +85,17 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :output, :string, 3
       optional :port_override, :int32, 4
       optional :region, :string, 5
+    end
+    add_message "v1.AWS" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :access_key, :string, 1
+      optional :secret_access_key, :string, 2
+      optional :healthcheck_region, :string, 4
+      optional :role_arn, :string, 5
     end
     add_message "v1.BigQuery" do
       optional :id, :string, 32768
@@ -700,6 +712,7 @@ end
 module V1
   Resource = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Resource").msgclass
   Athena = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Athena").msgclass
+  AWS = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AWS").msgclass
   BigQuery = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.BigQuery").msgclass
   Cassandra = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Cassandra").msgclass
   DB2I = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DB2I").msgclass

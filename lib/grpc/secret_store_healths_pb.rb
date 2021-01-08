@@ -42,10 +42,12 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.SecretStoreHealth" do
       optional :secret_store_id, :string, 1
       optional :node_id, :string, 2
-      optional :detail, :string, 3
       optional :status, :string, 4
       optional :changed_at, :message, 6, "google.protobuf.Timestamp"
       optional :checked_at, :message, 7, "google.protobuf.Timestamp"
+      optional :error, :string, 8
+      optional :reachability, :string, 9
+      repeated :flags, :string, 10
     end
   end
 end

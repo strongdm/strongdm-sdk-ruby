@@ -27,6 +27,7 @@ require_relative "./account_grants_pb"
 require_relative "./accounts_pb"
 require_relative "./audits_pb"
 require_relative "./control_panel_pb"
+require_relative "./demo_provisioning_requests_pb"
 require_relative "./drivers_pb"
 require_relative "./nodes_pb"
 require_relative "./resources_pb"
@@ -34,6 +35,7 @@ require_relative "./role_attachments_pb"
 require_relative "./role_grants_pb"
 require_relative "./roles_pb"
 require_relative "./secret_store_healths_pb"
+require_relative "./secret_store_types_pb"
 require_relative "./secret_stores_pb"
 require_relative "../models/porcelain"
 require_relative "../errors/errors"
@@ -891,6 +893,9 @@ module SDM
       if porcelain.instance_of? Athena
         plumbing.athena = convert_athena_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? AWS
+        plumbing.aws = convert_aws_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? BigQuery
         plumbing.big_query = convert_big_query_to_plumbing(porcelain)
       end
@@ -1041,6 +1046,9 @@ module SDM
       end
       if plumbing.athena != nil
         return convert_athena_to_porcelain(plumbing.athena)
+      end
+      if plumbing.aws != nil
+        return convert_aws_to_porcelain(plumbing.aws)
       end
       if plumbing.big_query != nil
         return convert_big_query_to_porcelain(plumbing.big_query)
@@ -1249,6 +1257,56 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_athena_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_aws_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AWS.new()
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.access_key = (plumbing.access_key)
+      porcelain.secret_access_key = (plumbing.secret_access_key)
+      porcelain.healthcheck_region = (plumbing.healthcheck_region)
+      porcelain.role_arn = (plumbing.role_arn)
+      porcelain
+    end
+
+    def self.convert_aws_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AWS.new()
+      plumbing.id = (porcelain.id) unless porcelain.id == nil
+      plumbing.name = (porcelain.name) unless porcelain.name == nil
+      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.access_key = (porcelain.access_key) unless porcelain.access_key == nil
+      plumbing.secret_access_key = (porcelain.secret_access_key) unless porcelain.secret_access_key == nil
+      plumbing.healthcheck_region = (porcelain.healthcheck_region) unless porcelain.healthcheck_region == nil
+      plumbing.role_arn = (porcelain.role_arn) unless porcelain.role_arn == nil
+      plumbing
+    end
+    def self.convert_repeated_aws_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_aws_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_aws_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_aws_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -4705,6 +4763,180 @@ module SDM
       end
       items
     end
+    def self.convert_secret_store_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::SecretStore.new()
+      if porcelain.instance_of? AWSStore
+        plumbing.aws = convert_aws_store_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? VaultTLSStore
+        plumbing.vault_tls = convert_vault_tls_store_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? VaultTokenStore
+        plumbing.vault_token = convert_vault_token_store_to_plumbing(porcelain)
+      end
+      plumbing
+    end
+
+    def self.convert_secret_store_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      if plumbing.aws != nil
+        return convert_aws_store_to_porcelain(plumbing.aws)
+      end
+      if plumbing.vault_tls != nil
+        return convert_vault_tls_store_to_porcelain(plumbing.vault_tls)
+      end
+      if plumbing.vault_token != nil
+        return convert_vault_token_store_to_porcelain(plumbing.vault_token)
+      end
+    end
+    def self.convert_repeated_secret_store_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_secret_store_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_secret_store_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_secret_store_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_aws_store_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AWSStore.new()
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.region = (plumbing.region)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_aws_store_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AWSStore.new()
+      plumbing.id = (porcelain.id) unless porcelain.id == nil
+      plumbing.name = (porcelain.name) unless porcelain.name == nil
+      plumbing.region = (porcelain.region) unless porcelain.region == nil
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing
+    end
+    def self.convert_repeated_aws_store_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_aws_store_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_aws_store_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_aws_store_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_vault_tls_store_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = VaultTLSStore.new()
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.server_address = (plumbing.server_address)
+      porcelain.ca_cert_path = (plumbing.CA_cert_path)
+      porcelain.client_cert_path = (plumbing.client_cert_path)
+      porcelain.client_key_path = (plumbing.client_key_path)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_vault_tls_store_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::VaultTLSStore.new()
+      plumbing.id = (porcelain.id) unless porcelain.id == nil
+      plumbing.name = (porcelain.name) unless porcelain.name == nil
+      plumbing.server_address = (porcelain.server_address) unless porcelain.server_address == nil
+      plumbing.CA_cert_path = (porcelain.ca_cert_path) unless porcelain.ca_cert_path == nil
+      plumbing.client_cert_path = (porcelain.client_cert_path) unless porcelain.client_cert_path == nil
+      plumbing.client_key_path = (porcelain.client_key_path) unless porcelain.client_key_path == nil
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing
+    end
+    def self.convert_repeated_vault_tls_store_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_vault_tls_store_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_vault_tls_store_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_vault_tls_store_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_vault_token_store_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = VaultTokenStore.new()
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.server_address = (plumbing.server_address)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_vault_token_store_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::VaultTokenStore.new()
+      plumbing.id = (porcelain.id) unless porcelain.id == nil
+      plumbing.name = (porcelain.name) unless porcelain.name == nil
+      plumbing.server_address = (porcelain.server_address) unless porcelain.server_address == nil
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing
+    end
+    def self.convert_repeated_vault_token_store_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_vault_token_store_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_vault_token_store_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_vault_token_store_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_secret_store_create_response_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -4851,180 +5083,6 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_secret_store_delete_response_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
-    def self.convert_secret_store_to_plumbing(porcelain)
-      if porcelain == nil
-        return nil
-      end
-      plumbing = V1::SecretStore.new()
-      if porcelain.instance_of? VaultTLSStore
-        plumbing.vault_tls = convert_vault_tls_store_to_plumbing(porcelain)
-      end
-      if porcelain.instance_of? VaultTokenStore
-        plumbing.vault_token = convert_vault_token_store_to_plumbing(porcelain)
-      end
-      if porcelain.instance_of? AWSStore
-        plumbing.aws = convert_aws_store_to_plumbing(porcelain)
-      end
-      plumbing
-    end
-
-    def self.convert_secret_store_to_porcelain(plumbing)
-      if plumbing == nil
-        return nil
-      end
-      if plumbing.vault_tls != nil
-        return convert_vault_tls_store_to_porcelain(plumbing.vault_tls)
-      end
-      if plumbing.vault_token != nil
-        return convert_vault_token_store_to_porcelain(plumbing.vault_token)
-      end
-      if plumbing.aws != nil
-        return convert_aws_store_to_porcelain(plumbing.aws)
-      end
-    end
-    def self.convert_repeated_secret_store_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = convert_secret_store_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.convert_repeated_secret_store_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = convert_secret_store_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
-    def self.convert_vault_token_store_to_porcelain(plumbing)
-      if plumbing == nil
-        return nil
-      end
-      porcelain = VaultTokenStore.new()
-      porcelain.id = (plumbing.id)
-      porcelain.name = (plumbing.name)
-      porcelain.server_address = (plumbing.server_address)
-      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
-      porcelain
-    end
-
-    def self.convert_vault_token_store_to_plumbing(porcelain)
-      if porcelain == nil
-        return nil
-      end
-      plumbing = V1::VaultTokenStore.new()
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.server_address = (porcelain.server_address) unless porcelain.server_address == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing
-    end
-    def self.convert_repeated_vault_token_store_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = convert_vault_token_store_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.convert_repeated_vault_token_store_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = convert_vault_token_store_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
-    def self.convert_vault_tls_store_to_porcelain(plumbing)
-      if plumbing == nil
-        return nil
-      end
-      porcelain = VaultTLSStore.new()
-      porcelain.id = (plumbing.id)
-      porcelain.name = (plumbing.name)
-      porcelain.server_address = (plumbing.server_address)
-      porcelain.ca_cert_path = (plumbing.CA_cert_path)
-      porcelain.client_cert_path = (plumbing.client_cert_path)
-      porcelain.client_key_path = (plumbing.client_key_path)
-      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
-      porcelain
-    end
-
-    def self.convert_vault_tls_store_to_plumbing(porcelain)
-      if porcelain == nil
-        return nil
-      end
-      plumbing = V1::VaultTLSStore.new()
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.server_address = (porcelain.server_address) unless porcelain.server_address == nil
-      plumbing.CA_cert_path = (porcelain.ca_cert_path) unless porcelain.ca_cert_path == nil
-      plumbing.client_cert_path = (porcelain.client_cert_path) unless porcelain.client_cert_path == nil
-      plumbing.client_key_path = (porcelain.client_key_path) unless porcelain.client_key_path == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing
-    end
-    def self.convert_repeated_vault_tls_store_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = convert_vault_tls_store_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.convert_repeated_vault_tls_store_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = convert_vault_tls_store_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
-    def self.convert_aws_store_to_porcelain(plumbing)
-      if plumbing == nil
-        return nil
-      end
-      porcelain = AWSStore.new()
-      porcelain.id = (plumbing.id)
-      porcelain.name = (plumbing.name)
-      porcelain.region = (plumbing.region)
-      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
-      porcelain
-    end
-
-    def self.convert_aws_store_to_plumbing(porcelain)
-      if porcelain == nil
-        return nil
-      end
-      plumbing = V1::AWSStore.new()
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.region = (porcelain.region) unless porcelain.region == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing
-    end
-    def self.convert_repeated_aws_store_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = convert_aws_store_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.convert_repeated_aws_store_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = convert_aws_store_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items

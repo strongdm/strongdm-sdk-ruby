@@ -732,6 +732,75 @@ module SDM
     end
   end
 
+  class AWS
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+
+    attr_accessor :access_key
+
+    attr_accessor :secret_access_key
+
+    attr_accessor :healthcheck_region
+
+    attr_accessor :role_arn
+
+    def initialize(
+      id: nil,
+      name: nil,
+      healthy: nil,
+      tags: nil,
+      secret_store_id: nil,
+      access_key: nil,
+      secret_access_key: nil,
+      healthcheck_region: nil,
+      role_arn: nil
+    )
+      if id != nil
+        @id = id
+      end
+      if name != nil
+        @name = name
+      end
+      if healthy != nil
+        @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
+      end
+      if access_key != nil
+        @access_key = access_key
+      end
+      if secret_access_key != nil
+        @secret_access_key = secret_access_key
+      end
+      if healthcheck_region != nil
+        @healthcheck_region = healthcheck_region
+      end
+      if role_arn != nil
+        @role_arn = role_arn
+      end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class BigQuery
     # Unique identifier of the Resource.
     attr_accessor :id
@@ -5324,6 +5393,141 @@ module SDM
     end
   end
 
+  class AWSStore
+    # Unique identifier of the SecretStore.
+    attr_accessor :id
+    # Unique human-readable name of the SecretStore.
+    attr_accessor :name
+
+    attr_accessor :region
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      id: nil,
+      name: nil,
+      region: nil,
+      tags: nil
+    )
+      if id != nil
+        @id = id
+      end
+      if name != nil
+        @name = name
+      end
+      if region != nil
+        @region = region
+      end
+      if tags != nil
+        @tags = tags
+      end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  class VaultTLSStore
+    # Unique identifier of the SecretStore.
+    attr_accessor :id
+    # Unique human-readable name of the SecretStore.
+    attr_accessor :name
+
+    attr_accessor :server_address
+
+    attr_accessor :ca_cert_path
+
+    attr_accessor :client_cert_path
+
+    attr_accessor :client_key_path
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      id: nil,
+      name: nil,
+      server_address: nil,
+      ca_cert_path: nil,
+      client_cert_path: nil,
+      client_key_path: nil,
+      tags: nil
+    )
+      if id != nil
+        @id = id
+      end
+      if name != nil
+        @name = name
+      end
+      if server_address != nil
+        @server_address = server_address
+      end
+      if ca_cert_path != nil
+        @ca_cert_path = ca_cert_path
+      end
+      if client_cert_path != nil
+        @client_cert_path = client_cert_path
+      end
+      if client_key_path != nil
+        @client_key_path = client_key_path
+      end
+      if tags != nil
+        @tags = tags
+      end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  class VaultTokenStore
+    # Unique identifier of the SecretStore.
+    attr_accessor :id
+    # Unique human-readable name of the SecretStore.
+    attr_accessor :name
+
+    attr_accessor :server_address
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      id: nil,
+      name: nil,
+      server_address: nil,
+      tags: nil
+    )
+      if id != nil
+        @id = id
+      end
+      if name != nil
+        @name = name
+      end
+      if server_address != nil
+        @server_address = server_address
+      end
+      if tags != nil
+        @tags = tags
+      end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   # SecretStoreCreateResponse reports how the SecretStores were created in the system.
   class SecretStoreCreateResponse
     # Reserved for future use.
@@ -5443,141 +5647,6 @@ module SDM
       end
       if rate_limit != nil
         @rate_limit = rate_limit
-      end
-    end
-
-    def to_json(options = {})
-      hash = {}
-      self.instance_variables.each do |var|
-        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
-      end
-      hash.to_json
-    end
-  end
-
-  class VaultTokenStore
-    # Unique identifier of the SecretStore.
-    attr_accessor :id
-    # Unique human-readable name of the SecretStore.
-    attr_accessor :name
-
-    attr_accessor :server_address
-    # Tags is a map of key, value pairs.
-    attr_accessor :tags
-
-    def initialize(
-      id: nil,
-      name: nil,
-      server_address: nil,
-      tags: nil
-    )
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if server_address != nil
-        @server_address = server_address
-      end
-      if tags != nil
-        @tags = tags
-      end
-    end
-
-    def to_json(options = {})
-      hash = {}
-      self.instance_variables.each do |var|
-        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
-      end
-      hash.to_json
-    end
-  end
-
-  class VaultTLSStore
-    # Unique identifier of the SecretStore.
-    attr_accessor :id
-    # Unique human-readable name of the SecretStore.
-    attr_accessor :name
-
-    attr_accessor :server_address
-
-    attr_accessor :ca_cert_path
-
-    attr_accessor :client_cert_path
-
-    attr_accessor :client_key_path
-    # Tags is a map of key, value pairs.
-    attr_accessor :tags
-
-    def initialize(
-      id: nil,
-      name: nil,
-      server_address: nil,
-      ca_cert_path: nil,
-      client_cert_path: nil,
-      client_key_path: nil,
-      tags: nil
-    )
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if server_address != nil
-        @server_address = server_address
-      end
-      if ca_cert_path != nil
-        @ca_cert_path = ca_cert_path
-      end
-      if client_cert_path != nil
-        @client_cert_path = client_cert_path
-      end
-      if client_key_path != nil
-        @client_key_path = client_key_path
-      end
-      if tags != nil
-        @tags = tags
-      end
-    end
-
-    def to_json(options = {})
-      hash = {}
-      self.instance_variables.each do |var|
-        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
-      end
-      hash.to_json
-    end
-  end
-
-  class AWSStore
-    # Unique identifier of the SecretStore.
-    attr_accessor :id
-    # Unique human-readable name of the SecretStore.
-    attr_accessor :name
-
-    attr_accessor :region
-    # Tags is a map of key, value pairs.
-    attr_accessor :tags
-
-    def initialize(
-      id: nil,
-      name: nil,
-      region: nil,
-      tags: nil
-    )
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if region != nil
-        @region = region
-      end
-      if tags != nil
-        @tags = tags
       end
     end
 
