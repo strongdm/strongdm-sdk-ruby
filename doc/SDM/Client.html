@@ -353,8 +353,8 @@
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File lib/strongdm.rb, line 31</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">api_access_key</span>, <span class="ruby-identifier">api_secret_key</span>, <span class="ruby-value">host:</span><span class="ruby-string">&quot;api.strongdm.com:443&quot;</span>, <span class="ruby-value">insecure:</span><span class="ruby-keyword">false</span>)
-    <span class="ruby-ivar">@api_access_key</span> = <span class="ruby-identifier">api_access_key</span>
-    <span class="ruby-ivar">@api_secret_key</span> = <span class="ruby-constant">Base64</span>.<span class="ruby-identifier">strict_decode64</span>(<span class="ruby-identifier">api_secret_key</span>)
+    <span class="ruby-ivar">@api_access_key</span> = <span class="ruby-identifier">api_access_key</span>.<span class="ruby-identifier">strip</span>
+    <span class="ruby-ivar">@api_secret_key</span> = <span class="ruby-constant">Base64</span>.<span class="ruby-identifier">strict_decode64</span>(<span class="ruby-identifier">api_secret_key</span>.<span class="ruby-identifier">strip</span>)
     <span class="ruby-ivar">@max_retries</span> = <span class="ruby-constant">DEFAULT_MAX_RETRIES</span>
     <span class="ruby-ivar">@base_retry_delay</span> = <span class="ruby-constant">DEFAULT_BASE_RETRY_DELAY</span>
     <span class="ruby-ivar">@max_retry_delay</span> = <span class="ruby-constant">DEFAULT_MAX_RETRY_DELAY</span>

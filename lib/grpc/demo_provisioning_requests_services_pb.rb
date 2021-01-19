@@ -29,19 +29,19 @@ module V1
       self.service_name = "v1.DemoProvisioningRequests"
 
       # Create
-      rpc :Create, DemoProvisioningRequestCreateRequest, DemoProvisioningRequestCreateResponse
+      rpc :Create, ::V1::DemoProvisioningRequestCreateRequest, ::V1::DemoProvisioningRequestCreateResponse
       # ListForOrganization gets a list of DemoProvisioningRequests in your organization
       # matching a given set of criteria. This operation can be done by account
       # administrators.
-      rpc :ListForOrganization, DemoProvisioningRequestListForOrganizationRequest, DemoProvisioningRequestListForOrganizationResponse
+      rpc :ListForOrganization, ::V1::DemoProvisioningRequestListForOrganizationRequest, ::V1::DemoProvisioningRequestListForOrganizationResponse
       # Delete deletes a DemoProvisioningRequest.
-      rpc :Delete, DemoProvisioningRequestDeleteRequest, DemoProvisioningRequestDeleteResponse
+      rpc :Delete, ::V1::DemoProvisioningRequestDeleteRequest, ::V1::DemoProvisioningRequestDeleteResponse
       # ListAll gets a list of DemoProvisioningRequests across all orgs matching a given
       # set of criteria. This operation can only be done by operators and the
       # trial provisioner.
-      rpc :ListAll, DemoProvisioningRequestListAllRequest, DemoProvisioningRequestListAllResponse
+      rpc :ListAll, ::V1::DemoProvisioningRequestListAllRequest, ::V1::DemoProvisioningRequestListAllResponse
       # Update updates a DemoProvisioningRequest.
-      rpc :Update, DemoProvisioningRequestUpdateRequest, DemoProvisioningRequestUpdateResponse
+      rpc :Update, ::V1::DemoProvisioningRequestUpdateRequest, ::V1::DemoProvisioningRequestUpdateResponse
     end
 
     Stub = Service.rpc_stub_class

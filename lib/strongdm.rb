@@ -29,8 +29,8 @@ module SDM
   class Client
     # Creates a new strongDM API client.
     def initialize(api_access_key, api_secret_key, host: "api.strongdm.com:443", insecure: false)
-      @api_access_key = api_access_key
-      @api_secret_key = Base64.strict_decode64(api_secret_key)
+      @api_access_key = api_access_key.strip
+      @api_secret_key = Base64.strict_decode64(api_secret_key.strip)
       @max_retries = DEFAULT_MAX_RETRIES
       @base_retry_delay = DEFAULT_BASE_RETRY_DELAY
       @max_retry_delay = DEFAULT_MAX_RETRY_DELAY
