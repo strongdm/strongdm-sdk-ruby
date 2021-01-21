@@ -679,6 +679,10 @@ module SDM
 
     attr_accessor :region
 
+    attr_accessor :role_arn
+
+    attr_accessor :role_external_id
+
     def initialize(
       id: nil,
       name: nil,
@@ -689,7 +693,9 @@ module SDM
       secret_access_key: nil,
       output: nil,
       port_override: nil,
-      region: nil
+      region: nil,
+      role_arn: nil,
+      role_external_id: nil
     )
       if id != nil
         @id = id
@@ -720,6 +726,12 @@ module SDM
       end
       if region != nil
         @region = region
+      end
+      if role_arn != nil
+        @role_arn = role_arn
+      end
+      if role_external_id != nil
+        @role_external_id = role_external_id
       end
     end
 
@@ -752,6 +764,8 @@ module SDM
 
     attr_accessor :role_arn
 
+    attr_accessor :role_external_id
+
     def initialize(
       id: nil,
       name: nil,
@@ -761,7 +775,8 @@ module SDM
       access_key: nil,
       secret_access_key: nil,
       healthcheck_region: nil,
-      role_arn: nil
+      role_arn: nil,
+      role_external_id: nil
     )
       if id != nil
         @id = id
@@ -789,6 +804,9 @@ module SDM
       end
       if role_arn != nil
         @role_arn = role_arn
+      end
+      if role_external_id != nil
+        @role_external_id = role_external_id
       end
     end
 
@@ -1216,6 +1234,10 @@ module SDM
 
     attr_accessor :port_override
 
+    attr_accessor :role_arn
+
+    attr_accessor :role_external_id
+
     def initialize(
       id: nil,
       name: nil,
@@ -1226,7 +1248,9 @@ module SDM
       secret_access_key: nil,
       region: nil,
       endpoint: nil,
-      port_override: nil
+      port_override: nil,
+      role_arn: nil,
+      role_external_id: nil
     )
       if id != nil
         @id = id
@@ -1257,6 +1281,12 @@ module SDM
       end
       if port_override != nil
         @port_override = port_override
+      end
+      if role_arn != nil
+        @role_arn = role_arn
+      end
+      if role_external_id != nil
+        @role_external_id = role_external_id
       end
     end
 
@@ -1291,6 +1321,10 @@ module SDM
 
     attr_accessor :port_override
 
+    attr_accessor :role_arn
+
+    attr_accessor :role_external_id
+
     def initialize(
       id: nil,
       name: nil,
@@ -1301,7 +1335,9 @@ module SDM
       secret_access_key: nil,
       endpoint: nil,
       access_key: nil,
-      port_override: nil
+      port_override: nil,
+      role_arn: nil,
+      role_external_id: nil
     )
       if id != nil
         @id = id
@@ -1332,6 +1368,12 @@ module SDM
       end
       if port_override != nil
         @port_override = port_override
+      end
+      if role_arn != nil
+        @role_arn = role_arn
+      end
+      if role_external_id != nil
+        @role_external_id = role_external_id
       end
     end
 
@@ -1919,6 +1961,8 @@ module SDM
 
     attr_accessor :role_arn
 
+    attr_accessor :role_external_id
+
     attr_accessor :healthcheck_namespace
 
     def initialize(
@@ -1934,6 +1978,7 @@ module SDM
       region: nil,
       cluster_name: nil,
       role_arn: nil,
+      role_external_id: nil,
       healthcheck_namespace: nil
     )
       if id != nil
@@ -1971,6 +2016,9 @@ module SDM
       end
       if role_arn != nil
         @role_arn = role_arn
+      end
+      if role_external_id != nil
+        @role_external_id = role_external_id
       end
       if healthcheck_namespace != nil
         @healthcheck_namespace = healthcheck_namespace

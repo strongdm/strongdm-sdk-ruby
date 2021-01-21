@@ -1221,6 +1221,8 @@ module SDM
       porcelain.output = (plumbing.output)
       porcelain.port_override = (plumbing.port_override)
       porcelain.region = (plumbing.region)
+      porcelain.role_arn = (plumbing.role_arn)
+      porcelain.role_external_id = (plumbing.role_external_id)
       porcelain
     end
 
@@ -1239,6 +1241,8 @@ module SDM
       plumbing.output = (porcelain.output) unless porcelain.output == nil
       plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
       plumbing.region = (porcelain.region) unless porcelain.region == nil
+      plumbing.role_arn = (porcelain.role_arn) unless porcelain.role_arn == nil
+      plumbing.role_external_id = (porcelain.role_external_id) unless porcelain.role_external_id == nil
       plumbing
     end
     def self.convert_repeated_athena_to_plumbing(porcelains)
@@ -1272,6 +1276,7 @@ module SDM
       porcelain.secret_access_key = (plumbing.secret_access_key)
       porcelain.healthcheck_region = (plumbing.healthcheck_region)
       porcelain.role_arn = (plumbing.role_arn)
+      porcelain.role_external_id = (plumbing.role_external_id)
       porcelain
     end
 
@@ -1289,6 +1294,7 @@ module SDM
       plumbing.secret_access_key = (porcelain.secret_access_key) unless porcelain.secret_access_key == nil
       plumbing.healthcheck_region = (porcelain.healthcheck_region) unless porcelain.healthcheck_region == nil
       plumbing.role_arn = (porcelain.role_arn) unless porcelain.role_arn == nil
+      plumbing.role_external_id = (porcelain.role_external_id) unless porcelain.role_external_id == nil
       plumbing
     end
     def self.convert_repeated_aws_to_plumbing(porcelains)
@@ -1589,6 +1595,8 @@ module SDM
       porcelain.region = (plumbing.region)
       porcelain.endpoint = (plumbing.endpoint)
       porcelain.port_override = (plumbing.port_override)
+      porcelain.role_arn = (plumbing.role_arn)
+      porcelain.role_external_id = (plumbing.role_external_id)
       porcelain
     end
 
@@ -1607,6 +1615,8 @@ module SDM
       plumbing.region = (porcelain.region) unless porcelain.region == nil
       plumbing.endpoint = (porcelain.endpoint) unless porcelain.endpoint == nil
       plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
+      plumbing.role_arn = (porcelain.role_arn) unless porcelain.role_arn == nil
+      plumbing.role_external_id = (porcelain.role_external_id) unless porcelain.role_external_id == nil
       plumbing
     end
     def self.convert_repeated_dynamo_db_to_plumbing(porcelains)
@@ -1641,6 +1651,8 @@ module SDM
       porcelain.endpoint = (plumbing.endpoint)
       porcelain.access_key = (plumbing.access_key)
       porcelain.port_override = (plumbing.port_override)
+      porcelain.role_arn = (plumbing.role_arn)
+      porcelain.role_external_id = (plumbing.role_external_id)
       porcelain
     end
 
@@ -1659,6 +1671,8 @@ module SDM
       plumbing.endpoint = (porcelain.endpoint) unless porcelain.endpoint == nil
       plumbing.access_key = (porcelain.access_key) unless porcelain.access_key == nil
       plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
+      plumbing.role_arn = (porcelain.role_arn) unless porcelain.role_arn == nil
+      plumbing.role_external_id = (porcelain.role_external_id) unless porcelain.role_external_id == nil
       plumbing
     end
     def self.convert_repeated_amazon_es_to_plumbing(porcelains)
@@ -2067,6 +2081,7 @@ module SDM
       porcelain.region = (plumbing.region)
       porcelain.cluster_name = (plumbing.cluster_name)
       porcelain.role_arn = (plumbing.role_arn)
+      porcelain.role_external_id = (plumbing.role_external_id)
       porcelain.healthcheck_namespace = (plumbing.healthcheck_namespace)
       porcelain
     end
@@ -2088,6 +2103,7 @@ module SDM
       plumbing.region = (porcelain.region) unless porcelain.region == nil
       plumbing.cluster_name = (porcelain.cluster_name) unless porcelain.cluster_name == nil
       plumbing.role_arn = (porcelain.role_arn) unless porcelain.role_arn == nil
+      plumbing.role_external_id = (porcelain.role_external_id) unless porcelain.role_external_id == nil
       plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace) unless porcelain.healthcheck_namespace == nil
       plumbing
     end

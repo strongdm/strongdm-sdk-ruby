@@ -29,6 +29,9 @@ module SDM
   class Client
     # Creates a new strongDM API client.
     def initialize(api_access_key, api_secret_key, host: "api.strongdm.com:443", insecure: false)
+      raise TypeError, "client access key must be a string" unless api_access_key.kind_of?(String)
+      raise TypeError, "client secret key must be a string" unless api_secret_key.kind_of?(String)
+      raise TypeError, "client host must be a string" unless host.kind_of?(String)
       @api_access_key = api_access_key.strip
       @api_secret_key = Base64.strict_decode64(api_secret_key.strip)
       @max_retries = DEFAULT_MAX_RETRIES

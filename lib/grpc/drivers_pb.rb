@@ -85,6 +85,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :output, :string, 3
       optional :port_override, :int32, 4
       optional :region, :string, 5
+      optional :role_arn, :string, 6
+      optional :role_external_id, :string, 7
     end
     add_message "v1.AWS" do
       optional :id, :string, 32768
@@ -96,6 +98,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_access_key, :string, 2
       optional :healthcheck_region, :string, 4
       optional :role_arn, :string, 5
+      optional :role_external_id, :string, 6
     end
     add_message "v1.BigQuery" do
       optional :id, :string, 32768
@@ -171,6 +174,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :region, :string, 3
       optional :endpoint, :string, 4
       optional :port_override, :int32, 5
+      optional :role_arn, :string, 6
+      optional :role_external_id, :string, 7
     end
     add_message "v1.AmazonES" do
       optional :id, :string, 32768
@@ -183,6 +188,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :endpoint, :string, 3
       optional :access_key, :string, 4
       optional :port_override, :int32, 5
+      optional :role_arn, :string, 6
+      optional :role_external_id, :string, 7
     end
     add_message "v1.Elastic" do
       optional :id, :string, 32768
@@ -285,6 +292,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :region, :string, 6
       optional :cluster_name, :string, 7
       optional :role_arn, :string, 8
+      optional :role_external_id, :string, 10
       optional :healthcheck_namespace, :string, 9
     end
     add_message "v1.GoogleGKE" do
