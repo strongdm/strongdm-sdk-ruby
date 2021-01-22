@@ -20,6 +20,7 @@ require "google/protobuf"
 require "options_pb"
 require "spec_pb"
 require "drivers_pb"
+require "tags_pb"
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("resources.proto", :syntax => :proto3) do
     add_message "v1.ResourceCreateRequest" do
@@ -67,6 +68,15 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       repeated :resources, :message, 2, "v1.Resource"
       optional :rate_limit, :message, 3, "v1.RateLimitMetadata"
     end
+    add_message "v1.EnumerateTagsRequest" do
+      optional :meta, :message, 1, "v1.ListRequestMetadata"
+      optional :filter, :string, 2
+    end
+    add_message "v1.EnumerateTagsResponse" do
+      optional :meta, :message, 1, "v1.ListResponseMetadata"
+      repeated :matches, :message, 2, "v1.Tag"
+      optional :rate_limit, :message, 3, "v1.RateLimitMetadata"
+    end
   end
 end
 
@@ -81,4 +91,6 @@ module V1
   ResourceDeleteResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ResourceDeleteResponse").msgclass
   ResourceListRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ResourceListRequest").msgclass
   ResourceListResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ResourceListResponse").msgclass
+  EnumerateTagsRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.EnumerateTagsRequest").msgclass
+  EnumerateTagsResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.EnumerateTagsResponse").msgclass
 end

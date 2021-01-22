@@ -115,6 +115,32 @@ module SDM
     end
   end
 
+  class Tag
+    attr_accessor :name
+
+    attr_accessor :value
+
+    def initialize(
+      name: nil,
+      value: nil
+    )
+      if name != nil
+        @name = name
+      end
+      if value != nil
+        @value = value
+      end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   # AccountAttachmentCreateResponse reports how the AccountAttachments were created in the system.
   class AccountAttachmentCreateResponse
     # Reserved for future use.

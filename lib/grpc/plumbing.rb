@@ -262,6 +262,42 @@ module SDM
       end
       items
     end
+    def self.convert_tag_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = Tag.new()
+      porcelain.name = (plumbing.name)
+      porcelain.value = (plumbing.value)
+      porcelain
+    end
+
+    def self.convert_tag_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::Tag.new()
+      plumbing.name = (porcelain.name) unless porcelain.name == nil
+      plumbing.value = (porcelain.value) unless porcelain.value == nil
+      plumbing
+    end
+    def self.convert_repeated_tag_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_tag_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_tag_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_tag_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_account_attachment_create_response_to_porcelain(plumbing)
       if plumbing == nil
         return nil

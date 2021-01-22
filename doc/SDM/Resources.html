@@ -81,6 +81,8 @@
     
     <li ><a href="#method-i-delete">#delete</a>
     
+    <li ><a href="#method-i-enumerate_tags">#enumerate_tags</a>
+    
     <li ><a href="#method-i-get">#get</a>
     
     <li ><a href="#method-i-list">#list</a>
@@ -189,7 +191,7 @@
 
           
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File lib/svc.rb, line 735</span>
+            <pre><span class="ruby-comment"># File lib/svc.rb, line 772</span>
         <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create</span>(
 <span class="ruby-identifier">resource</span> \
 ,
@@ -249,7 +251,7 @@
 
           
           <div class="method-source-code" id="delete-source">
-            <pre><span class="ruby-comment"># File lib/svc.rb, line 828</span>
+            <pre><span class="ruby-comment"># File lib/svc.rb, line 865</span>
         <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">delete</span>(
 <span class="ruby-identifier">id</span> \
 ,
@@ -289,6 +291,72 @@
       </div>
 
     
+      <div id="method-i-enumerate_tags" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">enumerate_tags</span><span
+            class="method-args">( filter \ , *args, deadline:nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>EnumerateTags gets a list of the filter matching tags.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="enumerate_tags-source">
+            <pre><span class="ruby-comment"># File lib/svc.rb, line 735</span>
+        <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">enumerate_tags</span>(
+<span class="ruby-identifier">filter</span> \
+,
+<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>,
+ <span class="ruby-value">deadline:</span><span class="ruby-keyword">nil</span>)
+            <span class="ruby-identifier">req</span> = <span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">EnumerateTagsRequest</span>.<span class="ruby-identifier">new</span>()
+            <span class="ruby-identifier">req</span>.<span class="ruby-identifier">meta</span> = <span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">ListRequestMetadata</span>.<span class="ruby-identifier">new</span>()
+            <span class="ruby-identifier">page_size_option</span> = <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">_test_options</span>[<span class="ruby-string">&#39;PageSize&#39;</span>]
+            <span class="ruby-keyword">if</span> <span class="ruby-identifier">page_size_option</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Integer</span>
+                <span class="ruby-identifier">req</span>.<span class="ruby-identifier">meta</span>.<span class="ruby-identifier">limit</span> = <span class="ruby-identifier">page_size_option</span>
+            <span class="ruby-keyword">end</span>
+                        
+            <span class="ruby-identifier">req</span>.<span class="ruby-identifier">filter</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">quote_filter_args</span>(<span class="ruby-identifier">filter</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+            <span class="ruby-identifier">resp</span> = <span class="ruby-constant">Enumerator</span><span class="ruby-operator">::</span><span class="ruby-constant">Generator</span>.<span class="ruby-identifier">new</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">g</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">tries</span> = <span class="ruby-value">0</span>
+                <span class="ruby-identifier">loop</span> <span class="ruby-keyword">do</span>
+                    <span class="ruby-keyword">begin</span>
+                        <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-ivar">@stub</span>.<span class="ruby-identifier">enumerate_tags</span>(<span class="ruby-identifier">req</span>, <span class="ruby-value">metadata:</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">get_metadata</span>(<span class="ruby-string">&#39;Resources.EnumerateTags&#39;</span>, <span class="ruby-identifier">req</span>), <span class="ruby-value">deadline:</span><span class="ruby-identifier">deadline</span>)
+                    <span class="ruby-keyword">rescue</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">exception</span>
+                        <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">shouldRetry</span>(<span class="ruby-identifier">tries</span>, <span class="ruby-identifier">exception</span>))
+                            <span class="ruby-identifier">tries</span><span class="ruby-operator">+</span><span class="ruby-operator">+</span>
+                            <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">jitterSleep</span>(<span class="ruby-identifier">tries</span>)
+                            <span class="ruby-keyword">next</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-identifier">raise</span> <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">convert_error_to_porcelain</span>(<span class="ruby-identifier">exception</span>)
+                    <span class="ruby-keyword">end</span>
+                    <span class="ruby-identifier">tries</span> = <span class="ruby-value">0</span>
+                    <span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">matches</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plumbing_item</span><span class="ruby-operator">|</span>
+                        <span class="ruby-identifier">g</span>.<span class="ruby-identifier">yield</span> <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">convert_tag_to_porcelain</span>(<span class="ruby-identifier">plumbing_item</span>)
+                    <span class="ruby-keyword">end</span>
+                    <span class="ruby-keyword">break</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">meta</span>.<span class="ruby-identifier">next_cursor</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;&quot;</span>
+                    <span class="ruby-identifier">req</span>.<span class="ruby-identifier">meta</span>.<span class="ruby-identifier">cursor</span> = <span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">meta</span>.<span class="ruby-identifier">next_cursor</span>
+                <span class="ruby-keyword">end</span>
+            }
+            <span class="ruby-identifier">resp</span>
+        <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
       <div id="method-i-get" class="method-detail ">
         
         <div class="method-heading">
@@ -308,7 +376,7 @@
 
           
           <div class="method-source-code" id="get-source">
-            <pre><span class="ruby-comment"># File lib/svc.rb, line 766</span>
+            <pre><span class="ruby-comment"># File lib/svc.rb, line 803</span>
         <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get</span>(
 <span class="ruby-identifier">id</span> \
 ,
@@ -368,7 +436,7 @@
 
           
           <div class="method-source-code" id="list-source">
-            <pre><span class="ruby-comment"># File lib/svc.rb, line 858</span>
+            <pre><span class="ruby-comment"># File lib/svc.rb, line 895</span>
         <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">list</span>(
 <span class="ruby-identifier">filter</span> \
 ,
@@ -434,7 +502,7 @@
 
           
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File lib/svc.rb, line 797</span>
+            <pre><span class="ruby-comment"># File lib/svc.rb, line 834</span>
         <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update</span>(
 <span class="ruby-identifier">resource</span> \
 ,

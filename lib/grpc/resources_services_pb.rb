@@ -27,6 +27,8 @@ module V1
       self.unmarshal_class_method = :decode
       self.service_name = "v1.Resources"
 
+      # EnumerateTags gets a list of the filter matching tags.
+      rpc :EnumerateTags, ::V1::EnumerateTagsRequest, ::V1::EnumerateTagsResponse
       # Create registers a new Resource.
       rpc :Create, ::V1::ResourceCreateRequest, ::V1::ResourceCreateResponse
       # Get reads one Resource by ID.

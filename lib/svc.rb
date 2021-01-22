@@ -722,6 +722,43 @@ module SDM
       @parent = parent
     end
 
+    # EnumerateTags gets a list of the filter matching tags.
+    def enumerate_tags(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::EnumerateTagsRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      page_size_option = @parent._test_options["PageSize"]
+      if page_size_option.is_a? Integer
+        req.meta.limit = page_size_option
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.enumerate_tags(req, metadata: @parent.get_metadata("Resources.EnumerateTags", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.matches.each do |plumbing_item|
+            g.yield Plumbing::convert_tag_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+
     # Create registers a new Resource.
     def create(
       resource,

@@ -27,10 +27,15 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :name, :string, 1
       optional :value, :string, 2
     end
+    add_message "v1.Tag" do
+      optional :name, :string, 1
+      optional :value, :string, 2
+    end
   end
 end
 
 module V1
   Tags = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Tags").msgclass
   Tags::Pair = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Tags.Pair").msgclass
+  Tag = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Tag").msgclass
 end

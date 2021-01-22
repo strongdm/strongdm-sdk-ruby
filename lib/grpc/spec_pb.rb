@@ -69,6 +69,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :reset_at, :message, 3, "google.protobuf.Timestamp"
       optional :bucket, :string, 4
     end
+    add_message "v1.GenericRequestMetadata" do
+    end
+    add_message "v1.GenericResponseMetadata" do
+    end
   end
 end
 
@@ -91,4 +95,6 @@ module V1
   ListRequestMetadata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ListRequestMetadata").msgclass
   ListResponseMetadata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ListResponseMetadata").msgclass
   RateLimitMetadata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RateLimitMetadata").msgclass
+  GenericRequestMetadata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GenericRequestMetadata").msgclass
+  GenericResponseMetadata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GenericResponseMetadata").msgclass
 end
