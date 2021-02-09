@@ -58,6 +58,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :cursor, :string, 1
       optional :page, :int32, 2
       optional :limit, :int32, 3
+      optional :order_by, :string, 4
     end
     add_message "v1.ListResponseMetadata" do
       optional :next_cursor, :string, 1

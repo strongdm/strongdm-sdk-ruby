@@ -29,13 +29,13 @@ module V1
       self.service_name = "v1.AccountAttachments"
 
       # Create registers a new AccountAttachment.
-      rpc :Create, ::V1::AccountAttachmentCreateRequest, ::V1::AccountAttachmentCreateResponse
+      rpc :Create, AccountAttachmentCreateRequest, AccountAttachmentCreateResponse
       # Get reads one AccountAttachment by ID.
-      rpc :Get, ::V1::AccountAttachmentGetRequest, ::V1::AccountAttachmentGetResponse
+      rpc :Get, AccountAttachmentGetRequest, AccountAttachmentGetResponse
       # Delete removes a AccountAttachment by ID.
-      rpc :Delete, ::V1::AccountAttachmentDeleteRequest, ::V1::AccountAttachmentDeleteResponse
+      rpc :Delete, AccountAttachmentDeleteRequest, AccountAttachmentDeleteResponse
       # List gets a list of AccountAttachments matching a given set of criteria.
-      rpc :List, ::V1::AccountAttachmentListRequest, ::V1::AccountAttachmentListResponse
+      rpc :List, AccountAttachmentListRequest, AccountAttachmentListResponse
     end
 
     Stub = Service.rpc_stub_class

@@ -31,7 +31,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :required, :bool, 1941304
       optional :id_type, :string, 1941305
       optional :sdk_only, :bool, 1941306
-      optional :computed, :bool, 1941307
+      optional :terraform_computed, :string, 1941307
       optional :force_new, :bool, 1941308
       optional :write_only, :bool, 1941309
       optional :sensitive, :bool, 1941310

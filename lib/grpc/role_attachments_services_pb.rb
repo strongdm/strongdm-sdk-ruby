@@ -32,13 +32,13 @@ module V1
       self.service_name = "v1.RoleAttachments"
 
       # Create registers a new RoleAttachment.
-      rpc :Create, ::V1::RoleAttachmentCreateRequest, ::V1::RoleAttachmentCreateResponse
+      rpc :Create, RoleAttachmentCreateRequest, RoleAttachmentCreateResponse
       # Get reads one RoleAttachment by ID.
-      rpc :Get, ::V1::RoleAttachmentGetRequest, ::V1::RoleAttachmentGetResponse
+      rpc :Get, RoleAttachmentGetRequest, RoleAttachmentGetResponse
       # Delete removes a RoleAttachment by ID.
-      rpc :Delete, ::V1::RoleAttachmentDeleteRequest, ::V1::RoleAttachmentDeleteResponse
+      rpc :Delete, RoleAttachmentDeleteRequest, RoleAttachmentDeleteResponse
       # List gets a list of RoleAttachments matching a given set of criteria.
-      rpc :List, ::V1::RoleAttachmentListRequest, ::V1::RoleAttachmentListResponse
+      rpc :List, RoleAttachmentListRequest, RoleAttachmentListResponse
     end
 
     Stub = Service.rpc_stub_class
