@@ -23,6 +23,9 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :method, :string, 1941300
       optional :url, :string, 1941301
     end
+    add_message "v1.FileOptions" do
+      optional :private_sdk, :bool, 1941700
+    end
     add_message "v1.FieldOptions" do
       optional :name, :string, 1941300
       optional :sql_nullable, :bool, 1941301
@@ -80,6 +83,7 @@ end
 
 module V1
   MethodOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MethodOptions").msgclass
+  FileOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.FileOptions").msgclass
   FieldOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.FieldOptions").msgclass
   MessageOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MessageOptions").msgclass
   CustomPorcelainMessageOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.CustomPorcelainMessageOptions").msgclass
