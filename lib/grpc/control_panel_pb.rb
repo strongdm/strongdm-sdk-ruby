@@ -29,10 +29,21 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :public_key, :string, 2
       optional :rate_limit, :message, 3, "v1.RateLimitMetadata"
     end
+    add_message "v1.ControlPanelVerifyJWTRequest" do
+      optional :meta, :message, 1, "v1.GetRequestMetadata"
+      optional :token, :string, 2
+    end
+    add_message "v1.ControlPanelVerifyJWTResponse" do
+      optional :meta, :message, 1, "v1.GetResponseMetadata"
+      optional :valid, :bool, 2
+      optional :rate_limit, :message, 3, "v1.RateLimitMetadata"
+    end
   end
 end
 
 module V1
   ControlPanelGetSSHCAPublicKeyRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ControlPanelGetSSHCAPublicKeyRequest").msgclass
   ControlPanelGetSSHCAPublicKeyResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ControlPanelGetSSHCAPublicKeyResponse").msgclass
+  ControlPanelVerifyJWTRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ControlPanelVerifyJWTRequest").msgclass
+  ControlPanelVerifyJWTResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ControlPanelVerifyJWTResponse").msgclass
 end

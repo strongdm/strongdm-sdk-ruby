@@ -79,6 +79,8 @@
     
     <li ><a href="#method-i-get_sshca_public_key">#get_sshca_public_key</a>
     
+    <li ><a href="#method-i-verify_jwt">#verify_jwt</a>
+    
   </ul>
 </div>
 
@@ -211,6 +213,66 @@
            <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">rate_limit</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">convert_rate_limit_metadata_to_porcelain</span>(<span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">rate_limit</span>)
            <span class="ruby-identifier">resp</span>
        <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-verify_jwt" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">verify_jwt</span><span
+            class="method-args">( token \ , deadline:nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>VerifyJWT reports whether the given JWT token (x-sdm-token) is valid.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="verify_jwt-source">
+            <pre><span class="ruby-comment"># File lib/svc.rb, line 540</span>
+        <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">verify_jwt</span>(
+<span class="ruby-identifier">token</span> \
+,
+ <span class="ruby-value">deadline:</span><span class="ruby-keyword">nil</span>)
+            <span class="ruby-identifier">req</span> = <span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">ControlPanelVerifyJWTRequest</span>.<span class="ruby-identifier">new</span>()
+                        
+            <span class="ruby-identifier">req</span>.<span class="ruby-identifier">token</span> = (<span class="ruby-identifier">token</span>)
+            <span class="ruby-identifier">tries</span> = <span class="ruby-value">0</span>
+            <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-keyword">nil</span>
+            <span class="ruby-identifier">loop</span> <span class="ruby-keyword">do</span>
+                <span class="ruby-keyword">begin</span>
+                    <span class="ruby-identifier">plumbing_response</span> = <span class="ruby-ivar">@stub</span>.<span class="ruby-identifier">verify_jwt</span>(<span class="ruby-identifier">req</span>, <span class="ruby-value">metadata:</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">get_metadata</span>(<span class="ruby-string">&#39;ControlPanel.VerifyJWT&#39;</span>, <span class="ruby-identifier">req</span>), <span class="ruby-value">deadline:</span><span class="ruby-identifier">deadline</span>)
+                <span class="ruby-keyword">rescue</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">exception</span>
+                    <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">shouldRetry</span>(<span class="ruby-identifier">tries</span>, <span class="ruby-identifier">exception</span>))
+                        <span class="ruby-identifier">tries</span><span class="ruby-operator">+</span><span class="ruby-operator">+</span>
+                        <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">jitterSleep</span>(<span class="ruby-identifier">tries</span>)
+                        <span class="ruby-keyword">next</span>
+                    <span class="ruby-keyword">end</span>
+                    <span class="ruby-identifier">raise</span> <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">convert_error_to_porcelain</span>(<span class="ruby-identifier">exception</span>)
+                <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">break</span>
+            <span class="ruby-keyword">end</span>
+
+                        
+            <span class="ruby-identifier">resp</span> = <span class="ruby-constant">ControlPanelVerifyJWTResponse</span>.<span class="ruby-identifier">new</span>()
+            <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">meta</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">convert_get_response_metadata_to_porcelain</span>(<span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">meta</span>)
+            <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">valid</span> = (<span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">valid</span>)
+            <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">rate_limit</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">convert_rate_limit_metadata_to_porcelain</span>(<span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">rate_limit</span>)
+            <span class="ruby-identifier">resp</span>
+        <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>

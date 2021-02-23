@@ -917,6 +917,44 @@ module SDM
       end
       items
     end
+    def self.convert_control_panel_verify_jwt_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = ControlPanelVerifyJWTResponse.new()
+      porcelain.meta = convert_get_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.valid = (plumbing.valid)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_control_panel_verify_jwt_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::ControlPanelVerifyJWTResponse.new()
+      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
+      plumbing.valid = (porcelain.valid) unless porcelain.valid == nil
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
+      plumbing
+    end
+    def self.convert_repeated_control_panel_verify_jwt_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_control_panel_verify_jwt_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_control_panel_verify_jwt_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_control_panel_verify_jwt_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_resource_to_plumbing(porcelain)
       if porcelain == nil
         return nil

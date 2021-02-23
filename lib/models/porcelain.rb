@@ -683,6 +683,40 @@ module SDM
     end
   end
 
+  # ControlPanelVerifyJWTResponse reports whether x-sdm-token is valid.
+  class ControlPanelVerifyJWTResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # Reports if the given token is valid.
+    attr_accessor :valid
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      meta: nil,
+      valid: nil,
+      rate_limit: nil
+    )
+      if meta != nil
+        @meta = meta
+      end
+      if valid != nil
+        @valid = valid
+      end
+      if rate_limit != nil
+        @rate_limit = rate_limit
+      end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class Athena
     # Unique identifier of the Resource.
     attr_accessor :id
