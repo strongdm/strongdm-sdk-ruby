@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class SDM::Teradata - RDoc Documentation</title>
+<title>class SDM::SSHCustomerKey - RDoc Documentation</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../";
@@ -85,9 +85,9 @@
   </div>
 </nav>
 
-<main role="main" aria-labelledby="class-SDM::Teradata">
-  <h1 id="class-SDM::Teradata" class="class">
-    class SDM::Teradata
+<main role="main" aria-labelledby="class-SDM::SSHCustomerKey">
+  <h1 id="class-SDM::SSHCustomerKey" class="class">
+    class SDM::SSHCustomerKey
   </h1>
 
   <section class="description">
@@ -108,6 +108,19 @@
         <h3>Attributes</h3>
       </header>
 
+      
+      <div id="attribute-i-allow_deprecated_key_exchanges" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">allow_deprecated_key_exchanges</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
       
       <div id="attribute-i-healthy" class="method-detail">
         <div class="method-heading attribute-method-heading">
@@ -161,19 +174,6 @@
         </div>
       </div>
       
-      <div id="attribute-i-password" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">password</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
       <div id="attribute-i-port" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">port</span><span
@@ -187,9 +187,22 @@
         </div>
       </div>
       
-      <div id="attribute-i-port_override" class="method-detail">
+      <div id="attribute-i-port_forwarding" class="method-detail">
         <div class="method-heading attribute-method-heading">
-          <span class="method-name">port_override</span><span
+          <span class="method-name">port_forwarding</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-private_key" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">private_key</span><span
             class="attribute-access-type">[RW]</span>
         </div>
 
@@ -253,7 +266,7 @@
         
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">( id:nil \ , name:nil \ , healthy:nil \ , tags:nil \ , secret_store_id:nil \ , hostname:nil \ , username:nil \ , password:nil \ , port_override:nil \ , port:nil \ )</span>
+            class="method-args">( id:nil \ , name:nil \ , healthy:nil \ , tags:nil \ , secret_store_id:nil \ , hostname:nil \ , username:nil \ , port:nil \ , private_key:nil \ , port_forwarding:nil \ , allow_deprecated_key_exchanges:nil \ )</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -268,7 +281,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 5115</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 4864</span>
                 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(
                         <span class="ruby-value">id:</span><span class="ruby-keyword">nil</span> \
 ,
@@ -284,11 +297,13 @@
 ,
                         <span class="ruby-value">username:</span><span class="ruby-keyword">nil</span> \
 ,
-                        <span class="ruby-value">password:</span><span class="ruby-keyword">nil</span> \
-,
-                        <span class="ruby-value">port_override:</span><span class="ruby-keyword">nil</span> \
-,
                         <span class="ruby-value">port:</span><span class="ruby-keyword">nil</span> \
+,
+                        <span class="ruby-value">private_key:</span><span class="ruby-keyword">nil</span> \
+,
+                        <span class="ruby-value">port_forwarding:</span><span class="ruby-keyword">nil</span> \
+,
+                        <span class="ruby-value">allow_deprecated_key_exchanges:</span><span class="ruby-keyword">nil</span> \
                 )
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">id</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">id</span>
@@ -311,14 +326,17 @@
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">username</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@username</span> = <span class="ruby-identifier">username</span>
                         <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">password</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@password</span> = <span class="ruby-identifier">password</span>
-                        <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">port_override</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@port_override</span> = <span class="ruby-identifier">port_override</span>
-                        <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">port</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@port</span> = <span class="ruby-identifier">port</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">private_key</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@private_key</span> = <span class="ruby-identifier">private_key</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">port_forwarding</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@port_forwarding</span> = <span class="ruby-identifier">port_forwarding</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">allow_deprecated_key_exchanges</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@allow_deprecated_key_exchanges</span> = <span class="ruby-identifier">allow_deprecated_key_exchanges</span>
                         <span class="ruby-keyword">end</span>
                 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -358,7 +376,7 @@
 
           
           <div class="method-source-code" id="to_json-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 5167</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 4921</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_json</span>(<span class="ruby-identifier">options</span>={})
         <span class="ruby-identifier">hash</span> = {}
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">instance_variables</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">var</span><span class="ruby-operator">|</span>

@@ -29,13 +29,13 @@ module V1
       self.service_name = "v1.AccountGrants"
 
       # Create registers a new AccountGrant.
-      rpc :Create, AccountGrantCreateRequest, AccountGrantCreateResponse
+      rpc :Create, ::V1::AccountGrantCreateRequest, ::V1::AccountGrantCreateResponse
       # Get reads one AccountGrant by ID.
-      rpc :Get, AccountGrantGetRequest, AccountGrantGetResponse
+      rpc :Get, ::V1::AccountGrantGetRequest, ::V1::AccountGrantGetResponse
       # Delete removes a AccountGrant by ID.
-      rpc :Delete, AccountGrantDeleteRequest, AccountGrantDeleteResponse
+      rpc :Delete, ::V1::AccountGrantDeleteRequest, ::V1::AccountGrantDeleteResponse
       # List gets a list of AccountGrants matching a given set of criteria.
-      rpc :List, AccountGrantListRequest, AccountGrantListResponse
+      rpc :List, ::V1::AccountGrantListRequest, ::V1::AccountGrantListResponse
     end
 
     Stub = Service.rpc_stub_class

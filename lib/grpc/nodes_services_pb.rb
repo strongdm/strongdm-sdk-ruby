@@ -31,15 +31,15 @@ module V1
       self.service_name = "v1.Nodes"
 
       # Create registers a new Node.
-      rpc :Create, NodeCreateRequest, NodeCreateResponse
+      rpc :Create, ::V1::NodeCreateRequest, ::V1::NodeCreateResponse
       # Get reads one Node by ID.
-      rpc :Get, NodeGetRequest, NodeGetResponse
+      rpc :Get, ::V1::NodeGetRequest, ::V1::NodeGetResponse
       # Update patches a Node by ID.
-      rpc :Update, NodeUpdateRequest, NodeUpdateResponse
+      rpc :Update, ::V1::NodeUpdateRequest, ::V1::NodeUpdateResponse
       # Delete removes a Node by ID.
-      rpc :Delete, NodeDeleteRequest, NodeDeleteResponse
+      rpc :Delete, ::V1::NodeDeleteRequest, ::V1::NodeDeleteResponse
       # List gets a list of Nodes matching a given set of criteria.
-      rpc :List, NodeListRequest, NodeListResponse
+      rpc :List, ::V1::NodeListRequest, ::V1::NodeListResponse
     end
 
     Stub = Service.rpc_stub_class

@@ -4479,6 +4479,87 @@ module SDM
     end
   end
 
+  class SSHCustomerKey
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+
+    attr_accessor :hostname
+
+    attr_accessor :username
+
+    attr_accessor :port
+
+    attr_accessor :private_key
+
+    attr_accessor :port_forwarding
+
+    attr_accessor :allow_deprecated_key_exchanges
+
+    def initialize(
+      id: nil,
+      name: nil,
+      healthy: nil,
+      tags: nil,
+      secret_store_id: nil,
+      hostname: nil,
+      username: nil,
+      port: nil,
+      private_key: nil,
+      port_forwarding: nil,
+      allow_deprecated_key_exchanges: nil
+    )
+      if id != nil
+        @id = id
+      end
+      if name != nil
+        @name = name
+      end
+      if healthy != nil
+        @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
+      end
+      if hostname != nil
+        @hostname = hostname
+      end
+      if username != nil
+        @username = username
+      end
+      if port != nil
+        @port = port
+      end
+      if private_key != nil
+        @private_key = private_key
+      end
+      if port_forwarding != nil
+        @port_forwarding = port_forwarding
+      end
+      if allow_deprecated_key_exchanges != nil
+        @allow_deprecated_key_exchanges = allow_deprecated_key_exchanges
+      end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class Sybase
     # Unique identifier of the Resource.
     attr_accessor :id

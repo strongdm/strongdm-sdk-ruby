@@ -29,9 +29,9 @@ module V1
       self.service_name = "v1.ControlPanel"
 
       # GetSSHCAPublicKey retrieves the SSH CA public key.
-      rpc :GetSSHCAPublicKey, ControlPanelGetSSHCAPublicKeyRequest, ControlPanelGetSSHCAPublicKeyResponse
+      rpc :GetSSHCAPublicKey, ::V1::ControlPanelGetSSHCAPublicKeyRequest, ::V1::ControlPanelGetSSHCAPublicKeyResponse
       # VerifyJWT reports whether the given JWT token (x-sdm-token) is valid.
-      rpc :VerifyJWT, ControlPanelVerifyJWTRequest, ControlPanelVerifyJWTResponse
+      rpc :VerifyJWT, ::V1::ControlPanelVerifyJWTRequest, ::V1::ControlPanelVerifyJWTResponse
     end
 
     Stub = Service.rpc_stub_class

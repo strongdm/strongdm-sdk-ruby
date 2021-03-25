@@ -1098,6 +1098,9 @@ module SDM
       if porcelain.instance_of? SSHCert
         plumbing.ssh_cert = convert_ssh_cert_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? SSHCustomerKey
+        plumbing.ssh_customer_key = convert_ssh_customer_key_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? Sybase
         plumbing.sybase = convert_sybase_to_plumbing(porcelain)
       end
@@ -1251,6 +1254,9 @@ module SDM
       end
       if plumbing.ssh_cert != nil
         return convert_ssh_cert_to_porcelain(plumbing.ssh_cert)
+      end
+      if plumbing.ssh_customer_key != nil
+        return convert_ssh_customer_key_to_porcelain(plumbing.ssh_customer_key)
       end
       if plumbing.sybase != nil
         return convert_sybase_to_porcelain(plumbing.sybase)
@@ -3771,6 +3777,60 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_ssh_cert_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_ssh_customer_key_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = SSHCustomerKey.new()
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.username = (plumbing.username)
+      porcelain.port = (plumbing.port)
+      porcelain.private_key = (plumbing.private_key)
+      porcelain.port_forwarding = (plumbing.port_forwarding)
+      porcelain.allow_deprecated_key_exchanges = (plumbing.allow_deprecated_key_exchanges)
+      porcelain
+    end
+
+    def self.convert_ssh_customer_key_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::SSHCustomerKey.new()
+      plumbing.id = (porcelain.id) unless porcelain.id == nil
+      plumbing.name = (porcelain.name) unless porcelain.name == nil
+      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
+      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.port = (porcelain.port) unless porcelain.port == nil
+      plumbing.private_key = (porcelain.private_key) unless porcelain.private_key == nil
+      plumbing.port_forwarding = (porcelain.port_forwarding) unless porcelain.port_forwarding == nil
+      plumbing.allow_deprecated_key_exchanges = (porcelain.allow_deprecated_key_exchanges) unless porcelain.allow_deprecated_key_exchanges == nil
+      plumbing
+    end
+    def self.convert_repeated_ssh_customer_key_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_ssh_customer_key_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_ssh_customer_key_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_ssh_customer_key_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items

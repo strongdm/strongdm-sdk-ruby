@@ -32,13 +32,13 @@ module V1
       self.service_name = "v1.RoleGrants"
 
       # Create registers a new RoleGrant.
-      rpc :Create, RoleGrantCreateRequest, RoleGrantCreateResponse
+      rpc :Create, ::V1::RoleGrantCreateRequest, ::V1::RoleGrantCreateResponse
       # Get reads one RoleGrant by ID.
-      rpc :Get, RoleGrantGetRequest, RoleGrantGetResponse
+      rpc :Get, ::V1::RoleGrantGetRequest, ::V1::RoleGrantGetResponse
       # Delete removes a RoleGrant by ID.
-      rpc :Delete, RoleGrantDeleteRequest, RoleGrantDeleteResponse
+      rpc :Delete, ::V1::RoleGrantDeleteRequest, ::V1::RoleGrantDeleteResponse
       # List gets a list of RoleGrants matching a given set of criteria.
-      rpc :List, RoleGrantListRequest, RoleGrantListResponse
+      rpc :List, ::V1::RoleGrantListRequest, ::V1::RoleGrantListResponse
     end
 
     Stub = Service.rpc_stub_class
