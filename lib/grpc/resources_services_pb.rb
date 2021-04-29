@@ -28,17 +28,17 @@ module V1
       self.service_name = "v1.Resources"
 
       # EnumerateTags gets a list of the filter matching tags.
-      rpc :EnumerateTags, ::V1::EnumerateTagsRequest, ::V1::EnumerateTagsResponse
+      rpc :EnumerateTags, EnumerateTagsRequest, EnumerateTagsResponse
       # Create registers a new Resource.
-      rpc :Create, ::V1::ResourceCreateRequest, ::V1::ResourceCreateResponse
+      rpc :Create, ResourceCreateRequest, ResourceCreateResponse
       # Get reads one Resource by ID.
-      rpc :Get, ::V1::ResourceGetRequest, ::V1::ResourceGetResponse
+      rpc :Get, ResourceGetRequest, ResourceGetResponse
       # Update patches a Resource by ID.
-      rpc :Update, ::V1::ResourceUpdateRequest, ::V1::ResourceUpdateResponse
+      rpc :Update, ResourceUpdateRequest, ResourceUpdateResponse
       # Delete removes a Resource by ID.
-      rpc :Delete, ::V1::ResourceDeleteRequest, ::V1::ResourceDeleteResponse
+      rpc :Delete, ResourceDeleteRequest, ResourceDeleteResponse
       # List gets a list of Resources matching a given set of criteria.
-      rpc :List, ::V1::ResourceListRequest, ::V1::ResourceListResponse
+      rpc :List, ResourceListRequest, ResourceListResponse
     end
 
     Stub = Service.rpc_stub_class

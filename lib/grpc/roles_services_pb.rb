@@ -33,15 +33,15 @@ module V1
       self.service_name = "v1.Roles"
 
       # Create registers a new Role.
-      rpc :Create, ::V1::RoleCreateRequest, ::V1::RoleCreateResponse
+      rpc :Create, RoleCreateRequest, RoleCreateResponse
       # Get reads one Role by ID.
-      rpc :Get, ::V1::RoleGetRequest, ::V1::RoleGetResponse
+      rpc :Get, RoleGetRequest, RoleGetResponse
       # Update patches a Role by ID.
-      rpc :Update, ::V1::RoleUpdateRequest, ::V1::RoleUpdateResponse
+      rpc :Update, RoleUpdateRequest, RoleUpdateResponse
       # Delete removes a Role by ID.
-      rpc :Delete, ::V1::RoleDeleteRequest, ::V1::RoleDeleteResponse
+      rpc :Delete, RoleDeleteRequest, RoleDeleteResponse
       # List gets a list of Roles matching a given set of criteria.
-      rpc :List, ::V1::RoleListRequest, ::V1::RoleListResponse
+      rpc :List, RoleListRequest, RoleListResponse
     end
 
     Stub = Service.rpc_stub_class

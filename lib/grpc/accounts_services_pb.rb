@@ -31,15 +31,15 @@ module V1
       self.service_name = "v1.Accounts"
 
       # Create registers a new Account.
-      rpc :Create, ::V1::AccountCreateRequest, ::V1::AccountCreateResponse
+      rpc :Create, AccountCreateRequest, AccountCreateResponse
       # Get reads one Account by ID.
-      rpc :Get, ::V1::AccountGetRequest, ::V1::AccountGetResponse
+      rpc :Get, AccountGetRequest, AccountGetResponse
       # Update patches a Account by ID.
-      rpc :Update, ::V1::AccountUpdateRequest, ::V1::AccountUpdateResponse
+      rpc :Update, AccountUpdateRequest, AccountUpdateResponse
       # Delete removes a Account by ID.
-      rpc :Delete, ::V1::AccountDeleteRequest, ::V1::AccountDeleteResponse
+      rpc :Delete, AccountDeleteRequest, AccountDeleteResponse
       # List gets a list of Accounts matching a given set of criteria.
-      rpc :List, ::V1::AccountListRequest, ::V1::AccountListResponse
+      rpc :List, AccountListRequest, AccountListResponse
     end
 
     Stub = Service.rpc_stub_class
