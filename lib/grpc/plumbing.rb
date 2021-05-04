@@ -1002,26 +1002,44 @@ module SDM
       if porcelain.instance_of? Kubernetes
         plumbing.kubernetes = convert_kubernetes_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? KubernetesUserImpersonation
+        plumbing.kubernetes_user_impersonation = convert_kubernetes_user_impersonation_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? KubernetesBasicAuth
         plumbing.kubernetes_basic_auth = convert_kubernetes_basic_auth_to_plumbing(porcelain)
       end
       if porcelain.instance_of? KubernetesServiceAccount
         plumbing.kubernetes_service_account = convert_kubernetes_service_account_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? KubernetesServiceAccountUserImpersonation
+        plumbing.kubernetes_service_account_user_impersonation = convert_kubernetes_service_account_user_impersonation_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? AmazonEKS
         plumbing.amazon_eks = convert_amazon_eks_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? AmazonEKSUserImpersonation
+        plumbing.amazon_eks_user_impersonation = convert_amazon_eks_user_impersonation_to_plumbing(porcelain)
       end
       if porcelain.instance_of? GoogleGKE
         plumbing.google_gke = convert_google_gke_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? GoogleGKEUserImpersonation
+        plumbing.google_gke_user_impersonation = convert_google_gke_user_impersonation_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? AKS
         plumbing.aks = convert_aks_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? AKSUserImpersonation
+        plumbing.aks_user_impersonation = convert_aks_user_impersonation_to_plumbing(porcelain)
       end
       if porcelain.instance_of? AKSBasicAuth
         plumbing.aks_basic_auth = convert_aks_basic_auth_to_plumbing(porcelain)
       end
       if porcelain.instance_of? AKSServiceAccount
         plumbing.aks_service_account = convert_aks_service_account_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? AKSServiceAccountUserImpersonation
+        plumbing.aks_service_account_user_impersonation = convert_aks_service_account_user_impersonation_to_plumbing(porcelain)
       end
       if porcelain.instance_of? Memcached
         plumbing.memcached = convert_memcached_to_plumbing(porcelain)
@@ -1159,26 +1177,44 @@ module SDM
       if plumbing.kubernetes != nil
         return convert_kubernetes_to_porcelain(plumbing.kubernetes)
       end
+      if plumbing.kubernetes_user_impersonation != nil
+        return convert_kubernetes_user_impersonation_to_porcelain(plumbing.kubernetes_user_impersonation)
+      end
       if plumbing.kubernetes_basic_auth != nil
         return convert_kubernetes_basic_auth_to_porcelain(plumbing.kubernetes_basic_auth)
       end
       if plumbing.kubernetes_service_account != nil
         return convert_kubernetes_service_account_to_porcelain(plumbing.kubernetes_service_account)
       end
+      if plumbing.kubernetes_service_account_user_impersonation != nil
+        return convert_kubernetes_service_account_user_impersonation_to_porcelain(plumbing.kubernetes_service_account_user_impersonation)
+      end
       if plumbing.amazon_eks != nil
         return convert_amazon_eks_to_porcelain(plumbing.amazon_eks)
+      end
+      if plumbing.amazon_eks_user_impersonation != nil
+        return convert_amazon_eks_user_impersonation_to_porcelain(plumbing.amazon_eks_user_impersonation)
       end
       if plumbing.google_gke != nil
         return convert_google_gke_to_porcelain(plumbing.google_gke)
       end
+      if plumbing.google_gke_user_impersonation != nil
+        return convert_google_gke_user_impersonation_to_porcelain(plumbing.google_gke_user_impersonation)
+      end
       if plumbing.aks != nil
         return convert_aks_to_porcelain(plumbing.aks)
+      end
+      if plumbing.aks_user_impersonation != nil
+        return convert_aks_user_impersonation_to_porcelain(plumbing.aks_user_impersonation)
       end
       if plumbing.aks_basic_auth != nil
         return convert_aks_basic_auth_to_porcelain(plumbing.aks_basic_auth)
       end
       if plumbing.aks_service_account != nil
         return convert_aks_service_account_to_porcelain(plumbing.aks_service_account)
+      end
+      if plumbing.aks_service_account_user_impersonation != nil
+        return convert_aks_service_account_user_impersonation_to_porcelain(plumbing.aks_service_account_user_impersonation)
       end
       if plumbing.memcached != nil
         return convert_memcached_to_porcelain(plumbing.memcached)
@@ -2041,6 +2077,60 @@ module SDM
       end
       items
     end
+    def self.convert_kubernetes_user_impersonation_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = KubernetesUserImpersonation.new()
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.port = (plumbing.port)
+      porcelain.certificate_authority = (plumbing.certificate_authority)
+      porcelain.client_certificate = (plumbing.client_certificate)
+      porcelain.client_key = (plumbing.client_key)
+      porcelain.healthcheck_namespace = (plumbing.healthcheck_namespace)
+      porcelain
+    end
+
+    def self.convert_kubernetes_user_impersonation_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::KubernetesUserImpersonation.new()
+      plumbing.id = (porcelain.id) unless porcelain.id == nil
+      plumbing.name = (porcelain.name) unless porcelain.name == nil
+      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
+      plumbing.port = (porcelain.port) unless porcelain.port == nil
+      plumbing.certificate_authority = (porcelain.certificate_authority) unless porcelain.certificate_authority == nil
+      plumbing.client_certificate = (porcelain.client_certificate) unless porcelain.client_certificate == nil
+      plumbing.client_key = (porcelain.client_key) unless porcelain.client_key == nil
+      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace) unless porcelain.healthcheck_namespace == nil
+      plumbing
+    end
+    def self.convert_repeated_kubernetes_user_impersonation_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_kubernetes_user_impersonation_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_kubernetes_user_impersonation_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_kubernetes_user_impersonation_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_kubernetes_basic_auth_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -2143,6 +2233,56 @@ module SDM
       end
       items
     end
+    def self.convert_kubernetes_service_account_user_impersonation_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = KubernetesServiceAccountUserImpersonation.new()
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.port = (plumbing.port)
+      porcelain.token = (plumbing.token)
+      porcelain.healthcheck_namespace = (plumbing.healthcheck_namespace)
+      porcelain
+    end
+
+    def self.convert_kubernetes_service_account_user_impersonation_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::KubernetesServiceAccountUserImpersonation.new()
+      plumbing.id = (porcelain.id) unless porcelain.id == nil
+      plumbing.name = (porcelain.name) unless porcelain.name == nil
+      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
+      plumbing.port = (porcelain.port) unless porcelain.port == nil
+      plumbing.token = (porcelain.token) unless porcelain.token == nil
+      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace) unless porcelain.healthcheck_namespace == nil
+      plumbing
+    end
+    def self.convert_repeated_kubernetes_service_account_user_impersonation_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_kubernetes_service_account_user_impersonation_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_kubernetes_service_account_user_impersonation_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_kubernetes_service_account_user_impersonation_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_amazon_eks_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -2203,6 +2343,66 @@ module SDM
       end
       items
     end
+    def self.convert_amazon_eks_user_impersonation_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AmazonEKSUserImpersonation.new()
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.endpoint = (plumbing.endpoint)
+      porcelain.access_key = (plumbing.access_key)
+      porcelain.secret_access_key = (plumbing.secret_access_key)
+      porcelain.certificate_authority = (plumbing.certificate_authority)
+      porcelain.region = (plumbing.region)
+      porcelain.cluster_name = (plumbing.cluster_name)
+      porcelain.role_arn = (plumbing.role_arn)
+      porcelain.role_external_id = (plumbing.role_external_id)
+      porcelain.healthcheck_namespace = (plumbing.healthcheck_namespace)
+      porcelain
+    end
+
+    def self.convert_amazon_eks_user_impersonation_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AmazonEKSUserImpersonation.new()
+      plumbing.id = (porcelain.id) unless porcelain.id == nil
+      plumbing.name = (porcelain.name) unless porcelain.name == nil
+      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.endpoint = (porcelain.endpoint) unless porcelain.endpoint == nil
+      plumbing.access_key = (porcelain.access_key) unless porcelain.access_key == nil
+      plumbing.secret_access_key = (porcelain.secret_access_key) unless porcelain.secret_access_key == nil
+      plumbing.certificate_authority = (porcelain.certificate_authority) unless porcelain.certificate_authority == nil
+      plumbing.region = (porcelain.region) unless porcelain.region == nil
+      plumbing.cluster_name = (porcelain.cluster_name) unless porcelain.cluster_name == nil
+      plumbing.role_arn = (porcelain.role_arn) unless porcelain.role_arn == nil
+      plumbing.role_external_id = (porcelain.role_external_id) unless porcelain.role_external_id == nil
+      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace) unless porcelain.healthcheck_namespace == nil
+      plumbing
+    end
+    def self.convert_repeated_amazon_eks_user_impersonation_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_amazon_eks_user_impersonation_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_amazon_eks_user_impersonation_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_amazon_eks_user_impersonation_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_google_gke_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -2249,6 +2449,56 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_google_gke_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_google_gke_user_impersonation_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = GoogleGKEUserImpersonation.new()
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.endpoint = (plumbing.endpoint)
+      porcelain.certificate_authority = (plumbing.certificate_authority)
+      porcelain.service_account_key = (plumbing.service_account_key)
+      porcelain.healthcheck_namespace = (plumbing.healthcheck_namespace)
+      porcelain
+    end
+
+    def self.convert_google_gke_user_impersonation_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::GoogleGKEUserImpersonation.new()
+      plumbing.id = (porcelain.id) unless porcelain.id == nil
+      plumbing.name = (porcelain.name) unless porcelain.name == nil
+      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.endpoint = (porcelain.endpoint) unless porcelain.endpoint == nil
+      plumbing.certificate_authority = (porcelain.certificate_authority) unless porcelain.certificate_authority == nil
+      plumbing.service_account_key = (porcelain.service_account_key) unless porcelain.service_account_key == nil
+      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace) unless porcelain.healthcheck_namespace == nil
+      plumbing
+    end
+    def self.convert_repeated_google_gke_user_impersonation_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_google_gke_user_impersonation_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_google_gke_user_impersonation_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_google_gke_user_impersonation_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -2303,6 +2553,60 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_aks_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_aks_user_impersonation_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AKSUserImpersonation.new()
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.port = (plumbing.port)
+      porcelain.certificate_authority = (plumbing.certificate_authority)
+      porcelain.client_certificate = (plumbing.client_certificate)
+      porcelain.client_key = (plumbing.client_key)
+      porcelain.healthcheck_namespace = (plumbing.healthcheck_namespace)
+      porcelain
+    end
+
+    def self.convert_aks_user_impersonation_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AKSUserImpersonation.new()
+      plumbing.id = (porcelain.id) unless porcelain.id == nil
+      plumbing.name = (porcelain.name) unless porcelain.name == nil
+      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
+      plumbing.port = (porcelain.port) unless porcelain.port == nil
+      plumbing.certificate_authority = (porcelain.certificate_authority) unless porcelain.certificate_authority == nil
+      plumbing.client_certificate = (porcelain.client_certificate) unless porcelain.client_certificate == nil
+      plumbing.client_key = (porcelain.client_key) unless porcelain.client_key == nil
+      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace) unless porcelain.healthcheck_namespace == nil
+      plumbing
+    end
+    def self.convert_repeated_aks_user_impersonation_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_aks_user_impersonation_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_aks_user_impersonation_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_aks_user_impersonation_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -2405,6 +2709,56 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_aks_service_account_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_aks_service_account_user_impersonation_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AKSServiceAccountUserImpersonation.new()
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.port = (plumbing.port)
+      porcelain.token = (plumbing.token)
+      porcelain.healthcheck_namespace = (plumbing.healthcheck_namespace)
+      porcelain
+    end
+
+    def self.convert_aks_service_account_user_impersonation_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AKSServiceAccountUserImpersonation.new()
+      plumbing.id = (porcelain.id) unless porcelain.id == nil
+      plumbing.name = (porcelain.name) unless porcelain.name == nil
+      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
+      plumbing.port = (porcelain.port) unless porcelain.port == nil
+      plumbing.token = (porcelain.token) unless porcelain.token == nil
+      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace) unless porcelain.healthcheck_namespace == nil
+      plumbing
+    end
+    def self.convert_repeated_aks_service_account_user_impersonation_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_aks_service_account_user_impersonation_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_aks_service_account_user_impersonation_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_aks_service_account_user_impersonation_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items

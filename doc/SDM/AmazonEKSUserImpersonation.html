@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class SDM::MongoLegacyReplicaset - RDoc Documentation</title>
+<title>class SDM::AmazonEKSUserImpersonation - RDoc Documentation</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../";
@@ -85,9 +85,9 @@
   </div>
 </nav>
 
-<main role="main" aria-labelledby="class-SDM::MongoLegacyReplicaset">
-  <h1 id="class-SDM::MongoLegacyReplicaset" class="class">
-    class SDM::MongoLegacyReplicaset
+<main role="main" aria-labelledby="class-SDM::AmazonEKSUserImpersonation">
+  <h1 id="class-SDM::AmazonEKSUserImpersonation" class="class">
+    class SDM::AmazonEKSUserImpersonation
   </h1>
 
   <section class="description">
@@ -109,9 +109,9 @@
       </header>
 
       
-      <div id="attribute-i-auth_database" class="method-detail">
+      <div id="attribute-i-access_key" class="method-detail">
         <div class="method-heading attribute-method-heading">
-          <span class="method-name">auth_database</span><span
+          <span class="method-name">access_key</span><span
             class="attribute-access-type">[RW]</span>
         </div>
 
@@ -122,9 +122,48 @@
         </div>
       </div>
       
-      <div id="attribute-i-connect_to_replica" class="method-detail">
+      <div id="attribute-i-certificate_authority" class="method-detail">
         <div class="method-heading attribute-method-heading">
-          <span class="method-name">connect_to_replica</span><span
+          <span class="method-name">certificate_authority</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-cluster_name" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">cluster_name</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-endpoint" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">endpoint</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-healthcheck_namespace" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">healthcheck_namespace</span><span
             class="attribute-access-type">[RW]</span>
         </div>
 
@@ -144,19 +183,6 @@
         <div class="method-description">
         
         <p>True if the datasource is reachable and the credentials are valid.</p>
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-hostname" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">hostname</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
         
         </div>
       </div>
@@ -187,9 +213,9 @@
         </div>
       </div>
       
-      <div id="attribute-i-password" class="method-detail">
+      <div id="attribute-i-region" class="method-detail">
         <div class="method-heading attribute-method-heading">
-          <span class="method-name">password</span><span
+          <span class="method-name">region</span><span
             class="attribute-access-type">[RW]</span>
         </div>
 
@@ -200,9 +226,9 @@
         </div>
       </div>
       
-      <div id="attribute-i-port" class="method-detail">
+      <div id="attribute-i-role_arn" class="method-detail">
         <div class="method-heading attribute-method-heading">
-          <span class="method-name">port</span><span
+          <span class="method-name">role_arn</span><span
             class="attribute-access-type">[RW]</span>
         </div>
 
@@ -213,9 +239,9 @@
         </div>
       </div>
       
-      <div id="attribute-i-port_override" class="method-detail">
+      <div id="attribute-i-role_external_id" class="method-detail">
         <div class="method-heading attribute-method-heading">
-          <span class="method-name">port_override</span><span
+          <span class="method-name">role_external_id</span><span
             class="attribute-access-type">[RW]</span>
         </div>
 
@@ -226,9 +252,9 @@
         </div>
       </div>
       
-      <div id="attribute-i-replica_set" class="method-detail">
+      <div id="attribute-i-secret_access_key" class="method-detail">
         <div class="method-heading attribute-method-heading">
-          <span class="method-name">replica_set</span><span
+          <span class="method-name">secret_access_key</span><span
             class="attribute-access-type">[RW]</span>
         </div>
 
@@ -265,32 +291,6 @@
         </div>
       </div>
       
-      <div id="attribute-i-tls_required" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">tls_required</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-username" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">username</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
     </section>
     
 
@@ -305,7 +305,7 @@
         
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">( id:nil \ , name:nil \ , healthy:nil \ , tags:nil \ , secret_store_id:nil \ , hostname:nil \ , auth_database:nil \ , port_override:nil \ , username:nil \ , password:nil \ , port:nil \ , replica_set:nil \ , connect_to_replica:nil \ , tls_required:nil \ )</span>
+            class="method-args">( id:nil \ , name:nil \ , healthy:nil \ , tags:nil \ , secret_store_id:nil \ , endpoint:nil \ , access_key:nil \ , secret_access_key:nil \ , certificate_authority:nil \ , region:nil \ , cluster_name:nil \ , role_arn:nil \ , role_external_id:nil \ , healthcheck_namespace:nil \ )</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -320,7 +320,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 3252</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 2411</span>
                 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(
                         <span class="ruby-value">id:</span><span class="ruby-keyword">nil</span> \
 ,
@@ -332,23 +332,23 @@
 ,
                         <span class="ruby-value">secret_store_id:</span><span class="ruby-keyword">nil</span> \
 ,
-                        <span class="ruby-value">hostname:</span><span class="ruby-keyword">nil</span> \
+                        <span class="ruby-value">endpoint:</span><span class="ruby-keyword">nil</span> \
 ,
-                        <span class="ruby-value">auth_database:</span><span class="ruby-keyword">nil</span> \
+                        <span class="ruby-value">access_key:</span><span class="ruby-keyword">nil</span> \
 ,
-                        <span class="ruby-value">port_override:</span><span class="ruby-keyword">nil</span> \
+                        <span class="ruby-value">secret_access_key:</span><span class="ruby-keyword">nil</span> \
 ,
-                        <span class="ruby-value">username:</span><span class="ruby-keyword">nil</span> \
+                        <span class="ruby-value">certificate_authority:</span><span class="ruby-keyword">nil</span> \
 ,
-                        <span class="ruby-value">password:</span><span class="ruby-keyword">nil</span> \
+                        <span class="ruby-value">region:</span><span class="ruby-keyword">nil</span> \
 ,
-                        <span class="ruby-value">port:</span><span class="ruby-keyword">nil</span> \
+                        <span class="ruby-value">cluster_name:</span><span class="ruby-keyword">nil</span> \
 ,
-                        <span class="ruby-value">replica_set:</span><span class="ruby-keyword">nil</span> \
+                        <span class="ruby-value">role_arn:</span><span class="ruby-keyword">nil</span> \
 ,
-                        <span class="ruby-value">connect_to_replica:</span><span class="ruby-keyword">nil</span> \
+                        <span class="ruby-value">role_external_id:</span><span class="ruby-keyword">nil</span> \
 ,
-                        <span class="ruby-value">tls_required:</span><span class="ruby-keyword">nil</span> \
+                        <span class="ruby-value">healthcheck_namespace:</span><span class="ruby-keyword">nil</span> \
                 )
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">id</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">id</span>
@@ -365,32 +365,32 @@
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">secret_store_id</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@secret_store_id</span> = <span class="ruby-identifier">secret_store_id</span>
                         <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">hostname</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@hostname</span> = <span class="ruby-identifier">hostname</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">endpoint</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@endpoint</span> = <span class="ruby-identifier">endpoint</span>
                         <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">auth_database</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@auth_database</span> = <span class="ruby-identifier">auth_database</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">access_key</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@access_key</span> = <span class="ruby-identifier">access_key</span>
                         <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">port_override</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@port_override</span> = <span class="ruby-identifier">port_override</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">secret_access_key</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@secret_access_key</span> = <span class="ruby-identifier">secret_access_key</span>
                         <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">username</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@username</span> = <span class="ruby-identifier">username</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">certificate_authority</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@certificate_authority</span> = <span class="ruby-identifier">certificate_authority</span>
                         <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">password</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@password</span> = <span class="ruby-identifier">password</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">region</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@region</span> = <span class="ruby-identifier">region</span>
                         <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">port</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@port</span> = <span class="ruby-identifier">port</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">cluster_name</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@cluster_name</span> = <span class="ruby-identifier">cluster_name</span>
                         <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">replica_set</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@replica_set</span> = <span class="ruby-identifier">replica_set</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">role_arn</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@role_arn</span> = <span class="ruby-identifier">role_arn</span>
                         <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">connect_to_replica</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@connect_to_replica</span> = <span class="ruby-identifier">connect_to_replica</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">role_external_id</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@role_external_id</span> = <span class="ruby-identifier">role_external_id</span>
                         <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">tls_required</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@tls_required</span> = <span class="ruby-identifier">tls_required</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">healthcheck_namespace</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@healthcheck_namespace</span> = <span class="ruby-identifier">healthcheck_namespace</span>
                         <span class="ruby-keyword">end</span>
                 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -430,7 +430,7 @@
 
           
           <div class="method-source-code" id="to_json-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 3324</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 2483</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_json</span>(<span class="ruby-identifier">options</span>={})
         <span class="ruby-identifier">hash</span> = {}
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">instance_variables</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">var</span><span class="ruby-operator">|</span>

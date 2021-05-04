@@ -1851,6 +1851,87 @@ module SDM
     end
   end
 
+  class KubernetesUserImpersonation
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+
+    attr_accessor :hostname
+
+    attr_accessor :port
+
+    attr_accessor :certificate_authority
+
+    attr_accessor :client_certificate
+
+    attr_accessor :client_key
+
+    attr_accessor :healthcheck_namespace
+
+    def initialize(
+      id: nil,
+      name: nil,
+      healthy: nil,
+      tags: nil,
+      secret_store_id: nil,
+      hostname: nil,
+      port: nil,
+      certificate_authority: nil,
+      client_certificate: nil,
+      client_key: nil,
+      healthcheck_namespace: nil
+    )
+      if id != nil
+        @id = id
+      end
+      if name != nil
+        @name = name
+      end
+      if healthy != nil
+        @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
+      end
+      if hostname != nil
+        @hostname = hostname
+      end
+      if port != nil
+        @port = port
+      end
+      if certificate_authority != nil
+        @certificate_authority = certificate_authority
+      end
+      if client_certificate != nil
+        @client_certificate = client_certificate
+      end
+      if client_key != nil
+        @client_key = client_key
+      end
+      if healthcheck_namespace != nil
+        @healthcheck_namespace = healthcheck_namespace
+      end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class KubernetesBasicAuth
     # Unique identifier of the Resource.
     attr_accessor :id
@@ -1927,6 +2008,75 @@ module SDM
   end
 
   class KubernetesServiceAccount
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+
+    attr_accessor :hostname
+
+    attr_accessor :port
+
+    attr_accessor :token
+
+    attr_accessor :healthcheck_namespace
+
+    def initialize(
+      id: nil,
+      name: nil,
+      healthy: nil,
+      tags: nil,
+      secret_store_id: nil,
+      hostname: nil,
+      port: nil,
+      token: nil,
+      healthcheck_namespace: nil
+    )
+      if id != nil
+        @id = id
+      end
+      if name != nil
+        @name = name
+      end
+      if healthy != nil
+        @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
+      end
+      if hostname != nil
+        @hostname = hostname
+      end
+      if port != nil
+        @port = port
+      end
+      if token != nil
+        @token = token
+      end
+      if healthcheck_namespace != nil
+        @healthcheck_namespace = healthcheck_namespace
+      end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  class KubernetesServiceAccountUserImpersonation
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
@@ -2094,6 +2244,105 @@ module SDM
     end
   end
 
+  class AmazonEKSUserImpersonation
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+
+    attr_accessor :endpoint
+
+    attr_accessor :access_key
+
+    attr_accessor :secret_access_key
+
+    attr_accessor :certificate_authority
+
+    attr_accessor :region
+
+    attr_accessor :cluster_name
+
+    attr_accessor :role_arn
+
+    attr_accessor :role_external_id
+
+    attr_accessor :healthcheck_namespace
+
+    def initialize(
+      id: nil,
+      name: nil,
+      healthy: nil,
+      tags: nil,
+      secret_store_id: nil,
+      endpoint: nil,
+      access_key: nil,
+      secret_access_key: nil,
+      certificate_authority: nil,
+      region: nil,
+      cluster_name: nil,
+      role_arn: nil,
+      role_external_id: nil,
+      healthcheck_namespace: nil
+    )
+      if id != nil
+        @id = id
+      end
+      if name != nil
+        @name = name
+      end
+      if healthy != nil
+        @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
+      end
+      if endpoint != nil
+        @endpoint = endpoint
+      end
+      if access_key != nil
+        @access_key = access_key
+      end
+      if secret_access_key != nil
+        @secret_access_key = secret_access_key
+      end
+      if certificate_authority != nil
+        @certificate_authority = certificate_authority
+      end
+      if region != nil
+        @region = region
+      end
+      if cluster_name != nil
+        @cluster_name = cluster_name
+      end
+      if role_arn != nil
+        @role_arn = role_arn
+      end
+      if role_external_id != nil
+        @role_external_id = role_external_id
+      end
+      if healthcheck_namespace != nil
+        @healthcheck_namespace = healthcheck_namespace
+      end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class GoogleGKE
     # Unique identifier of the Resource.
     attr_accessor :id
@@ -2163,7 +2412,157 @@ module SDM
     end
   end
 
+  class GoogleGKEUserImpersonation
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+
+    attr_accessor :endpoint
+
+    attr_accessor :certificate_authority
+
+    attr_accessor :service_account_key
+
+    attr_accessor :healthcheck_namespace
+
+    def initialize(
+      id: nil,
+      name: nil,
+      healthy: nil,
+      tags: nil,
+      secret_store_id: nil,
+      endpoint: nil,
+      certificate_authority: nil,
+      service_account_key: nil,
+      healthcheck_namespace: nil
+    )
+      if id != nil
+        @id = id
+      end
+      if name != nil
+        @name = name
+      end
+      if healthy != nil
+        @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
+      end
+      if endpoint != nil
+        @endpoint = endpoint
+      end
+      if certificate_authority != nil
+        @certificate_authority = certificate_authority
+      end
+      if service_account_key != nil
+        @service_account_key = service_account_key
+      end
+      if healthcheck_namespace != nil
+        @healthcheck_namespace = healthcheck_namespace
+      end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class AKS
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+
+    attr_accessor :hostname
+
+    attr_accessor :port
+
+    attr_accessor :certificate_authority
+
+    attr_accessor :client_certificate
+
+    attr_accessor :client_key
+
+    attr_accessor :healthcheck_namespace
+
+    def initialize(
+      id: nil,
+      name: nil,
+      healthy: nil,
+      tags: nil,
+      secret_store_id: nil,
+      hostname: nil,
+      port: nil,
+      certificate_authority: nil,
+      client_certificate: nil,
+      client_key: nil,
+      healthcheck_namespace: nil
+    )
+      if id != nil
+        @id = id
+      end
+      if name != nil
+        @name = name
+      end
+      if healthy != nil
+        @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
+      end
+      if hostname != nil
+        @hostname = hostname
+      end
+      if port != nil
+        @port = port
+      end
+      if certificate_authority != nil
+        @certificate_authority = certificate_authority
+      end
+      if client_certificate != nil
+        @client_certificate = client_certificate
+      end
+      if client_key != nil
+        @client_key = client_key
+      end
+      if healthcheck_namespace != nil
+        @healthcheck_namespace = healthcheck_namespace
+      end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  class AKSUserImpersonation
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
@@ -2320,6 +2719,75 @@ module SDM
   end
 
   class AKSServiceAccount
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+
+    attr_accessor :hostname
+
+    attr_accessor :port
+
+    attr_accessor :token
+
+    attr_accessor :healthcheck_namespace
+
+    def initialize(
+      id: nil,
+      name: nil,
+      healthy: nil,
+      tags: nil,
+      secret_store_id: nil,
+      hostname: nil,
+      port: nil,
+      token: nil,
+      healthcheck_namespace: nil
+    )
+      if id != nil
+        @id = id
+      end
+      if name != nil
+        @name = name
+      end
+      if healthy != nil
+        @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
+      end
+      if hostname != nil
+        @hostname = hostname
+      end
+      if port != nil
+        @port = port
+      end
+      if token != nil
+        @token = token
+      end
+      if healthcheck_namespace != nil
+        @healthcheck_namespace = healthcheck_namespace
+      end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  class AKSServiceAccountUserImpersonation
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
