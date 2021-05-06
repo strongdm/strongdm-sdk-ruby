@@ -148,6 +148,19 @@
         </div>
       </div>
       
+      <div id="attribute-i-egress_filter" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">egress_filter</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>A filter applied to the routing logic to pin datasource to nodes.</p>
+        
+        </div>
+      </div>
+      
       <div id="attribute-i-endpoint" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">endpoint</span><span
@@ -305,7 +318,7 @@
         
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">( id:nil \ , name:nil \ , healthy:nil \ , tags:nil \ , secret_store_id:nil \ , endpoint:nil \ , access_key:nil \ , secret_access_key:nil \ , certificate_authority:nil \ , region:nil \ , cluster_name:nil \ , role_arn:nil \ , role_external_id:nil \ , healthcheck_namespace:nil \ )</span>
+            class="method-args">( id:nil \ , name:nil \ , healthy:nil \ , tags:nil \ , secret_store_id:nil \ , egress_filter:nil \ , endpoint:nil \ , access_key:nil \ , secret_access_key:nil \ , certificate_authority:nil \ , region:nil \ , cluster_name:nil \ , role_arn:nil \ , role_external_id:nil \ , healthcheck_namespace:nil \ )</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -320,7 +333,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 2411</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 2546</span>
                 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(
                         <span class="ruby-value">id:</span><span class="ruby-keyword">nil</span> \
 ,
@@ -331,6 +344,8 @@
                         <span class="ruby-value">tags:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">secret_store_id:</span><span class="ruby-keyword">nil</span> \
+,
+                        <span class="ruby-value">egress_filter:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">endpoint:</span><span class="ruby-keyword">nil</span> \
 ,
@@ -364,6 +379,9 @@
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">secret_store_id</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@secret_store_id</span> = <span class="ruby-identifier">secret_store_id</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">egress_filter</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@egress_filter</span> = <span class="ruby-identifier">egress_filter</span>
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">endpoint</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@endpoint</span> = <span class="ruby-identifier">endpoint</span>
@@ -430,7 +448,7 @@
 
           
           <div class="method-source-code" id="to_json-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 2483</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 2623</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_json</span>(<span class="ruby-identifier">options</span>={})
         <span class="ruby-identifier">hash</span> = {}
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">instance_variables</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">var</span><span class="ruby-operator">|</span>

@@ -728,6 +728,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :access_key
 
@@ -749,6 +751,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       access_key: nil,
       secret_access_key: nil,
       output: nil,
@@ -771,6 +774,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if access_key != nil
         @access_key = access_key
@@ -815,6 +821,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :access_key
 
@@ -832,6 +840,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       access_key: nil,
       secret_access_key: nil,
       healthcheck_region: nil,
@@ -852,6 +861,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if access_key != nil
         @access_key = access_key
@@ -890,6 +902,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :private_key
 
@@ -907,6 +921,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       private_key: nil,
       project: nil,
       port_override: nil,
@@ -927,6 +942,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if private_key != nil
         @private_key = private_key
@@ -965,6 +983,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -984,6 +1004,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -1005,6 +1026,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -1046,6 +1070,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -1065,6 +1091,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -1086,6 +1113,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -1127,6 +1157,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -1146,6 +1178,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -1167,6 +1200,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -1208,6 +1244,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -1225,6 +1263,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       port_override: nil,
       username: nil,
@@ -1245,6 +1284,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -1283,6 +1325,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :access_key
 
@@ -1304,6 +1348,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       access_key: nil,
       secret_access_key: nil,
       region: nil,
@@ -1326,6 +1371,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if access_key != nil
         @access_key = access_key
@@ -1370,6 +1418,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :region
 
@@ -1391,6 +1441,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       region: nil,
       secret_access_key: nil,
       endpoint: nil,
@@ -1413,6 +1464,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if region != nil
         @region = region
@@ -1457,6 +1511,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -1476,6 +1532,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -1497,6 +1554,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -1538,6 +1598,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :url
 
@@ -1559,6 +1621,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       url: nil,
       healthcheck_path: nil,
       username: nil,
@@ -1581,6 +1644,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if url != nil
         @url = url
@@ -1625,6 +1691,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :url
 
@@ -1642,6 +1710,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       url: nil,
       healthcheck_path: nil,
       headers_blacklist: nil,
@@ -1662,6 +1731,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if url != nil
         @url = url
@@ -1700,6 +1772,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :url
 
@@ -1719,6 +1793,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       url: nil,
       healthcheck_path: nil,
       auth_header: nil,
@@ -1740,6 +1815,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if url != nil
         @url = url
@@ -1781,6 +1859,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -1800,6 +1880,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       port: nil,
       certificate_authority: nil,
@@ -1821,6 +1902,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -1862,6 +1946,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -1881,6 +1967,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       port: nil,
       certificate_authority: nil,
@@ -1902,6 +1989,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -1943,6 +2033,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -1960,6 +2052,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       port: nil,
       username: nil,
@@ -1980,6 +2073,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -2018,6 +2114,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -2033,6 +2131,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       port: nil,
       token: nil,
@@ -2052,6 +2151,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -2087,6 +2189,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -2102,6 +2206,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       port: nil,
       token: nil,
@@ -2121,6 +2226,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -2156,6 +2264,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :endpoint
 
@@ -2181,6 +2291,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       endpoint: nil,
       access_key: nil,
       secret_access_key: nil,
@@ -2205,6 +2316,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if endpoint != nil
         @endpoint = endpoint
@@ -2255,6 +2369,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :endpoint
 
@@ -2280,6 +2396,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       endpoint: nil,
       access_key: nil,
       secret_access_key: nil,
@@ -2304,6 +2421,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if endpoint != nil
         @endpoint = endpoint
@@ -2354,6 +2474,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :endpoint
 
@@ -2369,6 +2491,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       endpoint: nil,
       certificate_authority: nil,
       service_account_key: nil,
@@ -2388,6 +2511,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if endpoint != nil
         @endpoint = endpoint
@@ -2423,6 +2549,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :endpoint
 
@@ -2438,6 +2566,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       endpoint: nil,
       certificate_authority: nil,
       service_account_key: nil,
@@ -2457,6 +2586,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if endpoint != nil
         @endpoint = endpoint
@@ -2492,6 +2624,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -2511,6 +2645,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       port: nil,
       certificate_authority: nil,
@@ -2532,6 +2667,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -2573,6 +2711,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -2592,6 +2732,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       port: nil,
       certificate_authority: nil,
@@ -2613,6 +2754,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -2654,6 +2798,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -2671,6 +2817,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       port: nil,
       username: nil,
@@ -2691,6 +2838,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -2729,6 +2879,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -2744,6 +2896,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       port: nil,
       token: nil,
@@ -2763,6 +2916,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -2798,6 +2954,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -2813,6 +2971,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       port: nil,
       token: nil,
@@ -2832,6 +2991,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -2867,6 +3029,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -2880,6 +3044,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       port_override: nil,
       port: nil
@@ -2898,6 +3063,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -2930,6 +3098,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -2953,6 +3123,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       auth_database: nil,
       port_override: nil,
@@ -2976,6 +3147,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -3023,6 +3197,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -3048,6 +3224,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       auth_database: nil,
       port_override: nil,
@@ -3072,6 +3249,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -3122,6 +3302,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -3143,6 +3325,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       auth_database: nil,
       port_override: nil,
@@ -3165,6 +3348,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -3209,6 +3395,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -3234,6 +3422,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       auth_database: nil,
       port_override: nil,
@@ -3258,6 +3447,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -3308,6 +3500,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -3327,6 +3521,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -3348,6 +3543,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -3389,6 +3587,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -3408,6 +3608,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -3429,6 +3630,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -3470,6 +3674,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -3489,6 +3695,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -3510,6 +3717,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -3551,6 +3761,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -3570,6 +3782,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -3591,6 +3804,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -3632,6 +3848,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -3651,6 +3869,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -3672,6 +3891,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -3713,6 +3935,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -3734,6 +3958,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -3756,6 +3981,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -3800,6 +4028,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -3821,6 +4051,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -3843,6 +4074,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -3887,6 +4121,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -3908,6 +4144,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -3930,6 +4167,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -3974,6 +4214,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -3995,6 +4237,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -4017,6 +4260,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -4061,6 +4307,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -4082,6 +4330,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -4104,6 +4353,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -4148,6 +4400,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -4169,6 +4423,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -4191,6 +4446,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -4235,6 +4493,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -4256,6 +4516,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -4278,6 +4539,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -4322,6 +4586,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -4343,6 +4609,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       password: nil,
       database: nil,
@@ -4365,6 +4632,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -4409,6 +4679,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -4426,6 +4698,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -4446,6 +4719,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -4484,6 +4760,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -4499,6 +4777,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       port_override: nil,
       password: nil,
@@ -4518,6 +4797,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -4553,6 +4835,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -4570,6 +4854,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       port_override: nil,
       password: nil,
@@ -4590,6 +4875,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -4628,6 +4916,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -4647,6 +4937,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -4668,6 +4959,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -4709,6 +5003,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -4732,6 +5028,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -4755,6 +5052,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -4802,6 +5102,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -4821,6 +5123,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       username: nil,
       port: nil,
@@ -4842,6 +5145,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -4883,6 +5189,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -4900,6 +5208,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       username: nil,
       port: nil,
@@ -4920,6 +5229,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -4958,6 +5270,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -4977,6 +5291,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       username: nil,
       port: nil,
@@ -4998,6 +5313,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -5039,6 +5357,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -5056,6 +5376,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       username: nil,
       port_override: nil,
@@ -5076,6 +5397,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -5114,6 +5438,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -5131,6 +5457,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       username: nil,
       port_override: nil,
@@ -5151,6 +5478,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname
@@ -5189,6 +5519,8 @@ module SDM
     attr_accessor :tags
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
 
     attr_accessor :hostname
 
@@ -5206,6 +5538,7 @@ module SDM
       healthy: nil,
       tags: nil,
       secret_store_id: nil,
+      egress_filter: nil,
       hostname: nil,
       username: nil,
       password: nil,
@@ -5226,6 +5559,9 @@ module SDM
       end
       if secret_store_id != nil
         @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
       end
       if hostname != nil
         @hostname = hostname

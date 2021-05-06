@@ -1331,6 +1331,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.access_key = (plumbing.access_key)
       porcelain.secret_access_key = (plumbing.secret_access_key)
       porcelain.output = (plumbing.output)
@@ -1351,6 +1352,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.access_key = (porcelain.access_key) unless porcelain.access_key == nil
       plumbing.secret_access_key = (porcelain.secret_access_key) unless porcelain.secret_access_key == nil
       plumbing.output = (porcelain.output) unless porcelain.output == nil
@@ -1387,6 +1389,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.access_key = (plumbing.access_key)
       porcelain.secret_access_key = (plumbing.secret_access_key)
       porcelain.healthcheck_region = (plumbing.healthcheck_region)
@@ -1405,6 +1408,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.access_key = (porcelain.access_key) unless porcelain.access_key == nil
       plumbing.secret_access_key = (porcelain.secret_access_key) unless porcelain.secret_access_key == nil
       plumbing.healthcheck_region = (porcelain.healthcheck_region) unless porcelain.healthcheck_region == nil
@@ -1439,6 +1443,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.private_key = (plumbing.private_key)
       porcelain.project = (plumbing.project)
       porcelain.port_override = (plumbing.port_override)
@@ -1457,6 +1462,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.private_key = (porcelain.private_key) unless porcelain.private_key == nil
       plumbing.project = (porcelain.project) unless porcelain.project == nil
       plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
@@ -1491,6 +1497,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.username = (plumbing.username)
       porcelain.password = (plumbing.password)
@@ -1510,6 +1517,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.username = (porcelain.username) unless porcelain.username == nil
       plumbing.password = (porcelain.password) unless porcelain.password == nil
@@ -1545,6 +1553,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.username = (plumbing.username)
       porcelain.password = (plumbing.password)
@@ -1564,6 +1573,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.username = (porcelain.username) unless porcelain.username == nil
       plumbing.password = (porcelain.password) unless porcelain.password == nil
@@ -1599,6 +1609,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.username = (plumbing.username)
       porcelain.password = (plumbing.password)
@@ -1618,6 +1629,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.username = (porcelain.username) unless porcelain.username == nil
       plumbing.password = (porcelain.password) unless porcelain.password == nil
@@ -1653,6 +1665,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.port_override = (plumbing.port_override)
       porcelain.username = (plumbing.username)
@@ -1671,6 +1684,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
       plumbing.username = (porcelain.username) unless porcelain.username == nil
@@ -1705,6 +1719,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.access_key = (plumbing.access_key)
       porcelain.secret_access_key = (plumbing.secret_access_key)
       porcelain.region = (plumbing.region)
@@ -1725,6 +1740,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.access_key = (porcelain.access_key) unless porcelain.access_key == nil
       plumbing.secret_access_key = (porcelain.secret_access_key) unless porcelain.secret_access_key == nil
       plumbing.region = (porcelain.region) unless porcelain.region == nil
@@ -1761,6 +1777,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.region = (plumbing.region)
       porcelain.secret_access_key = (plumbing.secret_access_key)
       porcelain.endpoint = (plumbing.endpoint)
@@ -1781,6 +1798,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.region = (porcelain.region) unless porcelain.region == nil
       plumbing.secret_access_key = (porcelain.secret_access_key) unless porcelain.secret_access_key == nil
       plumbing.endpoint = (porcelain.endpoint) unless porcelain.endpoint == nil
@@ -1817,6 +1835,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.username = (plumbing.username)
       porcelain.password = (plumbing.password)
@@ -1836,6 +1855,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.username = (porcelain.username) unless porcelain.username == nil
       plumbing.password = (porcelain.password) unless porcelain.password == nil
@@ -1871,6 +1891,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.url = (plumbing.url)
       porcelain.healthcheck_path = (plumbing.healthcheck_path)
       porcelain.username = (plumbing.username)
@@ -1891,6 +1912,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.url = (porcelain.url) unless porcelain.url == nil
       plumbing.healthcheck_path = (porcelain.healthcheck_path) unless porcelain.healthcheck_path == nil
       plumbing.username = (porcelain.username) unless porcelain.username == nil
@@ -1927,6 +1949,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.url = (plumbing.url)
       porcelain.healthcheck_path = (plumbing.healthcheck_path)
       porcelain.headers_blacklist = (plumbing.headers_blacklist)
@@ -1945,6 +1968,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.url = (porcelain.url) unless porcelain.url == nil
       plumbing.healthcheck_path = (porcelain.healthcheck_path) unless porcelain.healthcheck_path == nil
       plumbing.headers_blacklist = (porcelain.headers_blacklist) unless porcelain.headers_blacklist == nil
@@ -1979,6 +2003,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.url = (plumbing.url)
       porcelain.healthcheck_path = (plumbing.healthcheck_path)
       porcelain.auth_header = (plumbing.auth_header)
@@ -1998,6 +2023,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.url = (porcelain.url) unless porcelain.url == nil
       plumbing.healthcheck_path = (porcelain.healthcheck_path) unless porcelain.healthcheck_path == nil
       plumbing.auth_header = (porcelain.auth_header) unless porcelain.auth_header == nil
@@ -2033,6 +2059,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.port = (plumbing.port)
       porcelain.certificate_authority = (plumbing.certificate_authority)
@@ -2052,6 +2079,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.port = (porcelain.port) unless porcelain.port == nil
       plumbing.certificate_authority = (porcelain.certificate_authority) unless porcelain.certificate_authority == nil
@@ -2087,6 +2115,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.port = (plumbing.port)
       porcelain.certificate_authority = (plumbing.certificate_authority)
@@ -2106,6 +2135,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.port = (porcelain.port) unless porcelain.port == nil
       plumbing.certificate_authority = (porcelain.certificate_authority) unless porcelain.certificate_authority == nil
@@ -2141,6 +2171,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.port = (plumbing.port)
       porcelain.username = (plumbing.username)
@@ -2159,6 +2190,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.port = (porcelain.port) unless porcelain.port == nil
       plumbing.username = (porcelain.username) unless porcelain.username == nil
@@ -2193,6 +2225,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.port = (plumbing.port)
       porcelain.token = (plumbing.token)
@@ -2210,6 +2243,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.port = (porcelain.port) unless porcelain.port == nil
       plumbing.token = (porcelain.token) unless porcelain.token == nil
@@ -2243,6 +2277,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.port = (plumbing.port)
       porcelain.token = (plumbing.token)
@@ -2260,6 +2295,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.port = (porcelain.port) unless porcelain.port == nil
       plumbing.token = (porcelain.token) unless porcelain.token == nil
@@ -2293,6 +2329,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.endpoint = (plumbing.endpoint)
       porcelain.access_key = (plumbing.access_key)
       porcelain.secret_access_key = (plumbing.secret_access_key)
@@ -2315,6 +2352,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.endpoint = (porcelain.endpoint) unless porcelain.endpoint == nil
       plumbing.access_key = (porcelain.access_key) unless porcelain.access_key == nil
       plumbing.secret_access_key = (porcelain.secret_access_key) unless porcelain.secret_access_key == nil
@@ -2353,6 +2391,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.endpoint = (plumbing.endpoint)
       porcelain.access_key = (plumbing.access_key)
       porcelain.secret_access_key = (plumbing.secret_access_key)
@@ -2375,6 +2414,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.endpoint = (porcelain.endpoint) unless porcelain.endpoint == nil
       plumbing.access_key = (porcelain.access_key) unless porcelain.access_key == nil
       plumbing.secret_access_key = (porcelain.secret_access_key) unless porcelain.secret_access_key == nil
@@ -2413,6 +2453,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.endpoint = (plumbing.endpoint)
       porcelain.certificate_authority = (plumbing.certificate_authority)
       porcelain.service_account_key = (plumbing.service_account_key)
@@ -2430,6 +2471,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.endpoint = (porcelain.endpoint) unless porcelain.endpoint == nil
       plumbing.certificate_authority = (porcelain.certificate_authority) unless porcelain.certificate_authority == nil
       plumbing.service_account_key = (porcelain.service_account_key) unless porcelain.service_account_key == nil
@@ -2463,6 +2505,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.endpoint = (plumbing.endpoint)
       porcelain.certificate_authority = (plumbing.certificate_authority)
       porcelain.service_account_key = (plumbing.service_account_key)
@@ -2480,6 +2523,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.endpoint = (porcelain.endpoint) unless porcelain.endpoint == nil
       plumbing.certificate_authority = (porcelain.certificate_authority) unless porcelain.certificate_authority == nil
       plumbing.service_account_key = (porcelain.service_account_key) unless porcelain.service_account_key == nil
@@ -2513,6 +2557,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.port = (plumbing.port)
       porcelain.certificate_authority = (plumbing.certificate_authority)
@@ -2532,6 +2577,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.port = (porcelain.port) unless porcelain.port == nil
       plumbing.certificate_authority = (porcelain.certificate_authority) unless porcelain.certificate_authority == nil
@@ -2567,6 +2613,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.port = (plumbing.port)
       porcelain.certificate_authority = (plumbing.certificate_authority)
@@ -2586,6 +2633,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.port = (porcelain.port) unless porcelain.port == nil
       plumbing.certificate_authority = (porcelain.certificate_authority) unless porcelain.certificate_authority == nil
@@ -2621,6 +2669,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.port = (plumbing.port)
       porcelain.username = (plumbing.username)
@@ -2639,6 +2688,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.port = (porcelain.port) unless porcelain.port == nil
       plumbing.username = (porcelain.username) unless porcelain.username == nil
@@ -2673,6 +2723,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.port = (plumbing.port)
       porcelain.token = (plumbing.token)
@@ -2690,6 +2741,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.port = (porcelain.port) unless porcelain.port == nil
       plumbing.token = (porcelain.token) unless porcelain.token == nil
@@ -2723,6 +2775,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.port = (plumbing.port)
       porcelain.token = (plumbing.token)
@@ -2740,6 +2793,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.port = (porcelain.port) unless porcelain.port == nil
       plumbing.token = (porcelain.token) unless porcelain.token == nil
@@ -2773,6 +2827,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.port_override = (plumbing.port_override)
       porcelain.port = (plumbing.port)
@@ -2789,6 +2844,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
       plumbing.port = (porcelain.port) unless porcelain.port == nil
@@ -2821,6 +2877,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.auth_database = (plumbing.auth_database)
       porcelain.port_override = (plumbing.port_override)
@@ -2842,6 +2899,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.auth_database = (porcelain.auth_database) unless porcelain.auth_database == nil
       plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
@@ -2879,6 +2937,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.auth_database = (plumbing.auth_database)
       porcelain.port_override = (plumbing.port_override)
@@ -2901,6 +2960,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.auth_database = (porcelain.auth_database) unless porcelain.auth_database == nil
       plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
@@ -2939,6 +2999,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.auth_database = (plumbing.auth_database)
       porcelain.port_override = (plumbing.port_override)
@@ -2959,6 +3020,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.auth_database = (porcelain.auth_database) unless porcelain.auth_database == nil
       plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
@@ -2995,6 +3057,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.auth_database = (plumbing.auth_database)
       porcelain.port_override = (plumbing.port_override)
@@ -3017,6 +3080,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.auth_database = (porcelain.auth_database) unless porcelain.auth_database == nil
       plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
@@ -3055,6 +3119,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.username = (plumbing.username)
       porcelain.password = (plumbing.password)
@@ -3074,6 +3139,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.username = (porcelain.username) unless porcelain.username == nil
       plumbing.password = (porcelain.password) unless porcelain.password == nil
@@ -3109,6 +3175,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.username = (plumbing.username)
       porcelain.password = (plumbing.password)
@@ -3128,6 +3195,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.username = (porcelain.username) unless porcelain.username == nil
       plumbing.password = (porcelain.password) unless porcelain.password == nil
@@ -3163,6 +3231,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.username = (plumbing.username)
       porcelain.password = (plumbing.password)
@@ -3182,6 +3251,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.username = (porcelain.username) unless porcelain.username == nil
       plumbing.password = (porcelain.password) unless porcelain.password == nil
@@ -3217,6 +3287,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.username = (plumbing.username)
       porcelain.password = (plumbing.password)
@@ -3236,6 +3307,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.username = (porcelain.username) unless porcelain.username == nil
       plumbing.password = (porcelain.password) unless porcelain.password == nil
@@ -3271,6 +3343,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.username = (plumbing.username)
       porcelain.password = (plumbing.password)
@@ -3290,6 +3363,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.username = (porcelain.username) unless porcelain.username == nil
       plumbing.password = (porcelain.password) unless porcelain.password == nil
@@ -3325,6 +3399,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.username = (plumbing.username)
       porcelain.password = (plumbing.password)
@@ -3345,6 +3420,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.username = (porcelain.username) unless porcelain.username == nil
       plumbing.password = (porcelain.password) unless porcelain.password == nil
@@ -3381,6 +3457,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.username = (plumbing.username)
       porcelain.password = (plumbing.password)
@@ -3401,6 +3478,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.username = (porcelain.username) unless porcelain.username == nil
       plumbing.password = (porcelain.password) unless porcelain.password == nil
@@ -3437,6 +3515,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.username = (plumbing.username)
       porcelain.password = (plumbing.password)
@@ -3457,6 +3536,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.username = (porcelain.username) unless porcelain.username == nil
       plumbing.password = (porcelain.password) unless porcelain.password == nil
@@ -3493,6 +3573,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.username = (plumbing.username)
       porcelain.password = (plumbing.password)
@@ -3513,6 +3594,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.username = (porcelain.username) unless porcelain.username == nil
       plumbing.password = (porcelain.password) unless porcelain.password == nil
@@ -3549,6 +3631,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.username = (plumbing.username)
       porcelain.password = (plumbing.password)
@@ -3569,6 +3652,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.username = (porcelain.username) unless porcelain.username == nil
       plumbing.password = (porcelain.password) unless porcelain.password == nil
@@ -3605,6 +3689,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.username = (plumbing.username)
       porcelain.password = (plumbing.password)
@@ -3625,6 +3710,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.username = (porcelain.username) unless porcelain.username == nil
       plumbing.password = (porcelain.password) unless porcelain.password == nil
@@ -3661,6 +3747,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.username = (plumbing.username)
       porcelain.password = (plumbing.password)
@@ -3681,6 +3768,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.username = (porcelain.username) unless porcelain.username == nil
       plumbing.password = (porcelain.password) unless porcelain.password == nil
@@ -3717,6 +3805,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.password = (plumbing.password)
       porcelain.database = (plumbing.database)
@@ -3737,6 +3826,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.password = (porcelain.password) unless porcelain.password == nil
       plumbing.database = (porcelain.database) unless porcelain.database == nil
@@ -3773,6 +3863,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.username = (plumbing.username)
       porcelain.password = (plumbing.password)
@@ -3791,6 +3882,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.username = (porcelain.username) unless porcelain.username == nil
       plumbing.password = (porcelain.password) unless porcelain.password == nil
@@ -3825,6 +3917,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.port_override = (plumbing.port_override)
       porcelain.password = (plumbing.password)
@@ -3842,6 +3935,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
       plumbing.password = (porcelain.password) unless porcelain.password == nil
@@ -3875,6 +3969,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.port_override = (plumbing.port_override)
       porcelain.password = (plumbing.password)
@@ -3893,6 +3988,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
       plumbing.password = (porcelain.password) unless porcelain.password == nil
@@ -3927,6 +4023,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.username = (plumbing.username)
       porcelain.password = (plumbing.password)
@@ -3946,6 +4043,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.username = (porcelain.username) unless porcelain.username == nil
       plumbing.password = (porcelain.password) unless porcelain.password == nil
@@ -3981,6 +4079,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.username = (plumbing.username)
       porcelain.password = (plumbing.password)
@@ -4002,6 +4101,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.username = (porcelain.username) unless porcelain.username == nil
       plumbing.password = (porcelain.password) unless porcelain.password == nil
@@ -4039,6 +4139,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.username = (plumbing.username)
       porcelain.port = (plumbing.port)
@@ -4058,6 +4159,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.username = (porcelain.username) unless porcelain.username == nil
       plumbing.port = (porcelain.port) unless porcelain.port == nil
@@ -4093,6 +4195,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.username = (plumbing.username)
       porcelain.port = (plumbing.port)
@@ -4111,6 +4214,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.username = (porcelain.username) unless porcelain.username == nil
       plumbing.port = (porcelain.port) unless porcelain.port == nil
@@ -4145,6 +4249,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.username = (plumbing.username)
       porcelain.port = (plumbing.port)
@@ -4164,6 +4269,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.username = (porcelain.username) unless porcelain.username == nil
       plumbing.port = (porcelain.port) unless porcelain.port == nil
@@ -4199,6 +4305,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.username = (plumbing.username)
       porcelain.port_override = (plumbing.port_override)
@@ -4217,6 +4324,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.username = (porcelain.username) unless porcelain.username == nil
       plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
@@ -4251,6 +4359,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.username = (plumbing.username)
       porcelain.port_override = (plumbing.port_override)
@@ -4269,6 +4378,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.username = (porcelain.username) unless porcelain.username == nil
       plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
@@ -4303,6 +4413,7 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.hostname = (plumbing.hostname)
       porcelain.username = (plumbing.username)
       porcelain.password = (plumbing.password)
@@ -4321,6 +4432,7 @@ module SDM
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
       plumbing.username = (porcelain.username) unless porcelain.username == nil
       plumbing.password = (porcelain.password) unless porcelain.password == nil

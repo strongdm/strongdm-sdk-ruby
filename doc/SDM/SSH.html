@@ -122,6 +122,19 @@
         </div>
       </div>
       
+      <div id="attribute-i-egress_filter" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">egress_filter</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>A filter applied to the routing logic to pin datasource to nodes.</p>
+        
+        </div>
+      </div>
+      
       <div id="attribute-i-healthy" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">healthy</span><span
@@ -266,7 +279,7 @@
         
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">( id:nil \ , name:nil \ , healthy:nil \ , tags:nil \ , secret_store_id:nil \ , hostname:nil \ , username:nil \ , port:nil \ , public_key:nil \ , port_forwarding:nil \ , allow_deprecated_key_exchanges:nil \ )</span>
+            class="method-args">( id:nil \ , name:nil \ , healthy:nil \ , tags:nil \ , secret_store_id:nil \ , egress_filter:nil \ , hostname:nil \ , username:nil \ , port:nil \ , public_key:nil \ , port_forwarding:nil \ , allow_deprecated_key_exchanges:nil \ )</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -281,7 +294,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 5206</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 5558</span>
                 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(
                         <span class="ruby-value">id:</span><span class="ruby-keyword">nil</span> \
 ,
@@ -292,6 +305,8 @@
                         <span class="ruby-value">tags:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">secret_store_id:</span><span class="ruby-keyword">nil</span> \
+,
+                        <span class="ruby-value">egress_filter:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">hostname:</span><span class="ruby-keyword">nil</span> \
 ,
@@ -319,6 +334,9 @@
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">secret_store_id</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@secret_store_id</span> = <span class="ruby-identifier">secret_store_id</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">egress_filter</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@egress_filter</span> = <span class="ruby-identifier">egress_filter</span>
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">hostname</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@hostname</span> = <span class="ruby-identifier">hostname</span>
@@ -376,7 +394,7 @@
 
           
           <div class="method-source-code" id="to_json-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 5263</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 5620</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_json</span>(<span class="ruby-identifier">options</span>={})
         <span class="ruby-identifier">hash</span> = {}
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">instance_variables</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">var</span><span class="ruby-operator">|</span>
