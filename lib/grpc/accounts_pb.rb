@@ -81,6 +81,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :last_name, :string, 4
       optional :suspended, :bool, 5
       optional :tags, :message, 6, "v1.Tags"
+      optional :permission_level, :string, 7
     end
     add_message "v1.Service" do
       optional :id, :string, 1

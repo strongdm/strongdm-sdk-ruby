@@ -45,6 +45,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :read_only, :bool, 1941315
       optional :is_credential, :bool, 1941316
       optional :sql_type, :string, 1941317
+      optional :private_sdk, :bool, 1941318
     end
     add_message "v1.MessageOptions" do
       optional :model_name, :string, 1941300

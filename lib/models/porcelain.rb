@@ -5739,12 +5739,16 @@ module SDM
     attr_accessor :state
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # GatewayFilter can be used to restrict the peering between relays and
+    # gateways.
+    attr_accessor :gateway_filter
 
     def initialize(
       id: nil,
       name: nil,
       state: nil,
-      tags: nil
+      tags: nil,
+      gateway_filter: nil
     )
       if id != nil
         @id = id
@@ -5757,6 +5761,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if gateway_filter != nil
+        @gateway_filter = gateway_filter
       end
     end
 
@@ -5785,6 +5792,9 @@ module SDM
     attr_accessor :bind_address
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # GatewayFilter can be used to restrict the peering between relays and
+    # gateways.
+    attr_accessor :gateway_filter
 
     def initialize(
       id: nil,
@@ -5792,7 +5802,8 @@ module SDM
       state: nil,
       listen_address: nil,
       bind_address: nil,
-      tags: nil
+      tags: nil,
+      gateway_filter: nil
     )
       if id != nil
         @id = id
@@ -5811,6 +5822,9 @@ module SDM
       end
       if tags != nil
         @tags = tags
+      end
+      if gateway_filter != nil
+        @gateway_filter = gateway_filter
       end
     end
 

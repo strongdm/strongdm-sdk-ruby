@@ -4660,6 +4660,7 @@ module SDM
       porcelain.name = (plumbing.name)
       porcelain.state = (plumbing.state)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.gateway_filter = (plumbing.gateway_filter)
       porcelain
     end
 
@@ -4672,6 +4673,7 @@ module SDM
       plumbing.name = (porcelain.name) unless porcelain.name == nil
       plumbing.state = (porcelain.state) unless porcelain.state == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.gateway_filter = (porcelain.gateway_filter) unless porcelain.gateway_filter == nil
       plumbing
     end
     def self.convert_repeated_relay_to_plumbing(porcelains)
@@ -4702,6 +4704,7 @@ module SDM
       porcelain.listen_address = (plumbing.listen_address)
       porcelain.bind_address = (plumbing.bind_address)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.gateway_filter = (plumbing.gateway_filter)
       porcelain
     end
 
@@ -4716,6 +4719,7 @@ module SDM
       plumbing.listen_address = (porcelain.listen_address) unless porcelain.listen_address == nil
       plumbing.bind_address = (porcelain.bind_address) unless porcelain.bind_address == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.gateway_filter = (porcelain.gateway_filter) unless porcelain.gateway_filter == nil
       plumbing
     end
     def self.convert_repeated_gateway_to_plumbing(porcelains)
