@@ -23,6 +23,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("drivers.proto", :syntax => :proto3) do
     add_message "v1.Resource" do
       oneof :resource do
+        optional :rabbit_mqamqp_091, :message, 2500, "v1.RabbitMQAMQP091"
         optional :athena, :message, 100, "v1.Athena"
         optional :aws, :message, 2300, "v1.AWS"
         optional :big_query, :message, 200, "v1.BigQuery"
@@ -80,6 +81,20 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :sybase_iq, :message, 2001, "v1.SybaseIQ"
         optional :teradata, :message, 2100, "v1.Teradata"
       end
+    end
+    add_message "v1.RabbitMQAMQP091" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :hostname, :string, 1
+      optional :port_override, :int32, 2
+      optional :port, :int32, 3
+      optional :username, :string, 4
+      optional :password, :string, 5
+      optional :tls_required, :bool, 8
     end
     add_message "v1.Athena" do
       optional :id, :string, 32768
@@ -870,6 +885,7 @@ end
 
 module V1
   Resource = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Resource").msgclass
+  RabbitMQAMQP091 = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RabbitMQAMQP091").msgclass
   Athena = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Athena").msgclass
   AWS = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AWS").msgclass
   BigQuery = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.BigQuery").msgclass
