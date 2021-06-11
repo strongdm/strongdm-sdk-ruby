@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class SDM::Athena - RDoc Documentation</title>
+<title>class SDM::AmazonMQRabbitMQAMQP091 - RDoc Documentation</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../";
@@ -85,9 +85,9 @@
   </div>
 </nav>
 
-<main role="main" aria-labelledby="class-SDM::Athena">
-  <h1 id="class-SDM::Athena" class="class">
-    class SDM::Athena
+<main role="main" aria-labelledby="class-SDM::AmazonMQRabbitMQAMQP091">
+  <h1 id="class-SDM::AmazonMQRabbitMQAMQP091" class="class">
+    class SDM::AmazonMQRabbitMQAMQP091
   </h1>
 
   <section class="description">
@@ -108,19 +108,6 @@
         <h3>Attributes</h3>
       </header>
 
-      
-      <div id="attribute-i-access_key" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">access_key</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
       
       <div id="attribute-i-egress_filter" class="method-detail">
         <div class="method-heading attribute-method-heading">
@@ -144,6 +131,19 @@
         <div class="method-description">
         
         <p>True if the datasource is reachable and the credentials are valid.</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-hostname" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">hostname</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
         
         </div>
       </div>
@@ -174,9 +174,22 @@
         </div>
       </div>
       
-      <div id="attribute-i-output" class="method-detail">
+      <div id="attribute-i-password" class="method-detail">
         <div class="method-heading attribute-method-heading">
-          <span class="method-name">output</span><span
+          <span class="method-name">password</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-port" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">port</span><span
             class="attribute-access-type">[RW]</span>
         </div>
 
@@ -190,58 +203,6 @@
       <div id="attribute-i-port_override" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">port_override</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-region" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">region</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-role_arn" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">role_arn</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-role_external_id" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">role_external_id</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-secret_access_key" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">secret_access_key</span><span
             class="attribute-access-type">[RW]</span>
         </div>
 
@@ -278,6 +239,32 @@
         </div>
       </div>
       
+      <div id="attribute-i-tls_required" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">tls_required</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-username" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">username</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
     </section>
     
 
@@ -292,7 +279,7 @@
         
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">( id:nil \ , name:nil \ , healthy:nil \ , tags:nil \ , secret_store_id:nil \ , egress_filter:nil \ , access_key:nil \ , secret_access_key:nil \ , output:nil \ , port_override:nil \ , region:nil \ , role_arn:nil \ , role_external_id:nil \ )</span>
+            class="method-args">( id:nil \ , name:nil \ , healthy:nil \ , tags:nil \ , secret_store_id:nil \ , egress_filter:nil \ , hostname:nil \ , port_override:nil \ , port:nil \ , username:nil \ , password:nil \ , tls_required:nil \ )</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -307,7 +294,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 924</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 826</span>
                 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(
                         <span class="ruby-value">id:</span><span class="ruby-keyword">nil</span> \
 ,
@@ -321,19 +308,17 @@
 ,
                         <span class="ruby-value">egress_filter:</span><span class="ruby-keyword">nil</span> \
 ,
-                        <span class="ruby-value">access_key:</span><span class="ruby-keyword">nil</span> \
-,
-                        <span class="ruby-value">secret_access_key:</span><span class="ruby-keyword">nil</span> \
-,
-                        <span class="ruby-value">output:</span><span class="ruby-keyword">nil</span> \
+                        <span class="ruby-value">hostname:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">port_override:</span><span class="ruby-keyword">nil</span> \
 ,
-                        <span class="ruby-value">region:</span><span class="ruby-keyword">nil</span> \
+                        <span class="ruby-value">port:</span><span class="ruby-keyword">nil</span> \
 ,
-                        <span class="ruby-value">role_arn:</span><span class="ruby-keyword">nil</span> \
+                        <span class="ruby-value">username:</span><span class="ruby-keyword">nil</span> \
 ,
-                        <span class="ruby-value">role_external_id:</span><span class="ruby-keyword">nil</span> \
+                        <span class="ruby-value">password:</span><span class="ruby-keyword">nil</span> \
+,
+                        <span class="ruby-value">tls_required:</span><span class="ruby-keyword">nil</span> \
                 )
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">id</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">id</span>
@@ -353,26 +338,23 @@
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">egress_filter</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@egress_filter</span> = <span class="ruby-identifier">egress_filter</span>
                         <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">access_key</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@access_key</span> = <span class="ruby-identifier">access_key</span>
-                        <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">secret_access_key</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@secret_access_key</span> = <span class="ruby-identifier">secret_access_key</span>
-                        <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">output</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@output</span> = <span class="ruby-identifier">output</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">hostname</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@hostname</span> = <span class="ruby-identifier">hostname</span>
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">port_override</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@port_override</span> = <span class="ruby-identifier">port_override</span>
                         <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">region</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@region</span> = <span class="ruby-identifier">region</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">port</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@port</span> = <span class="ruby-identifier">port</span>
                         <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">role_arn</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@role_arn</span> = <span class="ruby-identifier">role_arn</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">username</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@username</span> = <span class="ruby-identifier">username</span>
                         <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">role_external_id</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@role_external_id</span> = <span class="ruby-identifier">role_external_id</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">password</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@password</span> = <span class="ruby-identifier">password</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">tls_required</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@tls_required</span> = <span class="ruby-identifier">tls_required</span>
                         <span class="ruby-keyword">end</span>
                 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -412,7 +394,7 @@
 
           
           <div class="method-source-code" id="to_json-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 991</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 888</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_json</span>(<span class="ruby-identifier">options</span>={})
         <span class="ruby-identifier">hash</span> = {}
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">instance_variables</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">var</span><span class="ruby-operator">|</span>
