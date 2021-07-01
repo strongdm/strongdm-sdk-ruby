@@ -1077,6 +1077,9 @@ module SDM
       if porcelain.instance_of? Memsql
         plumbing.memsql = convert_memsql_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? SingleStore
+        plumbing.single_store = convert_single_store_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? Oracle
         plumbing.oracle = convert_oracle_to_plumbing(porcelain)
       end
@@ -1257,6 +1260,9 @@ module SDM
       end
       if plumbing.memsql != nil
         return convert_memsql_to_porcelain(plumbing.memsql)
+      end
+      if plumbing.single_store != nil
+        return convert_single_store_to_porcelain(plumbing.single_store)
       end
       if plumbing.oracle != nil
         return convert_oracle_to_porcelain(plumbing.oracle)
@@ -3509,6 +3515,62 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_memsql_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_single_store_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = SingleStore.new()
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.username = (plumbing.username)
+      porcelain.password = (plumbing.password)
+      porcelain.database = (plumbing.database)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.port = (plumbing.port)
+      porcelain
+    end
+
+    def self.convert_single_store_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::SingleStore.new()
+      plumbing.id = (porcelain.id) unless porcelain.id == nil
+      plumbing.name = (porcelain.name) unless porcelain.name == nil
+      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
+      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
+      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.password = (porcelain.password) unless porcelain.password == nil
+      plumbing.database = (porcelain.database) unless porcelain.database == nil
+      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
+      plumbing.port = (porcelain.port) unless porcelain.port == nil
+      plumbing
+    end
+    def self.convert_repeated_single_store_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_single_store_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_single_store_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_single_store_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items

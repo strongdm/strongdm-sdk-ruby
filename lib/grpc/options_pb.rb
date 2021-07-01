@@ -59,6 +59,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :cli_json_name, :string, 1941308
       optional :json_gateway_name, :string, 1941309
       optional :hide_from_json_gateway, :bool, 1941310
+      optional :terraform_provider_name, :string, 1941311
     end
     add_message "v1.CustomPorcelainMessageOptions" do
       optional :converter, :string, 1941309

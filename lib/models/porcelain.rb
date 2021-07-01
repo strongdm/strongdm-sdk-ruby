@@ -4098,6 +4098,93 @@ module SDM
     end
   end
 
+  class SingleStore
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
+
+    attr_accessor :hostname
+
+    attr_accessor :username
+
+    attr_accessor :password
+
+    attr_accessor :database
+
+    attr_accessor :port_override
+
+    attr_accessor :port
+
+    def initialize(
+      id: nil,
+      name: nil,
+      healthy: nil,
+      tags: nil,
+      secret_store_id: nil,
+      egress_filter: nil,
+      hostname: nil,
+      username: nil,
+      password: nil,
+      database: nil,
+      port_override: nil,
+      port: nil
+    )
+      if id != nil
+        @id = id
+      end
+      if name != nil
+        @name = name
+      end
+      if healthy != nil
+        @healthy = healthy
+      end
+      if tags != nil
+        @tags = tags
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
+      end
+      if hostname != nil
+        @hostname = hostname
+      end
+      if username != nil
+        @username = username
+      end
+      if password != nil
+        @password = password
+      end
+      if database != nil
+        @database = database
+      end
+      if port_override != nil
+        @port_override = port_override
+      end
+      if port != nil
+        @port = port
+      end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class Oracle
     # Unique identifier of the Resource.
     attr_accessor :id

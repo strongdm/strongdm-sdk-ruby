@@ -62,6 +62,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :clustrix, :message, 1102, "v1.Clustrix"
         optional :maria, :message, 1103, "v1.Maria"
         optional :memsql, :message, 1104, "v1.Memsql"
+        optional :single_store, :message, 1105, "v1.SingleStore"
         optional :oracle, :message, 1200, "v1.Oracle"
         optional :postgres, :message, 1300, "v1.Postgres"
         optional :aurora_postgres, :message, 1301, "v1.AuroraPostgres"
@@ -627,6 +628,20 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port_override, :int32, 5
       optional :port, :int32, 6
     end
+    add_message "v1.SingleStore" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :hostname, :string, 1
+      optional :username, :string, 2
+      optional :password, :string, 3
+      optional :database, :string, 4
+      optional :port_override, :int32, 5
+      optional :port, :int32, 6
+    end
     add_message "v1.Oracle" do
       optional :id, :string, 32768
       optional :name, :string, 32769
@@ -939,6 +954,7 @@ module V1
   Clustrix = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Clustrix").msgclass
   Maria = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Maria").msgclass
   Memsql = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Memsql").msgclass
+  SingleStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SingleStore").msgclass
   Oracle = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Oracle").msgclass
   Postgres = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Postgres").msgclass
   AuroraPostgres = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuroraPostgres").msgclass
