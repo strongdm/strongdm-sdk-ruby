@@ -71,6 +71,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :redshift, :message, 1304, "v1.Redshift"
         optional :citus, :message, 1305, "v1.Citus"
         optional :presto, :message, 1400, "v1.Presto"
+        optional :raw_tcp, :message, 2600, "v1.RawTCP"
         optional :rdp, :message, 1500, "v1.RDP"
         optional :redis, :message, 1600, "v1.Redis"
         optional :elasticache_redis, :message, 1601, "v1.ElasticacheRedis"
@@ -762,6 +763,17 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :username, :string, 6
       optional :tls_required, :bool, 7
     end
+    add_message "v1.RawTCP" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :hostname, :string, 1
+      optional :port_override, :int32, 2
+      optional :port, :int32, 3
+    end
     add_message "v1.RDP" do
       optional :id, :string, 32768
       optional :name, :string, 32769
@@ -963,6 +975,7 @@ module V1
   Redshift = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Redshift").msgclass
   Citus = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Citus").msgclass
   Presto = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Presto").msgclass
+  RawTCP = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RawTCP").msgclass
   RDP = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RDP").msgclass
   Redis = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Redis").msgclass
   ElasticacheRedis = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ElasticacheRedis").msgclass

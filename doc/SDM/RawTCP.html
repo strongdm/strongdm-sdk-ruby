@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class SDM::Teradata - RDoc Documentation</title>
+<title>class SDM::RawTCP - RDoc Documentation</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../";
@@ -82,9 +82,9 @@
   </div>
 </nav>
 
-<main role="main" aria-labelledby="class-SDM::Teradata">
-  <h1 id="class-SDM::Teradata" class="class">
-    class SDM::Teradata
+<main role="main" aria-labelledby="class-SDM::RawTCP">
+  <h1 id="class-SDM::RawTCP" class="class">
+    class SDM::RawTCP
   </h1>
 
   <section class="description">
@@ -171,19 +171,6 @@
         </div>
       </div>
       
-      <div id="attribute-i-password" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">password</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
       <div id="attribute-i-port" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">port</span><span
@@ -236,19 +223,6 @@
         </div>
       </div>
       
-      <div id="attribute-i-username" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">username</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        
-        
-        </div>
-      </div>
-      
     </section>
     
 
@@ -263,7 +237,7 @@
         
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">( id:nil \ , name:nil \ , healthy:nil \ , tags:nil \ , secret_store_id:nil \ , egress_filter:nil \ , hostname:nil \ , username:nil \ , password:nil \ , port_override:nil \ , port:nil \ )</span>
+            class="method-args">( id:nil \ , name:nil \ , healthy:nil \ , tags:nil \ , secret_store_id:nil \ , egress_filter:nil \ , hostname:nil \ , port_override:nil \ , port:nil \ )</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -278,7 +252,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 6378</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 5374</span>
                 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(
                         <span class="ruby-value">id:</span><span class="ruby-keyword">nil</span> \
 ,
@@ -293,10 +267,6 @@
                         <span class="ruby-value">egress_filter:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">hostname:</span><span class="ruby-keyword">nil</span> \
-,
-                        <span class="ruby-value">username:</span><span class="ruby-keyword">nil</span> \
-,
-                        <span class="ruby-value">password:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">port_override:</span><span class="ruby-keyword">nil</span> \
 ,
@@ -322,12 +292,6 @@
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">hostname</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@hostname</span> = <span class="ruby-identifier">hostname</span>
-                        <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">username</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@username</span> = <span class="ruby-identifier">username</span>
-                        <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">password</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@password</span> = <span class="ruby-identifier">password</span>
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">port_override</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@port_override</span> = <span class="ruby-identifier">port_override</span>
@@ -373,7 +337,7 @@
 
           
           <div class="method-source-code" id="to_json-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 6435</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 5421</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_json</span>(<span class="ruby-identifier">options</span>={})
         <span class="ruby-identifier">hash</span> = {}
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">instance_variables</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">var</span><span class="ruby-operator">|</span>

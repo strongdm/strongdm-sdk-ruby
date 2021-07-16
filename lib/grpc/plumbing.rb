@@ -1104,6 +1104,9 @@ module SDM
       if porcelain.instance_of? Presto
         plumbing.presto = convert_presto_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? RawTCP
+        plumbing.raw_tcp = convert_raw_tcp_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? RDP
         plumbing.rdp = convert_rdp_to_plumbing(porcelain)
       end
@@ -1287,6 +1290,9 @@ module SDM
       end
       if plumbing.presto != nil
         return convert_presto_to_porcelain(plumbing.presto)
+      end
+      if plumbing.raw_tcp != nil
+        return convert_raw_tcp_to_porcelain(plumbing.raw_tcp)
       end
       if plumbing.rdp != nil
         return convert_rdp_to_porcelain(plumbing.rdp)
@@ -4035,6 +4041,56 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_presto_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_raw_tcp_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = RawTCP.new()
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.port = (plumbing.port)
+      porcelain
+    end
+
+    def self.convert_raw_tcp_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::RawTCP.new()
+      plumbing.id = (porcelain.id) unless porcelain.id == nil
+      plumbing.name = (porcelain.name) unless porcelain.name == nil
+      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
+      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
+      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
+      plumbing.port = (porcelain.port) unless porcelain.port == nil
+      plumbing
+    end
+    def self.convert_repeated_raw_tcp_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_raw_tcp_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_raw_tcp_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_raw_tcp_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
