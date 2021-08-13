@@ -108,6 +108,19 @@
       </header>
 
       
+      <div id="attribute-i-access_rules" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">access_rules</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>AccessRules JSON encoded access rules data.</p>
+        
+        </div>
+      </div>
+      
       <div id="attribute-i-composite" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">composite</span><span
@@ -174,7 +187,7 @@
         
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">( id:nil \ , name:nil \ , composite:nil \ , tags:nil \ )</span>
+            class="method-args">( id:nil \ , name:nil \ , access_rules:nil \ , composite:nil \ , tags:nil \ )</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -189,11 +202,13 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 7204</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 7206</span>
                 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(
                         <span class="ruby-value">id:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">name:</span><span class="ruby-keyword">nil</span> \
+,
+                        <span class="ruby-value">access_rules:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">composite:</span><span class="ruby-keyword">nil</span> \
 ,
@@ -204,6 +219,9 @@
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@name</span> = <span class="ruby-identifier">name</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">access_rules</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@access_rules</span> = <span class="ruby-identifier">access_rules</span>
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">composite</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@composite</span> = <span class="ruby-identifier">composite</span>
@@ -249,7 +267,7 @@
 
           
           <div class="method-source-code" id="to_json-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 7226</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 7233</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_json</span>(<span class="ruby-identifier">options</span>={})
         <span class="ruby-identifier">hash</span> = {}
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">instance_variables</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">var</span><span class="ruby-operator">|</span>

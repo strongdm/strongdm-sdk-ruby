@@ -5588,6 +5588,7 @@ module SDM
       porcelain = Role.new()
       porcelain.id = (plumbing.id)
       porcelain.name = (plumbing.name)
+      porcelain.access_rules = (plumbing.access_rules)
       porcelain.composite = (plumbing.composite)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain
@@ -5600,6 +5601,7 @@ module SDM
       plumbing = V1::Role.new()
       plumbing.id = (porcelain.id) unless porcelain.id == nil
       plumbing.name = (porcelain.name) unless porcelain.name == nil
+      plumbing.access_rules = (porcelain.access_rules) unless porcelain.access_rules == nil
       plumbing.composite = (porcelain.composite) unless porcelain.composite == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
       plumbing

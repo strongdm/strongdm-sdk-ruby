@@ -6696,6 +6696,8 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Role.
     attr_accessor :name
+    # AccessRules JSON encoded access rules data.
+    attr_accessor :access_rules
     # True if the Role is a composite role.
     attr_accessor :composite
     # Tags is a map of key, value pairs.
@@ -6704,6 +6706,7 @@ module SDM
     def initialize(
       id: nil,
       name: nil,
+      access_rules: nil,
       composite: nil,
       tags: nil
     )
@@ -6712,6 +6715,9 @@ module SDM
       end
       if name != nil
         @name = name
+      end
+      if access_rules != nil
+        @access_rules = access_rules
       end
       if composite != nil
         @composite = composite
