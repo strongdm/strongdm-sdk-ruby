@@ -22,6 +22,8 @@ require "openssl"
 DEFAULT_MAX_RETRIES = 3
 DEFAULT_BASE_RETRY_DELAY = 0.0030 # 30 ms
 DEFAULT_MAX_RETRY_DELAY = 300 # 300 seconds
+API_VERSION = "2021-08-23"
+USER_AGENT = "strongdm-sdk-ruby/1.0.26"
 
 module SDM
 
@@ -51,7 +53,12 @@ module SDM
     end
 
     def get_metadata(method_name, req)
-      return { 'x-sdm-authentication': @api_access_key, 'x-sdm-signature': self.sign(method_name, req.to_proto) }
+      return {
+               'x-sdm-authentication': @api_access_key,
+               'x-sdm-signature': self.sign(method_name, req.to_proto),
+               'x-sdm-api-version': API_VERSION,
+               'x-sdm-user-agent': USER_AGENT,
+             }
     end
 
     def sign(method_name, msg_bytes)

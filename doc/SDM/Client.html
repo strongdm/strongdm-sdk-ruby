@@ -348,7 +348,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/strongdm.rb, line 31</span>
+            <pre><span class="ruby-comment"># File lib/strongdm.rb, line 33</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">api_access_key</span>, <span class="ruby-identifier">api_secret_key</span>, <span class="ruby-value">host:</span><span class="ruby-string">&quot;api.strongdm.com:443&quot;</span>, <span class="ruby-value">insecure:</span><span class="ruby-keyword">false</span>)
     <span class="ruby-identifier">raise</span> <span class="ruby-constant">TypeError</span>, <span class="ruby-string">&#39;client access key must be a string&#39;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">api_access_key</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">String</span>)
     <span class="ruby-identifier">raise</span> <span class="ruby-constant">TypeError</span>, <span class="ruby-string">&#39;client secret key must be a string&#39;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">api_secret_key</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">String</span>)
@@ -407,9 +407,14 @@
 
           
           <div class="method-source-code" id="get_metadata-source">
-            <pre><span class="ruby-comment"># File lib/strongdm.rb, line 53</span>
+            <pre><span class="ruby-comment"># File lib/strongdm.rb, line 55</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_metadata</span>(<span class="ruby-identifier">method_name</span>, <span class="ruby-identifier">req</span>)
-    <span class="ruby-keyword">return</span> { <span class="ruby-value">&#39;x-sdm-authentication&#39;:</span> <span class="ruby-ivar">@api_access_key</span>,<span class="ruby-value">&#39;x-sdm-signature&#39;:</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">sign</span>(<span class="ruby-identifier">method_name</span>, <span class="ruby-identifier">req</span>.<span class="ruby-identifier">to_proto</span>)}
+    <span class="ruby-keyword">return</span> {
+        <span class="ruby-value">&#39;x-sdm-authentication&#39;:</span> <span class="ruby-ivar">@api_access_key</span>,
+        <span class="ruby-value">&#39;x-sdm-signature&#39;:</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">sign</span>(<span class="ruby-identifier">method_name</span>, <span class="ruby-identifier">req</span>.<span class="ruby-identifier">to_proto</span>),
+        <span class="ruby-value">&#39;x-sdm-api-version&#39;:</span> <span class="ruby-constant">API_VERSION</span>,
+        <span class="ruby-value">&#39;x-sdm-user-agent&#39;:</span> <span class="ruby-constant">USER_AGENT</span>,
+    }
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -440,7 +445,7 @@
 
           
           <div class="method-source-code" id="jitterSleep-source">
-            <pre><span class="ruby-comment"># File lib/strongdm.rb, line 73</span>
+            <pre><span class="ruby-comment"># File lib/strongdm.rb, line 80</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">jitterSleep</span>(<span class="ruby-identifier">iter</span>)
     <span class="ruby-identifier">dur_max</span> = <span class="ruby-ivar">@base_retry_delay</span> <span class="ruby-operator">*</span> <span class="ruby-value">2</span><span class="ruby-operator">**</span><span class="ruby-identifier">iter</span>
     <span class="ruby-keyword">if</span> (<span class="ruby-identifier">dur_max</span> <span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@max_retry_delay</span>)
@@ -478,7 +483,7 @@
 
           
           <div class="method-source-code" id="shouldRetry-source">
-            <pre><span class="ruby-comment"># File lib/strongdm.rb, line 82</span>
+            <pre><span class="ruby-comment"># File lib/strongdm.rb, line 89</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">shouldRetry</span>(<span class="ruby-identifier">iter</span>, <span class="ruby-identifier">err</span>)
     <span class="ruby-keyword">if</span> (<span class="ruby-identifier">iter</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-ivar">@max_retries</span><span class="ruby-value">-1</span>)
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
@@ -517,7 +522,7 @@
 
           
           <div class="method-source-code" id="sign-source">
-            <pre><span class="ruby-comment"># File lib/strongdm.rb, line 57</span>
+            <pre><span class="ruby-comment"># File lib/strongdm.rb, line 64</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">sign</span>(<span class="ruby-identifier">method_name</span>, <span class="ruby-identifier">msg_bytes</span>)
     <span class="ruby-identifier">current_utc_date</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">utc</span>
     <span class="ruby-identifier">date</span> = <span class="ruby-identifier">sprintf</span>(<span class="ruby-string">&quot;%04d-%02d-%02d&quot;</span>,<span class="ruby-identifier">current_utc_date</span>.<span class="ruby-identifier">year</span>, <span class="ruby-identifier">current_utc_date</span>.<span class="ruby-identifier">month</span>, <span class="ruby-identifier">current_utc_date</span>.<span class="ruby-identifier">day</span>)
