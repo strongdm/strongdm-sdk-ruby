@@ -18,6 +18,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "grpc-tools", "~> 1.27.0", ">= 1.27.0"
   s.add_runtime_dependency "openssl", "~> 2.1.2", ">= 2.1.2"
 
-  s.files = `git ls-files | grep -v "strongdm-#{SDM::VERSION}.gem"`.split("\n")
+  s.files = `find . | grep -v "strongdm-#{SDM::VERSION}.gem"`.split("\n")
   s.require_path = "lib"
 end
