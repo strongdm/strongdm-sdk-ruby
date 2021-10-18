@@ -2045,7 +2045,7 @@ module SDM
     attr_accessor :client_certificate
 
     attr_accessor :client_key
-
+    # The path used to check the health of your connection.  Defaults to `default`.
     attr_accessor :healthcheck_namespace
 
     def initialize(
@@ -2132,7 +2132,7 @@ module SDM
     attr_accessor :client_certificate
 
     attr_accessor :client_key
-
+    # The path used to check the health of your connection.  Defaults to `default`.
     attr_accessor :healthcheck_namespace
 
     def initialize(
@@ -2217,7 +2217,7 @@ module SDM
     attr_accessor :username
 
     attr_accessor :password
-
+    # The path used to check the health of your connection.  Defaults to `default`.
     attr_accessor :healthcheck_namespace
 
     def initialize(
@@ -2296,7 +2296,7 @@ module SDM
     attr_accessor :port
 
     attr_accessor :token
-
+    # The path used to check the health of your connection.  Defaults to `default`.
     attr_accessor :healthcheck_namespace
 
     def initialize(
@@ -2371,7 +2371,7 @@ module SDM
     attr_accessor :port
 
     attr_accessor :token
-
+    # The path used to check the health of your connection.  Defaults to `default`.
     attr_accessor :healthcheck_namespace
 
     def initialize(
@@ -2456,7 +2456,7 @@ module SDM
     attr_accessor :role_arn
 
     attr_accessor :role_external_id
-
+    # The path used to check the health of your connection.  Defaults to `default`.
     attr_accessor :healthcheck_namespace
 
     def initialize(
@@ -2561,7 +2561,7 @@ module SDM
     attr_accessor :role_arn
 
     attr_accessor :role_external_id
-
+    # The path used to check the health of your connection.  Defaults to `default`.
     attr_accessor :healthcheck_namespace
 
     def initialize(
@@ -2656,7 +2656,7 @@ module SDM
     attr_accessor :certificate_authority
 
     attr_accessor :service_account_key
-
+    # The path used to check the health of your connection.  Defaults to `default`.
     attr_accessor :healthcheck_namespace
 
     def initialize(
@@ -2731,7 +2731,7 @@ module SDM
     attr_accessor :certificate_authority
 
     attr_accessor :service_account_key
-
+    # The path used to check the health of your connection.  Defaults to `default`.
     attr_accessor :healthcheck_namespace
 
     def initialize(
@@ -2810,7 +2810,7 @@ module SDM
     attr_accessor :client_certificate
 
     attr_accessor :client_key
-
+    # The path used to check the health of your connection.  Defaults to `default`.
     attr_accessor :healthcheck_namespace
 
     def initialize(
@@ -2897,7 +2897,7 @@ module SDM
     attr_accessor :client_certificate
 
     attr_accessor :client_key
-
+    # The path used to check the health of your connection.  Defaults to `default`.
     attr_accessor :healthcheck_namespace
 
     def initialize(
@@ -2982,7 +2982,7 @@ module SDM
     attr_accessor :username
 
     attr_accessor :password
-
+    # The path used to check the health of your connection.  Defaults to `default`.
     attr_accessor :healthcheck_namespace
 
     def initialize(
@@ -3061,7 +3061,7 @@ module SDM
     attr_accessor :port
 
     attr_accessor :token
-
+    # The path used to check the health of your connection.  Defaults to `default`.
     attr_accessor :healthcheck_namespace
 
     def initialize(
@@ -3136,7 +3136,7 @@ module SDM
     attr_accessor :port
 
     attr_accessor :token
-
+    # The path used to check the health of your connection.  Defaults to `default`.
     attr_accessor :healthcheck_namespace
 
     def initialize(

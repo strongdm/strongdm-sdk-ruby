@@ -24,7 +24,7 @@ module V1
     # 1. **Users:** humans who are authenticated through username and password or SSO.
     # 2. **Service Accounts:** machines that are authenticated using a service token.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode

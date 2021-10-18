@@ -22,7 +22,7 @@ module V1
   module ControlPanel
     # ControlPanel contains all administrative controls.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode

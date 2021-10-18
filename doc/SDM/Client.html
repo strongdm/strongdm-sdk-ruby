@@ -11,13 +11,14 @@
   var index_rel_prefix = "../";
 </script>
 
-<script src="../js/jquery.js"></script>
-<script src="../js/darkfish.js"></script>
+<script src="../js/navigation.js" defer></script>
+<script src="../js/search.js" defer></script>
+<script src="../js/search_index.js" defer></script>
+<script src="../js/searcher.js" defer></script>
+<script src="../js/darkfish.js" defer></script>
 
 <link href="../css/fonts.css" rel="stylesheet">
 <link href="../css/rdoc.css" rel="stylesheet">
-
-
 
 
 <body id="top" role="document" class="class">
@@ -56,32 +57,26 @@
 
   <div id="class-metadata">
     
-    <div id="parent-class-section" class="nav-section">
+    
+<div id="parent-class-section" class="nav-section">
   <h3>Parent</h3>
 
-  
   <p class="link"><a href="../Object.html">Object</a>
-  
 </div>
 
     
     
-    <!-- Method Quickref -->
+    
+<!-- Method Quickref -->
 <div id="method-list-section" class="nav-section">
   <h3>Methods</h3>
 
   <ul class="link-list" role="directory">
-    
     <li ><a href="#method-c-new">::new</a>
-    
     <li ><a href="#method-i-get_metadata">#get_metadata</a>
-    
     <li ><a href="#method-i-jitterSleep">#jitterSleep</a>
-    
     <li ><a href="#method-i-shouldRetry">#shouldRetry</a>
-    
     <li ><a href="#method-i-sign">#sign</a>
-    
   </ul>
 </div>
 
@@ -99,21 +94,15 @@
 
   </section>
 
-  
   <section id="5Buntitled-5D" class="documentation-section">
-    
 
-    
 
-    
 
-    
     <section class="attribute-method-details" class="method-section">
       <header>
         <h3>Attributes</h3>
       </header>
 
-      
       <div id="attribute-i-_test_options" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">_test_options</span><span
@@ -122,11 +111,8 @@
 
         <div class="method-description">
         
-        
-        
         </div>
       </div>
-      
       <div id="attribute-i-account_attachments" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">account_attachments</span><span
@@ -134,12 +120,9 @@
         </div>
 
         <div class="method-description">
-        
         <p><a href="AccountAttachments.html"><code>AccountAttachments</code></a> assign an account to a role or composite role.</p>
-        
         </div>
       </div>
-      
       <div id="attribute-i-account_grants" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">account_grants</span><span
@@ -147,12 +130,9 @@
         </div>
 
         <div class="method-description">
-        
         <p><a href="AccountGrants.html"><code>AccountGrants</code></a> assign a resource directly to an account, giving the account the permission to connect to that resource.</p>
-        
         </div>
       </div>
-      
       <div id="attribute-i-accounts" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">accounts</span><span
@@ -160,17 +140,14 @@
         </div>
 
         <div class="method-description">
-        
         <p><a href="Accounts.html"><code>Accounts</code></a> are users that have access to strongDM. There are two types of accounts:</p>
 <ol><li>
-<p>*<strong>Users:</strong>* humans who are authenticated through username and password or SSO.</p>
+<p><strong>Users:</strong> humans who are authenticated through username and password or SSO.</p>
 </li><li>
 <p>**Service Accounts:** machines that are authenticated using a service token.</p>
 </li></ol>
-        
         </div>
       </div>
-      
       <div id="attribute-i-api_access_key" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">api_access_key</span><span
@@ -178,12 +155,9 @@
         </div>
 
         <div class="method-description">
-        
         <p>API authentication token (read-only).</p>
-        
         </div>
       </div>
-      
       <div id="attribute-i-base_retry_delay" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">base_retry_delay</span><span
@@ -192,11 +166,8 @@
 
         <div class="method-description">
         
-        
-        
         </div>
       </div>
-      
       <div id="attribute-i-control_panel" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">control_panel</span><span
@@ -204,12 +175,9 @@
         </div>
 
         <div class="method-description">
-        
         <p><a href="ControlPanel.html"><code>ControlPanel</code></a> contains all administrative controls.</p>
-        
         </div>
       </div>
-      
       <div id="attribute-i-max_retries" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">max_retries</span><span
@@ -218,11 +186,8 @@
 
         <div class="method-description">
         
-        
-        
         </div>
       </div>
-      
       <div id="attribute-i-max_retry_delay" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">max_retry_delay</span><span
@@ -231,11 +196,8 @@
 
         <div class="method-description">
         
-        
-        
         </div>
       </div>
-      
       <div id="attribute-i-nodes" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">nodes</span><span
@@ -243,17 +205,14 @@
         </div>
 
         <div class="method-description">
-        
         <p><a href="Nodes.html"><code>Nodes</code></a> make up the strongDM network, and allow your users to connect securely to your resources. There are two types of nodes:</p>
 <ul><li>
-<p>*<strong>Gateways</strong>* are the entry points into network. They listen for connection from the strongDM client, and provide access to databases and servers.</p>
+<p><strong>Gateways</strong> are the entry points into network. They listen for connection from the strongDM client, and provide access to databases and servers.</p>
 </li><li>
-<p>*<strong>Relays</strong>* are used to extend the strongDM network into segmented subnets. They provide access to databases and servers but do not listen for incoming connections.</p>
+<p><strong>Relays</strong> are used to extend the strongDM network into segmented subnets. They provide access to databases and servers but do not listen for incoming connections.</p>
 </li></ul>
-        
         </div>
       </div>
-      
       <div id="attribute-i-resources" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">resources</span><span
@@ -262,11 +221,8 @@
 
         <div class="method-description">
         
-        
-        
         </div>
       </div>
-      
       <div id="attribute-i-role_attachments" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">role_attachments</span><span
@@ -274,12 +230,9 @@
         </div>
 
         <div class="method-description">
-        
         <p><a href="RoleAttachments.html"><code>RoleAttachments</code></a> represent relationships between composite roles and the roles that make up those composite roles. When a composite role is attached to another role, the permissions granted to members of the composite role are augmented to include the permissions granted to members of the attached role.</p>
-        
         </div>
       </div>
-      
       <div id="attribute-i-role_grants" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">role_grants</span><span
@@ -287,12 +240,9 @@
         </div>
 
         <div class="method-description">
-        
         <p><a href="RoleGrants.html"><code>RoleGrants</code></a> represent relationships between composite roles and the roles that make up those composite roles. When a composite role is attached to another role, the permissions granted to members of the composite role are augmented to include the permissions granted to members of the attached role.</p>
-        
         </div>
       </div>
-      
       <div id="attribute-i-roles" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">roles</span><span
@@ -300,12 +250,9 @@
         </div>
 
         <div class="method-description">
-        
         <p><a href="Roles.html"><code>Roles</code></a> are tools for controlling user access to resources. Each <a href="Role.html"><code>Role</code></a> holds a list of resources which they grant access to. Composite roles are a special type of <a href="Role.html"><code>Role</code></a> which have no resource associations of their own, but instead grant access to the combined resources associated with a set of child roles. Each user can be a member of one <a href="Role.html"><code>Role</code></a> or composite role.</p>
-        
         </div>
       </div>
-      
       <div id="attribute-i-secret_stores" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">secret_stores</span><span
@@ -313,40 +260,27 @@
         </div>
 
         <div class="method-description">
-        
         <p><a href="SecretStores.html"><code>SecretStores</code></a> are servers where resource secrets (passwords, keys) are stored.</p>
-        
         </div>
       </div>
-      
     </section>
-    
 
-    
+
      <section id="public-class-5Buntitled-5D-method-details" class="method-section">
        <header>
          <h3>Public Class Methods</h3>
        </header>
 
-    
       <div id="method-c-new" class="method-detail ">
-        
         <div class="method-heading">
           <span class="method-name">new</span><span
             class="method-args">(api_access_key, api_secret_key, host:&quot;api.strongdm.com:443&quot;, insecure:false)</span>
-          
           <span class="method-click-advice">click to toggle source</span>
-          
         </div>
-        
 
         <div class="method-description">
-          
           <p>Creates a new strongDM API client.</p>
-          
-          
 
-          
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File lib/strongdm.rb, line 33</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">api_access_key</span>, <span class="ruby-identifier">api_secret_key</span>, <span class="ruby-value">host:</span><span class="ruby-string">&quot;api.strongdm.com:443&quot;</span>, <span class="ruby-value">insecure:</span><span class="ruby-keyword">false</span>)
@@ -371,41 +305,28 @@
     <span class="ruby-ivar">@_test_options</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
     </section>
-  
+
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
        <header>
          <h3>Public Instance Methods</h3>
        </header>
 
-    
       <div id="method-i-get_metadata" class="method-detail ">
-        
         <div class="method-heading">
           <span class="method-name">get_metadata</span><span
             class="method-args">(method_name, req)</span>
-          
           <span class="method-click-advice">click to toggle source</span>
-          
         </div>
-        
 
         <div class="method-description">
           
-          
-          
-          
 
-          
           <div class="method-source-code" id="get_metadata-source">
             <pre><span class="ruby-comment"># File lib/strongdm.rb, line 55</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_metadata</span>(<span class="ruby-identifier">method_name</span>, <span class="ruby-identifier">req</span>)
@@ -417,33 +338,21 @@
     }
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
       <div id="method-i-jitterSleep" class="method-detail ">
-        
         <div class="method-heading">
           <span class="method-name">jitterSleep</span><span
             class="method-args">(iter)</span>
-          
           <span class="method-click-advice">click to toggle source</span>
-          
         </div>
-        
 
         <div class="method-description">
           
-          
-          
-          
 
-          
           <div class="method-source-code" id="jitterSleep-source">
             <pre><span class="ruby-comment"># File lib/strongdm.rb, line 80</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">jitterSleep</span>(<span class="ruby-identifier">iter</span>)
@@ -455,33 +364,21 @@
     <span class="ruby-identifier">sleep</span>(<span class="ruby-identifier">dur</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
       <div id="method-i-shouldRetry" class="method-detail ">
-        
         <div class="method-heading">
           <span class="method-name">shouldRetry</span><span
             class="method-args">(iter, err)</span>
-          
           <span class="method-click-advice">click to toggle source</span>
-          
         </div>
-        
 
         <div class="method-description">
           
-          
-          
-          
 
-          
           <div class="method-source-code" id="shouldRetry-source">
             <pre><span class="ruby-comment"># File lib/strongdm.rb, line 89</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">shouldRetry</span>(<span class="ruby-identifier">iter</span>, <span class="ruby-identifier">err</span>)
@@ -494,33 +391,21 @@
     <span class="ruby-keyword">return</span> <span class="ruby-identifier">err</span>.<span class="ruby-identifier">code</span>() <span class="ruby-operator">==</span> <span class="ruby-value">13</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
       <div id="method-i-sign" class="method-detail ">
-        
         <div class="method-heading">
           <span class="method-name">sign</span><span
             class="method-args">(method_name, msg_bytes)</span>
-          
           <span class="method-click-advice">click to toggle source</span>
-          
         </div>
-        
 
         <div class="method-description">
           
-          
-          
-          
 
-          
           <div class="method-source-code" id="sign-source">
             <pre><span class="ruby-comment"># File lib/strongdm.rb, line 64</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">sign</span>(<span class="ruby-identifier">method_name</span>, <span class="ruby-identifier">msg_bytes</span>)
@@ -539,25 +424,20 @@
     <span class="ruby-keyword">return</span> <span class="ruby-constant">Base64</span>.<span class="ruby-identifier">strict_encode64</span>(<span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">HMAC</span>.<span class="ruby-identifier">digest</span>(<span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">SHA256</span>.<span class="ruby-identifier">new</span>, <span class="ruby-identifier">signing_key</span>, <span class="ruby-identifier">request_hash</span>))
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
     </section>
-  
-  </section>
 
+  </section>
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.0.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.3.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

@@ -11,13 +11,14 @@
   var index_rel_prefix = "../";
 </script>
 
-<script src="../js/jquery.js"></script>
-<script src="../js/darkfish.js"></script>
+<script src="../js/navigation.js" defer></script>
+<script src="../js/search.js" defer></script>
+<script src="../js/search_index.js" defer></script>
+<script src="../js/searcher.js" defer></script>
+<script src="../js/darkfish.js" defer></script>
 
 <link href="../css/fonts.css" rel="stylesheet">
 <link href="../css/rdoc.css" rel="stylesheet">
-
-
 
 
 <body id="top" role="document" class="class">
@@ -56,36 +57,28 @@
 
   <div id="class-metadata">
     
-    <div id="parent-class-section" class="nav-section">
+    
+<div id="parent-class-section" class="nav-section">
   <h3>Parent</h3>
 
-  
   <p class="link"><a href="../Object.html">Object</a>
-  
 </div>
 
     
     
-    <!-- Method Quickref -->
+    
+<!-- Method Quickref -->
 <div id="method-list-section" class="nav-section">
   <h3>Methods</h3>
 
   <ul class="link-list" role="directory">
-    
     <li ><a href="#method-c-new">::new</a>
-    
     <li ><a href="#method-i-create">#create</a>
-    
     <li ><a href="#method-i-delete">#delete</a>
-    
     <li ><a href="#method-i-enumerate_tags">#enumerate_tags</a>
-    
     <li ><a href="#method-i-get">#get</a>
-    
     <li ><a href="#method-i-list">#list</a>
-    
     <li ><a href="#method-i-update">#update</a>
-    
   </ul>
 </div>
 
@@ -101,41 +94,27 @@
     
   </section>
 
-  
   <section id="5Buntitled-5D" class="documentation-section">
-    
 
-    
 
-    
 
-    
 
-    
+
      <section id="public-class-5Buntitled-5D-method-details" class="method-section">
        <header>
          <h3>Public Class Methods</h3>
        </header>
 
-    
       <div id="method-c-new" class="method-detail ">
-        
         <div class="method-heading">
           <span class="method-name">new</span><span
             class="method-args">(host, insecure, parent)</span>
-          
           <span class="method-click-advice">click to toggle source</span>
-          
         </div>
-        
 
         <div class="method-description">
           
-          
-          
-          
 
-          
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File lib/svc.rb, line 752</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">host</span>, <span class="ruby-identifier">insecure</span>, <span class="ruby-identifier">parent</span>)
@@ -152,41 +131,28 @@
     <span class="ruby-ivar">@parent</span> = <span class="ruby-identifier">parent</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
     </section>
-  
+
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
        <header>
          <h3>Public Instance Methods</h3>
        </header>
 
-    
       <div id="method-i-create" class="method-detail ">
-        
         <div class="method-heading">
           <span class="method-name">create</span><span
             class="method-args">( resource \ , deadline:nil)</span>
-          
           <span class="method-click-advice">click to toggle source</span>
-          
         </div>
-        
 
         <div class="method-description">
-          
           <p>Create registers a new Resource.</p>
-          
-          
 
-          
           <div class="method-source-code" id="create-source">
             <pre><span class="ruby-comment"># File lib/svc.rb, line 803</span>
         <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create</span>(
@@ -220,33 +186,21 @@
             <span class="ruby-identifier">resp</span>
         <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
       <div id="method-i-delete" class="method-detail ">
-        
         <div class="method-heading">
           <span class="method-name">delete</span><span
             class="method-args">( id \ , deadline:nil)</span>
-          
           <span class="method-click-advice">click to toggle source</span>
-          
         </div>
-        
 
         <div class="method-description">
-          
           <p>Delete removes a Resource by ID.</p>
-          
-          
 
-          
           <div class="method-source-code" id="delete-source">
             <pre><span class="ruby-comment"># File lib/svc.rb, line 896</span>
         <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">delete</span>(
@@ -279,33 +233,21 @@
             <span class="ruby-identifier">resp</span>
         <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
       <div id="method-i-enumerate_tags" class="method-detail ">
-        
         <div class="method-heading">
           <span class="method-name">enumerate_tags</span><span
             class="method-args">( filter \ , *args, deadline:nil)</span>
-          
           <span class="method-click-advice">click to toggle source</span>
-          
         </div>
-        
 
         <div class="method-description">
-          
           <p>EnumerateTags gets a list of the filter matching tags.</p>
-          
-          
 
-          
           <div class="method-source-code" id="enumerate_tags-source">
             <pre><span class="ruby-comment"># File lib/svc.rb, line 766</span>
         <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">enumerate_tags</span>(
@@ -345,33 +287,21 @@
             <span class="ruby-identifier">resp</span>
         <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
       <div id="method-i-get" class="method-detail ">
-        
         <div class="method-heading">
           <span class="method-name">get</span><span
             class="method-args">( id \ , deadline:nil)</span>
-          
           <span class="method-click-advice">click to toggle source</span>
-          
         </div>
-        
 
         <div class="method-description">
-          
           <p>Get reads one Resource by ID.</p>
-          
-          
 
-          
           <div class="method-source-code" id="get-source">
             <pre><span class="ruby-comment"># File lib/svc.rb, line 834</span>
         <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get</span>(
@@ -405,33 +335,21 @@
             <span class="ruby-identifier">resp</span>
         <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
       <div id="method-i-list" class="method-detail ">
-        
         <div class="method-heading">
           <span class="method-name">list</span><span
             class="method-args">( filter \ , *args, deadline:nil)</span>
-          
           <span class="method-click-advice">click to toggle source</span>
-          
         </div>
-        
 
         <div class="method-description">
-          
           <p>List gets a list of <a href="Resources.html"><code>Resources</code></a> matching a given set of criteria.</p>
-          
-          
 
-          
           <div class="method-source-code" id="list-source">
             <pre><span class="ruby-comment"># File lib/svc.rb, line 926</span>
         <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">list</span>(
@@ -471,33 +389,21 @@
             <span class="ruby-identifier">resp</span>
         <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
       <div id="method-i-update" class="method-detail ">
-        
         <div class="method-heading">
           <span class="method-name">update</span><span
             class="method-args">( resource \ , deadline:nil)</span>
-          
           <span class="method-click-advice">click to toggle source</span>
-          
         </div>
-        
 
         <div class="method-description">
-          
           <p>Update patches a Resource by ID.</p>
-          
-          
 
-          
           <div class="method-source-code" id="update-source">
             <pre><span class="ruby-comment"># File lib/svc.rb, line 865</span>
         <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">update</span>(
@@ -531,25 +437,20 @@
             <span class="ruby-identifier">resp</span>
         <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
     </section>
-  
-  </section>
 
+  </section>
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.0.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.3.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

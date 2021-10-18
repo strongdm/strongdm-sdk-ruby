@@ -25,7 +25,7 @@ module V1
     # role, the permissions granted to members of the composite role are augmented to
     # include the permissions granted to members of the attached role.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode

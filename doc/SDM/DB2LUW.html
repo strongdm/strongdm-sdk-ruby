@@ -11,13 +11,14 @@
   var index_rel_prefix = "../";
 </script>
 
-<script src="../js/jquery.js"></script>
-<script src="../js/darkfish.js"></script>
+<script src="../js/navigation.js" defer></script>
+<script src="../js/search.js" defer></script>
+<script src="../js/search_index.js" defer></script>
+<script src="../js/searcher.js" defer></script>
+<script src="../js/darkfish.js" defer></script>
 
 <link href="../css/fonts.css" rel="stylesheet">
 <link href="../css/rdoc.css" rel="stylesheet">
-
-
 
 
 <body id="top" role="document" class="class">
@@ -56,26 +57,23 @@
 
   <div id="class-metadata">
     
-    <div id="parent-class-section" class="nav-section">
+    
+<div id="parent-class-section" class="nav-section">
   <h3>Parent</h3>
 
-  
   <p class="link"><a href="../Object.html">Object</a>
-  
 </div>
 
     
     
-    <!-- Method Quickref -->
+    
+<!-- Method Quickref -->
 <div id="method-list-section" class="nav-section">
   <h3>Methods</h3>
 
   <ul class="link-list" role="directory">
-    
     <li ><a href="#method-c-new">::new</a>
-    
     <li ><a href="#method-i-to_json">#to_json</a>
-    
   </ul>
 </div>
 
@@ -91,21 +89,15 @@
     
   </section>
 
-  
   <section id="5Buntitled-5D" class="documentation-section">
-    
 
-    
 
-    
 
-    
     <section class="attribute-method-details" class="method-section">
       <header>
         <h3>Attributes</h3>
       </header>
 
-      
       <div id="attribute-i-database" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">database</span><span
@@ -114,11 +106,8 @@
 
         <div class="method-description">
         
-        
-        
         </div>
       </div>
-      
       <div id="attribute-i-egress_filter" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">egress_filter</span><span
@@ -126,12 +115,9 @@
         </div>
 
         <div class="method-description">
-        
         <p>A filter applied to the routing logic to pin datasource to nodes.</p>
-        
         </div>
       </div>
-      
       <div id="attribute-i-healthy" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">healthy</span><span
@@ -139,12 +125,9 @@
         </div>
 
         <div class="method-description">
-        
         <p>True if the datasource is reachable and the credentials are valid.</p>
-        
         </div>
       </div>
-      
       <div id="attribute-i-hostname" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">hostname</span><span
@@ -153,11 +136,8 @@
 
         <div class="method-description">
         
-        
-        
         </div>
       </div>
-      
       <div id="attribute-i-id" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">id</span><span
@@ -165,12 +145,9 @@
         </div>
 
         <div class="method-description">
-        
         <p>Unique identifier of the Resource.</p>
-        
         </div>
       </div>
-      
       <div id="attribute-i-name" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">name</span><span
@@ -178,12 +155,9 @@
         </div>
 
         <div class="method-description">
-        
         <p>Unique human-readable name of the Resource.</p>
-        
         </div>
       </div>
-      
       <div id="attribute-i-password" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">password</span><span
@@ -192,11 +166,8 @@
 
         <div class="method-description">
         
-        
-        
         </div>
       </div>
-      
       <div id="attribute-i-port" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">port</span><span
@@ -205,11 +176,8 @@
 
         <div class="method-description">
         
-        
-        
         </div>
       </div>
-      
       <div id="attribute-i-port_override" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">port_override</span><span
@@ -218,11 +186,8 @@
 
         <div class="method-description">
         
-        
-        
         </div>
       </div>
-      
       <div id="attribute-i-secret_store_id" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">secret_store_id</span><span
@@ -230,12 +195,9 @@
         </div>
 
         <div class="method-description">
-        
         <p>ID of the secret store containing credentials for this resource, if any.</p>
-        
         </div>
       </div>
-      
       <div id="attribute-i-tags" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">tags</span><span
@@ -243,12 +205,9 @@
         </div>
 
         <div class="method-description">
-        
         <p>Tags is a map of key, value pairs.</p>
-        
         </div>
       </div>
-      
       <div id="attribute-i-username" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">username</span><span
@@ -257,39 +216,26 @@
 
         <div class="method-description">
         
-        
-        
         </div>
       </div>
-      
     </section>
-    
 
-    
+
      <section id="public-class-5Buntitled-5D-method-details" class="method-section">
        <header>
          <h3>Public Class Methods</h3>
        </header>
 
-    
       <div id="method-c-new" class="method-detail ">
-        
         <div class="method-heading">
           <span class="method-name">new</span><span
             class="method-args">( id:nil \ , name:nil \ , healthy:nil \ , tags:nil \ , secret_store_id:nil \ , egress_filter:nil \ , hostname:nil \ , username:nil \ , password:nil \ , database:nil \ , port_override:nil \ , port:nil \ )</span>
-          
           <span class="method-click-advice">click to toggle source</span>
-          
         </div>
-        
 
         <div class="method-description">
           
-          
-          
-          
 
-          
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 1395</span>
                 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(
@@ -355,41 +301,28 @@
                         <span class="ruby-keyword">end</span>
                 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
     </section>
-  
+
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
        <header>
          <h3>Public Instance Methods</h3>
        </header>
 
-    
       <div id="method-i-to_json" class="method-detail ">
-        
         <div class="method-heading">
           <span class="method-name">to_json</span><span
             class="method-args">(options={})</span>
-          
           <span class="method-click-advice">click to toggle source</span>
-          
         </div>
-        
 
         <div class="method-description">
           
-          
-          
-          
 
-          
           <div class="method-source-code" id="to_json-source">
             <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 1457</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_json</span>(<span class="ruby-identifier">options</span>={})
@@ -400,25 +333,20 @@
         <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">to_json</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
     </section>
-  
-  </section>
 
+  </section>
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.0.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.3.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

@@ -11,13 +11,14 @@
   var index_rel_prefix = "../";
 </script>
 
-<script src="../js/jquery.js"></script>
-<script src="../js/darkfish.js"></script>
+<script src="../js/navigation.js" defer></script>
+<script src="../js/search.js" defer></script>
+<script src="../js/search_index.js" defer></script>
+<script src="../js/searcher.js" defer></script>
+<script src="../js/darkfish.js" defer></script>
 
 <link href="../css/fonts.css" rel="stylesheet">
 <link href="../css/rdoc.css" rel="stylesheet">
-
-
 
 
 <body id="top" role="document" class="class">
@@ -56,26 +57,23 @@
 
   <div id="class-metadata">
     
-    <div id="parent-class-section" class="nav-section">
+    
+<div id="parent-class-section" class="nav-section">
   <h3>Parent</h3>
 
-  
   <p class="link"><a href="../Object.html">Object</a>
-  
 </div>
 
     
     
-    <!-- Method Quickref -->
+    
+<!-- Method Quickref -->
 <div id="method-list-section" class="nav-section">
   <h3>Methods</h3>
 
   <ul class="link-list" role="directory">
-    
     <li ><a href="#method-c-new">::new</a>
-    
     <li ><a href="#method-i-to_json">#to_json</a>
-    
   </ul>
 </div>
 
@@ -93,21 +91,15 @@
 
   </section>
 
-  
   <section id="5Buntitled-5D" class="documentation-section">
-    
 
-    
 
-    
 
-    
     <section class="attribute-method-details" class="method-section">
       <header>
         <h3>Attributes</h3>
       </header>
 
-      
       <div id="attribute-i-account_id" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">account_id</span><span
@@ -115,12 +107,9 @@
         </div>
 
         <div class="method-description">
-        
         <p>The id of the attached role of this <a href="AccountGrant.html"><code>AccountGrant</code></a>.</p>
-        
         </div>
       </div>
-      
       <div id="attribute-i-id" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">id</span><span
@@ -128,12 +117,9 @@
         </div>
 
         <div class="method-description">
-        
         <p>Unique identifier of the <a href="AccountGrant.html"><code>AccountGrant</code></a>.</p>
-        
         </div>
       </div>
-      
       <div id="attribute-i-resource_id" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">resource_id</span><span
@@ -141,12 +127,9 @@
         </div>
 
         <div class="method-description">
-        
         <p>The id of the composite role of this <a href="AccountGrant.html"><code>AccountGrant</code></a>.</p>
-        
         </div>
       </div>
-      
       <div id="attribute-i-start_from" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">start_from</span><span
@@ -154,12 +137,9 @@
         </div>
 
         <div class="method-description">
-        
         <p>The timestamp when the resource will be granted. Optional. Both start_at and end_at must be defined together, or not defined at all.</p>
-        
         </div>
       </div>
-      
       <div id="attribute-i-valid_until" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">valid_until</span><span
@@ -167,40 +147,27 @@
         </div>
 
         <div class="method-description">
-        
         <p>The timestamp when the resource grant will expire. Optional. Both start_at and end_at must be defined together, or not defined at all.</p>
-        
         </div>
       </div>
-      
     </section>
-    
 
-    
+
      <section id="public-class-5Buntitled-5D-method-details" class="method-section">
        <header>
          <h3>Public Class Methods</h3>
        </header>
 
-    
       <div id="method-c-new" class="method-detail ">
-        
         <div class="method-heading">
           <span class="method-name">new</span><span
             class="method-args">( id:nil \ , resource_id:nil \ , account_id:nil \ , start_from:nil \ , valid_until:nil \ )</span>
-          
           <span class="method-click-advice">click to toggle source</span>
-          
         </div>
-        
 
         <div class="method-description">
           
-          
-          
-          
 
-          
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 371</span>
                 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(
@@ -231,41 +198,28 @@
                         <span class="ruby-keyword">end</span>
                 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
     </section>
-  
+
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
        <header>
          <h3>Public Instance Methods</h3>
        </header>
 
-    
       <div id="method-i-to_json" class="method-detail ">
-        
         <div class="method-heading">
           <span class="method-name">to_json</span><span
             class="method-args">(options={})</span>
-          
           <span class="method-click-advice">click to toggle source</span>
-          
         </div>
-        
 
         <div class="method-description">
           
-          
-          
-          
 
-          
           <div class="method-source-code" id="to_json-source">
             <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 398</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_json</span>(<span class="ruby-identifier">options</span>={})
@@ -276,25 +230,20 @@
         <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">to_json</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
-          
         </div>
 
-        
 
-        
       </div>
 
-    
     </section>
-  
-  </section>
 
+  </section>
 </main>
 
 
 <footer id="validator-badges" role="contentinfo">
   <p><a href="https://validator.w3.org/check/referer">Validate</a>
-  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.1.0.
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.3.1.
   <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
 </footer>
 

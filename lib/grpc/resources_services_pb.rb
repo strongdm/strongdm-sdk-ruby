@@ -21,7 +21,7 @@ require "resources_pb"
 module V1
   module Resources
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode

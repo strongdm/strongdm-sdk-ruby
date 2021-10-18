@@ -38,6 +38,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :terraform_force_new, :bool, 1941308
       optional :terraform_sensitive, :bool, 1941310
       optional :terraform_diff_suppress_func, :string, 1941319
+      optional :terraform_comment_override, :string, 1941320
       optional :cli_name, :string, 1941311
       optional :cli_json_name, :string, 1941312
       optional :json_gateway_name, :string, 1941313
