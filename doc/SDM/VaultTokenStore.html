@@ -118,6 +118,16 @@
         <p>Unique human-readable name of the SecretStore.</p>
         </div>
       </div>
+      <div id="attribute-i-namespace" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">namespace</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        </div>
+      </div>
       <div id="attribute-i-server_address" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">server_address</span><span
@@ -149,7 +159,7 @@
       <div id="method-c-new" class="method-detail ">
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">( id:nil \ , name:nil \ , server_address:nil \ , tags:nil \ )</span>
+            class="method-args">( id:nil \ , name:nil \ , namespace:nil \ , server_address:nil \ , tags:nil \ )</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
 
@@ -157,11 +167,13 @@
           
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 7352</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 7487</span>
                 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(
                         <span class="ruby-value">id:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">name:</span><span class="ruby-keyword">nil</span> \
+,
+                        <span class="ruby-value">namespace:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">server_address:</span><span class="ruby-keyword">nil</span> \
 ,
@@ -172,6 +184,9 @@
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@name</span> = <span class="ruby-identifier">name</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">namespace</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@namespace</span> = <span class="ruby-identifier">namespace</span>
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">server_address</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@server_address</span> = <span class="ruby-identifier">server_address</span>
@@ -204,7 +219,7 @@
           
 
           <div class="method-source-code" id="to_json-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 7374</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 7514</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_json</span>(<span class="ruby-identifier">options</span>={})
         <span class="ruby-identifier">hash</span> = {}
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">instance_variables</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">var</span><span class="ruby-operator">|</span>

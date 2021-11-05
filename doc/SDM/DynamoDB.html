@@ -239,7 +239,7 @@
       <div id="method-c-new" class="method-detail ">
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">( id:nil \ , name:nil \ , healthy:nil \ , tags:nil \ , secret_store_id:nil \ , egress_filter:nil \ , access_key:nil \ , secret_access_key:nil \ , region:nil \ , endpoint:nil \ , port_override:nil \ , role_arn:nil \ , role_external_id:nil \ )</span>
+            class="method-args">( access_key:nil \ , egress_filter:nil \ , endpoint:nil \ , healthy:nil \ , id:nil \ , name:nil \ , port_override:nil \ , region:nil \ , role_arn:nil \ , role_external_id:nil \ , secret_access_key:nil \ , secret_store_id:nil \ , tags:nil \ )</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
 
@@ -247,72 +247,72 @@
           
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 1582</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 2618</span>
                 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(
+                        <span class="ruby-value">access_key:</span><span class="ruby-keyword">nil</span> \
+,
+                        <span class="ruby-value">egress_filter:</span><span class="ruby-keyword">nil</span> \
+,
+                        <span class="ruby-value">endpoint:</span><span class="ruby-keyword">nil</span> \
+,
+                        <span class="ruby-value">healthy:</span><span class="ruby-keyword">nil</span> \
+,
                         <span class="ruby-value">id:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">name:</span><span class="ruby-keyword">nil</span> \
 ,
-                        <span class="ruby-value">healthy:</span><span class="ruby-keyword">nil</span> \
-,
-                        <span class="ruby-value">tags:</span><span class="ruby-keyword">nil</span> \
-,
-                        <span class="ruby-value">secret_store_id:</span><span class="ruby-keyword">nil</span> \
-,
-                        <span class="ruby-value">egress_filter:</span><span class="ruby-keyword">nil</span> \
-,
-                        <span class="ruby-value">access_key:</span><span class="ruby-keyword">nil</span> \
-,
-                        <span class="ruby-value">secret_access_key:</span><span class="ruby-keyword">nil</span> \
+                        <span class="ruby-value">port_override:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">region:</span><span class="ruby-keyword">nil</span> \
-,
-                        <span class="ruby-value">endpoint:</span><span class="ruby-keyword">nil</span> \
-,
-                        <span class="ruby-value">port_override:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">role_arn:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">role_external_id:</span><span class="ruby-keyword">nil</span> \
+,
+                        <span class="ruby-value">secret_access_key:</span><span class="ruby-keyword">nil</span> \
+,
+                        <span class="ruby-value">secret_store_id:</span><span class="ruby-keyword">nil</span> \
+,
+                        <span class="ruby-value">tags:</span><span class="ruby-keyword">nil</span> \
                 )
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">access_key</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@access_key</span> = <span class="ruby-identifier">access_key</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">egress_filter</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@egress_filter</span> = <span class="ruby-identifier">egress_filter</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">endpoint</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@endpoint</span> = <span class="ruby-identifier">endpoint</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">healthy</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@healthy</span> = <span class="ruby-identifier">healthy</span>
+                        <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">id</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">id</span>
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@name</span> = <span class="ruby-identifier">name</span>
                         <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">healthy</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@healthy</span> = <span class="ruby-identifier">healthy</span>
-                        <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">tags</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@tags</span> = <span class="ruby-identifier">tags</span>
-                        <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">secret_store_id</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@secret_store_id</span> = <span class="ruby-identifier">secret_store_id</span>
-                        <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">egress_filter</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@egress_filter</span> = <span class="ruby-identifier">egress_filter</span>
-                        <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">access_key</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@access_key</span> = <span class="ruby-identifier">access_key</span>
-                        <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">secret_access_key</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@secret_access_key</span> = <span class="ruby-identifier">secret_access_key</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">port_override</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@port_override</span> = <span class="ruby-identifier">port_override</span>
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">region</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@region</span> = <span class="ruby-identifier">region</span>
-                        <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">endpoint</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@endpoint</span> = <span class="ruby-identifier">endpoint</span>
-                        <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">port_override</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@port_override</span> = <span class="ruby-identifier">port_override</span>
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">role_arn</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@role_arn</span> = <span class="ruby-identifier">role_arn</span>
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">role_external_id</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@role_external_id</span> = <span class="ruby-identifier">role_external_id</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">secret_access_key</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@secret_access_key</span> = <span class="ruby-identifier">secret_access_key</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">secret_store_id</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@secret_store_id</span> = <span class="ruby-identifier">secret_store_id</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">tags</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@tags</span> = <span class="ruby-identifier">tags</span>
                         <span class="ruby-keyword">end</span>
                 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -339,7 +339,7 @@
           
 
           <div class="method-source-code" id="to_json-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 1649</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 2685</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_json</span>(<span class="ruby-identifier">options</span>={})
         <span class="ruby-identifier">hash</span> = {}
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">instance_variables</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">var</span><span class="ruby-operator">|</span>

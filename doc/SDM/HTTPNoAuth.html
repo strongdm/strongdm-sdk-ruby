@@ -219,7 +219,7 @@
       <div id="method-c-new" class="method-detail ">
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">( id:nil \ , name:nil \ , healthy:nil \ , tags:nil \ , secret_store_id:nil \ , egress_filter:nil \ , url:nil \ , healthcheck_path:nil \ , headers_blacklist:nil \ , default_path:nil \ , subdomain:nil \ )</span>
+            class="method-args">( default_path:nil \ , egress_filter:nil \ , headers_blacklist:nil \ , healthcheck_path:nil \ , healthy:nil \ , id:nil \ , name:nil \ , secret_store_id:nil \ , subdomain:nil \ , tags:nil \ , url:nil \ )</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
 
@@ -227,62 +227,62 @@
           
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 1983</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 3445</span>
                 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(
+                        <span class="ruby-value">default_path:</span><span class="ruby-keyword">nil</span> \
+,
+                        <span class="ruby-value">egress_filter:</span><span class="ruby-keyword">nil</span> \
+,
+                        <span class="ruby-value">headers_blacklist:</span><span class="ruby-keyword">nil</span> \
+,
+                        <span class="ruby-value">healthcheck_path:</span><span class="ruby-keyword">nil</span> \
+,
+                        <span class="ruby-value">healthy:</span><span class="ruby-keyword">nil</span> \
+,
                         <span class="ruby-value">id:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">name:</span><span class="ruby-keyword">nil</span> \
 ,
-                        <span class="ruby-value">healthy:</span><span class="ruby-keyword">nil</span> \
+                        <span class="ruby-value">secret_store_id:</span><span class="ruby-keyword">nil</span> \
+,
+                        <span class="ruby-value">subdomain:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">tags:</span><span class="ruby-keyword">nil</span> \
 ,
-                        <span class="ruby-value">secret_store_id:</span><span class="ruby-keyword">nil</span> \
-,
-                        <span class="ruby-value">egress_filter:</span><span class="ruby-keyword">nil</span> \
-,
                         <span class="ruby-value">url:</span><span class="ruby-keyword">nil</span> \
-,
-                        <span class="ruby-value">healthcheck_path:</span><span class="ruby-keyword">nil</span> \
-,
-                        <span class="ruby-value">headers_blacklist:</span><span class="ruby-keyword">nil</span> \
-,
-                        <span class="ruby-value">default_path:</span><span class="ruby-keyword">nil</span> \
-,
-                        <span class="ruby-value">subdomain:</span><span class="ruby-keyword">nil</span> \
                 )
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">default_path</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@default_path</span> = <span class="ruby-identifier">default_path</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">egress_filter</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@egress_filter</span> = <span class="ruby-identifier">egress_filter</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">headers_blacklist</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@headers_blacklist</span> = <span class="ruby-identifier">headers_blacklist</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">healthcheck_path</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@healthcheck_path</span> = <span class="ruby-identifier">healthcheck_path</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">healthy</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@healthy</span> = <span class="ruby-identifier">healthy</span>
+                        <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">id</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">id</span>
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@name</span> = <span class="ruby-identifier">name</span>
                         <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">healthy</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@healthy</span> = <span class="ruby-identifier">healthy</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">secret_store_id</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@secret_store_id</span> = <span class="ruby-identifier">secret_store_id</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">subdomain</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@subdomain</span> = <span class="ruby-identifier">subdomain</span>
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">tags</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@tags</span> = <span class="ruby-identifier">tags</span>
                         <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">secret_store_id</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@secret_store_id</span> = <span class="ruby-identifier">secret_store_id</span>
-                        <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">egress_filter</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@egress_filter</span> = <span class="ruby-identifier">egress_filter</span>
-                        <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">url</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@url</span> = <span class="ruby-identifier">url</span>
-                        <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">healthcheck_path</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@healthcheck_path</span> = <span class="ruby-identifier">healthcheck_path</span>
-                        <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">headers_blacklist</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@headers_blacklist</span> = <span class="ruby-identifier">headers_blacklist</span>
-                        <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">default_path</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@default_path</span> = <span class="ruby-identifier">default_path</span>
-                        <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">subdomain</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@subdomain</span> = <span class="ruby-identifier">subdomain</span>
                         <span class="ruby-keyword">end</span>
                 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -309,7 +309,7 @@
           
 
           <div class="method-source-code" id="to_json-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 2040</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 3502</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_json</span>(<span class="ruby-identifier">options</span>={})
         <span class="ruby-identifier">hash</span> = {}
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">instance_variables</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">var</span><span class="ruby-operator">|</span>

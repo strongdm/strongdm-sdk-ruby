@@ -22,7 +22,7 @@ module V1
   module AccountGrants
     # AccountGrants assign a resource directly to an account, giving the account the permission to connect to that resource.
     class Service
-      include ::GRPC::GenericService
+      include GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode

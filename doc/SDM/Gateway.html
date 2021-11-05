@@ -181,7 +181,7 @@
       <div id="method-c-new" class="method-detail ">
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">( id:nil \ , name:nil \ , state:nil \ , listen_address:nil \ , bind_address:nil \ , tags:nil \ , gateway_filter:nil \ )</span>
+            class="method-args">( bind_address:nil \ , gateway_filter:nil \ , id:nil \ , listen_address:nil \ , name:nil \ , state:nil \ , tags:nil \ )</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
 
@@ -189,24 +189,33 @@
           
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 6646</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 2897</span>
                 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(
+                        <span class="ruby-value">bind_address:</span><span class="ruby-keyword">nil</span> \
+,
+                        <span class="ruby-value">gateway_filter:</span><span class="ruby-keyword">nil</span> \
+,
                         <span class="ruby-value">id:</span><span class="ruby-keyword">nil</span> \
+,
+                        <span class="ruby-value">listen_address:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">name:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">state:</span><span class="ruby-keyword">nil</span> \
 ,
-                        <span class="ruby-value">listen_address:</span><span class="ruby-keyword">nil</span> \
-,
-                        <span class="ruby-value">bind_address:</span><span class="ruby-keyword">nil</span> \
-,
                         <span class="ruby-value">tags:</span><span class="ruby-keyword">nil</span> \
-,
-                        <span class="ruby-value">gateway_filter:</span><span class="ruby-keyword">nil</span> \
                 )
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">bind_address</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@bind_address</span> = <span class="ruby-identifier">bind_address</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">gateway_filter</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@gateway_filter</span> = <span class="ruby-identifier">gateway_filter</span>
+                        <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">id</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">id</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">listen_address</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@listen_address</span> = <span class="ruby-identifier">listen_address</span>
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@name</span> = <span class="ruby-identifier">name</span>
@@ -214,17 +223,8 @@
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">state</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@state</span> = <span class="ruby-identifier">state</span>
                         <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">listen_address</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@listen_address</span> = <span class="ruby-identifier">listen_address</span>
-                        <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">bind_address</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@bind_address</span> = <span class="ruby-identifier">bind_address</span>
-                        <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">tags</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@tags</span> = <span class="ruby-identifier">tags</span>
-                        <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">gateway_filter</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@gateway_filter</span> = <span class="ruby-identifier">gateway_filter</span>
                         <span class="ruby-keyword">end</span>
                 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -251,7 +251,7 @@
           
 
           <div class="method-source-code" id="to_json-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 6683</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 2934</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_json</span>(<span class="ruby-identifier">options</span>={})
         <span class="ruby-identifier">hash</span> = {}
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">instance_variables</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">var</span><span class="ruby-operator">|</span>

@@ -180,8 +180,8 @@
 
                         
             <span class="ruby-identifier">resp</span> = <span class="ruby-constant">AccountGrantCreateResponse</span>.<span class="ruby-identifier">new</span>()
-            <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">meta</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">convert_create_response_metadata_to_porcelain</span>(<span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">meta</span>)
             <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">account_grant</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">convert_account_grant_to_porcelain</span>(<span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">account_grant</span>)
+            <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">meta</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">convert_create_response_metadata_to_porcelain</span>(<span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">meta</span>)
             <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">rate_limit</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">convert_rate_limit_metadata_to_porcelain</span>(<span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">rate_limit</span>)
             <span class="ruby-identifier">resp</span>
         <span class="ruby-keyword">end</span></pre>
@@ -275,8 +275,8 @@
 
                         
             <span class="ruby-identifier">resp</span> = <span class="ruby-constant">AccountGrantGetResponse</span>.<span class="ruby-identifier">new</span>()
-            <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">meta</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">convert_get_response_metadata_to_porcelain</span>(<span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">meta</span>)
             <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">account_grant</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">convert_account_grant_to_porcelain</span>(<span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">account_grant</span>)
+            <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">meta</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">convert_get_response_metadata_to_porcelain</span>(<span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">meta</span>)
             <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">rate_limit</span> = <span class="ruby-constant">Plumbing</span><span class="ruby-operator">::</span><span class="ruby-identifier">convert_rate_limit_metadata_to_porcelain</span>(<span class="ruby-identifier">plumbing_response</span>.<span class="ruby-identifier">rate_limit</span>)
             <span class="ruby-identifier">resp</span>
         <span class="ruby-keyword">end</span></pre>

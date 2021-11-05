@@ -161,7 +161,7 @@
       <div id="method-c-new" class="method-detail ">
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">( id:nil \ , resource_id:nil \ , account_id:nil \ , start_from:nil \ , valid_until:nil \ )</span>
+            class="method-args">( account_id:nil \ , id:nil \ , resource_id:nil \ , start_from:nil \ , valid_until:nil \ )</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
 
@@ -169,26 +169,26 @@
           
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 371</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 832</span>
                 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(
+                        <span class="ruby-value">account_id:</span><span class="ruby-keyword">nil</span> \
+,
                         <span class="ruby-value">id:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">resource_id:</span><span class="ruby-keyword">nil</span> \
-,
-                        <span class="ruby-value">account_id:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">start_from:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">valid_until:</span><span class="ruby-keyword">nil</span> \
                 )
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">account_id</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@account_id</span> = <span class="ruby-identifier">account_id</span>
+                        <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">id</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">id</span>
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">resource_id</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@resource_id</span> = <span class="ruby-identifier">resource_id</span>
-                        <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">account_id</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@account_id</span> = <span class="ruby-identifier">account_id</span>
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">start_from</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@start_from</span> = <span class="ruby-identifier">start_from</span>
@@ -221,7 +221,7 @@
           
 
           <div class="method-source-code" id="to_json-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 398</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 859</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_json</span>(<span class="ruby-identifier">options</span>={})
         <span class="ruby-identifier">hash</span> = {}
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">instance_variables</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">var</span><span class="ruby-operator">|</span>

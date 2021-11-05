@@ -161,7 +161,7 @@
       <div id="method-c-new" class="method-detail ">
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">( id:nil \ , name:nil \ , state:nil \ , tags:nil \ , gateway_filter:nil \ )</span>
+            class="method-args">( gateway_filter:nil \ , id:nil \ , name:nil \ , state:nil \ , tags:nil \ )</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
 
@@ -169,8 +169,10 @@
           
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 6592</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 5711</span>
                 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(
+                        <span class="ruby-value">gateway_filter:</span><span class="ruby-keyword">nil</span> \
+,
                         <span class="ruby-value">id:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">name:</span><span class="ruby-keyword">nil</span> \
@@ -178,9 +180,10 @@
                         <span class="ruby-value">state:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">tags:</span><span class="ruby-keyword">nil</span> \
-,
-                        <span class="ruby-value">gateway_filter:</span><span class="ruby-keyword">nil</span> \
                 )
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">gateway_filter</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@gateway_filter</span> = <span class="ruby-identifier">gateway_filter</span>
+                        <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">id</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">id</span>
                         <span class="ruby-keyword">end</span>
@@ -192,9 +195,6 @@
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">tags</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@tags</span> = <span class="ruby-identifier">tags</span>
-                        <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">gateway_filter</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@gateway_filter</span> = <span class="ruby-identifier">gateway_filter</span>
                         <span class="ruby-keyword">end</span>
                 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -221,7 +221,7 @@
           
 
           <div class="method-source-code" id="to_json-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 6619</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 5738</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_json</span>(<span class="ruby-identifier">options</span>={})
         <span class="ruby-identifier">hash</span> = {}
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">instance_variables</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">var</span><span class="ruby-operator">|</span>

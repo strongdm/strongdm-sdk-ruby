@@ -141,7 +141,7 @@
       <div id="method-c-new" class="method-detail ">
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">( meta:nil \ , account_grant:nil \ , rate_limit:nil \ )</span>
+            class="method-args">( account_grant:nil \ , meta:nil \ , rate_limit:nil \ )</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
 
@@ -149,19 +149,19 @@
           
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 306</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 934</span>
                 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(
-                        <span class="ruby-value">meta:</span><span class="ruby-keyword">nil</span> \
-,
                         <span class="ruby-value">account_grant:</span><span class="ruby-keyword">nil</span> \
+,
+                        <span class="ruby-value">meta:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">rate_limit:</span><span class="ruby-keyword">nil</span> \
                 )
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">meta</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@meta</span> = <span class="ruby-identifier">meta</span>
-                        <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">account_grant</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@account_grant</span> = <span class="ruby-identifier">account_grant</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">meta</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@meta</span> = <span class="ruby-identifier">meta</span>
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">rate_limit</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@rate_limit</span> = <span class="ruby-identifier">rate_limit</span>
@@ -191,7 +191,7 @@
           
 
           <div class="method-source-code" id="to_json-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 323</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 951</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_json</span>(<span class="ruby-identifier">options</span>={})
         <span class="ruby-identifier">hash</span> = {}
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">instance_variables</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">var</span><span class="ruby-operator">|</span>

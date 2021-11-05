@@ -23,110 +23,132 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("drivers.proto", :syntax => :proto3) do
     add_message "v1.Resource" do
       oneof :resource do
-        optional :rabbit_mqamqp_091, :message, 2500, "v1.RabbitMQAMQP091"
+        optional :aks, :message, 805, "v1.AKS"
+        optional :aks_basic_auth, :message, 806, "v1.AKSBasicAuth"
+        optional :aks_service_account, :message, 807, "v1.AKSServiceAccount"
+        optional :aks_service_account_user_impersonation, :message, 810, "v1.AKSServiceAccountUserImpersonation"
+        optional :aks_user_impersonation, :message, 814, "v1.AKSUserImpersonation"
+        optional :aws, :message, 2300, "v1.AWS"
+        optional :amazon_eks, :message, 802, "v1.AmazonEKS"
+        optional :amazon_eks_user_impersonation, :message, 818, "v1.AmazonEKSUserImpersonation"
+        optional :amazon_es, :message, 600, "v1.AmazonES"
         optional :amazon_mqamqp_091, :message, 2501, "v1.AmazonMQAMQP091"
         optional :athena, :message, 100, "v1.Athena"
-        optional :aws, :message, 2300, "v1.AWS"
+        optional :aurora_mysql, :message, 1101, "v1.AuroraMysql"
+        optional :aurora_postgres, :message, 1301, "v1.AuroraPostgres"
         optional :big_query, :message, 200, "v1.BigQuery"
         optional :cassandra, :message, 300, "v1.Cassandra"
+        optional :citus, :message, 1305, "v1.Citus"
+        optional :clustrix, :message, 1102, "v1.Clustrix"
+        optional :cockroach, :message, 1303, "v1.Cockroach"
         optional :db_2_i, :message, 2400, "v1.DB2I"
         optional :db_2_luw, :message, 2200, "v1.DB2LUW"
         optional :druid, :message, 400, "v1.Druid"
         optional :dynamo_db, :message, 500, "v1.DynamoDB"
-        optional :amazon_es, :message, 600, "v1.AmazonES"
         optional :elastic, :message, 601, "v1.Elastic"
+        optional :elasticache_redis, :message, 1601, "v1.ElasticacheRedis"
+        optional :google_gke, :message, 803, "v1.GoogleGKE"
+        optional :google_gke_user_impersonation, :message, 816, "v1.GoogleGKEUserImpersonation"
+        optional :greenplum, :message, 1302, "v1.Greenplum"
+        optional :http_auth, :message, 702, "v1.HTTPAuth"
         optional :http_basic_auth, :message, 700, "v1.HTTPBasicAuth"
         optional :http_no_auth, :message, 701, "v1.HTTPNoAuth"
-        optional :http_auth, :message, 702, "v1.HTTPAuth"
         optional :kubernetes, :message, 800, "v1.Kubernetes"
-        optional :kubernetes_user_impersonation, :message, 812, "v1.KubernetesUserImpersonation"
         optional :kubernetes_basic_auth, :message, 801, "v1.KubernetesBasicAuth"
         optional :kubernetes_service_account, :message, 804, "v1.KubernetesServiceAccount"
         optional :kubernetes_service_account_user_impersonation, :message, 808, "v1.KubernetesServiceAccountUserImpersonation"
-        optional :amazon_eks, :message, 802, "v1.AmazonEKS"
-        optional :amazon_eks_user_impersonation, :message, 818, "v1.AmazonEKSUserImpersonation"
-        optional :google_gke, :message, 803, "v1.GoogleGKE"
-        optional :google_gke_user_impersonation, :message, 816, "v1.GoogleGKEUserImpersonation"
-        optional :aks, :message, 805, "v1.AKS"
-        optional :aks_user_impersonation, :message, 814, "v1.AKSUserImpersonation"
-        optional :aks_basic_auth, :message, 806, "v1.AKSBasicAuth"
-        optional :aks_service_account, :message, 807, "v1.AKSServiceAccount"
-        optional :aks_service_account_user_impersonation, :message, 810, "v1.AKSServiceAccountUserImpersonation"
+        optional :kubernetes_user_impersonation, :message, 812, "v1.KubernetesUserImpersonation"
+        optional :maria, :message, 1103, "v1.Maria"
         optional :memcached, :message, 900, "v1.Memcached"
+        optional :memsql, :message, 1104, "v1.Memsql"
+        optional :mongo_host, :message, 1002, "v1.MongoHost"
         optional :mongo_legacy_host, :message, 1000, "v1.MongoLegacyHost"
         optional :mongo_legacy_replicaset, :message, 1001, "v1.MongoLegacyReplicaset"
-        optional :mongo_host, :message, 1002, "v1.MongoHost"
         optional :mongo_replica_set, :message, 1003, "v1.MongoReplicaSet"
         optional :mysql, :message, 1100, "v1.Mysql"
-        optional :aurora_mysql, :message, 1101, "v1.AuroraMysql"
-        optional :clustrix, :message, 1102, "v1.Clustrix"
-        optional :maria, :message, 1103, "v1.Maria"
-        optional :memsql, :message, 1104, "v1.Memsql"
-        optional :single_store, :message, 1105, "v1.SingleStore"
         optional :oracle, :message, 1200, "v1.Oracle"
         optional :postgres, :message, 1300, "v1.Postgres"
-        optional :aurora_postgres, :message, 1301, "v1.AuroraPostgres"
-        optional :greenplum, :message, 1302, "v1.Greenplum"
-        optional :cockroach, :message, 1303, "v1.Cockroach"
-        optional :redshift, :message, 1304, "v1.Redshift"
-        optional :citus, :message, 1305, "v1.Citus"
         optional :presto, :message, 1400, "v1.Presto"
-        optional :raw_tcp, :message, 2600, "v1.RawTCP"
         optional :rdp, :message, 1500, "v1.RDP"
+        optional :rabbit_mqamqp_091, :message, 2500, "v1.RabbitMQAMQP091"
+        optional :raw_tcp, :message, 2600, "v1.RawTCP"
         optional :redis, :message, 1600, "v1.Redis"
-        optional :elasticache_redis, :message, 1601, "v1.ElasticacheRedis"
-        optional :snowflake, :message, 1700, "v1.Snowflake"
+        optional :redshift, :message, 1304, "v1.Redshift"
         optional :sql_server, :message, 1800, "v1.SQLServer"
         optional :ssh, :message, 1900, "v1.SSH"
         optional :ssh_cert, :message, 1901, "v1.SSHCert"
         optional :ssh_customer_key, :message, 1902, "v1.SSHCustomerKey"
+        optional :single_store, :message, 1105, "v1.SingleStore"
+        optional :snowflake, :message, 1700, "v1.Snowflake"
         optional :sybase, :message, 2000, "v1.Sybase"
         optional :sybase_iq, :message, 2001, "v1.SybaseIQ"
         optional :teradata, :message, 2100, "v1.Teradata"
       end
     end
-    add_message "v1.RabbitMQAMQP091" do
+    add_message "v1.AKS" do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :certificate_authority, :string, 3
+      optional :client_certificate, :string, 5
+      optional :client_key, :string, 7
+      optional :healthcheck_namespace, :string, 9
       optional :hostname, :string, 1
-      optional :port_override, :int32, 2
-      optional :port, :int32, 3
-      optional :username, :string, 4
-      optional :password, :string, 5
-      optional :tls_required, :bool, 8
+      optional :port, :int32, 2
     end
-    add_message "v1.AmazonMQAMQP091" do
+    add_message "v1.AKSBasicAuth" do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :healthcheck_namespace, :string, 5
       optional :hostname, :string, 1
-      optional :port_override, :int32, 2
-      optional :port, :int32, 3
-      optional :username, :string, 4
-      optional :password, :string, 5
-      optional :tls_required, :bool, 8
+      optional :password, :string, 4
+      optional :port, :int32, 2
+      optional :username, :string, 3
     end
-    add_message "v1.Athena" do
+    add_message "v1.AKSServiceAccount" do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
-      optional :access_key, :string, 1
-      optional :secret_access_key, :string, 2
-      optional :output, :string, 3
-      optional :port_override, :int32, 4
-      optional :region, :string, 5
-      optional :role_arn, :string, 6
-      optional :role_external_id, :string, 7
+      optional :healthcheck_namespace, :string, 4
+      optional :hostname, :string, 1
+      optional :port, :int32, 2
+      optional :token, :string, 3
+    end
+    add_message "v1.AKSServiceAccountUserImpersonation" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :healthcheck_namespace, :string, 4
+      optional :hostname, :string, 1
+      optional :port, :int32, 2
+      optional :token, :string, 3
+    end
+    add_message "v1.AKSUserImpersonation" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :certificate_authority, :string, 3
+      optional :client_certificate, :string, 5
+      optional :client_key, :string, 7
+      optional :healthcheck_namespace, :string, 9
+      optional :hostname, :string, 1
+      optional :port, :int32, 2
     end
     add_message "v1.AWS" do
       optional :id, :string, 32768
@@ -136,10 +158,117 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :access_key, :string, 1
-      optional :secret_access_key, :string, 2
       optional :healthcheck_region, :string, 4
       optional :role_arn, :string, 5
       optional :role_external_id, :string, 6
+      optional :secret_access_key, :string, 2
+    end
+    add_message "v1.AmazonEKS" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :access_key, :string, 2
+      optional :certificate_authority, :string, 4
+      optional :cluster_name, :string, 7
+      optional :endpoint, :string, 1
+      optional :healthcheck_namespace, :string, 9
+      optional :region, :string, 6
+      optional :role_arn, :string, 8
+      optional :role_external_id, :string, 10
+      optional :secret_access_key, :string, 3
+    end
+    add_message "v1.AmazonEKSUserImpersonation" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :access_key, :string, 2
+      optional :certificate_authority, :string, 4
+      optional :cluster_name, :string, 7
+      optional :endpoint, :string, 1
+      optional :healthcheck_namespace, :string, 9
+      optional :region, :string, 6
+      optional :role_arn, :string, 8
+      optional :role_external_id, :string, 10
+      optional :secret_access_key, :string, 3
+    end
+    add_message "v1.AmazonES" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :access_key, :string, 4
+      optional :endpoint, :string, 3
+      optional :port_override, :int32, 5
+      optional :region, :string, 1
+      optional :role_arn, :string, 6
+      optional :role_external_id, :string, 7
+      optional :secret_access_key, :string, 2
+    end
+    add_message "v1.AmazonMQAMQP091" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :hostname, :string, 1
+      optional :password, :string, 5
+      optional :port, :int32, 3
+      optional :port_override, :int32, 2
+      optional :tls_required, :bool, 8
+      optional :username, :string, 4
+    end
+    add_message "v1.Athena" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :access_key, :string, 1
+      optional :output, :string, 3
+      optional :port_override, :int32, 4
+      optional :region, :string, 5
+      optional :role_arn, :string, 6
+      optional :role_external_id, :string, 7
+      optional :secret_access_key, :string, 2
+    end
+    add_message "v1.AuroraMysql" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :database, :string, 4
+      optional :hostname, :string, 1
+      optional :password, :string, 3
+      optional :port, :int32, 6
+      optional :port_override, :int32, 5
+      optional :username, :string, 2
+    end
+    add_message "v1.AuroraPostgres" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :database, :string, 4
+      optional :hostname, :string, 1
+      optional :override_database, :bool, 7
+      optional :password, :string, 3
+      optional :port, :int32, 6
+      optional :port_override, :int32, 5
+      optional :username, :string, 2
     end
     add_message "v1.BigQuery" do
       optional :id, :string, 32768
@@ -148,10 +277,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :endpoint, :string, 4
+      optional :port_override, :int32, 3
       optional :private_key, :string, 1
       optional :project, :string, 2
-      optional :port_override, :int32, 3
-      optional :endpoint, :string, 4
       optional :username, :string, 5
     end
     add_message "v1.Cassandra" do
@@ -162,11 +291,55 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :hostname, :string, 1
-      optional :username, :string, 2
       optional :password, :string, 3
-      optional :port_override, :int32, 4
       optional :port, :int32, 5
+      optional :port_override, :int32, 4
       optional :tls_required, :bool, 6
+      optional :username, :string, 2
+    end
+    add_message "v1.Citus" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :database, :string, 4
+      optional :hostname, :string, 1
+      optional :override_database, :bool, 7
+      optional :password, :string, 3
+      optional :port, :int32, 6
+      optional :port_override, :int32, 5
+      optional :username, :string, 2
+    end
+    add_message "v1.Clustrix" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :database, :string, 4
+      optional :hostname, :string, 1
+      optional :password, :string, 3
+      optional :port, :int32, 6
+      optional :port_override, :int32, 5
+      optional :username, :string, 2
+    end
+    add_message "v1.Cockroach" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :database, :string, 4
+      optional :hostname, :string, 1
+      optional :override_database, :bool, 7
+      optional :password, :string, 3
+      optional :port, :int32, 6
+      optional :port_override, :int32, 5
+      optional :username, :string, 2
     end
     add_message "v1.DB2I" do
       optional :id, :string, 32768
@@ -176,11 +349,11 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :hostname, :string, 1
-      optional :username, :string, 2
       optional :password, :string, 3
-      optional :port_override, :int32, 4
       optional :port, :int32, 5
+      optional :port_override, :int32, 4
       optional :tls_required, :bool, 7
+      optional :username, :string, 2
     end
     add_message "v1.DB2LUW" do
       optional :id, :string, 32768
@@ -189,12 +362,12 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
-      optional :hostname, :string, 1
-      optional :username, :string, 2
-      optional :password, :string, 3
       optional :database, :string, 4
-      optional :port_override, :int32, 5
+      optional :hostname, :string, 1
+      optional :password, :string, 3
       optional :port, :int32, 6
+      optional :port_override, :int32, 5
+      optional :username, :string, 2
     end
     add_message "v1.Druid" do
       optional :id, :string, 32768
@@ -204,10 +377,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :hostname, :string, 1
-      optional :port_override, :int32, 2
-      optional :username, :string, 3
       optional :password, :string, 4
       optional :port, :int32, 5
+      optional :port_override, :int32, 2
+      optional :username, :string, 3
     end
     add_message "v1.DynamoDB" do
       optional :id, :string, 32768
@@ -217,27 +390,12 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :access_key, :string, 1
-      optional :secret_access_key, :string, 2
-      optional :region, :string, 3
       optional :endpoint, :string, 4
       optional :port_override, :int32, 5
+      optional :region, :string, 3
       optional :role_arn, :string, 6
       optional :role_external_id, :string, 7
-    end
-    add_message "v1.AmazonES" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :region, :string, 1
       optional :secret_access_key, :string, 2
-      optional :endpoint, :string, 3
-      optional :access_key, :string, 4
-      optional :port_override, :int32, 5
-      optional :role_arn, :string, 6
-      optional :role_external_id, :string, 7
     end
     add_message "v1.Elastic" do
       optional :id, :string, 32768
@@ -247,557 +405,11 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :hostname, :string, 1
-      optional :username, :string, 2
       optional :password, :string, 3
-      optional :port_override, :int32, 4
       optional :port, :int32, 5
+      optional :port_override, :int32, 4
       optional :tls_required, :bool, 6
-    end
-    add_message "v1.HTTPBasicAuth" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :url, :string, 1
-      optional :healthcheck_path, :string, 2
-      optional :username, :string, 3
-      optional :password, :string, 4
-      optional :headers_blacklist, :string, 5
-      optional :default_path, :string, 6
-      optional :subdomain, :string, 7
-    end
-    add_message "v1.HTTPNoAuth" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :url, :string, 1
-      optional :healthcheck_path, :string, 2
-      optional :headers_blacklist, :string, 3
-      optional :default_path, :string, 4
-      optional :subdomain, :string, 5
-    end
-    add_message "v1.HTTPAuth" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :url, :string, 1
-      optional :healthcheck_path, :string, 2
-      optional :auth_header, :string, 3
-      optional :headers_blacklist, :string, 4
-      optional :default_path, :string, 5
-      optional :subdomain, :string, 6
-    end
-    add_message "v1.Kubernetes" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :hostname, :string, 1
-      optional :port, :int32, 2
-      optional :certificate_authority, :string, 3
-      optional :client_certificate, :string, 5
-      optional :client_key, :string, 7
-      optional :healthcheck_namespace, :string, 9
-    end
-    add_message "v1.KubernetesUserImpersonation" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :hostname, :string, 1
-      optional :port, :int32, 2
-      optional :certificate_authority, :string, 3
-      optional :client_certificate, :string, 5
-      optional :client_key, :string, 7
-      optional :healthcheck_namespace, :string, 9
-    end
-    add_message "v1.KubernetesBasicAuth" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :hostname, :string, 1
-      optional :port, :int32, 2
-      optional :username, :string, 3
-      optional :password, :string, 4
-      optional :healthcheck_namespace, :string, 5
-    end
-    add_message "v1.KubernetesServiceAccount" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :hostname, :string, 1
-      optional :port, :int32, 2
-      optional :token, :string, 3
-      optional :healthcheck_namespace, :string, 4
-    end
-    add_message "v1.KubernetesServiceAccountUserImpersonation" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :hostname, :string, 1
-      optional :port, :int32, 2
-      optional :token, :string, 3
-      optional :healthcheck_namespace, :string, 4
-    end
-    add_message "v1.AmazonEKS" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :endpoint, :string, 1
-      optional :access_key, :string, 2
-      optional :secret_access_key, :string, 3
-      optional :certificate_authority, :string, 4
-      optional :region, :string, 6
-      optional :cluster_name, :string, 7
-      optional :role_arn, :string, 8
-      optional :role_external_id, :string, 10
-      optional :healthcheck_namespace, :string, 9
-    end
-    add_message "v1.AmazonEKSUserImpersonation" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :endpoint, :string, 1
-      optional :access_key, :string, 2
-      optional :secret_access_key, :string, 3
-      optional :certificate_authority, :string, 4
-      optional :region, :string, 6
-      optional :cluster_name, :string, 7
-      optional :role_arn, :string, 8
-      optional :role_external_id, :string, 10
-      optional :healthcheck_namespace, :string, 9
-    end
-    add_message "v1.GoogleGKE" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :endpoint, :string, 1
-      optional :certificate_authority, :string, 2
-      optional :service_account_key, :string, 4
-      optional :healthcheck_namespace, :string, 6
-    end
-    add_message "v1.GoogleGKEUserImpersonation" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :endpoint, :string, 1
-      optional :certificate_authority, :string, 2
-      optional :service_account_key, :string, 4
-      optional :healthcheck_namespace, :string, 6
-    end
-    add_message "v1.AKS" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :hostname, :string, 1
-      optional :port, :int32, 2
-      optional :certificate_authority, :string, 3
-      optional :client_certificate, :string, 5
-      optional :client_key, :string, 7
-      optional :healthcheck_namespace, :string, 9
-    end
-    add_message "v1.AKSUserImpersonation" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :hostname, :string, 1
-      optional :port, :int32, 2
-      optional :certificate_authority, :string, 3
-      optional :client_certificate, :string, 5
-      optional :client_key, :string, 7
-      optional :healthcheck_namespace, :string, 9
-    end
-    add_message "v1.AKSBasicAuth" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :hostname, :string, 1
-      optional :port, :int32, 2
-      optional :username, :string, 3
-      optional :password, :string, 4
-      optional :healthcheck_namespace, :string, 5
-    end
-    add_message "v1.AKSServiceAccount" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :hostname, :string, 1
-      optional :port, :int32, 2
-      optional :token, :string, 3
-      optional :healthcheck_namespace, :string, 4
-    end
-    add_message "v1.AKSServiceAccountUserImpersonation" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :hostname, :string, 1
-      optional :port, :int32, 2
-      optional :token, :string, 3
-      optional :healthcheck_namespace, :string, 4
-    end
-    add_message "v1.Memcached" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :hostname, :string, 1
-      optional :port_override, :int32, 2
-      optional :port, :int32, 3
-    end
-    add_message "v1.MongoLegacyHost" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :hostname, :string, 1
-      optional :auth_database, :string, 2
-      optional :port_override, :int32, 3
-      optional :username, :string, 4
-      optional :password, :string, 5
-      optional :port, :int32, 6
-      optional :replica_set, :string, 7
-      optional :tls_required, :bool, 8
-    end
-    add_message "v1.MongoLegacyReplicaset" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :hostname, :string, 1
-      optional :auth_database, :string, 2
-      optional :port_override, :int32, 3
-      optional :username, :string, 4
-      optional :password, :string, 5
-      optional :port, :int32, 6
-      optional :replica_set, :string, 7
-      optional :connect_to_replica, :bool, 8
-      optional :tls_required, :bool, 9
-    end
-    add_message "v1.MongoHost" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :hostname, :string, 1
-      optional :auth_database, :string, 2
-      optional :port_override, :int32, 3
-      optional :username, :string, 4
-      optional :password, :string, 5
-      optional :port, :int32, 6
-      optional :tls_required, :bool, 8
-    end
-    add_message "v1.MongoReplicaSet" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :hostname, :string, 1
-      optional :auth_database, :string, 2
-      optional :port_override, :int32, 3
-      optional :username, :string, 4
-      optional :password, :string, 5
-      optional :port, :int32, 6
-      optional :replica_set, :string, 7
-      optional :connect_to_replica, :bool, 8
-      optional :tls_required, :bool, 9
-    end
-    add_message "v1.Mysql" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :hostname, :string, 1
       optional :username, :string, 2
-      optional :password, :string, 3
-      optional :database, :string, 4
-      optional :port_override, :int32, 5
-      optional :port, :int32, 6
-    end
-    add_message "v1.AuroraMysql" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :hostname, :string, 1
-      optional :username, :string, 2
-      optional :password, :string, 3
-      optional :database, :string, 4
-      optional :port_override, :int32, 5
-      optional :port, :int32, 6
-    end
-    add_message "v1.Clustrix" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :hostname, :string, 1
-      optional :username, :string, 2
-      optional :password, :string, 3
-      optional :database, :string, 4
-      optional :port_override, :int32, 5
-      optional :port, :int32, 6
-    end
-    add_message "v1.Maria" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :hostname, :string, 1
-      optional :username, :string, 2
-      optional :password, :string, 3
-      optional :database, :string, 4
-      optional :port_override, :int32, 5
-      optional :port, :int32, 6
-    end
-    add_message "v1.Memsql" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :hostname, :string, 1
-      optional :username, :string, 2
-      optional :password, :string, 3
-      optional :database, :string, 4
-      optional :port_override, :int32, 5
-      optional :port, :int32, 6
-    end
-    add_message "v1.SingleStore" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :hostname, :string, 1
-      optional :username, :string, 2
-      optional :password, :string, 3
-      optional :database, :string, 4
-      optional :port_override, :int32, 5
-      optional :port, :int32, 6
-    end
-    add_message "v1.Oracle" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :hostname, :string, 1
-      optional :username, :string, 2
-      optional :password, :string, 3
-      optional :database, :string, 4
-      optional :port, :int32, 5
-      optional :port_override, :int32, 6
-      optional :tls_required, :bool, 7
-    end
-    add_message "v1.Postgres" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :hostname, :string, 1
-      optional :username, :string, 2
-      optional :password, :string, 3
-      optional :database, :string, 4
-      optional :port_override, :int32, 5
-      optional :port, :int32, 6
-      optional :override_database, :bool, 7
-    end
-    add_message "v1.AuroraPostgres" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :hostname, :string, 1
-      optional :username, :string, 2
-      optional :password, :string, 3
-      optional :database, :string, 4
-      optional :port_override, :int32, 5
-      optional :port, :int32, 6
-      optional :override_database, :bool, 7
-    end
-    add_message "v1.Greenplum" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :hostname, :string, 1
-      optional :username, :string, 2
-      optional :password, :string, 3
-      optional :database, :string, 4
-      optional :port_override, :int32, 5
-      optional :port, :int32, 6
-      optional :override_database, :bool, 7
-    end
-    add_message "v1.Cockroach" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :hostname, :string, 1
-      optional :username, :string, 2
-      optional :password, :string, 3
-      optional :database, :string, 4
-      optional :port_override, :int32, 5
-      optional :port, :int32, 6
-      optional :override_database, :bool, 7
-    end
-    add_message "v1.Redshift" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :hostname, :string, 1
-      optional :username, :string, 2
-      optional :password, :string, 3
-      optional :database, :string, 4
-      optional :port_override, :int32, 5
-      optional :port, :int32, 6
-      optional :override_database, :bool, 7
-    end
-    add_message "v1.Citus" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :hostname, :string, 1
-      optional :username, :string, 2
-      optional :password, :string, 3
-      optional :database, :string, 4
-      optional :port_override, :int32, 5
-      optional :port, :int32, 6
-      optional :override_database, :bool, 7
-    end
-    add_message "v1.Presto" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :hostname, :string, 1
-      optional :password, :string, 2
-      optional :database, :string, 3
-      optional :port_override, :int32, 4
-      optional :port, :int32, 5
-      optional :username, :string, 6
-      optional :tls_required, :bool, 7
-    end
-    add_message "v1.RawTCP" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :hostname, :string, 1
-      optional :port_override, :int32, 2
-      optional :port, :int32, 3
-    end
-    add_message "v1.RDP" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :hostname, :string, 1
-      optional :username, :string, 2
-      optional :password, :string, 3
-      optional :port_override, :int32, 4
-      optional :port, :int32, 5
-    end
-    add_message "v1.Redis" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :hostname, :string, 1
-      optional :port_override, :int32, 2
-      optional :password, :string, 3
-      optional :port, :int32, 4
     end
     add_message "v1.ElasticacheRedis" do
       optional :id, :string, 32768
@@ -807,12 +419,172 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :hostname, :string, 1
-      optional :port_override, :int32, 2
       optional :password, :string, 3
       optional :port, :int32, 4
+      optional :port_override, :int32, 2
       optional :tls_required, :bool, 5
     end
-    add_message "v1.Snowflake" do
+    add_message "v1.GoogleGKE" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :certificate_authority, :string, 2
+      optional :endpoint, :string, 1
+      optional :healthcheck_namespace, :string, 6
+      optional :service_account_key, :string, 4
+    end
+    add_message "v1.GoogleGKEUserImpersonation" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :certificate_authority, :string, 2
+      optional :endpoint, :string, 1
+      optional :healthcheck_namespace, :string, 6
+      optional :service_account_key, :string, 4
+    end
+    add_message "v1.Greenplum" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :database, :string, 4
+      optional :hostname, :string, 1
+      optional :override_database, :bool, 7
+      optional :password, :string, 3
+      optional :port, :int32, 6
+      optional :port_override, :int32, 5
+      optional :username, :string, 2
+    end
+    add_message "v1.HTTPAuth" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :auth_header, :string, 3
+      optional :default_path, :string, 5
+      optional :headers_blacklist, :string, 4
+      optional :healthcheck_path, :string, 2
+      optional :subdomain, :string, 6
+      optional :url, :string, 1
+    end
+    add_message "v1.HTTPBasicAuth" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :default_path, :string, 6
+      optional :headers_blacklist, :string, 5
+      optional :healthcheck_path, :string, 2
+      optional :password, :string, 4
+      optional :subdomain, :string, 7
+      optional :url, :string, 1
+      optional :username, :string, 3
+    end
+    add_message "v1.HTTPNoAuth" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :default_path, :string, 4
+      optional :headers_blacklist, :string, 3
+      optional :healthcheck_path, :string, 2
+      optional :subdomain, :string, 5
+      optional :url, :string, 1
+    end
+    add_message "v1.Kubernetes" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :certificate_authority, :string, 3
+      optional :client_certificate, :string, 5
+      optional :client_key, :string, 7
+      optional :healthcheck_namespace, :string, 9
+      optional :hostname, :string, 1
+      optional :port, :int32, 2
+    end
+    add_message "v1.KubernetesBasicAuth" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :healthcheck_namespace, :string, 5
+      optional :hostname, :string, 1
+      optional :password, :string, 4
+      optional :port, :int32, 2
+      optional :username, :string, 3
+    end
+    add_message "v1.KubernetesServiceAccount" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :healthcheck_namespace, :string, 4
+      optional :hostname, :string, 1
+      optional :port, :int32, 2
+      optional :token, :string, 3
+    end
+    add_message "v1.KubernetesServiceAccountUserImpersonation" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :healthcheck_namespace, :string, 4
+      optional :hostname, :string, 1
+      optional :port, :int32, 2
+      optional :token, :string, 3
+    end
+    add_message "v1.KubernetesUserImpersonation" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :certificate_authority, :string, 3
+      optional :client_certificate, :string, 5
+      optional :client_key, :string, 7
+      optional :healthcheck_namespace, :string, 9
+      optional :hostname, :string, 1
+      optional :port, :int32, 2
+    end
+    add_message "v1.Maria" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :database, :string, 4
+      optional :hostname, :string, 1
+      optional :password, :string, 3
+      optional :port, :int32, 6
+      optional :port_override, :int32, 5
+      optional :username, :string, 2
+    end
+    add_message "v1.Memcached" do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
@@ -820,11 +592,211 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :hostname, :string, 1
-      optional :username, :string, 2
-      optional :password, :string, 3
+      optional :port, :int32, 3
+      optional :port_override, :int32, 2
+    end
+    add_message "v1.Memsql" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
       optional :database, :string, 4
-      optional :schema, :string, 5
+      optional :hostname, :string, 1
+      optional :password, :string, 3
+      optional :port, :int32, 6
+      optional :port_override, :int32, 5
+      optional :username, :string, 2
+    end
+    add_message "v1.MongoHost" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :auth_database, :string, 2
+      optional :hostname, :string, 1
+      optional :password, :string, 5
+      optional :port, :int32, 6
+      optional :port_override, :int32, 3
+      optional :tls_required, :bool, 8
+      optional :username, :string, 4
+    end
+    add_message "v1.MongoLegacyHost" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :auth_database, :string, 2
+      optional :hostname, :string, 1
+      optional :password, :string, 5
+      optional :port, :int32, 6
+      optional :port_override, :int32, 3
+      optional :replica_set, :string, 7
+      optional :tls_required, :bool, 8
+      optional :username, :string, 4
+    end
+    add_message "v1.MongoLegacyReplicaset" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :auth_database, :string, 2
+      optional :connect_to_replica, :bool, 8
+      optional :hostname, :string, 1
+      optional :password, :string, 5
+      optional :port, :int32, 6
+      optional :port_override, :int32, 3
+      optional :replica_set, :string, 7
+      optional :tls_required, :bool, 9
+      optional :username, :string, 4
+    end
+    add_message "v1.MongoReplicaSet" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :auth_database, :string, 2
+      optional :connect_to_replica, :bool, 8
+      optional :hostname, :string, 1
+      optional :password, :string, 5
+      optional :port, :int32, 6
+      optional :port_override, :int32, 3
+      optional :replica_set, :string, 7
+      optional :tls_required, :bool, 9
+      optional :username, :string, 4
+    end
+    add_message "v1.Mysql" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :database, :string, 4
+      optional :hostname, :string, 1
+      optional :password, :string, 3
+      optional :port, :int32, 6
+      optional :port_override, :int32, 5
+      optional :username, :string, 2
+    end
+    add_message "v1.Oracle" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :database, :string, 4
+      optional :hostname, :string, 1
+      optional :password, :string, 3
+      optional :port, :int32, 5
       optional :port_override, :int32, 6
+      optional :tls_required, :bool, 7
+      optional :username, :string, 2
+    end
+    add_message "v1.Postgres" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :database, :string, 4
+      optional :hostname, :string, 1
+      optional :override_database, :bool, 7
+      optional :password, :string, 3
+      optional :port, :int32, 6
+      optional :port_override, :int32, 5
+      optional :username, :string, 2
+    end
+    add_message "v1.Presto" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :database, :string, 3
+      optional :hostname, :string, 1
+      optional :password, :string, 2
+      optional :port, :int32, 5
+      optional :port_override, :int32, 4
+      optional :tls_required, :bool, 7
+      optional :username, :string, 6
+    end
+    add_message "v1.RDP" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :hostname, :string, 1
+      optional :password, :string, 3
+      optional :port, :int32, 5
+      optional :port_override, :int32, 4
+      optional :username, :string, 2
+    end
+    add_message "v1.RabbitMQAMQP091" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :hostname, :string, 1
+      optional :password, :string, 5
+      optional :port, :int32, 3
+      optional :port_override, :int32, 2
+      optional :tls_required, :bool, 8
+      optional :username, :string, 4
+    end
+    add_message "v1.RawTCP" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :hostname, :string, 1
+      optional :port, :int32, 3
+      optional :port_override, :int32, 2
+    end
+    add_message "v1.Redis" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :hostname, :string, 1
+      optional :password, :string, 3
+      optional :port, :int32, 4
+      optional :port_override, :int32, 2
+    end
+    add_message "v1.Redshift" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :database, :string, 4
+      optional :hostname, :string, 1
+      optional :override_database, :bool, 7
+      optional :password, :string, 3
+      optional :port, :int32, 6
+      optional :port_override, :int32, 5
+      optional :username, :string, 2
     end
     add_message "v1.SQLServer" do
       optional :id, :string, 32768
@@ -833,14 +805,14 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
-      optional :hostname, :string, 1
-      optional :username, :string, 2
-      optional :password, :string, 3
       optional :database, :string, 4
+      optional :hostname, :string, 1
+      optional :override_database, :bool, 8
+      optional :password, :string, 3
+      optional :port, :int32, 7
       optional :port_override, :int32, 5
       optional :schema, :string, 6
-      optional :port, :int32, 7
-      optional :override_database, :bool, 8
+      optional :username, :string, 2
     end
     add_message "v1.SSH" do
       optional :id, :string, 32768
@@ -849,12 +821,12 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
-      optional :hostname, :string, 1
-      optional :username, :string, 2
-      optional :port, :int32, 3
-      optional :public_key, :string, 4
-      optional :port_forwarding, :bool, 5
       optional :allow_deprecated_key_exchanges, :bool, 6
+      optional :hostname, :string, 1
+      optional :port, :int32, 3
+      optional :port_forwarding, :bool, 5
+      optional :public_key, :string, 4
+      optional :username, :string, 2
     end
     add_message "v1.SSHCert" do
       optional :id, :string, 32768
@@ -863,11 +835,11 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :allow_deprecated_key_exchanges, :bool, 5
       optional :hostname, :string, 1
-      optional :username, :string, 2
       optional :port, :int32, 3
       optional :port_forwarding, :bool, 4
-      optional :allow_deprecated_key_exchanges, :bool, 5
+      optional :username, :string, 2
     end
     add_message "v1.SSHCustomerKey" do
       optional :id, :string, 32768
@@ -876,12 +848,40 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
-      optional :hostname, :string, 1
-      optional :username, :string, 2
-      optional :port, :int32, 3
-      optional :private_key, :string, 4
-      optional :port_forwarding, :bool, 5
       optional :allow_deprecated_key_exchanges, :bool, 6
+      optional :hostname, :string, 1
+      optional :port, :int32, 3
+      optional :port_forwarding, :bool, 5
+      optional :private_key, :string, 4
+      optional :username, :string, 2
+    end
+    add_message "v1.SingleStore" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :database, :string, 4
+      optional :hostname, :string, 1
+      optional :password, :string, 3
+      optional :port, :int32, 6
+      optional :port_override, :int32, 5
+      optional :username, :string, 2
+    end
+    add_message "v1.Snowflake" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :database, :string, 4
+      optional :hostname, :string, 1
+      optional :password, :string, 3
+      optional :port_override, :int32, 6
+      optional :schema, :string, 5
+      optional :username, :string, 2
     end
     add_message "v1.Sybase" do
       optional :id, :string, 32768
@@ -891,10 +891,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :hostname, :string, 1
-      optional :username, :string, 2
-      optional :port_override, :int32, 3
-      optional :port, :int32, 4
       optional :password, :string, 5
+      optional :port, :int32, 4
+      optional :port_override, :int32, 3
+      optional :username, :string, 2
     end
     add_message "v1.SybaseIQ" do
       optional :id, :string, 32768
@@ -904,10 +904,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :hostname, :string, 1
-      optional :username, :string, 2
-      optional :port_override, :int32, 3
-      optional :port, :int32, 4
       optional :password, :string, 5
+      optional :port, :int32, 4
+      optional :port_override, :int32, 3
+      optional :username, :string, 2
     end
     add_message "v1.Teradata" do
       optional :id, :string, 32768
@@ -917,73 +917,73 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :hostname, :string, 1
-      optional :username, :string, 2
       optional :password, :string, 3
-      optional :port_override, :int32, 4
       optional :port, :int32, 5
+      optional :port_override, :int32, 4
+      optional :username, :string, 2
     end
   end
 end
 
 module V1
   Resource = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Resource").msgclass
-  RabbitMQAMQP091 = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RabbitMQAMQP091").msgclass
+  AKS = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AKS").msgclass
+  AKSBasicAuth = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AKSBasicAuth").msgclass
+  AKSServiceAccount = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AKSServiceAccount").msgclass
+  AKSServiceAccountUserImpersonation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AKSServiceAccountUserImpersonation").msgclass
+  AKSUserImpersonation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AKSUserImpersonation").msgclass
+  AWS = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AWS").msgclass
+  AmazonEKS = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AmazonEKS").msgclass
+  AmazonEKSUserImpersonation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AmazonEKSUserImpersonation").msgclass
+  AmazonES = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AmazonES").msgclass
   AmazonMQAMQP091 = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AmazonMQAMQP091").msgclass
   Athena = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Athena").msgclass
-  AWS = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AWS").msgclass
+  AuroraMysql = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuroraMysql").msgclass
+  AuroraPostgres = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuroraPostgres").msgclass
   BigQuery = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.BigQuery").msgclass
   Cassandra = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Cassandra").msgclass
+  Citus = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Citus").msgclass
+  Clustrix = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Clustrix").msgclass
+  Cockroach = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Cockroach").msgclass
   DB2I = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DB2I").msgclass
   DB2LUW = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DB2LUW").msgclass
   Druid = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Druid").msgclass
   DynamoDB = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DynamoDB").msgclass
-  AmazonES = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AmazonES").msgclass
   Elastic = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Elastic").msgclass
+  ElasticacheRedis = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ElasticacheRedis").msgclass
+  GoogleGKE = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GoogleGKE").msgclass
+  GoogleGKEUserImpersonation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GoogleGKEUserImpersonation").msgclass
+  Greenplum = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Greenplum").msgclass
+  HTTPAuth = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.HTTPAuth").msgclass
   HTTPBasicAuth = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.HTTPBasicAuth").msgclass
   HTTPNoAuth = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.HTTPNoAuth").msgclass
-  HTTPAuth = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.HTTPAuth").msgclass
   Kubernetes = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Kubernetes").msgclass
-  KubernetesUserImpersonation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.KubernetesUserImpersonation").msgclass
   KubernetesBasicAuth = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.KubernetesBasicAuth").msgclass
   KubernetesServiceAccount = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.KubernetesServiceAccount").msgclass
   KubernetesServiceAccountUserImpersonation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.KubernetesServiceAccountUserImpersonation").msgclass
-  AmazonEKS = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AmazonEKS").msgclass
-  AmazonEKSUserImpersonation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AmazonEKSUserImpersonation").msgclass
-  GoogleGKE = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GoogleGKE").msgclass
-  GoogleGKEUserImpersonation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GoogleGKEUserImpersonation").msgclass
-  AKS = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AKS").msgclass
-  AKSUserImpersonation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AKSUserImpersonation").msgclass
-  AKSBasicAuth = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AKSBasicAuth").msgclass
-  AKSServiceAccount = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AKSServiceAccount").msgclass
-  AKSServiceAccountUserImpersonation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AKSServiceAccountUserImpersonation").msgclass
+  KubernetesUserImpersonation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.KubernetesUserImpersonation").msgclass
+  Maria = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Maria").msgclass
   Memcached = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Memcached").msgclass
+  Memsql = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Memsql").msgclass
+  MongoHost = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MongoHost").msgclass
   MongoLegacyHost = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MongoLegacyHost").msgclass
   MongoLegacyReplicaset = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MongoLegacyReplicaset").msgclass
-  MongoHost = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MongoHost").msgclass
   MongoReplicaSet = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MongoReplicaSet").msgclass
   Mysql = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Mysql").msgclass
-  AuroraMysql = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuroraMysql").msgclass
-  Clustrix = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Clustrix").msgclass
-  Maria = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Maria").msgclass
-  Memsql = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Memsql").msgclass
-  SingleStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SingleStore").msgclass
   Oracle = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Oracle").msgclass
   Postgres = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Postgres").msgclass
-  AuroraPostgres = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuroraPostgres").msgclass
-  Greenplum = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Greenplum").msgclass
-  Cockroach = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Cockroach").msgclass
-  Redshift = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Redshift").msgclass
-  Citus = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Citus").msgclass
   Presto = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Presto").msgclass
-  RawTCP = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RawTCP").msgclass
   RDP = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RDP").msgclass
+  RabbitMQAMQP091 = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RabbitMQAMQP091").msgclass
+  RawTCP = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RawTCP").msgclass
   Redis = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Redis").msgclass
-  ElasticacheRedis = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ElasticacheRedis").msgclass
-  Snowflake = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Snowflake").msgclass
+  Redshift = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Redshift").msgclass
   SQLServer = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SQLServer").msgclass
   SSH = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SSH").msgclass
   SSHCert = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SSHCert").msgclass
   SSHCustomerKey = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SSHCustomerKey").msgclass
+  SingleStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SingleStore").msgclass
+  Snowflake = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Snowflake").msgclass
   Sybase = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Sybase").msgclass
   SybaseIQ = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SybaseIQ").msgclass
   Teradata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Teradata").msgclass

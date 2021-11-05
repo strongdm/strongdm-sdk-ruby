@@ -26,7 +26,7 @@ module V1
     # grant access to the combined resources associated with a set of child roles.
     # Each user can be a member of one Role or composite role.
     class Service
-      include ::GRPC::GenericService
+      include GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode

@@ -24,7 +24,7 @@ module V1
     # - **Gateways** are the entry points into network. They listen for connection from the strongDM client, and provide access to databases and servers.
     # - **Relays** are used to extend the strongDM network into segmented subnets. They provide access to databases and servers but do not listen for incoming connections.
     class Service
-      include ::GRPC::GenericService
+      include GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode

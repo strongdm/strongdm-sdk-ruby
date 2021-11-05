@@ -37,15 +37,17 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.VaultTLSStore" do
       optional :id, :string, 1
       optional :name, :string, 2
-      optional :server_address, :string, 3
       optional :CA_cert_path, :string, 4
       optional :client_cert_path, :string, 5
       optional :client_key_path, :string, 6
+      optional :namespace, :string, 8
+      optional :server_address, :string, 3
       optional :tags, :message, 7, "v1.Tags"
     end
     add_message "v1.VaultTokenStore" do
       optional :id, :string, 1
       optional :name, :string, 2
+      optional :namespace, :string, 5
       optional :server_address, :string, 3
       optional :tags, :message, 4, "v1.Tags"
     end
