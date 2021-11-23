@@ -43,6 +43,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :cockroach, :message, 1303, "v1.Cockroach"
         optional :db_2_i, :message, 2400, "v1.DB2I"
         optional :db_2_luw, :message, 2200, "v1.DB2LUW"
+        optional :document_db_host, :message, 1052, "v1.DocumentDBHost"
+        optional :document_db_replica_set, :message, 1053, "v1.DocumentDBReplicaSet"
         optional :druid, :message, 400, "v1.Druid"
         optional :dynamo_db, :message, 500, "v1.DynamoDB"
         optional :elastic, :message, 601, "v1.Elastic"
@@ -66,6 +68,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :mongo_legacy_replicaset, :message, 1001, "v1.MongoLegacyReplicaset"
         optional :mongo_replica_set, :message, 1003, "v1.MongoReplicaSet"
         optional :mysql, :message, 1100, "v1.Mysql"
+        optional :neptune, :message, 2250, "v1.Neptune"
+        optional :neptune_iam, :message, 2201, "v1.NeptuneIAM"
         optional :oracle, :message, 1200, "v1.Oracle"
         optional :postgres, :message, 1300, "v1.Postgres"
         optional :presto, :message, 1400, "v1.Presto"
@@ -368,6 +372,35 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port, :int32, 6
       optional :port_override, :int32, 5
       optional :username, :string, 2
+    end
+    add_message "v1.DocumentDBHost" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :auth_database, :string, 2
+      optional :hostname, :string, 1
+      optional :password, :string, 5
+      optional :port, :int32, 6
+      optional :port_override, :int32, 3
+      optional :username, :string, 4
+    end
+    add_message "v1.DocumentDBReplicaSet" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :auth_database, :string, 2
+      optional :connect_to_replica, :bool, 7
+      optional :hostname, :string, 1
+      optional :password, :string, 5
+      optional :port_override, :int32, 3
+      optional :replica_set, :string, 6
+      optional :username, :string, 4
     end
     add_message "v1.Druid" do
       optional :id, :string, 32768
@@ -688,6 +721,33 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port_override, :int32, 5
       optional :username, :string, 2
     end
+    add_message "v1.Neptune" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :endpoint, :string, 1
+      optional :port, :int32, 3
+      optional :port_override, :int32, 2
+    end
+    add_message "v1.NeptuneIAM" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :access_key, :string, 4
+      optional :endpoint, :string, 1
+      optional :port, :int32, 3
+      optional :port_override, :int32, 2
+      optional :region, :string, 6
+      optional :role_arn, :string, 7
+      optional :role_external_id, :string, 8
+      optional :secret_access_key, :string, 5
+    end
     add_message "v1.Oracle" do
       optional :id, :string, 32768
       optional :name, :string, 32769
@@ -947,6 +1007,8 @@ module V1
   Cockroach = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Cockroach").msgclass
   DB2I = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DB2I").msgclass
   DB2LUW = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DB2LUW").msgclass
+  DocumentDBHost = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DocumentDBHost").msgclass
+  DocumentDBReplicaSet = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DocumentDBReplicaSet").msgclass
   Druid = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Druid").msgclass
   DynamoDB = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DynamoDB").msgclass
   Elastic = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Elastic").msgclass
@@ -970,6 +1032,8 @@ module V1
   MongoLegacyReplicaset = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MongoLegacyReplicaset").msgclass
   MongoReplicaSet = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MongoReplicaSet").msgclass
   Mysql = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Mysql").msgclass
+  Neptune = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Neptune").msgclass
+  NeptuneIAM = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.NeptuneIAM").msgclass
   Oracle = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Oracle").msgclass
   Postgres = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Postgres").msgclass
   Presto = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Presto").msgclass

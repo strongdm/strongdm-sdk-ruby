@@ -1899,6 +1899,120 @@ module SDM
       end
       items
     end
+    def self.convert_document_db_host_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = DocumentDBHost.new()
+      porcelain.auth_database = (plumbing.auth_database)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.password = (plumbing.password)
+      porcelain.port = (plumbing.port)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.username = (plumbing.username)
+      porcelain
+    end
+
+    def self.convert_document_db_host_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::DocumentDBHost.new()
+      plumbing.auth_database = (porcelain.auth_database) unless porcelain.auth_database == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
+      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
+      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
+      plumbing.id = (porcelain.id) unless porcelain.id == nil
+      plumbing.name = (porcelain.name) unless porcelain.name == nil
+      plumbing.password = (porcelain.password) unless porcelain.password == nil
+      plumbing.port = (porcelain.port) unless porcelain.port == nil
+      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
+      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing
+    end
+    def self.convert_repeated_document_db_host_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_document_db_host_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_document_db_host_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_document_db_host_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_document_db_replica_set_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = DocumentDBReplicaSet.new()
+      porcelain.auth_database = (plumbing.auth_database)
+      porcelain.connect_to_replica = (plumbing.connect_to_replica)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.password = (plumbing.password)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.replica_set = (plumbing.replica_set)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.username = (plumbing.username)
+      porcelain
+    end
+
+    def self.convert_document_db_replica_set_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::DocumentDBReplicaSet.new()
+      plumbing.auth_database = (porcelain.auth_database) unless porcelain.auth_database == nil
+      plumbing.connect_to_replica = (porcelain.connect_to_replica) unless porcelain.connect_to_replica == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
+      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
+      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
+      plumbing.id = (porcelain.id) unless porcelain.id == nil
+      plumbing.name = (porcelain.name) unless porcelain.name == nil
+      plumbing.password = (porcelain.password) unless porcelain.password == nil
+      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
+      plumbing.replica_set = (porcelain.replica_set) unless porcelain.replica_set == nil
+      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing
+    end
+    def self.convert_repeated_document_db_replica_set_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_document_db_replica_set_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_document_db_replica_set_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_document_db_replica_set_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_druid_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -3259,6 +3373,116 @@ module SDM
       end
       items
     end
+    def self.convert_neptune_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = Neptune.new()
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.endpoint = (plumbing.endpoint)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.port = (plumbing.port)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_neptune_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::Neptune.new()
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
+      plumbing.endpoint = (porcelain.endpoint) unless porcelain.endpoint == nil
+      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
+      plumbing.id = (porcelain.id) unless porcelain.id == nil
+      plumbing.name = (porcelain.name) unless porcelain.name == nil
+      plumbing.port = (porcelain.port) unless porcelain.port == nil
+      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
+      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing
+    end
+    def self.convert_repeated_neptune_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_neptune_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_neptune_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_neptune_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_neptune_iam_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = NeptuneIAM.new()
+      porcelain.access_key = (plumbing.access_key)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.endpoint = (plumbing.endpoint)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.port = (plumbing.port)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.region = (plumbing.region)
+      porcelain.role_arn = (plumbing.role_arn)
+      porcelain.role_external_id = (plumbing.role_external_id)
+      porcelain.secret_access_key = (plumbing.secret_access_key)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_neptune_iam_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::NeptuneIAM.new()
+      plumbing.access_key = (porcelain.access_key) unless porcelain.access_key == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
+      plumbing.endpoint = (porcelain.endpoint) unless porcelain.endpoint == nil
+      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
+      plumbing.id = (porcelain.id) unless porcelain.id == nil
+      plumbing.name = (porcelain.name) unless porcelain.name == nil
+      plumbing.port = (porcelain.port) unless porcelain.port == nil
+      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
+      plumbing.region = (porcelain.region) unless porcelain.region == nil
+      plumbing.role_arn = (porcelain.role_arn) unless porcelain.role_arn == nil
+      plumbing.role_external_id = (porcelain.role_external_id) unless porcelain.role_external_id == nil
+      plumbing.secret_access_key = (porcelain.secret_access_key) unless porcelain.secret_access_key == nil
+      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing
+    end
+    def self.convert_repeated_neptune_iam_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_neptune_iam_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_neptune_iam_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_neptune_iam_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_node_to_plumbing(porcelain)
       if porcelain == nil
         return nil
@@ -4044,6 +4268,12 @@ module SDM
       if porcelain.instance_of? DB2LUW
         plumbing.db_2_luw = convert_db_2_luw_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? DocumentDBHost
+        plumbing.document_db_host = convert_document_db_host_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? DocumentDBReplicaSet
+        plumbing.document_db_replica_set = convert_document_db_replica_set_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? Druid
         plumbing.druid = convert_druid_to_plumbing(porcelain)
       end
@@ -4112,6 +4342,12 @@ module SDM
       end
       if porcelain.instance_of? Mysql
         plumbing.mysql = convert_mysql_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? Neptune
+        plumbing.neptune = convert_neptune_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? NeptuneIAM
+        plumbing.neptune_iam = convert_neptune_iam_to_plumbing(porcelain)
       end
       if porcelain.instance_of? Oracle
         plumbing.oracle = convert_oracle_to_plumbing(porcelain)
@@ -4231,6 +4467,12 @@ module SDM
       if plumbing.db_2_luw != nil
         return convert_db_2_luw_to_porcelain(plumbing.db_2_luw)
       end
+      if plumbing.document_db_host != nil
+        return convert_document_db_host_to_porcelain(plumbing.document_db_host)
+      end
+      if plumbing.document_db_replica_set != nil
+        return convert_document_db_replica_set_to_porcelain(plumbing.document_db_replica_set)
+      end
       if plumbing.druid != nil
         return convert_druid_to_porcelain(plumbing.druid)
       end
@@ -4299,6 +4541,12 @@ module SDM
       end
       if plumbing.mysql != nil
         return convert_mysql_to_porcelain(plumbing.mysql)
+      end
+      if plumbing.neptune != nil
+        return convert_neptune_to_porcelain(plumbing.neptune)
+      end
+      if plumbing.neptune_iam != nil
+        return convert_neptune_iam_to_porcelain(plumbing.neptune_iam)
       end
       if plumbing.oracle != nil
         return convert_oracle_to_porcelain(plumbing.oracle)

@@ -2316,6 +2316,184 @@ module SDM
     end
   end
 
+  class DocumentDBHost
+    attr_accessor :auth_database
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
+    attr_accessor :hostname
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+
+    attr_accessor :password
+
+    attr_accessor :port
+
+    attr_accessor :port_override
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    attr_accessor :username
+
+    def initialize(
+      auth_database: nil,
+      egress_filter: nil,
+      healthy: nil,
+      hostname: nil,
+      id: nil,
+      name: nil,
+      password: nil,
+      port: nil,
+      port_override: nil,
+      secret_store_id: nil,
+      tags: nil,
+      username: nil
+    )
+      if auth_database != nil
+        @auth_database = auth_database
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
+      end
+      if healthy != nil
+        @healthy = healthy
+      end
+      if hostname != nil
+        @hostname = hostname
+      end
+      if id != nil
+        @id = id
+      end
+      if name != nil
+        @name = name
+      end
+      if password != nil
+        @password = password
+      end
+      if port != nil
+        @port = port
+      end
+      if port_override != nil
+        @port_override = port_override
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
+      end
+      if tags != nil
+        @tags = tags
+      end
+      if username != nil
+        @username = username
+      end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  class DocumentDBReplicaSet
+    attr_accessor :auth_database
+
+    attr_accessor :connect_to_replica
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # Hostname must contain the hostname/port pairs of all instances in the replica set separated by commas.
+    attr_accessor :hostname
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+
+    attr_accessor :password
+
+    attr_accessor :port_override
+
+    attr_accessor :replica_set
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    attr_accessor :username
+
+    def initialize(
+      auth_database: nil,
+      connect_to_replica: nil,
+      egress_filter: nil,
+      healthy: nil,
+      hostname: nil,
+      id: nil,
+      name: nil,
+      password: nil,
+      port_override: nil,
+      replica_set: nil,
+      secret_store_id: nil,
+      tags: nil,
+      username: nil
+    )
+      if auth_database != nil
+        @auth_database = auth_database
+      end
+      if connect_to_replica != nil
+        @connect_to_replica = connect_to_replica
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
+      end
+      if healthy != nil
+        @healthy = healthy
+      end
+      if hostname != nil
+        @hostname = hostname
+      end
+      if id != nil
+        @id = id
+      end
+      if name != nil
+        @name = name
+      end
+      if password != nil
+        @password = password
+      end
+      if port_override != nil
+        @port_override = port_override
+      end
+      if replica_set != nil
+        @replica_set = replica_set
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
+      end
+      if tags != nil
+        @tags = tags
+      end
+      if username != nil
+        @username = username
+      end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class Druid
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -4346,6 +4524,173 @@ module SDM
       end
       if username != nil
         @username = username
+      end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  class Neptune
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
+
+    attr_accessor :endpoint
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+
+    attr_accessor :port
+
+    attr_accessor :port_override
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      egress_filter: nil,
+      endpoint: nil,
+      healthy: nil,
+      id: nil,
+      name: nil,
+      port: nil,
+      port_override: nil,
+      secret_store_id: nil,
+      tags: nil
+    )
+      if egress_filter != nil
+        @egress_filter = egress_filter
+      end
+      if endpoint != nil
+        @endpoint = endpoint
+      end
+      if healthy != nil
+        @healthy = healthy
+      end
+      if id != nil
+        @id = id
+      end
+      if name != nil
+        @name = name
+      end
+      if port != nil
+        @port = port
+      end
+      if port_override != nil
+        @port_override = port_override
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
+      end
+      if tags != nil
+        @tags = tags
+      end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  class NeptuneIAM
+    attr_accessor :access_key
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
+
+    attr_accessor :endpoint
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+
+    attr_accessor :port
+
+    attr_accessor :port_override
+
+    attr_accessor :region
+
+    attr_accessor :role_arn
+
+    attr_accessor :role_external_id
+
+    attr_accessor :secret_access_key
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      access_key: nil,
+      egress_filter: nil,
+      endpoint: nil,
+      healthy: nil,
+      id: nil,
+      name: nil,
+      port: nil,
+      port_override: nil,
+      region: nil,
+      role_arn: nil,
+      role_external_id: nil,
+      secret_access_key: nil,
+      secret_store_id: nil,
+      tags: nil
+    )
+      if access_key != nil
+        @access_key = access_key
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
+      end
+      if endpoint != nil
+        @endpoint = endpoint
+      end
+      if healthy != nil
+        @healthy = healthy
+      end
+      if id != nil
+        @id = id
+      end
+      if name != nil
+        @name = name
+      end
+      if port != nil
+        @port = port
+      end
+      if port_override != nil
+        @port_override = port_override
+      end
+      if region != nil
+        @region = region
+      end
+      if role_arn != nil
+        @role_arn = role_arn
+      end
+      if role_external_id != nil
+        @role_external_id = role_external_id
+      end
+      if secret_access_key != nil
+        @secret_access_key = secret_access_key
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
+      end
+      if tags != nil
+        @tags = tags
       end
     end
 

@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class SDM::Redshift - RDoc Documentation</title>
+<title>class SDM::DocumentDBReplicaSet - RDoc Documentation</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../";
@@ -80,9 +80,9 @@
   </div>
 </nav>
 
-<main role="main" aria-labelledby="class-SDM::Redshift">
-  <h1 id="class-SDM::Redshift" class="class">
-    class SDM::Redshift
+<main role="main" aria-labelledby="class-SDM::DocumentDBReplicaSet">
+  <h1 id="class-SDM::DocumentDBReplicaSet" class="class">
+    class SDM::DocumentDBReplicaSet
   </h1>
 
   <section class="description">
@@ -98,9 +98,19 @@
         <h3>Attributes</h3>
       </header>
 
-      <div id="attribute-i-database" class="method-detail">
+      <div id="attribute-i-auth_database" class="method-detail">
         <div class="method-heading attribute-method-heading">
-          <span class="method-name">database</span><span
+          <span class="method-name">auth_database</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        </div>
+      </div>
+      <div id="attribute-i-connect_to_replica" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">connect_to_replica</span><span
             class="attribute-access-type">[RW]</span>
         </div>
 
@@ -135,7 +145,7 @@
         </div>
 
         <div class="method-description">
-        
+        <p>Hostname must contain the hostname/port pairs of all instances in the replica set separated by commas.</p>
         </div>
       </div>
       <div id="attribute-i-id" class="method-detail">
@@ -158,16 +168,6 @@
         <p>Unique human-readable name of the Resource.</p>
         </div>
       </div>
-      <div id="attribute-i-override_database" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">override_database</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        </div>
-      </div>
       <div id="attribute-i-password" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">password</span><span
@@ -178,9 +178,9 @@
         
         </div>
       </div>
-      <div id="attribute-i-port" class="method-detail">
+      <div id="attribute-i-port_override" class="method-detail">
         <div class="method-heading attribute-method-heading">
-          <span class="method-name">port</span><span
+          <span class="method-name">port_override</span><span
             class="attribute-access-type">[RW]</span>
         </div>
 
@@ -188,9 +188,9 @@
         
         </div>
       </div>
-      <div id="attribute-i-port_override" class="method-detail">
+      <div id="attribute-i-replica_set" class="method-detail">
         <div class="method-heading attribute-method-heading">
-          <span class="method-name">port_override</span><span
+          <span class="method-name">replica_set</span><span
             class="attribute-access-type">[RW]</span>
         </div>
 
@@ -239,7 +239,7 @@
       <div id="method-c-new" class="method-detail ">
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">( database:nil \ , egress_filter:nil \ , healthy:nil \ , hostname:nil \ , id:nil \ , name:nil \ , override_database:nil \ , password:nil \ , port:nil \ , port_override:nil \ , secret_store_id:nil \ , tags:nil \ , username:nil \ )</span>
+            class="method-args">( auth_database:nil \ , connect_to_replica:nil \ , egress_filter:nil \ , healthy:nil \ , hostname:nil \ , id:nil \ , name:nil \ , password:nil \ , port_override:nil \ , replica_set:nil \ , secret_store_id:nil \ , tags:nil \ , username:nil \ )</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
 
@@ -247,9 +247,11 @@
           
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 6005</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 2625</span>
                 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(
-                        <span class="ruby-value">database:</span><span class="ruby-keyword">nil</span> \
+                        <span class="ruby-value">auth_database:</span><span class="ruby-keyword">nil</span> \
+,
+                        <span class="ruby-value">connect_to_replica:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">egress_filter:</span><span class="ruby-keyword">nil</span> \
 ,
@@ -261,13 +263,11 @@
 ,
                         <span class="ruby-value">name:</span><span class="ruby-keyword">nil</span> \
 ,
-                        <span class="ruby-value">override_database:</span><span class="ruby-keyword">nil</span> \
-,
                         <span class="ruby-value">password:</span><span class="ruby-keyword">nil</span> \
 ,
-                        <span class="ruby-value">port:</span><span class="ruby-keyword">nil</span> \
-,
                         <span class="ruby-value">port_override:</span><span class="ruby-keyword">nil</span> \
+,
+                        <span class="ruby-value">replica_set:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">secret_store_id:</span><span class="ruby-keyword">nil</span> \
 ,
@@ -275,8 +275,11 @@
 ,
                         <span class="ruby-value">username:</span><span class="ruby-keyword">nil</span> \
                 )
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">database</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@database</span> = <span class="ruby-identifier">database</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">auth_database</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@auth_database</span> = <span class="ruby-identifier">auth_database</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">connect_to_replica</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@connect_to_replica</span> = <span class="ruby-identifier">connect_to_replica</span>
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">egress_filter</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@egress_filter</span> = <span class="ruby-identifier">egress_filter</span>
@@ -293,17 +296,14 @@
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@name</span> = <span class="ruby-identifier">name</span>
                         <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">override_database</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@override_database</span> = <span class="ruby-identifier">override_database</span>
-                        <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">password</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@password</span> = <span class="ruby-identifier">password</span>
                         <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">port</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@port</span> = <span class="ruby-identifier">port</span>
-                        <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">port_override</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@port_override</span> = <span class="ruby-identifier">port_override</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">replica_set</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@replica_set</span> = <span class="ruby-identifier">replica_set</span>
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">secret_store_id</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@secret_store_id</span> = <span class="ruby-identifier">secret_store_id</span>
@@ -339,7 +339,7 @@
           
 
           <div class="method-source-code" id="to_json-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 6072</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 2692</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_json</span>(<span class="ruby-identifier">options</span>={})
         <span class="ruby-identifier">hash</span> = {}
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">instance_variables</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">var</span><span class="ruby-operator">|</span>
