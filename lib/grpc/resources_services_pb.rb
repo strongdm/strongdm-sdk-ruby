@@ -21,24 +21,24 @@ require "resources_pb"
 module V1
   module Resources
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = "v1.Resources"
 
       # EnumerateTags gets a list of the filter matching tags.
-      rpc :EnumerateTags, EnumerateTagsRequest, EnumerateTagsResponse
+      rpc :EnumerateTags, ::V1::EnumerateTagsRequest, ::V1::EnumerateTagsResponse
       # Create registers a new Resource.
-      rpc :Create, ResourceCreateRequest, ResourceCreateResponse
+      rpc :Create, ::V1::ResourceCreateRequest, ::V1::ResourceCreateResponse
       # Get reads one Resource by ID.
-      rpc :Get, ResourceGetRequest, ResourceGetResponse
+      rpc :Get, ::V1::ResourceGetRequest, ::V1::ResourceGetResponse
       # Update patches a Resource by ID.
-      rpc :Update, ResourceUpdateRequest, ResourceUpdateResponse
+      rpc :Update, ::V1::ResourceUpdateRequest, ::V1::ResourceUpdateResponse
       # Delete removes a Resource by ID.
-      rpc :Delete, ResourceDeleteRequest, ResourceDeleteResponse
+      rpc :Delete, ::V1::ResourceDeleteRequest, ::V1::ResourceDeleteResponse
       # List gets a list of Resources matching a given set of criteria.
-      rpc :List, ResourceListRequest, ResourceListResponse
+      rpc :List, ::V1::ResourceListRequest, ::V1::ResourceListResponse
     end
 
     Stub = Service.rpc_stub_class

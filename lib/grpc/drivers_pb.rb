@@ -49,6 +49,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :dynamo_db, :message, 500, "v1.DynamoDB"
         optional :elastic, :message, 601, "v1.Elastic"
         optional :elasticache_redis, :message, 1601, "v1.ElasticacheRedis"
+        optional :gcp, :message, 2700, "v1.GCP"
         optional :google_gke, :message, 803, "v1.GoogleGKE"
         optional :google_gke_user_impersonation, :message, 816, "v1.GoogleGKEUserImpersonation"
         optional :greenplum, :message, 1302, "v1.Greenplum"
@@ -456,6 +457,16 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port, :int32, 4
       optional :port_override, :int32, 2
       optional :tls_required, :bool, 5
+    end
+    add_message "v1.GCP" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :keyfile, :string, 1
+      optional :scopes, :string, 2
     end
     add_message "v1.GoogleGKE" do
       optional :id, :string, 32768
@@ -1013,6 +1024,7 @@ module V1
   DynamoDB = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DynamoDB").msgclass
   Elastic = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Elastic").msgclass
   ElasticacheRedis = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ElasticacheRedis").msgclass
+  GCP = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GCP").msgclass
   GoogleGKE = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GoogleGKE").msgclass
   GoogleGKEUserImpersonation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GoogleGKEUserImpersonation").msgclass
   Greenplum = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Greenplum").msgclass

@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class SDM::Presto - RDoc Documentation</title>
+<title>class SDM::GCP - RDoc Documentation</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../";
@@ -80,9 +80,9 @@
   </div>
 </nav>
 
-<main role="main" aria-labelledby="class-SDM::Presto">
-  <h1 id="class-SDM::Presto" class="class">
-    class SDM::Presto
+<main role="main" aria-labelledby="class-SDM::GCP">
+  <h1 id="class-SDM::GCP" class="class">
+    class SDM::GCP
   </h1>
 
   <section class="description">
@@ -98,16 +98,6 @@
         <h3>Attributes</h3>
       </header>
 
-      <div id="attribute-i-database" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">database</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        </div>
-      </div>
       <div id="attribute-i-egress_filter" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">egress_filter</span><span
@@ -128,16 +118,6 @@
         <p>True if the datasource is reachable and the credentials are valid.</p>
         </div>
       </div>
-      <div id="attribute-i-hostname" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">hostname</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        </div>
-      </div>
       <div id="attribute-i-id" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">id</span><span
@@ -146,6 +126,16 @@
 
         <div class="method-description">
         <p>Unique identifier of the Resource.</p>
+        </div>
+      </div>
+      <div id="attribute-i-keyfile" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">keyfile</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
         </div>
       </div>
       <div id="attribute-i-name" class="method-detail">
@@ -158,29 +148,9 @@
         <p>Unique human-readable name of the Resource.</p>
         </div>
       </div>
-      <div id="attribute-i-password" class="method-detail">
+      <div id="attribute-i-scopes" class="method-detail">
         <div class="method-heading attribute-method-heading">
-          <span class="method-name">password</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        </div>
-      </div>
-      <div id="attribute-i-port" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">port</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        </div>
-      </div>
-      <div id="attribute-i-port_override" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">port_override</span><span
+          <span class="method-name">scopes</span><span
             class="attribute-access-type">[RW]</span>
         </div>
 
@@ -208,26 +178,6 @@
         <p>Tags is a map of key, value pairs.</p>
         </div>
       </div>
-      <div id="attribute-i-tls_required" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">tls_required</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        </div>
-      </div>
-      <div id="attribute-i-username" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">username</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        </div>
-      </div>
     </section>
 
 
@@ -239,7 +189,7 @@
       <div id="method-c-new" class="method-detail ">
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">( database:nil \ , egress_filter:nil \ , healthy:nil \ , hostname:nil \ , id:nil \ , name:nil \ , password:nil \ , port:nil \ , port_override:nil \ , secret_store_id:nil \ , tags:nil \ , tls_required:nil \ , username:nil \ )</span>
+            class="method-args">( egress_filter:nil \ , healthy:nil \ , id:nil \ , keyfile:nil \ , name:nil \ , scopes:nil \ , secret_store_id:nil \ , tags:nil \ )</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
 
@@ -247,72 +197,47 @@
           
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 5585</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 3095</span>
                 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(
-                        <span class="ruby-value">database:</span><span class="ruby-keyword">nil</span> \
-,
                         <span class="ruby-value">egress_filter:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">healthy:</span><span class="ruby-keyword">nil</span> \
 ,
-                        <span class="ruby-value">hostname:</span><span class="ruby-keyword">nil</span> \
-,
                         <span class="ruby-value">id:</span><span class="ruby-keyword">nil</span> \
+,
+                        <span class="ruby-value">keyfile:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">name:</span><span class="ruby-keyword">nil</span> \
 ,
-                        <span class="ruby-value">password:</span><span class="ruby-keyword">nil</span> \
-,
-                        <span class="ruby-value">port:</span><span class="ruby-keyword">nil</span> \
-,
-                        <span class="ruby-value">port_override:</span><span class="ruby-keyword">nil</span> \
+                        <span class="ruby-value">scopes:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">secret_store_id:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">tags:</span><span class="ruby-keyword">nil</span> \
-,
-                        <span class="ruby-value">tls_required:</span><span class="ruby-keyword">nil</span> \
-,
-                        <span class="ruby-value">username:</span><span class="ruby-keyword">nil</span> \
                 )
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">database</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@database</span> = <span class="ruby-identifier">database</span>
-                        <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">egress_filter</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@egress_filter</span> = <span class="ruby-identifier">egress_filter</span>
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">healthy</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@healthy</span> = <span class="ruby-identifier">healthy</span>
                         <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">hostname</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@hostname</span> = <span class="ruby-identifier">hostname</span>
-                        <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">id</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">id</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">keyfile</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@keyfile</span> = <span class="ruby-identifier">keyfile</span>
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@name</span> = <span class="ruby-identifier">name</span>
                         <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">password</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@password</span> = <span class="ruby-identifier">password</span>
-                        <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">port</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@port</span> = <span class="ruby-identifier">port</span>
-                        <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">port_override</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@port_override</span> = <span class="ruby-identifier">port_override</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">scopes</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@scopes</span> = <span class="ruby-identifier">scopes</span>
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">secret_store_id</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@secret_store_id</span> = <span class="ruby-identifier">secret_store_id</span>
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">tags</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@tags</span> = <span class="ruby-identifier">tags</span>
-                        <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">tls_required</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@tls_required</span> = <span class="ruby-identifier">tls_required</span>
-                        <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">username</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@username</span> = <span class="ruby-identifier">username</span>
                         <span class="ruby-keyword">end</span>
                 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -339,7 +264,7 @@
           
 
           <div class="method-source-code" id="to_json-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 5652</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 3137</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_json</span>(<span class="ruby-identifier">options</span>={})
         <span class="ruby-identifier">hash</span> = {}
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">instance_variables</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">var</span><span class="ruby-operator">|</span>

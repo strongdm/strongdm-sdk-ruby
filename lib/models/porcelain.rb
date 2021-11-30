@@ -2835,6 +2835,69 @@ module SDM
     end
   end
 
+  class GCP
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # Unique identifier of the Resource.
+    attr_accessor :id
+
+    attr_accessor :keyfile
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+
+    attr_accessor :scopes
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      egress_filter: nil,
+      healthy: nil,
+      id: nil,
+      keyfile: nil,
+      name: nil,
+      scopes: nil,
+      secret_store_id: nil,
+      tags: nil
+    )
+      if egress_filter != nil
+        @egress_filter = egress_filter
+      end
+      if healthy != nil
+        @healthy = healthy
+      end
+      if id != nil
+        @id = id
+      end
+      if keyfile != nil
+        @keyfile = keyfile
+      end
+      if name != nil
+        @name = name
+      end
+      if scopes != nil
+        @scopes = scopes
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
+      end
+      if tags != nil
+        @tags = tags
+      end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   # Gateway represents a StrongDM CLI installation running in gateway mode.
   class Gateway
     # The hostname/port tuple which the gateway daemon will bind to.

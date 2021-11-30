@@ -25,20 +25,20 @@ module V1
     # role, the permissions granted to members of the composite role are augmented to
     # include the permissions granted to members of the attached role.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = "v1.RoleAttachments"
 
       # Create registers a new RoleAttachment.
-      rpc :Create, RoleAttachmentCreateRequest, RoleAttachmentCreateResponse
+      rpc :Create, ::V1::RoleAttachmentCreateRequest, ::V1::RoleAttachmentCreateResponse
       # Get reads one RoleAttachment by ID.
-      rpc :Get, RoleAttachmentGetRequest, RoleAttachmentGetResponse
+      rpc :Get, ::V1::RoleAttachmentGetRequest, ::V1::RoleAttachmentGetResponse
       # Delete removes a RoleAttachment by ID.
-      rpc :Delete, RoleAttachmentDeleteRequest, RoleAttachmentDeleteResponse
+      rpc :Delete, ::V1::RoleAttachmentDeleteRequest, ::V1::RoleAttachmentDeleteResponse
       # List gets a list of RoleAttachments matching a given set of criteria.
-      rpc :List, RoleAttachmentListRequest, RoleAttachmentListResponse
+      rpc :List, ::V1::RoleAttachmentListRequest, ::V1::RoleAttachmentListResponse
     end
 
     Stub = Service.rpc_stub_class

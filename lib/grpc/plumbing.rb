@@ -2235,6 +2235,54 @@ module SDM
       end
       items
     end
+    def self.convert_gcp_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = GCP.new()
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.id = (plumbing.id)
+      porcelain.keyfile = (plumbing.keyfile)
+      porcelain.name = (plumbing.name)
+      porcelain.scopes = (plumbing.scopes)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_gcp_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::GCP.new()
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
+      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
+      plumbing.id = (porcelain.id) unless porcelain.id == nil
+      plumbing.keyfile = (porcelain.keyfile) unless porcelain.keyfile == nil
+      plumbing.name = (porcelain.name) unless porcelain.name == nil
+      plumbing.scopes = (porcelain.scopes) unless porcelain.scopes == nil
+      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing
+    end
+    def self.convert_repeated_gcp_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_gcp_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_gcp_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_gcp_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_gateway_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -4286,6 +4334,9 @@ module SDM
       if porcelain.instance_of? ElasticacheRedis
         plumbing.elasticache_redis = convert_elasticache_redis_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? GCP
+        plumbing.gcp = convert_gcp_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? GoogleGKE
         plumbing.google_gke = convert_google_gke_to_plumbing(porcelain)
       end
@@ -4484,6 +4535,9 @@ module SDM
       end
       if plumbing.elasticache_redis != nil
         return convert_elasticache_redis_to_porcelain(plumbing.elasticache_redis)
+      end
+      if plumbing.gcp != nil
+        return convert_gcp_to_porcelain(plumbing.gcp)
       end
       if plumbing.google_gke != nil
         return convert_google_gke_to_porcelain(plumbing.google_gke)

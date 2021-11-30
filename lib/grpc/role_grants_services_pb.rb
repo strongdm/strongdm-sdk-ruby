@@ -25,20 +25,20 @@ module V1
     # role, the permissions granted to members of the composite role are augmented to
     # include the permissions granted to members of the attached role.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = "v1.RoleGrants"
 
       # Create registers a new RoleGrant.
-      rpc :Create, RoleGrantCreateRequest, RoleGrantCreateResponse
+      rpc :Create, ::V1::RoleGrantCreateRequest, ::V1::RoleGrantCreateResponse
       # Get reads one RoleGrant by ID.
-      rpc :Get, RoleGrantGetRequest, RoleGrantGetResponse
+      rpc :Get, ::V1::RoleGrantGetRequest, ::V1::RoleGrantGetResponse
       # Delete removes a RoleGrant by ID.
-      rpc :Delete, RoleGrantDeleteRequest, RoleGrantDeleteResponse
+      rpc :Delete, ::V1::RoleGrantDeleteRequest, ::V1::RoleGrantDeleteResponse
       # List gets a list of RoleGrants matching a given set of criteria.
-      rpc :List, RoleGrantListRequest, RoleGrantListResponse
+      rpc :List, ::V1::RoleGrantListRequest, ::V1::RoleGrantListResponse
     end
 
     Stub = Service.rpc_stub_class
