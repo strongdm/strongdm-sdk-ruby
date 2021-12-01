@@ -1365,6 +1365,64 @@ module SDM
       end
       items
     end
+    def self.convert_azure_postgres_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AzurePostgres.new()
+      porcelain.database = (plumbing.database)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.override_database = (plumbing.override_database)
+      porcelain.password = (plumbing.password)
+      porcelain.port = (plumbing.port)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.username = (plumbing.username)
+      porcelain
+    end
+
+    def self.convert_azure_postgres_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AzurePostgres.new()
+      plumbing.database = (porcelain.database) unless porcelain.database == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
+      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
+      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
+      plumbing.id = (porcelain.id) unless porcelain.id == nil
+      plumbing.name = (porcelain.name) unless porcelain.name == nil
+      plumbing.override_database = (porcelain.override_database) unless porcelain.override_database == nil
+      plumbing.password = (porcelain.password) unless porcelain.password == nil
+      plumbing.port = (porcelain.port) unless porcelain.port == nil
+      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
+      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing
+    end
+    def self.convert_repeated_azure_postgres_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_azure_postgres_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_azure_postgres_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_azure_postgres_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_big_query_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -4247,6 +4305,9 @@ module SDM
       if porcelain.instance_of? AWS
         plumbing.aws = convert_aws_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? AzurePostgres
+        plumbing.azure_postgres = convert_azure_postgres_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? BigQuery
         plumbing.big_query = convert_big_query_to_plumbing(porcelain)
       end
@@ -4445,6 +4506,9 @@ module SDM
       end
       if plumbing.aws != nil
         return convert_aws_to_porcelain(plumbing.aws)
+      end
+      if plumbing.azure_postgres != nil
+        return convert_azure_postgres_to_porcelain(plumbing.azure_postgres)
       end
       if plumbing.big_query != nil
         return convert_big_query_to_porcelain(plumbing.big_query)

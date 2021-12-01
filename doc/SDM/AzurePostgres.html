@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class SDM::Oracle - RDoc Documentation</title>
+<title>class SDM::AzurePostgres - RDoc Documentation</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../";
@@ -80,9 +80,9 @@
   </div>
 </nav>
 
-<main role="main" aria-labelledby="class-SDM::Oracle">
-  <h1 id="class-SDM::Oracle" class="class">
-    class SDM::Oracle
+<main role="main" aria-labelledby="class-SDM::AzurePostgres">
+  <h1 id="class-SDM::AzurePostgres" class="class">
+    class SDM::AzurePostgres
   </h1>
 
   <section class="description">
@@ -158,6 +158,16 @@
         <p>Unique human-readable name of the Resource.</p>
         </div>
       </div>
+      <div id="attribute-i-override_database" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">override_database</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        </div>
+      </div>
       <div id="attribute-i-password" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">password</span><span
@@ -208,16 +218,6 @@
         <p>Tags is a map of key, value pairs.</p>
         </div>
       </div>
-      <div id="attribute-i-tls_required" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">tls_required</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        </div>
-      </div>
       <div id="attribute-i-username" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">username</span><span
@@ -239,7 +239,7 @@
       <div id="method-c-new" class="method-detail ">
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">( database:nil \ , egress_filter:nil \ , healthy:nil \ , hostname:nil \ , id:nil \ , name:nil \ , password:nil \ , port:nil \ , port_override:nil \ , secret_store_id:nil \ , tags:nil \ , tls_required:nil \ , username:nil \ )</span>
+            class="method-args">( database:nil \ , egress_filter:nil \ , healthy:nil \ , hostname:nil \ , id:nil \ , name:nil \ , override_database:nil \ , password:nil \ , port:nil \ , port_override:nil \ , secret_store_id:nil \ , tags:nil \ , username:nil \ )</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
 
@@ -247,7 +247,7 @@
           
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 5414</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 1756</span>
                 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(
                         <span class="ruby-value">database:</span><span class="ruby-keyword">nil</span> \
 ,
@@ -261,6 +261,8 @@
 ,
                         <span class="ruby-value">name:</span><span class="ruby-keyword">nil</span> \
 ,
+                        <span class="ruby-value">override_database:</span><span class="ruby-keyword">nil</span> \
+,
                         <span class="ruby-value">password:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">port:</span><span class="ruby-keyword">nil</span> \
@@ -270,8 +272,6 @@
                         <span class="ruby-value">secret_store_id:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">tags:</span><span class="ruby-keyword">nil</span> \
-,
-                        <span class="ruby-value">tls_required:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">username:</span><span class="ruby-keyword">nil</span> \
                 )
@@ -293,6 +293,9 @@
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@name</span> = <span class="ruby-identifier">name</span>
                         <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">override_database</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@override_database</span> = <span class="ruby-identifier">override_database</span>
+                        <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">password</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@password</span> = <span class="ruby-identifier">password</span>
                         <span class="ruby-keyword">end</span>
@@ -307,9 +310,6 @@
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">tags</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@tags</span> = <span class="ruby-identifier">tags</span>
-                        <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">tls_required</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@tls_required</span> = <span class="ruby-identifier">tls_required</span>
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">username</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@username</span> = <span class="ruby-identifier">username</span>
@@ -339,7 +339,7 @@
           
 
           <div class="method-source-code" id="to_json-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 5481</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 1823</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_json</span>(<span class="ruby-identifier">options</span>={})
         <span class="ruby-identifier">hash</span> = {}
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">instance_variables</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">var</span><span class="ruby-operator">|</span>

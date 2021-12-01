@@ -36,6 +36,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :athena, :message, 100, "v1.Athena"
         optional :aurora_mysql, :message, 1101, "v1.AuroraMysql"
         optional :aurora_postgres, :message, 1301, "v1.AuroraPostgres"
+        optional :azure_postgres, :message, 1307, "v1.AzurePostgres"
         optional :big_query, :message, 200, "v1.BigQuery"
         optional :cassandra, :message, 300, "v1.Cassandra"
         optional :citus, :message, 1305, "v1.Citus"
@@ -260,6 +261,21 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :username, :string, 2
     end
     add_message "v1.AuroraPostgres" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :database, :string, 4
+      optional :hostname, :string, 1
+      optional :override_database, :bool, 7
+      optional :password, :string, 3
+      optional :port, :int32, 6
+      optional :port_override, :int32, 5
+      optional :username, :string, 2
+    end
+    add_message "v1.AzurePostgres" do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
@@ -1000,6 +1016,7 @@ module V1
   Athena = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Athena").msgclass
   AuroraMysql = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuroraMysql").msgclass
   AuroraPostgres = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuroraPostgres").msgclass
+  AzurePostgres = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AzurePostgres").msgclass
   BigQuery = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.BigQuery").msgclass
   Cassandra = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Cassandra").msgclass
   Citus = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Citus").msgclass
