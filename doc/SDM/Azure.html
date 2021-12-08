@@ -98,9 +98,9 @@
         <h3>Attributes</h3>
       </header>
 
-      <div id="attribute-i-appid" class="method-detail">
+      <div id="attribute-i-app_id" class="method-detail">
         <div class="method-heading attribute-method-heading">
-          <span class="method-name">appid</span><span
+          <span class="method-name">app_id</span><span
             class="attribute-access-type">[RW]</span>
         </div>
 
@@ -178,9 +178,9 @@
         <p>Tags is a map of key, value pairs.</p>
         </div>
       </div>
-      <div id="attribute-i-tenantid" class="method-detail">
+      <div id="attribute-i-tenant_id" class="method-detail">
         <div class="method-heading attribute-method-heading">
-          <span class="method-name">tenantid</span><span
+          <span class="method-name">tenant_id</span><span
             class="attribute-access-type">[RW]</span>
         </div>
 
@@ -199,7 +199,7 @@
       <div id="method-c-new" class="method-detail ">
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">( appid:nil \ , egress_filter:nil \ , healthy:nil \ , id:nil \ , name:nil \ , password:nil \ , secret_store_id:nil \ , tags:nil \ , tenantid:nil \ )</span>
+            class="method-args">( app_id:nil \ , egress_filter:nil \ , healthy:nil \ , id:nil \ , name:nil \ , password:nil \ , secret_store_id:nil \ , tags:nil \ , tenant_id:nil \ )</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
 
@@ -209,7 +209,7 @@
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 1748</span>
                 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(
-                        <span class="ruby-value">appid:</span><span class="ruby-keyword">nil</span> \
+                        <span class="ruby-value">app_id:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">egress_filter:</span><span class="ruby-keyword">nil</span> \
 ,
@@ -225,10 +225,10 @@
 ,
                         <span class="ruby-value">tags:</span><span class="ruby-keyword">nil</span> \
 ,
-                        <span class="ruby-value">tenantid:</span><span class="ruby-keyword">nil</span> \
+                        <span class="ruby-value">tenant_id:</span><span class="ruby-keyword">nil</span> \
                 )
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">appid</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@appid</span> = <span class="ruby-identifier">appid</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">app_id</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@app_id</span> = <span class="ruby-identifier">app_id</span>
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">egress_filter</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@egress_filter</span> = <span class="ruby-identifier">egress_filter</span>
@@ -251,8 +251,8 @@
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">tags</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@tags</span> = <span class="ruby-identifier">tags</span>
                         <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">tenantid</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@tenantid</span> = <span class="ruby-identifier">tenantid</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">tenant_id</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@tenant_id</span> = <span class="ruby-identifier">tenant_id</span>
                         <span class="ruby-keyword">end</span>
                 <span class="ruby-keyword">end</span></pre>
           </div>

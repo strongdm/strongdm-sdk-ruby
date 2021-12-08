@@ -1370,7 +1370,7 @@ module SDM
         return nil
       end
       porcelain = Azure.new()
-      porcelain.appid = (plumbing.appID)
+      porcelain.app_id = (plumbing.app_id)
       porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.healthy = (plumbing.healthy)
       porcelain.id = (plumbing.id)
@@ -1378,7 +1378,7 @@ module SDM
       porcelain.password = (plumbing.password)
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
-      porcelain.tenantid = (plumbing.tenantID)
+      porcelain.tenant_id = (plumbing.tenant_id)
       porcelain
     end
 
@@ -1387,7 +1387,7 @@ module SDM
         return nil
       end
       plumbing = V1::Azure.new()
-      plumbing.appID = (porcelain.appid) unless porcelain.appid == nil
+      plumbing.app_id = (porcelain.app_id) unless porcelain.app_id == nil
       plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.id = (porcelain.id) unless porcelain.id == nil
@@ -1395,7 +1395,7 @@ module SDM
       plumbing.password = (porcelain.password) unless porcelain.password == nil
       plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.tenantID = (porcelain.tenantid) unless porcelain.tenantid == nil
+      plumbing.tenant_id = (porcelain.tenant_id) unless porcelain.tenant_id == nil
       plumbing
     end
     def self.convert_repeated_azure_to_plumbing(porcelains)
@@ -1411,6 +1411,56 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_azure_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_azure_certificate_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AzureCertificate.new()
+      porcelain.app_id = (plumbing.app_id)
+      porcelain.client_certificate = (plumbing.client_certificate)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.tenant_id = (plumbing.tenant_id)
+      porcelain
+    end
+
+    def self.convert_azure_certificate_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AzureCertificate.new()
+      plumbing.app_id = (porcelain.app_id) unless porcelain.app_id == nil
+      plumbing.client_certificate = (porcelain.client_certificate) unless porcelain.client_certificate == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
+      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
+      plumbing.id = (porcelain.id) unless porcelain.id == nil
+      plumbing.name = (porcelain.name) unless porcelain.name == nil
+      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.tenant_id = (porcelain.tenant_id) unless porcelain.tenant_id == nil
+      plumbing
+    end
+    def self.convert_repeated_azure_certificate_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_azure_certificate_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_azure_certificate_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_azure_certificate_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -4406,6 +4456,9 @@ module SDM
       if porcelain.instance_of? Azure
         plumbing.azure = convert_azure_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? AzureCertificate
+        plumbing.azure_certificate = convert_azure_certificate_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? AzurePostgres
         plumbing.azure_postgres = convert_azure_postgres_to_plumbing(porcelain)
       end
@@ -4613,6 +4666,9 @@ module SDM
       end
       if plumbing.azure != nil
         return convert_azure_to_porcelain(plumbing.azure)
+      end
+      if plumbing.azure_certificate != nil
+        return convert_azure_certificate_to_porcelain(plumbing.azure_certificate)
       end
       if plumbing.azure_postgres != nil
         return convert_azure_postgres_to_porcelain(plumbing.azure_postgres)

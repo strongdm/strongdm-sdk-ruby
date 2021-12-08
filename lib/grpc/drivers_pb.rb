@@ -37,6 +37,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :aurora_mysql, :message, 1101, "v1.AuroraMysql"
         optional :aurora_postgres, :message, 1301, "v1.AuroraPostgres"
         optional :azure, :message, 2800, "v1.Azure"
+        optional :azure_certificate, :message, 2801, "v1.AzureCertificate"
         optional :azure_postgres, :message, 1307, "v1.AzurePostgres"
         optional :big_query, :message, 200, "v1.BigQuery"
         optional :cassandra, :message, 300, "v1.Cassandra"
@@ -284,9 +285,20 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
-      optional :appID, :string, 1
+      optional :app_id, :string, 1
       optional :password, :string, 3
-      optional :tenantID, :string, 2
+      optional :tenant_id, :string, 2
+    end
+    add_message "v1.AzureCertificate" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :app_id, :string, 1
+      optional :client_certificate, :string, 3
+      optional :tenant_id, :string, 2
     end
     add_message "v1.AzurePostgres" do
       optional :id, :string, 32768
@@ -1040,6 +1052,7 @@ module V1
   AuroraMysql = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuroraMysql").msgclass
   AuroraPostgres = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuroraPostgres").msgclass
   Azure = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Azure").msgclass
+  AzureCertificate = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AzureCertificate").msgclass
   AzurePostgres = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AzurePostgres").msgclass
   BigQuery = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.BigQuery").msgclass
   Cassandra = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Cassandra").msgclass

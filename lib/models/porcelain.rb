@@ -1608,7 +1608,7 @@ module SDM
   end
 
   class Azure
-    attr_accessor :appid
+    attr_accessor :app_id
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
@@ -1624,10 +1624,10 @@ module SDM
     # Tags is a map of key, value pairs.
     attr_accessor :tags
 
-    attr_accessor :tenantid
+    attr_accessor :tenant_id
 
     def initialize(
-      appid: nil,
+      app_id: nil,
       egress_filter: nil,
       healthy: nil,
       id: nil,
@@ -1635,10 +1635,10 @@ module SDM
       password: nil,
       secret_store_id: nil,
       tags: nil,
-      tenantid: nil
+      tenant_id: nil
     )
-      if appid != nil
-        @appid = appid
+      if app_id != nil
+        @app_id = app_id
       end
       if egress_filter != nil
         @egress_filter = egress_filter
@@ -1661,8 +1661,76 @@ module SDM
       if tags != nil
         @tags = tags
       end
-      if tenantid != nil
-        @tenantid = tenantid
+      if tenant_id != nil
+        @tenant_id = tenant_id
+      end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  class AzureCertificate
+    attr_accessor :app_id
+
+    attr_accessor :client_certificate
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    attr_accessor :tenant_id
+
+    def initialize(
+      app_id: nil,
+      client_certificate: nil,
+      egress_filter: nil,
+      healthy: nil,
+      id: nil,
+      name: nil,
+      secret_store_id: nil,
+      tags: nil,
+      tenant_id: nil
+    )
+      if app_id != nil
+        @app_id = app_id
+      end
+      if client_certificate != nil
+        @client_certificate = client_certificate
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
+      end
+      if healthy != nil
+        @healthy = healthy
+      end
+      if id != nil
+        @id = id
+      end
+      if name != nil
+        @name = name
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
+      end
+      if tags != nil
+        @tags = tags
+      end
+      if tenant_id != nil
+        @tenant_id = tenant_id
       end
     end
 
