@@ -3523,6 +3523,62 @@ module SDM
       end
       items
     end
+    def self.convert_mongo_sharded_cluster_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = MongoShardedCluster.new()
+      porcelain.auth_database = (plumbing.auth_database)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.password = (plumbing.password)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.tls_required = (plumbing.tls_required)
+      porcelain.username = (plumbing.username)
+      porcelain
+    end
+
+    def self.convert_mongo_sharded_cluster_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::MongoShardedCluster.new()
+      plumbing.auth_database = (porcelain.auth_database) unless porcelain.auth_database == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
+      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
+      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
+      plumbing.id = (porcelain.id) unless porcelain.id == nil
+      plumbing.name = (porcelain.name) unless porcelain.name == nil
+      plumbing.password = (porcelain.password) unless porcelain.password == nil
+      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
+      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.tls_required = (porcelain.tls_required) unless porcelain.tls_required == nil
+      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing
+    end
+    def self.convert_repeated_mongo_sharded_cluster_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_mongo_sharded_cluster_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_mongo_sharded_cluster_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_mongo_sharded_cluster_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_mysql_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -4558,6 +4614,9 @@ module SDM
       if porcelain.instance_of? MongoReplicaSet
         plumbing.mongo_replica_set = convert_mongo_replica_set_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? MongoShardedCluster
+        plumbing.mongo_sharded_cluster = convert_mongo_sharded_cluster_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? Mysql
         plumbing.mysql = convert_mysql_to_plumbing(porcelain)
       end
@@ -4768,6 +4827,9 @@ module SDM
       end
       if plumbing.mongo_replica_set != nil
         return convert_mongo_replica_set_to_porcelain(plumbing.mongo_replica_set)
+      end
+      if plumbing.mongo_sharded_cluster != nil
+        return convert_mongo_sharded_cluster_to_porcelain(plumbing.mongo_sharded_cluster)
       end
       if plumbing.mysql != nil
         return convert_mysql_to_porcelain(plumbing.mysql)

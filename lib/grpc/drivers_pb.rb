@@ -71,6 +71,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :mongo_legacy_host, :message, 1000, "v1.MongoLegacyHost"
         optional :mongo_legacy_replicaset, :message, 1001, "v1.MongoLegacyReplicaset"
         optional :mongo_replica_set, :message, 1003, "v1.MongoReplicaSet"
+        optional :mongo_sharded_cluster, :message, 1054, "v1.MongoShardedCluster"
         optional :mysql, :message, 1100, "v1.Mysql"
         optional :neptune, :message, 2250, "v1.Neptune"
         optional :neptune_iam, :message, 2201, "v1.NeptuneIAM"
@@ -758,6 +759,20 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tls_required, :bool, 9
       optional :username, :string, 4
     end
+    add_message "v1.MongoShardedCluster" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :auth_database, :string, 2
+      optional :hostname, :string, 1
+      optional :password, :string, 5
+      optional :port_override, :int32, 3
+      optional :tls_required, :bool, 8
+      optional :username, :string, 4
+    end
     add_message "v1.Mysql" do
       optional :id, :string, 32768
       optional :name, :string, 32769
@@ -1086,6 +1101,7 @@ module V1
   MongoLegacyHost = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MongoLegacyHost").msgclass
   MongoLegacyReplicaset = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MongoLegacyReplicaset").msgclass
   MongoReplicaSet = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MongoReplicaSet").msgclass
+  MongoShardedCluster = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MongoShardedCluster").msgclass
   Mysql = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Mysql").msgclass
   Neptune = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Neptune").msgclass
   NeptuneIAM = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.NeptuneIAM").msgclass
