@@ -73,7 +73,7 @@
 
   <ul class="link-list" role="directory">
     <li ><a href="#method-i-create_and_update_access_rules">#create_and_update_access_rules</a>
-    <li ><a href="#method-i-create_example_resources">#create_example_resources</a>
+    <li ><a href="#method-i-create_example_resource">#create_example_resource</a>
     <li ><a href="#method-i-create_example_role">#create_example_role</a>
     <li ><a href="#method-i-create_role_grant_via_access_rules">#create_role_grant_via_access_rules</a>
     <li ><a href="#method-i-delete_role_grant_via_access_rules">#delete_role_grant_via_access_rules</a>
@@ -133,26 +133,30 @@
           
 
           <div class="method-source-code" id="create_and_update_access_rules-source">
-            <pre><span class="ruby-comment"># File examples/accessRules.rb, line 65</span>
+            <pre><span class="ruby-comment"># File examples/accessRules.rb, line 68</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create_and_update_access_rules</span>
-  <span class="ruby-identifier">redis</span> = <span class="ruby-identifier">create_example_resources</span>
+  <span class="ruby-identifier">redis_id</span> = <span class="ruby-identifier">create_example_resource</span>()
 
   <span class="ruby-comment"># create a role with initial access rule</span>
   <span class="ruby-identifier">access_rules</span> = [
     {
-      <span class="ruby-value">&quot;ids&quot;:</span> [<span class="ruby-identifier">redis</span>.<span class="ruby-identifier">id</span>],
+      <span class="ruby-value">&quot;ids&quot;:</span> [<span class="ruby-identifier">redis_id</span>],
     },
   ]
-  <span class="ruby-identifier">role</span> = <span class="ruby-identifier">create_example_role</span>(<span class="ruby-identifier">access_rules</span>)
+  <span class="ruby-identifier">role_id</span> = <span class="ruby-identifier">$client</span>.<span class="ruby-identifier">roles</span>.<span class="ruby-identifier">create</span>(<span class="ruby-constant">SDM</span><span class="ruby-operator">::</span><span class="ruby-constant">Role</span>.<span class="ruby-identifier">new</span>(
+    <span class="ruby-value">name:</span> <span class="ruby-node">&quot;exampleRole-#{rand(10_000)}&quot;</span>,
+    <span class="ruby-value">access_rules:</span> <span class="ruby-identifier">access_rules</span>,
+  )).<span class="ruby-identifier">role</span>.<span class="ruby-identifier">id</span>
 
   <span class="ruby-comment"># update access rules</span>
+  <span class="ruby-identifier">role</span> = <span class="ruby-identifier">$client</span>.<span class="ruby-identifier">roles</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">role_id</span>).<span class="ruby-identifier">role</span>
   <span class="ruby-identifier">role</span>.<span class="ruby-identifier">access_rules</span> = [
     {
-      <span class="ruby-value">&quot;tags&quot;:</span> {<span class="ruby-value">&quot;env&quot;:</span> <span class="ruby-string">&quot;staging&quot;</span>}
+      <span class="ruby-value">&quot;tags&quot;:</span> { <span class="ruby-value">&quot;env&quot;:</span> <span class="ruby-string">&quot;staging&quot;</span> },
     },
     {
-      <span class="ruby-value">&quot;type&quot;:</span> <span class="ruby-string">&quot;redis&quot;</span>
-    }
+      <span class="ruby-value">&quot;type&quot;:</span> <span class="ruby-string">&quot;redis&quot;</span>,
+    },
   ]
 
   <span class="ruby-identifier">$client</span>.<span class="ruby-identifier">roles</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">role</span>).<span class="ruby-identifier">role</span>
@@ -163,9 +167,9 @@
 
       </div>
 
-      <div id="method-i-create_example_resources" class="method-detail ">
+      <div id="method-i-create_example_resource" class="method-detail ">
         <div class="method-heading">
-          <span class="method-name">create_example_resources</span><span
+          <span class="method-name">create_example_resource</span><span
             class="method-args">()</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
@@ -173,16 +177,16 @@
         <div class="method-description">
           
 
-          <div class="method-source-code" id="create_example_resources-source">
+          <div class="method-source-code" id="create_example_resource-source">
             <pre><span class="ruby-comment"># File examples/accessRules.rb, line 20</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create_example_resources</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create_example_resource</span>
   <span class="ruby-comment"># create a redis</span>
   <span class="ruby-identifier">redis</span> = <span class="ruby-constant">SDM</span><span class="ruby-operator">::</span><span class="ruby-constant">Redis</span>.<span class="ruby-identifier">new</span>()
   <span class="ruby-identifier">redis</span>.<span class="ruby-identifier">name</span> = <span class="ruby-node">&quot;example_resource_#{rand(100_000)}&quot;</span>
   <span class="ruby-identifier">redis</span>.<span class="ruby-identifier">hostname</span> = <span class="ruby-string">&quot;example.com&quot;</span>
   <span class="ruby-identifier">redis</span>.<span class="ruby-identifier">port_override</span> = <span class="ruby-identifier">rand</span>(<span class="ruby-value">3_000</span><span class="ruby-operator">...</span><span class="ruby-value">20_000</span>)
-  <span class="ruby-identifier">redis</span>.<span class="ruby-identifier">tags</span> = {<span class="ruby-value">&quot;env&quot;:</span> <span class="ruby-string">&quot;staging&quot;</span>}
-  <span class="ruby-identifier">$client</span>.<span class="ruby-identifier">resources</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">redis</span>).<span class="ruby-identifier">resource</span>
+  <span class="ruby-identifier">redis</span>.<span class="ruby-identifier">tags</span> = { <span class="ruby-value">&quot;env&quot;:</span> <span class="ruby-string">&quot;staging&quot;</span> }
+  <span class="ruby-identifier">$client</span>.<span class="ruby-identifier">resources</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">redis</span>).<span class="ruby-identifier">resource</span>.<span class="ruby-identifier">id</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -193,7 +197,7 @@
       <div id="method-i-create_example_role" class="method-detail ">
         <div class="method-heading">
           <span class="method-name">create_example_role</span><span
-            class="method-args">( access_rules)</span>
+            class="method-args">(access_rules)</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
 
@@ -202,11 +206,11 @@
 
           <div class="method-source-code" id="create_example_role-source">
             <pre><span class="ruby-comment"># File examples/accessRules.rb, line 30</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create_example_role</span>( <span class="ruby-identifier">access_rules</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create_example_role</span>(<span class="ruby-identifier">access_rules</span>)
   <span class="ruby-identifier">$client</span>.<span class="ruby-identifier">roles</span>.<span class="ruby-identifier">create</span>(<span class="ruby-constant">SDM</span><span class="ruby-operator">::</span><span class="ruby-constant">Role</span>.<span class="ruby-identifier">new</span>(
     <span class="ruby-value">name:</span> <span class="ruby-node">&quot;exampleRole-#{rand(10_000)}&quot;</span>,
     <span class="ruby-value">access_rules:</span> <span class="ruby-identifier">access_rules</span>,
-  )).<span class="ruby-identifier">role</span>
+  )).<span class="ruby-identifier">role</span>.<span class="ruby-identifier">id</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>
@@ -226,13 +230,14 @@
 
           <div class="method-source-code" id="create_role_grant_via_access_rules-source">
             <pre><span class="ruby-comment"># File examples/accessRules.rb, line 37</span>
-<span class="ruby-keyword">def</span>     <span class="ruby-identifier ruby-title">create_role_grant_via_access_rules</span>
-  <span class="ruby-identifier">resource1</span> = <span class="ruby-identifier">create_example_resources</span>()
-  <span class="ruby-identifier">resource2</span> = <span class="ruby-identifier">create_example_resources</span>()
-  <span class="ruby-identifier">role</span> = <span class="ruby-identifier">create_example_role</span>([{<span class="ruby-value">&quot;ids&quot;:</span> [<span class="ruby-identifier">resource1</span>.<span class="ruby-identifier">id</span>]}])
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create_role_grant_via_access_rules</span>
+  <span class="ruby-identifier">resource1_id</span> = <span class="ruby-identifier">create_example_resource</span>()
+  <span class="ruby-identifier">resource2_id</span> = <span class="ruby-identifier">create_example_resource</span>()
+  <span class="ruby-identifier">role_id</span> = <span class="ruby-identifier">create_example_role</span>([{ <span class="ruby-value">&quot;ids&quot;:</span> [<span class="ruby-identifier">resource1_id</span>] }])
 
   <span class="ruby-comment"># add resource2&#39;s id to the role&#39;s access rules</span>
-  <span class="ruby-identifier">role</span>.<span class="ruby-identifier">access_rules</span>[<span class="ruby-value">0</span>][<span class="ruby-string">&quot;ids&quot;</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">resource2</span>.<span class="ruby-identifier">id</span>
+  <span class="ruby-identifier">role</span> = <span class="ruby-identifier">$client</span>.<span class="ruby-identifier">roles</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">role_id</span>).<span class="ruby-identifier">role</span>
+  <span class="ruby-identifier">role</span>.<span class="ruby-identifier">access_rules</span>[<span class="ruby-value">0</span>][<span class="ruby-string">&quot;ids&quot;</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">resource2_id</span>
   <span class="ruby-identifier">$client</span>.<span class="ruby-identifier">roles</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">role</span>).<span class="ruby-identifier">role</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -252,14 +257,15 @@
           
 
           <div class="method-source-code" id="delete_role_grant_via_access_rules-source">
-            <pre><span class="ruby-comment"># File examples/accessRules.rb, line 47</span>
-<span class="ruby-keyword">def</span>  <span class="ruby-identifier ruby-title">delete_role_grant_via_access_rules</span>
-  <span class="ruby-identifier">resource1</span> = <span class="ruby-identifier">create_example_resources</span>()
-  <span class="ruby-identifier">resource2</span> = <span class="ruby-identifier">create_example_resources</span>()
-  <span class="ruby-identifier">role</span> = <span class="ruby-identifier">create_example_role</span>([{<span class="ruby-value">&quot;ids&quot;:</span> [<span class="ruby-identifier">resource1</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">resource2</span>.<span class="ruby-identifier">id</span>]}])
+            <pre><span class="ruby-comment"># File examples/accessRules.rb, line 48</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">delete_role_grant_via_access_rules</span>
+  <span class="ruby-identifier">resource1_id</span> = <span class="ruby-identifier">create_example_resource</span>()
+  <span class="ruby-identifier">resource2_id</span> = <span class="ruby-identifier">create_example_resource</span>()
+  <span class="ruby-identifier">role_id</span> = <span class="ruby-identifier">create_example_role</span>([{ <span class="ruby-value">&quot;ids&quot;:</span> [<span class="ruby-identifier">resource1_id</span>, <span class="ruby-identifier">resource2_id</span>] }])
 
   <span class="ruby-comment"># remove the ID of the second resource</span>
-  <span class="ruby-identifier">role</span>.<span class="ruby-identifier">access_rules</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">reject!</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">id</span><span class="ruby-operator">|</span> <span class="ruby-identifier">id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">resource2</span>.<span class="ruby-identifier">id</span> }
+  <span class="ruby-identifier">role</span> = <span class="ruby-identifier">$client</span>.<span class="ruby-identifier">roles</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">role_id</span>).<span class="ruby-identifier">role</span>
+  <span class="ruby-identifier">role</span>.<span class="ruby-identifier">access_rules</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">reject!</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">id</span><span class="ruby-operator">|</span> <span class="ruby-identifier">id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">resource2_id</span> }
   <span class="ruby-identifier">$client</span>.<span class="ruby-identifier">roles</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">role</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -279,12 +285,13 @@
           
 
           <div class="method-source-code" id="list_role_grants_via_access_rules-source">
-            <pre><span class="ruby-comment"># File examples/accessRules.rb, line 57</span>
-<span class="ruby-keyword">def</span>  <span class="ruby-identifier ruby-title">list_role_grants_via_access_rules</span>
-  <span class="ruby-identifier">resource</span> = <span class="ruby-identifier">create_example_resources</span>
-  <span class="ruby-identifier">role</span> = <span class="ruby-identifier">create_example_role</span>([{<span class="ruby-value">&quot;ids&quot;:</span> [<span class="ruby-identifier">resource</span>.<span class="ruby-identifier">id</span>]}]) 
+            <pre><span class="ruby-comment"># File examples/accessRules.rb, line 59</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">list_role_grants_via_access_rules</span>
+  <span class="ruby-identifier">resource_id</span> = <span class="ruby-identifier">create_example_resource</span>()
+  <span class="ruby-identifier">role_id</span> = <span class="ruby-identifier">create_example_role</span>([{ <span class="ruby-value">&quot;ids&quot;:</span> [<span class="ruby-identifier">resource_id</span>] }])
 
   <span class="ruby-comment"># role.access_rules contains each AccessRule associate with the role</span>
+  <span class="ruby-identifier">role</span> = <span class="ruby-identifier">$client</span>.<span class="ruby-identifier">roles</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">role_id</span>).<span class="ruby-identifier">role</span>
   <span class="ruby-identifier">puts</span> <span class="ruby-identifier">role</span>.<span class="ruby-identifier">access_rules</span>.<span class="ruby-identifier">first</span>[<span class="ruby-string">&quot;ids&quot;</span>]
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -304,18 +311,18 @@
           
 
           <div class="method-source-code" id="main-source">
-            <pre><span class="ruby-comment"># File examples/accessRules.rb, line 89</span>
+            <pre><span class="ruby-comment"># File examples/accessRules.rb, line 96</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">main</span>
   <span class="ruby-comment"># Each of the following functions is an example of how to do an operation using Access Rules</span>
 
   <span class="ruby-identifier">create_and_update_access_rules</span>
 
-        <span class="ruby-comment"># The RoleGrants API has been deprecated in favor of Access Rules.</span>
+  <span class="ruby-comment"># The RoleGrants API has been deprecated in favor of Access Rules.</span>
   <span class="ruby-comment"># When using Access Rules the best practice is to grant Resources access based on Type and Tags.</span>
-        <span class="ruby-comment"># If it is _necessary_ to grant access to specific Resources in the same way as RoleGrants did,</span>
-        <span class="ruby-comment"># you can use Resource IDs directly in Access Rules as shown in the following examples.</span>
+  <span class="ruby-comment"># If it is _necessary_ to grant access to specific Resources in the same way as RoleGrants did,</span>
+  <span class="ruby-comment"># you can use Resource IDs directly in Access Rules as shown in the following examples.</span>
 
-        <span class="ruby-identifier">create_role_grant_via_access_rules</span>
+  <span class="ruby-identifier">create_role_grant_via_access_rules</span>
   <span class="ruby-identifier">delete_role_grant_via_access_rules</span>
   <span class="ruby-identifier">list_role_grants_via_access_rules</span>
 <span class="ruby-keyword">end</span></pre>
