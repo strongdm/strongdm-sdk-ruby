@@ -19,7 +19,6 @@ require "google/protobuf"
 
 require "options_pb"
 require "spec_pb"
-
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("control_panel.proto", :syntax => :proto3) do
     add_message "v1.ControlPanelGetSSHCAPublicKeyRequest" do

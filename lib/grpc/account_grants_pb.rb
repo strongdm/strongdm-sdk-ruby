@@ -20,7 +20,6 @@ require "google/protobuf"
 require "google/protobuf/timestamp_pb"
 require "options_pb"
 require "spec_pb"
-
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("account_grants.proto", :syntax => :proto3) do
     add_message "v1.AccountGrantCreateRequest" do

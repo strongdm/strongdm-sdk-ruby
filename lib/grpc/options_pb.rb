@@ -17,8 +17,6 @@
 
 require "google/protobuf"
 
-require "google/protobuf/descriptor_pb"
-
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("options.proto", :syntax => :proto3) do
     add_message "v1.MethodOptions" do
@@ -75,6 +73,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     end
     add_message "v1.ServiceOptions" do
       optional :main_noun, :string, 1941400
+      optional :id_prefix, :string, 1941402
       optional :private_sdk, :bool, 1941401
     end
   end
