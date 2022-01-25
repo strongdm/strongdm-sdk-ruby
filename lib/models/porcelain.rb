@@ -1835,6 +1835,45 @@ module SDM
     end
   end
 
+  class AzureStore
+    # Unique identifier of the SecretStore.
+    attr_accessor :id
+    # Unique human-readable name of the SecretStore.
+    attr_accessor :name
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    attr_accessor :vault_uri
+
+    def initialize(
+      id: nil,
+      name: nil,
+      tags: nil,
+      vault_uri: nil
+    )
+      if id != nil
+        @id = id
+      end
+      if name != nil
+        @name = name
+      end
+      if tags != nil
+        @tags = tags
+      end
+      if vault_uri != nil
+        @vault_uri = vault_uri
+      end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class BigQuery
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -5495,6 +5534,7 @@ module SDM
   end
 
   class RDP
+    attr_accessor :downgrade_nla_connections
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
@@ -5519,6 +5559,7 @@ module SDM
     attr_accessor :username
 
     def initialize(
+      downgrade_nla_connections: nil,
       egress_filter: nil,
       healthy: nil,
       hostname: nil,
@@ -5531,6 +5572,9 @@ module SDM
       tags: nil,
       username: nil
     )
+      if downgrade_nla_connections != nil
+        @downgrade_nla_connections = downgrade_nla_connections
+      end
       if egress_filter != nil
         @egress_filter = egress_filter
       end

@@ -20,6 +20,7 @@ require "google/protobuf"
 require "options_pb"
 require "spec_pb"
 require "secret_store_types_pb"
+
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("secret_stores.proto", :syntax => :proto3) do
     add_message "v1.SecretStoreCreateRequest" do

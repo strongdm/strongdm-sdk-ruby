@@ -1523,6 +1523,46 @@ module SDM
       end
       items
     end
+    def self.convert_azure_store_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AzureStore.new()
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.vault_uri = (plumbing.vault_uri)
+      porcelain
+    end
+
+    def self.convert_azure_store_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AzureStore.new()
+      plumbing.id = (porcelain.id) unless porcelain.id == nil
+      plumbing.name = (porcelain.name) unless porcelain.name == nil
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.vault_uri = (porcelain.vault_uri) unless porcelain.vault_uri == nil
+      plumbing
+    end
+    def self.convert_repeated_azure_store_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_azure_store_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_azure_store_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_azure_store_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_big_query_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -4118,6 +4158,7 @@ module SDM
         return nil
       end
       porcelain = RDP.new()
+      porcelain.downgrade_nla_connections = (plumbing.downgrade_nla_connections)
       porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.healthy = (plumbing.healthy)
       porcelain.hostname = (plumbing.hostname)
@@ -4137,6 +4178,7 @@ module SDM
         return nil
       end
       plumbing = V1::RDP.new()
+      plumbing.downgrade_nla_connections = (porcelain.downgrade_nla_connections) unless porcelain.downgrade_nla_connections == nil
       plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
       plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
       plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
@@ -5785,6 +5827,9 @@ module SDM
       if porcelain.instance_of? AWSStore
         plumbing.aws = convert_aws_store_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? AzureStore
+        plumbing.azure = convert_azure_store_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? VaultTLSStore
         plumbing.vault_tls = convert_vault_tls_store_to_plumbing(porcelain)
       end
@@ -5800,6 +5845,9 @@ module SDM
       end
       if plumbing.aws != nil
         return convert_aws_store_to_porcelain(plumbing.aws)
+      end
+      if plumbing.azure != nil
+        return convert_azure_store_to_porcelain(plumbing.azure)
       end
       if plumbing.vault_tls != nil
         return convert_vault_tls_store_to_porcelain(plumbing.vault_tls)

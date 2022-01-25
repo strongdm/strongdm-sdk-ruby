@@ -19,11 +19,13 @@ require "google/protobuf"
 
 require "options_pb"
 require "tags_pb"
+
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("secret_store_types.proto", :syntax => :proto3) do
     add_message "v1.SecretStore" do
       oneof :secret_store do
         optional :aws, :message, 3, "v1.AWSStore"
+        optional :azure, :message, 101, "v1.AzureStore"
         optional :vault_tls, :message, 1, "v1.VaultTLSStore"
         optional :vault_token, :message, 2, "v1.VaultTokenStore"
       end
@@ -33,6 +35,12 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :name, :string, 2
       optional :region, :string, 3
       optional :tags, :message, 4, "v1.Tags"
+    end
+    add_message "v1.AzureStore" do
+      optional :id, :string, 1
+      optional :name, :string, 2
+      optional :vault_uri, :string, 3
+      optional :tags, :message, 32771, "v1.Tags"
     end
     add_message "v1.VaultTLSStore" do
       optional :id, :string, 1
@@ -57,6 +65,7 @@ end
 module V1
   SecretStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SecretStore").msgclass
   AWSStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AWSStore").msgclass
+  AzureStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AzureStore").msgclass
   VaultTLSStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.VaultTLSStore").msgclass
   VaultTokenStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.VaultTokenStore").msgclass
 end

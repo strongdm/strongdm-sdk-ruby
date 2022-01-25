@@ -19,6 +19,7 @@ require "google/protobuf"
 
 require "options_pb"
 require "tags_pb"
+
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("drivers.proto", :syntax => :proto3) do
     add_message "v1.Resource" do
@@ -866,6 +867,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :downgrade_nla_connections, :bool, 6
       optional :hostname, :string, 1
       optional :password, :string, 3
       optional :port, :int32, 5
