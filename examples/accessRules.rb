@@ -15,65 +15,72 @@
 
 require "strongdm"
 
-$client = SDM::Client.new(ENV["SDM_API_ACCESS_KEY"], ENV["SDM_API_SECRET_KEY"], host: "localhost:8889", insecure: true)
+$client = SDM::Client.new(ENV["SDM_API_ACCESS_KEY"], ENV["SDM_API_SECRET_KEY"])
 
-def create_example_resources
+def create_example_resource
   # create a redis
   redis = SDM::Redis.new()
   redis.name = "example_resource_#{rand(100_000)}"
   redis.hostname = "example.com"
   redis.port_override = rand(3_000...20_000)
   redis.tags = { "env": "staging" }
-  $client.resources.create(redis).resource
+  $client.resources.create(redis).resource.id
 end
 
 def create_example_role(access_rules)
   $client.roles.create(SDM::Role.new(
     name: "exampleRole-#{rand(10_000)}",
     access_rules: access_rules,
-  )).role
+  )).role.id
 end
 
 def create_role_grant_via_access_rules
-  resource1 = create_example_resources()
-  resource2 = create_example_resources()
-  role = create_example_role([{ "ids": [resource1.id] }])
+  resource1_id = create_example_resource()
+  resource2_id = create_example_resource()
+  role_id = create_example_role([{ "ids": [resource1_id] }])
 
   # add resource2's id to the role's access rules
-  role.access_rules[0]["ids"] << resource2.id
+  role = $client.roles.get(role_id).role
+  role.access_rules[0]["ids"] << resource2_id
   $client.roles.update(role).role
 end
 
 def delete_role_grant_via_access_rules
-  resource1 = create_example_resources()
-  resource2 = create_example_resources()
-  role = create_example_role([{ "ids": [resource1.id, resource2.id] }])
+  resource1_id = create_example_resource()
+  resource2_id = create_example_resource()
+  role_id = create_example_role([{ "ids": [resource1_id, resource2_id] }])
 
   # remove the ID of the second resource
-  role.access_rules.first.reject! { |id| id == resource2.id }
+  role = $client.roles.get(role_id).role
+  role.access_rules.first.reject! { |id| id == resource2_id }
   $client.roles.update(role)
 end
 
 def list_role_grants_via_access_rules
-  resource = create_example_resources
-  role = create_example_role([{ "ids": [resource.id] }])
+  resource_id = create_example_resource()
+  role_id = create_example_role([{ "ids": [resource_id] }])
 
   # role.access_rules contains each AccessRule associate with the role
+  role = $client.roles.get(role_id).role
   puts role.access_rules.first["ids"]
 end
 
 def create_and_update_access_rules
-  redis = create_example_resources
+  redis_id = create_example_resource()
 
   # create a role with initial access rule
   access_rules = [
     {
-      "ids": [redis.id],
+      "ids": [redis_id],
     },
   ]
-  role = create_example_role(access_rules)
+  role_id = $client.roles.create(SDM::Role.new(
+    name: "exampleRole-#{rand(10_000)}",
+    access_rules: access_rules,
+  )).role.id
 
   # update access rules
+  role = $client.roles.get(role_id).role
   role.access_rules = [
     {
       "tags": { "env": "staging" },
