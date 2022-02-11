@@ -13,7 +13,7 @@
 # limitations under the License.
 #
 
-require "strongdm"
+require 'strongdm'
 
 $client = SDM::Client.new(ENV["SDM_API_ACCESS_KEY"], ENV["SDM_API_SECRET_KEY"])
 
