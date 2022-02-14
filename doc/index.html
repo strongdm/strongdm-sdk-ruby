@@ -62,7 +62,6 @@
   <ul class="link-list">
     <li><a href="./LICENSE.html">LICENSE</a>
     <li><a href="./README_md.html">README</a>
-    <li><a href="./examples/Gemfile.html">Gemfile</a>
     <li><a href="./lib/version.html">version</a>
   </ul>
 </div>
@@ -163,7 +162,6 @@
     <li><a href="./SDM/NotFoundError.html">SDM::NotFoundError</a>
     <li><a href="./SDM/Oracle.html">SDM::Oracle</a>
     <li><a href="./SDM/PermissionError.html">SDM::PermissionError</a>
-    <li><a href="./SDM/Plumbing.html">SDM::Plumbing</a>
     <li><a href="./SDM/Postgres.html">SDM::Postgres</a>
     <li><a href="./SDM/Presto.html">SDM::Presto</a>
     <li><a href="./SDM/RDP.html">SDM::RDP</a>
@@ -216,28 +214,6 @@
     <li><a href="./SDM/User.html">SDM::User</a>
     <li><a href="./SDM/VaultTLSStore.html">SDM::VaultTLSStore</a>
     <li><a href="./SDM/VaultTokenStore.html">SDM::VaultTokenStore</a>
-    <li><a href="./V1.html">V1</a>
-    <li><a href="./V1/AccountAttachments.html">V1::AccountAttachments</a>
-    <li><a href="./V1/AccountAttachments/Service.html">V1::AccountAttachments::Service</a>
-    <li><a href="./V1/AccountGrants.html">V1::AccountGrants</a>
-    <li><a href="./V1/AccountGrants/Service.html">V1::AccountGrants::Service</a>
-    <li><a href="./V1/Accounts.html">V1::Accounts</a>
-    <li><a href="./V1/Accounts/Service.html">V1::Accounts::Service</a>
-    <li><a href="./V1/ControlPanel.html">V1::ControlPanel</a>
-    <li><a href="./V1/ControlPanel/Service.html">V1::ControlPanel::Service</a>
-    <li><a href="./V1/Nodes.html">V1::Nodes</a>
-    <li><a href="./V1/Nodes/Service.html">V1::Nodes::Service</a>
-    <li><a href="./V1/Resources.html">V1::Resources</a>
-    <li><a href="./V1/Resources/Service.html">V1::Resources::Service</a>
-    <li><a href="./V1/RoleAttachments.html">V1::RoleAttachments</a>
-    <li><a href="./V1/RoleAttachments/Service.html">V1::RoleAttachments::Service</a>
-    <li><a href="./V1/RoleGrants.html">V1::RoleGrants</a>
-    <li><a href="./V1/RoleGrants/Service.html">V1::RoleGrants::Service</a>
-    <li><a href="./V1/Roles.html">V1::Roles</a>
-    <li><a href="./V1/Roles/Service.html">V1::Roles::Service</a>
-    <li><a href="./V1/SecretStores.html">V1::SecretStores</a>
-    <li><a href="./V1/SecretStores/Service.html">V1::SecretStores::Service</a>
-    <li><a href="./V1/Tags.html">V1::Tags</a>
   </ul>
 </div>
 
@@ -245,7 +221,55 @@
 </nav>
 
 <main role="main">
-<p>This is the API documentation for RDoc Documentation.
+
+
+<h1 id="label-strongDM+SDK+for+Ruby">strongDM SDK for Ruby<span><a href="#label-strongDM+SDK+for+Ruby">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p>This is the official <a href="https://www.strongdm.com/">strongDM</a> SDK for the Ruby programming language.</p>
+
+<p>Learn more with our <a href="https://www.strongdm.com/docs/api/">📚strongDM API docs</a> or <a href="https://www.rubydoc.info/gems/strongdm">📓browse the SDK reference</a>.</p>
+
+<h2 id="label-Installation">Installation<span><a href="#label-Installation">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<pre>$ gem install strongdm</pre>
+
+<h2 id="label-Authentication">Authentication<span><a href="#label-Authentication">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>If you don&#39;t already have them you will need to generate a set of API keys, instructions are here: <a href="https://www.strongdm.com/docs/admin-guide/api-credentials/">API Credentials</a></p>
+
+<p>Add the keys as environment variables; the SDK will need to access these keys for every request.</p>
+
+<pre>$ export SDM_API_ACCESS_KEY=&lt;YOUR ACCESS KEY&gt;
+$ export SDM_API_SECRET_KEY=&lt;YOUR SECRET KEY&gt;</pre>
+
+<h2 id="label-List+Users">List Users<span><a href="#label-List+Users">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>The following code lists all registered users:</p>
+
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">&quot;strongdm&quot;</span>
+
+<span class="ruby-identifier">client</span> = <span class="ruby-constant">SDM</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">ENV</span>[<span class="ruby-string">&#39;SDM_API_ACCESS_KEY&#39;</span>], <span class="ruby-constant">ENV</span>[<span class="ruby-string">&#39;SDM_API_SECRET_KEY&#39;</span>])
+<span class="ruby-identifier">users</span> = <span class="ruby-identifier">client</span>.<span class="ruby-identifier">accounts</span>.<span class="ruby-identifier">list</span>(<span class="ruby-string">&#39;&#39;</span>)
+<span class="ruby-identifier">users</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">user</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">p</span> <span class="ruby-identifier">user</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<h2 id="label-Useful+Links">Useful Links<span><a href="#label-Useful+Links">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<ul><li>
+<p>Documentation: <a href="https://www.rubydoc.info/gems/strongdm">strongdm gem</a></p>
+</li><li>
+<p>Examples: <a href="https://github.com/strongdm/strongdm-sdk-ruby-examples">GitHub - strongdm/strongdm-sdk-ruby-examples</a>  1. <a href="https://github.com/strongdm/strongdm-sdk-ruby-examples/tree/master/1_managing_resources">Managing Resources</a>  2. <a href="https://github.com/strongdm/strongdm-sdk-ruby-examples/tree/master/2_managing_accounts">Managing Accounts</a>  3. <a href="https://github.com/strongdm/strongdm-sdk-ruby-examples/tree/master/3_managing_roles">Managing Roles</a>  4. <a href="https://github.com/strongdm/strongdm-sdk-ruby-examples/tree/master/4_managing_gateways">Managing Gateways</a></p>
+</li></ul>
+
+<h2 id="label-License">License<span><a href="#label-License">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p><a href="https://github.com/strongdm/strongdm-sdk-ruby/blob/master/LICENSE">Apache 2</a></p>
+
+<h2 id="label-Contributing">Contributing<span><a href="#label-Contributing">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Currently, we are not accepting pull requests directly to this repository, but our users are some of the most resourceful and ambitious folks out there. So, if you have something to contribute, find a bug, or just want to give us some feedback, please email <a href="mailto:support@strongdm.com">support@strongdm.com</a>.</p>
+
 </main>
 
 
