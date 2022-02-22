@@ -37,6 +37,7 @@ end
 ## Useful Links
 
 * Documentation:  [strongdm gem](https://www.rubydoc.info/gems/strongdm)
+* [Migrating from Role Grants to Access Rules](https://github.com/strongdm/strongdm-sdk-ruby/wiki/Migrating-from-Role-Grants-to-Access-Rules)
 * Examples: [GitHub - strongdm/strongdm-sdk-ruby-examples](https://github.com/strongdm/strongdm-sdk-ruby-examples)
 	1. [Managing Resources](https://github.com/strongdm/strongdm-sdk-ruby-examples/tree/master/1_managing_resources)
 	2. [Managing Accounts](https://github.com/strongdm/strongdm-sdk-ruby-examples/tree/master/2_managing_accounts)
