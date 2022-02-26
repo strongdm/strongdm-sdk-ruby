@@ -26,6 +26,8 @@ Dir[File.join(__dir__, "models", "*.rb")].each { |file| require file }
 module SDM
   # AccountAttachments assign an account to a role or composite role.
   class AccountAttachments
+    extend Gem::Deprecate
+
     def initialize(host, insecure, parent)
       begin
         if insecure
@@ -169,6 +171,8 @@ module SDM
 
   # AccountGrants assign a resource directly to an account, giving the account the permission to connect to that resource.
   class AccountGrants
+    extend Gem::Deprecate
+
     def initialize(host, insecure, parent)
       begin
         if insecure
@@ -314,6 +318,8 @@ module SDM
   # 1. **Users:** humans who are authenticated through username and password or SSO.
   # 2. **Service Accounts:** machines that are authenticated using a service token.
   class Accounts
+    extend Gem::Deprecate
+
     def initialize(host, insecure, parent)
       begin
         if insecure
@@ -488,6 +494,8 @@ module SDM
 
   # ControlPanel contains all administrative controls.
   class ControlPanel
+    extend Gem::Deprecate
+
     def initialize(host, insecure, parent)
       begin
         if insecure
@@ -565,6 +573,8 @@ module SDM
   # - **Gateways** are the entry points into network. They listen for connection from the strongDM client, and provide access to databases and servers.
   # - **Relays** are used to extend the strongDM network into segmented subnets. They provide access to databases and servers but do not listen for incoming connections.
   class Nodes
+    extend Gem::Deprecate
+
     def initialize(host, insecure, parent)
       begin
         if insecure
@@ -738,6 +748,8 @@ module SDM
   end
 
   class Resources
+    extend Gem::Deprecate
+
     def initialize(host, insecure, parent)
       begin
         if insecure
@@ -950,7 +962,11 @@ module SDM
   # that make up those composite roles. When a composite role is attached to another
   # role, the permissions granted to members of the composite role are augmented to
   # include the permissions granted to members of the attached role.
+  #
+  # Deprecated: use multi-role instead.
   class RoleAttachments
+    extend Gem::Deprecate
+
     def initialize(host, insecure, parent)
       begin
         if insecure
@@ -966,6 +982,8 @@ module SDM
     end
 
     # Create registers a new RoleAttachment.
+    #
+    # Deprecated: use multi-role instead.
     def create(
       role_attachment,
       deadline: nil
@@ -995,7 +1013,10 @@ module SDM
       resp
     end
 
+    deprecate :create, :none, 2022, 6
     # Get reads one RoleAttachment by ID.
+    #
+    # Deprecated: use multi-role instead.
     def get(
       id,
       deadline: nil
@@ -1025,7 +1046,10 @@ module SDM
       resp
     end
 
+    deprecate :get, :none, 2022, 6
     # Delete removes a RoleAttachment by ID.
+    #
+    # Deprecated: use multi-role instead.
     def delete(
       id,
       deadline: nil
@@ -1054,7 +1078,10 @@ module SDM
       resp
     end
 
+    deprecate :delete, :none, 2022, 6
     # List gets a list of RoleAttachments matching a given set of criteria.
+    #
+    # Deprecated: use multi-role instead.
     def list(
       filter,
       *args,
@@ -1090,13 +1117,19 @@ module SDM
       }
       resp
     end
+
+    deprecate :list, :none, 2022, 6
   end
 
   # RoleGrants represent relationships between composite roles and the roles
   # that make up those composite roles. When a composite role is attached to another
   # role, the permissions granted to members of the composite role are augmented to
   # include the permissions granted to members of the attached role.
+  #
+  # Deprecated: use access rules instead.
   class RoleGrants
+    extend Gem::Deprecate
+
     def initialize(host, insecure, parent)
       begin
         if insecure
@@ -1112,6 +1145,8 @@ module SDM
     end
 
     # Create registers a new RoleGrant.
+    #
+    # Deprecated: use access rules instead.
     def create(
       role_grant,
       deadline: nil
@@ -1141,7 +1176,10 @@ module SDM
       resp
     end
 
+    deprecate :create, :none, 2022, 6
     # Get reads one RoleGrant by ID.
+    #
+    # Deprecated: use access rules instead.
     def get(
       id,
       deadline: nil
@@ -1171,7 +1209,10 @@ module SDM
       resp
     end
 
+    deprecate :get, :none, 2022, 6
     # Delete removes a RoleGrant by ID.
+    #
+    # Deprecated: use access rules instead.
     def delete(
       id,
       deadline: nil
@@ -1200,7 +1241,10 @@ module SDM
       resp
     end
 
+    deprecate :delete, :none, 2022, 6
     # List gets a list of RoleGrants matching a given set of criteria.
+    #
+    # Deprecated: use access rules instead.
     def list(
       filter,
       *args,
@@ -1236,6 +1280,8 @@ module SDM
       }
       resp
     end
+
+    deprecate :list, :none, 2022, 6
   end
 
   # Roles are tools for controlling user access to resources. Each Role holds a
@@ -1244,6 +1290,8 @@ module SDM
   # grant access to the combined resources associated with a set of child roles.
   # Each user can be a member of one Role or composite role.
   class Roles
+    extend Gem::Deprecate
+
     def initialize(host, insecure, parent)
       begin
         if insecure
@@ -1417,6 +1465,8 @@ module SDM
 
   # SecretStores are servers where resource secrets (passwords, keys) are stored.
   class SecretStores
+    extend Gem::Deprecate
+
     def initialize(host, insecure, parent)
       begin
         if insecure

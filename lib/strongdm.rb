@@ -122,11 +122,15 @@ module SDM
     # that make up those composite roles. When a composite role is attached to another
     # role, the permissions granted to members of the composite role are augmented to
     # include the permissions granted to members of the attached role.
+    #
+    # Deprecated: use multi-role instead.
     attr_reader :role_attachments
     # RoleGrants represent relationships between composite roles and the roles
     # that make up those composite roles. When a composite role is attached to another
     # role, the permissions granted to members of the composite role are augmented to
     # include the permissions granted to members of the attached role.
+    #
+    # Deprecated: use access rules instead.
     attr_reader :role_grants
     # Roles are tools for controlling user access to resources. Each Role holds a
     # list of resources which they grant access to. Composite roles are a special

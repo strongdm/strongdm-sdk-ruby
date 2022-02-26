@@ -66,6 +66,14 @@
 
     
     
+<div id="extends-section" class="nav-section">
+  <h3>Extended With Modules</h3>
+
+  <ul class="link-list">
+    <li><span class="extend">Gem::Deprecate</span>
+  </ul>
+</div>
+
     
 <!-- Method Quickref -->
 <div id="method-list-section" class="nav-section">
@@ -92,6 +100,8 @@
     
 <p><a href="RoleGrants.html"><code>RoleGrants</code></a> represent relationships between composite roles and the roles that make up those composite roles. When a composite role is attached to another role, the permissions granted to members of the composite role are augmented to include the permissions granted to members of the attached role.</p>
 
+<p>Deprecated: use access rules instead.</p>
+
   </section>
 
   <section id="5Buntitled-5D" class="documentation-section">
@@ -116,7 +126,7 @@
           
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/svc.rb, line 1116</span>
+            <pre><span class="ruby-comment"># File lib/svc.rb, line 1140</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">host</span>, <span class="ruby-identifier">insecure</span>, <span class="ruby-identifier">parent</span>)
     <span class="ruby-keyword">begin</span>
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">insecure</span>
@@ -153,8 +163,10 @@
         <div class="method-description">
           <p>Create registers a new <a href="RoleGrant.html"><code>RoleGrant</code></a>.</p>
 
+<p>Deprecated: use access rules instead.</p>
+
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File lib/svc.rb, line 1130</span>
+            <pre><span class="ruby-comment"># File lib/svc.rb, line 1156</span>
         <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">create</span>(
 <span class="ruby-identifier">role_grant</span> \
 ,
@@ -201,8 +213,10 @@
         <div class="method-description">
           <p>Delete removes a <a href="RoleGrant.html"><code>RoleGrant</code></a> by ID.</p>
 
+<p>Deprecated: use access rules instead.</p>
+
           <div class="method-source-code" id="delete-source">
-            <pre><span class="ruby-comment"># File lib/svc.rb, line 1192</span>
+            <pre><span class="ruby-comment"># File lib/svc.rb, line 1224</span>
         <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">delete</span>(
 <span class="ruby-identifier">id</span> \
 ,
@@ -248,8 +262,10 @@
         <div class="method-description">
           <p>Get reads one <a href="RoleGrant.html"><code>RoleGrant</code></a> by ID.</p>
 
+<p>Deprecated: use access rules instead.</p>
+
           <div class="method-source-code" id="get-source">
-            <pre><span class="ruby-comment"># File lib/svc.rb, line 1161</span>
+            <pre><span class="ruby-comment"># File lib/svc.rb, line 1190</span>
         <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get</span>(
 <span class="ruby-identifier">id</span> \
 ,
@@ -296,8 +312,10 @@
         <div class="method-description">
           <p>List gets a list of <a href="RoleGrants.html"><code>RoleGrants</code></a> matching a given set of criteria.</p>
 
+<p>Deprecated: use access rules instead.</p>
+
           <div class="method-source-code" id="list-source">
-            <pre><span class="ruby-comment"># File lib/svc.rb, line 1222</span>
+            <pre><span class="ruby-comment"># File lib/svc.rb, line 1257</span>
         <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">list</span>(
 <span class="ruby-identifier">filter</span> \
 ,

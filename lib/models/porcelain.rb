@@ -6167,9 +6167,11 @@ module SDM
 
   # A Role is a collection of access grants, and typically corresponds to a team, Active Directory OU, or other organizational unit. Users are granted access to resources by assigning them to roles.
   class Role
-    # AccessRules JSON encoded access rules data.
+    # AccessRules is a list of access rules defining the resources this Role has access to.
     attr_accessor :access_rules
-    # True if the Role is a composite role.
+    # Composite is true if the Role is a composite role.
+    #
+    # Deprecated: composite roles are deprecated, use multi-role instead.
     attr_accessor :composite
     # Unique identifier of the Role.
     attr_accessor :id
@@ -6212,6 +6214,8 @@ module SDM
   end
 
   # A RoleAttachment assigns a role to a composite role.
+  #
+  # Deprecated: use multi-role instead.
   class RoleAttachment
     # The id of the attached role of this RoleAttachment.
     attr_accessor :attached_role_id
@@ -6246,6 +6250,8 @@ module SDM
   end
 
   # RoleAttachmentCreateResponse reports how the RoleAttachments were created in the system.
+  #
+  # Deprecated: use multi-role instead.
   class RoleAttachmentCreateResponse
     # Reserved for future use.
     attr_accessor :meta
@@ -6280,6 +6286,8 @@ module SDM
   end
 
   # RoleAttachmentDeleteResponse returns information about a RoleAttachment that was deleted.
+  #
+  # Deprecated: use multi-role instead.
   class RoleAttachmentDeleteResponse
     # Reserved for future use.
     attr_accessor :meta
@@ -6308,6 +6316,8 @@ module SDM
   end
 
   # RoleAttachmentGetResponse returns a requested RoleAttachment.
+  #
+  # Deprecated: use multi-role instead.
   class RoleAttachmentGetResponse
     # Reserved for future use.
     attr_accessor :meta
@@ -6439,6 +6449,8 @@ module SDM
   end
 
   # A RoleGrant connects a resource to a role, granting members of the role access to that resource.
+  #
+  # Deprecated: use access rules instead.
   class RoleGrant
     # Unique identifier of the RoleGrant.
     attr_accessor :id
@@ -6473,6 +6485,8 @@ module SDM
   end
 
   # RoleGrantCreateResponse reports how the RoleGrants were created in the system.
+  #
+  # Deprecated: use access rules instead.
   class RoleGrantCreateResponse
     # Reserved for future use.
     attr_accessor :meta
@@ -6507,6 +6521,8 @@ module SDM
   end
 
   # RoleGrantDeleteResponse returns information about a RoleGrant that was deleted.
+  #
+  # Deprecated: use access rules instead.
   class RoleGrantDeleteResponse
     # Reserved for future use.
     attr_accessor :meta
@@ -6535,6 +6551,8 @@ module SDM
   end
 
   # RoleGrantGetResponse returns a requested RoleGrant.
+  #
+  # Deprecated: use access rules instead.
   class RoleGrantGetResponse
     # Reserved for future use.
     attr_accessor :meta

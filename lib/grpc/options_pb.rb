@@ -22,9 +22,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.MethodOptions" do
       optional :method, :string, 1941300
       optional :url, :string, 1941301
+      optional :deprecation_date, :string, 1941302
     end
     add_message "v1.FileOptions" do
-      optional :private_sdk, :bool, 1941700
+      repeated :targets, :string, 1941700
     end
     add_message "v1.FieldOptions" do
       optional :expose_as_porcelain, :bool, 1941302
@@ -33,7 +34,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :write_only, :bool, 1941309
       optional :read_only, :bool, 1941315
       optional :is_credential, :bool, 1941316
-      optional :private_sdk, :bool, 1941318
+      repeated :targets, :string, 1941318
       optional :terraform_computed, :string, 1941307
       optional :terraform_force_new, :bool, 1941308
       optional :terraform_sensitive, :bool, 1941310
@@ -43,13 +44,14 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :cli_json_name, :string, 1941312
       optional :json_gateway_name, :string, 1941313
       optional :hide_from_json_gateway, :bool, 1941314
+      optional :custom, :message, 1941305, "v1.CustomPorcelainTypeOptions"
     end
     add_message "v1.MessageOptions" do
       optional :porcelain, :bool, 1941301
       optional :error, :int32, 1941302
       optional :options_field, :string, 1941303
-      optional :custom, :message, 1941305, "v1.CustomPorcelainMessageOptions"
-      optional :private_sdk, :bool, 1941306
+      optional :custom, :message, 1941305, "v1.CustomPorcelainTypeOptions"
+      repeated :targets, :string, 1941306
       optional :cli_name, :string, 1941307
       optional :cli_json_name, :string, 1941308
       optional :json_gateway_name, :string, 1941309
@@ -57,12 +59,14 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :terraform_docs, :message, 1941304, "v1.TerraformDocs"
       optional :terraform_provider_name, :string, 1941311
     end
-    add_message "v1.CustomPorcelainMessageOptions" do
+    add_message "v1.CustomPorcelainTypeOptions" do
       optional :converter, :string, 1941309
       optional :go_porcelain_type, :string, 1941310
       optional :java_porcelain_type, :string, 1941311
       optional :terraform_porcelain_type, :string, 1941312
+      optional :terraform_elem_type, :string, 1941314
       optional :openapi_porcelain_type, :string, 1941313
+      optional :json_gateway_porcelain_type, :string, 1941315
     end
     add_message "v1.TerraformDocs" do
       optional :resource_example_path, :string, 1941300
@@ -74,7 +78,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.ServiceOptions" do
       optional :main_noun, :string, 1941400
       optional :id_prefix, :string, 1941402
-      optional :private_sdk, :bool, 1941401
+      repeated :targets, :string, 1941401
     end
   end
 end
@@ -84,7 +88,7 @@ module V1
   FileOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.FileOptions").msgclass
   FieldOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.FieldOptions").msgclass
   MessageOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MessageOptions").msgclass
-  CustomPorcelainMessageOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.CustomPorcelainMessageOptions").msgclass
+  CustomPorcelainTypeOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.CustomPorcelainTypeOptions").msgclass
   TerraformDocs = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.TerraformDocs").msgclass
   OneofOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.OneofOptions").msgclass
   ServiceOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ServiceOptions").msgclass

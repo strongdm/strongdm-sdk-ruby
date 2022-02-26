@@ -107,7 +107,7 @@
         </div>
 
         <div class="method-description">
-        <p>AccessRules JSON encoded access rules data.</p>
+        <p>AccessRules is a list of access rules defining the resources this <a href="Role.html"><code>Role</code></a> has access to.</p>
         </div>
       </div>
       <div id="attribute-i-composite" class="method-detail">
@@ -117,7 +117,9 @@
         </div>
 
         <div class="method-description">
-        <p>True if the <a href="Role.html"><code>Role</code></a> is a composite role.</p>
+        <p>Composite is true if the <a href="Role.html"><code>Role</code></a> is a composite role.</p>
+
+<p>Deprecated: composite roles are deprecated, use multi-role instead.</p>
         </div>
       </div>
       <div id="attribute-i-id" class="method-detail">
@@ -169,7 +171,7 @@
           
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 6732</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 6734</span>
                 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(
                         <span class="ruby-value">access_rules:</span><span class="ruby-keyword">nil</span> \
 ,
@@ -221,7 +223,7 @@
           
 
           <div class="method-source-code" id="to_json-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 6759</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 6761</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_json</span>(<span class="ruby-identifier">options</span>={})
         <span class="ruby-identifier">hash</span> = {}
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">instance_variables</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">var</span><span class="ruby-operator">|</span>

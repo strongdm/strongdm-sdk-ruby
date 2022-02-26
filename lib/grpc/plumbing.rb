@@ -93,6 +93,23 @@ module SDM
       end
       tags
     end
+
+    def self.convert_access_rules_to_porcelain(access_rules_json)
+      if access_rules_json == nil
+        return nil
+      end
+      if access_rules_json == ""
+        return nil
+      end
+      JSON.parse(access_rules_json)
+    end
+
+    def self.convert_access_rules_to_plumbing(access_rules)
+      if access_rules == nil
+        return nil
+      end
+      JSON.dump(access_rules)
+    end
     def self.convert_aks_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -5106,7 +5123,7 @@ module SDM
         return nil
       end
       porcelain = Role.new()
-      porcelain.access_rules = (plumbing.access_rules)
+      porcelain.access_rules = convert_access_rules_to_porcelain(plumbing.access_rules)
       porcelain.composite = (plumbing.composite)
       porcelain.id = (plumbing.id)
       porcelain.name = (plumbing.name)
@@ -5119,7 +5136,7 @@ module SDM
         return nil
       end
       plumbing = V1::Role.new()
-      plumbing.access_rules = (porcelain.access_rules) unless porcelain.access_rules == nil
+      plumbing.access_rules = convert_access_rules_to_plumbing(porcelain.access_rules) unless porcelain.access_rules == nil
       plumbing.composite = (porcelain.composite) unless porcelain.composite == nil
       plumbing.id = (porcelain.id) unless porcelain.id == nil
       plumbing.name = (porcelain.name) unless porcelain.name == nil

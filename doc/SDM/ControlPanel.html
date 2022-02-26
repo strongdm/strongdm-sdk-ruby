@@ -66,6 +66,14 @@
 
     
     
+<div id="extends-section" class="nav-section">
+  <h3>Extended With Modules</h3>
+
+  <ul class="link-list">
+    <li><span class="extend">Gem::Deprecate</span>
+  </ul>
+</div>
+
     
 <!-- Method Quickref -->
 <div id="method-list-section" class="nav-section">
@@ -114,7 +122,7 @@
           
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/svc.rb, line 498</span>
+            <pre><span class="ruby-comment"># File lib/svc.rb, line 502</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">host</span>, <span class="ruby-identifier">insecure</span>, <span class="ruby-identifier">parent</span>)
     <span class="ruby-keyword">begin</span>
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">insecure</span>
@@ -152,7 +160,7 @@
           <p>GetSSHCAPublicKey retrieves the <a href="SSH.html"><code>SSH</code></a> CA public key.</p>
 
           <div class="method-source-code" id="get_sshca_public_key-source">
-            <pre><span class="ruby-comment"># File lib/svc.rb, line 512</span>
+            <pre><span class="ruby-comment"># File lib/svc.rb, line 516</span>
        <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">get_sshca_public_key</span>(
 <span class="ruby-value">deadline:</span><span class="ruby-keyword">nil</span>)
            <span class="ruby-identifier">req</span> = <span class="ruby-constant">V1</span><span class="ruby-operator">::</span><span class="ruby-constant">ControlPanelGetSSHCAPublicKeyRequest</span>.<span class="ruby-identifier">new</span>()
@@ -197,7 +205,7 @@
           <p>VerifyJWT reports whether the given JWT token (x-sdm-token) is valid.</p>
 
           <div class="method-source-code" id="verify_jwt-source">
-            <pre><span class="ruby-comment"># File lib/svc.rb, line 540</span>
+            <pre><span class="ruby-comment"># File lib/svc.rb, line 544</span>
         <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">verify_jwt</span>(
 <span class="ruby-identifier">token</span> \
 ,

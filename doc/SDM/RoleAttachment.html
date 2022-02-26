@@ -89,6 +89,8 @@
     
 <p>A <a href="RoleAttachment.html"><code>RoleAttachment</code></a> assigns a role to a composite role.</p>
 
+<p>Deprecated: use multi-role instead.</p>
+
   </section>
 
   <section id="5Buntitled-5D" class="documentation-section">
@@ -149,7 +151,7 @@
           
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 6775</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 6779</span>
                 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(
                         <span class="ruby-value">attached_role_id:</span><span class="ruby-keyword">nil</span> \
 ,
@@ -191,7 +193,7 @@
           
 
           <div class="method-source-code" id="to_json-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 6792</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 6796</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_json</span>(<span class="ruby-identifier">options</span>={})
         <span class="ruby-identifier">hash</span> = {}
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">instance_variables</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">var</span><span class="ruby-operator">|</span>
