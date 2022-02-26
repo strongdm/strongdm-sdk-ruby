@@ -3176,6 +3176,72 @@ module SDM
       end
       items
     end
+    def self.convert_mtls_postgres_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = MTLSPostgres.new()
+      porcelain.certificate_authority = (plumbing.certificate_authority)
+      porcelain.client_certificate = (plumbing.client_certificate)
+      porcelain.client_key = (plumbing.client_key)
+      porcelain.database = (plumbing.database)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.override_database = (plumbing.override_database)
+      porcelain.password = (plumbing.password)
+      porcelain.port = (plumbing.port)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.server_name = (plumbing.server_name)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.username = (plumbing.username)
+      porcelain
+    end
+
+    def self.convert_mtls_postgres_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::MTLSPostgres.new()
+      plumbing.certificate_authority = (porcelain.certificate_authority) unless porcelain.certificate_authority == nil
+      plumbing.client_certificate = (porcelain.client_certificate) unless porcelain.client_certificate == nil
+      plumbing.client_key = (porcelain.client_key) unless porcelain.client_key == nil
+      plumbing.database = (porcelain.database) unless porcelain.database == nil
+      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
+      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
+      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
+      plumbing.id = (porcelain.id) unless porcelain.id == nil
+      plumbing.name = (porcelain.name) unless porcelain.name == nil
+      plumbing.override_database = (porcelain.override_database) unless porcelain.override_database == nil
+      plumbing.password = (porcelain.password) unless porcelain.password == nil
+      plumbing.port = (porcelain.port) unless porcelain.port == nil
+      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
+      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
+      plumbing.server_name = (porcelain.server_name) unless porcelain.server_name == nil
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing
+    end
+    def self.convert_repeated_mtls_postgres_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_mtls_postgres_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_mtls_postgres_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_mtls_postgres_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_maria_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -4676,6 +4742,9 @@ module SDM
       if porcelain.instance_of? MongoShardedCluster
         plumbing.mongo_sharded_cluster = convert_mongo_sharded_cluster_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? MTLSPostgres
+        plumbing.mtls_postgres = convert_mtls_postgres_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? Mysql
         plumbing.mysql = convert_mysql_to_plumbing(porcelain)
       end
@@ -4889,6 +4958,9 @@ module SDM
       end
       if plumbing.mongo_sharded_cluster != nil
         return convert_mongo_sharded_cluster_to_porcelain(plumbing.mongo_sharded_cluster)
+      end
+      if plumbing.mtls_postgres != nil
+        return convert_mtls_postgres_to_porcelain(plumbing.mtls_postgres)
       end
       if plumbing.mysql != nil
         return convert_mysql_to_porcelain(plumbing.mysql)

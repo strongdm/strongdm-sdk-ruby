@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class SDM::Snowflake - RDoc Documentation</title>
+<title>class SDM::MTLSPostgres - RDoc Documentation</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "../";
@@ -80,9 +80,9 @@
   </div>
 </nav>
 
-<main role="main" aria-labelledby="class-SDM::Snowflake">
-  <h1 id="class-SDM::Snowflake" class="class">
-    class SDM::Snowflake
+<main role="main" aria-labelledby="class-SDM::MTLSPostgres">
+  <h1 id="class-SDM::MTLSPostgres" class="class">
+    class SDM::MTLSPostgres
   </h1>
 
   <section class="description">
@@ -98,6 +98,36 @@
         <h3>Attributes</h3>
       </header>
 
+      <div id="attribute-i-certificate_authority" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">certificate_authority</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        </div>
+      </div>
+      <div id="attribute-i-client_certificate" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">client_certificate</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        </div>
+      </div>
+      <div id="attribute-i-client_key" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">client_key</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        </div>
+      </div>
       <div id="attribute-i-database" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">database</span><span
@@ -158,9 +188,29 @@
         <p>Unique human-readable name of the Resource.</p>
         </div>
       </div>
+      <div id="attribute-i-override_database" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">override_database</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        </div>
+      </div>
       <div id="attribute-i-password" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">password</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        </div>
+      </div>
+      <div id="attribute-i-port" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">port</span><span
             class="attribute-access-type">[RW]</span>
         </div>
 
@@ -178,16 +228,6 @@
         
         </div>
       </div>
-      <div id="attribute-i-schema" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">schema</span><span
-            class="attribute-access-type">[RW]</span>
-        </div>
-
-        <div class="method-description">
-        
-        </div>
-      </div>
       <div id="attribute-i-secret_store_id" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">secret_store_id</span><span
@@ -196,6 +236,16 @@
 
         <div class="method-description">
         <p>ID of the secret store containing credentials for this resource, if any.</p>
+        </div>
+      </div>
+      <div id="attribute-i-server_name" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">server_name</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
         </div>
       </div>
       <div id="attribute-i-tags" class="method-detail">
@@ -229,7 +279,7 @@
       <div id="method-c-new" class="method-detail ">
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">( database:nil \ , egress_filter:nil \ , healthy:nil \ , hostname:nil \ , id:nil \ , name:nil \ , password:nil \ , port_override:nil \ , schema:nil \ , secret_store_id:nil \ , tags:nil \ , username:nil \ )</span>
+            class="method-args">( certificate_authority:nil \ , client_certificate:nil \ , client_key:nil \ , database:nil \ , egress_filter:nil \ , healthy:nil \ , hostname:nil \ , id:nil \ , name:nil \ , override_database:nil \ , password:nil \ , port:nil \ , port_override:nil \ , secret_store_id:nil \ , server_name:nil \ , tags:nil \ , username:nil \ )</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
 
@@ -237,8 +287,14 @@
           
 
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 7973</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 4551</span>
                 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(
+                        <span class="ruby-value">certificate_authority:</span><span class="ruby-keyword">nil</span> \
+,
+                        <span class="ruby-value">client_certificate:</span><span class="ruby-keyword">nil</span> \
+,
+                        <span class="ruby-value">client_key:</span><span class="ruby-keyword">nil</span> \
+,
                         <span class="ruby-value">database:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">egress_filter:</span><span class="ruby-keyword">nil</span> \
@@ -251,18 +307,31 @@
 ,
                         <span class="ruby-value">name:</span><span class="ruby-keyword">nil</span> \
 ,
+                        <span class="ruby-value">override_database:</span><span class="ruby-keyword">nil</span> \
+,
                         <span class="ruby-value">password:</span><span class="ruby-keyword">nil</span> \
+,
+                        <span class="ruby-value">port:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">port_override:</span><span class="ruby-keyword">nil</span> \
 ,
-                        <span class="ruby-value">schema:</span><span class="ruby-keyword">nil</span> \
-,
                         <span class="ruby-value">secret_store_id:</span><span class="ruby-keyword">nil</span> \
+,
+                        <span class="ruby-value">server_name:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">tags:</span><span class="ruby-keyword">nil</span> \
 ,
                         <span class="ruby-value">username:</span><span class="ruby-keyword">nil</span> \
                 )
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">certificate_authority</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@certificate_authority</span> = <span class="ruby-identifier">certificate_authority</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">client_certificate</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@client_certificate</span> = <span class="ruby-identifier">client_certificate</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">client_key</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@client_key</span> = <span class="ruby-identifier">client_key</span>
+                        <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">database</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@database</span> = <span class="ruby-identifier">database</span>
                         <span class="ruby-keyword">end</span>
@@ -281,17 +350,23 @@
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@name</span> = <span class="ruby-identifier">name</span>
                         <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">override_database</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@override_database</span> = <span class="ruby-identifier">override_database</span>
+                        <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">password</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@password</span> = <span class="ruby-identifier">password</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">port</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@port</span> = <span class="ruby-identifier">port</span>
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">port_override</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@port_override</span> = <span class="ruby-identifier">port_override</span>
                         <span class="ruby-keyword">end</span>
-                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">schema</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                <span class="ruby-ivar">@schema</span> = <span class="ruby-identifier">schema</span>
-                        <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">secret_store_id</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@secret_store_id</span> = <span class="ruby-identifier">secret_store_id</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">server_name</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-ivar">@server_name</span> = <span class="ruby-identifier">server_name</span>
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">tags</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
                                 <span class="ruby-ivar">@tags</span> = <span class="ruby-identifier">tags</span>
@@ -324,7 +399,7 @@
           
 
           <div class="method-source-code" id="to_json-source">
-            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 8035</span>
+            <pre><span class="ruby-comment"># File lib/models/porcelain.rb, line 4638</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_json</span>(<span class="ruby-identifier">options</span>={})
         <span class="ruby-identifier">hash</span> = {}
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">instance_variables</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">var</span><span class="ruby-operator">|</span>

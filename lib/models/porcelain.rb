@@ -4141,6 +4141,122 @@ module SDM
     end
   end
 
+  class MTLSPostgres
+    attr_accessor :certificate_authority
+
+    attr_accessor :client_certificate
+
+    attr_accessor :client_key
+
+    attr_accessor :database
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
+    attr_accessor :hostname
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+
+    attr_accessor :override_database
+
+    attr_accessor :password
+
+    attr_accessor :port
+
+    attr_accessor :port_override
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+
+    attr_accessor :server_name
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    attr_accessor :username
+
+    def initialize(
+      certificate_authority: nil,
+      client_certificate: nil,
+      client_key: nil,
+      database: nil,
+      egress_filter: nil,
+      healthy: nil,
+      hostname: nil,
+      id: nil,
+      name: nil,
+      override_database: nil,
+      password: nil,
+      port: nil,
+      port_override: nil,
+      secret_store_id: nil,
+      server_name: nil,
+      tags: nil,
+      username: nil
+    )
+      if certificate_authority != nil
+        @certificate_authority = certificate_authority
+      end
+      if client_certificate != nil
+        @client_certificate = client_certificate
+      end
+      if client_key != nil
+        @client_key = client_key
+      end
+      if database != nil
+        @database = database
+      end
+      if egress_filter != nil
+        @egress_filter = egress_filter
+      end
+      if healthy != nil
+        @healthy = healthy
+      end
+      if hostname != nil
+        @hostname = hostname
+      end
+      if id != nil
+        @id = id
+      end
+      if name != nil
+        @name = name
+      end
+      if override_database != nil
+        @override_database = override_database
+      end
+      if password != nil
+        @password = password
+      end
+      if port != nil
+        @port = port
+      end
+      if port_override != nil
+        @port_override = port_override
+      end
+      if secret_store_id != nil
+        @secret_store_id = secret_store_id
+      end
+      if server_name != nil
+        @server_name = server_name
+      end
+      if tags != nil
+        @tags = tags
+      end
+      if username != nil
+        @username = username
+      end
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class Maria
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
