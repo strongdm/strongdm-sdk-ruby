@@ -1,0 +1,9 @@
+--markup markdown
+--exclude lib/grpc
+--exclude lib/version.rb
+--tag internal
+--hide-tag internal
+lib/**/*.rb
+-
+README.md
+LICENSE

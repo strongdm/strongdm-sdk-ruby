@@ -20,11 +20,9 @@ require "roles_pb"
 
 module V1
   module Roles
-    # Roles are tools for controlling user access to resources. Each Role holds a
-    # list of resources which they grant access to. Composite roles are a special
-    # type of Role which have no resource associations of their own, but instead
-    # grant access to the combined resources associated with a set of child roles.
-    # Each user can be a member of one Role or composite role.
+    # A Role has a list of access rules which determine which Resources the members
+    # of the Role have access to. An Account can be a member of multiple Roles via
+    # AccountAttachments.
     class Service
       include ::GRPC::GenericService
 
@@ -36,7 +34,7 @@ module V1
       rpc :Create, ::V1::RoleCreateRequest, ::V1::RoleCreateResponse
       # Get reads one Role by ID.
       rpc :Get, ::V1::RoleGetRequest, ::V1::RoleGetResponse
-      # Update patches a Role by ID.
+      # Update replaces all the fields of a Role by ID.
       rpc :Update, ::V1::RoleUpdateRequest, ::V1::RoleUpdateResponse
       # Delete removes a Role by ID.
       rpc :Delete, ::V1::RoleDeleteRequest, ::V1::RoleDeleteResponse

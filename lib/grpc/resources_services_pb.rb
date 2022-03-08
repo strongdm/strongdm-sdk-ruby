@@ -20,6 +20,8 @@ require "resources_pb"
 
 module V1
   module Resources
+    # Resources are databases, servers, clusters, websites, or clouds that strongDM
+    # delegates access to.
     class Service
       include ::GRPC::GenericService
 
@@ -33,7 +35,7 @@ module V1
       rpc :Create, ::V1::ResourceCreateRequest, ::V1::ResourceCreateResponse
       # Get reads one Resource by ID.
       rpc :Get, ::V1::ResourceGetRequest, ::V1::ResourceGetResponse
-      # Update patches a Resource by ID.
+      # Update replaces all the fields of a Resource by ID.
       rpc :Update, ::V1::ResourceUpdateRequest, ::V1::ResourceUpdateResponse
       # Delete removes a Resource by ID.
       rpc :Delete, ::V1::ResourceDeleteRequest, ::V1::ResourceDeleteResponse

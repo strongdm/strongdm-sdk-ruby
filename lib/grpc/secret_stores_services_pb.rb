@@ -31,7 +31,7 @@ module V1
       rpc :Create, ::V1::SecretStoreCreateRequest, ::V1::SecretStoreCreateResponse
       # Get reads one SecretStore by ID.
       rpc :Get, ::V1::SecretStoreGetRequest, ::V1::SecretStoreGetResponse
-      # Update patches a SecretStore by ID.
+      # Update replaces all the fields of a SecretStore by ID.
       rpc :Update, ::V1::SecretStoreUpdateRequest, ::V1::SecretStoreUpdateResponse
       # Delete removes a SecretStore by ID.
       rpc :Delete, ::V1::SecretStoreDeleteRequest, ::V1::SecretStoreDeleteResponse

@@ -58,6 +58,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :hide_from_json_gateway, :bool, 1941310
       optional :terraform_docs, :message, 1941304, "v1.TerraformDocs"
       optional :terraform_provider_name, :string, 1941311
+      optional :terraform_deprecated_override, :bool, 1941312
     end
     add_message "v1.CustomPorcelainTypeOptions" do
       optional :converter, :string, 1941309

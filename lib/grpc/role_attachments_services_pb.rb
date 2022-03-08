@@ -25,7 +25,7 @@ module V1
     # role, the permissions granted to members of the composite role are augmented to
     # include the permissions granted to members of the attached role.
     #
-    # Deprecated: use multi-role instead.
+    # Deprecated: use multi-role via AccountAttachments instead.
     class Service
       include ::GRPC::GenericService
 
@@ -35,19 +35,19 @@ module V1
 
       # Create registers a new RoleAttachment.
       #
-      # Deprecated: use multi-role instead.
+      # Deprecated: use multi-role via AccountAttachments instead.
       rpc :Create, ::V1::RoleAttachmentCreateRequest, ::V1::RoleAttachmentCreateResponse
       # Get reads one RoleAttachment by ID.
       #
-      # Deprecated: use multi-role instead.
+      # Deprecated: use multi-role via AccountAttachments instead.
       rpc :Get, ::V1::RoleAttachmentGetRequest, ::V1::RoleAttachmentGetResponse
       # Delete removes a RoleAttachment by ID.
       #
-      # Deprecated: use multi-role instead.
+      # Deprecated: use multi-role via AccountAttachments instead.
       rpc :Delete, ::V1::RoleAttachmentDeleteRequest, ::V1::RoleAttachmentDeleteResponse
       # List gets a list of RoleAttachments matching a given set of criteria.
       #
-      # Deprecated: use multi-role instead.
+      # Deprecated: use multi-role via AccountAttachments instead.
       rpc :List, ::V1::RoleAttachmentListRequest, ::V1::RoleAttachmentListResponse
     end
 

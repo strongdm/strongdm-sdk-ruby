@@ -34,9 +34,9 @@ module V1
       rpc :Create, ::V1::AccountCreateRequest, ::V1::AccountCreateResponse
       # Get reads one Account by ID.
       rpc :Get, ::V1::AccountGetRequest, ::V1::AccountGetResponse
-      # Update patches a Account by ID.
+      # Update replaces all the fields of an Account by ID.
       rpc :Update, ::V1::AccountUpdateRequest, ::V1::AccountUpdateResponse
-      # Delete removes a Account by ID.
+      # Delete removes an Account by ID.
       rpc :Delete, ::V1::AccountDeleteRequest, ::V1::AccountDeleteResponse
       # List gets a list of Accounts matching a given set of criteria.
       rpc :List, ::V1::AccountListRequest, ::V1::AccountListResponse

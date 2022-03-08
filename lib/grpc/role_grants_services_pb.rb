@@ -25,7 +25,7 @@ module V1
     # role, the permissions granted to members of the composite role are augmented to
     # include the permissions granted to members of the attached role.
     #
-    # Deprecated: use access rules instead.
+    # Deprecated: use Role access rules instead.
     class Service
       include ::GRPC::GenericService
 
@@ -35,19 +35,19 @@ module V1
 
       # Create registers a new RoleGrant.
       #
-      # Deprecated: use access rules instead.
+      # Deprecated: use Role access rules instead.
       rpc :Create, ::V1::RoleGrantCreateRequest, ::V1::RoleGrantCreateResponse
       # Get reads one RoleGrant by ID.
       #
-      # Deprecated: use access rules instead.
+      # Deprecated: use Role access rules instead.
       rpc :Get, ::V1::RoleGrantGetRequest, ::V1::RoleGrantGetResponse
       # Delete removes a RoleGrant by ID.
       #
-      # Deprecated: use access rules instead.
+      # Deprecated: use Role access rules instead.
       rpc :Delete, ::V1::RoleGrantDeleteRequest, ::V1::RoleGrantDeleteResponse
       # List gets a list of RoleGrants matching a given set of criteria.
       #
-      # Deprecated: use access rules instead.
+      # Deprecated: use Role access rules instead.
       rpc :List, ::V1::RoleGrantListRequest, ::V1::RoleGrantListResponse
     end
 

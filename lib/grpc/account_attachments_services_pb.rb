@@ -20,7 +20,7 @@ require "account_attachments_pb"
 
 module V1
   module AccountAttachments
-    # AccountAttachments assign an account to a role or composite role.
+    # AccountAttachments assign an account to a role.
     class Service
       include ::GRPC::GenericService
 

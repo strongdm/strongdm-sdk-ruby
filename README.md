@@ -1,9 +1,10 @@
 # strongDM SDK for Ruby
 
-This is the official [strongDM](https://www.strongdm.com/) SDK for the Ruby programming language.
+This is the official [strongDM](https://www.strongdm.com/) SDK for the Ruby
+programming language.
 
-Learn more with our [📚strongDM API docs](https://www.strongdm.com/docs/api/) or [📓browse the SDK reference](https://www.rubydoc.info/gems/strongdm).
-
+Learn more with our [📚strongDM API docs](https://www.strongdm.com/docs/api/) or
+[📓browse the SDK reference](https://www.rubydoc.info/gems/strongdm).
 
 ## Installation
 
@@ -11,11 +12,18 @@ Learn more with our [📚strongDM API docs](https://www.strongdm.com/docs/api/) 
 $ gem install strongdm
 ```
 
+strongDM uses [semantic versioning](https://semver.org/). We do not guarantee
+compatibility between major versions. Be sure to use version constraints to pin
+your dependency to the desired major version of the strongDM SDK.
+
 ## Authentication
 
-If you don't already have them you will need to generate a set of API keys, instructions are here: [API Credentials](https://www.strongdm.com/docs/admin-guide/api-credentials/)
+If you don't already have them you will need to generate a set of API keys,
+instructions are here: [API
+Credentials](https://www.strongdm.com/docs/admin-guide/api-credentials/)
 
-Add the keys as environment variables; the SDK will need to access these keys for every request.
+Add the keys as environment variables; the SDK will need to access these keys
+for every request.
 ```bash
 $ export SDM_API_ACCESS_KEY=<YOUR ACCESS KEY>
 $ export SDM_API_SECRET_KEY=<YOUR SECRET KEY>
@@ -50,4 +58,7 @@ end
 
 ## Contributing 
 
-Currently, we are not accepting pull requests directly to this repository, but our users are some of the most resourceful and ambitious folks out there. So, if you have something to contribute, find a bug, or just want to give us some feedback, please email <support@strongdm.com>.
+Currently, we are not accepting pull requests directly to this repository, but
+our users are some of the most resourceful and ambitious folks out there. So, if
+you have something to contribute, find a bug, or just want to give us some
+feedback, please email <support@strongdm.com>.

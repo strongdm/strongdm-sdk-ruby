@@ -34,7 +34,7 @@ module V1
       rpc :Create, ::V1::NodeCreateRequest, ::V1::NodeCreateResponse
       # Get reads one Node by ID.
       rpc :Get, ::V1::NodeGetRequest, ::V1::NodeGetResponse
-      # Update patches a Node by ID.
+      # Update replaces all the fields of a Node by ID.
       rpc :Update, ::V1::NodeUpdateRequest, ::V1::NodeUpdateResponse
       # Delete removes a Node by ID.
       rpc :Delete, ::V1::NodeDeleteRequest, ::V1::NodeDeleteResponse
