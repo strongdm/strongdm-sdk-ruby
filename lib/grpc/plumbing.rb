@@ -135,18 +135,18 @@ module SDM
         return nil
       end
       plumbing = V1::AKS.new()
-      plumbing.certificate_authority = (porcelain.certificate_authority) unless porcelain.certificate_authority == nil
-      plumbing.client_certificate = (porcelain.client_certificate) unless porcelain.client_certificate == nil
-      plumbing.client_key = (porcelain.client_key) unless porcelain.client_key == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace) unless porcelain.healthcheck_namespace == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.certificate_authority = (porcelain.certificate_authority)
+      plumbing.client_certificate = (porcelain.client_certificate)
+      plumbing.client_key = (porcelain.client_key)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.port = (porcelain.port)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing
     end
     def self.convert_repeated_aks_to_plumbing(porcelains)
@@ -190,17 +190,17 @@ module SDM
         return nil
       end
       plumbing = V1::AKSBasicAuth.new()
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace) unless porcelain.healthcheck_namespace == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_aks_basic_auth_to_plumbing(porcelains)
@@ -243,16 +243,16 @@ module SDM
         return nil
       end
       plumbing = V1::AKSServiceAccount.new()
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace) unless porcelain.healthcheck_namespace == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.token = (porcelain.token) unless porcelain.token == nil
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.port = (porcelain.port)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.token = (porcelain.token)
       plumbing
     end
     def self.convert_repeated_aks_service_account_to_plumbing(porcelains)
@@ -295,16 +295,16 @@ module SDM
         return nil
       end
       plumbing = V1::AKSServiceAccountUserImpersonation.new()
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace) unless porcelain.healthcheck_namespace == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.token = (porcelain.token) unless porcelain.token == nil
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.port = (porcelain.port)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.token = (porcelain.token)
       plumbing
     end
     def self.convert_repeated_aks_service_account_user_impersonation_to_plumbing(porcelains)
@@ -349,18 +349,18 @@ module SDM
         return nil
       end
       plumbing = V1::AKSUserImpersonation.new()
-      plumbing.certificate_authority = (porcelain.certificate_authority) unless porcelain.certificate_authority == nil
-      plumbing.client_certificate = (porcelain.client_certificate) unless porcelain.client_certificate == nil
-      plumbing.client_key = (porcelain.client_key) unless porcelain.client_key == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace) unless porcelain.healthcheck_namespace == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.certificate_authority = (porcelain.certificate_authority)
+      plumbing.client_certificate = (porcelain.client_certificate)
+      plumbing.client_key = (porcelain.client_key)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.port = (porcelain.port)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing
     end
     def self.convert_repeated_aks_user_impersonation_to_plumbing(porcelains)
@@ -404,17 +404,17 @@ module SDM
         return nil
       end
       plumbing = V1::AWS.new()
-      plumbing.access_key = (porcelain.access_key) unless porcelain.access_key == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthcheck_region = (porcelain.healthcheck_region) unless porcelain.healthcheck_region == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.role_arn = (porcelain.role_arn) unless porcelain.role_arn == nil
-      plumbing.role_external_id = (porcelain.role_external_id) unless porcelain.role_external_id == nil
-      plumbing.secret_access_key = (porcelain.secret_access_key) unless porcelain.secret_access_key == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.access_key = (porcelain.access_key)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthcheck_region = (porcelain.healthcheck_region)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.role_arn = (porcelain.role_arn)
+      plumbing.role_external_id = (porcelain.role_external_id)
+      plumbing.secret_access_key = (porcelain.secret_access_key)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing
     end
     def self.convert_repeated_aws_to_plumbing(porcelains)
@@ -451,10 +451,10 @@ module SDM
         return nil
       end
       plumbing = V1::AWSStore.new()
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.region = (porcelain.region) unless porcelain.region == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.region = (porcelain.region)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing
     end
     def self.convert_repeated_aws_store_to_plumbing(porcelains)
@@ -532,9 +532,9 @@ module SDM
         return nil
       end
       plumbing = V1::AccountAttachment.new()
-      plumbing.account_id = (porcelain.account_id) unless porcelain.account_id == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.role_id = (porcelain.role_id) unless porcelain.role_id == nil
+      plumbing.account_id = (porcelain.account_id)
+      plumbing.id = (porcelain.id)
+      plumbing.role_id = (porcelain.role_id)
       plumbing
     end
     def self.convert_repeated_account_attachment_to_plumbing(porcelains)
@@ -570,9 +570,9 @@ module SDM
         return nil
       end
       plumbing = V1::AccountAttachmentCreateResponse.new()
-      plumbing.account_attachment = convert_account_attachment_to_plumbing(porcelain.account_attachment) unless porcelain.account_attachment == nil
-      plumbing.meta = convert_create_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
+      plumbing.account_attachment = convert_account_attachment_to_plumbing(porcelain.account_attachment)
+      plumbing.meta = convert_create_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
       plumbing
     end
     def self.convert_repeated_account_attachment_create_response_to_plumbing(porcelains)
@@ -607,8 +607,8 @@ module SDM
         return nil
       end
       plumbing = V1::AccountAttachmentDeleteResponse.new()
-      plumbing.meta = convert_delete_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
+      plumbing.meta = convert_delete_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
       plumbing
     end
     def self.convert_repeated_account_attachment_delete_response_to_plumbing(porcelains)
@@ -644,9 +644,9 @@ module SDM
         return nil
       end
       plumbing = V1::AccountAttachmentGetResponse.new()
-      plumbing.account_attachment = convert_account_attachment_to_plumbing(porcelain.account_attachment) unless porcelain.account_attachment == nil
-      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
+      plumbing.account_attachment = convert_account_attachment_to_plumbing(porcelain.account_attachment)
+      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
       plumbing
     end
     def self.convert_repeated_account_attachment_get_response_to_plumbing(porcelains)
@@ -683,10 +683,10 @@ module SDM
         return nil
       end
       plumbing = V1::AccountCreateResponse.new()
-      plumbing.account = convert_account_to_plumbing(porcelain.account) unless porcelain.account == nil
-      plumbing.meta = convert_create_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
-      plumbing.token = (porcelain.token) unless porcelain.token == nil
+      plumbing.account = convert_account_to_plumbing(porcelain.account)
+      plumbing.meta = convert_create_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing.token = (porcelain.token)
       plumbing
     end
     def self.convert_repeated_account_create_response_to_plumbing(porcelains)
@@ -721,8 +721,8 @@ module SDM
         return nil
       end
       plumbing = V1::AccountDeleteResponse.new()
-      plumbing.meta = convert_delete_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
+      plumbing.meta = convert_delete_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
       plumbing
     end
     def self.convert_repeated_account_delete_response_to_plumbing(porcelains)
@@ -758,9 +758,9 @@ module SDM
         return nil
       end
       plumbing = V1::AccountGetResponse.new()
-      plumbing.account = convert_account_to_plumbing(porcelain.account) unless porcelain.account == nil
-      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
+      plumbing.account = convert_account_to_plumbing(porcelain.account)
+      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
       plumbing
     end
     def self.convert_repeated_account_get_response_to_plumbing(porcelains)
@@ -798,11 +798,11 @@ module SDM
         return nil
       end
       plumbing = V1::AccountGrant.new()
-      plumbing.account_id = (porcelain.account_id) unless porcelain.account_id == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.resource_id = (porcelain.resource_id) unless porcelain.resource_id == nil
-      plumbing.start_from = convert_timestamp_to_plumbing(porcelain.start_from) unless porcelain.start_from == nil
-      plumbing.valid_until = convert_timestamp_to_plumbing(porcelain.valid_until) unless porcelain.valid_until == nil
+      plumbing.account_id = (porcelain.account_id)
+      plumbing.id = (porcelain.id)
+      plumbing.resource_id = (porcelain.resource_id)
+      plumbing.start_from = convert_timestamp_to_plumbing(porcelain.start_from)
+      plumbing.valid_until = convert_timestamp_to_plumbing(porcelain.valid_until)
       plumbing
     end
     def self.convert_repeated_account_grant_to_plumbing(porcelains)
@@ -838,9 +838,9 @@ module SDM
         return nil
       end
       plumbing = V1::AccountGrantCreateResponse.new()
-      plumbing.account_grant = convert_account_grant_to_plumbing(porcelain.account_grant) unless porcelain.account_grant == nil
-      plumbing.meta = convert_create_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
+      plumbing.account_grant = convert_account_grant_to_plumbing(porcelain.account_grant)
+      plumbing.meta = convert_create_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
       plumbing
     end
     def self.convert_repeated_account_grant_create_response_to_plumbing(porcelains)
@@ -875,8 +875,8 @@ module SDM
         return nil
       end
       plumbing = V1::AccountGrantDeleteResponse.new()
-      plumbing.meta = convert_delete_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
+      plumbing.meta = convert_delete_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
       plumbing
     end
     def self.convert_repeated_account_grant_delete_response_to_plumbing(porcelains)
@@ -912,9 +912,9 @@ module SDM
         return nil
       end
       plumbing = V1::AccountGrantGetResponse.new()
-      plumbing.account_grant = convert_account_grant_to_plumbing(porcelain.account_grant) unless porcelain.account_grant == nil
-      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
+      plumbing.account_grant = convert_account_grant_to_plumbing(porcelain.account_grant)
+      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
       plumbing
     end
     def self.convert_repeated_account_grant_get_response_to_plumbing(porcelains)
@@ -950,9 +950,9 @@ module SDM
         return nil
       end
       plumbing = V1::AccountUpdateResponse.new()
-      plumbing.account = convert_account_to_plumbing(porcelain.account) unless porcelain.account == nil
-      plumbing.meta = convert_update_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
+      plumbing.account = convert_account_to_plumbing(porcelain.account)
+      plumbing.meta = convert_update_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
       plumbing
     end
     def self.convert_repeated_account_update_response_to_plumbing(porcelains)
@@ -1000,21 +1000,21 @@ module SDM
         return nil
       end
       plumbing = V1::AmazonEKS.new()
-      plumbing.access_key = (porcelain.access_key) unless porcelain.access_key == nil
-      plumbing.certificate_authority = (porcelain.certificate_authority) unless porcelain.certificate_authority == nil
-      plumbing.cluster_name = (porcelain.cluster_name) unless porcelain.cluster_name == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.endpoint = (porcelain.endpoint) unless porcelain.endpoint == nil
-      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace) unless porcelain.healthcheck_namespace == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.region = (porcelain.region) unless porcelain.region == nil
-      plumbing.role_arn = (porcelain.role_arn) unless porcelain.role_arn == nil
-      plumbing.role_external_id = (porcelain.role_external_id) unless porcelain.role_external_id == nil
-      plumbing.secret_access_key = (porcelain.secret_access_key) unless porcelain.secret_access_key == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.access_key = (porcelain.access_key)
+      plumbing.certificate_authority = (porcelain.certificate_authority)
+      plumbing.cluster_name = (porcelain.cluster_name)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.endpoint = (porcelain.endpoint)
+      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.region = (porcelain.region)
+      plumbing.role_arn = (porcelain.role_arn)
+      plumbing.role_external_id = (porcelain.role_external_id)
+      plumbing.secret_access_key = (porcelain.secret_access_key)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing
     end
     def self.convert_repeated_amazon_eks_to_plumbing(porcelains)
@@ -1062,21 +1062,21 @@ module SDM
         return nil
       end
       plumbing = V1::AmazonEKSUserImpersonation.new()
-      plumbing.access_key = (porcelain.access_key) unless porcelain.access_key == nil
-      plumbing.certificate_authority = (porcelain.certificate_authority) unless porcelain.certificate_authority == nil
-      plumbing.cluster_name = (porcelain.cluster_name) unless porcelain.cluster_name == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.endpoint = (porcelain.endpoint) unless porcelain.endpoint == nil
-      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace) unless porcelain.healthcheck_namespace == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.region = (porcelain.region) unless porcelain.region == nil
-      plumbing.role_arn = (porcelain.role_arn) unless porcelain.role_arn == nil
-      plumbing.role_external_id = (porcelain.role_external_id) unless porcelain.role_external_id == nil
-      plumbing.secret_access_key = (porcelain.secret_access_key) unless porcelain.secret_access_key == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.access_key = (porcelain.access_key)
+      plumbing.certificate_authority = (porcelain.certificate_authority)
+      plumbing.cluster_name = (porcelain.cluster_name)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.endpoint = (porcelain.endpoint)
+      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.region = (porcelain.region)
+      plumbing.role_arn = (porcelain.role_arn)
+      plumbing.role_external_id = (porcelain.role_external_id)
+      plumbing.secret_access_key = (porcelain.secret_access_key)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing
     end
     def self.convert_repeated_amazon_eks_user_impersonation_to_plumbing(porcelains)
@@ -1122,19 +1122,19 @@ module SDM
         return nil
       end
       plumbing = V1::AmazonES.new()
-      plumbing.access_key = (porcelain.access_key) unless porcelain.access_key == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.endpoint = (porcelain.endpoint) unless porcelain.endpoint == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.region = (porcelain.region) unless porcelain.region == nil
-      plumbing.role_arn = (porcelain.role_arn) unless porcelain.role_arn == nil
-      plumbing.role_external_id = (porcelain.role_external_id) unless porcelain.role_external_id == nil
-      plumbing.secret_access_key = (porcelain.secret_access_key) unless porcelain.secret_access_key == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.access_key = (porcelain.access_key)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.endpoint = (porcelain.endpoint)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.region = (porcelain.region)
+      plumbing.role_arn = (porcelain.role_arn)
+      plumbing.role_external_id = (porcelain.role_external_id)
+      plumbing.secret_access_key = (porcelain.secret_access_key)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing
     end
     def self.convert_repeated_amazon_es_to_plumbing(porcelains)
@@ -1179,18 +1179,18 @@ module SDM
         return nil
       end
       plumbing = V1::AmazonMQAMQP091.new()
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.tls_required = (porcelain.tls_required) unless porcelain.tls_required == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.tls_required = (porcelain.tls_required)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_amazon_mqamqp_091_to_plumbing(porcelains)
@@ -1236,19 +1236,19 @@ module SDM
         return nil
       end
       plumbing = V1::Athena.new()
-      plumbing.access_key = (porcelain.access_key) unless porcelain.access_key == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.output = (porcelain.output) unless porcelain.output == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.region = (porcelain.region) unless porcelain.region == nil
-      plumbing.role_arn = (porcelain.role_arn) unless porcelain.role_arn == nil
-      plumbing.role_external_id = (porcelain.role_external_id) unless porcelain.role_external_id == nil
-      plumbing.secret_access_key = (porcelain.secret_access_key) unless porcelain.secret_access_key == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.access_key = (porcelain.access_key)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.output = (porcelain.output)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.region = (porcelain.region)
+      plumbing.role_arn = (porcelain.role_arn)
+      plumbing.role_external_id = (porcelain.role_external_id)
+      plumbing.secret_access_key = (porcelain.secret_access_key)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing
     end
     def self.convert_repeated_athena_to_plumbing(porcelains)
@@ -1293,18 +1293,18 @@ module SDM
         return nil
       end
       plumbing = V1::AuroraMysql.new()
-      plumbing.database = (porcelain.database) unless porcelain.database == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.database = (porcelain.database)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_aurora_mysql_to_plumbing(porcelains)
@@ -1350,19 +1350,19 @@ module SDM
         return nil
       end
       plumbing = V1::AuroraPostgres.new()
-      plumbing.database = (porcelain.database) unless porcelain.database == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.override_database = (porcelain.override_database) unless porcelain.override_database == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.database = (porcelain.database)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.override_database = (porcelain.override_database)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_aurora_postgres_to_plumbing(porcelains)
@@ -1404,15 +1404,15 @@ module SDM
         return nil
       end
       plumbing = V1::Azure.new()
-      plumbing.app_id = (porcelain.app_id) unless porcelain.app_id == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.tenant_id = (porcelain.tenant_id) unless porcelain.tenant_id == nil
+      plumbing.app_id = (porcelain.app_id)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.tenant_id = (porcelain.tenant_id)
       plumbing
     end
     def self.convert_repeated_azure_to_plumbing(porcelains)
@@ -1454,15 +1454,15 @@ module SDM
         return nil
       end
       plumbing = V1::AzureCertificate.new()
-      plumbing.app_id = (porcelain.app_id) unless porcelain.app_id == nil
-      plumbing.client_certificate = (porcelain.client_certificate) unless porcelain.client_certificate == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.tenant_id = (porcelain.tenant_id) unless porcelain.tenant_id == nil
+      plumbing.app_id = (porcelain.app_id)
+      plumbing.client_certificate = (porcelain.client_certificate)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.tenant_id = (porcelain.tenant_id)
       plumbing
     end
     def self.convert_repeated_azure_certificate_to_plumbing(porcelains)
@@ -1508,19 +1508,19 @@ module SDM
         return nil
       end
       plumbing = V1::AzurePostgres.new()
-      plumbing.database = (porcelain.database) unless porcelain.database == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.override_database = (porcelain.override_database) unless porcelain.override_database == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.database = (porcelain.database)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.override_database = (porcelain.override_database)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_azure_postgres_to_plumbing(porcelains)
@@ -1557,10 +1557,10 @@ module SDM
         return nil
       end
       plumbing = V1::AzureStore.new()
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.vault_uri = (porcelain.vault_uri) unless porcelain.vault_uri == nil
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.vault_uri = (porcelain.vault_uri)
       plumbing
     end
     def self.convert_repeated_azure_store_to_plumbing(porcelains)
@@ -1604,17 +1604,17 @@ module SDM
         return nil
       end
       plumbing = V1::BigQuery.new()
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.endpoint = (porcelain.endpoint) unless porcelain.endpoint == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.private_key = (porcelain.private_key) unless porcelain.private_key == nil
-      plumbing.project = (porcelain.project) unless porcelain.project == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.endpoint = (porcelain.endpoint)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.private_key = (porcelain.private_key)
+      plumbing.project = (porcelain.project)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_big_query_to_plumbing(porcelains)
@@ -1659,18 +1659,18 @@ module SDM
         return nil
       end
       plumbing = V1::Cassandra.new()
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.tls_required = (porcelain.tls_required) unless porcelain.tls_required == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.tls_required = (porcelain.tls_required)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_cassandra_to_plumbing(porcelains)
@@ -1716,19 +1716,19 @@ module SDM
         return nil
       end
       plumbing = V1::Citus.new()
-      plumbing.database = (porcelain.database) unless porcelain.database == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.override_database = (porcelain.override_database) unless porcelain.override_database == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.database = (porcelain.database)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.override_database = (porcelain.override_database)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_citus_to_plumbing(porcelains)
@@ -1773,18 +1773,18 @@ module SDM
         return nil
       end
       plumbing = V1::Clustrix.new()
-      plumbing.database = (porcelain.database) unless porcelain.database == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.database = (porcelain.database)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_clustrix_to_plumbing(porcelains)
@@ -1830,19 +1830,19 @@ module SDM
         return nil
       end
       plumbing = V1::Cockroach.new()
-      plumbing.database = (porcelain.database) unless porcelain.database == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.override_database = (porcelain.override_database) unless porcelain.override_database == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.database = (porcelain.database)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.override_database = (porcelain.override_database)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_cockroach_to_plumbing(porcelains)
@@ -1878,9 +1878,9 @@ module SDM
         return nil
       end
       plumbing = V1::ControlPanelGetSSHCAPublicKeyResponse.new()
-      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-      plumbing.public_key = (porcelain.public_key) unless porcelain.public_key == nil
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
+      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.public_key = (porcelain.public_key)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
       plumbing
     end
     def self.convert_repeated_control_panel_get_sshca_public_key_response_to_plumbing(porcelains)
@@ -1916,9 +1916,9 @@ module SDM
         return nil
       end
       plumbing = V1::ControlPanelVerifyJWTResponse.new()
-      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
-      plumbing.valid = (porcelain.valid) unless porcelain.valid == nil
+      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing.valid = (porcelain.valid)
       plumbing
     end
     def self.convert_repeated_control_panel_verify_jwt_response_to_plumbing(porcelains)
@@ -1995,18 +1995,18 @@ module SDM
         return nil
       end
       plumbing = V1::DB2I.new()
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.tls_required = (porcelain.tls_required) unless porcelain.tls_required == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.tls_required = (porcelain.tls_required)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_db_2_i_to_plumbing(porcelains)
@@ -2051,18 +2051,18 @@ module SDM
         return nil
       end
       plumbing = V1::DB2LUW.new()
-      plumbing.database = (porcelain.database) unless porcelain.database == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.database = (porcelain.database)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_db_2_luw_to_plumbing(porcelains)
@@ -2139,18 +2139,18 @@ module SDM
         return nil
       end
       plumbing = V1::DocumentDBHost.new()
-      plumbing.auth_database = (porcelain.auth_database) unless porcelain.auth_database == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.auth_database = (porcelain.auth_database)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_document_db_host_to_plumbing(porcelains)
@@ -2196,19 +2196,19 @@ module SDM
         return nil
       end
       plumbing = V1::DocumentDBReplicaSet.new()
-      plumbing.auth_database = (porcelain.auth_database) unless porcelain.auth_database == nil
-      plumbing.connect_to_replica = (porcelain.connect_to_replica) unless porcelain.connect_to_replica == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.replica_set = (porcelain.replica_set) unless porcelain.replica_set == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.auth_database = (porcelain.auth_database)
+      plumbing.connect_to_replica = (porcelain.connect_to_replica)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.replica_set = (porcelain.replica_set)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_document_db_replica_set_to_plumbing(porcelains)
@@ -2252,17 +2252,17 @@ module SDM
         return nil
       end
       plumbing = V1::Druid.new()
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_druid_to_plumbing(porcelains)
@@ -2308,19 +2308,19 @@ module SDM
         return nil
       end
       plumbing = V1::DynamoDB.new()
-      plumbing.access_key = (porcelain.access_key) unless porcelain.access_key == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.endpoint = (porcelain.endpoint) unless porcelain.endpoint == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.region = (porcelain.region) unless porcelain.region == nil
-      plumbing.role_arn = (porcelain.role_arn) unless porcelain.role_arn == nil
-      plumbing.role_external_id = (porcelain.role_external_id) unless porcelain.role_external_id == nil
-      plumbing.secret_access_key = (porcelain.secret_access_key) unless porcelain.secret_access_key == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.access_key = (porcelain.access_key)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.endpoint = (porcelain.endpoint)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.region = (porcelain.region)
+      plumbing.role_arn = (porcelain.role_arn)
+      plumbing.role_external_id = (porcelain.role_external_id)
+      plumbing.secret_access_key = (porcelain.secret_access_key)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing
     end
     def self.convert_repeated_dynamo_db_to_plumbing(porcelains)
@@ -2365,18 +2365,18 @@ module SDM
         return nil
       end
       plumbing = V1::Elastic.new()
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.tls_required = (porcelain.tls_required) unless porcelain.tls_required == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.tls_required = (porcelain.tls_required)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_elastic_to_plumbing(porcelains)
@@ -2420,17 +2420,17 @@ module SDM
         return nil
       end
       plumbing = V1::ElasticacheRedis.new()
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.tls_required = (porcelain.tls_required) unless porcelain.tls_required == nil
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.tls_required = (porcelain.tls_required)
       plumbing
     end
     def self.convert_repeated_elasticache_redis_to_plumbing(porcelains)
@@ -2471,14 +2471,14 @@ module SDM
         return nil
       end
       plumbing = V1::GCP.new()
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.keyfile = (porcelain.keyfile) unless porcelain.keyfile == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.scopes = (porcelain.scopes) unless porcelain.scopes == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.id = (porcelain.id)
+      plumbing.keyfile = (porcelain.keyfile)
+      plumbing.name = (porcelain.name)
+      plumbing.scopes = (porcelain.scopes)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing
     end
     def self.convert_repeated_gcp_to_plumbing(porcelains)
@@ -2494,6 +2494,46 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_gcp_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_gcp_store_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = GCPStore.new()
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.projectid = (plumbing.projectID)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_gcp_store_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::GCPStore.new()
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.projectID = (porcelain.projectid)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_gcp_store_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_gcp_store_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_gcp_store_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_gcp_store_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -2518,13 +2558,13 @@ module SDM
         return nil
       end
       plumbing = V1::Gateway.new()
-      plumbing.bind_address = (porcelain.bind_address) unless porcelain.bind_address == nil
-      plumbing.gateway_filter = (porcelain.gateway_filter) unless porcelain.gateway_filter == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.listen_address = (porcelain.listen_address) unless porcelain.listen_address == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.state = (porcelain.state) unless porcelain.state == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.bind_address = (porcelain.bind_address)
+      plumbing.gateway_filter = (porcelain.gateway_filter)
+      plumbing.id = (porcelain.id)
+      plumbing.listen_address = (porcelain.listen_address)
+      plumbing.name = (porcelain.name)
+      plumbing.state = (porcelain.state)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing
     end
     def self.convert_repeated_gateway_to_plumbing(porcelains)
@@ -2599,16 +2639,16 @@ module SDM
         return nil
       end
       plumbing = V1::GoogleGKE.new()
-      plumbing.certificate_authority = (porcelain.certificate_authority) unless porcelain.certificate_authority == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.endpoint = (porcelain.endpoint) unless porcelain.endpoint == nil
-      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace) unless porcelain.healthcheck_namespace == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.service_account_key = (porcelain.service_account_key) unless porcelain.service_account_key == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.certificate_authority = (porcelain.certificate_authority)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.endpoint = (porcelain.endpoint)
+      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.service_account_key = (porcelain.service_account_key)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing
     end
     def self.convert_repeated_google_gke_to_plumbing(porcelains)
@@ -2651,16 +2691,16 @@ module SDM
         return nil
       end
       plumbing = V1::GoogleGKEUserImpersonation.new()
-      plumbing.certificate_authority = (porcelain.certificate_authority) unless porcelain.certificate_authority == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.endpoint = (porcelain.endpoint) unless porcelain.endpoint == nil
-      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace) unless porcelain.healthcheck_namespace == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.service_account_key = (porcelain.service_account_key) unless porcelain.service_account_key == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.certificate_authority = (porcelain.certificate_authority)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.endpoint = (porcelain.endpoint)
+      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.service_account_key = (porcelain.service_account_key)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing
     end
     def self.convert_repeated_google_gke_user_impersonation_to_plumbing(porcelains)
@@ -2706,19 +2746,19 @@ module SDM
         return nil
       end
       plumbing = V1::Greenplum.new()
-      plumbing.database = (porcelain.database) unless porcelain.database == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.override_database = (porcelain.override_database) unless porcelain.override_database == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.database = (porcelain.database)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.override_database = (porcelain.override_database)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_greenplum_to_plumbing(porcelains)
@@ -2763,18 +2803,18 @@ module SDM
         return nil
       end
       plumbing = V1::HTTPAuth.new()
-      plumbing.auth_header = (porcelain.auth_header) unless porcelain.auth_header == nil
-      plumbing.default_path = (porcelain.default_path) unless porcelain.default_path == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.headers_blacklist = (porcelain.headers_blacklist) unless porcelain.headers_blacklist == nil
-      plumbing.healthcheck_path = (porcelain.healthcheck_path) unless porcelain.healthcheck_path == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.subdomain = (porcelain.subdomain) unless porcelain.subdomain == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.url = (porcelain.url) unless porcelain.url == nil
+      plumbing.auth_header = (porcelain.auth_header)
+      plumbing.default_path = (porcelain.default_path)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.headers_blacklist = (porcelain.headers_blacklist)
+      plumbing.healthcheck_path = (porcelain.healthcheck_path)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.subdomain = (porcelain.subdomain)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.url = (porcelain.url)
       plumbing
     end
     def self.convert_repeated_http_auth_to_plumbing(porcelains)
@@ -2820,19 +2860,19 @@ module SDM
         return nil
       end
       plumbing = V1::HTTPBasicAuth.new()
-      plumbing.default_path = (porcelain.default_path) unless porcelain.default_path == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.headers_blacklist = (porcelain.headers_blacklist) unless porcelain.headers_blacklist == nil
-      plumbing.healthcheck_path = (porcelain.healthcheck_path) unless porcelain.healthcheck_path == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.subdomain = (porcelain.subdomain) unless porcelain.subdomain == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.url = (porcelain.url) unless porcelain.url == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.default_path = (porcelain.default_path)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.headers_blacklist = (porcelain.headers_blacklist)
+      plumbing.healthcheck_path = (porcelain.healthcheck_path)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.subdomain = (porcelain.subdomain)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.url = (porcelain.url)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_http_basic_auth_to_plumbing(porcelains)
@@ -2876,17 +2916,17 @@ module SDM
         return nil
       end
       plumbing = V1::HTTPNoAuth.new()
-      plumbing.default_path = (porcelain.default_path) unless porcelain.default_path == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.headers_blacklist = (porcelain.headers_blacklist) unless porcelain.headers_blacklist == nil
-      plumbing.healthcheck_path = (porcelain.healthcheck_path) unless porcelain.healthcheck_path == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.subdomain = (porcelain.subdomain) unless porcelain.subdomain == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.url = (porcelain.url) unless porcelain.url == nil
+      plumbing.default_path = (porcelain.default_path)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.headers_blacklist = (porcelain.headers_blacklist)
+      plumbing.healthcheck_path = (porcelain.healthcheck_path)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.subdomain = (porcelain.subdomain)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.url = (porcelain.url)
       plumbing
     end
     def self.convert_repeated_http_no_auth_to_plumbing(porcelains)
@@ -2931,18 +2971,18 @@ module SDM
         return nil
       end
       plumbing = V1::Kubernetes.new()
-      plumbing.certificate_authority = (porcelain.certificate_authority) unless porcelain.certificate_authority == nil
-      plumbing.client_certificate = (porcelain.client_certificate) unless porcelain.client_certificate == nil
-      plumbing.client_key = (porcelain.client_key) unless porcelain.client_key == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace) unless porcelain.healthcheck_namespace == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.certificate_authority = (porcelain.certificate_authority)
+      plumbing.client_certificate = (porcelain.client_certificate)
+      plumbing.client_key = (porcelain.client_key)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.port = (porcelain.port)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing
     end
     def self.convert_repeated_kubernetes_to_plumbing(porcelains)
@@ -2986,17 +3026,17 @@ module SDM
         return nil
       end
       plumbing = V1::KubernetesBasicAuth.new()
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace) unless porcelain.healthcheck_namespace == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_kubernetes_basic_auth_to_plumbing(porcelains)
@@ -3039,16 +3079,16 @@ module SDM
         return nil
       end
       plumbing = V1::KubernetesServiceAccount.new()
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace) unless porcelain.healthcheck_namespace == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.token = (porcelain.token) unless porcelain.token == nil
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.port = (porcelain.port)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.token = (porcelain.token)
       plumbing
     end
     def self.convert_repeated_kubernetes_service_account_to_plumbing(porcelains)
@@ -3091,16 +3131,16 @@ module SDM
         return nil
       end
       plumbing = V1::KubernetesServiceAccountUserImpersonation.new()
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace) unless porcelain.healthcheck_namespace == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.token = (porcelain.token) unless porcelain.token == nil
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.port = (porcelain.port)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.token = (porcelain.token)
       plumbing
     end
     def self.convert_repeated_kubernetes_service_account_user_impersonation_to_plumbing(porcelains)
@@ -3145,18 +3185,18 @@ module SDM
         return nil
       end
       plumbing = V1::KubernetesUserImpersonation.new()
-      plumbing.certificate_authority = (porcelain.certificate_authority) unless porcelain.certificate_authority == nil
-      plumbing.client_certificate = (porcelain.client_certificate) unless porcelain.client_certificate == nil
-      plumbing.client_key = (porcelain.client_key) unless porcelain.client_key == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace) unless porcelain.healthcheck_namespace == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.certificate_authority = (porcelain.certificate_authority)
+      plumbing.client_certificate = (porcelain.client_certificate)
+      plumbing.client_key = (porcelain.client_key)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.port = (porcelain.port)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing
     end
     def self.convert_repeated_kubernetes_user_impersonation_to_plumbing(porcelains)
@@ -3206,23 +3246,23 @@ module SDM
         return nil
       end
       plumbing = V1::MTLSPostgres.new()
-      plumbing.certificate_authority = (porcelain.certificate_authority) unless porcelain.certificate_authority == nil
-      plumbing.client_certificate = (porcelain.client_certificate) unless porcelain.client_certificate == nil
-      plumbing.client_key = (porcelain.client_key) unless porcelain.client_key == nil
-      plumbing.database = (porcelain.database) unless porcelain.database == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.override_database = (porcelain.override_database) unless porcelain.override_database == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.server_name = (porcelain.server_name) unless porcelain.server_name == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.certificate_authority = (porcelain.certificate_authority)
+      plumbing.client_certificate = (porcelain.client_certificate)
+      plumbing.client_key = (porcelain.client_key)
+      plumbing.database = (porcelain.database)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.override_database = (porcelain.override_database)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.server_name = (porcelain.server_name)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_mtls_postgres_to_plumbing(porcelains)
@@ -3267,18 +3307,18 @@ module SDM
         return nil
       end
       plumbing = V1::Maria.new()
-      plumbing.database = (porcelain.database) unless porcelain.database == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.database = (porcelain.database)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_maria_to_plumbing(porcelains)
@@ -3320,15 +3360,15 @@ module SDM
         return nil
       end
       plumbing = V1::Memcached.new()
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing
     end
     def self.convert_repeated_memcached_to_plumbing(porcelains)
@@ -3373,18 +3413,18 @@ module SDM
         return nil
       end
       plumbing = V1::Memsql.new()
-      plumbing.database = (porcelain.database) unless porcelain.database == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.database = (porcelain.database)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_memsql_to_plumbing(porcelains)
@@ -3430,19 +3470,19 @@ module SDM
         return nil
       end
       plumbing = V1::MongoHost.new()
-      plumbing.auth_database = (porcelain.auth_database) unless porcelain.auth_database == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.tls_required = (porcelain.tls_required) unless porcelain.tls_required == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.auth_database = (porcelain.auth_database)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.tls_required = (porcelain.tls_required)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_mongo_host_to_plumbing(porcelains)
@@ -3489,20 +3529,20 @@ module SDM
         return nil
       end
       plumbing = V1::MongoLegacyHost.new()
-      plumbing.auth_database = (porcelain.auth_database) unless porcelain.auth_database == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.replica_set = (porcelain.replica_set) unless porcelain.replica_set == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.tls_required = (porcelain.tls_required) unless porcelain.tls_required == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.auth_database = (porcelain.auth_database)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.replica_set = (porcelain.replica_set)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.tls_required = (porcelain.tls_required)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_mongo_legacy_host_to_plumbing(porcelains)
@@ -3550,21 +3590,21 @@ module SDM
         return nil
       end
       plumbing = V1::MongoLegacyReplicaset.new()
-      plumbing.auth_database = (porcelain.auth_database) unless porcelain.auth_database == nil
-      plumbing.connect_to_replica = (porcelain.connect_to_replica) unless porcelain.connect_to_replica == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.replica_set = (porcelain.replica_set) unless porcelain.replica_set == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.tls_required = (porcelain.tls_required) unless porcelain.tls_required == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.auth_database = (porcelain.auth_database)
+      plumbing.connect_to_replica = (porcelain.connect_to_replica)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.replica_set = (porcelain.replica_set)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.tls_required = (porcelain.tls_required)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_mongo_legacy_replicaset_to_plumbing(porcelains)
@@ -3612,21 +3652,21 @@ module SDM
         return nil
       end
       plumbing = V1::MongoReplicaSet.new()
-      plumbing.auth_database = (porcelain.auth_database) unless porcelain.auth_database == nil
-      plumbing.connect_to_replica = (porcelain.connect_to_replica) unless porcelain.connect_to_replica == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.replica_set = (porcelain.replica_set) unless porcelain.replica_set == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.tls_required = (porcelain.tls_required) unless porcelain.tls_required == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.auth_database = (porcelain.auth_database)
+      plumbing.connect_to_replica = (porcelain.connect_to_replica)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.replica_set = (porcelain.replica_set)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.tls_required = (porcelain.tls_required)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_mongo_replica_set_to_plumbing(porcelains)
@@ -3671,18 +3711,18 @@ module SDM
         return nil
       end
       plumbing = V1::MongoShardedCluster.new()
-      plumbing.auth_database = (porcelain.auth_database) unless porcelain.auth_database == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.tls_required = (porcelain.tls_required) unless porcelain.tls_required == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.auth_database = (porcelain.auth_database)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.tls_required = (porcelain.tls_required)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_mongo_sharded_cluster_to_plumbing(porcelains)
@@ -3727,18 +3767,18 @@ module SDM
         return nil
       end
       plumbing = V1::Mysql.new()
-      plumbing.database = (porcelain.database) unless porcelain.database == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.database = (porcelain.database)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_mysql_to_plumbing(porcelains)
@@ -3780,15 +3820,15 @@ module SDM
         return nil
       end
       plumbing = V1::Neptune.new()
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.endpoint = (porcelain.endpoint) unless porcelain.endpoint == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.endpoint = (porcelain.endpoint)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing
     end
     def self.convert_repeated_neptune_to_plumbing(porcelains)
@@ -3835,20 +3875,20 @@ module SDM
         return nil
       end
       plumbing = V1::NeptuneIAM.new()
-      plumbing.access_key = (porcelain.access_key) unless porcelain.access_key == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.endpoint = (porcelain.endpoint) unless porcelain.endpoint == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.region = (porcelain.region) unless porcelain.region == nil
-      plumbing.role_arn = (porcelain.role_arn) unless porcelain.role_arn == nil
-      plumbing.role_external_id = (porcelain.role_external_id) unless porcelain.role_external_id == nil
-      plumbing.secret_access_key = (porcelain.secret_access_key) unless porcelain.secret_access_key == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.access_key = (porcelain.access_key)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.endpoint = (porcelain.endpoint)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.region = (porcelain.region)
+      plumbing.role_arn = (porcelain.role_arn)
+      plumbing.role_external_id = (porcelain.role_external_id)
+      plumbing.secret_access_key = (porcelain.secret_access_key)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing
     end
     def self.convert_repeated_neptune_iam_to_plumbing(porcelains)
@@ -3927,10 +3967,10 @@ module SDM
         return nil
       end
       plumbing = V1::NodeCreateResponse.new()
-      plumbing.meta = convert_create_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-      plumbing.node = convert_node_to_plumbing(porcelain.node) unless porcelain.node == nil
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
-      plumbing.token = (porcelain.token) unless porcelain.token == nil
+      plumbing.meta = convert_create_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.node = convert_node_to_plumbing(porcelain.node)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing.token = (porcelain.token)
       plumbing
     end
     def self.convert_repeated_node_create_response_to_plumbing(porcelains)
@@ -3965,8 +4005,8 @@ module SDM
         return nil
       end
       plumbing = V1::NodeDeleteResponse.new()
-      plumbing.meta = convert_delete_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
+      plumbing.meta = convert_delete_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
       plumbing
     end
     def self.convert_repeated_node_delete_response_to_plumbing(porcelains)
@@ -4002,9 +4042,9 @@ module SDM
         return nil
       end
       plumbing = V1::NodeGetResponse.new()
-      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-      plumbing.node = convert_node_to_plumbing(porcelain.node) unless porcelain.node == nil
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
+      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.node = convert_node_to_plumbing(porcelain.node)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
       plumbing
     end
     def self.convert_repeated_node_get_response_to_plumbing(porcelains)
@@ -4040,9 +4080,9 @@ module SDM
         return nil
       end
       plumbing = V1::NodeUpdateResponse.new()
-      plumbing.meta = convert_update_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-      plumbing.node = convert_node_to_plumbing(porcelain.node) unless porcelain.node == nil
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
+      plumbing.meta = convert_update_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.node = convert_node_to_plumbing(porcelain.node)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
       plumbing
     end
     def self.convert_repeated_node_update_response_to_plumbing(porcelains)
@@ -4088,19 +4128,19 @@ module SDM
         return nil
       end
       plumbing = V1::Oracle.new()
-      plumbing.database = (porcelain.database) unless porcelain.database == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.tls_required = (porcelain.tls_required) unless porcelain.tls_required == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.database = (porcelain.database)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.tls_required = (porcelain.tls_required)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_oracle_to_plumbing(porcelains)
@@ -4146,19 +4186,19 @@ module SDM
         return nil
       end
       plumbing = V1::Postgres.new()
-      plumbing.database = (porcelain.database) unless porcelain.database == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.override_database = (porcelain.override_database) unless porcelain.override_database == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.database = (porcelain.database)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.override_database = (porcelain.override_database)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_postgres_to_plumbing(porcelains)
@@ -4204,19 +4244,19 @@ module SDM
         return nil
       end
       plumbing = V1::Presto.new()
-      plumbing.database = (porcelain.database) unless porcelain.database == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.tls_required = (porcelain.tls_required) unless porcelain.tls_required == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.database = (porcelain.database)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.tls_required = (porcelain.tls_required)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_presto_to_plumbing(porcelains)
@@ -4261,18 +4301,18 @@ module SDM
         return nil
       end
       plumbing = V1::RDP.new()
-      plumbing.downgrade_nla_connections = (porcelain.downgrade_nla_connections) unless porcelain.downgrade_nla_connections == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.downgrade_nla_connections = (porcelain.downgrade_nla_connections)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_rdp_to_plumbing(porcelains)
@@ -4317,18 +4357,18 @@ module SDM
         return nil
       end
       plumbing = V1::RabbitMQAMQP091.new()
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.tls_required = (porcelain.tls_required) unless porcelain.tls_required == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.tls_required = (porcelain.tls_required)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_rabbit_mqamqp_091_to_plumbing(porcelains)
@@ -4365,10 +4405,10 @@ module SDM
         return nil
       end
       plumbing = V1::RateLimitMetadata.new()
-      plumbing.bucket = (porcelain.bucket) unless porcelain.bucket == nil
-      plumbing.limit = (porcelain.limit) unless porcelain.limit == nil
-      plumbing.remaining = (porcelain.remaining) unless porcelain.remaining == nil
-      plumbing.reset_at = convert_timestamp_to_plumbing(porcelain.reset_at) unless porcelain.reset_at == nil
+      plumbing.bucket = (porcelain.bucket)
+      plumbing.limit = (porcelain.limit)
+      plumbing.remaining = (porcelain.remaining)
+      plumbing.reset_at = convert_timestamp_to_plumbing(porcelain.reset_at)
       plumbing
     end
     def self.convert_repeated_rate_limit_metadata_to_plumbing(porcelains)
@@ -4410,15 +4450,15 @@ module SDM
         return nil
       end
       plumbing = V1::RawTCP.new()
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing
     end
     def self.convert_repeated_raw_tcp_to_plumbing(porcelains)
@@ -4461,16 +4501,16 @@ module SDM
         return nil
       end
       plumbing = V1::Redis.new()
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing
     end
     def self.convert_repeated_redis_to_plumbing(porcelains)
@@ -4516,19 +4556,19 @@ module SDM
         return nil
       end
       plumbing = V1::Redshift.new()
-      plumbing.database = (porcelain.database) unless porcelain.database == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.override_database = (porcelain.override_database) unless porcelain.override_database == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.database = (porcelain.database)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.override_database = (porcelain.override_database)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_redshift_to_plumbing(porcelains)
@@ -4566,11 +4606,11 @@ module SDM
         return nil
       end
       plumbing = V1::Relay.new()
-      plumbing.gateway_filter = (porcelain.gateway_filter) unless porcelain.gateway_filter == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.state = (porcelain.state) unless porcelain.state == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.gateway_filter = (porcelain.gateway_filter)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.state = (porcelain.state)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing
     end
     def self.convert_repeated_relay_to_plumbing(porcelains)
@@ -5056,9 +5096,9 @@ module SDM
         return nil
       end
       plumbing = V1::ResourceCreateResponse.new()
-      plumbing.meta = convert_create_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
-      plumbing.resource = convert_resource_to_plumbing(porcelain.resource) unless porcelain.resource == nil
+      plumbing.meta = convert_create_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing.resource = convert_resource_to_plumbing(porcelain.resource)
       plumbing
     end
     def self.convert_repeated_resource_create_response_to_plumbing(porcelains)
@@ -5093,8 +5133,8 @@ module SDM
         return nil
       end
       plumbing = V1::ResourceDeleteResponse.new()
-      plumbing.meta = convert_delete_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
+      plumbing.meta = convert_delete_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
       plumbing
     end
     def self.convert_repeated_resource_delete_response_to_plumbing(porcelains)
@@ -5130,9 +5170,9 @@ module SDM
         return nil
       end
       plumbing = V1::ResourceGetResponse.new()
-      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
-      plumbing.resource = convert_resource_to_plumbing(porcelain.resource) unless porcelain.resource == nil
+      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing.resource = convert_resource_to_plumbing(porcelain.resource)
       plumbing
     end
     def self.convert_repeated_resource_get_response_to_plumbing(porcelains)
@@ -5168,9 +5208,9 @@ module SDM
         return nil
       end
       plumbing = V1::ResourceUpdateResponse.new()
-      plumbing.meta = convert_update_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
-      plumbing.resource = convert_resource_to_plumbing(porcelain.resource) unless porcelain.resource == nil
+      plumbing.meta = convert_update_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing.resource = convert_resource_to_plumbing(porcelain.resource)
       plumbing
     end
     def self.convert_repeated_resource_update_response_to_plumbing(porcelains)
@@ -5208,11 +5248,11 @@ module SDM
         return nil
       end
       plumbing = V1::Role.new()
-      plumbing.access_rules = convert_access_rules_to_plumbing(porcelain.access_rules) unless porcelain.access_rules == nil
-      plumbing.composite = (porcelain.composite) unless porcelain.composite == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.access_rules = convert_access_rules_to_plumbing(porcelain.access_rules)
+      plumbing.composite = (porcelain.composite)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing
     end
     def self.convert_repeated_role_to_plumbing(porcelains)
@@ -5248,9 +5288,9 @@ module SDM
         return nil
       end
       plumbing = V1::RoleAttachment.new()
-      plumbing.attached_role_id = (porcelain.attached_role_id) unless porcelain.attached_role_id == nil
-      plumbing.composite_role_id = (porcelain.composite_role_id) unless porcelain.composite_role_id == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
+      plumbing.attached_role_id = (porcelain.attached_role_id)
+      plumbing.composite_role_id = (porcelain.composite_role_id)
+      plumbing.id = (porcelain.id)
       plumbing
     end
     def self.convert_repeated_role_attachment_to_plumbing(porcelains)
@@ -5286,9 +5326,9 @@ module SDM
         return nil
       end
       plumbing = V1::RoleAttachmentCreateResponse.new()
-      plumbing.meta = convert_create_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
-      plumbing.role_attachment = convert_role_attachment_to_plumbing(porcelain.role_attachment) unless porcelain.role_attachment == nil
+      plumbing.meta = convert_create_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing.role_attachment = convert_role_attachment_to_plumbing(porcelain.role_attachment)
       plumbing
     end
     def self.convert_repeated_role_attachment_create_response_to_plumbing(porcelains)
@@ -5323,8 +5363,8 @@ module SDM
         return nil
       end
       plumbing = V1::RoleAttachmentDeleteResponse.new()
-      plumbing.meta = convert_delete_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
+      plumbing.meta = convert_delete_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
       plumbing
     end
     def self.convert_repeated_role_attachment_delete_response_to_plumbing(porcelains)
@@ -5360,9 +5400,9 @@ module SDM
         return nil
       end
       plumbing = V1::RoleAttachmentGetResponse.new()
-      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
-      plumbing.role_attachment = convert_role_attachment_to_plumbing(porcelain.role_attachment) unless porcelain.role_attachment == nil
+      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing.role_attachment = convert_role_attachment_to_plumbing(porcelain.role_attachment)
       plumbing
     end
     def self.convert_repeated_role_attachment_get_response_to_plumbing(porcelains)
@@ -5398,9 +5438,9 @@ module SDM
         return nil
       end
       plumbing = V1::RoleCreateResponse.new()
-      plumbing.meta = convert_create_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
-      plumbing.role = convert_role_to_plumbing(porcelain.role) unless porcelain.role == nil
+      plumbing.meta = convert_create_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing.role = convert_role_to_plumbing(porcelain.role)
       plumbing
     end
     def self.convert_repeated_role_create_response_to_plumbing(porcelains)
@@ -5435,8 +5475,8 @@ module SDM
         return nil
       end
       plumbing = V1::RoleDeleteResponse.new()
-      plumbing.meta = convert_delete_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
+      plumbing.meta = convert_delete_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
       plumbing
     end
     def self.convert_repeated_role_delete_response_to_plumbing(porcelains)
@@ -5472,9 +5512,9 @@ module SDM
         return nil
       end
       plumbing = V1::RoleGetResponse.new()
-      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
-      plumbing.role = convert_role_to_plumbing(porcelain.role) unless porcelain.role == nil
+      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing.role = convert_role_to_plumbing(porcelain.role)
       plumbing
     end
     def self.convert_repeated_role_get_response_to_plumbing(porcelains)
@@ -5510,9 +5550,9 @@ module SDM
         return nil
       end
       plumbing = V1::RoleGrant.new()
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.resource_id = (porcelain.resource_id) unless porcelain.resource_id == nil
-      plumbing.role_id = (porcelain.role_id) unless porcelain.role_id == nil
+      plumbing.id = (porcelain.id)
+      plumbing.resource_id = (porcelain.resource_id)
+      plumbing.role_id = (porcelain.role_id)
       plumbing
     end
     def self.convert_repeated_role_grant_to_plumbing(porcelains)
@@ -5548,9 +5588,9 @@ module SDM
         return nil
       end
       plumbing = V1::RoleGrantCreateResponse.new()
-      plumbing.meta = convert_create_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
-      plumbing.role_grant = convert_role_grant_to_plumbing(porcelain.role_grant) unless porcelain.role_grant == nil
+      plumbing.meta = convert_create_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing.role_grant = convert_role_grant_to_plumbing(porcelain.role_grant)
       plumbing
     end
     def self.convert_repeated_role_grant_create_response_to_plumbing(porcelains)
@@ -5585,8 +5625,8 @@ module SDM
         return nil
       end
       plumbing = V1::RoleGrantDeleteResponse.new()
-      plumbing.meta = convert_delete_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
+      plumbing.meta = convert_delete_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
       plumbing
     end
     def self.convert_repeated_role_grant_delete_response_to_plumbing(porcelains)
@@ -5622,9 +5662,9 @@ module SDM
         return nil
       end
       plumbing = V1::RoleGrantGetResponse.new()
-      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
-      plumbing.role_grant = convert_role_grant_to_plumbing(porcelain.role_grant) unless porcelain.role_grant == nil
+      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing.role_grant = convert_role_grant_to_plumbing(porcelain.role_grant)
       plumbing
     end
     def self.convert_repeated_role_grant_get_response_to_plumbing(porcelains)
@@ -5660,9 +5700,9 @@ module SDM
         return nil
       end
       plumbing = V1::RoleUpdateResponse.new()
-      plumbing.meta = convert_update_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
-      plumbing.role = convert_role_to_plumbing(porcelain.role) unless porcelain.role == nil
+      plumbing.meta = convert_update_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing.role = convert_role_to_plumbing(porcelain.role)
       plumbing
     end
     def self.convert_repeated_role_update_response_to_plumbing(porcelains)
@@ -5709,20 +5749,20 @@ module SDM
         return nil
       end
       plumbing = V1::SQLServer.new()
-      plumbing.database = (porcelain.database) unless porcelain.database == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.override_database = (porcelain.override_database) unless porcelain.override_database == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.schema = (porcelain.schema) unless porcelain.schema == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.database = (porcelain.database)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.override_database = (porcelain.override_database)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.schema = (porcelain.schema)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_sql_server_to_plumbing(porcelains)
@@ -5767,18 +5807,18 @@ module SDM
         return nil
       end
       plumbing = V1::SSH.new()
-      plumbing.allow_deprecated_key_exchanges = (porcelain.allow_deprecated_key_exchanges) unless porcelain.allow_deprecated_key_exchanges == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_forwarding = (porcelain.port_forwarding) unless porcelain.port_forwarding == nil
-      plumbing.public_key = (porcelain.public_key) unless porcelain.public_key == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.allow_deprecated_key_exchanges = (porcelain.allow_deprecated_key_exchanges)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.port = (porcelain.port)
+      plumbing.port_forwarding = (porcelain.port_forwarding)
+      plumbing.public_key = (porcelain.public_key)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_ssh_to_plumbing(porcelains)
@@ -5822,17 +5862,17 @@ module SDM
         return nil
       end
       plumbing = V1::SSHCert.new()
-      plumbing.allow_deprecated_key_exchanges = (porcelain.allow_deprecated_key_exchanges) unless porcelain.allow_deprecated_key_exchanges == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_forwarding = (porcelain.port_forwarding) unless porcelain.port_forwarding == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.allow_deprecated_key_exchanges = (porcelain.allow_deprecated_key_exchanges)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.port = (porcelain.port)
+      plumbing.port_forwarding = (porcelain.port_forwarding)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_ssh_cert_to_plumbing(porcelains)
@@ -5877,18 +5917,18 @@ module SDM
         return nil
       end
       plumbing = V1::SSHCustomerKey.new()
-      plumbing.allow_deprecated_key_exchanges = (porcelain.allow_deprecated_key_exchanges) unless porcelain.allow_deprecated_key_exchanges == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_forwarding = (porcelain.port_forwarding) unless porcelain.port_forwarding == nil
-      plumbing.private_key = (porcelain.private_key) unless porcelain.private_key == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.allow_deprecated_key_exchanges = (porcelain.allow_deprecated_key_exchanges)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.port = (porcelain.port)
+      plumbing.port_forwarding = (porcelain.port_forwarding)
+      plumbing.private_key = (porcelain.private_key)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_ssh_customer_key_to_plumbing(porcelains)
@@ -5919,6 +5959,12 @@ module SDM
       if porcelain.instance_of? AzureStore
         plumbing.azure = convert_azure_store_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? GCPStore
+        plumbing.gcp = convert_gcp_store_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? VaultAppRoleStore
+        plumbing.vault_app_role = convert_vault_app_role_store_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? VaultTLSStore
         plumbing.vault_tls = convert_vault_tls_store_to_plumbing(porcelain)
       end
@@ -5937,6 +5983,12 @@ module SDM
       end
       if plumbing.azure != nil
         return convert_azure_store_to_porcelain(plumbing.azure)
+      end
+      if plumbing.gcp != nil
+        return convert_gcp_store_to_porcelain(plumbing.gcp)
+      end
+      if plumbing.vault_app_role != nil
+        return convert_vault_app_role_store_to_porcelain(plumbing.vault_app_role)
       end
       if plumbing.vault_tls != nil
         return convert_vault_tls_store_to_porcelain(plumbing.vault_tls)
@@ -5978,9 +6030,9 @@ module SDM
         return nil
       end
       plumbing = V1::SecretStoreCreateResponse.new()
-      plumbing.meta = convert_create_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
-      plumbing.secret_store = convert_secret_store_to_plumbing(porcelain.secret_store) unless porcelain.secret_store == nil
+      plumbing.meta = convert_create_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing.secret_store = convert_secret_store_to_plumbing(porcelain.secret_store)
       plumbing
     end
     def self.convert_repeated_secret_store_create_response_to_plumbing(porcelains)
@@ -6015,8 +6067,8 @@ module SDM
         return nil
       end
       plumbing = V1::SecretStoreDeleteResponse.new()
-      plumbing.meta = convert_delete_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
+      plumbing.meta = convert_delete_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
       plumbing
     end
     def self.convert_repeated_secret_store_delete_response_to_plumbing(porcelains)
@@ -6052,9 +6104,9 @@ module SDM
         return nil
       end
       plumbing = V1::SecretStoreGetResponse.new()
-      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
-      plumbing.secret_store = convert_secret_store_to_plumbing(porcelain.secret_store) unless porcelain.secret_store == nil
+      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing.secret_store = convert_secret_store_to_plumbing(porcelain.secret_store)
       plumbing
     end
     def self.convert_repeated_secret_store_get_response_to_plumbing(porcelains)
@@ -6090,9 +6142,9 @@ module SDM
         return nil
       end
       plumbing = V1::SecretStoreUpdateResponse.new()
-      plumbing.meta = convert_update_response_metadata_to_plumbing(porcelain.meta) unless porcelain.meta == nil
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit) unless porcelain.rate_limit == nil
-      plumbing.secret_store = convert_secret_store_to_plumbing(porcelain.secret_store) unless porcelain.secret_store == nil
+      plumbing.meta = convert_update_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing.secret_store = convert_secret_store_to_plumbing(porcelain.secret_store)
       plumbing
     end
     def self.convert_repeated_secret_store_update_response_to_plumbing(porcelains)
@@ -6129,10 +6181,10 @@ module SDM
         return nil
       end
       plumbing = V1::Service.new()
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.suspended = (porcelain.suspended) unless porcelain.suspended == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.suspended = (porcelain.suspended)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing
     end
     def self.convert_repeated_service_to_plumbing(porcelains)
@@ -6177,18 +6229,18 @@ module SDM
         return nil
       end
       plumbing = V1::SingleStore.new()
-      plumbing.database = (porcelain.database) unless porcelain.database == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.database = (porcelain.database)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_single_store_to_plumbing(porcelains)
@@ -6233,18 +6285,18 @@ module SDM
         return nil
       end
       plumbing = V1::Snowflake.new()
-      plumbing.database = (porcelain.database) unless porcelain.database == nil
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.schema = (porcelain.schema) unless porcelain.schema == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.database = (porcelain.database)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.schema = (porcelain.schema)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_snowflake_to_plumbing(porcelains)
@@ -6288,17 +6340,17 @@ module SDM
         return nil
       end
       plumbing = V1::Sybase.new()
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_sybase_to_plumbing(porcelains)
@@ -6342,17 +6394,17 @@ module SDM
         return nil
       end
       plumbing = V1::SybaseIQ.new()
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_sybase_iq_to_plumbing(porcelains)
@@ -6387,8 +6439,8 @@ module SDM
         return nil
       end
       plumbing = V1::Tag.new()
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.value = (porcelain.value) unless porcelain.value == nil
+      plumbing.name = (porcelain.name)
+      plumbing.value = (porcelain.value)
       plumbing
     end
     def self.convert_repeated_tag_to_plumbing(porcelains)
@@ -6432,17 +6484,17 @@ module SDM
         return nil
       end
       plumbing = V1::Teradata.new()
-      plumbing.egress_filter = (porcelain.egress_filter) unless porcelain.egress_filter == nil
-      plumbing.healthy = (porcelain.healthy) unless porcelain.healthy == nil
-      plumbing.hostname = (porcelain.hostname) unless porcelain.hostname == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.password = (porcelain.password) unless porcelain.password == nil
-      plumbing.port = (porcelain.port) unless porcelain.port == nil
-      plumbing.port_override = (porcelain.port_override) unless porcelain.port_override == nil
-      plumbing.secret_store_id = (porcelain.secret_store_id) unless porcelain.secret_store_id == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
-      plumbing.username = (porcelain.username) unless porcelain.username == nil
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_teradata_to_plumbing(porcelains)
@@ -6513,12 +6565,12 @@ module SDM
         return nil
       end
       plumbing = V1::User.new()
-      plumbing.email = (porcelain.email) unless porcelain.email == nil
-      plumbing.first_name = (porcelain.first_name) unless porcelain.first_name == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.last_name = (porcelain.last_name) unless porcelain.last_name == nil
-      plumbing.suspended = (porcelain.suspended) unless porcelain.suspended == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.email = (porcelain.email)
+      plumbing.first_name = (porcelain.first_name)
+      plumbing.id = (porcelain.id)
+      plumbing.last_name = (porcelain.last_name)
+      plumbing.suspended = (porcelain.suspended)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing
     end
     def self.convert_repeated_user_to_plumbing(porcelains)
@@ -6534,6 +6586,48 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_user_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_vault_app_role_store_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = VaultAppRoleStore.new()
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.namespace = (plumbing.namespace)
+      porcelain.server_address = (plumbing.server_address)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_vault_app_role_store_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::VaultAppRoleStore.new()
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.namespace = (porcelain.namespace)
+      plumbing.server_address = (porcelain.server_address)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_vault_app_role_store_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_vault_app_role_store_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_vault_app_role_store_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_vault_app_role_store_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -6559,14 +6653,14 @@ module SDM
         return nil
       end
       plumbing = V1::VaultTLSStore.new()
-      plumbing.CA_cert_path = (porcelain.ca_cert_path) unless porcelain.ca_cert_path == nil
-      plumbing.client_cert_path = (porcelain.client_cert_path) unless porcelain.client_cert_path == nil
-      plumbing.client_key_path = (porcelain.client_key_path) unless porcelain.client_key_path == nil
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.namespace = (porcelain.namespace) unless porcelain.namespace == nil
-      plumbing.server_address = (porcelain.server_address) unless porcelain.server_address == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.CA_cert_path = (porcelain.ca_cert_path)
+      plumbing.client_cert_path = (porcelain.client_cert_path)
+      plumbing.client_key_path = (porcelain.client_key_path)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.namespace = (porcelain.namespace)
+      plumbing.server_address = (porcelain.server_address)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing
     end
     def self.convert_repeated_vault_tls_store_to_plumbing(porcelains)
@@ -6604,11 +6698,11 @@ module SDM
         return nil
       end
       plumbing = V1::VaultTokenStore.new()
-      plumbing.id = (porcelain.id) unless porcelain.id == nil
-      plumbing.name = (porcelain.name) unless porcelain.name == nil
-      plumbing.namespace = (porcelain.namespace) unless porcelain.namespace == nil
-      plumbing.server_address = (porcelain.server_address) unless porcelain.server_address == nil
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags) unless porcelain.tags == nil
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.namespace = (porcelain.namespace)
+      plumbing.server_address = (porcelain.server_address)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing
     end
     def self.convert_repeated_vault_token_store_to_plumbing(porcelains)

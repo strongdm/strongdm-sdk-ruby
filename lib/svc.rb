@@ -1558,6 +1558,8 @@ module SDM #:nodoc:
   # See:
   # {AWSStore}
   # {AzureStore}
+  # {GCPStore}
+  # {VaultAppRoleStore}
   # {VaultTLSStore}
   # {VaultTokenStore}
   class SecretStores

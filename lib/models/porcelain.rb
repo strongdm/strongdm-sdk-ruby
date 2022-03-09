@@ -55,42 +55,18 @@ module SDM
       secret_store_id: nil,
       tags: nil
     )
-      if certificate_authority != nil
-        @certificate_authority = certificate_authority
-      end
-      if client_certificate != nil
-        @client_certificate = client_certificate
-      end
-      if client_key != nil
-        @client_key = client_key
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthcheck_namespace != nil
-        @healthcheck_namespace = healthcheck_namespace
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if port != nil
-        @port = port
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
+      @certificate_authority = certificate_authority == nil ? "" : certificate_authority
+      @client_certificate = client_certificate == nil ? "" : client_certificate
+      @client_key = client_key == nil ? "" : client_key
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthcheck_namespace = healthcheck_namespace == nil ? "" : healthcheck_namespace
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @port = port == nil ? 0 : port
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
     def to_json(options = {})
@@ -139,39 +115,17 @@ module SDM
       tags: nil,
       username: nil
     )
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthcheck_namespace != nil
-        @healthcheck_namespace = healthcheck_namespace
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if password != nil
-        @password = password
-      end
-      if port != nil
-        @port = port
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if username != nil
-        @username = username
-      end
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthcheck_namespace = healthcheck_namespace == nil ? "" : healthcheck_namespace
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -217,36 +171,16 @@ module SDM
       tags: nil,
       token: nil
     )
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthcheck_namespace != nil
-        @healthcheck_namespace = healthcheck_namespace
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if port != nil
-        @port = port
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if token != nil
-        @token = token
-      end
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthcheck_namespace = healthcheck_namespace == nil ? "" : healthcheck_namespace
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @port = port == nil ? 0 : port
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @token = token == nil ? "" : token
     end
 
     def to_json(options = {})
@@ -292,36 +226,16 @@ module SDM
       tags: nil,
       token: nil
     )
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthcheck_namespace != nil
-        @healthcheck_namespace = healthcheck_namespace
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if port != nil
-        @port = port
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if token != nil
-        @token = token
-      end
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthcheck_namespace = healthcheck_namespace == nil ? "" : healthcheck_namespace
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @port = port == nil ? 0 : port
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @token = token == nil ? "" : token
     end
 
     def to_json(options = {})
@@ -372,42 +286,18 @@ module SDM
       secret_store_id: nil,
       tags: nil
     )
-      if certificate_authority != nil
-        @certificate_authority = certificate_authority
-      end
-      if client_certificate != nil
-        @client_certificate = client_certificate
-      end
-      if client_key != nil
-        @client_key = client_key
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthcheck_namespace != nil
-        @healthcheck_namespace = healthcheck_namespace
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if port != nil
-        @port = port
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
+      @certificate_authority = certificate_authority == nil ? "" : certificate_authority
+      @client_certificate = client_certificate == nil ? "" : client_certificate
+      @client_key = client_key == nil ? "" : client_key
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthcheck_namespace = healthcheck_namespace == nil ? "" : healthcheck_namespace
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @port = port == nil ? 0 : port
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
     def to_json(options = {})
@@ -455,39 +345,17 @@ module SDM
       secret_store_id: nil,
       tags: nil
     )
-      if access_key != nil
-        @access_key = access_key
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthcheck_region != nil
-        @healthcheck_region = healthcheck_region
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if role_arn != nil
-        @role_arn = role_arn
-      end
-      if role_external_id != nil
-        @role_external_id = role_external_id
-      end
-      if secret_access_key != nil
-        @secret_access_key = secret_access_key
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
+      @access_key = access_key == nil ? "" : access_key
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthcheck_region = healthcheck_region == nil ? "" : healthcheck_region
+      @healthy = healthy == nil ? false : healthy
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @role_arn = role_arn == nil ? "" : role_arn
+      @role_external_id = role_external_id == nil ? "" : role_external_id
+      @secret_access_key = secret_access_key == nil ? "" : secret_access_key
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
     def to_json(options = {})
@@ -515,18 +383,10 @@ module SDM
       region: nil,
       tags: nil
     )
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if region != nil
-        @region = region
-      end
-      if tags != nil
-        @tags = tags
-      end
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @region = region == nil ? "" : region
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
     def to_json(options = {})
@@ -552,15 +412,9 @@ module SDM
       id: nil,
       role_id: nil
     )
-      if account_id != nil
-        @account_id = account_id
-      end
-      if id != nil
-        @id = id
-      end
-      if role_id != nil
-        @role_id = role_id
-      end
+      @account_id = account_id == nil ? "" : account_id
+      @id = id == nil ? "" : id
+      @role_id = role_id == nil ? "" : role_id
     end
 
     def to_json(options = {})
@@ -586,15 +440,9 @@ module SDM
       meta: nil,
       rate_limit: nil
     )
-      if account_attachment != nil
-        @account_attachment = account_attachment
-      end
-      if meta != nil
-        @meta = meta
-      end
-      if rate_limit != nil
-        @rate_limit = rate_limit
-      end
+      @account_attachment = account_attachment == nil ? nil : account_attachment
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
     end
 
     def to_json(options = {})
@@ -617,12 +465,8 @@ module SDM
       meta: nil,
       rate_limit: nil
     )
-      if meta != nil
-        @meta = meta
-      end
-      if rate_limit != nil
-        @rate_limit = rate_limit
-      end
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
     end
 
     def to_json(options = {})
@@ -648,15 +492,9 @@ module SDM
       meta: nil,
       rate_limit: nil
     )
-      if account_attachment != nil
-        @account_attachment = account_attachment
-      end
-      if meta != nil
-        @meta = meta
-      end
-      if rate_limit != nil
-        @rate_limit = rate_limit
-      end
+      @account_attachment = account_attachment == nil ? nil : account_attachment
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
     end
 
     def to_json(options = {})
@@ -686,18 +524,10 @@ module SDM
       rate_limit: nil,
       token: nil
     )
-      if account != nil
-        @account = account
-      end
-      if meta != nil
-        @meta = meta
-      end
-      if rate_limit != nil
-        @rate_limit = rate_limit
-      end
-      if token != nil
-        @token = token
-      end
+      @account = account == nil ? nil : account
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+      @token = token == nil ? "" : token
     end
 
     def to_json(options = {})
@@ -720,12 +550,8 @@ module SDM
       meta: nil,
       rate_limit: nil
     )
-      if meta != nil
-        @meta = meta
-      end
-      if rate_limit != nil
-        @rate_limit = rate_limit
-      end
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
     end
 
     def to_json(options = {})
@@ -751,15 +577,9 @@ module SDM
       meta: nil,
       rate_limit: nil
     )
-      if account != nil
-        @account = account
-      end
-      if meta != nil
-        @meta = meta
-      end
-      if rate_limit != nil
-        @rate_limit = rate_limit
-      end
+      @account = account == nil ? nil : account
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
     end
 
     def to_json(options = {})
@@ -793,21 +613,11 @@ module SDM
       start_from: nil,
       valid_until: nil
     )
-      if account_id != nil
-        @account_id = account_id
-      end
-      if id != nil
-        @id = id
-      end
-      if resource_id != nil
-        @resource_id = resource_id
-      end
-      if start_from != nil
-        @start_from = start_from
-      end
-      if valid_until != nil
-        @valid_until = valid_until
-      end
+      @account_id = account_id == nil ? "" : account_id
+      @id = id == nil ? "" : id
+      @resource_id = resource_id == nil ? "" : resource_id
+      @start_from = start_from == nil ? nil : start_from
+      @valid_until = valid_until == nil ? nil : valid_until
     end
 
     def to_json(options = {})
@@ -833,15 +643,9 @@ module SDM
       meta: nil,
       rate_limit: nil
     )
-      if account_grant != nil
-        @account_grant = account_grant
-      end
-      if meta != nil
-        @meta = meta
-      end
-      if rate_limit != nil
-        @rate_limit = rate_limit
-      end
+      @account_grant = account_grant == nil ? nil : account_grant
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
     end
 
     def to_json(options = {})
@@ -864,12 +668,8 @@ module SDM
       meta: nil,
       rate_limit: nil
     )
-      if meta != nil
-        @meta = meta
-      end
-      if rate_limit != nil
-        @rate_limit = rate_limit
-      end
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
     end
 
     def to_json(options = {})
@@ -895,15 +695,9 @@ module SDM
       meta: nil,
       rate_limit: nil
     )
-      if account_grant != nil
-        @account_grant = account_grant
-      end
-      if meta != nil
-        @meta = meta
-      end
-      if rate_limit != nil
-        @rate_limit = rate_limit
-      end
+      @account_grant = account_grant == nil ? nil : account_grant
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
     end
 
     def to_json(options = {})
@@ -930,15 +724,9 @@ module SDM
       meta: nil,
       rate_limit: nil
     )
-      if account != nil
-        @account = account
-      end
-      if meta != nil
-        @meta = meta
-      end
-      if rate_limit != nil
-        @rate_limit = rate_limit
-      end
+      @account = account == nil ? nil : account
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
     end
 
     def to_json(options = {})
@@ -998,51 +786,21 @@ module SDM
       secret_store_id: nil,
       tags: nil
     )
-      if access_key != nil
-        @access_key = access_key
-      end
-      if certificate_authority != nil
-        @certificate_authority = certificate_authority
-      end
-      if cluster_name != nil
-        @cluster_name = cluster_name
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if endpoint != nil
-        @endpoint = endpoint
-      end
-      if healthcheck_namespace != nil
-        @healthcheck_namespace = healthcheck_namespace
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if region != nil
-        @region = region
-      end
-      if role_arn != nil
-        @role_arn = role_arn
-      end
-      if role_external_id != nil
-        @role_external_id = role_external_id
-      end
-      if secret_access_key != nil
-        @secret_access_key = secret_access_key
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
+      @access_key = access_key == nil ? "" : access_key
+      @certificate_authority = certificate_authority == nil ? "" : certificate_authority
+      @cluster_name = cluster_name == nil ? "" : cluster_name
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @endpoint = endpoint == nil ? "" : endpoint
+      @healthcheck_namespace = healthcheck_namespace == nil ? "" : healthcheck_namespace
+      @healthy = healthy == nil ? false : healthy
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @region = region == nil ? "" : region
+      @role_arn = role_arn == nil ? "" : role_arn
+      @role_external_id = role_external_id == nil ? "" : role_external_id
+      @secret_access_key = secret_access_key == nil ? "" : secret_access_key
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
     def to_json(options = {})
@@ -1102,51 +860,21 @@ module SDM
       secret_store_id: nil,
       tags: nil
     )
-      if access_key != nil
-        @access_key = access_key
-      end
-      if certificate_authority != nil
-        @certificate_authority = certificate_authority
-      end
-      if cluster_name != nil
-        @cluster_name = cluster_name
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if endpoint != nil
-        @endpoint = endpoint
-      end
-      if healthcheck_namespace != nil
-        @healthcheck_namespace = healthcheck_namespace
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if region != nil
-        @region = region
-      end
-      if role_arn != nil
-        @role_arn = role_arn
-      end
-      if role_external_id != nil
-        @role_external_id = role_external_id
-      end
-      if secret_access_key != nil
-        @secret_access_key = secret_access_key
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
+      @access_key = access_key == nil ? "" : access_key
+      @certificate_authority = certificate_authority == nil ? "" : certificate_authority
+      @cluster_name = cluster_name == nil ? "" : cluster_name
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @endpoint = endpoint == nil ? "" : endpoint
+      @healthcheck_namespace = healthcheck_namespace == nil ? "" : healthcheck_namespace
+      @healthy = healthy == nil ? false : healthy
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @region = region == nil ? "" : region
+      @role_arn = role_arn == nil ? "" : role_arn
+      @role_external_id = role_external_id == nil ? "" : role_external_id
+      @secret_access_key = secret_access_key == nil ? "" : secret_access_key
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
     def to_json(options = {})
@@ -1200,45 +928,19 @@ module SDM
       secret_store_id: nil,
       tags: nil
     )
-      if access_key != nil
-        @access_key = access_key
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if endpoint != nil
-        @endpoint = endpoint
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if region != nil
-        @region = region
-      end
-      if role_arn != nil
-        @role_arn = role_arn
-      end
-      if role_external_id != nil
-        @role_external_id = role_external_id
-      end
-      if secret_access_key != nil
-        @secret_access_key = secret_access_key
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
+      @access_key = access_key == nil ? "" : access_key
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @endpoint = endpoint == nil ? "" : endpoint
+      @healthy = healthy == nil ? false : healthy
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @port_override = port_override == nil ? 0 : port_override
+      @region = region == nil ? "" : region
+      @role_arn = role_arn == nil ? "" : role_arn
+      @role_external_id = role_external_id == nil ? "" : role_external_id
+      @secret_access_key = secret_access_key == nil ? "" : secret_access_key
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
     def to_json(options = {})
@@ -1290,42 +992,18 @@ module SDM
       tls_required: nil,
       username: nil
     )
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if password != nil
-        @password = password
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if tls_required != nil
-        @tls_required = tls_required
-      end
-      if username != nil
-        @username = username
-      end
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tls_required = tls_required == nil ? false : tls_required
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -1379,45 +1057,19 @@ module SDM
       secret_store_id: nil,
       tags: nil
     )
-      if access_key != nil
-        @access_key = access_key
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if output != nil
-        @output = output
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if region != nil
-        @region = region
-      end
-      if role_arn != nil
-        @role_arn = role_arn
-      end
-      if role_external_id != nil
-        @role_external_id = role_external_id
-      end
-      if secret_access_key != nil
-        @secret_access_key = secret_access_key
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
+      @access_key = access_key == nil ? "" : access_key
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @output = output == nil ? "" : output
+      @port_override = port_override == nil ? 0 : port_override
+      @region = region == nil ? "" : region
+      @role_arn = role_arn == nil ? "" : role_arn
+      @role_external_id = role_external_id == nil ? "" : role_external_id
+      @secret_access_key = secret_access_key == nil ? "" : secret_access_key
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
     def to_json(options = {})
@@ -1468,42 +1120,18 @@ module SDM
       tags: nil,
       username: nil
     )
-      if database != nil
-        @database = database
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if password != nil
-        @password = password
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if username != nil
-        @username = username
-      end
+      @database = database == nil ? "" : database
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -1557,45 +1185,19 @@ module SDM
       tags: nil,
       username: nil
     )
-      if database != nil
-        @database = database
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if override_database != nil
-        @override_database = override_database
-      end
-      if password != nil
-        @password = password
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if username != nil
-        @username = username
-      end
+      @database = database == nil ? "" : database
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @override_database = override_database == nil ? false : override_database
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -1637,33 +1239,15 @@ module SDM
       tags: nil,
       tenant_id: nil
     )
-      if app_id != nil
-        @app_id = app_id
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if password != nil
-        @password = password
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if tenant_id != nil
-        @tenant_id = tenant_id
-      end
+      @app_id = app_id == nil ? "" : app_id
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tenant_id = tenant_id == nil ? "" : tenant_id
     end
 
     def to_json(options = {})
@@ -1705,33 +1289,15 @@ module SDM
       tags: nil,
       tenant_id: nil
     )
-      if app_id != nil
-        @app_id = app_id
-      end
-      if client_certificate != nil
-        @client_certificate = client_certificate
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if tenant_id != nil
-        @tenant_id = tenant_id
-      end
+      @app_id = app_id == nil ? "" : app_id
+      @client_certificate = client_certificate == nil ? "" : client_certificate
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tenant_id = tenant_id == nil ? "" : tenant_id
     end
 
     def to_json(options = {})
@@ -1785,45 +1351,19 @@ module SDM
       tags: nil,
       username: nil
     )
-      if database != nil
-        @database = database
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if override_database != nil
-        @override_database = override_database
-      end
-      if password != nil
-        @password = password
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if username != nil
-        @username = username
-      end
+      @database = database == nil ? "" : database
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @override_database = override_database == nil ? false : override_database
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -1851,18 +1391,10 @@ module SDM
       tags: nil,
       vault_uri: nil
     )
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if vault_uri != nil
-        @vault_uri = vault_uri
-      end
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @vault_uri = vault_uri == nil ? "" : vault_uri
     end
 
     def to_json(options = {})
@@ -1911,39 +1443,17 @@ module SDM
       tags: nil,
       username: nil
     )
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if endpoint != nil
-        @endpoint = endpoint
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if private_key != nil
-        @private_key = private_key
-      end
-      if project != nil
-        @project = project
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if username != nil
-        @username = username
-      end
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @endpoint = endpoint == nil ? "" : endpoint
+      @healthy = healthy == nil ? false : healthy
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @port_override = port_override == nil ? 0 : port_override
+      @private_key = private_key == nil ? "" : private_key
+      @project = project == nil ? "" : project
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -1995,42 +1505,18 @@ module SDM
       tls_required: nil,
       username: nil
     )
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if password != nil
-        @password = password
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if tls_required != nil
-        @tls_required = tls_required
-      end
-      if username != nil
-        @username = username
-      end
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tls_required = tls_required == nil ? false : tls_required
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -2084,45 +1570,19 @@ module SDM
       tags: nil,
       username: nil
     )
-      if database != nil
-        @database = database
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if override_database != nil
-        @override_database = override_database
-      end
-      if password != nil
-        @password = password
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if username != nil
-        @username = username
-      end
+      @database = database == nil ? "" : database
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @override_database = override_database == nil ? false : override_database
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -2173,42 +1633,18 @@ module SDM
       tags: nil,
       username: nil
     )
-      if database != nil
-        @database = database
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if password != nil
-        @password = password
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if username != nil
-        @username = username
-      end
+      @database = database == nil ? "" : database
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -2262,45 +1698,19 @@ module SDM
       tags: nil,
       username: nil
     )
-      if database != nil
-        @database = database
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if override_database != nil
-        @override_database = override_database
-      end
-      if password != nil
-        @password = password
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if username != nil
-        @username = username
-      end
+      @database = database == nil ? "" : database
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @override_database = override_database == nil ? false : override_database
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -2328,15 +1738,9 @@ module SDM
       public_key: nil,
       rate_limit: nil
     )
-      if meta != nil
-        @meta = meta
-      end
-      if public_key != nil
-        @public_key = public_key
-      end
-      if rate_limit != nil
-        @rate_limit = rate_limit
-      end
+      @meta = meta == nil ? nil : meta
+      @public_key = public_key == nil ? "" : public_key
+      @rate_limit = rate_limit == nil ? nil : rate_limit
     end
 
     def to_json(options = {})
@@ -2362,15 +1766,9 @@ module SDM
       rate_limit: nil,
       valid: nil
     )
-      if meta != nil
-        @meta = meta
-      end
-      if rate_limit != nil
-        @rate_limit = rate_limit
-      end
-      if valid != nil
-        @valid = valid
-      end
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+      @valid = valid == nil ? false : valid
     end
 
     def to_json(options = {})
@@ -2436,42 +1834,18 @@ module SDM
       tls_required: nil,
       username: nil
     )
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if password != nil
-        @password = password
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if tls_required != nil
-        @tls_required = tls_required
-      end
-      if username != nil
-        @username = username
-      end
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tls_required = tls_required == nil ? false : tls_required
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -2522,42 +1896,18 @@ module SDM
       tags: nil,
       username: nil
     )
-      if database != nil
-        @database = database
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if password != nil
-        @password = password
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if username != nil
-        @username = username
-      end
+      @database = database == nil ? "" : database
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -2622,42 +1972,18 @@ module SDM
       tags: nil,
       username: nil
     )
-      if auth_database != nil
-        @auth_database = auth_database
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if password != nil
-        @password = password
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if username != nil
-        @username = username
-      end
+      @auth_database = auth_database == nil ? "" : auth_database
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -2711,45 +2037,19 @@ module SDM
       tags: nil,
       username: nil
     )
-      if auth_database != nil
-        @auth_database = auth_database
-      end
-      if connect_to_replica != nil
-        @connect_to_replica = connect_to_replica
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if password != nil
-        @password = password
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if replica_set != nil
-        @replica_set = replica_set
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if username != nil
-        @username = username
-      end
+      @auth_database = auth_database == nil ? "" : auth_database
+      @connect_to_replica = connect_to_replica == nil ? false : connect_to_replica
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port_override = port_override == nil ? 0 : port_override
+      @replica_set = replica_set == nil ? "" : replica_set
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -2798,39 +2098,17 @@ module SDM
       tags: nil,
       username: nil
     )
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if password != nil
-        @password = password
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if username != nil
-        @username = username
-      end
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -2884,45 +2162,19 @@ module SDM
       secret_store_id: nil,
       tags: nil
     )
-      if access_key != nil
-        @access_key = access_key
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if endpoint != nil
-        @endpoint = endpoint
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if region != nil
-        @region = region
-      end
-      if role_arn != nil
-        @role_arn = role_arn
-      end
-      if role_external_id != nil
-        @role_external_id = role_external_id
-      end
-      if secret_access_key != nil
-        @secret_access_key = secret_access_key
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
+      @access_key = access_key == nil ? "" : access_key
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @endpoint = endpoint == nil ? "" : endpoint
+      @healthy = healthy == nil ? false : healthy
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @port_override = port_override == nil ? 0 : port_override
+      @region = region == nil ? "" : region
+      @role_arn = role_arn == nil ? "" : role_arn
+      @role_external_id = role_external_id == nil ? "" : role_external_id
+      @secret_access_key = secret_access_key == nil ? "" : secret_access_key
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
     def to_json(options = {})
@@ -2974,42 +2226,18 @@ module SDM
       tls_required: nil,
       username: nil
     )
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if password != nil
-        @password = password
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if tls_required != nil
-        @tls_required = tls_required
-      end
-      if username != nil
-        @username = username
-      end
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tls_required = tls_required == nil ? false : tls_required
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -3058,39 +2286,17 @@ module SDM
       tags: nil,
       tls_required: nil
     )
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if password != nil
-        @password = password
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if tls_required != nil
-        @tls_required = tls_required
-      end
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tls_required = tls_required == nil ? false : tls_required
     end
 
     def to_json(options = {})
@@ -3130,30 +2336,45 @@ module SDM
       secret_store_id: nil,
       tags: nil
     )
-      if egress_filter != nil
-        @egress_filter = egress_filter
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @id = id == nil ? "" : id
+      @keyfile = keyfile == nil ? "" : keyfile
+      @name = name == nil ? "" : name
+      @scopes = scopes == nil ? "" : scopes
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
       end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if id != nil
-        @id = id
-      end
-      if keyfile != nil
-        @keyfile = keyfile
-      end
-      if name != nil
-        @name = name
-      end
-      if scopes != nil
-        @scopes = scopes
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
+      hash.to_json
+    end
+  end
+
+  class GCPStore
+    # Unique identifier of the SecretStore.
+    attr_accessor :id
+    # Unique human-readable name of the SecretStore.
+    attr_accessor :name
+
+    attr_accessor :projectid
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      id: nil,
+      name: nil,
+      projectid: nil,
+      tags: nil
+    )
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @projectid = projectid == nil ? "" : projectid
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
     def to_json(options = {})
@@ -3194,27 +2415,13 @@ module SDM
       state: nil,
       tags: nil
     )
-      if bind_address != nil
-        @bind_address = bind_address
-      end
-      if gateway_filter != nil
-        @gateway_filter = gateway_filter
-      end
-      if id != nil
-        @id = id
-      end
-      if listen_address != nil
-        @listen_address = listen_address
-      end
-      if name != nil
-        @name = name
-      end
-      if state != nil
-        @state = state
-      end
-      if tags != nil
-        @tags = tags
-      end
+      @bind_address = bind_address == nil ? "" : bind_address
+      @gateway_filter = gateway_filter == nil ? "" : gateway_filter
+      @id = id == nil ? "" : id
+      @listen_address = listen_address == nil ? "" : listen_address
+      @name = name == nil ? "" : name
+      @state = state == nil ? "" : state
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
     def to_json(options = {})
@@ -3273,36 +2480,16 @@ module SDM
       service_account_key: nil,
       tags: nil
     )
-      if certificate_authority != nil
-        @certificate_authority = certificate_authority
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if endpoint != nil
-        @endpoint = endpoint
-      end
-      if healthcheck_namespace != nil
-        @healthcheck_namespace = healthcheck_namespace
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if service_account_key != nil
-        @service_account_key = service_account_key
-      end
-      if tags != nil
-        @tags = tags
-      end
+      @certificate_authority = certificate_authority == nil ? "" : certificate_authority
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @endpoint = endpoint == nil ? "" : endpoint
+      @healthcheck_namespace = healthcheck_namespace == nil ? "" : healthcheck_namespace
+      @healthy = healthy == nil ? false : healthy
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @service_account_key = service_account_key == nil ? "" : service_account_key
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
     def to_json(options = {})
@@ -3347,36 +2534,16 @@ module SDM
       service_account_key: nil,
       tags: nil
     )
-      if certificate_authority != nil
-        @certificate_authority = certificate_authority
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if endpoint != nil
-        @endpoint = endpoint
-      end
-      if healthcheck_namespace != nil
-        @healthcheck_namespace = healthcheck_namespace
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if service_account_key != nil
-        @service_account_key = service_account_key
-      end
-      if tags != nil
-        @tags = tags
-      end
+      @certificate_authority = certificate_authority == nil ? "" : certificate_authority
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @endpoint = endpoint == nil ? "" : endpoint
+      @healthcheck_namespace = healthcheck_namespace == nil ? "" : healthcheck_namespace
+      @healthy = healthy == nil ? false : healthy
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @service_account_key = service_account_key == nil ? "" : service_account_key
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
     def to_json(options = {})
@@ -3430,45 +2597,19 @@ module SDM
       tags: nil,
       username: nil
     )
-      if database != nil
-        @database = database
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if override_database != nil
-        @override_database = override_database
-      end
-      if password != nil
-        @password = password
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if username != nil
-        @username = username
-      end
+      @database = database == nil ? "" : database
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @override_database = override_database == nil ? false : override_database
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -3519,42 +2660,18 @@ module SDM
       tags: nil,
       url: nil
     )
-      if auth_header != nil
-        @auth_header = auth_header
-      end
-      if default_path != nil
-        @default_path = default_path
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if headers_blacklist != nil
-        @headers_blacklist = headers_blacklist
-      end
-      if healthcheck_path != nil
-        @healthcheck_path = healthcheck_path
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if subdomain != nil
-        @subdomain = subdomain
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if url != nil
-        @url = url
-      end
+      @auth_header = auth_header == nil ? "" : auth_header
+      @default_path = default_path == nil ? "" : default_path
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @headers_blacklist = headers_blacklist == nil ? "" : headers_blacklist
+      @healthcheck_path = healthcheck_path == nil ? "" : healthcheck_path
+      @healthy = healthy == nil ? false : healthy
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @subdomain = subdomain == nil ? "" : subdomain
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @url = url == nil ? "" : url
     end
 
     def to_json(options = {})
@@ -3608,45 +2725,19 @@ module SDM
       url: nil,
       username: nil
     )
-      if default_path != nil
-        @default_path = default_path
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if headers_blacklist != nil
-        @headers_blacklist = headers_blacklist
-      end
-      if healthcheck_path != nil
-        @healthcheck_path = healthcheck_path
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if password != nil
-        @password = password
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if subdomain != nil
-        @subdomain = subdomain
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if url != nil
-        @url = url
-      end
-      if username != nil
-        @username = username
-      end
+      @default_path = default_path == nil ? "" : default_path
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @headers_blacklist = headers_blacklist == nil ? "" : headers_blacklist
+      @healthcheck_path = healthcheck_path == nil ? "" : healthcheck_path
+      @healthy = healthy == nil ? false : healthy
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @subdomain = subdomain == nil ? "" : subdomain
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @url = url == nil ? "" : url
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -3694,39 +2785,17 @@ module SDM
       tags: nil,
       url: nil
     )
-      if default_path != nil
-        @default_path = default_path
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if headers_blacklist != nil
-        @headers_blacklist = headers_blacklist
-      end
-      if healthcheck_path != nil
-        @healthcheck_path = healthcheck_path
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if subdomain != nil
-        @subdomain = subdomain
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if url != nil
-        @url = url
-      end
+      @default_path = default_path == nil ? "" : default_path
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @headers_blacklist = headers_blacklist == nil ? "" : headers_blacklist
+      @healthcheck_path = healthcheck_path == nil ? "" : healthcheck_path
+      @healthy = healthy == nil ? false : healthy
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @subdomain = subdomain == nil ? "" : subdomain
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @url = url == nil ? "" : url
     end
 
     def to_json(options = {})
@@ -3777,42 +2846,18 @@ module SDM
       secret_store_id: nil,
       tags: nil
     )
-      if certificate_authority != nil
-        @certificate_authority = certificate_authority
-      end
-      if client_certificate != nil
-        @client_certificate = client_certificate
-      end
-      if client_key != nil
-        @client_key = client_key
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthcheck_namespace != nil
-        @healthcheck_namespace = healthcheck_namespace
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if port != nil
-        @port = port
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
+      @certificate_authority = certificate_authority == nil ? "" : certificate_authority
+      @client_certificate = client_certificate == nil ? "" : client_certificate
+      @client_key = client_key == nil ? "" : client_key
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthcheck_namespace = healthcheck_namespace == nil ? "" : healthcheck_namespace
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @port = port == nil ? 0 : port
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
     def to_json(options = {})
@@ -3861,39 +2906,17 @@ module SDM
       tags: nil,
       username: nil
     )
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthcheck_namespace != nil
-        @healthcheck_namespace = healthcheck_namespace
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if password != nil
-        @password = password
-      end
-      if port != nil
-        @port = port
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if username != nil
-        @username = username
-      end
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthcheck_namespace = healthcheck_namespace == nil ? "" : healthcheck_namespace
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -3939,36 +2962,16 @@ module SDM
       tags: nil,
       token: nil
     )
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthcheck_namespace != nil
-        @healthcheck_namespace = healthcheck_namespace
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if port != nil
-        @port = port
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if token != nil
-        @token = token
-      end
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthcheck_namespace = healthcheck_namespace == nil ? "" : healthcheck_namespace
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @port = port == nil ? 0 : port
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @token = token == nil ? "" : token
     end
 
     def to_json(options = {})
@@ -4014,36 +3017,16 @@ module SDM
       tags: nil,
       token: nil
     )
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthcheck_namespace != nil
-        @healthcheck_namespace = healthcheck_namespace
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if port != nil
-        @port = port
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if token != nil
-        @token = token
-      end
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthcheck_namespace = healthcheck_namespace == nil ? "" : healthcheck_namespace
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @port = port == nil ? 0 : port
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @token = token == nil ? "" : token
     end
 
     def to_json(options = {})
@@ -4094,42 +3077,18 @@ module SDM
       secret_store_id: nil,
       tags: nil
     )
-      if certificate_authority != nil
-        @certificate_authority = certificate_authority
-      end
-      if client_certificate != nil
-        @client_certificate = client_certificate
-      end
-      if client_key != nil
-        @client_key = client_key
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthcheck_namespace != nil
-        @healthcheck_namespace = healthcheck_namespace
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if port != nil
-        @port = port
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
+      @certificate_authority = certificate_authority == nil ? "" : certificate_authority
+      @client_certificate = client_certificate == nil ? "" : client_certificate
+      @client_key = client_key == nil ? "" : client_key
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthcheck_namespace = healthcheck_namespace == nil ? "" : healthcheck_namespace
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @port = port == nil ? 0 : port
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
     def to_json(options = {})
@@ -4195,57 +3154,23 @@ module SDM
       tags: nil,
       username: nil
     )
-      if certificate_authority != nil
-        @certificate_authority = certificate_authority
-      end
-      if client_certificate != nil
-        @client_certificate = client_certificate
-      end
-      if client_key != nil
-        @client_key = client_key
-      end
-      if database != nil
-        @database = database
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if override_database != nil
-        @override_database = override_database
-      end
-      if password != nil
-        @password = password
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if server_name != nil
-        @server_name = server_name
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if username != nil
-        @username = username
-      end
+      @certificate_authority = certificate_authority == nil ? "" : certificate_authority
+      @client_certificate = client_certificate == nil ? "" : client_certificate
+      @client_key = client_key == nil ? "" : client_key
+      @database = database == nil ? "" : database
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @override_database = override_database == nil ? false : override_database
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @server_name = server_name == nil ? "" : server_name
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -4296,42 +3221,18 @@ module SDM
       tags: nil,
       username: nil
     )
-      if database != nil
-        @database = database
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if password != nil
-        @password = password
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if username != nil
-        @username = username
-      end
+      @database = database == nil ? "" : database
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -4374,33 +3275,15 @@ module SDM
       secret_store_id: nil,
       tags: nil
     )
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
     def to_json(options = {})
@@ -4451,42 +3334,18 @@ module SDM
       tags: nil,
       username: nil
     )
-      if database != nil
-        @database = database
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if password != nil
-        @password = password
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if username != nil
-        @username = username
-      end
+      @database = database == nil ? "" : database
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -4540,45 +3399,19 @@ module SDM
       tls_required: nil,
       username: nil
     )
-      if auth_database != nil
-        @auth_database = auth_database
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if password != nil
-        @password = password
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if tls_required != nil
-        @tls_required = tls_required
-      end
-      if username != nil
-        @username = username
-      end
+      @auth_database = auth_database == nil ? "" : auth_database
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tls_required = tls_required == nil ? false : tls_required
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -4635,48 +3468,20 @@ module SDM
       tls_required: nil,
       username: nil
     )
-      if auth_database != nil
-        @auth_database = auth_database
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if password != nil
-        @password = password
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if replica_set != nil
-        @replica_set = replica_set
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if tls_required != nil
-        @tls_required = tls_required
-      end
-      if username != nil
-        @username = username
-      end
+      @auth_database = auth_database == nil ? "" : auth_database
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @replica_set = replica_set == nil ? "" : replica_set
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tls_required = tls_required == nil ? false : tls_required
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -4736,51 +3541,21 @@ module SDM
       tls_required: nil,
       username: nil
     )
-      if auth_database != nil
-        @auth_database = auth_database
-      end
-      if connect_to_replica != nil
-        @connect_to_replica = connect_to_replica
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if password != nil
-        @password = password
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if replica_set != nil
-        @replica_set = replica_set
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if tls_required != nil
-        @tls_required = tls_required
-      end
-      if username != nil
-        @username = username
-      end
+      @auth_database = auth_database == nil ? "" : auth_database
+      @connect_to_replica = connect_to_replica == nil ? false : connect_to_replica
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @replica_set = replica_set == nil ? "" : replica_set
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tls_required = tls_required == nil ? false : tls_required
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -4840,51 +3615,21 @@ module SDM
       tls_required: nil,
       username: nil
     )
-      if auth_database != nil
-        @auth_database = auth_database
-      end
-      if connect_to_replica != nil
-        @connect_to_replica = connect_to_replica
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if password != nil
-        @password = password
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if replica_set != nil
-        @replica_set = replica_set
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if tls_required != nil
-        @tls_required = tls_required
-      end
-      if username != nil
-        @username = username
-      end
+      @auth_database = auth_database == nil ? "" : auth_database
+      @connect_to_replica = connect_to_replica == nil ? false : connect_to_replica
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @replica_set = replica_set == nil ? "" : replica_set
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tls_required = tls_required == nil ? false : tls_required
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -4935,42 +3680,18 @@ module SDM
       tls_required: nil,
       username: nil
     )
-      if auth_database != nil
-        @auth_database = auth_database
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if password != nil
-        @password = password
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if tls_required != nil
-        @tls_required = tls_required
-      end
-      if username != nil
-        @username = username
-      end
+      @auth_database = auth_database == nil ? "" : auth_database
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tls_required = tls_required == nil ? false : tls_required
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -5021,42 +3742,18 @@ module SDM
       tags: nil,
       username: nil
     )
-      if database != nil
-        @database = database
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if password != nil
-        @password = password
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if username != nil
-        @username = username
-      end
+      @database = database == nil ? "" : database
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -5099,33 +3796,15 @@ module SDM
       secret_store_id: nil,
       tags: nil
     )
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if endpoint != nil
-        @endpoint = endpoint
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @endpoint = endpoint == nil ? "" : endpoint
+      @healthy = healthy == nil ? false : healthy
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
     def to_json(options = {})
@@ -5182,48 +3861,20 @@ module SDM
       secret_store_id: nil,
       tags: nil
     )
-      if access_key != nil
-        @access_key = access_key
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if endpoint != nil
-        @endpoint = endpoint
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if region != nil
-        @region = region
-      end
-      if role_arn != nil
-        @role_arn = role_arn
-      end
-      if role_external_id != nil
-        @role_external_id = role_external_id
-      end
-      if secret_access_key != nil
-        @secret_access_key = secret_access_key
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
+      @access_key = access_key == nil ? "" : access_key
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @endpoint = endpoint == nil ? "" : endpoint
+      @healthy = healthy == nil ? false : healthy
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @region = region == nil ? "" : region
+      @role_arn = role_arn == nil ? "" : role_arn
+      @role_external_id = role_external_id == nil ? "" : role_external_id
+      @secret_access_key = secret_access_key == nil ? "" : secret_access_key
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
     def to_json(options = {})
@@ -5253,18 +3904,10 @@ module SDM
       rate_limit: nil,
       token: nil
     )
-      if meta != nil
-        @meta = meta
-      end
-      if node != nil
-        @node = node
-      end
-      if rate_limit != nil
-        @rate_limit = rate_limit
-      end
-      if token != nil
-        @token = token
-      end
+      @meta = meta == nil ? nil : meta
+      @node = node == nil ? nil : node
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+      @token = token == nil ? "" : token
     end
 
     def to_json(options = {})
@@ -5287,12 +3930,8 @@ module SDM
       meta: nil,
       rate_limit: nil
     )
-      if meta != nil
-        @meta = meta
-      end
-      if rate_limit != nil
-        @rate_limit = rate_limit
-      end
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
     end
 
     def to_json(options = {})
@@ -5318,15 +3957,9 @@ module SDM
       node: nil,
       rate_limit: nil
     )
-      if meta != nil
-        @meta = meta
-      end
-      if node != nil
-        @node = node
-      end
-      if rate_limit != nil
-        @rate_limit = rate_limit
-      end
+      @meta = meta == nil ? nil : meta
+      @node = node == nil ? nil : node
+      @rate_limit = rate_limit == nil ? nil : rate_limit
     end
 
     def to_json(options = {})
@@ -5353,15 +3986,9 @@ module SDM
       node: nil,
       rate_limit: nil
     )
-      if meta != nil
-        @meta = meta
-      end
-      if node != nil
-        @node = node
-      end
-      if rate_limit != nil
-        @rate_limit = rate_limit
-      end
+      @meta = meta == nil ? nil : meta
+      @node = node == nil ? nil : node
+      @rate_limit = rate_limit == nil ? nil : rate_limit
     end
 
     def to_json(options = {})
@@ -5415,45 +4042,19 @@ module SDM
       tls_required: nil,
       username: nil
     )
-      if database != nil
-        @database = database
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if password != nil
-        @password = password
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if tls_required != nil
-        @tls_required = tls_required
-      end
-      if username != nil
-        @username = username
-      end
+      @database = database == nil ? "" : database
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tls_required = tls_required == nil ? false : tls_required
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -5507,45 +4108,19 @@ module SDM
       tags: nil,
       username: nil
     )
-      if database != nil
-        @database = database
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if override_database != nil
-        @override_database = override_database
-      end
-      if password != nil
-        @password = password
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if username != nil
-        @username = username
-      end
+      @database = database == nil ? "" : database
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @override_database = override_database == nil ? false : override_database
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -5599,45 +4174,19 @@ module SDM
       tls_required: nil,
       username: nil
     )
-      if database != nil
-        @database = database
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if password != nil
-        @password = password
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if tls_required != nil
-        @tls_required = tls_required
-      end
-      if username != nil
-        @username = username
-      end
+      @database = database == nil ? "" : database
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tls_required = tls_required == nil ? false : tls_required
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -5688,42 +4237,18 @@ module SDM
       tags: nil,
       username: nil
     )
-      if downgrade_nla_connections != nil
-        @downgrade_nla_connections = downgrade_nla_connections
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if password != nil
-        @password = password
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if username != nil
-        @username = username
-      end
+      @downgrade_nla_connections = downgrade_nla_connections == nil ? false : downgrade_nla_connections
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -5775,42 +4300,18 @@ module SDM
       tls_required: nil,
       username: nil
     )
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if password != nil
-        @password = password
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if tls_required != nil
-        @tls_required = tls_required
-      end
-      if username != nil
-        @username = username
-      end
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tls_required = tls_required == nil ? false : tls_required
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -5842,18 +4343,10 @@ module SDM
       remaining: nil,
       reset_at: nil
     )
-      if bucket != nil
-        @bucket = bucket
-      end
-      if limit != nil
-        @limit = limit
-      end
-      if remaining != nil
-        @remaining = remaining
-      end
-      if reset_at != nil
-        @reset_at = reset_at
-      end
+      @bucket = bucket == nil ? "" : bucket
+      @limit = limit == nil ? 0 : limit
+      @remaining = remaining == nil ? 0 : remaining
+      @reset_at = reset_at == nil ? nil : reset_at
     end
 
     def to_json(options = {})
@@ -5896,33 +4389,15 @@ module SDM
       secret_store_id: nil,
       tags: nil
     )
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
     def to_json(options = {})
@@ -5968,36 +4443,16 @@ module SDM
       secret_store_id: nil,
       tags: nil
     )
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if password != nil
-        @password = password
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
     def to_json(options = {})
@@ -6051,45 +4506,19 @@ module SDM
       tags: nil,
       username: nil
     )
-      if database != nil
-        @database = database
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if override_database != nil
-        @override_database = override_database
-      end
-      if password != nil
-        @password = password
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if username != nil
-        @username = username
-      end
+      @database = database == nil ? "" : database
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @override_database = override_database == nil ? false : override_database
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -6124,21 +4553,11 @@ module SDM
       state: nil,
       tags: nil
     )
-      if gateway_filter != nil
-        @gateway_filter = gateway_filter
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if state != nil
-        @state = state
-      end
-      if tags != nil
-        @tags = tags
-      end
+      @gateway_filter = gateway_filter == nil ? "" : gateway_filter
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @state = state == nil ? "" : state
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
     def to_json(options = {})
@@ -6164,15 +4583,9 @@ module SDM
       rate_limit: nil,
       resource: nil
     )
-      if meta != nil
-        @meta = meta
-      end
-      if rate_limit != nil
-        @rate_limit = rate_limit
-      end
-      if resource != nil
-        @resource = resource
-      end
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+      @resource = resource == nil ? nil : resource
     end
 
     def to_json(options = {})
@@ -6195,12 +4608,8 @@ module SDM
       meta: nil,
       rate_limit: nil
     )
-      if meta != nil
-        @meta = meta
-      end
-      if rate_limit != nil
-        @rate_limit = rate_limit
-      end
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
     end
 
     def to_json(options = {})
@@ -6226,15 +4635,9 @@ module SDM
       rate_limit: nil,
       resource: nil
     )
-      if meta != nil
-        @meta = meta
-      end
-      if rate_limit != nil
-        @rate_limit = rate_limit
-      end
-      if resource != nil
-        @resource = resource
-      end
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+      @resource = resource == nil ? nil : resource
     end
 
     def to_json(options = {})
@@ -6261,15 +4664,9 @@ module SDM
       rate_limit: nil,
       resource: nil
     )
-      if meta != nil
-        @meta = meta
-      end
-      if rate_limit != nil
-        @rate_limit = rate_limit
-      end
-      if resource != nil
-        @resource = resource
-      end
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+      @resource = resource == nil ? nil : resource
     end
 
     def to_json(options = {})
@@ -6306,21 +4703,11 @@ module SDM
       name: nil,
       tags: nil
     )
-      if access_rules != nil
-        @access_rules = access_rules
-      end
-      if composite != nil
-        @composite = composite
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if tags != nil
-        @tags = tags
-      end
+      @access_rules = access_rules == nil ? SDM::_porcelain_zero_value_access_rules() : access_rules
+      @composite = composite == nil ? false : composite
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
     def to_json(options = {})
@@ -6348,15 +4735,9 @@ module SDM
       composite_role_id: nil,
       id: nil
     )
-      if attached_role_id != nil
-        @attached_role_id = attached_role_id
-      end
-      if composite_role_id != nil
-        @composite_role_id = composite_role_id
-      end
-      if id != nil
-        @id = id
-      end
+      @attached_role_id = attached_role_id == nil ? "" : attached_role_id
+      @composite_role_id = composite_role_id == nil ? "" : composite_role_id
+      @id = id == nil ? "" : id
     end
 
     def to_json(options = {})
@@ -6384,15 +4765,9 @@ module SDM
       rate_limit: nil,
       role_attachment: nil
     )
-      if meta != nil
-        @meta = meta
-      end
-      if rate_limit != nil
-        @rate_limit = rate_limit
-      end
-      if role_attachment != nil
-        @role_attachment = role_attachment
-      end
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+      @role_attachment = role_attachment == nil ? nil : role_attachment
     end
 
     def to_json(options = {})
@@ -6417,12 +4792,8 @@ module SDM
       meta: nil,
       rate_limit: nil
     )
-      if meta != nil
-        @meta = meta
-      end
-      if rate_limit != nil
-        @rate_limit = rate_limit
-      end
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
     end
 
     def to_json(options = {})
@@ -6450,15 +4821,9 @@ module SDM
       rate_limit: nil,
       role_attachment: nil
     )
-      if meta != nil
-        @meta = meta
-      end
-      if rate_limit != nil
-        @rate_limit = rate_limit
-      end
-      if role_attachment != nil
-        @role_attachment = role_attachment
-      end
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+      @role_attachment = role_attachment == nil ? nil : role_attachment
     end
 
     def to_json(options = {})
@@ -6485,15 +4850,9 @@ module SDM
       rate_limit: nil,
       role: nil
     )
-      if meta != nil
-        @meta = meta
-      end
-      if rate_limit != nil
-        @rate_limit = rate_limit
-      end
-      if role != nil
-        @role = role
-      end
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+      @role = role == nil ? nil : role
     end
 
     def to_json(options = {})
@@ -6516,12 +4875,8 @@ module SDM
       meta: nil,
       rate_limit: nil
     )
-      if meta != nil
-        @meta = meta
-      end
-      if rate_limit != nil
-        @rate_limit = rate_limit
-      end
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
     end
 
     def to_json(options = {})
@@ -6547,15 +4902,9 @@ module SDM
       rate_limit: nil,
       role: nil
     )
-      if meta != nil
-        @meta = meta
-      end
-      if rate_limit != nil
-        @rate_limit = rate_limit
-      end
-      if role != nil
-        @role = role
-      end
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+      @role = role == nil ? nil : role
     end
 
     def to_json(options = {})
@@ -6583,15 +4932,9 @@ module SDM
       resource_id: nil,
       role_id: nil
     )
-      if id != nil
-        @id = id
-      end
-      if resource_id != nil
-        @resource_id = resource_id
-      end
-      if role_id != nil
-        @role_id = role_id
-      end
+      @id = id == nil ? "" : id
+      @resource_id = resource_id == nil ? "" : resource_id
+      @role_id = role_id == nil ? "" : role_id
     end
 
     def to_json(options = {})
@@ -6619,15 +4962,9 @@ module SDM
       rate_limit: nil,
       role_grant: nil
     )
-      if meta != nil
-        @meta = meta
-      end
-      if rate_limit != nil
-        @rate_limit = rate_limit
-      end
-      if role_grant != nil
-        @role_grant = role_grant
-      end
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+      @role_grant = role_grant == nil ? nil : role_grant
     end
 
     def to_json(options = {})
@@ -6652,12 +4989,8 @@ module SDM
       meta: nil,
       rate_limit: nil
     )
-      if meta != nil
-        @meta = meta
-      end
-      if rate_limit != nil
-        @rate_limit = rate_limit
-      end
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
     end
 
     def to_json(options = {})
@@ -6685,15 +5018,9 @@ module SDM
       rate_limit: nil,
       role_grant: nil
     )
-      if meta != nil
-        @meta = meta
-      end
-      if rate_limit != nil
-        @rate_limit = rate_limit
-      end
-      if role_grant != nil
-        @role_grant = role_grant
-      end
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+      @role_grant = role_grant == nil ? nil : role_grant
     end
 
     def to_json(options = {})
@@ -6720,15 +5047,9 @@ module SDM
       rate_limit: nil,
       role: nil
     )
-      if meta != nil
-        @meta = meta
-      end
-      if rate_limit != nil
-        @rate_limit = rate_limit
-      end
-      if role != nil
-        @role = role
-      end
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+      @role = role == nil ? nil : role
     end
 
     def to_json(options = {})
@@ -6785,48 +5106,20 @@ module SDM
       tags: nil,
       username: nil
     )
-      if database != nil
-        @database = database
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if override_database != nil
-        @override_database = override_database
-      end
-      if password != nil
-        @password = password
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if schema != nil
-        @schema = schema
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if username != nil
-        @username = username
-      end
+      @database = database == nil ? "" : database
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @override_database = override_database == nil ? false : override_database
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @schema = schema == nil ? "" : schema
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -6877,42 +5170,18 @@ module SDM
       tags: nil,
       username: nil
     )
-      if allow_deprecated_key_exchanges != nil
-        @allow_deprecated_key_exchanges = allow_deprecated_key_exchanges
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if port != nil
-        @port = port
-      end
-      if port_forwarding != nil
-        @port_forwarding = port_forwarding
-      end
-      if public_key != nil
-        @public_key = public_key
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if username != nil
-        @username = username
-      end
+      @allow_deprecated_key_exchanges = allow_deprecated_key_exchanges == nil ? false : allow_deprecated_key_exchanges
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @port = port == nil ? 0 : port
+      @port_forwarding = port_forwarding == nil ? false : port_forwarding
+      @public_key = public_key == nil ? "" : public_key
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -6960,39 +5229,17 @@ module SDM
       tags: nil,
       username: nil
     )
-      if allow_deprecated_key_exchanges != nil
-        @allow_deprecated_key_exchanges = allow_deprecated_key_exchanges
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if port != nil
-        @port = port
-      end
-      if port_forwarding != nil
-        @port_forwarding = port_forwarding
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if username != nil
-        @username = username
-      end
+      @allow_deprecated_key_exchanges = allow_deprecated_key_exchanges == nil ? false : allow_deprecated_key_exchanges
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @port = port == nil ? 0 : port
+      @port_forwarding = port_forwarding == nil ? false : port_forwarding
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -7043,42 +5290,18 @@ module SDM
       tags: nil,
       username: nil
     )
-      if allow_deprecated_key_exchanges != nil
-        @allow_deprecated_key_exchanges = allow_deprecated_key_exchanges
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if port != nil
-        @port = port
-      end
-      if port_forwarding != nil
-        @port_forwarding = port_forwarding
-      end
-      if private_key != nil
-        @private_key = private_key
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if username != nil
-        @username = username
-      end
+      @allow_deprecated_key_exchanges = allow_deprecated_key_exchanges == nil ? false : allow_deprecated_key_exchanges
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @port = port == nil ? 0 : port
+      @port_forwarding = port_forwarding == nil ? false : port_forwarding
+      @private_key = private_key == nil ? "" : private_key
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -7104,15 +5327,9 @@ module SDM
       rate_limit: nil,
       secret_store: nil
     )
-      if meta != nil
-        @meta = meta
-      end
-      if rate_limit != nil
-        @rate_limit = rate_limit
-      end
-      if secret_store != nil
-        @secret_store = secret_store
-      end
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+      @secret_store = secret_store == nil ? nil : secret_store
     end
 
     def to_json(options = {})
@@ -7135,12 +5352,8 @@ module SDM
       meta: nil,
       rate_limit: nil
     )
-      if meta != nil
-        @meta = meta
-      end
-      if rate_limit != nil
-        @rate_limit = rate_limit
-      end
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
     end
 
     def to_json(options = {})
@@ -7166,15 +5379,9 @@ module SDM
       rate_limit: nil,
       secret_store: nil
     )
-      if meta != nil
-        @meta = meta
-      end
-      if rate_limit != nil
-        @rate_limit = rate_limit
-      end
-      if secret_store != nil
-        @secret_store = secret_store
-      end
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+      @secret_store = secret_store == nil ? nil : secret_store
     end
 
     def to_json(options = {})
@@ -7201,15 +5408,9 @@ module SDM
       rate_limit: nil,
       secret_store: nil
     )
-      if meta != nil
-        @meta = meta
-      end
-      if rate_limit != nil
-        @rate_limit = rate_limit
-      end
-      if secret_store != nil
-        @secret_store = secret_store
-      end
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+      @secret_store = secret_store == nil ? nil : secret_store
     end
 
     def to_json(options = {})
@@ -7239,18 +5440,10 @@ module SDM
       suspended: nil,
       tags: nil
     )
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if suspended != nil
-        @suspended = suspended
-      end
-      if tags != nil
-        @tags = tags
-      end
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @suspended = suspended == nil ? false : suspended
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
     def to_json(options = {})
@@ -7301,42 +5494,18 @@ module SDM
       tags: nil,
       username: nil
     )
-      if database != nil
-        @database = database
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if password != nil
-        @password = password
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if username != nil
-        @username = username
-      end
+      @database = database == nil ? "" : database
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -7387,42 +5556,18 @@ module SDM
       tags: nil,
       username: nil
     )
-      if database != nil
-        @database = database
-      end
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if password != nil
-        @password = password
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if schema != nil
-        @schema = schema
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if username != nil
-        @username = username
-      end
+      @database = database == nil ? "" : database
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port_override = port_override == nil ? 0 : port_override
+      @schema = schema == nil ? "" : schema
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -7471,39 +5616,17 @@ module SDM
       tags: nil,
       username: nil
     )
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if password != nil
-        @password = password
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if username != nil
-        @username = username
-      end
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -7552,39 +5675,17 @@ module SDM
       tags: nil,
       username: nil
     )
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if password != nil
-        @password = password
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if username != nil
-        @username = username
-      end
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -7605,12 +5706,8 @@ module SDM
       name: nil,
       value: nil
     )
-      if name != nil
-        @name = name
-      end
-      if value != nil
-        @value = value
-      end
+      @name = name == nil ? "" : name
+      @value = value == nil ? "" : value
     end
 
     def to_json(options = {})
@@ -7659,39 +5756,17 @@ module SDM
       tags: nil,
       username: nil
     )
-      if egress_filter != nil
-        @egress_filter = egress_filter
-      end
-      if healthy != nil
-        @healthy = healthy
-      end
-      if hostname != nil
-        @hostname = hostname
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if password != nil
-        @password = password
-      end
-      if port != nil
-        @port = port
-      end
-      if port_override != nil
-        @port_override = port_override
-      end
-      if secret_store_id != nil
-        @secret_store_id = secret_store_id
-      end
-      if tags != nil
-        @tags = tags
-      end
-      if username != nil
-        @username = username
-      end
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -7741,24 +5816,47 @@ module SDM
       suspended: nil,
       tags: nil
     )
-      if email != nil
-        @email = email
+      @email = email == nil ? "" : email
+      @first_name = first_name == nil ? "" : first_name
+      @id = id == nil ? "" : id
+      @last_name = last_name == nil ? "" : last_name
+      @suspended = suspended == nil ? false : suspended
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
       end
-      if first_name != nil
-        @first_name = first_name
-      end
-      if id != nil
-        @id = id
-      end
-      if last_name != nil
-        @last_name = last_name
-      end
-      if suspended != nil
-        @suspended = suspended
-      end
-      if tags != nil
-        @tags = tags
-      end
+      hash.to_json
+    end
+  end
+
+  class VaultAppRoleStore
+    # Unique identifier of the SecretStore.
+    attr_accessor :id
+    # Unique human-readable name of the SecretStore.
+    attr_accessor :name
+
+    attr_accessor :namespace
+
+    attr_accessor :server_address
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      id: nil,
+      name: nil,
+      namespace: nil,
+      server_address: nil,
+      tags: nil
+    )
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @namespace = namespace == nil ? "" : namespace
+      @server_address = server_address == nil ? "" : server_address
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
     def to_json(options = {})
@@ -7797,30 +5895,14 @@ module SDM
       server_address: nil,
       tags: nil
     )
-      if ca_cert_path != nil
-        @ca_cert_path = ca_cert_path
-      end
-      if client_cert_path != nil
-        @client_cert_path = client_cert_path
-      end
-      if client_key_path != nil
-        @client_key_path = client_key_path
-      end
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if namespace != nil
-        @namespace = namespace
-      end
-      if server_address != nil
-        @server_address = server_address
-      end
-      if tags != nil
-        @tags = tags
-      end
+      @ca_cert_path = ca_cert_path == nil ? "" : ca_cert_path
+      @client_cert_path = client_cert_path == nil ? "" : client_cert_path
+      @client_key_path = client_key_path == nil ? "" : client_key_path
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @namespace = namespace == nil ? "" : namespace
+      @server_address = server_address == nil ? "" : server_address
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
     def to_json(options = {})
@@ -7851,21 +5933,11 @@ module SDM
       server_address: nil,
       tags: nil
     )
-      if id != nil
-        @id = id
-      end
-      if name != nil
-        @name = name
-      end
-      if namespace != nil
-        @namespace = namespace
-      end
-      if server_address != nil
-        @server_address = server_address
-      end
-      if tags != nil
-        @tags = tags
-      end
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @namespace = namespace == nil ? "" : namespace
+      @server_address = server_address == nil ? "" : server_address
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
     def to_json(options = {})
@@ -7875,5 +5947,12 @@ module SDM
       end
       hash.to_json
     end
+  end
+
+  def self._porcelain_zero_value_tags()
+    {}
+  end
+  def self._porcelain_zero_value_access_rules()
+    []
   end
 end
