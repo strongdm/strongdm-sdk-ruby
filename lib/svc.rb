@@ -1101,7 +1101,7 @@ module SDM #:nodoc:
       resp
     end
 
-    deprecate :create, :none, 2022, 3
+    deprecate :create, :none, 2022, 6
     # Get reads one RoleAttachment by ID.
     #
     # Deprecated: use multi-role via AccountAttachments instead.
@@ -1134,7 +1134,7 @@ module SDM #:nodoc:
       resp
     end
 
-    deprecate :get, :none, 2022, 3
+    deprecate :get, :none, 2022, 6
     # Delete removes a RoleAttachment by ID.
     #
     # Deprecated: use multi-role via AccountAttachments instead.
@@ -1166,7 +1166,7 @@ module SDM #:nodoc:
       resp
     end
 
-    deprecate :delete, :none, 2022, 3
+    deprecate :delete, :none, 2022, 6
     # List gets a list of RoleAttachments matching a given set of criteria.
     #
     # Deprecated: use multi-role via AccountAttachments instead.
@@ -1206,7 +1206,7 @@ module SDM #:nodoc:
       resp
     end
 
-    deprecate :list, :none, 2022, 3
+    deprecate :list, :none, 2022, 6
   end
 
   # RoleGrants represent relationships between composite roles and the roles
@@ -1266,7 +1266,7 @@ module SDM #:nodoc:
       resp
     end
 
-    deprecate :create, :none, 2022, 3
+    deprecate :create, :none, 2022, 6
     # Get reads one RoleGrant by ID.
     #
     # Deprecated: use Role access rules instead.
@@ -1299,7 +1299,7 @@ module SDM #:nodoc:
       resp
     end
 
-    deprecate :get, :none, 2022, 3
+    deprecate :get, :none, 2022, 6
     # Delete removes a RoleGrant by ID.
     #
     # Deprecated: use Role access rules instead.
@@ -1331,7 +1331,7 @@ module SDM #:nodoc:
       resp
     end
 
-    deprecate :delete, :none, 2022, 3
+    deprecate :delete, :none, 2022, 6
     # List gets a list of RoleGrants matching a given set of criteria.
     #
     # Deprecated: use Role access rules instead.
@@ -1371,7 +1371,7 @@ module SDM #:nodoc:
       resp
     end
 
-    deprecate :list, :none, 2022, 3
+    deprecate :list, :none, 2022, 6
   end
 
   # A Role has a list of access rules which determine which Resources the members
