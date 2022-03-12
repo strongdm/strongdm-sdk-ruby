@@ -28,22 +28,22 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       repeated :targets, :string, 1941700
     end
     add_message "v1.FieldOptions" do
-      optional :expose_as_porcelain, :bool, 1941302
+      optional :porcelain, :bool, 1941302
       optional :iterable, :bool, 1941303
       optional :required, :bool, 1941304
       optional :write_only, :bool, 1941309
       optional :read_only, :bool, 1941315
       optional :is_credential, :bool, 1941316
       repeated :targets, :string, 1941318
-      optional :terraform_computed, :string, 1941307
       optional :terraform_force_new, :bool, 1941308
       optional :terraform_sensitive, :bool, 1941310
       optional :terraform_diff_suppress_func, :string, 1941319
-      optional :terraform_comment_override, :string, 1941320
+      map :comment_override, :string, :string, 1941320
+      map :read_only_override, :string, :bool, 1941321
+      optional :terraform_computed, :bool, 1941322
       optional :cli_name, :string, 1941311
       optional :cli_json_name, :string, 1941312
       optional :json_gateway_name, :string, 1941313
-      optional :hide_from_json_gateway, :bool, 1941314
       optional :custom, :message, 1941305, "v1.CustomPorcelainTypeOptions"
     end
     add_message "v1.MessageOptions" do
@@ -55,10 +55,9 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :cli_name, :string, 1941307
       optional :cli_json_name, :string, 1941308
       optional :json_gateway_name, :string, 1941309
-      optional :hide_from_json_gateway, :bool, 1941310
       optional :terraform_docs, :message, 1941304, "v1.TerraformDocs"
       optional :terraform_provider_name, :string, 1941311
-      optional :terraform_deprecated_override, :bool, 1941312
+      map :deprecated_override, :string, :bool, 1941312
     end
     add_message "v1.CustomPorcelainTypeOptions" do
       optional :converter, :string, 1941309
