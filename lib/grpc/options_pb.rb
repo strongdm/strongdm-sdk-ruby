@@ -61,12 +61,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     end
     add_message "v1.CustomPorcelainTypeOptions" do
       optional :converter, :string, 1941309
-      optional :go_porcelain_type, :string, 1941310
-      optional :java_porcelain_type, :string, 1941311
-      optional :terraform_porcelain_type, :string, 1941312
-      optional :terraform_elem_type, :string, 1941314
-      optional :openapi_porcelain_type, :string, 1941313
-      optional :json_gateway_porcelain_type, :string, 1941315
+      map :porcelain_type_override, :string, :string, 1941310
+      optional :terraform_elem_type, :string, 1941311
     end
     add_message "v1.TerraformDocs" do
       optional :resource_example_path, :string, 1941300
