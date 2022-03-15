@@ -19,13 +19,29 @@ require "google/protobuf"
 
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("options.proto", :syntax => :proto3) do
+    add_message "v1.FileOptions" do
+      repeated :targets, :string, 1941700
+    end
+    add_message "v1.ServiceOptions" do
+      optional :main_noun, :string, 1941400
+      optional :id_prefix, :string, 1941402
+      repeated :targets, :string, 1941401
+    end
     add_message "v1.MethodOptions" do
       optional :method, :string, 1941300
       optional :url, :string, 1941301
       optional :deprecation_date, :string, 1941302
     end
-    add_message "v1.FileOptions" do
-      repeated :targets, :string, 1941700
+    add_message "v1.MessageOptions" do
+      optional :porcelain, :bool, 1941301
+      optional :error, :int32, 1941302
+      optional :options_field, :string, 1941303
+      repeated :targets, :string, 1941306
+      optional :terraform_docs, :message, 1941304, "v1.TerraformDocs"
+      optional :custom, :message, 1941305, "v1.CustomOptions"
+    end
+    add_message "v1.OneofOptions" do
+      repeated :common_fields, :string, 1941381
     end
     add_message "v1.FieldOptions" do
       optional :porcelain, :bool, 1941302
@@ -38,54 +54,32 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :terraform_force_new, :bool, 1941308
       optional :terraform_sensitive, :bool, 1941310
       optional :terraform_diff_suppress_func, :string, 1941319
-      map :comment_override, :string, :string, 1941320
-      map :read_only_override, :string, :bool, 1941321
       optional :terraform_computed, :bool, 1941322
-      optional :cli_name, :string, 1941311
-      optional :cli_json_name, :string, 1941312
-      optional :json_gateway_name, :string, 1941313
-      optional :custom, :message, 1941305, "v1.CustomPorcelainTypeOptions"
+      optional :custom, :message, 1941305, "v1.CustomOptions"
+      map :read_only_override, :string, :bool, 1941312
     end
-    add_message "v1.MessageOptions" do
-      optional :porcelain, :bool, 1941301
-      optional :error, :int32, 1941302
-      optional :options_field, :string, 1941303
-      optional :custom, :message, 1941305, "v1.CustomPorcelainTypeOptions"
-      repeated :targets, :string, 1941306
-      optional :cli_name, :string, 1941307
-      optional :cli_json_name, :string, 1941308
-      optional :json_gateway_name, :string, 1941309
-      optional :terraform_docs, :message, 1941304, "v1.TerraformDocs"
-      optional :terraform_provider_name, :string, 1941311
-      map :deprecated_override, :string, :bool, 1941312
-    end
-    add_message "v1.CustomPorcelainTypeOptions" do
+    add_message "v1.CustomOptions" do
       optional :converter, :string, 1941309
       map :porcelain_type_override, :string, :string, 1941310
+      map :porcelain_name_override, :string, :string, 1941320
+      map :comment_override, :string, :string, 1941331
+      map :deprecated_override, :string, :bool, 1941312
       optional :terraform_elem_type, :string, 1941311
     end
     add_message "v1.TerraformDocs" do
       optional :resource_example_path, :string, 1941300
       optional :data_source_example_path, :string, 1941301
     end
-    add_message "v1.OneofOptions" do
-      repeated :common_fields, :string, 1941381
-    end
-    add_message "v1.ServiceOptions" do
-      optional :main_noun, :string, 1941400
-      optional :id_prefix, :string, 1941402
-      repeated :targets, :string, 1941401
-    end
   end
 end
 
 module V1
-  MethodOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MethodOptions").msgclass
   FileOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.FileOptions").msgclass
-  FieldOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.FieldOptions").msgclass
-  MessageOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MessageOptions").msgclass
-  CustomPorcelainTypeOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.CustomPorcelainTypeOptions").msgclass
-  TerraformDocs = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.TerraformDocs").msgclass
-  OneofOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.OneofOptions").msgclass
   ServiceOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ServiceOptions").msgclass
+  MethodOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MethodOptions").msgclass
+  MessageOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MessageOptions").msgclass
+  OneofOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.OneofOptions").msgclass
+  FieldOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.FieldOptions").msgclass
+  CustomOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.CustomOptions").msgclass
+  TerraformDocs = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.TerraformDocs").msgclass
 end
