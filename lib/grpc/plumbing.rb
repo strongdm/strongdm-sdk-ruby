@@ -3216,6 +3216,70 @@ module SDM
       end
       items
     end
+    def self.convert_mtls_mysql_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = MTLSMysql.new()
+      porcelain.certificate_authority = (plumbing.certificate_authority)
+      porcelain.client_certificate = (plumbing.client_certificate)
+      porcelain.client_key = (plumbing.client_key)
+      porcelain.database = (plumbing.database)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.password = (plumbing.password)
+      porcelain.port = (plumbing.port)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.server_name = (plumbing.server_name)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.username = (plumbing.username)
+      porcelain
+    end
+
+    def self.convert_mtls_mysql_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::MTLSMysql.new()
+      plumbing.certificate_authority = (porcelain.certificate_authority)
+      plumbing.client_certificate = (porcelain.client_certificate)
+      plumbing.client_key = (porcelain.client_key)
+      plumbing.database = (porcelain.database)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.server_name = (porcelain.server_name)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
+      plumbing
+    end
+    def self.convert_repeated_mtls_mysql_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_mtls_mysql_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_mtls_mysql_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_mtls_mysql_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_mtls_postgres_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -4782,6 +4846,9 @@ module SDM
       if porcelain.instance_of? MongoShardedCluster
         plumbing.mongo_sharded_cluster = convert_mongo_sharded_cluster_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? MTLSMysql
+        plumbing.mtls_mysql = convert_mtls_mysql_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? MTLSPostgres
         plumbing.mtls_postgres = convert_mtls_postgres_to_plumbing(porcelain)
       end
@@ -4998,6 +5065,9 @@ module SDM
       end
       if plumbing.mongo_sharded_cluster != nil
         return convert_mongo_sharded_cluster_to_porcelain(plumbing.mongo_sharded_cluster)
+      end
+      if plumbing.mtls_mysql != nil
+        return convert_mtls_mysql_to_porcelain(plumbing.mtls_mysql)
       end
       if plumbing.mtls_postgres != nil
         return convert_mtls_postgres_to_porcelain(plumbing.mtls_postgres)

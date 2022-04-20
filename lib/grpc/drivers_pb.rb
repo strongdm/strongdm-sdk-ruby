@@ -64,6 +64,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :kubernetes_service_account, :message, 804, "v1.KubernetesServiceAccount"
         optional :kubernetes_service_account_user_impersonation, :message, 808, "v1.KubernetesServiceAccountUserImpersonation"
         optional :kubernetes_user_impersonation, :message, 812, "v1.KubernetesUserImpersonation"
+        optional :mtls_mysql, :message, 1106, "v1.MTLSMysql"
         optional :mtls_postgres, :message, 1306, "v1.MTLSPostgres"
         optional :maria, :message, 1103, "v1.Maria"
         optional :memcached, :message, 900, "v1.Memcached"
@@ -656,6 +657,24 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :hostname, :string, 1
       optional :port, :int32, 2
     end
+    add_message "v1.MTLSMysql" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :certificate_authority, :string, 7
+      optional :client_certificate, :string, 9
+      optional :client_key, :string, 11
+      optional :database, :string, 4
+      optional :hostname, :string, 1
+      optional :password, :string, 3
+      optional :port, :int32, 6
+      optional :port_override, :int32, 5
+      optional :server_name, :string, 13
+      optional :username, :string, 2
+    end
     add_message "v1.MTLSPostgres" do
       optional :id, :string, 32768
       optional :name, :string, 32769
@@ -1115,6 +1134,7 @@ module V1
   KubernetesServiceAccount = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.KubernetesServiceAccount").msgclass
   KubernetesServiceAccountUserImpersonation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.KubernetesServiceAccountUserImpersonation").msgclass
   KubernetesUserImpersonation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.KubernetesUserImpersonation").msgclass
+  MTLSMysql = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MTLSMysql").msgclass
   MTLSPostgres = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MTLSPostgres").msgclass
   Maria = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Maria").msgclass
   Memcached = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Memcached").msgclass

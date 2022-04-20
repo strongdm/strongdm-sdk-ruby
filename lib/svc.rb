@@ -812,6 +812,7 @@ module SDM #:nodoc:
   # {MongoLegacyReplicaset}
   # {MongoReplicaSet}
   # {MongoShardedCluster}
+  # {MTLSMysql}
   # {MTLSPostgres}
   # {Mysql}
   # {Neptune}
