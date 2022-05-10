@@ -18,6 +18,7 @@
 require_relative "./svc"
 require "base64"
 require "openssl"
+require "time"
 
 module SDM #:nodoc:
 
@@ -27,11 +28,11 @@ module SDM #:nodoc:
     DEFAULT_BASE_RETRY_DELAY = 0.0030 # 30 ms
     DEFAULT_MAX_RETRY_DELAY = 300 # 300 seconds
     API_VERSION = "2021-08-23"
-    USER_AGENT = "strongdm-sdk-ruby/2.1.0"
+    USER_AGENT = "strongdm-sdk-ruby/2.2.0"
     private_constant :DEFAULT_MAX_RETRIES, :DEFAULT_BASE_RETRY_DELAY, :DEFAULT_MAX_RETRY_DELAY, :API_VERSION, :USER_AGENT
 
     # Creates a new strongDM API client.
-    def initialize(api_access_key, api_secret_key, host: "api.strongdm.com:443", insecure: false)
+    def initialize(api_access_key, api_secret_key, host: "api.strongdm.com:443", insecure: false, retry_rate_limit_errors: true)
       raise TypeError, "client access key must be a string" unless api_access_key.kind_of?(String)
       raise TypeError, "client secret key must be a string" unless api_secret_key.kind_of?(String)
       raise TypeError, "client host must be a string" unless host.kind_of?(String)
@@ -40,6 +41,7 @@ module SDM #:nodoc:
       @max_retries = DEFAULT_MAX_RETRIES
       @base_retry_delay = DEFAULT_BASE_RETRY_DELAY
       @max_retry_delay = DEFAULT_MAX_RETRY_DELAY
+      @expose_rate_limit_errors = (not retry_rate_limit_errors)
       @account_attachments = AccountAttachments.new(host, insecure, self)
       @account_grants = AccountGrants.new(host, insecure, self)
       @accounts = Accounts.new(host, insecure, self)
@@ -92,6 +94,11 @@ module SDM #:nodoc:
         return false
       end
       if not err.is_a? GRPC::BadStatus
+        return true
+      end
+      porcelainErr = Plumbing::convert_error_to_porcelain(err)
+      if (not @expose_rate_limit_errors) and (porcelainErr.is_a? RateLimitError)
+        sleep(porcelainErr.rate_limit.reset_at - Time.now)
         return true
       end
       return err.code() == 13
