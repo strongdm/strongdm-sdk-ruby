@@ -98,7 +98,13 @@ module SDM #:nodoc:
       end
       porcelainErr = Plumbing::convert_error_to_porcelain(err)
       if (not @expose_rate_limit_errors) and (porcelainErr.is_a? RateLimitError)
-        sleep(porcelainErr.rate_limit.reset_at - Time.now)
+        sleep_for = porcelainErr.rate_limit.reset_at - Time.now
+        # If timezones or clock drift causes this calculation to fail,
+        # wait at most one minute.
+        if sleep_for < 0 or sleep_for > 60
+          sleep_for = 60
+        end
+        sleep(sleep_for)
         return true
       end
       return err.code() == 13
