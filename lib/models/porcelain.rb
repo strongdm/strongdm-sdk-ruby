@@ -17,6 +17,9 @@
 
 module SDM
   class AKS
+    # Bind interface
+    attr_accessor :bind_interface
+
     attr_accessor :certificate_authority
 
     attr_accessor :client_certificate
@@ -42,6 +45,7 @@ module SDM
     attr_accessor :tags
 
     def initialize(
+      bind_interface: nil,
       certificate_authority: nil,
       client_certificate: nil,
       client_key: nil,
@@ -55,6 +59,7 @@ module SDM
       secret_store_id: nil,
       tags: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @certificate_authority = certificate_authority == nil ? "" : certificate_authority
       @client_certificate = client_certificate == nil ? "" : client_certificate
       @client_key = client_key == nil ? "" : client_key
@@ -79,6 +84,8 @@ module SDM
   end
 
   class AKSBasicAuth
+    # Bind interface
+    attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # The path used to check the health of your connection.  Defaults to `default`.
@@ -103,6 +110,7 @@ module SDM
     attr_accessor :username
 
     def initialize(
+      bind_interface: nil,
       egress_filter: nil,
       healthcheck_namespace: nil,
       healthy: nil,
@@ -115,6 +123,7 @@ module SDM
       tags: nil,
       username: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthcheck_namespace = healthcheck_namespace == nil ? "" : healthcheck_namespace
       @healthy = healthy == nil ? false : healthy
@@ -138,6 +147,8 @@ module SDM
   end
 
   class AKSServiceAccount
+    # Bind interface
+    attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # The path used to check the health of your connection.  Defaults to `default`.
@@ -160,6 +171,7 @@ module SDM
     attr_accessor :token
 
     def initialize(
+      bind_interface: nil,
       egress_filter: nil,
       healthcheck_namespace: nil,
       healthy: nil,
@@ -171,6 +183,7 @@ module SDM
       tags: nil,
       token: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthcheck_namespace = healthcheck_namespace == nil ? "" : healthcheck_namespace
       @healthy = healthy == nil ? false : healthy
@@ -193,6 +206,8 @@ module SDM
   end
 
   class AKSServiceAccountUserImpersonation
+    # Bind interface
+    attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # The path used to check the health of your connection.  Defaults to `default`.
@@ -215,6 +230,7 @@ module SDM
     attr_accessor :token
 
     def initialize(
+      bind_interface: nil,
       egress_filter: nil,
       healthcheck_namespace: nil,
       healthy: nil,
@@ -226,6 +242,7 @@ module SDM
       tags: nil,
       token: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthcheck_namespace = healthcheck_namespace == nil ? "" : healthcheck_namespace
       @healthy = healthy == nil ? false : healthy
@@ -248,6 +265,9 @@ module SDM
   end
 
   class AKSUserImpersonation
+    # Bind interface
+    attr_accessor :bind_interface
+
     attr_accessor :certificate_authority
 
     attr_accessor :client_certificate
@@ -273,6 +293,7 @@ module SDM
     attr_accessor :tags
 
     def initialize(
+      bind_interface: nil,
       certificate_authority: nil,
       client_certificate: nil,
       client_key: nil,
@@ -286,6 +307,7 @@ module SDM
       secret_store_id: nil,
       tags: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @certificate_authority = certificate_authority == nil ? "" : certificate_authority
       @client_certificate = client_certificate == nil ? "" : client_certificate
       @client_key = client_key == nil ? "" : client_key
@@ -311,6 +333,8 @@ module SDM
 
   class AWS
     attr_accessor :access_key
+    # Bind interface
+    attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
 
@@ -334,6 +358,7 @@ module SDM
 
     def initialize(
       access_key: nil,
+      bind_interface: nil,
       egress_filter: nil,
       healthcheck_region: nil,
       healthy: nil,
@@ -346,6 +371,7 @@ module SDM
       tags: nil
     )
       @access_key = access_key == nil ? "" : access_key
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthcheck_region = healthcheck_region == nil ? "" : healthcheck_region
       @healthy = healthy == nil ? false : healthy
@@ -740,6 +766,8 @@ module SDM
 
   class AmazonEKS
     attr_accessor :access_key
+    # Bind interface
+    attr_accessor :bind_interface
 
     attr_accessor :certificate_authority
 
@@ -771,6 +799,7 @@ module SDM
 
     def initialize(
       access_key: nil,
+      bind_interface: nil,
       certificate_authority: nil,
       cluster_name: nil,
       egress_filter: nil,
@@ -787,6 +816,7 @@ module SDM
       tags: nil
     )
       @access_key = access_key == nil ? "" : access_key
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @certificate_authority = certificate_authority == nil ? "" : certificate_authority
       @cluster_name = cluster_name == nil ? "" : cluster_name
       @egress_filter = egress_filter == nil ? "" : egress_filter
@@ -814,6 +844,8 @@ module SDM
 
   class AmazonEKSUserImpersonation
     attr_accessor :access_key
+    # Bind interface
+    attr_accessor :bind_interface
 
     attr_accessor :certificate_authority
 
@@ -845,6 +877,7 @@ module SDM
 
     def initialize(
       access_key: nil,
+      bind_interface: nil,
       certificate_authority: nil,
       cluster_name: nil,
       egress_filter: nil,
@@ -861,6 +894,7 @@ module SDM
       tags: nil
     )
       @access_key = access_key == nil ? "" : access_key
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @certificate_authority = certificate_authority == nil ? "" : certificate_authority
       @cluster_name = cluster_name == nil ? "" : cluster_name
       @egress_filter = egress_filter == nil ? "" : egress_filter
@@ -888,6 +922,8 @@ module SDM
 
   class AmazonES
     attr_accessor :access_key
+    # Bind interface
+    attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
 
@@ -915,6 +951,7 @@ module SDM
 
     def initialize(
       access_key: nil,
+      bind_interface: nil,
       egress_filter: nil,
       endpoint: nil,
       healthy: nil,
@@ -929,6 +966,7 @@ module SDM
       tags: nil
     )
       @access_key = access_key == nil ? "" : access_key
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @endpoint = endpoint == nil ? "" : endpoint
       @healthy = healthy == nil ? false : healthy
@@ -953,6 +991,8 @@ module SDM
   end
 
   class AmazonMQAMQP091
+    # Bind interface
+    attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
@@ -979,6 +1019,7 @@ module SDM
     attr_accessor :username
 
     def initialize(
+      bind_interface: nil,
       egress_filter: nil,
       healthy: nil,
       hostname: nil,
@@ -992,6 +1033,7 @@ module SDM
       tls_required: nil,
       username: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
       @hostname = hostname == nil ? "" : hostname
@@ -1017,6 +1059,8 @@ module SDM
 
   class Athena
     attr_accessor :access_key
+    # Bind interface
+    attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
@@ -1044,6 +1088,7 @@ module SDM
 
     def initialize(
       access_key: nil,
+      bind_interface: nil,
       egress_filter: nil,
       healthy: nil,
       id: nil,
@@ -1058,6 +1103,7 @@ module SDM
       tags: nil
     )
       @access_key = access_key == nil ? "" : access_key
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
       @id = id == nil ? "" : id
@@ -1082,6 +1128,9 @@ module SDM
   end
 
   class AuroraMysql
+    # Bind interface
+    attr_accessor :bind_interface
+
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -1107,6 +1156,7 @@ module SDM
     attr_accessor :username
 
     def initialize(
+      bind_interface: nil,
       database: nil,
       egress_filter: nil,
       healthy: nil,
@@ -1120,6 +1170,7 @@ module SDM
       tags: nil,
       username: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @database = database == nil ? "" : database
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
@@ -1144,6 +1195,9 @@ module SDM
   end
 
   class AuroraPostgres
+    # Bind interface
+    attr_accessor :bind_interface
+
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -1171,6 +1225,7 @@ module SDM
     attr_accessor :username
 
     def initialize(
+      bind_interface: nil,
       database: nil,
       egress_filter: nil,
       healthy: nil,
@@ -1185,6 +1240,7 @@ module SDM
       tags: nil,
       username: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @database = database == nil ? "" : database
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
@@ -1211,6 +1267,8 @@ module SDM
 
   class Azure
     attr_accessor :app_id
+    # Bind interface
+    attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
@@ -1230,6 +1288,7 @@ module SDM
 
     def initialize(
       app_id: nil,
+      bind_interface: nil,
       egress_filter: nil,
       healthy: nil,
       id: nil,
@@ -1240,6 +1299,7 @@ module SDM
       tenant_id: nil
     )
       @app_id = app_id == nil ? "" : app_id
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
       @id = id == nil ? "" : id
@@ -1261,6 +1321,8 @@ module SDM
 
   class AzureCertificate
     attr_accessor :app_id
+    # Bind interface
+    attr_accessor :bind_interface
 
     attr_accessor :client_certificate
     # A filter applied to the routing logic to pin datasource to nodes.
@@ -1280,6 +1342,7 @@ module SDM
 
     def initialize(
       app_id: nil,
+      bind_interface: nil,
       client_certificate: nil,
       egress_filter: nil,
       healthy: nil,
@@ -1290,6 +1353,7 @@ module SDM
       tenant_id: nil
     )
       @app_id = app_id == nil ? "" : app_id
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @client_certificate = client_certificate == nil ? "" : client_certificate
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
@@ -1310,6 +1374,9 @@ module SDM
   end
 
   class AzurePostgres
+    # Bind interface
+    attr_accessor :bind_interface
+
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -1337,6 +1404,7 @@ module SDM
     attr_accessor :username
 
     def initialize(
+      bind_interface: nil,
       database: nil,
       egress_filter: nil,
       healthy: nil,
@@ -1351,6 +1419,7 @@ module SDM
       tags: nil,
       username: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @database = database == nil ? "" : database
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
@@ -1407,6 +1476,8 @@ module SDM
   end
 
   class BigQuery
+    # Bind interface
+    attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
 
@@ -1431,6 +1502,7 @@ module SDM
     attr_accessor :username
 
     def initialize(
+      bind_interface: nil,
       egress_filter: nil,
       endpoint: nil,
       healthy: nil,
@@ -1443,6 +1515,7 @@ module SDM
       tags: nil,
       username: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @endpoint = endpoint == nil ? "" : endpoint
       @healthy = healthy == nil ? false : healthy
@@ -1466,6 +1539,8 @@ module SDM
   end
 
   class Cassandra
+    # Bind interface
+    attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
@@ -1492,6 +1567,7 @@ module SDM
     attr_accessor :username
 
     def initialize(
+      bind_interface: nil,
       egress_filter: nil,
       healthy: nil,
       hostname: nil,
@@ -1505,6 +1581,7 @@ module SDM
       tls_required: nil,
       username: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
       @hostname = hostname == nil ? "" : hostname
@@ -1529,6 +1606,9 @@ module SDM
   end
 
   class Citus
+    # Bind interface
+    attr_accessor :bind_interface
+
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -1556,6 +1636,7 @@ module SDM
     attr_accessor :username
 
     def initialize(
+      bind_interface: nil,
       database: nil,
       egress_filter: nil,
       healthy: nil,
@@ -1570,6 +1651,7 @@ module SDM
       tags: nil,
       username: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @database = database == nil ? "" : database
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
@@ -1595,6 +1677,9 @@ module SDM
   end
 
   class Clustrix
+    # Bind interface
+    attr_accessor :bind_interface
+
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -1620,6 +1705,7 @@ module SDM
     attr_accessor :username
 
     def initialize(
+      bind_interface: nil,
       database: nil,
       egress_filter: nil,
       healthy: nil,
@@ -1633,6 +1719,7 @@ module SDM
       tags: nil,
       username: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @database = database == nil ? "" : database
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
@@ -1657,6 +1744,9 @@ module SDM
   end
 
   class Cockroach
+    # Bind interface
+    attr_accessor :bind_interface
+
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -1684,6 +1774,7 @@ module SDM
     attr_accessor :username
 
     def initialize(
+      bind_interface: nil,
       database: nil,
       egress_filter: nil,
       healthy: nil,
@@ -1698,6 +1789,7 @@ module SDM
       tags: nil,
       username: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @database = database == nil ? "" : database
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
@@ -1795,6 +1887,8 @@ module SDM
   end
 
   class DB2I
+    # Bind interface
+    attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
@@ -1821,6 +1915,7 @@ module SDM
     attr_accessor :username
 
     def initialize(
+      bind_interface: nil,
       egress_filter: nil,
       healthy: nil,
       hostname: nil,
@@ -1834,6 +1929,7 @@ module SDM
       tls_required: nil,
       username: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
       @hostname = hostname == nil ? "" : hostname
@@ -1858,6 +1954,9 @@ module SDM
   end
 
   class DB2LUW
+    # Bind interface
+    attr_accessor :bind_interface
+
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -1883,6 +1982,7 @@ module SDM
     attr_accessor :username
 
     def initialize(
+      bind_interface: nil,
       database: nil,
       egress_filter: nil,
       healthy: nil,
@@ -1896,6 +1996,7 @@ module SDM
       tags: nil,
       username: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @database = database == nil ? "" : database
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
@@ -1935,6 +2036,8 @@ module SDM
 
   class DocumentDBHost
     attr_accessor :auth_database
+    # Bind interface
+    attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
@@ -1960,6 +2063,7 @@ module SDM
 
     def initialize(
       auth_database: nil,
+      bind_interface: nil,
       egress_filter: nil,
       healthy: nil,
       hostname: nil,
@@ -1973,6 +2077,7 @@ module SDM
       username: nil
     )
       @auth_database = auth_database == nil ? "" : auth_database
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
       @hostname = hostname == nil ? "" : hostname
@@ -1997,6 +2102,8 @@ module SDM
 
   class DocumentDBReplicaSet
     attr_accessor :auth_database
+    # Bind interface
+    attr_accessor :bind_interface
 
     attr_accessor :connect_to_replica
     # A filter applied to the routing logic to pin datasource to nodes.
@@ -2024,6 +2131,7 @@ module SDM
 
     def initialize(
       auth_database: nil,
+      bind_interface: nil,
       connect_to_replica: nil,
       egress_filter: nil,
       healthy: nil,
@@ -2038,6 +2146,7 @@ module SDM
       username: nil
     )
       @auth_database = auth_database == nil ? "" : auth_database
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @connect_to_replica = connect_to_replica == nil ? false : connect_to_replica
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
@@ -2062,6 +2171,8 @@ module SDM
   end
 
   class Druid
+    # Bind interface
+    attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
@@ -2086,6 +2197,7 @@ module SDM
     attr_accessor :username
 
     def initialize(
+      bind_interface: nil,
       egress_filter: nil,
       healthy: nil,
       hostname: nil,
@@ -2098,6 +2210,7 @@ module SDM
       tags: nil,
       username: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
       @hostname = hostname == nil ? "" : hostname
@@ -2122,6 +2235,8 @@ module SDM
 
   class DynamoDB
     attr_accessor :access_key
+    # Bind interface
+    attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
 
@@ -2149,6 +2264,7 @@ module SDM
 
     def initialize(
       access_key: nil,
+      bind_interface: nil,
       egress_filter: nil,
       endpoint: nil,
       healthy: nil,
@@ -2163,6 +2279,7 @@ module SDM
       tags: nil
     )
       @access_key = access_key == nil ? "" : access_key
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @endpoint = endpoint == nil ? "" : endpoint
       @healthy = healthy == nil ? false : healthy
@@ -2187,6 +2304,8 @@ module SDM
   end
 
   class Elastic
+    # Bind interface
+    attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
@@ -2213,6 +2332,7 @@ module SDM
     attr_accessor :username
 
     def initialize(
+      bind_interface: nil,
       egress_filter: nil,
       healthy: nil,
       hostname: nil,
@@ -2226,6 +2346,7 @@ module SDM
       tls_required: nil,
       username: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
       @hostname = hostname == nil ? "" : hostname
@@ -2250,6 +2371,8 @@ module SDM
   end
 
   class ElasticacheRedis
+    # Bind interface
+    attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
@@ -2274,6 +2397,7 @@ module SDM
     attr_accessor :tls_required
 
     def initialize(
+      bind_interface: nil,
       egress_filter: nil,
       healthy: nil,
       hostname: nil,
@@ -2286,6 +2410,7 @@ module SDM
       tags: nil,
       tls_required: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
       @hostname = hostname == nil ? "" : hostname
@@ -2309,6 +2434,8 @@ module SDM
   end
 
   class GCP
+    # Bind interface
+    attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
@@ -2327,6 +2454,7 @@ module SDM
     attr_accessor :tags
 
     def initialize(
+      bind_interface: nil,
       egress_filter: nil,
       healthy: nil,
       id: nil,
@@ -2336,6 +2464,7 @@ module SDM
       secret_store_id: nil,
       tags: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
       @id = id == nil ? "" : id
@@ -2448,6 +2577,9 @@ module SDM
   end
 
   class GoogleGKE
+    # Bind interface
+    attr_accessor :bind_interface
+
     attr_accessor :certificate_authority
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -2469,6 +2601,7 @@ module SDM
     attr_accessor :tags
 
     def initialize(
+      bind_interface: nil,
       certificate_authority: nil,
       egress_filter: nil,
       endpoint: nil,
@@ -2480,6 +2613,7 @@ module SDM
       service_account_key: nil,
       tags: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @certificate_authority = certificate_authority == nil ? "" : certificate_authority
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @endpoint = endpoint == nil ? "" : endpoint
@@ -2502,6 +2636,9 @@ module SDM
   end
 
   class GoogleGKEUserImpersonation
+    # Bind interface
+    attr_accessor :bind_interface
+
     attr_accessor :certificate_authority
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -2523,6 +2660,7 @@ module SDM
     attr_accessor :tags
 
     def initialize(
+      bind_interface: nil,
       certificate_authority: nil,
       egress_filter: nil,
       endpoint: nil,
@@ -2534,6 +2672,7 @@ module SDM
       service_account_key: nil,
       tags: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @certificate_authority = certificate_authority == nil ? "" : certificate_authority
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @endpoint = endpoint == nil ? "" : endpoint
@@ -2556,6 +2695,9 @@ module SDM
   end
 
   class Greenplum
+    # Bind interface
+    attr_accessor :bind_interface
+
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -2583,6 +2725,7 @@ module SDM
     attr_accessor :username
 
     def initialize(
+      bind_interface: nil,
       database: nil,
       egress_filter: nil,
       healthy: nil,
@@ -2597,6 +2740,7 @@ module SDM
       tags: nil,
       username: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @database = database == nil ? "" : database
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
@@ -2623,6 +2767,8 @@ module SDM
 
   class HTTPAuth
     attr_accessor :auth_header
+    # Bind interface
+    attr_accessor :bind_interface
 
     attr_accessor :default_path
     # A filter applied to the routing logic to pin datasource to nodes.
@@ -2648,6 +2794,7 @@ module SDM
 
     def initialize(
       auth_header: nil,
+      bind_interface: nil,
       default_path: nil,
       egress_filter: nil,
       headers_blacklist: nil,
@@ -2661,6 +2808,7 @@ module SDM
       url: nil
     )
       @auth_header = auth_header == nil ? "" : auth_header
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @default_path = default_path == nil ? "" : default_path
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @headers_blacklist = headers_blacklist == nil ? "" : headers_blacklist
@@ -2684,6 +2832,9 @@ module SDM
   end
 
   class HTTPBasicAuth
+    # Bind interface
+    attr_accessor :bind_interface
+
     attr_accessor :default_path
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -2711,6 +2862,7 @@ module SDM
     attr_accessor :username
 
     def initialize(
+      bind_interface: nil,
       default_path: nil,
       egress_filter: nil,
       headers_blacklist: nil,
@@ -2725,6 +2877,7 @@ module SDM
       url: nil,
       username: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @default_path = default_path == nil ? "" : default_path
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @headers_blacklist = headers_blacklist == nil ? "" : headers_blacklist
@@ -2750,6 +2903,9 @@ module SDM
   end
 
   class HTTPNoAuth
+    # Bind interface
+    attr_accessor :bind_interface
+
     attr_accessor :default_path
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -2773,6 +2929,7 @@ module SDM
     attr_accessor :url
 
     def initialize(
+      bind_interface: nil,
       default_path: nil,
       egress_filter: nil,
       headers_blacklist: nil,
@@ -2785,6 +2942,7 @@ module SDM
       tags: nil,
       url: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @default_path = default_path == nil ? "" : default_path
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @headers_blacklist = headers_blacklist == nil ? "" : headers_blacklist
@@ -2808,6 +2966,9 @@ module SDM
   end
 
   class Kubernetes
+    # Bind interface
+    attr_accessor :bind_interface
+
     attr_accessor :certificate_authority
 
     attr_accessor :client_certificate
@@ -2833,6 +2994,7 @@ module SDM
     attr_accessor :tags
 
     def initialize(
+      bind_interface: nil,
       certificate_authority: nil,
       client_certificate: nil,
       client_key: nil,
@@ -2846,6 +3008,7 @@ module SDM
       secret_store_id: nil,
       tags: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @certificate_authority = certificate_authority == nil ? "" : certificate_authority
       @client_certificate = client_certificate == nil ? "" : client_certificate
       @client_key = client_key == nil ? "" : client_key
@@ -2870,6 +3033,8 @@ module SDM
   end
 
   class KubernetesBasicAuth
+    # Bind interface
+    attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # The path used to check the health of your connection.  Defaults to `default`.
@@ -2894,6 +3059,7 @@ module SDM
     attr_accessor :username
 
     def initialize(
+      bind_interface: nil,
       egress_filter: nil,
       healthcheck_namespace: nil,
       healthy: nil,
@@ -2906,6 +3072,7 @@ module SDM
       tags: nil,
       username: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthcheck_namespace = healthcheck_namespace == nil ? "" : healthcheck_namespace
       @healthy = healthy == nil ? false : healthy
@@ -2929,6 +3096,8 @@ module SDM
   end
 
   class KubernetesServiceAccount
+    # Bind interface
+    attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # The path used to check the health of your connection.  Defaults to `default`.
@@ -2951,6 +3120,7 @@ module SDM
     attr_accessor :token
 
     def initialize(
+      bind_interface: nil,
       egress_filter: nil,
       healthcheck_namespace: nil,
       healthy: nil,
@@ -2962,6 +3132,7 @@ module SDM
       tags: nil,
       token: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthcheck_namespace = healthcheck_namespace == nil ? "" : healthcheck_namespace
       @healthy = healthy == nil ? false : healthy
@@ -2984,6 +3155,8 @@ module SDM
   end
 
   class KubernetesServiceAccountUserImpersonation
+    # Bind interface
+    attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # The path used to check the health of your connection.  Defaults to `default`.
@@ -3006,6 +3179,7 @@ module SDM
     attr_accessor :token
 
     def initialize(
+      bind_interface: nil,
       egress_filter: nil,
       healthcheck_namespace: nil,
       healthy: nil,
@@ -3017,6 +3191,7 @@ module SDM
       tags: nil,
       token: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthcheck_namespace = healthcheck_namespace == nil ? "" : healthcheck_namespace
       @healthy = healthy == nil ? false : healthy
@@ -3039,6 +3214,9 @@ module SDM
   end
 
   class KubernetesUserImpersonation
+    # Bind interface
+    attr_accessor :bind_interface
+
     attr_accessor :certificate_authority
 
     attr_accessor :client_certificate
@@ -3064,6 +3242,7 @@ module SDM
     attr_accessor :tags
 
     def initialize(
+      bind_interface: nil,
       certificate_authority: nil,
       client_certificate: nil,
       client_key: nil,
@@ -3077,6 +3256,7 @@ module SDM
       secret_store_id: nil,
       tags: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @certificate_authority = certificate_authority == nil ? "" : certificate_authority
       @client_certificate = client_certificate == nil ? "" : client_certificate
       @client_key = client_key == nil ? "" : client_key
@@ -3101,6 +3281,9 @@ module SDM
   end
 
   class MTLSMysql
+    # Bind interface
+    attr_accessor :bind_interface
+
     attr_accessor :certificate_authority
 
     attr_accessor :client_certificate
@@ -3134,6 +3317,7 @@ module SDM
     attr_accessor :username
 
     def initialize(
+      bind_interface: nil,
       certificate_authority: nil,
       client_certificate: nil,
       client_key: nil,
@@ -3151,6 +3335,7 @@ module SDM
       tags: nil,
       username: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @certificate_authority = certificate_authority == nil ? "" : certificate_authority
       @client_certificate = client_certificate == nil ? "" : client_certificate
       @client_key = client_key == nil ? "" : client_key
@@ -3179,6 +3364,9 @@ module SDM
   end
 
   class MTLSPostgres
+    # Bind interface
+    attr_accessor :bind_interface
+
     attr_accessor :certificate_authority
 
     attr_accessor :client_certificate
@@ -3214,6 +3402,7 @@ module SDM
     attr_accessor :username
 
     def initialize(
+      bind_interface: nil,
       certificate_authority: nil,
       client_certificate: nil,
       client_key: nil,
@@ -3232,6 +3421,7 @@ module SDM
       tags: nil,
       username: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @certificate_authority = certificate_authority == nil ? "" : certificate_authority
       @client_certificate = client_certificate == nil ? "" : client_certificate
       @client_key = client_key == nil ? "" : client_key
@@ -3261,6 +3451,9 @@ module SDM
   end
 
   class Maria
+    # Bind interface
+    attr_accessor :bind_interface
+
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -3286,6 +3479,7 @@ module SDM
     attr_accessor :username
 
     def initialize(
+      bind_interface: nil,
       database: nil,
       egress_filter: nil,
       healthy: nil,
@@ -3299,6 +3493,7 @@ module SDM
       tags: nil,
       username: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @database = database == nil ? "" : database
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
@@ -3323,6 +3518,8 @@ module SDM
   end
 
   class Memcached
+    # Bind interface
+    attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
@@ -3343,6 +3540,7 @@ module SDM
     attr_accessor :tags
 
     def initialize(
+      bind_interface: nil,
       egress_filter: nil,
       healthy: nil,
       hostname: nil,
@@ -3353,6 +3551,7 @@ module SDM
       secret_store_id: nil,
       tags: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
       @hostname = hostname == nil ? "" : hostname
@@ -3374,6 +3573,9 @@ module SDM
   end
 
   class Memsql
+    # Bind interface
+    attr_accessor :bind_interface
+
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -3399,6 +3601,7 @@ module SDM
     attr_accessor :username
 
     def initialize(
+      bind_interface: nil,
       database: nil,
       egress_filter: nil,
       healthy: nil,
@@ -3412,6 +3615,7 @@ module SDM
       tags: nil,
       username: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @database = database == nil ? "" : database
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
@@ -3437,6 +3641,8 @@ module SDM
 
   class MongoHost
     attr_accessor :auth_database
+    # Bind interface
+    attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
@@ -3464,6 +3670,7 @@ module SDM
 
     def initialize(
       auth_database: nil,
+      bind_interface: nil,
       egress_filter: nil,
       healthy: nil,
       hostname: nil,
@@ -3478,6 +3685,7 @@ module SDM
       username: nil
     )
       @auth_database = auth_database == nil ? "" : auth_database
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
       @hostname = hostname == nil ? "" : hostname
@@ -3503,6 +3711,8 @@ module SDM
 
   class MongoLegacyHost
     attr_accessor :auth_database
+    # Bind interface
+    attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
@@ -3532,6 +3742,7 @@ module SDM
 
     def initialize(
       auth_database: nil,
+      bind_interface: nil,
       egress_filter: nil,
       healthy: nil,
       hostname: nil,
@@ -3547,6 +3758,7 @@ module SDM
       username: nil
     )
       @auth_database = auth_database == nil ? "" : auth_database
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
       @hostname = hostname == nil ? "" : hostname
@@ -3573,6 +3785,8 @@ module SDM
 
   class MongoLegacyReplicaset
     attr_accessor :auth_database
+    # Bind interface
+    attr_accessor :bind_interface
 
     attr_accessor :connect_to_replica
     # A filter applied to the routing logic to pin datasource to nodes.
@@ -3604,6 +3818,7 @@ module SDM
 
     def initialize(
       auth_database: nil,
+      bind_interface: nil,
       connect_to_replica: nil,
       egress_filter: nil,
       healthy: nil,
@@ -3620,6 +3835,7 @@ module SDM
       username: nil
     )
       @auth_database = auth_database == nil ? "" : auth_database
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @connect_to_replica = connect_to_replica == nil ? false : connect_to_replica
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
@@ -3647,6 +3863,8 @@ module SDM
 
   class MongoReplicaSet
     attr_accessor :auth_database
+    # Bind interface
+    attr_accessor :bind_interface
 
     attr_accessor :connect_to_replica
     # A filter applied to the routing logic to pin datasource to nodes.
@@ -3678,6 +3896,7 @@ module SDM
 
     def initialize(
       auth_database: nil,
+      bind_interface: nil,
       connect_to_replica: nil,
       egress_filter: nil,
       healthy: nil,
@@ -3694,6 +3913,7 @@ module SDM
       username: nil
     )
       @auth_database = auth_database == nil ? "" : auth_database
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @connect_to_replica = connect_to_replica == nil ? false : connect_to_replica
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
@@ -3721,6 +3941,8 @@ module SDM
 
   class MongoShardedCluster
     attr_accessor :auth_database
+    # Bind interface
+    attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
@@ -3746,6 +3968,7 @@ module SDM
 
     def initialize(
       auth_database: nil,
+      bind_interface: nil,
       egress_filter: nil,
       healthy: nil,
       hostname: nil,
@@ -3759,6 +3982,7 @@ module SDM
       username: nil
     )
       @auth_database = auth_database == nil ? "" : auth_database
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
       @hostname = hostname == nil ? "" : hostname
@@ -3782,6 +4006,9 @@ module SDM
   end
 
   class Mysql
+    # Bind interface
+    attr_accessor :bind_interface
+
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -3807,6 +4034,7 @@ module SDM
     attr_accessor :username
 
     def initialize(
+      bind_interface: nil,
       database: nil,
       egress_filter: nil,
       healthy: nil,
@@ -3820,6 +4048,7 @@ module SDM
       tags: nil,
       username: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @database = database == nil ? "" : database
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
@@ -3844,6 +4073,8 @@ module SDM
   end
 
   class Neptune
+    # Bind interface
+    attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
 
@@ -3864,6 +4095,7 @@ module SDM
     attr_accessor :tags
 
     def initialize(
+      bind_interface: nil,
       egress_filter: nil,
       endpoint: nil,
       healthy: nil,
@@ -3874,6 +4106,7 @@ module SDM
       secret_store_id: nil,
       tags: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @endpoint = endpoint == nil ? "" : endpoint
       @healthy = healthy == nil ? false : healthy
@@ -3896,6 +4129,8 @@ module SDM
 
   class NeptuneIAM
     attr_accessor :access_key
+    # Bind interface
+    attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
 
@@ -3925,6 +4160,7 @@ module SDM
 
     def initialize(
       access_key: nil,
+      bind_interface: nil,
       egress_filter: nil,
       endpoint: nil,
       healthy: nil,
@@ -3940,6 +4176,7 @@ module SDM
       tags: nil
     )
       @access_key = access_key == nil ? "" : access_key
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @endpoint = endpoint == nil ? "" : endpoint
       @healthy = healthy == nil ? false : healthy
@@ -4079,6 +4316,9 @@ module SDM
   end
 
   class Oracle
+    # Bind interface
+    attr_accessor :bind_interface
+
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -4106,6 +4346,7 @@ module SDM
     attr_accessor :username
 
     def initialize(
+      bind_interface: nil,
       database: nil,
       egress_filter: nil,
       healthy: nil,
@@ -4120,6 +4361,7 @@ module SDM
       tls_required: nil,
       username: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @database = database == nil ? "" : database
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
@@ -4145,6 +4387,9 @@ module SDM
   end
 
   class Postgres
+    # Bind interface
+    attr_accessor :bind_interface
+
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -4172,6 +4417,7 @@ module SDM
     attr_accessor :username
 
     def initialize(
+      bind_interface: nil,
       database: nil,
       egress_filter: nil,
       healthy: nil,
@@ -4186,6 +4432,7 @@ module SDM
       tags: nil,
       username: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @database = database == nil ? "" : database
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
@@ -4211,6 +4458,9 @@ module SDM
   end
 
   class Presto
+    # Bind interface
+    attr_accessor :bind_interface
+
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -4238,6 +4488,7 @@ module SDM
     attr_accessor :username
 
     def initialize(
+      bind_interface: nil,
       database: nil,
       egress_filter: nil,
       healthy: nil,
@@ -4252,6 +4503,7 @@ module SDM
       tls_required: nil,
       username: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @database = database == nil ? "" : database
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
@@ -4277,6 +4529,9 @@ module SDM
   end
 
   class RDP
+    # Bind interface
+    attr_accessor :bind_interface
+
     attr_accessor :downgrade_nla_connections
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -4302,6 +4557,7 @@ module SDM
     attr_accessor :username
 
     def initialize(
+      bind_interface: nil,
       downgrade_nla_connections: nil,
       egress_filter: nil,
       healthy: nil,
@@ -4315,6 +4571,7 @@ module SDM
       tags: nil,
       username: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @downgrade_nla_connections = downgrade_nla_connections == nil ? false : downgrade_nla_connections
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
@@ -4339,6 +4596,8 @@ module SDM
   end
 
   class RabbitMQAMQP091
+    # Bind interface
+    attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
@@ -4365,6 +4624,7 @@ module SDM
     attr_accessor :username
 
     def initialize(
+      bind_interface: nil,
       egress_filter: nil,
       healthy: nil,
       hostname: nil,
@@ -4378,6 +4638,7 @@ module SDM
       tls_required: nil,
       username: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
       @hostname = hostname == nil ? "" : hostname
@@ -4437,6 +4698,8 @@ module SDM
   end
 
   class RawTCP
+    # Bind interface
+    attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
@@ -4457,6 +4720,7 @@ module SDM
     attr_accessor :tags
 
     def initialize(
+      bind_interface: nil,
       egress_filter: nil,
       healthy: nil,
       hostname: nil,
@@ -4467,6 +4731,7 @@ module SDM
       secret_store_id: nil,
       tags: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
       @hostname = hostname == nil ? "" : hostname
@@ -4488,6 +4753,8 @@ module SDM
   end
 
   class Redis
+    # Bind interface
+    attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
@@ -4510,6 +4777,7 @@ module SDM
     attr_accessor :tags
 
     def initialize(
+      bind_interface: nil,
       egress_filter: nil,
       healthy: nil,
       hostname: nil,
@@ -4521,6 +4789,7 @@ module SDM
       secret_store_id: nil,
       tags: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
       @hostname = hostname == nil ? "" : hostname
@@ -4543,6 +4812,9 @@ module SDM
   end
 
   class Redshift
+    # Bind interface
+    attr_accessor :bind_interface
+
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -4570,6 +4842,7 @@ module SDM
     attr_accessor :username
 
     def initialize(
+      bind_interface: nil,
       database: nil,
       egress_filter: nil,
       healthy: nil,
@@ -4584,6 +4857,7 @@ module SDM
       tags: nil,
       username: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @database = database == nil ? "" : database
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
@@ -5140,6 +5414,9 @@ module SDM
   end
 
   class SQLServer
+    # Bind interface
+    attr_accessor :bind_interface
+
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -5169,6 +5446,7 @@ module SDM
     attr_accessor :username
 
     def initialize(
+      bind_interface: nil,
       database: nil,
       egress_filter: nil,
       healthy: nil,
@@ -5184,6 +5462,7 @@ module SDM
       tags: nil,
       username: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @database = database == nil ? "" : database
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
@@ -5211,6 +5490,8 @@ module SDM
 
   class SSH
     attr_accessor :allow_deprecated_key_exchanges
+    # Bind interface
+    attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
@@ -5226,6 +5507,8 @@ module SDM
 
     attr_accessor :port_forwarding
 
+    attr_accessor :port_override
+
     attr_accessor :public_key
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -5236,6 +5519,7 @@ module SDM
 
     def initialize(
       allow_deprecated_key_exchanges: nil,
+      bind_interface: nil,
       egress_filter: nil,
       healthy: nil,
       hostname: nil,
@@ -5243,12 +5527,14 @@ module SDM
       name: nil,
       port: nil,
       port_forwarding: nil,
+      port_override: nil,
       public_key: nil,
       secret_store_id: nil,
       tags: nil,
       username: nil
     )
       @allow_deprecated_key_exchanges = allow_deprecated_key_exchanges == nil ? false : allow_deprecated_key_exchanges
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
       @hostname = hostname == nil ? "" : hostname
@@ -5256,6 +5542,7 @@ module SDM
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
       @port_forwarding = port_forwarding == nil ? false : port_forwarding
+      @port_override = port_override == nil ? 0 : port_override
       @public_key = public_key == nil ? "" : public_key
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -5273,6 +5560,8 @@ module SDM
 
   class SSHCert
     attr_accessor :allow_deprecated_key_exchanges
+    # Bind interface
+    attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
@@ -5287,6 +5576,8 @@ module SDM
     attr_accessor :port
 
     attr_accessor :port_forwarding
+
+    attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Tags is a map of key, value pairs.
@@ -5296,6 +5587,7 @@ module SDM
 
     def initialize(
       allow_deprecated_key_exchanges: nil,
+      bind_interface: nil,
       egress_filter: nil,
       healthy: nil,
       hostname: nil,
@@ -5303,11 +5595,13 @@ module SDM
       name: nil,
       port: nil,
       port_forwarding: nil,
+      port_override: nil,
       secret_store_id: nil,
       tags: nil,
       username: nil
     )
       @allow_deprecated_key_exchanges = allow_deprecated_key_exchanges == nil ? false : allow_deprecated_key_exchanges
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
       @hostname = hostname == nil ? "" : hostname
@@ -5315,6 +5609,7 @@ module SDM
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
       @port_forwarding = port_forwarding == nil ? false : port_forwarding
+      @port_override = port_override == nil ? 0 : port_override
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
       @username = username == nil ? "" : username
@@ -5331,6 +5626,8 @@ module SDM
 
   class SSHCustomerKey
     attr_accessor :allow_deprecated_key_exchanges
+    # Bind interface
+    attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
@@ -5346,6 +5643,8 @@ module SDM
 
     attr_accessor :port_forwarding
 
+    attr_accessor :port_override
+
     attr_accessor :private_key
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -5356,6 +5655,7 @@ module SDM
 
     def initialize(
       allow_deprecated_key_exchanges: nil,
+      bind_interface: nil,
       egress_filter: nil,
       healthy: nil,
       hostname: nil,
@@ -5363,12 +5663,14 @@ module SDM
       name: nil,
       port: nil,
       port_forwarding: nil,
+      port_override: nil,
       private_key: nil,
       secret_store_id: nil,
       tags: nil,
       username: nil
     )
       @allow_deprecated_key_exchanges = allow_deprecated_key_exchanges == nil ? false : allow_deprecated_key_exchanges
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
       @hostname = hostname == nil ? "" : hostname
@@ -5376,6 +5678,7 @@ module SDM
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
       @port_forwarding = port_forwarding == nil ? false : port_forwarding
+      @port_override = port_override == nil ? 0 : port_override
       @private_key = private_key == nil ? "" : private_key
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -5534,6 +5837,9 @@ module SDM
   end
 
   class SingleStore
+    # Bind interface
+    attr_accessor :bind_interface
+
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -5559,6 +5865,7 @@ module SDM
     attr_accessor :username
 
     def initialize(
+      bind_interface: nil,
       database: nil,
       egress_filter: nil,
       healthy: nil,
@@ -5572,6 +5879,7 @@ module SDM
       tags: nil,
       username: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @database = database == nil ? "" : database
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
@@ -5596,6 +5904,9 @@ module SDM
   end
 
   class Snowflake
+    # Bind interface
+    attr_accessor :bind_interface
+
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -5621,6 +5932,7 @@ module SDM
     attr_accessor :username
 
     def initialize(
+      bind_interface: nil,
       database: nil,
       egress_filter: nil,
       healthy: nil,
@@ -5634,6 +5946,7 @@ module SDM
       tags: nil,
       username: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @database = database == nil ? "" : database
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
@@ -5658,6 +5971,8 @@ module SDM
   end
 
   class Sybase
+    # Bind interface
+    attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
@@ -5682,6 +5997,7 @@ module SDM
     attr_accessor :username
 
     def initialize(
+      bind_interface: nil,
       egress_filter: nil,
       healthy: nil,
       hostname: nil,
@@ -5694,6 +6010,7 @@ module SDM
       tags: nil,
       username: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
       @hostname = hostname == nil ? "" : hostname
@@ -5717,6 +6034,8 @@ module SDM
   end
 
   class SybaseIQ
+    # Bind interface
+    attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
@@ -5741,6 +6060,7 @@ module SDM
     attr_accessor :username
 
     def initialize(
+      bind_interface: nil,
       egress_filter: nil,
       healthy: nil,
       hostname: nil,
@@ -5753,6 +6073,7 @@ module SDM
       tags: nil,
       username: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
       @hostname = hostname == nil ? "" : hostname
@@ -5798,6 +6119,8 @@ module SDM
   end
 
   class Teradata
+    # Bind interface
+    attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
@@ -5822,6 +6145,7 @@ module SDM
     attr_accessor :username
 
     def initialize(
+      bind_interface: nil,
       egress_filter: nil,
       healthy: nil,
       hostname: nil,
@@ -5834,6 +6158,7 @@ module SDM
       tags: nil,
       username: nil
     )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
       @hostname = hostname == nil ? "" : hostname

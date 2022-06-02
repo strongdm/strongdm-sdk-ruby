@@ -22,20 +22,20 @@ module V1
   module AccountGrants
     # AccountGrants assign a resource directly to an account, giving the account the permission to connect to that resource.
     class Service
-      include ::GRPC::GenericService
+      include GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = "v1.AccountGrants"
 
       # Create registers a new AccountGrant.
-      rpc :Create, ::V1::AccountGrantCreateRequest, ::V1::AccountGrantCreateResponse
+      rpc :Create, V1::AccountGrantCreateRequest, V1::AccountGrantCreateResponse
       # Get reads one AccountGrant by ID.
-      rpc :Get, ::V1::AccountGrantGetRequest, ::V1::AccountGrantGetResponse
+      rpc :Get, V1::AccountGrantGetRequest, V1::AccountGrantGetResponse
       # Delete removes a AccountGrant by ID.
-      rpc :Delete, ::V1::AccountGrantDeleteRequest, ::V1::AccountGrantDeleteResponse
+      rpc :Delete, V1::AccountGrantDeleteRequest, V1::AccountGrantDeleteResponse
       # List gets a list of AccountGrants matching a given set of criteria.
-      rpc :List, ::V1::AccountGrantListRequest, ::V1::AccountGrantListResponse
+      rpc :List, V1::AccountGrantListRequest, V1::AccountGrantListResponse
     end
 
     Stub = Service.rpc_stub_class

@@ -27,7 +27,7 @@ module V1
     #
     # Deprecated: use Role access rules instead.
     class Service
-      include ::GRPC::GenericService
+      include GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
@@ -36,19 +36,19 @@ module V1
       # Create registers a new RoleGrant.
       #
       # Deprecated: use Role access rules instead.
-      rpc :Create, ::V1::RoleGrantCreateRequest, ::V1::RoleGrantCreateResponse
+      rpc :Create, V1::RoleGrantCreateRequest, V1::RoleGrantCreateResponse
       # Get reads one RoleGrant by ID.
       #
       # Deprecated: use Role access rules instead.
-      rpc :Get, ::V1::RoleGrantGetRequest, ::V1::RoleGrantGetResponse
+      rpc :Get, V1::RoleGrantGetRequest, V1::RoleGrantGetResponse
       # Delete removes a RoleGrant by ID.
       #
       # Deprecated: use Role access rules instead.
-      rpc :Delete, ::V1::RoleGrantDeleteRequest, ::V1::RoleGrantDeleteResponse
+      rpc :Delete, V1::RoleGrantDeleteRequest, V1::RoleGrantDeleteResponse
       # List gets a list of RoleGrants matching a given set of criteria.
       #
       # Deprecated: use Role access rules instead.
-      rpc :List, ::V1::RoleGrantListRequest, ::V1::RoleGrantListResponse
+      rpc :List, V1::RoleGrantListRequest, V1::RoleGrantListResponse
     end
 
     Stub = Service.rpc_stub_class

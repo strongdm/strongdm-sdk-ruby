@@ -103,6 +103,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :certificate_authority, :string, 3
       optional :client_certificate, :string, 5
       optional :client_key, :string, 7
@@ -117,6 +118,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :healthcheck_namespace, :string, 5
       optional :hostname, :string, 1
       optional :password, :string, 4
@@ -130,6 +132,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :healthcheck_namespace, :string, 4
       optional :hostname, :string, 1
       optional :port, :int32, 2
@@ -142,6 +145,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :healthcheck_namespace, :string, 4
       optional :hostname, :string, 1
       optional :port, :int32, 2
@@ -154,6 +158,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :certificate_authority, :string, 3
       optional :client_certificate, :string, 5
       optional :client_key, :string, 7
@@ -168,6 +173,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :access_key, :string, 1
       optional :healthcheck_region, :string, 4
       optional :role_arn, :string, 5
@@ -181,6 +187,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :access_key, :string, 2
       optional :certificate_authority, :string, 4
       optional :cluster_name, :string, 7
@@ -198,6 +205,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :access_key, :string, 2
       optional :certificate_authority, :string, 4
       optional :cluster_name, :string, 7
@@ -215,6 +223,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :access_key, :string, 4
       optional :endpoint, :string, 3
       optional :port_override, :int32, 5
@@ -230,6 +239,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :hostname, :string, 1
       optional :password, :string, 5
       optional :port, :int32, 3
@@ -244,6 +254,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :access_key, :string, 1
       optional :output, :string, 3
       optional :port_override, :int32, 4
@@ -259,6 +270,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :database, :string, 4
       optional :hostname, :string, 1
       optional :password, :string, 3
@@ -273,6 +285,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :database, :string, 4
       optional :hostname, :string, 1
       optional :override_database, :bool, 7
@@ -288,6 +301,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :app_id, :string, 1
       optional :password, :string, 3
       optional :tenant_id, :string, 2
@@ -299,6 +313,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :app_id, :string, 1
       optional :client_certificate, :string, 3
       optional :tenant_id, :string, 2
@@ -310,6 +325,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :database, :string, 4
       optional :hostname, :string, 1
       optional :override_database, :bool, 7
@@ -325,6 +341,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :endpoint, :string, 4
       optional :port_override, :int32, 3
       optional :private_key, :string, 1
@@ -338,6 +355,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :hostname, :string, 1
       optional :password, :string, 3
       optional :port, :int32, 5
@@ -352,6 +370,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :database, :string, 4
       optional :hostname, :string, 1
       optional :override_database, :bool, 7
@@ -367,6 +386,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :database, :string, 4
       optional :hostname, :string, 1
       optional :password, :string, 3
@@ -381,6 +401,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :database, :string, 4
       optional :hostname, :string, 1
       optional :override_database, :bool, 7
@@ -396,6 +417,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :hostname, :string, 1
       optional :password, :string, 3
       optional :port, :int32, 5
@@ -410,6 +432,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :database, :string, 4
       optional :hostname, :string, 1
       optional :password, :string, 3
@@ -424,6 +447,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :auth_database, :string, 2
       optional :hostname, :string, 1
       optional :password, :string, 5
@@ -438,6 +462,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :auth_database, :string, 2
       optional :connect_to_replica, :bool, 7
       optional :hostname, :string, 1
@@ -453,6 +478,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :hostname, :string, 1
       optional :password, :string, 4
       optional :port, :int32, 5
@@ -466,6 +492,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :access_key, :string, 1
       optional :endpoint, :string, 4
       optional :port_override, :int32, 5
@@ -481,6 +508,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :hostname, :string, 1
       optional :password, :string, 3
       optional :port, :int32, 5
@@ -495,6 +523,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :hostname, :string, 1
       optional :password, :string, 3
       optional :port, :int32, 4
@@ -508,6 +537,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :keyfile, :string, 1
       optional :scopes, :string, 2
     end
@@ -518,6 +548,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :certificate_authority, :string, 2
       optional :endpoint, :string, 1
       optional :healthcheck_namespace, :string, 6
@@ -530,6 +561,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :certificate_authority, :string, 2
       optional :endpoint, :string, 1
       optional :healthcheck_namespace, :string, 6
@@ -542,6 +574,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :database, :string, 4
       optional :hostname, :string, 1
       optional :override_database, :bool, 7
@@ -557,6 +590,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :auth_header, :string, 3
       optional :default_path, :string, 5
       optional :headers_blacklist, :string, 4
@@ -571,6 +605,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :default_path, :string, 6
       optional :headers_blacklist, :string, 5
       optional :healthcheck_path, :string, 2
@@ -586,6 +621,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :default_path, :string, 4
       optional :headers_blacklist, :string, 3
       optional :healthcheck_path, :string, 2
@@ -599,6 +635,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :certificate_authority, :string, 3
       optional :client_certificate, :string, 5
       optional :client_key, :string, 7
@@ -613,6 +650,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :healthcheck_namespace, :string, 5
       optional :hostname, :string, 1
       optional :password, :string, 4
@@ -626,6 +664,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :healthcheck_namespace, :string, 4
       optional :hostname, :string, 1
       optional :port, :int32, 2
@@ -638,6 +677,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :healthcheck_namespace, :string, 4
       optional :hostname, :string, 1
       optional :port, :int32, 2
@@ -650,6 +690,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :certificate_authority, :string, 3
       optional :client_certificate, :string, 5
       optional :client_key, :string, 7
@@ -664,6 +705,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :certificate_authority, :string, 7
       optional :client_certificate, :string, 9
       optional :client_key, :string, 11
@@ -682,6 +724,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :certificate_authority, :string, 8
       optional :client_certificate, :string, 10
       optional :client_key, :string, 12
@@ -701,6 +744,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :database, :string, 4
       optional :hostname, :string, 1
       optional :password, :string, 3
@@ -715,6 +759,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :hostname, :string, 1
       optional :port, :int32, 3
       optional :port_override, :int32, 2
@@ -726,6 +771,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :database, :string, 4
       optional :hostname, :string, 1
       optional :password, :string, 3
@@ -740,6 +786,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :auth_database, :string, 2
       optional :hostname, :string, 1
       optional :password, :string, 5
@@ -755,6 +802,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :auth_database, :string, 2
       optional :hostname, :string, 1
       optional :password, :string, 5
@@ -771,6 +819,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :auth_database, :string, 2
       optional :connect_to_replica, :bool, 8
       optional :hostname, :string, 1
@@ -788,6 +837,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :auth_database, :string, 2
       optional :connect_to_replica, :bool, 8
       optional :hostname, :string, 1
@@ -805,6 +855,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :auth_database, :string, 2
       optional :hostname, :string, 1
       optional :password, :string, 5
@@ -819,6 +870,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :database, :string, 4
       optional :hostname, :string, 1
       optional :password, :string, 3
@@ -833,6 +885,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :endpoint, :string, 1
       optional :port, :int32, 3
       optional :port_override, :int32, 2
@@ -844,6 +897,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :access_key, :string, 4
       optional :endpoint, :string, 1
       optional :port, :int32, 3
@@ -860,6 +914,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :database, :string, 4
       optional :hostname, :string, 1
       optional :password, :string, 3
@@ -875,6 +930,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :database, :string, 4
       optional :hostname, :string, 1
       optional :override_database, :bool, 7
@@ -890,6 +946,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :database, :string, 3
       optional :hostname, :string, 1
       optional :password, :string, 2
@@ -905,6 +962,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :downgrade_nla_connections, :bool, 6
       optional :hostname, :string, 1
       optional :password, :string, 3
@@ -919,6 +977,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :hostname, :string, 1
       optional :password, :string, 5
       optional :port, :int32, 3
@@ -933,6 +992,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :hostname, :string, 1
       optional :port, :int32, 3
       optional :port_override, :int32, 2
@@ -944,6 +1004,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :hostname, :string, 1
       optional :password, :string, 3
       optional :port, :int32, 4
@@ -956,6 +1017,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :database, :string, 4
       optional :hostname, :string, 1
       optional :override_database, :bool, 7
@@ -971,6 +1033,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :database, :string, 4
       optional :hostname, :string, 1
       optional :override_database, :bool, 8
@@ -987,10 +1050,12 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :allow_deprecated_key_exchanges, :bool, 6
       optional :hostname, :string, 1
       optional :port, :int32, 3
       optional :port_forwarding, :bool, 5
+      optional :port_override, :int32, 7
       optional :public_key, :string, 4
       optional :username, :string, 2
     end
@@ -1001,10 +1066,12 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :allow_deprecated_key_exchanges, :bool, 5
       optional :hostname, :string, 1
       optional :port, :int32, 3
       optional :port_forwarding, :bool, 4
+      optional :port_override, :int32, 6
       optional :username, :string, 2
     end
     add_message "v1.SSHCustomerKey" do
@@ -1014,10 +1081,12 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :allow_deprecated_key_exchanges, :bool, 6
       optional :hostname, :string, 1
       optional :port, :int32, 3
       optional :port_forwarding, :bool, 5
+      optional :port_override, :int32, 7
       optional :private_key, :string, 4
       optional :username, :string, 2
     end
@@ -1028,6 +1097,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :database, :string, 4
       optional :hostname, :string, 1
       optional :password, :string, 3
@@ -1042,6 +1112,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :database, :string, 4
       optional :hostname, :string, 1
       optional :password, :string, 3
@@ -1056,6 +1127,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :hostname, :string, 1
       optional :password, :string, 5
       optional :port, :int32, 4
@@ -1069,6 +1141,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :hostname, :string, 1
       optional :password, :string, 5
       optional :port, :int32, 4
@@ -1082,6 +1155,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
       optional :hostname, :string, 1
       optional :password, :string, 3
       optional :port, :int32, 5

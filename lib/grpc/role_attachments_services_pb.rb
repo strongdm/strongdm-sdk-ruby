@@ -27,7 +27,7 @@ module V1
     #
     # Deprecated: use multi-role via AccountAttachments instead.
     class Service
-      include ::GRPC::GenericService
+      include GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
@@ -36,19 +36,19 @@ module V1
       # Create registers a new RoleAttachment.
       #
       # Deprecated: use multi-role via AccountAttachments instead.
-      rpc :Create, ::V1::RoleAttachmentCreateRequest, ::V1::RoleAttachmentCreateResponse
+      rpc :Create, V1::RoleAttachmentCreateRequest, V1::RoleAttachmentCreateResponse
       # Get reads one RoleAttachment by ID.
       #
       # Deprecated: use multi-role via AccountAttachments instead.
-      rpc :Get, ::V1::RoleAttachmentGetRequest, ::V1::RoleAttachmentGetResponse
+      rpc :Get, V1::RoleAttachmentGetRequest, V1::RoleAttachmentGetResponse
       # Delete removes a RoleAttachment by ID.
       #
       # Deprecated: use multi-role via AccountAttachments instead.
-      rpc :Delete, ::V1::RoleAttachmentDeleteRequest, ::V1::RoleAttachmentDeleteResponse
+      rpc :Delete, V1::RoleAttachmentDeleteRequest, V1::RoleAttachmentDeleteResponse
       # List gets a list of RoleAttachments matching a given set of criteria.
       #
       # Deprecated: use multi-role via AccountAttachments instead.
-      rpc :List, ::V1::RoleAttachmentListRequest, ::V1::RoleAttachmentListResponse
+      rpc :List, V1::RoleAttachmentListRequest, V1::RoleAttachmentListResponse
     end
 
     Stub = Service.rpc_stub_class
