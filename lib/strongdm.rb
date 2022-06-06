@@ -47,6 +47,7 @@ module SDM #:nodoc:
       @accounts = Accounts.new(host, insecure, self)
       @control_panel = ControlPanel.new(host, insecure, self)
       @nodes = Nodes.new(host, insecure, self)
+      @remote_identity_groups = RemoteIdentityGroups.new(host, insecure, self)
       @resources = Resources.new(host, insecure, self)
       @role_attachments = RoleAttachments.new(host, insecure, self)
       @role_grants = RoleGrants.new(host, insecure, self)
@@ -140,6 +141,11 @@ module SDM #:nodoc:
     #
     # See {Nodes}.
     attr_reader :nodes
+    # A RemoteIdentityGroup is a named grouping of Remote Identities for Accounts.
+    # An Account's relationship to a RemoteIdentityGroup is defined via RemoteIdentity objects.
+    #
+    # See {RemoteIdentityGroups}.
+    attr_reader :remote_identity_groups
     # Resources are databases, servers, clusters, websites, or clouds that strongDM
     # delegates access to.
     #

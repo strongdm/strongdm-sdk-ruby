@@ -4921,6 +4921,60 @@ module SDM
     end
   end
 
+  # A RemoteIdentityGroup has a list of access rules which determine which Resources the members
+  # of the RemoteIdentityGroup have access to. An Account can be a member of multiple RemoteIdentityGroups via
+  # AccountAttachments.
+  class RemoteIdentityGroup
+    # Unique identifier of the RemoteIdentityGroup.
+    attr_accessor :id
+    # Unique human-readable name of the RemoteIdentityGroup.
+    attr_accessor :name
+
+    def initialize(
+      id: nil,
+      name: nil
+    )
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # RemoteIdentityGroupGetResponse returns a requested RemoteIdentityGroup.
+  class RemoteIdentityGroupGetResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+    # The requested RemoteIdentityGroup.
+    attr_accessor :remote_identity_group
+
+    def initialize(
+      meta: nil,
+      rate_limit: nil,
+      remote_identity_group: nil
+    )
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+      @remote_identity_group = remote_identity_group == nil ? nil : remote_identity_group
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   # ResourceCreateResponse reports how the Resources were created in the system.
   class ResourceCreateResponse
     # Reserved for future use.
