@@ -27,6 +27,7 @@ require_relative "./accounts_pb"
 require_relative "./control_panel_pb"
 require_relative "./drivers_pb"
 require_relative "./nodes_pb"
+require_relative "./remote_identities_pb"
 require_relative "./remote_identity_groups_pb"
 require_relative "./resources_pb"
 require_relative "./role_attachments_pb"
@@ -4819,6 +4820,158 @@ module SDM
       end
       items
     end
+    def self.convert_remote_identity_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = RemoteIdentity.new()
+      porcelain.account_id = (plumbing.account_id)
+      porcelain.id = (plumbing.id)
+      porcelain.remote_identity_group_id = (plumbing.remote_identity_group_id)
+      porcelain.username = (plumbing.username)
+      porcelain
+    end
+
+    def self.convert_remote_identity_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::RemoteIdentity.new()
+      plumbing.account_id = (porcelain.account_id)
+      plumbing.id = (porcelain.id)
+      plumbing.remote_identity_group_id = (porcelain.remote_identity_group_id)
+      plumbing.username = (porcelain.username)
+      plumbing
+    end
+    def self.convert_repeated_remote_identity_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_remote_identity_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_remote_identity_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_remote_identity_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_remote_identity_create_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = RemoteIdentityCreateResponse.new()
+      porcelain.meta = convert_create_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain.remote_identity = convert_remote_identity_to_porcelain(plumbing.remote_identity)
+      porcelain
+    end
+
+    def self.convert_remote_identity_create_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::RemoteIdentityCreateResponse.new()
+      plumbing.meta = convert_create_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing.remote_identity = convert_remote_identity_to_plumbing(porcelain.remote_identity)
+      plumbing
+    end
+    def self.convert_repeated_remote_identity_create_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_remote_identity_create_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_remote_identity_create_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_remote_identity_create_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_remote_identity_delete_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = RemoteIdentityDeleteResponse.new()
+      porcelain.meta = convert_delete_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_remote_identity_delete_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::RemoteIdentityDeleteResponse.new()
+      plumbing.meta = convert_delete_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_remote_identity_delete_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_remote_identity_delete_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_remote_identity_delete_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_remote_identity_delete_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_remote_identity_get_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = RemoteIdentityGetResponse.new()
+      porcelain.meta = convert_get_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain.remote_identity = convert_remote_identity_to_porcelain(plumbing.remote_identity)
+      porcelain
+    end
+
+    def self.convert_remote_identity_get_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::RemoteIdentityGetResponse.new()
+      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing.remote_identity = convert_remote_identity_to_plumbing(porcelain.remote_identity)
+      plumbing
+    end
+    def self.convert_repeated_remote_identity_get_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_remote_identity_get_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_remote_identity_get_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_remote_identity_get_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_remote_identity_group_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -4889,6 +5042,44 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_remote_identity_group_get_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_remote_identity_update_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = RemoteIdentityUpdateResponse.new()
+      porcelain.meta = convert_update_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain.remote_identity = convert_remote_identity_to_porcelain(plumbing.remote_identity)
+      porcelain
+    end
+
+    def self.convert_remote_identity_update_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::RemoteIdentityUpdateResponse.new()
+      plumbing.meta = convert_update_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing.remote_identity = convert_remote_identity_to_plumbing(porcelain.remote_identity)
+      plumbing
+    end
+    def self.convert_repeated_remote_identity_update_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_remote_identity_update_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_remote_identity_update_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_remote_identity_update_response_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items

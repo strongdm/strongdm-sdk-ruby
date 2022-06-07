@@ -759,6 +759,153 @@ module SDM #:nodoc:
     end
   end
 
+  # RemoteIdentities assign a resource directly to an account, giving the account the permission to connect to that resource.
+  #
+  # See {RemoteIdentity}.
+  class RemoteIdentities
+    extend Gem::Deprecate
+
+    def initialize(host, insecure, parent)
+      begin
+        if insecure
+          @stub = V1::RemoteIdentities::Stub.new(host, :this_channel_is_insecure)
+        else
+          cred = GRPC::Core::ChannelCredentials.new()
+          @stub = V1::RemoteIdentities::Stub.new(host, cred)
+        end
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # Create registers a new RemoteIdentity.
+    def create(
+      remote_identity,
+      deadline: nil
+    )
+      req = V1::RemoteIdentityCreateRequest.new()
+
+      req.remote_identity = Plumbing::convert_remote_identity_to_plumbing(remote_identity)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.create(req, metadata: @parent.get_metadata("RemoteIdentities.Create", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = RemoteIdentityCreateResponse.new()
+      resp.meta = Plumbing::convert_create_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.remote_identity = Plumbing::convert_remote_identity_to_porcelain(plumbing_response.remote_identity)
+      resp
+    end
+
+    # Get reads one RemoteIdentity by ID.
+    def get(
+      id,
+      deadline: nil
+    )
+      req = V1::RemoteIdentityGetRequest.new()
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.get(req, metadata: @parent.get_metadata("RemoteIdentities.Get", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = RemoteIdentityGetResponse.new()
+      resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.remote_identity = Plumbing::convert_remote_identity_to_porcelain(plumbing_response.remote_identity)
+      resp
+    end
+
+    # Delete removes a RemoteIdentity by ID.
+    def delete(
+      id,
+      deadline: nil
+    )
+      req = V1::RemoteIdentityDeleteRequest.new()
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("RemoteIdentities.Delete", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = RemoteIdentityDeleteResponse.new()
+      resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # List gets a list of RemoteIdentities matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::RemoteIdentityListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      page_size_option = @parent._test_options["PageSize"]
+      if page_size_option.is_a? Integer
+        req.meta.limit = page_size_option
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("RemoteIdentities.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.remote_identities.each do |plumbing_item|
+            g.yield Plumbing::convert_remote_identity_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
   # A RemoteIdentityGroup is a named grouping of Remote Identities for Accounts.
   # An Account's relationship to a RemoteIdentityGroup is defined via RemoteIdentity objects.
   #

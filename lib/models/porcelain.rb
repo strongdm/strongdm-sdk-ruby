@@ -619,11 +619,11 @@ module SDM
 
   # AccountGrants connect a resource directly to an account, giving the account the permission to connect to that resource.
   class AccountGrant
-    # The id of the attached role of this AccountGrant.
+    # The account id of this AccountGrant.
     attr_accessor :account_id
     # Unique identifier of the AccountGrant.
     attr_accessor :id
-    # The id of the composite role of this AccountGrant.
+    # The resource id of this AccountGrant.
     attr_accessor :resource_id
     # The timestamp when the resource will be granted. Optional. Both start_at
     # and end_at must be defined together, or not defined at all.
@@ -4921,9 +4921,120 @@ module SDM
     end
   end
 
-  # A RemoteIdentityGroup has a list of access rules which determine which Resources the members
-  # of the RemoteIdentityGroup have access to. An Account can be a member of multiple RemoteIdentityGroups via
-  # AccountAttachments.
+  # RemoteIdentities define the username to be used for a specific account
+  # when connecting to a remote resource using that group.
+  class RemoteIdentity
+    # The account for this remote identity.
+    attr_accessor :account_id
+    # Unique identifier of the RemoteIdentity.
+    attr_accessor :id
+    # The remote identity group.
+    attr_accessor :remote_identity_group_id
+    # The username to be used as the remote identity for this account.
+    attr_accessor :username
+
+    def initialize(
+      account_id: nil,
+      id: nil,
+      remote_identity_group_id: nil,
+      username: nil
+    )
+      @account_id = account_id == nil ? "" : account_id
+      @id = id == nil ? "" : id
+      @remote_identity_group_id = remote_identity_group_id == nil ? "" : remote_identity_group_id
+      @username = username == nil ? "" : username
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # RemoteIdentityCreateResponse reports how the RemoteIdentities were created in the system.
+  class RemoteIdentityCreateResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+    # The created RemoteIdentity.
+    attr_accessor :remote_identity
+
+    def initialize(
+      meta: nil,
+      rate_limit: nil,
+      remote_identity: nil
+    )
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+      @remote_identity = remote_identity == nil ? nil : remote_identity
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # RemoteIdentityDeleteResponse returns information about a RemoteIdentity that was deleted.
+  class RemoteIdentityDeleteResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      meta: nil,
+      rate_limit: nil
+    )
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # RemoteIdentityGetResponse returns a requested RemoteIdentity.
+  class RemoteIdentityGetResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+    # The requested RemoteIdentity.
+    attr_accessor :remote_identity
+
+    def initialize(
+      meta: nil,
+      rate_limit: nil,
+      remote_identity: nil
+    )
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+      @remote_identity = remote_identity == nil ? nil : remote_identity
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # A RemoteIdentityGroup defines a group of remote identities.
   class RemoteIdentityGroup
     # Unique identifier of the RemoteIdentityGroup.
     attr_accessor :id
@@ -4964,6 +5075,35 @@ module SDM
       @meta = meta == nil ? nil : meta
       @rate_limit = rate_limit == nil ? nil : rate_limit
       @remote_identity_group = remote_identity_group == nil ? nil : remote_identity_group
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # RemoteIdentityUpdateResponse returns the fields of a RemoteIdentity after it has been updated by
+  # a RemoteIdentityUpdateRequest.
+  class RemoteIdentityUpdateResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+    # The updated RemoteIdentity.
+    attr_accessor :remote_identity
+
+    def initialize(
+      meta: nil,
+      rate_limit: nil,
+      remote_identity: nil
+    )
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+      @remote_identity = remote_identity == nil ? nil : remote_identity
     end
 
     def to_json(options = {})
