@@ -839,6 +839,36 @@ module SDM #:nodoc:
       resp
     end
 
+    # Update replaces all the fields of a RemoteIdentity by ID.
+    def update(
+      remote_identity,
+      deadline: nil
+    )
+      req = V1::RemoteIdentityUpdateRequest.new()
+
+      req.remote_identity = Plumbing::convert_remote_identity_to_plumbing(remote_identity)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.update(req, metadata: @parent.get_metadata("RemoteIdentities.Update", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = RemoteIdentityUpdateResponse.new()
+      resp.meta = Plumbing::convert_update_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.remote_identity = Plumbing::convert_remote_identity_to_porcelain(plumbing_response.remote_identity)
+      resp
+    end
+
     # Delete removes a RemoteIdentity by ID.
     def delete(
       id,

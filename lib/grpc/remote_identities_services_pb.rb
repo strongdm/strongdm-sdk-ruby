@@ -32,6 +32,8 @@ module V1
       rpc :Create, V1::RemoteIdentityCreateRequest, V1::RemoteIdentityCreateResponse
       # Get reads one RemoteIdentity by ID.
       rpc :Get, V1::RemoteIdentityGetRequest, V1::RemoteIdentityGetResponse
+      # Update replaces all the fields of a RemoteIdentity by ID.
+      rpc :Update, V1::RemoteIdentityUpdateRequest, V1::RemoteIdentityUpdateResponse
       # Delete removes a RemoteIdentity by ID.
       rpc :Delete, V1::RemoteIdentityDeleteRequest, V1::RemoteIdentityDeleteResponse
       # List gets a list of RemoteIdentities matching a given set of criteria.
