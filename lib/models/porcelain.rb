@@ -39,6 +39,10 @@ module SDM
     attr_accessor :name
 
     attr_accessor :port
+
+    attr_accessor :remote_identity_group_id
+
+    attr_accessor :remote_identity_healthcheck_username
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Tags is a map of key, value pairs.
@@ -56,6 +60,8 @@ module SDM
       id: nil,
       name: nil,
       port: nil,
+      remote_identity_group_id: nil,
+      remote_identity_healthcheck_username: nil,
       secret_store_id: nil,
       tags: nil
     )
@@ -70,6 +76,8 @@ module SDM
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
+      @remote_identity_group_id = remote_identity_group_id == nil ? "" : remote_identity_group_id
+      @remote_identity_healthcheck_username = remote_identity_healthcheck_username == nil ? "" : remote_identity_healthcheck_username
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
@@ -163,6 +171,10 @@ module SDM
     attr_accessor :name
 
     attr_accessor :port
+
+    attr_accessor :remote_identity_group_id
+
+    attr_accessor :remote_identity_healthcheck_username
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Tags is a map of key, value pairs.
@@ -179,6 +191,8 @@ module SDM
       id: nil,
       name: nil,
       port: nil,
+      remote_identity_group_id: nil,
+      remote_identity_healthcheck_username: nil,
       secret_store_id: nil,
       tags: nil,
       token: nil
@@ -191,6 +205,8 @@ module SDM
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
+      @remote_identity_group_id = remote_identity_group_id == nil ? "" : remote_identity_group_id
+      @remote_identity_healthcheck_username = remote_identity_healthcheck_username == nil ? "" : remote_identity_healthcheck_username
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
       @token = token == nil ? "" : token
@@ -787,6 +803,10 @@ module SDM
 
     attr_accessor :region
 
+    attr_accessor :remote_identity_group_id
+
+    attr_accessor :remote_identity_healthcheck_username
+
     attr_accessor :role_arn
 
     attr_accessor :role_external_id
@@ -809,6 +829,8 @@ module SDM
       id: nil,
       name: nil,
       region: nil,
+      remote_identity_group_id: nil,
+      remote_identity_healthcheck_username: nil,
       role_arn: nil,
       role_external_id: nil,
       secret_access_key: nil,
@@ -826,6 +848,8 @@ module SDM
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
       @region = region == nil ? "" : region
+      @remote_identity_group_id = remote_identity_group_id == nil ? "" : remote_identity_group_id
+      @remote_identity_healthcheck_username = remote_identity_healthcheck_username == nil ? "" : remote_identity_healthcheck_username
       @role_arn = role_arn == nil ? "" : role_arn
       @role_external_id = role_external_id == nil ? "" : role_external_id
       @secret_access_key = secret_access_key == nil ? "" : secret_access_key
@@ -2593,6 +2617,10 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
+
+    attr_accessor :remote_identity_group_id
+
+    attr_accessor :remote_identity_healthcheck_username
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
 
@@ -2609,6 +2637,8 @@ module SDM
       healthy: nil,
       id: nil,
       name: nil,
+      remote_identity_group_id: nil,
+      remote_identity_healthcheck_username: nil,
       secret_store_id: nil,
       service_account_key: nil,
       tags: nil
@@ -2621,6 +2651,8 @@ module SDM
       @healthy = healthy == nil ? false : healthy
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
+      @remote_identity_group_id = remote_identity_group_id == nil ? "" : remote_identity_group_id
+      @remote_identity_healthcheck_username = remote_identity_healthcheck_username == nil ? "" : remote_identity_healthcheck_username
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @service_account_key = service_account_key == nil ? "" : service_account_key
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -2988,6 +3020,10 @@ module SDM
     attr_accessor :name
 
     attr_accessor :port
+
+    attr_accessor :remote_identity_group_id
+
+    attr_accessor :remote_identity_healthcheck_username
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Tags is a map of key, value pairs.
@@ -3005,6 +3041,8 @@ module SDM
       id: nil,
       name: nil,
       port: nil,
+      remote_identity_group_id: nil,
+      remote_identity_healthcheck_username: nil,
       secret_store_id: nil,
       tags: nil
     )
@@ -3019,6 +3057,8 @@ module SDM
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
+      @remote_identity_group_id = remote_identity_group_id == nil ? "" : remote_identity_group_id
+      @remote_identity_healthcheck_username = remote_identity_healthcheck_username == nil ? "" : remote_identity_healthcheck_username
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
@@ -3112,6 +3152,10 @@ module SDM
     attr_accessor :name
 
     attr_accessor :port
+
+    attr_accessor :remote_identity_group_id
+
+    attr_accessor :remote_identity_healthcheck_username
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Tags is a map of key, value pairs.
@@ -3128,6 +3172,8 @@ module SDM
       id: nil,
       name: nil,
       port: nil,
+      remote_identity_group_id: nil,
+      remote_identity_healthcheck_username: nil,
       secret_store_id: nil,
       tags: nil,
       token: nil
@@ -3140,6 +3186,8 @@ module SDM
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
+      @remote_identity_group_id = remote_identity_group_id == nil ? "" : remote_identity_group_id
+      @remote_identity_healthcheck_username = remote_identity_healthcheck_username == nil ? "" : remote_identity_healthcheck_username
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
       @token = token == nil ? "" : token
@@ -5772,6 +5820,10 @@ module SDM
     attr_accessor :port_forwarding
 
     attr_accessor :port_override
+
+    attr_accessor :remote_identity_group_id
+
+    attr_accessor :remote_identity_healthcheck_username
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Tags is a map of key, value pairs.
@@ -5790,6 +5842,8 @@ module SDM
       port: nil,
       port_forwarding: nil,
       port_override: nil,
+      remote_identity_group_id: nil,
+      remote_identity_healthcheck_username: nil,
       secret_store_id: nil,
       tags: nil,
       username: nil
@@ -5804,6 +5858,8 @@ module SDM
       @port = port == nil ? 0 : port
       @port_forwarding = port_forwarding == nil ? false : port_forwarding
       @port_override = port_override == nil ? 0 : port_override
+      @remote_identity_group_id = remote_identity_group_id == nil ? "" : remote_identity_group_id
+      @remote_identity_healthcheck_username = remote_identity_healthcheck_username == nil ? "" : remote_identity_healthcheck_username
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
       @username = username == nil ? "" : username

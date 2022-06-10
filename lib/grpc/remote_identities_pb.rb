@@ -17,7 +17,6 @@
 
 require "google/protobuf"
 
-require "google/protobuf/timestamp_pb"
 require "options_pb"
 require "spec_pb"
 Google::Protobuf::DescriptorPool.generated_pool.build do
