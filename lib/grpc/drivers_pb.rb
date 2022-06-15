@@ -1065,6 +1065,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :bind_interface, :string, 32774
       optional :allow_deprecated_key_exchanges, :bool, 6
       optional :hostname, :string, 1
+      optional :key_type, :string, 8
       optional :port, :int32, 3
       optional :port_forwarding, :bool, 5
       optional :port_override, :int32, 7

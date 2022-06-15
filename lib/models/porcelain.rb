@@ -5742,6 +5742,8 @@ module SDM
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
+
+    attr_accessor :key_type
     # Unique human-readable name of the Resource.
     attr_accessor :name
 
@@ -5766,6 +5768,7 @@ module SDM
       healthy: nil,
       hostname: nil,
       id: nil,
+      key_type: nil,
       name: nil,
       port: nil,
       port_forwarding: nil,
@@ -5781,6 +5784,7 @@ module SDM
       @healthy = healthy == nil ? false : healthy
       @hostname = hostname == nil ? "" : hostname
       @id = id == nil ? "" : id
+      @key_type = key_type == nil ? "" : key_type
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
       @port_forwarding = port_forwarding == nil ? false : port_forwarding
