@@ -125,6 +125,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :hostname, :string, 1
       optional :password, :string, 4
       optional :port, :int32, 2
+      optional :port_override, :int32, 6
       optional :username, :string, 3
     end
     add_message "v1.AKSServiceAccount" do
@@ -665,6 +666,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :hostname, :string, 1
       optional :password, :string, 4
       optional :port, :int32, 2
+      optional :port_override, :int32, 6
       optional :username, :string, 3
     end
     add_message "v1.KubernetesServiceAccount" do

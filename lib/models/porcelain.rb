@@ -110,6 +110,8 @@ module SDM
     attr_accessor :password
 
     attr_accessor :port
+
+    attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Tags is a map of key, value pairs.
@@ -127,6 +129,7 @@ module SDM
       name: nil,
       password: nil,
       port: nil,
+      port_override: nil,
       secret_store_id: nil,
       tags: nil,
       username: nil
@@ -140,6 +143,7 @@ module SDM
       @name = name == nil ? "" : name
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
       @username = username == nil ? "" : username
@@ -3091,6 +3095,8 @@ module SDM
     attr_accessor :password
 
     attr_accessor :port
+
+    attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Tags is a map of key, value pairs.
@@ -3108,6 +3114,7 @@ module SDM
       name: nil,
       password: nil,
       port: nil,
+      port_override: nil,
       secret_store_id: nil,
       tags: nil,
       username: nil
@@ -3121,6 +3128,7 @@ module SDM
       @name = name == nil ? "" : name
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
       @username = username == nil ? "" : username
