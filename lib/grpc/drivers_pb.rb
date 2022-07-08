@@ -110,6 +110,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :healthcheck_namespace, :string, 9
       optional :hostname, :string, 1
       optional :port, :int32, 2
+      optional :port_override, :int32, 12
       optional :remote_identity_group_id, :string, 10
       optional :remote_identity_healthcheck_username, :string, 11
     end
@@ -139,6 +140,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :healthcheck_namespace, :string, 4
       optional :hostname, :string, 1
       optional :port, :int32, 2
+      optional :port_override, :int32, 7
       optional :remote_identity_group_id, :string, 5
       optional :remote_identity_healthcheck_username, :string, 6
       optional :token, :string, 3
@@ -154,6 +156,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :healthcheck_namespace, :string, 4
       optional :hostname, :string, 1
       optional :port, :int32, 2
+      optional :port_override, :int32, 5
       optional :token, :string, 3
     end
     add_message "v1.AKSUserImpersonation" do
@@ -170,6 +173,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :healthcheck_namespace, :string, 9
       optional :hostname, :string, 1
       optional :port, :int32, 2
+      optional :port_override, :int32, 10
     end
     add_message "v1.AWS" do
       optional :id, :string, 32768
@@ -651,6 +655,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :healthcheck_namespace, :string, 9
       optional :hostname, :string, 1
       optional :port, :int32, 2
+      optional :port_override, :int32, 12
       optional :remote_identity_group_id, :string, 10
       optional :remote_identity_healthcheck_username, :string, 11
     end
@@ -680,6 +685,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :healthcheck_namespace, :string, 4
       optional :hostname, :string, 1
       optional :port, :int32, 2
+      optional :port_override, :int32, 7
       optional :remote_identity_group_id, :string, 5
       optional :remote_identity_healthcheck_username, :string, 6
       optional :token, :string, 3
@@ -695,6 +701,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :healthcheck_namespace, :string, 4
       optional :hostname, :string, 1
       optional :port, :int32, 2
+      optional :port_override, :int32, 5
       optional :token, :string, 3
     end
     add_message "v1.KubernetesUserImpersonation" do
@@ -711,6 +718,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :healthcheck_namespace, :string, 9
       optional :hostname, :string, 1
       optional :port, :int32, 2
+      optional :port_override, :int32, 10
     end
     add_message "v1.MTLSMysql" do
       optional :id, :string, 32768

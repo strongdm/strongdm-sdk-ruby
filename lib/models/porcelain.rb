@@ -40,6 +40,8 @@ module SDM
 
     attr_accessor :port
 
+    attr_accessor :port_override
+
     attr_accessor :remote_identity_group_id
 
     attr_accessor :remote_identity_healthcheck_username
@@ -60,6 +62,7 @@ module SDM
       id: nil,
       name: nil,
       port: nil,
+      port_override: nil,
       remote_identity_group_id: nil,
       remote_identity_healthcheck_username: nil,
       secret_store_id: nil,
@@ -76,6 +79,7 @@ module SDM
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
       @remote_identity_group_id = remote_identity_group_id == nil ? "" : remote_identity_group_id
       @remote_identity_healthcheck_username = remote_identity_healthcheck_username == nil ? "" : remote_identity_healthcheck_username
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
@@ -176,6 +180,8 @@ module SDM
 
     attr_accessor :port
 
+    attr_accessor :port_override
+
     attr_accessor :remote_identity_group_id
 
     attr_accessor :remote_identity_healthcheck_username
@@ -195,6 +201,7 @@ module SDM
       id: nil,
       name: nil,
       port: nil,
+      port_override: nil,
       remote_identity_group_id: nil,
       remote_identity_healthcheck_username: nil,
       secret_store_id: nil,
@@ -209,6 +216,7 @@ module SDM
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
       @remote_identity_group_id = remote_identity_group_id == nil ? "" : remote_identity_group_id
       @remote_identity_healthcheck_username = remote_identity_healthcheck_username == nil ? "" : remote_identity_healthcheck_username
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
@@ -242,6 +250,8 @@ module SDM
     attr_accessor :name
 
     attr_accessor :port
+
+    attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Tags is a map of key, value pairs.
@@ -258,6 +268,7 @@ module SDM
       id: nil,
       name: nil,
       port: nil,
+      port_override: nil,
       secret_store_id: nil,
       tags: nil,
       token: nil
@@ -270,6 +281,7 @@ module SDM
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
       @token = token == nil ? "" : token
@@ -307,6 +319,8 @@ module SDM
     attr_accessor :name
 
     attr_accessor :port
+
+    attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Tags is a map of key, value pairs.
@@ -324,6 +338,7 @@ module SDM
       id: nil,
       name: nil,
       port: nil,
+      port_override: nil,
       secret_store_id: nil,
       tags: nil
     )
@@ -338,6 +353,7 @@ module SDM
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
@@ -3025,6 +3041,8 @@ module SDM
 
     attr_accessor :port
 
+    attr_accessor :port_override
+
     attr_accessor :remote_identity_group_id
 
     attr_accessor :remote_identity_healthcheck_username
@@ -3045,6 +3063,7 @@ module SDM
       id: nil,
       name: nil,
       port: nil,
+      port_override: nil,
       remote_identity_group_id: nil,
       remote_identity_healthcheck_username: nil,
       secret_store_id: nil,
@@ -3061,6 +3080,7 @@ module SDM
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
       @remote_identity_group_id = remote_identity_group_id == nil ? "" : remote_identity_group_id
       @remote_identity_healthcheck_username = remote_identity_healthcheck_username == nil ? "" : remote_identity_healthcheck_username
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
@@ -3161,6 +3181,8 @@ module SDM
 
     attr_accessor :port
 
+    attr_accessor :port_override
+
     attr_accessor :remote_identity_group_id
 
     attr_accessor :remote_identity_healthcheck_username
@@ -3180,6 +3202,7 @@ module SDM
       id: nil,
       name: nil,
       port: nil,
+      port_override: nil,
       remote_identity_group_id: nil,
       remote_identity_healthcheck_username: nil,
       secret_store_id: nil,
@@ -3194,6 +3217,7 @@ module SDM
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
       @remote_identity_group_id = remote_identity_group_id == nil ? "" : remote_identity_group_id
       @remote_identity_healthcheck_username = remote_identity_healthcheck_username == nil ? "" : remote_identity_healthcheck_username
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
@@ -3227,6 +3251,8 @@ module SDM
     attr_accessor :name
 
     attr_accessor :port
+
+    attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Tags is a map of key, value pairs.
@@ -3243,6 +3269,7 @@ module SDM
       id: nil,
       name: nil,
       port: nil,
+      port_override: nil,
       secret_store_id: nil,
       tags: nil,
       token: nil
@@ -3255,6 +3282,7 @@ module SDM
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
       @token = token == nil ? "" : token
@@ -3292,6 +3320,8 @@ module SDM
     attr_accessor :name
 
     attr_accessor :port
+
+    attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Tags is a map of key, value pairs.
@@ -3309,6 +3339,7 @@ module SDM
       id: nil,
       name: nil,
       port: nil,
+      port_override: nil,
       secret_store_id: nil,
       tags: nil
     )
@@ -3323,6 +3354,7 @@ module SDM
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
