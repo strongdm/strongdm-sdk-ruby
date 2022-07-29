@@ -50,8 +50,6 @@ module SDM #:nodoc:
       @remote_identities = RemoteIdentities.new(host, insecure, self)
       @remote_identity_groups = RemoteIdentityGroups.new(host, insecure, self)
       @resources = Resources.new(host, insecure, self)
-      @role_attachments = RoleAttachments.new(host, insecure, self)
-      @role_grants = RoleGrants.new(host, insecure, self)
       @roles = Roles.new(host, insecure, self)
       @secret_stores = SecretStores.new(host, insecure, self)
       @_test_options = Hash.new
@@ -156,24 +154,6 @@ module SDM #:nodoc:
     #
     # See {Resources}.
     attr_reader :resources
-    # RoleAttachments represent relationships between composite roles and the roles
-    # that make up those composite roles. When a composite role is attached to another
-    # role, the permissions granted to members of the composite role are augmented to
-    # include the permissions granted to members of the attached role.
-    #
-    # Deprecated: use multi-role via AccountAttachments instead.
-    #
-    # See {RoleAttachments}.
-    attr_reader :role_attachments
-    # RoleGrants represent relationships between composite roles and the roles
-    # that make up those composite roles. When a composite role is attached to another
-    # role, the permissions granted to members of the composite role are augmented to
-    # include the permissions granted to members of the attached role.
-    #
-    # Deprecated: use Role access rules instead.
-    #
-    # See {RoleGrants}.
-    attr_reader :role_grants
     # A Role has a list of access rules which determine which Resources the members
     # of the Role have access to. An Account can be a member of multiple Roles via
     # AccountAttachments.

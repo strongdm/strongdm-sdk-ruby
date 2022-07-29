@@ -5318,11 +5318,6 @@ module SDM
   class Role
     # AccessRules is a list of access rules defining the resources this Role has access to.
     attr_accessor :access_rules
-    # Composite is true if the Role is a composite role.
-    #
-    # Deprecated: composite roles are deprecated, use multi-role via
-    # AccountAttachments instead.
-    attr_accessor :composite
     # Unique identifier of the Role.
     attr_accessor :id
     # Unique human-readable name of the Role.
@@ -5332,132 +5327,14 @@ module SDM
 
     def initialize(
       access_rules: nil,
-      composite: nil,
       id: nil,
       name: nil,
       tags: nil
     )
       @access_rules = access_rules == nil ? SDM::_porcelain_zero_value_access_rules() : access_rules
-      @composite = composite == nil ? false : composite
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
-    end
-
-    def to_json(options = {})
-      hash = {}
-      self.instance_variables.each do |var|
-        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
-      end
-      hash.to_json
-    end
-  end
-
-  # A RoleAttachment assigns a role to a composite role.
-  #
-  # Deprecated: use multi-role via AccountAttachments instead.
-  class RoleAttachment
-    # The id of the attached role of this RoleAttachment.
-    attr_accessor :attached_role_id
-    # The id of the composite role of this RoleAttachment.
-    attr_accessor :composite_role_id
-    # Unique identifier of the RoleAttachment.
-    attr_accessor :id
-
-    def initialize(
-      attached_role_id: nil,
-      composite_role_id: nil,
-      id: nil
-    )
-      @attached_role_id = attached_role_id == nil ? "" : attached_role_id
-      @composite_role_id = composite_role_id == nil ? "" : composite_role_id
-      @id = id == nil ? "" : id
-    end
-
-    def to_json(options = {})
-      hash = {}
-      self.instance_variables.each do |var|
-        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
-      end
-      hash.to_json
-    end
-  end
-
-  # RoleAttachmentCreateResponse reports how the RoleAttachments were created in the system.
-  #
-  # Deprecated: use multi-role via AccountAttachments instead.
-  class RoleAttachmentCreateResponse
-    # Reserved for future use.
-    attr_accessor :meta
-    # Rate limit information.
-    attr_accessor :rate_limit
-    # The created RoleAttachment.
-    attr_accessor :role_attachment
-
-    def initialize(
-      meta: nil,
-      rate_limit: nil,
-      role_attachment: nil
-    )
-      @meta = meta == nil ? nil : meta
-      @rate_limit = rate_limit == nil ? nil : rate_limit
-      @role_attachment = role_attachment == nil ? nil : role_attachment
-    end
-
-    def to_json(options = {})
-      hash = {}
-      self.instance_variables.each do |var|
-        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
-      end
-      hash.to_json
-    end
-  end
-
-  # RoleAttachmentDeleteResponse returns information about a RoleAttachment that was deleted.
-  #
-  # Deprecated: use multi-role via AccountAttachments instead.
-  class RoleAttachmentDeleteResponse
-    # Reserved for future use.
-    attr_accessor :meta
-    # Rate limit information.
-    attr_accessor :rate_limit
-
-    def initialize(
-      meta: nil,
-      rate_limit: nil
-    )
-      @meta = meta == nil ? nil : meta
-      @rate_limit = rate_limit == nil ? nil : rate_limit
-    end
-
-    def to_json(options = {})
-      hash = {}
-      self.instance_variables.each do |var|
-        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
-      end
-      hash.to_json
-    end
-  end
-
-  # RoleAttachmentGetResponse returns a requested RoleAttachment.
-  #
-  # Deprecated: use multi-role via AccountAttachments instead.
-  class RoleAttachmentGetResponse
-    # Reserved for future use.
-    attr_accessor :meta
-    # Rate limit information.
-    attr_accessor :rate_limit
-    # The requested RoleAttachment.
-    attr_accessor :role_attachment
-
-    def initialize(
-      meta: nil,
-      rate_limit: nil,
-      role_attachment: nil
-    )
-      @meta = meta == nil ? nil : meta
-      @rate_limit = rate_limit == nil ? nil : rate_limit
-      @role_attachment = role_attachment == nil ? nil : role_attachment
     end
 
     def to_json(options = {})
@@ -5539,122 +5416,6 @@ module SDM
       @meta = meta == nil ? nil : meta
       @rate_limit = rate_limit == nil ? nil : rate_limit
       @role = role == nil ? nil : role
-    end
-
-    def to_json(options = {})
-      hash = {}
-      self.instance_variables.each do |var|
-        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
-      end
-      hash.to_json
-    end
-  end
-
-  # A RoleGrant connects a resource to a role, granting members of the role access to that resource.
-  #
-  # Deprecated: use Role access rules instead.
-  class RoleGrant
-    # Unique identifier of the RoleGrant.
-    attr_accessor :id
-    # The id of the resource of this RoleGrant.
-    attr_accessor :resource_id
-    # The id of the attached role of this RoleGrant.
-    attr_accessor :role_id
-
-    def initialize(
-      id: nil,
-      resource_id: nil,
-      role_id: nil
-    )
-      @id = id == nil ? "" : id
-      @resource_id = resource_id == nil ? "" : resource_id
-      @role_id = role_id == nil ? "" : role_id
-    end
-
-    def to_json(options = {})
-      hash = {}
-      self.instance_variables.each do |var|
-        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
-      end
-      hash.to_json
-    end
-  end
-
-  # RoleGrantCreateResponse reports how the RoleGrants were created in the system.
-  #
-  # Deprecated: use Role access rules instead.
-  class RoleGrantCreateResponse
-    # Reserved for future use.
-    attr_accessor :meta
-    # Rate limit information.
-    attr_accessor :rate_limit
-    # The created RoleGrant.
-    attr_accessor :role_grant
-
-    def initialize(
-      meta: nil,
-      rate_limit: nil,
-      role_grant: nil
-    )
-      @meta = meta == nil ? nil : meta
-      @rate_limit = rate_limit == nil ? nil : rate_limit
-      @role_grant = role_grant == nil ? nil : role_grant
-    end
-
-    def to_json(options = {})
-      hash = {}
-      self.instance_variables.each do |var|
-        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
-      end
-      hash.to_json
-    end
-  end
-
-  # RoleGrantDeleteResponse returns information about a RoleGrant that was deleted.
-  #
-  # Deprecated: use Role access rules instead.
-  class RoleGrantDeleteResponse
-    # Reserved for future use.
-    attr_accessor :meta
-    # Rate limit information.
-    attr_accessor :rate_limit
-
-    def initialize(
-      meta: nil,
-      rate_limit: nil
-    )
-      @meta = meta == nil ? nil : meta
-      @rate_limit = rate_limit == nil ? nil : rate_limit
-    end
-
-    def to_json(options = {})
-      hash = {}
-      self.instance_variables.each do |var|
-        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
-      end
-      hash.to_json
-    end
-  end
-
-  # RoleGrantGetResponse returns a requested RoleGrant.
-  #
-  # Deprecated: use Role access rules instead.
-  class RoleGrantGetResponse
-    # Reserved for future use.
-    attr_accessor :meta
-    # Rate limit information.
-    attr_accessor :rate_limit
-    # The requested RoleGrant.
-    attr_accessor :role_grant
-
-    def initialize(
-      meta: nil,
-      rate_limit: nil,
-      role_grant: nil
-    )
-      @meta = meta == nil ? nil : meta
-      @rate_limit = rate_limit == nil ? nil : rate_limit
-      @role_grant = role_grant == nil ? nil : role_grant
     end
 
     def to_json(options = {})

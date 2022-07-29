@@ -71,7 +71,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 1
       optional :name, :string, 2
       optional :access_rules, :string, 5
-      optional :composite, :bool, 3
       optional :tags, :message, 4, "v1.Tags"
     end
   end

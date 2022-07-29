@@ -30,8 +30,6 @@ require_relative "./nodes_pb"
 require_relative "./remote_identities_pb"
 require_relative "./remote_identity_groups_pb"
 require_relative "./resources_pb"
-require_relative "./role_attachments_pb"
-require_relative "./role_grants_pb"
 require_relative "./roles_pb"
 require_relative "./secret_store_types_pb"
 require_relative "./secret_stores_pb"
@@ -5740,7 +5738,6 @@ module SDM
       end
       porcelain = Role.new()
       porcelain.access_rules = convert_access_rules_to_porcelain(plumbing.access_rules)
-      porcelain.composite = (plumbing.composite)
       porcelain.id = (plumbing.id)
       porcelain.name = (plumbing.name)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
@@ -5753,7 +5750,6 @@ module SDM
       end
       plumbing = V1::Role.new()
       plumbing.access_rules = convert_access_rules_to_plumbing(porcelain.access_rules)
-      plumbing.composite = (porcelain.composite)
       plumbing.id = (porcelain.id)
       plumbing.name = (porcelain.name)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
@@ -5772,156 +5768,6 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_role_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
-    def self.convert_role_attachment_to_porcelain(plumbing)
-      if plumbing == nil
-        return nil
-      end
-      porcelain = RoleAttachment.new()
-      porcelain.attached_role_id = (plumbing.attached_role_id)
-      porcelain.composite_role_id = (plumbing.composite_role_id)
-      porcelain.id = (plumbing.id)
-      porcelain
-    end
-
-    def self.convert_role_attachment_to_plumbing(porcelain)
-      if porcelain == nil
-        return nil
-      end
-      plumbing = V1::RoleAttachment.new()
-      plumbing.attached_role_id = (porcelain.attached_role_id)
-      plumbing.composite_role_id = (porcelain.composite_role_id)
-      plumbing.id = (porcelain.id)
-      plumbing
-    end
-    def self.convert_repeated_role_attachment_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = convert_role_attachment_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.convert_repeated_role_attachment_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = convert_role_attachment_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
-    def self.convert_role_attachment_create_response_to_porcelain(plumbing)
-      if plumbing == nil
-        return nil
-      end
-      porcelain = RoleAttachmentCreateResponse.new()
-      porcelain.meta = convert_create_response_metadata_to_porcelain(plumbing.meta)
-      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
-      porcelain.role_attachment = convert_role_attachment_to_porcelain(plumbing.role_attachment)
-      porcelain
-    end
-
-    def self.convert_role_attachment_create_response_to_plumbing(porcelain)
-      if porcelain == nil
-        return nil
-      end
-      plumbing = V1::RoleAttachmentCreateResponse.new()
-      plumbing.meta = convert_create_response_metadata_to_plumbing(porcelain.meta)
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
-      plumbing.role_attachment = convert_role_attachment_to_plumbing(porcelain.role_attachment)
-      plumbing
-    end
-    def self.convert_repeated_role_attachment_create_response_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = convert_role_attachment_create_response_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.convert_repeated_role_attachment_create_response_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = convert_role_attachment_create_response_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
-    def self.convert_role_attachment_delete_response_to_porcelain(plumbing)
-      if plumbing == nil
-        return nil
-      end
-      porcelain = RoleAttachmentDeleteResponse.new()
-      porcelain.meta = convert_delete_response_metadata_to_porcelain(plumbing.meta)
-      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
-      porcelain
-    end
-
-    def self.convert_role_attachment_delete_response_to_plumbing(porcelain)
-      if porcelain == nil
-        return nil
-      end
-      plumbing = V1::RoleAttachmentDeleteResponse.new()
-      plumbing.meta = convert_delete_response_metadata_to_plumbing(porcelain.meta)
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
-      plumbing
-    end
-    def self.convert_repeated_role_attachment_delete_response_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = convert_role_attachment_delete_response_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.convert_repeated_role_attachment_delete_response_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = convert_role_attachment_delete_response_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
-    def self.convert_role_attachment_get_response_to_porcelain(plumbing)
-      if plumbing == nil
-        return nil
-      end
-      porcelain = RoleAttachmentGetResponse.new()
-      porcelain.meta = convert_get_response_metadata_to_porcelain(plumbing.meta)
-      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
-      porcelain.role_attachment = convert_role_attachment_to_porcelain(plumbing.role_attachment)
-      porcelain
-    end
-
-    def self.convert_role_attachment_get_response_to_plumbing(porcelain)
-      if porcelain == nil
-        return nil
-      end
-      plumbing = V1::RoleAttachmentGetResponse.new()
-      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta)
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
-      plumbing.role_attachment = convert_role_attachment_to_plumbing(porcelain.role_attachment)
-      plumbing
-    end
-    def self.convert_repeated_role_attachment_get_response_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = convert_role_attachment_get_response_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.convert_repeated_role_attachment_get_response_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = convert_role_attachment_get_response_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -6034,156 +5880,6 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_role_get_response_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
-    def self.convert_role_grant_to_porcelain(plumbing)
-      if plumbing == nil
-        return nil
-      end
-      porcelain = RoleGrant.new()
-      porcelain.id = (plumbing.id)
-      porcelain.resource_id = (plumbing.resource_id)
-      porcelain.role_id = (plumbing.role_id)
-      porcelain
-    end
-
-    def self.convert_role_grant_to_plumbing(porcelain)
-      if porcelain == nil
-        return nil
-      end
-      plumbing = V1::RoleGrant.new()
-      plumbing.id = (porcelain.id)
-      plumbing.resource_id = (porcelain.resource_id)
-      plumbing.role_id = (porcelain.role_id)
-      plumbing
-    end
-    def self.convert_repeated_role_grant_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = convert_role_grant_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.convert_repeated_role_grant_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = convert_role_grant_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
-    def self.convert_role_grant_create_response_to_porcelain(plumbing)
-      if plumbing == nil
-        return nil
-      end
-      porcelain = RoleGrantCreateResponse.new()
-      porcelain.meta = convert_create_response_metadata_to_porcelain(plumbing.meta)
-      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
-      porcelain.role_grant = convert_role_grant_to_porcelain(plumbing.role_grant)
-      porcelain
-    end
-
-    def self.convert_role_grant_create_response_to_plumbing(porcelain)
-      if porcelain == nil
-        return nil
-      end
-      plumbing = V1::RoleGrantCreateResponse.new()
-      plumbing.meta = convert_create_response_metadata_to_plumbing(porcelain.meta)
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
-      plumbing.role_grant = convert_role_grant_to_plumbing(porcelain.role_grant)
-      plumbing
-    end
-    def self.convert_repeated_role_grant_create_response_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = convert_role_grant_create_response_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.convert_repeated_role_grant_create_response_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = convert_role_grant_create_response_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
-    def self.convert_role_grant_delete_response_to_porcelain(plumbing)
-      if plumbing == nil
-        return nil
-      end
-      porcelain = RoleGrantDeleteResponse.new()
-      porcelain.meta = convert_delete_response_metadata_to_porcelain(plumbing.meta)
-      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
-      porcelain
-    end
-
-    def self.convert_role_grant_delete_response_to_plumbing(porcelain)
-      if porcelain == nil
-        return nil
-      end
-      plumbing = V1::RoleGrantDeleteResponse.new()
-      plumbing.meta = convert_delete_response_metadata_to_plumbing(porcelain.meta)
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
-      plumbing
-    end
-    def self.convert_repeated_role_grant_delete_response_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = convert_role_grant_delete_response_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.convert_repeated_role_grant_delete_response_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = convert_role_grant_delete_response_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
-    def self.convert_role_grant_get_response_to_porcelain(plumbing)
-      if plumbing == nil
-        return nil
-      end
-      porcelain = RoleGrantGetResponse.new()
-      porcelain.meta = convert_get_response_metadata_to_porcelain(plumbing.meta)
-      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
-      porcelain.role_grant = convert_role_grant_to_porcelain(plumbing.role_grant)
-      porcelain
-    end
-
-    def self.convert_role_grant_get_response_to_plumbing(porcelain)
-      if porcelain == nil
-        return nil
-      end
-      plumbing = V1::RoleGrantGetResponse.new()
-      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta)
-      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
-      plumbing.role_grant = convert_role_grant_to_plumbing(porcelain.role_grant)
-      plumbing
-    end
-    def self.convert_repeated_role_grant_get_response_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = convert_role_grant_get_response_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.convert_repeated_role_grant_get_response_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = convert_role_grant_get_response_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
