@@ -655,17 +655,15 @@ module SDM
 
   # AccountGrants connect a resource directly to an account, giving the account the permission to connect to that resource.
   class AccountGrant
-    # The account id of this AccountGrant.
+    # The account ID of this AccountGrant.
     attr_accessor :account_id
     # Unique identifier of the AccountGrant.
     attr_accessor :id
-    # The resource id of this AccountGrant.
+    # The resource ID of this AccountGrant.
     attr_accessor :resource_id
-    # The timestamp when the resource will be granted. Optional. Both start_at
-    # and end_at must be defined together, or not defined at all.
+    # The timestamp when the resource will be granted. When creating an AccountGrant, if this field is not specified, it will default to the current time.
     attr_accessor :start_from
-    # The timestamp when the resource grant will expire. Optional. Both
-    # start_at and end_at must be defined together, or not defined at all.
+    # The timestamp when the resource grant will expire.
     attr_accessor :valid_until
 
     def initialize(
