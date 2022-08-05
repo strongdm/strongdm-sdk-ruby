@@ -3,6 +3,7 @@
 --exclude lib/version.rb
 --tag internal
 --hide-tag internal
+--no-private
 lib/**/*.rb
 -
 README.md

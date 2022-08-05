@@ -55,6 +55,7 @@ module SDM #:nodoc:
       @_test_options = Hash.new
     end
 
+    # @private
     def get_metadata(method_name, req)
       return {
                'x-sdm-authentication': @api_access_key,
@@ -80,6 +81,7 @@ module SDM #:nodoc:
       return Base64.strict_encode64(OpenSSL::HMAC.digest(OpenSSL::Digest::SHA256.new, signing_key, request_hash))
     end
 
+    # @private
     def jitterSleep(iter)
       dur_max = @base_retry_delay * 2 ** iter
       if (dur_max > @max_retry_delay)
@@ -89,6 +91,7 @@ module SDM #:nodoc:
       sleep(dur)
     end
 
+    # @private
     def shouldRetry(iter, err)
       if (iter >= @max_retries - 1)
         return false
@@ -164,6 +167,7 @@ module SDM #:nodoc:
     #
     # See {SecretStores}.
     attr_reader :secret_stores
+    # @private
     attr_reader :_test_options
   end
 end

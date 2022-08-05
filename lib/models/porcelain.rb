@@ -6409,9 +6409,11 @@ module SDM
     end
   end
 
+  # @private
   def self._porcelain_zero_value_tags()
     {}
   end
+  # @private
   def self._porcelain_zero_value_access_rules()
     []
   end
