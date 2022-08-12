@@ -1856,6 +1856,37 @@ module SDM
     end
   end
 
+  # ConjurClientStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class ConjurClientStore
+    attr_accessor :appurl
+    # Unique identifier of the SecretStore.
+    attr_accessor :id
+    # Unique human-readable name of the SecretStore.
+    attr_accessor :name
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      appurl: nil,
+      id: nil,
+      name: nil,
+      tags: nil
+    )
+      @appurl = appurl == nil ? "" : appurl
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   # ControlPanelGetSSHCAPublicKeyResponse represents a request for an
   # organization's SSH Certificate Authority public key.
   class ControlPanelGetSSHCAPublicKeyResponse
@@ -2065,6 +2096,42 @@ module SDM
   # DeleteResponseMetadata is reserved for future use.
   class DeleteResponseMetadata
     def initialize()
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # DelineaStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class DelineaStore
+    # Unique identifier of the SecretStore.
+    attr_accessor :id
+    # Unique human-readable name of the SecretStore.
+    attr_accessor :name
+
+    attr_accessor :server_url
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    attr_accessor :tenant_name
+
+    def initialize(
+      id: nil,
+      name: nil,
+      server_url: nil,
+      tags: nil,
+      tenant_name: nil
+    )
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @server_url = server_url == nil ? "" : server_url
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tenant_name = tenant_name == nil ? "" : tenant_name
     end
 
     def to_json(options = {})
@@ -2464,6 +2531,34 @@ module SDM
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
       @tls_required = tls_required == nil ? false : tls_required
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # EnvStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class EnvStore
+    # Unique identifier of the SecretStore.
+    attr_accessor :id
+    # Unique human-readable name of the SecretStore.
+    attr_accessor :name
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      id: nil,
+      name: nil,
+      tags: nil
+    )
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
     def to_json(options = {})
@@ -3366,6 +3461,7 @@ module SDM
     end
   end
 
+  # MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class MTLSMysql
     # Bind interface
     attr_accessor :bind_interface
@@ -3725,6 +3821,7 @@ module SDM
     end
   end
 
+  # MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class MongoHost
     attr_accessor :auth_database
     # Bind interface
@@ -3947,6 +4044,7 @@ module SDM
     end
   end
 
+  # MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class MongoReplicaSet
     attr_accessor :auth_database
     # Bind interface
@@ -4025,6 +4123,7 @@ module SDM
     end
   end
 
+  # MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class MongoShardedCluster
     attr_accessor :auth_database
     # Bind interface
@@ -4401,6 +4500,7 @@ module SDM
     end
   end
 
+  # Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class Oracle
     # Bind interface
     attr_accessor :bind_interface

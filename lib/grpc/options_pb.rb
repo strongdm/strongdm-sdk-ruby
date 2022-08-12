@@ -65,6 +65,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       map :comment_override, :string, :string, 1941331
       map :deprecated_override, :string, :bool, 1941312
       optional :terraform_elem_type, :string, 1941311
+      optional :unstable, :bool, 1941313
     end
     add_message "v1.TerraformDocs" do
       optional :resource_example_path, :string, 1941300

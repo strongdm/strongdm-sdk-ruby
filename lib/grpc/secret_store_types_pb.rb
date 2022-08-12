@@ -25,6 +25,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       oneof :secret_store do
         optional :aws, :message, 3, "v1.AWSStore"
         optional :azure, :message, 101, "v1.AzureStore"
+        optional :conjur, :message, 301, "v1.ConjurClientStore"
+        optional :delinea, :message, 2900, "v1.DelineaStore"
         optional :gcp, :message, 201, "v1.GCPStore"
         optional :vault_app_role, :message, 4, "v1.VaultAppRoleStore"
         optional :vault_tls, :message, 1, "v1.VaultTLSStore"
@@ -41,6 +43,24 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 1
       optional :name, :string, 2
       optional :vault_uri, :string, 3
+      optional :tags, :message, 32771, "v1.Tags"
+    end
+    add_message "v1.ConjurClientStore" do
+      optional :id, :string, 1
+      optional :name, :string, 2
+      optional :appURL, :string, 3
+      optional :tags, :message, 32771, "v1.Tags"
+    end
+    add_message "v1.DelineaStore" do
+      optional :id, :string, 1
+      optional :name, :string, 2
+      optional :server_url, :string, 3
+      optional :tenant_name, :string, 4
+      optional :tags, :message, 32771, "v1.Tags"
+    end
+    add_message "v1.EnvStore" do
+      optional :id, :string, 1
+      optional :name, :string, 2
       optional :tags, :message, 32771, "v1.Tags"
     end
     add_message "v1.GCPStore" do
@@ -80,6 +100,9 @@ module V1
   SecretStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SecretStore").msgclass
   AWSStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AWSStore").msgclass
   AzureStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AzureStore").msgclass
+  ConjurClientStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ConjurClientStore").msgclass
+  DelineaStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DelineaStore").msgclass
+  EnvStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.EnvStore").msgclass
   GCPStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GCPStore").msgclass
   VaultAppRoleStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.VaultAppRoleStore").msgclass
   VaultTLSStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.VaultTLSStore").msgclass
