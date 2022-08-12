@@ -1926,11 +1926,11 @@ module SDM
       end
       items
     end
-    def self.convert_conjur_client_store_to_porcelain(plumbing)
+    def self.convert_conjur_store_to_porcelain(plumbing)
       if plumbing == nil
         return nil
       end
-      porcelain = ConjurClientStore.new()
+      porcelain = ConjurStore.new()
       porcelain.appurl = (plumbing.appURL)
       porcelain.id = (plumbing.id)
       porcelain.name = (plumbing.name)
@@ -1938,30 +1938,30 @@ module SDM
       porcelain
     end
 
-    def self.convert_conjur_client_store_to_plumbing(porcelain)
+    def self.convert_conjur_store_to_plumbing(porcelain)
       if porcelain == nil
         return nil
       end
-      plumbing = V1::ConjurClientStore.new()
+      plumbing = V1::ConjurStore.new()
       plumbing.appURL = (porcelain.appurl)
       plumbing.id = (porcelain.id)
       plumbing.name = (porcelain.name)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing
     end
-    def self.convert_repeated_conjur_client_store_to_plumbing(porcelains)
+    def self.convert_repeated_conjur_store_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
-        plumbing = convert_conjur_client_store_to_plumbing(porcelain)
+        plumbing = convert_conjur_store_to_plumbing(porcelain)
         items.append(plumbing)
       end
       items
     end
 
-    def self.convert_repeated_conjur_client_store_to_porcelain(plumbings)
+    def self.convert_repeated_conjur_store_to_porcelain(plumbings)
       items = Array.new
       plumbings.each do |plumbing|
-        porcelain = convert_conjur_client_store_to_porcelain(plumbing)
+        porcelain = convert_conjur_store_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -2608,44 +2608,6 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_elasticache_redis_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
-    def self.convert_env_store_to_porcelain(plumbing)
-      if plumbing == nil
-        return nil
-      end
-      porcelain = EnvStore.new()
-      porcelain.id = (plumbing.id)
-      porcelain.name = (plumbing.name)
-      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
-      porcelain
-    end
-
-    def self.convert_env_store_to_plumbing(porcelain)
-      if porcelain == nil
-        return nil
-      end
-      plumbing = V1::EnvStore.new()
-      plumbing.id = (porcelain.id)
-      plumbing.name = (porcelain.name)
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
-      plumbing
-    end
-    def self.convert_repeated_env_store_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = convert_env_store_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.convert_repeated_env_store_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = convert_env_store_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -6301,8 +6263,8 @@ module SDM
       if porcelain.instance_of? AzureStore
         plumbing.azure = convert_azure_store_to_plumbing(porcelain)
       end
-      if porcelain.instance_of? ConjurClientStore
-        plumbing.conjur = convert_conjur_client_store_to_plumbing(porcelain)
+      if porcelain.instance_of? ConjurStore
+        plumbing.conjur = convert_conjur_store_to_plumbing(porcelain)
       end
       if porcelain.instance_of? DelineaStore
         plumbing.delinea = convert_delinea_store_to_plumbing(porcelain)
@@ -6333,7 +6295,7 @@ module SDM
         return convert_azure_store_to_porcelain(plumbing.azure)
       end
       if plumbing.conjur != nil
-        return convert_conjur_client_store_to_porcelain(plumbing.conjur)
+        return convert_conjur_store_to_porcelain(plumbing.conjur)
       end
       if plumbing.delinea != nil
         return convert_delinea_store_to_porcelain(plumbing.delinea)

@@ -1495,7 +1495,7 @@ module SDM #:nodoc:
   # See:
   # {AWSStore}
   # {AzureStore}
-  # {ConjurClientStore}
+  # {ConjurStore}
   # {DelineaStore}
   # {GCPStore}
   # {VaultAppRoleStore}

@@ -1856,8 +1856,8 @@ module SDM
     end
   end
 
-  # ConjurClientStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-  class ConjurClientStore
+  # ConjurStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class ConjurStore
     attr_accessor :appurl
     # Unique identifier of the SecretStore.
     attr_accessor :id
@@ -2531,34 +2531,6 @@ module SDM
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
       @tls_required = tls_required == nil ? false : tls_required
-    end
-
-    def to_json(options = {})
-      hash = {}
-      self.instance_variables.each do |var|
-        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
-      end
-      hash.to_json
-    end
-  end
-
-  # EnvStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-  class EnvStore
-    # Unique identifier of the SecretStore.
-    attr_accessor :id
-    # Unique human-readable name of the SecretStore.
-    attr_accessor :name
-    # Tags is a map of key, value pairs.
-    attr_accessor :tags
-
-    def initialize(
-      id: nil,
-      name: nil,
-      tags: nil
-    )
-      @id = id == nil ? "" : id
-      @name = name == nil ? "" : name
-      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
     def to_json(options = {})
