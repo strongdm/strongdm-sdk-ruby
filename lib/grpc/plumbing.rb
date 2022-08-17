@@ -464,6 +464,136 @@ module SDM
       end
       items
     end
+    def self.convert_aws_console_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AWSConsole.new()
+      porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.enable_env_variables = (plumbing.enable_env_variables)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.region = (plumbing.region)
+      porcelain.remote_identity_group_id = (plumbing.remote_identity_group_id)
+      porcelain.remote_identity_healthcheck_username = (plumbing.remote_identity_healthcheck_username)
+      porcelain.role_arn = (plumbing.role_arn)
+      porcelain.role_external_id = (plumbing.role_external_id)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.session_expiry = (plumbing.session_expiry)
+      porcelain.subdomain = (plumbing.subdomain)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_aws_console_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AWSConsole.new()
+      plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.enable_env_variables = (porcelain.enable_env_variables)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.region = (porcelain.region)
+      plumbing.remote_identity_group_id = (porcelain.remote_identity_group_id)
+      plumbing.remote_identity_healthcheck_username = (porcelain.remote_identity_healthcheck_username)
+      plumbing.role_arn = (porcelain.role_arn)
+      plumbing.role_external_id = (porcelain.role_external_id)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.session_expiry = (porcelain.session_expiry)
+      plumbing.subdomain = (porcelain.subdomain)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_aws_console_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_aws_console_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_aws_console_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_aws_console_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_aws_console_static_key_pair_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AWSConsoleStaticKeyPair.new()
+      porcelain.access_key = (plumbing.access_key)
+      porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.region = (plumbing.region)
+      porcelain.remote_identity_group_id = (plumbing.remote_identity_group_id)
+      porcelain.remote_identity_healthcheck_username = (plumbing.remote_identity_healthcheck_username)
+      porcelain.role_arn = (plumbing.role_arn)
+      porcelain.role_external_id = (plumbing.role_external_id)
+      porcelain.secret_access_key = (plumbing.secret_access_key)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.session_expiry = (plumbing.session_expiry)
+      porcelain.subdomain = (plumbing.subdomain)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_aws_console_static_key_pair_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AWSConsoleStaticKeyPair.new()
+      plumbing.access_key = (porcelain.access_key)
+      plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.region = (porcelain.region)
+      plumbing.remote_identity_group_id = (porcelain.remote_identity_group_id)
+      plumbing.remote_identity_healthcheck_username = (porcelain.remote_identity_healthcheck_username)
+      plumbing.role_arn = (porcelain.role_arn)
+      plumbing.role_external_id = (porcelain.role_external_id)
+      plumbing.secret_access_key = (porcelain.secret_access_key)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.session_expiry = (porcelain.session_expiry)
+      plumbing.subdomain = (porcelain.subdomain)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_aws_console_static_key_pair_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_aws_console_static_key_pair_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_aws_console_static_key_pair_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_aws_console_static_key_pair_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_aws_store_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -1926,46 +2056,6 @@ module SDM
       end
       items
     end
-    def self.convert_conjur_store_to_porcelain(plumbing)
-      if plumbing == nil
-        return nil
-      end
-      porcelain = ConjurStore.new()
-      porcelain.appurl = (plumbing.appURL)
-      porcelain.id = (plumbing.id)
-      porcelain.name = (plumbing.name)
-      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
-      porcelain
-    end
-
-    def self.convert_conjur_store_to_plumbing(porcelain)
-      if porcelain == nil
-        return nil
-      end
-      plumbing = V1::ConjurStore.new()
-      plumbing.appURL = (porcelain.appurl)
-      plumbing.id = (porcelain.id)
-      plumbing.name = (porcelain.name)
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
-      plumbing
-    end
-    def self.convert_repeated_conjur_store_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = convert_conjur_store_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.convert_repeated_conjur_store_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = convert_conjur_store_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
     def self.convert_control_panel_get_sshca_public_key_response_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -2070,6 +2160,86 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_create_response_metadata_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_cyberark_conjur_store_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = CyberarkConjurStore.new()
+      porcelain.appurl = (plumbing.appURL)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_cyberark_conjur_store_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::CyberarkConjurStore.new()
+      plumbing.appURL = (porcelain.appurl)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_cyberark_conjur_store_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_cyberark_conjur_store_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_cyberark_conjur_store_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_cyberark_conjur_store_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_cyberark_pam_experimental_store_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = CyberarkPAMExperimentalStore.new()
+      porcelain.appurl = (plumbing.appURL)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_cyberark_pam_experimental_store_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::CyberarkPAMExperimentalStore.new()
+      plumbing.appURL = (porcelain.appurl)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_cyberark_pam_experimental_store_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_cyberark_pam_experimental_store_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_cyberark_pam_experimental_store_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_cyberark_pam_experimental_store_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -5252,6 +5422,12 @@ module SDM
       if porcelain.instance_of? AWS
         plumbing.aws = convert_aws_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? AWSConsole
+        plumbing.aws_console = convert_aws_console_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? AWSConsoleStaticKeyPair
+        plumbing.aws_console_static_key_pair = convert_aws_console_static_key_pair_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? Azure
         plumbing.azure = convert_azure_to_plumbing(porcelain)
       end
@@ -5471,6 +5647,12 @@ module SDM
       end
       if plumbing.aws != nil
         return convert_aws_to_porcelain(plumbing.aws)
+      end
+      if plumbing.aws_console != nil
+        return convert_aws_console_to_porcelain(plumbing.aws_console)
+      end
+      if plumbing.aws_console_static_key_pair != nil
+        return convert_aws_console_static_key_pair_to_porcelain(plumbing.aws_console_static_key_pair)
       end
       if plumbing.azure != nil
         return convert_azure_to_porcelain(plumbing.azure)
@@ -6263,8 +6445,11 @@ module SDM
       if porcelain.instance_of? AzureStore
         plumbing.azure = convert_azure_store_to_plumbing(porcelain)
       end
-      if porcelain.instance_of? ConjurStore
-        plumbing.conjur = convert_conjur_store_to_plumbing(porcelain)
+      if porcelain.instance_of? CyberarkConjurStore
+        plumbing.cyberark_conjur = convert_cyberark_conjur_store_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? CyberarkPAMExperimentalStore
+        plumbing.cyberark_pam_experimental = convert_cyberark_pam_experimental_store_to_plumbing(porcelain)
       end
       if porcelain.instance_of? DelineaStore
         plumbing.delinea = convert_delinea_store_to_plumbing(porcelain)
@@ -6294,8 +6479,11 @@ module SDM
       if plumbing.azure != nil
         return convert_azure_store_to_porcelain(plumbing.azure)
       end
-      if plumbing.conjur != nil
-        return convert_conjur_store_to_porcelain(plumbing.conjur)
+      if plumbing.cyberark_conjur != nil
+        return convert_cyberark_conjur_store_to_porcelain(plumbing.cyberark_conjur)
+      end
+      if plumbing.cyberark_pam_experimental != nil
+        return convert_cyberark_pam_experimental_store_to_porcelain(plumbing.cyberark_pam_experimental)
       end
       if plumbing.delinea != nil
         return convert_delinea_store_to_porcelain(plumbing.delinea)

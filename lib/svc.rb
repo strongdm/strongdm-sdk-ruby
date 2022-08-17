@@ -1042,6 +1042,8 @@ module SDM #:nodoc:
   # {AuroraMysql}
   # {AuroraPostgres}
   # {AWS}
+  # {AWSConsole}
+  # {AWSConsoleStaticKeyPair}
   # {Azure}
   # {AzureCertificate}
   # {AzurePostgres}
@@ -1495,7 +1497,8 @@ module SDM #:nodoc:
   # See:
   # {AWSStore}
   # {AzureStore}
-  # {ConjurStore}
+  # {CyberarkConjurStore}
+  # {CyberarkPAMExperimentalStore}
   # {DelineaStore}
   # {GCPStore}
   # {VaultAppRoleStore}

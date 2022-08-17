@@ -429,6 +429,169 @@ module SDM
     end
   end
 
+  # AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class AWSConsole
+    # Bind interface
+    attr_accessor :bind_interface
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
+
+    attr_accessor :enable_env_variables
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+
+    attr_accessor :port_override
+
+    attr_accessor :region
+
+    attr_accessor :remote_identity_group_id
+
+    attr_accessor :remote_identity_healthcheck_username
+
+    attr_accessor :role_arn
+
+    attr_accessor :role_external_id
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+
+    attr_accessor :session_expiry
+
+    attr_accessor :subdomain
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      bind_interface: nil,
+      egress_filter: nil,
+      enable_env_variables: nil,
+      healthy: nil,
+      id: nil,
+      name: nil,
+      port_override: nil,
+      region: nil,
+      remote_identity_group_id: nil,
+      remote_identity_healthcheck_username: nil,
+      role_arn: nil,
+      role_external_id: nil,
+      secret_store_id: nil,
+      session_expiry: nil,
+      subdomain: nil,
+      tags: nil
+    )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @enable_env_variables = enable_env_variables == nil ? false : enable_env_variables
+      @healthy = healthy == nil ? false : healthy
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @port_override = port_override == nil ? 0 : port_override
+      @region = region == nil ? "" : region
+      @remote_identity_group_id = remote_identity_group_id == nil ? "" : remote_identity_group_id
+      @remote_identity_healthcheck_username = remote_identity_healthcheck_username == nil ? "" : remote_identity_healthcheck_username
+      @role_arn = role_arn == nil ? "" : role_arn
+      @role_external_id = role_external_id == nil ? "" : role_external_id
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @session_expiry = session_expiry == nil ? "" : session_expiry
+      @subdomain = subdomain == nil ? "" : subdomain
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class AWSConsoleStaticKeyPair
+    attr_accessor :access_key
+    # Bind interface
+    attr_accessor :bind_interface
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+
+    attr_accessor :port_override
+
+    attr_accessor :region
+
+    attr_accessor :remote_identity_group_id
+
+    attr_accessor :remote_identity_healthcheck_username
+
+    attr_accessor :role_arn
+
+    attr_accessor :role_external_id
+
+    attr_accessor :secret_access_key
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+
+    attr_accessor :session_expiry
+
+    attr_accessor :subdomain
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      access_key: nil,
+      bind_interface: nil,
+      egress_filter: nil,
+      healthy: nil,
+      id: nil,
+      name: nil,
+      port_override: nil,
+      region: nil,
+      remote_identity_group_id: nil,
+      remote_identity_healthcheck_username: nil,
+      role_arn: nil,
+      role_external_id: nil,
+      secret_access_key: nil,
+      secret_store_id: nil,
+      session_expiry: nil,
+      subdomain: nil,
+      tags: nil
+    )
+      @access_key = access_key == nil ? "" : access_key
+      @bind_interface = bind_interface == nil ? "" : bind_interface
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @port_override = port_override == nil ? 0 : port_override
+      @region = region == nil ? "" : region
+      @remote_identity_group_id = remote_identity_group_id == nil ? "" : remote_identity_group_id
+      @remote_identity_healthcheck_username = remote_identity_healthcheck_username == nil ? "" : remote_identity_healthcheck_username
+      @role_arn = role_arn == nil ? "" : role_arn
+      @role_external_id = role_external_id == nil ? "" : role_external_id
+      @secret_access_key = secret_access_key == nil ? "" : secret_access_key
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @session_expiry = session_expiry == nil ? "" : session_expiry
+      @subdomain = subdomain == nil ? "" : subdomain
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class AWSStore
     # Unique identifier of the SecretStore.
     attr_accessor :id
@@ -1856,37 +2019,6 @@ module SDM
     end
   end
 
-  # ConjurStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-  class ConjurStore
-    attr_accessor :appurl
-    # Unique identifier of the SecretStore.
-    attr_accessor :id
-    # Unique human-readable name of the SecretStore.
-    attr_accessor :name
-    # Tags is a map of key, value pairs.
-    attr_accessor :tags
-
-    def initialize(
-      appurl: nil,
-      id: nil,
-      name: nil,
-      tags: nil
-    )
-      @appurl = appurl == nil ? "" : appurl
-      @id = id == nil ? "" : id
-      @name = name == nil ? "" : name
-      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
-    end
-
-    def to_json(options = {})
-      hash = {}
-      self.instance_variables.each do |var|
-        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
-      end
-      hash.to_json
-    end
-  end
-
   # ControlPanelGetSSHCAPublicKeyResponse represents a request for an
   # organization's SSH Certificate Authority public key.
   class ControlPanelGetSSHCAPublicKeyResponse
@@ -1948,6 +2080,68 @@ module SDM
   # CreateResponseMetadata is reserved for future use.
   class CreateResponseMetadata
     def initialize()
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # CyberarkConjurStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class CyberarkConjurStore
+    attr_accessor :appurl
+    # Unique identifier of the SecretStore.
+    attr_accessor :id
+    # Unique human-readable name of the SecretStore.
+    attr_accessor :name
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      appurl: nil,
+      id: nil,
+      name: nil,
+      tags: nil
+    )
+      @appurl = appurl == nil ? "" : appurl
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class CyberarkPAMExperimentalStore
+    attr_accessor :appurl
+    # Unique identifier of the SecretStore.
+    attr_accessor :id
+    # Unique human-readable name of the SecretStore.
+    attr_accessor :name
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      appurl: nil,
+      id: nil,
+      name: nil,
+      tags: nil
+    )
+      @appurl = appurl == nil ? "" : appurl
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
     def to_json(options = {})

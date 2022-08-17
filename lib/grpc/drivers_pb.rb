@@ -29,6 +29,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :aks_service_account_user_impersonation, :message, 810, "v1.AKSServiceAccountUserImpersonation"
         optional :aks_user_impersonation, :message, 814, "v1.AKSUserImpersonation"
         optional :aws, :message, 2300, "v1.AWS"
+        optional :aws_console, :message, 3000, "v1.AWSConsole"
+        optional :aws_console_static_key_pair, :message, 3001, "v1.AWSConsoleStaticKeyPair"
         optional :amazon_eks, :message, 802, "v1.AmazonEKS"
         optional :amazon_eks_user_impersonation, :message, 818, "v1.AmazonEKSUserImpersonation"
         optional :amazon_es, :message, 600, "v1.AmazonES"
@@ -188,6 +190,43 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :role_arn, :string, 5
       optional :role_external_id, :string, 6
       optional :secret_access_key, :string, 2
+    end
+    add_message "v1.AWSConsole" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :enable_env_variables, :bool, 1
+      optional :port_override, :int32, 7
+      optional :region, :string, 2
+      optional :remote_identity_group_id, :string, 8
+      optional :remote_identity_healthcheck_username, :string, 9
+      optional :role_arn, :string, 3
+      optional :role_external_id, :string, 4
+      optional :session_expiry, :string, 5
+      optional :subdomain, :string, 6
+    end
+    add_message "v1.AWSConsoleStaticKeyPair" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :access_key, :string, 1
+      optional :port_override, :int32, 8
+      optional :region, :string, 3
+      optional :remote_identity_group_id, :string, 9
+      optional :remote_identity_healthcheck_username, :string, 10
+      optional :role_arn, :string, 4
+      optional :role_external_id, :string, 5
+      optional :secret_access_key, :string, 2
+      optional :session_expiry, :string, 6
+      optional :subdomain, :string, 7
     end
     add_message "v1.AmazonEKS" do
       optional :id, :string, 32768
@@ -1199,6 +1238,8 @@ module V1
   AKSServiceAccountUserImpersonation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AKSServiceAccountUserImpersonation").msgclass
   AKSUserImpersonation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AKSUserImpersonation").msgclass
   AWS = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AWS").msgclass
+  AWSConsole = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AWSConsole").msgclass
+  AWSConsoleStaticKeyPair = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AWSConsoleStaticKeyPair").msgclass
   AmazonEKS = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AmazonEKS").msgclass
   AmazonEKSUserImpersonation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AmazonEKSUserImpersonation").msgclass
   AmazonES = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AmazonES").msgclass
