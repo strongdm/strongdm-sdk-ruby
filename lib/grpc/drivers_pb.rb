@@ -206,7 +206,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :remote_identity_healthcheck_username, :string, 9
       optional :role_arn, :string, 3
       optional :role_external_id, :string, 4
-      optional :session_expiry, :string, 5
+      optional :session_expiry, :int32, 5
       optional :subdomain, :string, 6
     end
     add_message "v1.AWSConsoleStaticKeyPair" do
@@ -225,7 +225,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :role_arn, :string, 4
       optional :role_external_id, :string, 5
       optional :secret_access_key, :string, 2
-      optional :session_expiry, :string, 6
+      optional :session_expiry, :int32, 6
       optional :subdomain, :string, 7
     end
     add_message "v1.AmazonEKS" do

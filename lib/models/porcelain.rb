@@ -495,7 +495,7 @@ module SDM
       @role_arn = role_arn == nil ? "" : role_arn
       @role_external_id = role_external_id == nil ? "" : role_external_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
-      @session_expiry = session_expiry == nil ? "" : session_expiry
+      @session_expiry = session_expiry == nil ? 0 : session_expiry
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
@@ -578,7 +578,7 @@ module SDM
       @role_external_id = role_external_id == nil ? "" : role_external_id
       @secret_access_key = secret_access_key == nil ? "" : secret_access_key
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
-      @session_expiry = session_expiry == nil ? "" : session_expiry
+      @session_expiry = session_expiry == nil ? 0 : session_expiry
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
