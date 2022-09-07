@@ -444,6 +444,8 @@ module SDM
     # Unique human-readable name of the Resource.
     attr_accessor :name
 
+    attr_accessor :port
+
     attr_accessor :port_override
 
     attr_accessor :region
@@ -471,6 +473,7 @@ module SDM
       healthy: nil,
       id: nil,
       name: nil,
+      port: nil,
       port_override: nil,
       region: nil,
       remote_identity_group_id: nil,
@@ -488,6 +491,7 @@ module SDM
       @healthy = healthy == nil ? false : healthy
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
+      @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
       @region = region == nil ? "" : region
       @remote_identity_group_id = remote_identity_group_id == nil ? "" : remote_identity_group_id

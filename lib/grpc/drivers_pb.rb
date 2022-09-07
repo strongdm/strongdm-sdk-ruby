@@ -200,6 +200,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
       optional :enable_env_variables, :bool, 1
+      optional :port, :int32, 10
       optional :port_override, :int32, 7
       optional :region, :string, 2
       optional :remote_identity_group_id, :string, 8
