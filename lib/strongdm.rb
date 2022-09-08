@@ -110,7 +110,7 @@ module SDM #:nodoc:
         sleep(sleep_for)
         return true
       end
-      return err.code() == 13 or err.code() == 14
+      return (err.code() == 13 or err.code() == 14)
     end
 
     attr_reader :max_retries
