@@ -93,6 +93,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :ssh_customer_key, :message, 1902, "v1.SSHCustomerKey"
         optional :single_store, :message, 1105, "v1.SingleStore"
         optional :snowflake, :message, 1700, "v1.Snowflake"
+        optional :snowsight, :message, 1701, "v1.Snowsight"
         optional :sybase, :message, 2000, "v1.Sybase"
         optional :sybase_iq, :message, 2001, "v1.SybaseIQ"
         optional :teradata, :message, 2100, "v1.Teradata"
@@ -200,7 +201,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
       optional :enable_env_variables, :bool, 1
-      optional :port, :int32, 10
       optional :port_override, :int32, 7
       optional :region, :string, 2
       optional :remote_identity_group_id, :string, 8
@@ -1186,6 +1186,19 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :schema, :string, 5
       optional :username, :string, 2
     end
+    add_message "v1.Snowsight" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :healthcheck_username, :string, 11
+      optional :port_override, :int32, 3
+      optional :samlMetadata, :string, 1
+      optional :subdomain, :string, 2
+    end
     add_message "v1.Sybase" do
       optional :id, :string, 32768
       optional :name, :string, 32769
@@ -1303,6 +1316,7 @@ module V1
   SSHCustomerKey = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SSHCustomerKey").msgclass
   SingleStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SingleStore").msgclass
   Snowflake = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Snowflake").msgclass
+  Snowsight = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Snowsight").msgclass
   Sybase = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Sybase").msgclass
   SybaseIQ = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SybaseIQ").msgclass
   Teradata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Teradata").msgclass

@@ -1095,6 +1095,7 @@ module SDM #:nodoc:
   # {Redshift}
   # {SingleStore}
   # {Snowflake}
+  # {Snowsight}
   # {SQLServer}
   # {SSH}
   # {SSHCert}

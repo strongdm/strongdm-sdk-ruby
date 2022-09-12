@@ -475,7 +475,6 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.id = (plumbing.id)
       porcelain.name = (plumbing.name)
-      porcelain.port = (plumbing.port)
       porcelain.port_override = (plumbing.port_override)
       porcelain.region = (plumbing.region)
       porcelain.remote_identity_group_id = (plumbing.remote_identity_group_id)
@@ -500,7 +499,6 @@ module SDM
       plumbing.healthy = (porcelain.healthy)
       plumbing.id = (porcelain.id)
       plumbing.name = (porcelain.name)
-      plumbing.port = (porcelain.port)
       plumbing.port_override = (porcelain.port_override)
       plumbing.region = (porcelain.region)
       plumbing.remote_identity_group_id = (porcelain.remote_identity_group_id)
@@ -5583,6 +5581,9 @@ module SDM
       if porcelain.instance_of? Snowflake
         plumbing.snowflake = convert_snowflake_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? Snowsight
+        plumbing.snowsight = convert_snowsight_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? SQLServer
         plumbing.sql_server = convert_sql_server_to_plumbing(porcelain)
       end
@@ -5808,6 +5809,9 @@ module SDM
       end
       if plumbing.snowflake != nil
         return convert_snowflake_to_porcelain(plumbing.snowflake)
+      end
+      if plumbing.snowsight != nil
+        return convert_snowsight_to_porcelain(plumbing.snowsight)
       end
       if plumbing.sql_server != nil
         return convert_sql_server_to_porcelain(plumbing.sql_server)
@@ -6822,6 +6826,60 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_snowflake_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_snowsight_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = Snowsight.new()
+      porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.healthcheck_username = (plumbing.healthcheck_username)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.samlmetadata = (plumbing.samlMetadata)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.subdomain = (plumbing.subdomain)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_snowsight_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::Snowsight.new()
+      plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthcheck_username = (porcelain.healthcheck_username)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.samlMetadata = (porcelain.samlmetadata)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.subdomain = (porcelain.subdomain)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_snowsight_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_snowsight_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_snowsight_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_snowsight_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
