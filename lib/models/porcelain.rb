@@ -3090,6 +3090,8 @@ module SDM
     attr_accessor :healthcheck_path
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+
+    attr_accessor :host_override
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
@@ -3111,6 +3113,7 @@ module SDM
       headers_blacklist: nil,
       healthcheck_path: nil,
       healthy: nil,
+      host_override: nil,
       id: nil,
       name: nil,
       secret_store_id: nil,
@@ -3125,6 +3128,7 @@ module SDM
       @headers_blacklist = headers_blacklist == nil ? "" : headers_blacklist
       @healthcheck_path = healthcheck_path == nil ? "" : healthcheck_path
       @healthy = healthy == nil ? false : healthy
+      @host_override = host_override == nil ? "" : host_override
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
@@ -3155,6 +3159,8 @@ module SDM
     attr_accessor :healthcheck_path
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+
+    attr_accessor :host_override
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
@@ -3179,6 +3185,7 @@ module SDM
       headers_blacklist: nil,
       healthcheck_path: nil,
       healthy: nil,
+      host_override: nil,
       id: nil,
       name: nil,
       password: nil,
@@ -3194,6 +3201,7 @@ module SDM
       @headers_blacklist = headers_blacklist == nil ? "" : headers_blacklist
       @healthcheck_path = healthcheck_path == nil ? "" : healthcheck_path
       @healthy = healthy == nil ? false : healthy
+      @host_override = host_override == nil ? "" : host_override
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
       @password = password == nil ? "" : password
@@ -3226,6 +3234,8 @@ module SDM
     attr_accessor :healthcheck_path
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
+
+    attr_accessor :host_override
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
@@ -3246,6 +3256,7 @@ module SDM
       headers_blacklist: nil,
       healthcheck_path: nil,
       healthy: nil,
+      host_override: nil,
       id: nil,
       name: nil,
       secret_store_id: nil,
@@ -3259,6 +3270,7 @@ module SDM
       @headers_blacklist = headers_blacklist == nil ? "" : headers_blacklist
       @healthcheck_path = healthcheck_path == nil ? "" : healthcheck_path
       @healthy = healthy == nil ? false : healthy
+      @host_override = host_override == nil ? "" : host_override
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id

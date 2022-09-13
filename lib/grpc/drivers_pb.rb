@@ -648,6 +648,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :default_path, :string, 5
       optional :headers_blacklist, :string, 4
       optional :healthcheck_path, :string, 2
+      optional :host_override, :string, 7
       optional :subdomain, :string, 6
       optional :url, :string, 1
     end
@@ -662,6 +663,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :default_path, :string, 6
       optional :headers_blacklist, :string, 5
       optional :healthcheck_path, :string, 2
+      optional :host_override, :string, 8
       optional :password, :string, 4
       optional :subdomain, :string, 7
       optional :url, :string, 1
@@ -678,6 +680,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :default_path, :string, 4
       optional :headers_blacklist, :string, 3
       optional :healthcheck_path, :string, 2
+      optional :host_override, :string, 6
       optional :subdomain, :string, 5
       optional :url, :string, 1
     end
@@ -922,7 +925,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :hostname, :string, 1
       optional :password, :string, 5
       optional :port_override, :int32, 3
-      optional :tls_required, :bool, 8
+      optional :tls_required, :bool, 6
       optional :username, :string, 4
     end
     add_message "v1.Mysql" do
