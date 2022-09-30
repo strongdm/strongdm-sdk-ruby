@@ -4678,6 +4678,7 @@ module SDM
     end
   end
 
+  # Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class Oracle
     # Bind interface
     attr_accessor :bind_interface
