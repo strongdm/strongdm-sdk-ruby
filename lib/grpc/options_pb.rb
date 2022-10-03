@@ -57,6 +57,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :terraform_computed, :bool, 1941322
       optional :custom, :message, 1941305, "v1.CustomOptions"
       map :read_only_override, :string, :bool, 1941312
+      optional :condition, :string, 1941323
     end
     add_message "v1.CustomOptions" do
       optional :converter, :string, 1941309
