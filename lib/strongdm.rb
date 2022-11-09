@@ -17,6 +17,7 @@
 
 require_relative "./svc"
 require "base64"
+require "grpc"
 require "openssl"
 require "time"
 
@@ -42,17 +43,36 @@ module SDM #:nodoc:
       @base_retry_delay = DEFAULT_BASE_RETRY_DELAY
       @max_retry_delay = DEFAULT_MAX_RETRY_DELAY
       @expose_rate_limit_errors = (not retry_rate_limit_errors)
-      @account_attachments = AccountAttachments.new(host, insecure, self)
-      @account_grants = AccountGrants.new(host, insecure, self)
-      @accounts = Accounts.new(host, insecure, self)
-      @control_panel = ControlPanel.new(host, insecure, self)
-      @nodes = Nodes.new(host, insecure, self)
-      @remote_identities = RemoteIdentities.new(host, insecure, self)
-      @remote_identity_groups = RemoteIdentityGroups.new(host, insecure, self)
-      @resources = Resources.new(host, insecure, self)
-      @roles = Roles.new(host, insecure, self)
-      @secret_stores = SecretStores.new(host, insecure, self)
+      begin
+        if insecure
+          @channel = GRPC::Core::Channel.new(host, {}, :this_channel_is_insecure)
+        else
+          cred = GRPC::Core::ChannelCredentials.new()
+          @channel = GRPC::Core::Channel.new(host, {}, cred)
+        end
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @account_attachments = AccountAttachments.new(@channel, self)
+      @account_grants = AccountGrants.new(@channel, self)
+      @accounts = Accounts.new(@channel, self)
+      @control_panel = ControlPanel.new(@channel, self)
+      @nodes = Nodes.new(@channel, self)
+      @remote_identities = RemoteIdentities.new(@channel, self)
+      @remote_identity_groups = RemoteIdentityGroups.new(@channel, self)
+      @resources = Resources.new(@channel, self)
+      @roles = Roles.new(@channel, self)
+      @secret_stores = SecretStores.new(@channel, self)
       @_test_options = Hash.new
+    end
+
+    # Closes this client and releases all resources held by it.
+    def close
+      begin
+        @channel.close()
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
     end
 
     # @private
@@ -94,6 +114,10 @@ module SDM #:nodoc:
     # @private
     def shouldRetry(iter, err)
       if (iter >= @max_retries - 1)
+        return false
+      end
+      # The grpc library unfortunately does not raise a more specific error class.
+      if err.is_a? RuntimeError and err.message == "closed!"
         return false
       end
       if not err.is_a? GRPC::BadStatus

@@ -30,14 +30,9 @@ module SDM #:nodoc:
   class AccountAttachments
     extend Gem::Deprecate
 
-    def initialize(host, insecure, parent)
+    def initialize(channel, parent)
       begin
-        if insecure
-          @stub = V1::AccountAttachments::Stub.new(host, :this_channel_is_insecure)
-        else
-          cred = GRPC::Core::ChannelCredentials.new()
-          @stub = V1::AccountAttachments::Stub.new(host, cred)
-        end
+        @stub = V1::AccountAttachments::Stub.new(nil, nil, channel_override: channel)
       rescue => exception
         raise Plumbing::convert_error_to_porcelain(exception)
       end
@@ -177,14 +172,9 @@ module SDM #:nodoc:
   class AccountGrants
     extend Gem::Deprecate
 
-    def initialize(host, insecure, parent)
+    def initialize(channel, parent)
       begin
-        if insecure
-          @stub = V1::AccountGrants::Stub.new(host, :this_channel_is_insecure)
-        else
-          cred = GRPC::Core::ChannelCredentials.new()
-          @stub = V1::AccountGrants::Stub.new(host, cred)
-        end
+        @stub = V1::AccountGrants::Stub.new(nil, nil, channel_override: channel)
       rescue => exception
         raise Plumbing::convert_error_to_porcelain(exception)
       end
@@ -328,14 +318,9 @@ module SDM #:nodoc:
   class Accounts
     extend Gem::Deprecate
 
-    def initialize(host, insecure, parent)
+    def initialize(channel, parent)
       begin
-        if insecure
-          @stub = V1::Accounts::Stub.new(host, :this_channel_is_insecure)
-        else
-          cred = GRPC::Core::ChannelCredentials.new()
-          @stub = V1::Accounts::Stub.new(host, cred)
-        end
+        @stub = V1::Accounts::Stub.new(nil, nil, channel_override: channel)
       rescue => exception
         raise Plumbing::convert_error_to_porcelain(exception)
       end
@@ -504,14 +489,9 @@ module SDM #:nodoc:
   class ControlPanel
     extend Gem::Deprecate
 
-    def initialize(host, insecure, parent)
+    def initialize(channel, parent)
       begin
-        if insecure
-          @stub = V1::ControlPanel::Stub.new(host, :this_channel_is_insecure)
-        else
-          cred = GRPC::Core::ChannelCredentials.new()
-          @stub = V1::ControlPanel::Stub.new(host, cred)
-        end
+        @stub = V1::ControlPanel::Stub.new(nil, nil, channel_override: channel)
       rescue => exception
         raise Plumbing::convert_error_to_porcelain(exception)
       end
@@ -587,14 +567,9 @@ module SDM #:nodoc:
   class Nodes
     extend Gem::Deprecate
 
-    def initialize(host, insecure, parent)
+    def initialize(channel, parent)
       begin
-        if insecure
-          @stub = V1::Nodes::Stub.new(host, :this_channel_is_insecure)
-        else
-          cred = GRPC::Core::ChannelCredentials.new()
-          @stub = V1::Nodes::Stub.new(host, cred)
-        end
+        @stub = V1::Nodes::Stub.new(nil, nil, channel_override: channel)
       rescue => exception
         raise Plumbing::convert_error_to_porcelain(exception)
       end
@@ -765,14 +740,9 @@ module SDM #:nodoc:
   class RemoteIdentities
     extend Gem::Deprecate
 
-    def initialize(host, insecure, parent)
+    def initialize(channel, parent)
       begin
-        if insecure
-          @stub = V1::RemoteIdentities::Stub.new(host, :this_channel_is_insecure)
-        else
-          cred = GRPC::Core::ChannelCredentials.new()
-          @stub = V1::RemoteIdentities::Stub.new(host, cred)
-        end
+        @stub = V1::RemoteIdentities::Stub.new(nil, nil, channel_override: channel)
       rescue => exception
         raise Plumbing::convert_error_to_porcelain(exception)
       end
@@ -943,14 +913,9 @@ module SDM #:nodoc:
   class RemoteIdentityGroups
     extend Gem::Deprecate
 
-    def initialize(host, insecure, parent)
+    def initialize(channel, parent)
       begin
-        if insecure
-          @stub = V1::RemoteIdentityGroups::Stub.new(host, :this_channel_is_insecure)
-        else
-          cred = GRPC::Core::ChannelCredentials.new()
-          @stub = V1::RemoteIdentityGroups::Stub.new(host, cred)
-        end
+        @stub = V1::RemoteIdentityGroups::Stub.new(nil, nil, channel_override: channel)
       rescue => exception
         raise Plumbing::convert_error_to_porcelain(exception)
       end
@@ -1106,14 +1071,9 @@ module SDM #:nodoc:
   class Resources
     extend Gem::Deprecate
 
-    def initialize(host, insecure, parent)
+    def initialize(channel, parent)
       begin
-        if insecure
-          @stub = V1::Resources::Stub.new(host, :this_channel_is_insecure)
-        else
-          cred = GRPC::Core::ChannelCredentials.new()
-          @stub = V1::Resources::Stub.new(host, cred)
-        end
+        @stub = V1::Resources::Stub.new(nil, nil, channel_override: channel)
       rescue => exception
         raise Plumbing::convert_error_to_porcelain(exception)
       end
@@ -1322,14 +1282,9 @@ module SDM #:nodoc:
   class Roles
     extend Gem::Deprecate
 
-    def initialize(host, insecure, parent)
+    def initialize(channel, parent)
       begin
-        if insecure
-          @stub = V1::Roles::Stub.new(host, :this_channel_is_insecure)
-        else
-          cred = GRPC::Core::ChannelCredentials.new()
-          @stub = V1::Roles::Stub.new(host, cred)
-        end
+        @stub = V1::Roles::Stub.new(nil, nil, channel_override: channel)
       rescue => exception
         raise Plumbing::convert_error_to_porcelain(exception)
       end
@@ -1508,14 +1463,9 @@ module SDM #:nodoc:
   class SecretStores
     extend Gem::Deprecate
 
-    def initialize(host, insecure, parent)
+    def initialize(channel, parent)
       begin
-        if insecure
-          @stub = V1::SecretStores::Stub.new(host, :this_channel_is_insecure)
-        else
-          cred = GRPC::Core::ChannelCredentials.new()
-          @stub = V1::SecretStores::Stub.new(host, cred)
-        end
+        @stub = V1::SecretStores::Stub.new(nil, nil, channel_override: channel)
       rescue => exception
         raise Plumbing::convert_error_to_porcelain(exception)
       end
