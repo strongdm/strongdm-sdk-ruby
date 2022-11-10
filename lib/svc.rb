@@ -1011,6 +1011,7 @@ module SDM #:nodoc:
   # {AWSConsoleStaticKeyPair}
   # {Azure}
   # {AzureCertificate}
+  # {AzureMysql}
   # {AzurePostgres}
   # {BigQuery}
   # {Cassandra}
