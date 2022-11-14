@@ -2891,6 +2891,9 @@ module SDM
     # The hostname/port tuple which the gateway daemon will bind to.
     # If not provided on create, set to "0.0.0.0:listen_address_port".
     attr_accessor :bind_address
+    # Device is a read only device name uploaded by the gateway process when
+    # it comes online.
+    attr_accessor :device
     # GatewayFilter can be used to restrict the peering between relays and
     # gateways.
     attr_accessor :gateway_filter
@@ -2898,6 +2901,9 @@ module SDM
     attr_accessor :id
     # The public hostname/port tuple at which the gateway will be accessible to clients.
     attr_accessor :listen_address
+    # Location is a read only network location uploaded by the gateway process
+    # when it comes online.
+    attr_accessor :location
     # Unique human-readable name of the Gateway. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
     attr_accessor :name
     # The current state of the gateway. One of: "new", "verifying_restart",
@@ -2905,23 +2911,32 @@ module SDM
     attr_accessor :state
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # Version is a read only sdm binary version uploaded by the gateway process
+    # when it comes online.
+    attr_accessor :version
 
     def initialize(
       bind_address: nil,
+      device: nil,
       gateway_filter: nil,
       id: nil,
       listen_address: nil,
+      location: nil,
       name: nil,
       state: nil,
-      tags: nil
+      tags: nil,
+      version: nil
     )
       @bind_address = bind_address == nil ? "" : bind_address
+      @device = device == nil ? "" : device
       @gateway_filter = gateway_filter == nil ? "" : gateway_filter
       @id = id == nil ? "" : id
       @listen_address = listen_address == nil ? "" : listen_address
+      @location = location == nil ? "" : location
       @name = name == nil ? "" : name
       @state = state == nil ? "" : state
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @version = version == nil ? "" : version
     end
 
     def to_json(options = {})
@@ -5315,11 +5330,17 @@ module SDM
 
   # Relay represents a StrongDM CLI installation running in relay mode.
   class Relay
+    # Device is a read only device name uploaded by the gateway process when
+    # it comes online.
+    attr_accessor :device
     # GatewayFilter can be used to restrict the peering between relays and
     # gateways.
     attr_accessor :gateway_filter
     # Unique identifier of the Relay.
     attr_accessor :id
+    # Location is a read only network location uploaded by the gateway process
+    # when it comes online.
+    attr_accessor :location
     # Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
     attr_accessor :name
     # The current state of the relay. One of: "new", "verifying_restart",
@@ -5328,19 +5349,28 @@ module SDM
     attr_accessor :state
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # Version is a read only sdm binary version uploaded by the gateway process
+    # when it comes online.
+    attr_accessor :version
 
     def initialize(
+      device: nil,
       gateway_filter: nil,
       id: nil,
+      location: nil,
       name: nil,
       state: nil,
-      tags: nil
+      tags: nil,
+      version: nil
     )
+      @device = device == nil ? "" : device
       @gateway_filter = gateway_filter == nil ? "" : gateway_filter
       @id = id == nil ? "" : id
+      @location = location == nil ? "" : location
       @name = name == nil ? "" : name
       @state = state == nil ? "" : state
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @version = version == nil ? "" : version
     end
 
     def to_json(options = {})
