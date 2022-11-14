@@ -35,7 +35,6 @@ require_relative "./secret_store_types_pb"
 require_relative "./secret_stores_pb"
 require_relative "../models/porcelain"
 require_relative "../errors/errors"
-require_relative "../constants"
 
 module SDM
   module Plumbing
@@ -2303,46 +2302,6 @@ module SDM
       end
       items
     end
-    def self.convert_cyberark_pam_store_to_porcelain(plumbing)
-      if plumbing == nil
-        return nil
-      end
-      porcelain = CyberarkPAMStore.new()
-      porcelain.appurl = (plumbing.appURL)
-      porcelain.id = (plumbing.id)
-      porcelain.name = (plumbing.name)
-      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
-      porcelain
-    end
-
-    def self.convert_cyberark_pam_store_to_plumbing(porcelain)
-      if porcelain == nil
-        return nil
-      end
-      plumbing = V1::CyberarkPAMStore.new()
-      plumbing.appURL = (porcelain.appurl)
-      plumbing.id = (porcelain.id)
-      plumbing.name = (porcelain.name)
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
-      plumbing
-    end
-    def self.convert_repeated_cyberark_pam_store_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = convert_cyberark_pam_store_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.convert_repeated_cyberark_pam_store_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = convert_cyberark_pam_store_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
     def self.convert_db_2_i_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -2842,7 +2801,6 @@ module SDM
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.tls_required = (plumbing.tls_required)
-      porcelain.username = (plumbing.username)
       porcelain
     end
 
@@ -2863,7 +2821,6 @@ module SDM
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing.tls_required = (porcelain.tls_required)
-      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_elasticache_redis_to_plumbing(porcelains)
@@ -2979,15 +2936,12 @@ module SDM
       end
       porcelain = Gateway.new()
       porcelain.bind_address = (plumbing.bind_address)
-      porcelain.device = (plumbing.device)
       porcelain.gateway_filter = (plumbing.gateway_filter)
       porcelain.id = (plumbing.id)
       porcelain.listen_address = (plumbing.listen_address)
-      porcelain.location = (plumbing.location)
       porcelain.name = (plumbing.name)
       porcelain.state = (plumbing.state)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
-      porcelain.version = (plumbing.version)
       porcelain
     end
 
@@ -2997,15 +2951,12 @@ module SDM
       end
       plumbing = V1::Gateway.new()
       plumbing.bind_address = (porcelain.bind_address)
-      plumbing.device = (porcelain.device)
       plumbing.gateway_filter = (porcelain.gateway_filter)
       plumbing.id = (porcelain.id)
       plumbing.listen_address = (porcelain.listen_address)
-      plumbing.location = (porcelain.location)
       plumbing.name = (porcelain.name)
       plumbing.state = (porcelain.state)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
-      plumbing.version = (porcelain.version)
       plumbing
     end
     def self.convert_repeated_gateway_to_plumbing(porcelains)
@@ -5087,8 +5038,6 @@ module SDM
       porcelain.port_override = (plumbing.port_override)
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
-      porcelain.tls_required = (plumbing.tls_required)
-      porcelain.username = (plumbing.username)
       porcelain
     end
 
@@ -5108,8 +5057,6 @@ module SDM
       plumbing.port_override = (porcelain.port_override)
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
-      plumbing.tls_required = (porcelain.tls_required)
-      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_redis_to_plumbing(porcelains)
@@ -5194,14 +5141,11 @@ module SDM
         return nil
       end
       porcelain = Relay.new()
-      porcelain.device = (plumbing.device)
       porcelain.gateway_filter = (plumbing.gateway_filter)
       porcelain.id = (plumbing.id)
-      porcelain.location = (plumbing.location)
       porcelain.name = (plumbing.name)
       porcelain.state = (plumbing.state)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
-      porcelain.version = (plumbing.version)
       porcelain
     end
 
@@ -5210,14 +5154,11 @@ module SDM
         return nil
       end
       plumbing = V1::Relay.new()
-      plumbing.device = (porcelain.device)
       plumbing.gateway_filter = (porcelain.gateway_filter)
       plumbing.id = (porcelain.id)
-      plumbing.location = (porcelain.location)
       plumbing.name = (porcelain.name)
       plumbing.state = (porcelain.state)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
-      plumbing.version = (porcelain.version)
       plumbing
     end
     def self.convert_repeated_relay_to_plumbing(porcelains)
@@ -6138,7 +6079,6 @@ module SDM
       porcelain = Role.new()
       porcelain.access_rules = convert_access_rules_to_porcelain(plumbing.access_rules)
       porcelain.id = (plumbing.id)
-      porcelain.managed_by = (plumbing.managed_by)
       porcelain.name = (plumbing.name)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain
@@ -6151,7 +6091,6 @@ module SDM
       plumbing = V1::Role.new()
       plumbing.access_rules = convert_access_rules_to_plumbing(porcelain.access_rules)
       plumbing.id = (porcelain.id)
-      plumbing.managed_by = (porcelain.managed_by)
       plumbing.name = (porcelain.name)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing
@@ -6585,9 +6524,6 @@ module SDM
       if porcelain.instance_of? CyberarkConjurStore
         plumbing.cyberark_conjur = convert_cyberark_conjur_store_to_plumbing(porcelain)
       end
-      if porcelain.instance_of? CyberarkPAMStore
-        plumbing.cyberark_pam = convert_cyberark_pam_store_to_plumbing(porcelain)
-      end
       if porcelain.instance_of? CyberarkPAMExperimentalStore
         plumbing.cyberark_pam_experimental = convert_cyberark_pam_experimental_store_to_plumbing(porcelain)
       end
@@ -6621,9 +6557,6 @@ module SDM
       end
       if plumbing.cyberark_conjur != nil
         return convert_cyberark_conjur_store_to_porcelain(plumbing.cyberark_conjur)
-      end
-      if plumbing.cyberark_pam != nil
-        return convert_cyberark_pam_store_to_porcelain(plumbing.cyberark_pam)
       end
       if plumbing.cyberark_pam_experimental != nil
         return convert_cyberark_pam_experimental_store_to_porcelain(plumbing.cyberark_pam_experimental)
@@ -7263,12 +7196,9 @@ module SDM
       end
       porcelain = User.new()
       porcelain.email = (plumbing.email)
-      porcelain.external_id = (plumbing.external_id)
       porcelain.first_name = (plumbing.first_name)
       porcelain.id = (plumbing.id)
       porcelain.last_name = (plumbing.last_name)
-      porcelain.managed_by = (plumbing.managed_by)
-      porcelain.permission_level = (plumbing.permission_level)
       porcelain.suspended = (plumbing.suspended)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain
@@ -7280,12 +7210,9 @@ module SDM
       end
       plumbing = V1::User.new()
       plumbing.email = (porcelain.email)
-      plumbing.external_id = (porcelain.external_id)
       plumbing.first_name = (porcelain.first_name)
       plumbing.id = (porcelain.id)
       plumbing.last_name = (porcelain.last_name)
-      plumbing.managed_by = (porcelain.managed_by)
-      plumbing.permission_level = (porcelain.permission_level)
       plumbing.suspended = (porcelain.suspended)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing

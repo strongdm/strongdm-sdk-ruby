@@ -1455,7 +1455,6 @@ module SDM #:nodoc:
   # {AWSStore}
   # {AzureStore}
   # {CyberarkConjurStore}
-  # {CyberarkPAMStore}
   # {CyberarkPAMExperimentalStore}
   # {DelineaStore}
   # {GCPStore}

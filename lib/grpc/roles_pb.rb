@@ -70,9 +70,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.Role" do
       optional :id, :string, 1
       optional :name, :string, 2
-      optional :tags, :message, 4, "v1.Tags"
       optional :access_rules, :string, 5
-      optional :managed_by, :string, 6
+      optional :tags, :message, 4, "v1.Tags"
     end
   end
 end

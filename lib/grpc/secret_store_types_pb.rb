@@ -26,7 +26,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :aws, :message, 3, "v1.AWSStore"
         optional :azure, :message, 101, "v1.AzureStore"
         optional :cyberark_conjur, :message, 301, "v1.CyberarkConjurStore"
-        optional :cyberark_pam, :message, 303, "v1.CyberarkPAMStore"
         optional :cyberark_pam_experimental, :message, 302, "v1.CyberarkPAMExperimentalStore"
         optional :delinea, :message, 2900, "v1.DelineaStore"
         optional :gcp, :message, 201, "v1.GCPStore"
@@ -48,12 +47,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 32771, "v1.Tags"
     end
     add_message "v1.CyberarkConjurStore" do
-      optional :id, :string, 1
-      optional :name, :string, 2
-      optional :appURL, :string, 3
-      optional :tags, :message, 32771, "v1.Tags"
-    end
-    add_message "v1.CyberarkPAMStore" do
       optional :id, :string, 1
       optional :name, :string, 2
       optional :appURL, :string, 3
@@ -110,7 +103,6 @@ module V1
   AWSStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AWSStore").msgclass
   AzureStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AzureStore").msgclass
   CyberarkConjurStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.CyberarkConjurStore").msgclass
-  CyberarkPAMStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.CyberarkPAMStore").msgclass
   CyberarkPAMExperimentalStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.CyberarkPAMExperimentalStore").msgclass
   DelineaStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DelineaStore").msgclass
   GCPStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GCPStore").msgclass
