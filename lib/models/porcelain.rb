@@ -5693,6 +5693,8 @@ module SDM
     attr_accessor :access_rules
     # Unique identifier of the Role.
     attr_accessor :id
+    # Managed By is a read only field for what service manages this role, e.g. StrongDM, Okta, Azure.
+    attr_accessor :managed_by
     # Unique human-readable name of the Role.
     attr_accessor :name
     # Tags is a map of key, value pairs.
@@ -5701,11 +5703,13 @@ module SDM
     def initialize(
       access_rules: nil,
       id: nil,
+      managed_by: nil,
       name: nil,
       tags: nil
     )
       @access_rules = access_rules == nil ? SDM::_porcelain_zero_value_access_rules() : access_rules
       @id = id == nil ? "" : id
+      @managed_by = managed_by == nil ? "" : managed_by
       @name = name == nil ? "" : name
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
@@ -6692,12 +6696,18 @@ module SDM
   class User
     # The User's email address. Must be unique.
     attr_accessor :email
+    # External ID is an alternative unique ID this user is represented by within an external service.
+    attr_accessor :external_id
     # The User's first name.
     attr_accessor :first_name
     # Unique identifier of the User.
     attr_accessor :id
     # The User's last name.
     attr_accessor :last_name
+    # Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.
+    attr_accessor :managed_by
+    # PermissionLevel is a read only field for the user's permission level e.g. admin, DBA, user.
+    attr_accessor :permission_level
     # The User's suspended state.
     attr_accessor :suspended
     # Tags is a map of key, value pairs.
@@ -6705,16 +6715,22 @@ module SDM
 
     def initialize(
       email: nil,
+      external_id: nil,
       first_name: nil,
       id: nil,
       last_name: nil,
+      managed_by: nil,
+      permission_level: nil,
       suspended: nil,
       tags: nil
     )
       @email = email == nil ? "" : email
+      @external_id = external_id == nil ? "" : external_id
       @first_name = first_name == nil ? "" : first_name
       @id = id == nil ? "" : id
       @last_name = last_name == nil ? "" : last_name
+      @managed_by = managed_by == nil ? "" : managed_by
+      @permission_level = permission_level == nil ? "" : permission_level
       @suspended = suspended == nil ? false : suspended
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
