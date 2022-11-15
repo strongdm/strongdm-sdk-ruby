@@ -2891,6 +2891,9 @@ module SDM
     # The hostname/port tuple which the gateway daemon will bind to.
     # If not provided on create, set to "0.0.0.0:listen_address_port".
     attr_accessor :bind_address
+    # Device is a read only device name uploaded by the gateway process when
+    # it comes online.
+    attr_accessor :device
     # GatewayFilter can be used to restrict the peering between relays and
     # gateways.
     attr_accessor :gateway_filter
@@ -2898,6 +2901,9 @@ module SDM
     attr_accessor :id
     # The public hostname/port tuple at which the gateway will be accessible to clients.
     attr_accessor :listen_address
+    # Location is a read only network location uploaded by the gateway process
+    # when it comes online.
+    attr_accessor :location
     # Unique human-readable name of the Gateway. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
     attr_accessor :name
     # The current state of the gateway. One of: "new", "verifying_restart",
@@ -2905,23 +2911,32 @@ module SDM
     attr_accessor :state
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # Version is a read only sdm binary version uploaded by the gateway process
+    # when it comes online.
+    attr_accessor :version
 
     def initialize(
       bind_address: nil,
+      device: nil,
       gateway_filter: nil,
       id: nil,
       listen_address: nil,
+      location: nil,
       name: nil,
       state: nil,
-      tags: nil
+      tags: nil,
+      version: nil
     )
       @bind_address = bind_address == nil ? "" : bind_address
+      @device = device == nil ? "" : device
       @gateway_filter = gateway_filter == nil ? "" : gateway_filter
       @id = id == nil ? "" : id
       @listen_address = listen_address == nil ? "" : listen_address
+      @location = location == nil ? "" : location
       @name = name == nil ? "" : name
       @state = state == nil ? "" : state
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @version = version == nil ? "" : version
     end
 
     def to_json(options = {})
@@ -5315,11 +5330,17 @@ module SDM
 
   # Relay represents a StrongDM CLI installation running in relay mode.
   class Relay
+    # Device is a read only device name uploaded by the gateway process when
+    # it comes online.
+    attr_accessor :device
     # GatewayFilter can be used to restrict the peering between relays and
     # gateways.
     attr_accessor :gateway_filter
     # Unique identifier of the Relay.
     attr_accessor :id
+    # Location is a read only network location uploaded by the gateway process
+    # when it comes online.
+    attr_accessor :location
     # Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
     attr_accessor :name
     # The current state of the relay. One of: "new", "verifying_restart",
@@ -5328,19 +5349,28 @@ module SDM
     attr_accessor :state
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # Version is a read only sdm binary version uploaded by the gateway process
+    # when it comes online.
+    attr_accessor :version
 
     def initialize(
+      device: nil,
       gateway_filter: nil,
       id: nil,
+      location: nil,
       name: nil,
       state: nil,
-      tags: nil
+      tags: nil,
+      version: nil
     )
+      @device = device == nil ? "" : device
       @gateway_filter = gateway_filter == nil ? "" : gateway_filter
       @id = id == nil ? "" : id
+      @location = location == nil ? "" : location
       @name = name == nil ? "" : name
       @state = state == nil ? "" : state
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @version = version == nil ? "" : version
     end
 
     def to_json(options = {})
@@ -5663,6 +5693,8 @@ module SDM
     attr_accessor :access_rules
     # Unique identifier of the Role.
     attr_accessor :id
+    # Managed By is a read only field for what service manages this role, e.g. StrongDM, Okta, Azure.
+    attr_accessor :managed_by
     # Unique human-readable name of the Role.
     attr_accessor :name
     # Tags is a map of key, value pairs.
@@ -5671,11 +5703,13 @@ module SDM
     def initialize(
       access_rules: nil,
       id: nil,
+      managed_by: nil,
       name: nil,
       tags: nil
     )
       @access_rules = access_rules == nil ? SDM::_porcelain_zero_value_access_rules() : access_rules
       @id = id == nil ? "" : id
+      @managed_by = managed_by == nil ? "" : managed_by
       @name = name == nil ? "" : name
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
@@ -6662,12 +6696,18 @@ module SDM
   class User
     # The User's email address. Must be unique.
     attr_accessor :email
+    # External ID is an alternative unique ID this user is represented by within an external service.
+    attr_accessor :external_id
     # The User's first name.
     attr_accessor :first_name
     # Unique identifier of the User.
     attr_accessor :id
     # The User's last name.
     attr_accessor :last_name
+    # Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.
+    attr_accessor :managed_by
+    # PermissionLevel is a read only field for the user's permission level e.g. admin, DBA, user.
+    attr_accessor :permission_level
     # The User's suspended state.
     attr_accessor :suspended
     # Tags is a map of key, value pairs.
@@ -6675,16 +6715,22 @@ module SDM
 
     def initialize(
       email: nil,
+      external_id: nil,
       first_name: nil,
       id: nil,
       last_name: nil,
+      managed_by: nil,
+      permission_level: nil,
       suspended: nil,
       tags: nil
     )
       @email = email == nil ? "" : email
+      @external_id = external_id == nil ? "" : external_id
       @first_name = first_name == nil ? "" : first_name
       @id = id == nil ? "" : id
       @last_name = last_name == nil ? "" : last_name
+      @managed_by = managed_by == nil ? "" : managed_by
+      @permission_level = permission_level == nil ? "" : permission_level
       @suspended = suspended == nil ? false : suspended
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end

@@ -80,6 +80,9 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :state, :string, 3
       optional :tags, :message, 4, "v1.Tags"
       optional :gateway_filter, :string, 5
+      optional :device, :string, 6
+      optional :location, :string, 7
+      optional :version, :string, 8
     end
     add_message "v1.Gateway" do
       optional :id, :string, 1
@@ -89,6 +92,9 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :bind_address, :string, 5
       optional :tags, :message, 6, "v1.Tags"
       optional :gateway_filter, :string, 7
+      optional :device, :string, 8
+      optional :location, :string, 9
+      optional :version, :string, 10
     end
   end
 end

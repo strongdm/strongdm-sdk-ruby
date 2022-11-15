@@ -2936,12 +2936,15 @@ module SDM
       end
       porcelain = Gateway.new()
       porcelain.bind_address = (plumbing.bind_address)
+      porcelain.device = (plumbing.device)
       porcelain.gateway_filter = (plumbing.gateway_filter)
       porcelain.id = (plumbing.id)
       porcelain.listen_address = (plumbing.listen_address)
+      porcelain.location = (plumbing.location)
       porcelain.name = (plumbing.name)
       porcelain.state = (plumbing.state)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.version = (plumbing.version)
       porcelain
     end
 
@@ -2951,12 +2954,15 @@ module SDM
       end
       plumbing = V1::Gateway.new()
       plumbing.bind_address = (porcelain.bind_address)
+      plumbing.device = (porcelain.device)
       plumbing.gateway_filter = (porcelain.gateway_filter)
       plumbing.id = (porcelain.id)
       plumbing.listen_address = (porcelain.listen_address)
+      plumbing.location = (porcelain.location)
       plumbing.name = (porcelain.name)
       plumbing.state = (porcelain.state)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.version = (porcelain.version)
       plumbing
     end
     def self.convert_repeated_gateway_to_plumbing(porcelains)
@@ -5141,11 +5147,14 @@ module SDM
         return nil
       end
       porcelain = Relay.new()
+      porcelain.device = (plumbing.device)
       porcelain.gateway_filter = (plumbing.gateway_filter)
       porcelain.id = (plumbing.id)
+      porcelain.location = (plumbing.location)
       porcelain.name = (plumbing.name)
       porcelain.state = (plumbing.state)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.version = (plumbing.version)
       porcelain
     end
 
@@ -5154,11 +5163,14 @@ module SDM
         return nil
       end
       plumbing = V1::Relay.new()
+      plumbing.device = (porcelain.device)
       plumbing.gateway_filter = (porcelain.gateway_filter)
       plumbing.id = (porcelain.id)
+      plumbing.location = (porcelain.location)
       plumbing.name = (porcelain.name)
       plumbing.state = (porcelain.state)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.version = (porcelain.version)
       plumbing
     end
     def self.convert_repeated_relay_to_plumbing(porcelains)
@@ -6079,6 +6091,7 @@ module SDM
       porcelain = Role.new()
       porcelain.access_rules = convert_access_rules_to_porcelain(plumbing.access_rules)
       porcelain.id = (plumbing.id)
+      porcelain.managed_by = (plumbing.managed_by)
       porcelain.name = (plumbing.name)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain
@@ -6091,6 +6104,7 @@ module SDM
       plumbing = V1::Role.new()
       plumbing.access_rules = convert_access_rules_to_plumbing(porcelain.access_rules)
       plumbing.id = (porcelain.id)
+      plumbing.managed_by = (porcelain.managed_by)
       plumbing.name = (porcelain.name)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing
@@ -7196,9 +7210,12 @@ module SDM
       end
       porcelain = User.new()
       porcelain.email = (plumbing.email)
+      porcelain.external_id = (plumbing.external_id)
       porcelain.first_name = (plumbing.first_name)
       porcelain.id = (plumbing.id)
       porcelain.last_name = (plumbing.last_name)
+      porcelain.managed_by = (plumbing.managed_by)
+      porcelain.permission_level = (plumbing.permission_level)
       porcelain.suspended = (plumbing.suspended)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain
@@ -7210,9 +7227,12 @@ module SDM
       end
       plumbing = V1::User.new()
       plumbing.email = (porcelain.email)
+      plumbing.external_id = (porcelain.external_id)
       plumbing.first_name = (porcelain.first_name)
       plumbing.id = (porcelain.id)
       plumbing.last_name = (porcelain.last_name)
+      plumbing.managed_by = (porcelain.managed_by)
+      plumbing.permission_level = (porcelain.permission_level)
       plumbing.suspended = (porcelain.suspended)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing
