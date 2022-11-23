@@ -2801,6 +2801,7 @@ module SDM
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.tls_required = (plumbing.tls_required)
+      porcelain.username = (plumbing.username)
       porcelain
     end
 
@@ -2821,6 +2822,7 @@ module SDM
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing.tls_required = (porcelain.tls_required)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_elasticache_redis_to_plumbing(porcelains)
@@ -5044,6 +5046,7 @@ module SDM
       porcelain.port_override = (plumbing.port_override)
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.username = (plumbing.username)
       porcelain
     end
 
@@ -5063,6 +5066,7 @@ module SDM
       plumbing.port_override = (porcelain.port_override)
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_redis_to_plumbing(porcelains)
