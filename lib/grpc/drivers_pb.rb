@@ -1091,6 +1091,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :password, :string, 3
       optional :port, :int32, 4
       optional :port_override, :int32, 2
+      optional :tls_required, :bool, 6
       optional :username, :string, 5
     end
     add_message "v1.Redshift" do
