@@ -2767,6 +2767,8 @@ module SDM
 
     attr_accessor :tls_required
 
+    attr_accessor :username
+
     def initialize(
       bind_interface: nil,
       egress_filter: nil,
@@ -2779,7 +2781,8 @@ module SDM
       port_override: nil,
       secret_store_id: nil,
       tags: nil,
-      tls_required: nil
+      tls_required: nil,
+      username: nil
     )
       @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
@@ -2793,6 +2796,7 @@ module SDM
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
       @tls_required = tls_required == nil ? false : tls_required
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -5222,6 +5226,10 @@ module SDM
     # Tags is a map of key, value pairs.
     attr_accessor :tags
 
+    attr_accessor :tls_required
+
+    attr_accessor :username
+
     def initialize(
       bind_interface: nil,
       egress_filter: nil,
@@ -5233,7 +5241,9 @@ module SDM
       port: nil,
       port_override: nil,
       secret_store_id: nil,
-      tags: nil
+      tags: nil,
+      tls_required: nil,
+      username: nil
     )
       @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
@@ -5246,6 +5256,8 @@ module SDM
       @port_override = port_override == nil ? 0 : port_override
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tls_required = tls_required == nil ? false : tls_required
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
