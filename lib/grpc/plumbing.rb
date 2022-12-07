@@ -2302,6 +2302,46 @@ module SDM
       end
       items
     end
+    def self.convert_cyberark_pam_store_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = CyberarkPAMStore.new()
+      porcelain.appurl = (plumbing.appURL)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_cyberark_pam_store_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::CyberarkPAMStore.new()
+      plumbing.appURL = (porcelain.appurl)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_cyberark_pam_store_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_cyberark_pam_store_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_cyberark_pam_store_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_cyberark_pam_store_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_db_2_i_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -6544,6 +6584,9 @@ module SDM
       if porcelain.instance_of? CyberarkConjurStore
         plumbing.cyberark_conjur = convert_cyberark_conjur_store_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? CyberarkPAMStore
+        plumbing.cyberark_pam = convert_cyberark_pam_store_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? CyberarkPAMExperimentalStore
         plumbing.cyberark_pam_experimental = convert_cyberark_pam_experimental_store_to_plumbing(porcelain)
       end
@@ -6577,6 +6620,9 @@ module SDM
       end
       if plumbing.cyberark_conjur != nil
         return convert_cyberark_conjur_store_to_porcelain(plumbing.cyberark_conjur)
+      end
+      if plumbing.cyberark_pam != nil
+        return convert_cyberark_pam_store_to_porcelain(plumbing.cyberark_pam)
       end
       if plumbing.cyberark_pam_experimental != nil
         return convert_cyberark_pam_experimental_store_to_porcelain(plumbing.cyberark_pam_experimental)
