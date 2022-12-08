@@ -35,6 +35,7 @@ require_relative "./secret_store_types_pb"
 require_relative "./secret_stores_pb"
 require_relative "../models/porcelain"
 require_relative "../errors/errors"
+require_relative "../constants"
 
 module SDM
   module Plumbing
