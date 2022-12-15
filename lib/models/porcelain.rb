@@ -2159,7 +2159,6 @@ module SDM
     end
   end
 
-  # CyberarkConjurStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class CyberarkConjurStore
     attr_accessor :appurl
     # Unique identifier of the SecretStore.
@@ -2221,7 +2220,6 @@ module SDM
     end
   end
 
-  # CyberarkPAMStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class CyberarkPAMStore
     attr_accessor :appurl
     # Unique identifier of the SecretStore.

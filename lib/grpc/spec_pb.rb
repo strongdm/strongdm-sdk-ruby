@@ -43,6 +43,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.CreateResponseMetadata" do
     end
     add_message "v1.GetRequestMetadata" do
+      optional :snapshot_at, :message, 1, "google.protobuf.Timestamp"
     end
     add_message "v1.GetResponseMetadata" do
     end
@@ -59,6 +60,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :page, :int32, 2
       optional :limit, :int32, 3
       optional :order_by, :string, 4
+      optional :snapshot_at, :message, 5, "google.protobuf.Timestamp"
     end
     add_message "v1.ListResponseMetadata" do
       optional :next_cursor, :string, 1
