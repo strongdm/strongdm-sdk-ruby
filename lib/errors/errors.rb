@@ -84,4 +84,11 @@ module SDM
       super(msg, 8)
     end
   end
+
+  # UnknownError is a generic wrapper that indicates an unknown internal error in the SDK
+  class UnknownError < RPCError
+    def initialize(msg)
+      super(msg, 2)
+    end
+  end
 end

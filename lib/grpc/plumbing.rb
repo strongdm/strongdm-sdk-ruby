@@ -659,6 +659,7 @@ module SDM
       if plumbing.user != nil
         return convert_user_to_porcelain(plumbing.user)
       end
+      raise UnknownError.new("unknown polymorphic type, please upgrade your SDK")
     end
     def self.convert_repeated_account_to_plumbing(porcelains)
       items = Array.new
@@ -4513,6 +4514,7 @@ module SDM
       if plumbing.relay != nil
         return convert_relay_to_porcelain(plumbing.relay)
       end
+      raise UnknownError.new("unknown polymorphic type, please upgrade your SDK")
     end
     def self.convert_repeated_node_to_plumbing(porcelains)
       items = Array.new
@@ -5963,6 +5965,7 @@ module SDM
       if plumbing.teradata != nil
         return convert_teradata_to_porcelain(plumbing.teradata)
       end
+      raise UnknownError.new("unknown polymorphic type, please upgrade your SDK")
     end
     def self.convert_repeated_resource_to_plumbing(porcelains)
       items = Array.new
@@ -6643,6 +6646,7 @@ module SDM
       if plumbing.vault_token != nil
         return convert_vault_token_store_to_porcelain(plumbing.vault_token)
       end
+      raise UnknownError.new("unknown polymorphic type, please upgrade your SDK")
     end
     def self.convert_repeated_secret_store_to_plumbing(porcelains)
       items = Array.new
@@ -7441,7 +7445,7 @@ module SDM
     end
     def self.convert_error_to_porcelain(err)
       if not err.is_a? GRPC::BadStatus
-        return RPCError.new(err, 2) # Unknown
+        return UnknownError.new(err.message)
       end
 
       if err.code == 4
