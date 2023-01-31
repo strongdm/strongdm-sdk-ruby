@@ -1202,6 +1202,70 @@ module SDM
       end
       items
     end
+    def self.convert_amazon_eks_instance_profile_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AmazonEKSInstanceProfile.new()
+      porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.certificate_authority = (plumbing.certificate_authority)
+      porcelain.cluster_name = (plumbing.cluster_name)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.endpoint = (plumbing.endpoint)
+      porcelain.healthcheck_namespace = (plumbing.healthcheck_namespace)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.region = (plumbing.region)
+      porcelain.remote_identity_group_id = (plumbing.remote_identity_group_id)
+      porcelain.remote_identity_healthcheck_username = (plumbing.remote_identity_healthcheck_username)
+      porcelain.role_arn = (plumbing.role_arn)
+      porcelain.role_external_id = (plumbing.role_external_id)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_amazon_eks_instance_profile_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AmazonEKSInstanceProfile.new()
+      plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.certificate_authority = (porcelain.certificate_authority)
+      plumbing.cluster_name = (porcelain.cluster_name)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.endpoint = (porcelain.endpoint)
+      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.region = (porcelain.region)
+      plumbing.remote_identity_group_id = (porcelain.remote_identity_group_id)
+      plumbing.remote_identity_healthcheck_username = (porcelain.remote_identity_healthcheck_username)
+      plumbing.role_arn = (porcelain.role_arn)
+      plumbing.role_external_id = (porcelain.role_external_id)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_amazon_eks_instance_profile_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_amazon_eks_instance_profile_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_amazon_eks_instance_profile_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_amazon_eks_instance_profile_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_amazon_eks_user_impersonation_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -5526,6 +5590,9 @@ module SDM
       if porcelain.instance_of? AmazonEKS
         plumbing.amazon_eks = convert_amazon_eks_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? AmazonEKSInstanceProfile
+        plumbing.amazon_eks_instance_profile = convert_amazon_eks_instance_profile_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? AmazonEKSUserImpersonation
         plumbing.amazon_eks_user_impersonation = convert_amazon_eks_user_impersonation_to_plumbing(porcelain)
       end
@@ -5757,6 +5824,9 @@ module SDM
       end
       if plumbing.amazon_eks != nil
         return convert_amazon_eks_to_porcelain(plumbing.amazon_eks)
+      end
+      if plumbing.amazon_eks_instance_profile != nil
+        return convert_amazon_eks_instance_profile_to_porcelain(plumbing.amazon_eks_instance_profile)
       end
       if plumbing.amazon_eks_user_impersonation != nil
         return convert_amazon_eks_user_impersonation_to_porcelain(plumbing.amazon_eks_user_impersonation)

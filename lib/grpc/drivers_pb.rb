@@ -32,6 +32,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :aws_console, :message, 3000, "v1.AWSConsole"
         optional :aws_console_static_key_pair, :message, 3001, "v1.AWSConsoleStaticKeyPair"
         optional :amazon_eks, :message, 802, "v1.AmazonEKS"
+        optional :amazon_eks_instance_profile, :message, 809, "v1.AmazonEKSInstanceProfile"
         optional :amazon_eks_user_impersonation, :message, 818, "v1.AmazonEKSUserImpersonation"
         optional :amazon_es, :message, 600, "v1.AmazonES"
         optional :amazon_mqamqp_091, :message, 2501, "v1.AmazonMQAMQP091"
@@ -249,6 +250,24 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :role_arn, :string, 8
       optional :role_external_id, :string, 10
       optional :secret_access_key, :string, 3
+    end
+    add_message "v1.AmazonEKSInstanceProfile" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :certificate_authority, :string, 2
+      optional :cluster_name, :string, 5
+      optional :endpoint, :string, 1
+      optional :healthcheck_namespace, :string, 8
+      optional :region, :string, 4
+      optional :remote_identity_group_id, :string, 9
+      optional :remote_identity_healthcheck_username, :string, 10
+      optional :role_arn, :string, 6
+      optional :role_external_id, :string, 7
     end
     add_message "v1.AmazonEKSUserImpersonation" do
       optional :id, :string, 32768
@@ -1277,6 +1296,7 @@ module V1
   AWSConsole = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AWSConsole").msgclass
   AWSConsoleStaticKeyPair = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AWSConsoleStaticKeyPair").msgclass
   AmazonEKS = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AmazonEKS").msgclass
+  AmazonEKSInstanceProfile = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AmazonEKSInstanceProfile").msgclass
   AmazonEKSUserImpersonation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AmazonEKSUserImpersonation").msgclass
   AmazonES = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AmazonES").msgclass
   AmazonMQAMQP091 = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AmazonMQAMQP091").msgclass

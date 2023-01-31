@@ -1000,6 +1000,7 @@ module SDM #:nodoc:
   # {AKSServiceAccountUserImpersonation}
   # {AKSUserImpersonation}
   # {AmazonEKS}
+  # {AmazonEKSInstanceProfile}
   # {AmazonEKSUserImpersonation}
   # {AmazonES}
   # {AmazonMQAMQP091}

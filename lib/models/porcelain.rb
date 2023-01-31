@@ -1047,6 +1047,85 @@ module SDM
     end
   end
 
+  class AmazonEKSInstanceProfile
+    # Bind interface
+    attr_accessor :bind_interface
+
+    attr_accessor :certificate_authority
+
+    attr_accessor :cluster_name
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
+
+    attr_accessor :endpoint
+    # The path used to check the health of your connection.  Defaults to `default`.
+    attr_accessor :healthcheck_namespace
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+
+    attr_accessor :region
+
+    attr_accessor :remote_identity_group_id
+
+    attr_accessor :remote_identity_healthcheck_username
+
+    attr_accessor :role_arn
+
+    attr_accessor :role_external_id
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      bind_interface: nil,
+      certificate_authority: nil,
+      cluster_name: nil,
+      egress_filter: nil,
+      endpoint: nil,
+      healthcheck_namespace: nil,
+      healthy: nil,
+      id: nil,
+      name: nil,
+      region: nil,
+      remote_identity_group_id: nil,
+      remote_identity_healthcheck_username: nil,
+      role_arn: nil,
+      role_external_id: nil,
+      secret_store_id: nil,
+      tags: nil
+    )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
+      @certificate_authority = certificate_authority == nil ? "" : certificate_authority
+      @cluster_name = cluster_name == nil ? "" : cluster_name
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @endpoint = endpoint == nil ? "" : endpoint
+      @healthcheck_namespace = healthcheck_namespace == nil ? "" : healthcheck_namespace
+      @healthy = healthy == nil ? false : healthy
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @region = region == nil ? "" : region
+      @remote_identity_group_id = remote_identity_group_id == nil ? "" : remote_identity_group_id
+      @remote_identity_healthcheck_username = remote_identity_healthcheck_username == nil ? "" : remote_identity_healthcheck_username
+      @role_arn = role_arn == nil ? "" : role_arn
+      @role_external_id = role_external_id == nil ? "" : role_external_id
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class AmazonEKSUserImpersonation
     attr_accessor :access_key
     # Bind interface

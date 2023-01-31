@@ -26,6 +26,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :main_noun, :string, 1941400
       optional :id_prefix, :string, 1941402
       repeated :targets, :string, 1941401
+      optional :disable_snapshot_vertical, :bool, 1941403
     end
     add_message "v1.MethodOptions" do
       optional :method, :string, 1941300
