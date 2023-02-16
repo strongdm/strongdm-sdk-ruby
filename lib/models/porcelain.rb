@@ -2477,7 +2477,6 @@ module SDM
     end
   end
 
-  # DelineaStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class DelineaStore
     # Unique identifier of the SecretStore.
     attr_accessor :id

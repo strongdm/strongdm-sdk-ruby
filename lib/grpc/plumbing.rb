@@ -70,6 +70,20 @@ module SDM
       return Google::Protobuf::Timestamp.new(seconds: t.to_i, nanos: t.nsec)
     end
 
+    def self.convert_duration_to_porcelain(d)
+      if d == nil
+        return nil
+      end
+      return d.to_f
+    end
+
+    def self.convert_duration_to_plumbing(d)
+      if d == nil
+        return nil
+      end
+      return Google::Protobuf::Duration.new(seconds: d.to_i, nanos: (d.modulo(1) * 10 ** 9).to_i)
+    end
+
     def self.convert_tags_to_porcelain(t)
       if t == nil
         return nil

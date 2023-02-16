@@ -44,7 +44,20 @@ module SDM
 
   # Providers responsible for managing roles and users.
   # None, or an empty string, implies the user is managed by strongDM.
+  # Deprecated: Please use SCIMProvider instead.
   module Provider
+    NONE = ""
+    OKTA = "okta"
+    SAIL_POINT = "sailpoint"
+    AZURE = "azure"
+    GENERIC = "generic"
+    ONE_LOGIN = "onelogin"
+    GOOGLE = "google"
+  end
+
+  # Providers responsible for managing roles and users.
+  # None, or an empty string, implies the user is managed by strongDM.
+  module SCIMProvider
     NONE = ""
     OKTA = "okta"
     SAIL_POINT = "sailpoint"
