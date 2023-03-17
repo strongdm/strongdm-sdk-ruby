@@ -75,6 +75,10 @@ module SDM #:nodoc:
       deadline: nil
     )
       req = V1::AccountAttachmentGetRequest.new()
+      if not @parent.snapshot_time.nil?
+        req.meta = V1::GetRequestMetadata.new()
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
 
       req.id = (id)
       tries = 0
@@ -140,6 +144,9 @@ module SDM #:nodoc:
       if page_size_option.is_a? Integer
         req.meta.limit = page_size_option
       end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
 
       req.filter = Plumbing::quote_filter_args(filter, *args)
       resp = Enumerator::Generator.new { |g|
@@ -157,6 +164,96 @@ module SDM #:nodoc:
           tries = 0
           plumbing_response.account_attachments.each do |plumbing_item|
             g.yield Plumbing::convert_account_attachment_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # SnapshotAccountAttachments exposes the read only methods of the AccountAttachments
+  # service for historical queries.
+  class SnapshotAccountAttachments
+    extend Gem::Deprecate
+
+    def initialize(account_attachments)
+      @account_attachments = account_attachments
+    end
+
+    # Get reads one AccountAttachment by ID.
+    def get(
+      id,
+      deadline: nil
+    )
+      return @account_attachments.get(
+               id,
+               deadline: deadline,
+             )
+    end
+
+    # List gets a list of AccountAttachments matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      return @account_attachments.list(
+               filter,
+                            *args,
+                            deadline: deadline,
+             )
+    end
+  end
+
+  # AccountAttachmentsHistory records all changes to the state of an AccountAttachment.
+  #
+  # See {AccountAttachmentHistory}.
+  class AccountAttachmentsHistory
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::AccountAttachmentsHistory::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # List gets a list of AccountAttachmentHistory records matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::AccountAttachmentHistoryListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      page_size_option = @parent._test_options["PageSize"]
+      if page_size_option.is_a? Integer
+        req.meta.limit = page_size_option
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("AccountAttachmentsHistory.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.history.each do |plumbing_item|
+            g.yield Plumbing::convert_account_attachment_history_to_porcelain(plumbing_item)
           end
           break if plumbing_response.meta.next_cursor == ""
           req.meta.cursor = plumbing_response.meta.next_cursor
@@ -217,6 +314,10 @@ module SDM #:nodoc:
       deadline: nil
     )
       req = V1::AccountGrantGetRequest.new()
+      if not @parent.snapshot_time.nil?
+        req.meta = V1::GetRequestMetadata.new()
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
 
       req.id = (id)
       tries = 0
@@ -282,6 +383,9 @@ module SDM #:nodoc:
       if page_size_option.is_a? Integer
         req.meta.limit = page_size_option
       end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
 
       req.filter = Plumbing::quote_filter_args(filter, *args)
       resp = Enumerator::Generator.new { |g|
@@ -305,6 +409,256 @@ module SDM #:nodoc:
         end
       }
       resp
+    end
+  end
+
+  # SnapshotAccountGrants exposes the read only methods of the AccountGrants
+  # service for historical queries.
+  class SnapshotAccountGrants
+    extend Gem::Deprecate
+
+    def initialize(account_grants)
+      @account_grants = account_grants
+    end
+
+    # Get reads one AccountGrant by ID.
+    def get(
+      id,
+      deadline: nil
+    )
+      return @account_grants.get(
+               id,
+               deadline: deadline,
+             )
+    end
+
+    # List gets a list of AccountGrants matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      return @account_grants.list(
+               filter,
+                            *args,
+                            deadline: deadline,
+             )
+    end
+  end
+
+  # AccountGrantsHistory records all changes to the state of an AccountGrant.
+  #
+  # See {AccountGrantHistory}.
+  class AccountGrantsHistory
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::AccountGrantsHistory::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # List gets a list of AccountGrantHistory records matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::AccountGrantHistoryListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      page_size_option = @parent._test_options["PageSize"]
+      if page_size_option.is_a? Integer
+        req.meta.limit = page_size_option
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("AccountGrantsHistory.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.history.each do |plumbing_item|
+            g.yield Plumbing::convert_account_grant_history_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # AccountPermissions records the granular permissions accounts have, allowing them to execute
+  # relevant commands via StrongDM's APIs.
+  #
+  # See {AccountPermission}.
+  class AccountPermissions
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::AccountPermissions::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # List gets a list of Permission records matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::AccountPermissionListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      page_size_option = @parent._test_options["PageSize"]
+      if page_size_option.is_a? Integer
+        req.meta.limit = page_size_option
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("AccountPermissions.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.permissions.each do |plumbing_item|
+            g.yield Plumbing::convert_account_permission_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # SnapshotAccountPermissions exposes the read only methods of the AccountPermissions
+  # service for historical queries.
+  class SnapshotAccountPermissions
+    extend Gem::Deprecate
+
+    def initialize(account_permissions)
+      @account_permissions = account_permissions
+    end
+
+    # List gets a list of Permission records matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      return @account_permissions.list(
+               filter,
+                            *args,
+                            deadline: deadline,
+             )
+    end
+  end
+
+  # AccountResources enumerates the resources to which accounts have access.
+  # The AccountResources service is read-only.
+  #
+  # See {AccountResource}.
+  class AccountResources
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::AccountResources::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # List gets a list of AccountResource records matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::AccountResourceListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      page_size_option = @parent._test_options["PageSize"]
+      if page_size_option.is_a? Integer
+        req.meta.limit = page_size_option
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("AccountResources.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.account_resources.each do |plumbing_item|
+            g.yield Plumbing::convert_account_resource_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # SnapshotAccountResources exposes the read only methods of the AccountResources
+  # service for historical queries.
+  class SnapshotAccountResources
+    extend Gem::Deprecate
+
+    def initialize(account_resources)
+      @account_resources = account_resources
+    end
+
+    # List gets a list of AccountResource records matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      return @account_resources.list(
+               filter,
+                            *args,
+                            deadline: deadline,
+             )
     end
   end
 
@@ -364,6 +718,10 @@ module SDM #:nodoc:
       deadline: nil
     )
       req = V1::AccountGetRequest.new()
+      if not @parent.snapshot_time.nil?
+        req.meta = V1::GetRequestMetadata.new()
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
 
       req.id = (id)
       tries = 0
@@ -459,6 +817,9 @@ module SDM #:nodoc:
       if page_size_option.is_a? Integer
         req.meta.limit = page_size_option
       end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
 
       req.filter = Plumbing::quote_filter_args(filter, *args)
       resp = Enumerator::Generator.new { |g|
@@ -476,6 +837,188 @@ module SDM #:nodoc:
           tries = 0
           plumbing_response.accounts.each do |plumbing_item|
             g.yield Plumbing::convert_account_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # SnapshotAccounts exposes the read only methods of the Accounts
+  # service for historical queries.
+  class SnapshotAccounts
+    extend Gem::Deprecate
+
+    def initialize(accounts)
+      @accounts = accounts
+    end
+
+    # Get reads one Account by ID.
+    def get(
+      id,
+      deadline: nil
+    )
+      return @accounts.get(
+               id,
+               deadline: deadline,
+             )
+    end
+
+    # List gets a list of Accounts matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      return @accounts.list(
+               filter,
+                            *args,
+                            deadline: deadline,
+             )
+    end
+  end
+
+  # AccountsHistory records all changes to the state of an Account.
+  #
+  # See {AccountHistory}.
+  class AccountsHistory
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::AccountsHistory::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # List gets a list of AccountHistory records matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::AccountHistoryListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      page_size_option = @parent._test_options["PageSize"]
+      if page_size_option.is_a? Integer
+        req.meta.limit = page_size_option
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("AccountsHistory.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.history.each do |plumbing_item|
+            g.yield Plumbing::convert_account_history_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # An Activity is a record of an action taken against a strongDM deployment, e.g.
+  # a user creation, resource deletion, sso configuration change, etc. The Activities
+  # service is read-only.
+  #
+  # See {Activity}.
+  class Activities
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::Activities::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # Get reads one Activity by ID.
+    def get(
+      id,
+      deadline: nil
+    )
+      req = V1::ActivityGetRequest.new()
+      if not @parent.snapshot_time.nil?
+        req.meta = V1::GetRequestMetadata.new()
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.get(req, metadata: @parent.get_metadata("Activities.Get", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = ActivityGetResponse.new()
+      resp.activity = Plumbing::convert_activity_to_porcelain(plumbing_response.activity)
+      resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # List gets a list of Activities matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::ActivityListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      page_size_option = @parent._test_options["PageSize"]
+      if page_size_option.is_a? Integer
+        req.meta.limit = page_size_option
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("Activities.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.activities.each do |plumbing_item|
+            g.yield Plumbing::convert_activity_to_porcelain(plumbing_item)
           end
           break if plumbing_response.meta.next_cursor == ""
           req.meta.cursor = plumbing_response.meta.next_cursor
@@ -613,6 +1156,10 @@ module SDM #:nodoc:
       deadline: nil
     )
       req = V1::NodeGetRequest.new()
+      if not @parent.snapshot_time.nil?
+        req.meta = V1::GetRequestMetadata.new()
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
 
       req.id = (id)
       tries = 0
@@ -708,6 +1255,9 @@ module SDM #:nodoc:
       if page_size_option.is_a? Integer
         req.meta.limit = page_size_option
       end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
 
       req.filter = Plumbing::quote_filter_args(filter, *args)
       resp = Enumerator::Generator.new { |g|
@@ -725,6 +1275,210 @@ module SDM #:nodoc:
           tries = 0
           plumbing_response.nodes.each do |plumbing_item|
             g.yield Plumbing::convert_node_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # SnapshotNodes exposes the read only methods of the Nodes
+  # service for historical queries.
+  class SnapshotNodes
+    extend Gem::Deprecate
+
+    def initialize(nodes)
+      @nodes = nodes
+    end
+
+    # Get reads one Node by ID.
+    def get(
+      id,
+      deadline: nil
+    )
+      return @nodes.get(
+               id,
+               deadline: deadline,
+             )
+    end
+
+    # List gets a list of Nodes matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      return @nodes.list(
+               filter,
+                            *args,
+                            deadline: deadline,
+             )
+    end
+  end
+
+  # NodesHistory records all changes to the state of a Node.
+  #
+  # See {NodeHistory}.
+  class NodesHistory
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::NodesHistory::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # List gets a list of NodeHistory records matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::NodeHistoryListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      page_size_option = @parent._test_options["PageSize"]
+      if page_size_option.is_a? Integer
+        req.meta.limit = page_size_option
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("NodesHistory.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.history.each do |plumbing_item|
+            g.yield Plumbing::convert_node_history_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # OrganizationHistory records all changes to the state of an Organization.
+  #
+  # See {OrganizationHistoryRecord}.
+  class OrganizationHistory
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::OrganizationHistory::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # List gets a list of OrganizationHistory records matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::OrganizationHistoryListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      page_size_option = @parent._test_options["PageSize"]
+      if page_size_option.is_a? Integer
+        req.meta.limit = page_size_option
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("OrganizationHistory.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.history.each do |plumbing_item|
+            g.yield Plumbing::convert_organization_history_record_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # A Query is a record of a single client request to a resource, such as an SQL query.
+  # Long-running SSH, RDP, or Kubernetes interactive sessions also count as queries.
+  # The Queries service is read-only.
+  #
+  # See {Query}.
+  class Queries
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::Queries::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # List gets a list of Queries matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::QueryListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      page_size_option = @parent._test_options["PageSize"]
+      if page_size_option.is_a? Integer
+        req.meta.limit = page_size_option
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("Queries.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.queries.each do |plumbing_item|
+            g.yield Plumbing::convert_query_to_porcelain(plumbing_item)
           end
           break if plumbing_response.meta.next_cursor == ""
           req.meta.cursor = plumbing_response.meta.next_cursor
@@ -785,6 +1539,10 @@ module SDM #:nodoc:
       deadline: nil
     )
       req = V1::RemoteIdentityGetRequest.new()
+      if not @parent.snapshot_time.nil?
+        req.meta = V1::GetRequestMetadata.new()
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
 
       req.id = (id)
       tries = 0
@@ -880,6 +1638,9 @@ module SDM #:nodoc:
       if page_size_option.is_a? Integer
         req.meta.limit = page_size_option
       end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
 
       req.filter = Plumbing::quote_filter_args(filter, *args)
       resp = Enumerator::Generator.new { |g|
@@ -897,6 +1658,96 @@ module SDM #:nodoc:
           tries = 0
           plumbing_response.remote_identities.each do |plumbing_item|
             g.yield Plumbing::convert_remote_identity_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # SnapshotRemoteIdentities exposes the read only methods of the RemoteIdentities
+  # service for historical queries.
+  class SnapshotRemoteIdentities
+    extend Gem::Deprecate
+
+    def initialize(remote_identities)
+      @remote_identities = remote_identities
+    end
+
+    # Get reads one RemoteIdentity by ID.
+    def get(
+      id,
+      deadline: nil
+    )
+      return @remote_identities.get(
+               id,
+               deadline: deadline,
+             )
+    end
+
+    # List gets a list of RemoteIdentities matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      return @remote_identities.list(
+               filter,
+                            *args,
+                            deadline: deadline,
+             )
+    end
+  end
+
+  # RemoteIdentitiesHistory records all changes to the state of a RemoteIdentity.
+  #
+  # See {RemoteIdentityHistory}.
+  class RemoteIdentitiesHistory
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::RemoteIdentitiesHistory::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # List gets a list of RemoteIdentityHistory records matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::RemoteIdentityHistoryListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      page_size_option = @parent._test_options["PageSize"]
+      if page_size_option.is_a? Integer
+        req.meta.limit = page_size_option
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("RemoteIdentitiesHistory.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.history.each do |plumbing_item|
+            g.yield Plumbing::convert_remote_identity_history_to_porcelain(plumbing_item)
           end
           break if plumbing_response.meta.next_cursor == ""
           req.meta.cursor = plumbing_response.meta.next_cursor
@@ -928,6 +1779,10 @@ module SDM #:nodoc:
       deadline: nil
     )
       req = V1::RemoteIdentityGroupGetRequest.new()
+      if not @parent.snapshot_time.nil?
+        req.meta = V1::GetRequestMetadata.new()
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
 
       req.id = (id)
       tries = 0
@@ -964,6 +1819,9 @@ module SDM #:nodoc:
       if page_size_option.is_a? Integer
         req.meta.limit = page_size_option
       end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
 
       req.filter = Plumbing::quote_filter_args(filter, *args)
       resp = Enumerator::Generator.new { |g|
@@ -981,6 +1839,153 @@ module SDM #:nodoc:
           tries = 0
           plumbing_response.remote_identity_groups.each do |plumbing_item|
             g.yield Plumbing::convert_remote_identity_group_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # SnapshotRemoteIdentityGroups exposes the read only methods of the RemoteIdentityGroups
+  # service for historical queries.
+  class SnapshotRemoteIdentityGroups
+    extend Gem::Deprecate
+
+    def initialize(remote_identity_groups)
+      @remote_identity_groups = remote_identity_groups
+    end
+
+    # Get reads one RemoteIdentityGroup by ID.
+    def get(
+      id,
+      deadline: nil
+    )
+      return @remote_identity_groups.get(
+               id,
+               deadline: deadline,
+             )
+    end
+
+    # List gets a list of RemoteIdentityGroups matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      return @remote_identity_groups.list(
+               filter,
+                            *args,
+                            deadline: deadline,
+             )
+    end
+  end
+
+  # RemoteIdentityGroupsHistory records all changes to the state of a RemoteIdentityGroup.
+  #
+  # See {RemoteIdentityGroupHistory}.
+  class RemoteIdentityGroupsHistory
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::RemoteIdentityGroupsHistory::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # List gets a list of RemoteIdentityGroupHistory records matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::RemoteIdentityGroupHistoryListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      page_size_option = @parent._test_options["PageSize"]
+      if page_size_option.is_a? Integer
+        req.meta.limit = page_size_option
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("RemoteIdentityGroupsHistory.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.history.each do |plumbing_item|
+            g.yield Plumbing::convert_remote_identity_group_history_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # A Replay captures the data transferred over a long-running SSH, RDP, or Kubernetes interactive session
+  # (otherwise referred to as a query). The Replays service is read-only.
+  #
+  # See {ReplayChunk}.
+  class Replays
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::Replays::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # List gets a list of ReplayChunks for the Query ID specified by the filter criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::ReplayListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      page_size_option = @parent._test_options["PageSize"]
+      if page_size_option.is_a? Integer
+        req.meta.limit = page_size_option
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("Replays.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.chunks.each do |plumbing_item|
+            g.yield Plumbing::convert_replay_chunk_to_porcelain(plumbing_item)
           end
           break if plumbing_response.meta.next_cursor == ""
           req.meta.cursor = plumbing_response.meta.next_cursor
@@ -1094,6 +2099,9 @@ module SDM #:nodoc:
       if page_size_option.is_a? Integer
         req.meta.limit = page_size_option
       end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
 
       req.filter = Plumbing::quote_filter_args(filter, *args)
       resp = Enumerator::Generator.new { |g|
@@ -1155,6 +2163,10 @@ module SDM #:nodoc:
       deadline: nil
     )
       req = V1::ResourceGetRequest.new()
+      if not @parent.snapshot_time.nil?
+        req.meta = V1::GetRequestMetadata.new()
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
 
       req.id = (id)
       tries = 0
@@ -1250,6 +2262,9 @@ module SDM #:nodoc:
       if page_size_option.is_a? Integer
         req.meta.limit = page_size_option
       end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
 
       req.filter = Plumbing::quote_filter_args(filter, *args)
       resp = Enumerator::Generator.new { |g|
@@ -1267,6 +2282,232 @@ module SDM #:nodoc:
           tries = 0
           plumbing_response.resources.each do |plumbing_item|
             g.yield Plumbing::convert_resource_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # SnapshotResources exposes the read only methods of the Resources
+  # service for historical queries.
+  class SnapshotResources
+    extend Gem::Deprecate
+
+    def initialize(resources)
+      @resources = resources
+    end
+
+    # Get reads one Resource by ID.
+    def get(
+      id,
+      deadline: nil
+    )
+      return @resources.get(
+               id,
+               deadline: deadline,
+             )
+    end
+
+    # List gets a list of Resources matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      return @resources.list(
+               filter,
+                            *args,
+                            deadline: deadline,
+             )
+    end
+  end
+
+  # ResourcesHistory records all changes to the state of a Resource.
+  #
+  # See {ResourceHistory}.
+  class ResourcesHistory
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::ResourcesHistory::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # List gets a list of ResourceHistory records matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::ResourceHistoryListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      page_size_option = @parent._test_options["PageSize"]
+      if page_size_option.is_a? Integer
+        req.meta.limit = page_size_option
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("ResourcesHistory.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.history.each do |plumbing_item|
+            g.yield Plumbing::convert_resource_history_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # RoleResources enumerates the resources to which roles have access.
+  # The RoleResources service is read-only.
+  #
+  # See {RoleResource}.
+  class RoleResources
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::RoleResources::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # List gets a list of RoleResource records matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::RoleResourceListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      page_size_option = @parent._test_options["PageSize"]
+      if page_size_option.is_a? Integer
+        req.meta.limit = page_size_option
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("RoleResources.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.role_resources.each do |plumbing_item|
+            g.yield Plumbing::convert_role_resource_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # SnapshotRoleResources exposes the read only methods of the RoleResources
+  # service for historical queries.
+  class SnapshotRoleResources
+    extend Gem::Deprecate
+
+    def initialize(role_resources)
+      @role_resources = role_resources
+    end
+
+    # List gets a list of RoleResource records matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      return @role_resources.list(
+               filter,
+                            *args,
+                            deadline: deadline,
+             )
+    end
+  end
+
+  # RoleResourcesHistory records all changes to the state of a RoleResource.
+  #
+  # See {RoleResourceHistory}.
+  class RoleResourcesHistory
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::RoleResourcesHistory::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # List gets a list of RoleResourceHistory records matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::RoleResourceHistoryListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      page_size_option = @parent._test_options["PageSize"]
+      if page_size_option.is_a? Integer
+        req.meta.limit = page_size_option
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("RoleResourcesHistory.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.history.each do |plumbing_item|
+            g.yield Plumbing::convert_role_resource_history_to_porcelain(plumbing_item)
           end
           break if plumbing_response.meta.next_cursor == ""
           req.meta.cursor = plumbing_response.meta.next_cursor
@@ -1329,6 +2570,10 @@ module SDM #:nodoc:
       deadline: nil
     )
       req = V1::RoleGetRequest.new()
+      if not @parent.snapshot_time.nil?
+        req.meta = V1::GetRequestMetadata.new()
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
 
       req.id = (id)
       tries = 0
@@ -1424,6 +2669,9 @@ module SDM #:nodoc:
       if page_size_option.is_a? Integer
         req.meta.limit = page_size_option
       end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
 
       req.filter = Plumbing::quote_filter_args(filter, *args)
       resp = Enumerator::Generator.new { |g|
@@ -1441,6 +2689,96 @@ module SDM #:nodoc:
           tries = 0
           plumbing_response.roles.each do |plumbing_item|
             g.yield Plumbing::convert_role_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # SnapshotRoles exposes the read only methods of the Roles
+  # service for historical queries.
+  class SnapshotRoles
+    extend Gem::Deprecate
+
+    def initialize(roles)
+      @roles = roles
+    end
+
+    # Get reads one Role by ID.
+    def get(
+      id,
+      deadline: nil
+    )
+      return @roles.get(
+               id,
+               deadline: deadline,
+             )
+    end
+
+    # List gets a list of Roles matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      return @roles.list(
+               filter,
+                            *args,
+                            deadline: deadline,
+             )
+    end
+  end
+
+  # RolesHistory records all changes to the state of a Role.
+  #
+  # See {RoleHistory}.
+  class RolesHistory
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::RolesHistory::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # List gets a list of RoleHistory records matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::RoleHistoryListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      page_size_option = @parent._test_options["PageSize"]
+      if page_size_option.is_a? Integer
+        req.meta.limit = page_size_option
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("RolesHistory.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.history.each do |plumbing_item|
+            g.yield Plumbing::convert_role_history_to_porcelain(plumbing_item)
           end
           break if plumbing_response.meta.next_cursor == ""
           req.meta.cursor = plumbing_response.meta.next_cursor
@@ -1510,6 +2848,10 @@ module SDM #:nodoc:
       deadline: nil
     )
       req = V1::SecretStoreGetRequest.new()
+      if not @parent.snapshot_time.nil?
+        req.meta = V1::GetRequestMetadata.new()
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
 
       req.id = (id)
       tries = 0
@@ -1605,6 +2947,9 @@ module SDM #:nodoc:
       if page_size_option.is_a? Integer
         req.meta.limit = page_size_option
       end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
 
       req.filter = Plumbing::quote_filter_args(filter, *args)
       resp = Enumerator::Generator.new { |g|
@@ -1622,6 +2967,96 @@ module SDM #:nodoc:
           tries = 0
           plumbing_response.secret_stores.each do |plumbing_item|
             g.yield Plumbing::convert_secret_store_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # SnapshotSecretStores exposes the read only methods of the SecretStores
+  # service for historical queries.
+  class SnapshotSecretStores
+    extend Gem::Deprecate
+
+    def initialize(secret_stores)
+      @secret_stores = secret_stores
+    end
+
+    # Get reads one SecretStore by ID.
+    def get(
+      id,
+      deadline: nil
+    )
+      return @secret_stores.get(
+               id,
+               deadline: deadline,
+             )
+    end
+
+    # List gets a list of SecretStores matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      return @secret_stores.list(
+               filter,
+                            *args,
+                            deadline: deadline,
+             )
+    end
+  end
+
+  # SecretStoresHistory records all changes to the state of a SecretStore.
+  #
+  # See {SecretStoreHistory}.
+  class SecretStoresHistory
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::SecretStoresHistory::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # List gets a list of SecretStoreHistory records matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::SecretStoreHistoryListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      page_size_option = @parent._test_options["PageSize"]
+      if page_size_option.is_a? Integer
+        req.meta.limit = page_size_option
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("SecretStoresHistory.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.history.each do |plumbing_item|
+            g.yield Plumbing::convert_secret_store_history_to_porcelain(plumbing_item)
           end
           break if plumbing_response.meta.next_cursor == ""
           req.meta.cursor = plumbing_response.meta.next_cursor

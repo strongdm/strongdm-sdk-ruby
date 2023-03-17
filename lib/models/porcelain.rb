@@ -731,6 +731,41 @@ module SDM
     end
   end
 
+  # AccountAttachmentHistory records the state of an AccountAttachment at a given point in time,
+  # where every change (create or delete) to an AccountAttachment produces an
+  # AccountAttachmentHistory record.
+  class AccountAttachmentHistory
+    # The complete AccountAttachment state at this time.
+    attr_accessor :account_attachment
+    # The unique identifier of the Activity that produced this change to the AccountAttachment.
+    # May be empty for some system-initiated updates.
+    attr_accessor :activity_id
+    # If this AccountAttachment was deleted, the time it was deleted.
+    attr_accessor :deleted_at
+    # The time at which the AccountAttachment state was recorded.
+    attr_accessor :timestamp
+
+    def initialize(
+      account_attachment: nil,
+      activity_id: nil,
+      deleted_at: nil,
+      timestamp: nil
+    )
+      @account_attachment = account_attachment == nil ? nil : account_attachment
+      @activity_id = activity_id == nil ? "" : activity_id
+      @deleted_at = deleted_at == nil ? nil : deleted_at
+      @timestamp = timestamp == nil ? nil : timestamp
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   # AccountCreateResponse reports how the Accounts were created in the system.
   class AccountCreateResponse
     # The created Account.
@@ -932,6 +967,162 @@ module SDM
     end
   end
 
+  # AccountGrantHistory records the state of an AccountGrant at a given point in time,
+  # where every change (create or delete) to an AccountGrant produces an
+  # AccountGrantHistory record.
+  class AccountGrantHistory
+    # The complete AccountGrant state at this time.
+    attr_accessor :account_grant
+    # The unique identifier of the Activity that produced this change to the AccountGrant.
+    # May be empty for some system-initiated updates.
+    attr_accessor :activity_id
+    # If this AccountGrant was deleted, the time it was deleted.
+    attr_accessor :deleted_at
+    # The time at which the AccountGrant state was recorded.
+    attr_accessor :timestamp
+
+    def initialize(
+      account_grant: nil,
+      activity_id: nil,
+      deleted_at: nil,
+      timestamp: nil
+    )
+      @account_grant = account_grant == nil ? nil : account_grant
+      @activity_id = activity_id == nil ? "" : activity_id
+      @deleted_at = deleted_at == nil ? nil : deleted_at
+      @timestamp = timestamp == nil ? nil : timestamp
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # AccountHistory records the state of an Account at a given point in time,
+  # where every change (create, update and delete) to an Account produces an
+  # AccountHistory record.
+  class AccountHistory
+    # The complete Account state at this time.
+    attr_accessor :account
+    # The unique identifier of the Activity that produced this change to the Account.
+    # May be empty for some system-initiated updates.
+    attr_accessor :activity_id
+    # If this Account was deleted, the time it was deleted.
+    attr_accessor :deleted_at
+    # The time at which the Account state was recorded.
+    attr_accessor :timestamp
+
+    def initialize(
+      account: nil,
+      activity_id: nil,
+      deleted_at: nil,
+      timestamp: nil
+    )
+      @account = account == nil ? nil : account
+      @activity_id = activity_id == nil ? "" : activity_id
+      @deleted_at = deleted_at == nil ? nil : deleted_at
+      @timestamp = timestamp == nil ? nil : timestamp
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # AccountPermission represents an individual API action available to an account.
+  class AccountPermission
+    # The unique identifier of the Account this permission belongs to.
+    attr_accessor :account_id
+    # The most recent time at which the permission was granted. If a permission was
+    # granted, revoked, and granted again, this will reflect the later time.
+    attr_accessor :granted_at
+    # The value of this permission, split into vertical and action e.g.
+    # 'secretstore:List', 'role:update'
+    attr_accessor :permission
+    # The scope of this permission. A global scope means this action can be taken
+    # on any entity; otherwise the action can only be taken on or in the scope of
+    # the scoped id.
+    attr_accessor :scope
+    # The ID to which or in whose context this operation is permitted. e.g. The ID of a
+    # role that a team leader has the abillity to remove and add accounts to, or the
+    # ID of a resource that a user has the permission to connect to. If Scope is global,
+    # scoped id is not populated.
+    attr_accessor :scoped_id
+
+    def initialize(
+      account_id: nil,
+      granted_at: nil,
+      permission: nil,
+      scope: nil,
+      scoped_id: nil
+    )
+      @account_id = account_id == nil ? "" : account_id
+      @granted_at = granted_at == nil ? nil : granted_at
+      @permission = permission == nil ? "" : permission
+      @scope = scope == nil ? "" : scope
+      @scoped_id = scoped_id == nil ? "" : scoped_id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # AccountResource represents an individual access grant of a Account to a Resource.
+  class AccountResource
+    # The unique identifier of the AccountGrant through which the Account was granted access to the Resource.
+    # If empty, access was not granted through an AccountGrant.
+    attr_accessor :account_grant_id
+    # The unique identifier of the Account to which access is granted.
+    attr_accessor :account_id
+    # The time at which access will expire. If empty, this access has no expiration.
+    attr_accessor :expires_at
+    # The most recent time at which access was granted. If access was granted,
+    # revoked, and granted again, this will reflect the later time.
+    attr_accessor :granted_at
+    # The unique identifier of the Resource to which access is granted.
+    attr_accessor :resource_id
+    # The unique identifier of the Role through which the Account was granted access to the Resource.
+    # If empty, access was not granted through an AccountAttachment to a Role.
+    attr_accessor :role_id
+
+    def initialize(
+      account_grant_id: nil,
+      account_id: nil,
+      expires_at: nil,
+      granted_at: nil,
+      resource_id: nil,
+      role_id: nil
+    )
+      @account_grant_id = account_grant_id == nil ? "" : account_grant_id
+      @account_id = account_id == nil ? "" : account_id
+      @expires_at = expires_at == nil ? nil : expires_at
+      @granted_at = granted_at == nil ? nil : granted_at
+      @resource_id = resource_id == nil ? "" : resource_id
+      @role_id = role_id == nil ? "" : role_id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   # AccountUpdateResponse returns the fields of a Account after it has been updated by
   # a AccountUpdateRequest.
   class AccountUpdateResponse
@@ -948,6 +1139,153 @@ module SDM
       rate_limit: nil
     )
       @account = account == nil ? nil : account
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # An Activity is a record of an action taken against a strongDM deployment, e.g.
+  # a user creation, resource deletion, sso configuration change, etc.
+  class Activity
+    # The account who executed this activity. If the actor later has a name or email change,
+    # that change is not reflected here. Actor is a snapshot of the executing account at
+    # the time an activity took place.
+    attr_accessor :actor
+    # The time this activity took effect.
+    attr_accessor :completed_at
+    # A humanized description of the activity.
+    attr_accessor :description
+    # The entities involved in this activity. These entities can be any first class
+    # entity in the strongDM system, eg. a user, a role, a node, an account grant. Not
+    # every activity affects explicit entities.
+    attr_accessor :entities
+    # Unique identifier of the Activity.
+    attr_accessor :id
+    # The IP from which this action was taken.
+    attr_accessor :ip_address
+    # The kind of activity which has taken place.
+    attr_accessor :verb
+
+    def initialize(
+      actor: nil,
+      completed_at: nil,
+      description: nil,
+      entities: nil,
+      id: nil,
+      ip_address: nil,
+      verb: nil
+    )
+      @actor = actor == nil ? nil : actor
+      @completed_at = completed_at == nil ? nil : completed_at
+      @description = description == nil ? "" : description
+      @entities = entities == nil ? [] : entities
+      @id = id == nil ? "" : id
+      @ip_address = ip_address == nil ? "" : ip_address
+      @verb = verb == nil ? "" : verb
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  class ActivityActor
+    # The external ID of the actor at the time this activity occurred.
+    attr_accessor :activity_external_id
+    # The email of the actor at the time this activity occurred.
+    attr_accessor :email
+    # The first name of the actor at the time this activity occurred.
+    attr_accessor :first_name
+    # Unique identifier of the actor. Immutable.
+    attr_accessor :id
+    # The last name of the actor at the time this activity occurred.
+    attr_accessor :last_name
+
+    def initialize(
+      activity_external_id: nil,
+      email: nil,
+      first_name: nil,
+      id: nil,
+      last_name: nil
+    )
+      @activity_external_id = activity_external_id == nil ? "" : activity_external_id
+      @email = email == nil ? "" : email
+      @first_name = first_name == nil ? "" : first_name
+      @id = id == nil ? "" : id
+      @last_name = last_name == nil ? "" : last_name
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  class ActivityEntity
+    # The email of the affected entity, if it has one (for example, if it is an account).
+    attr_accessor :email
+    # The external ID of the affected entity, if it has one (for example, if it is an account).
+    attr_accessor :external_id
+    # The unique identifier of the entity this activity affected.
+    attr_accessor :id
+    # A display name representing the affected entity.
+    attr_accessor :name
+    # The type of entity affected, one of the Activity Entities constants.
+    attr_accessor :type
+
+    def initialize(
+      email: nil,
+      external_id: nil,
+      id: nil,
+      name: nil,
+      type: nil
+    )
+      @email = email == nil ? "" : email
+      @external_id = external_id == nil ? "" : external_id
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @type = type == nil ? "" : type
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ActivityGetResponse returns a requested Activity.
+  class ActivityGetResponse
+    # The requested Activity.
+    attr_accessor :activity
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      activity: nil,
+      meta: nil,
+      rate_limit: nil
+    )
+      @activity = activity == nil ? nil : activity
       @meta = meta == nil ? nil : meta
       @rate_limit = rate_limit == nil ? nil : rate_limit
     end
@@ -4843,6 +5181,41 @@ module SDM
     end
   end
 
+  # NodeHistory records the state of a Node at a given point in time,
+  # where every change (create, update and delete) to a Node produces an
+  # NodeHistory record.
+  class NodeHistory
+    # The unique identifier of the Activity that produced this change to the Node.
+    # May be empty for some system-initiated updates.
+    attr_accessor :activity_id
+    # If this Node was deleted, the time it was deleted.
+    attr_accessor :deleted_at
+    # The complete Node state at this time.
+    attr_accessor :node
+    # The time at which the Node state was recorded.
+    attr_accessor :timestamp
+
+    def initialize(
+      activity_id: nil,
+      deleted_at: nil,
+      node: nil,
+      timestamp: nil
+    )
+      @activity_id = activity_id == nil ? "" : activity_id
+      @deleted_at = deleted_at == nil ? nil : deleted_at
+      @node = node == nil ? nil : node
+      @timestamp = timestamp == nil ? nil : timestamp
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   # NodeUpdateResponse returns the fields of a Node after it has been updated by
   # a NodeUpdateRequest.
   class NodeUpdateResponse
@@ -4932,6 +5305,147 @@ module SDM
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
       @tls_required = tls_required == nil ? false : tls_required
       @username = username == nil ? "" : username
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  class Organization
+    # The Organization's authentication provider.
+    attr_accessor :auth_provider
+    # The time at which the Organization was created.
+    attr_accessor :created_at
+    # The Organization's idle timeout, if enabled.
+    attr_accessor :idle_timeout
+    # Indicates if the Organization has idle timeouts enabled.
+    attr_accessor :idle_timeout_enabled
+    # The Organization's type.
+    attr_accessor :kind
+    # The Organization's local log encryption encoder.
+    attr_accessor :log_local_encoder
+    # The Organization's local log format.
+    attr_accessor :log_local_format
+    # The Organization's local log storage.
+    attr_accessor :log_local_storage
+    # The Organization's remote log encryption encoder.
+    attr_accessor :log_remote_encoder
+    # The Organization's socket path for Socket local log storage.
+    attr_accessor :log_socket_path
+    # The Organization's TCP address for TCP or Syslog local log storage.
+    attr_accessor :log_tcp_address
+    # Indicates if the Organization has multi-factor authentication enabled.
+    attr_accessor :mfa_enabled
+    # The Organization's multi-factor authentication provider, if enabled.
+    attr_accessor :mfa_provider
+    # The Organization's name.
+    attr_accessor :name
+    # Indicates if the Organization requires secret stores.
+    attr_accessor :require_secret_store
+    # The Organization's URL for SAML metadata.
+    attr_accessor :saml_metadata_url
+    # The Organization's SCIM provider.
+    attr_accessor :scim_provider
+    # The Organization's label for sensitive resources.
+    attr_accessor :sensitive_label
+    # The Organization's session timeout, if enabled.
+    attr_accessor :session_timeout
+    # Indicates if the Organization has session timeouts enabled.
+    attr_accessor :session_timeout_enabled
+    # The Organization's SSH certificate authority public key.
+    attr_accessor :ssh_certificate_authority_public_key
+    # The time at which the Organization's SSH certificate authority was last updated.
+    attr_accessor :ssh_certificate_authority_updated_at
+    # The time at which the Organization was last updated.
+    attr_accessor :updated_at
+    # The Organization's web site domain.
+    attr_accessor :websites_subdomain
+
+    def initialize(
+      auth_provider: nil,
+      created_at: nil,
+      idle_timeout: nil,
+      idle_timeout_enabled: nil,
+      kind: nil,
+      log_local_encoder: nil,
+      log_local_format: nil,
+      log_local_storage: nil,
+      log_remote_encoder: nil,
+      log_socket_path: nil,
+      log_tcp_address: nil,
+      mfa_enabled: nil,
+      mfa_provider: nil,
+      name: nil,
+      require_secret_store: nil,
+      saml_metadata_url: nil,
+      scim_provider: nil,
+      sensitive_label: nil,
+      session_timeout: nil,
+      session_timeout_enabled: nil,
+      ssh_certificate_authority_public_key: nil,
+      ssh_certificate_authority_updated_at: nil,
+      updated_at: nil,
+      websites_subdomain: nil
+    )
+      @auth_provider = auth_provider == nil ? "" : auth_provider
+      @created_at = created_at == nil ? nil : created_at
+      @idle_timeout = idle_timeout == nil ? nil : idle_timeout
+      @idle_timeout_enabled = idle_timeout_enabled == nil ? false : idle_timeout_enabled
+      @kind = kind == nil ? "" : kind
+      @log_local_encoder = log_local_encoder == nil ? "" : log_local_encoder
+      @log_local_format = log_local_format == nil ? "" : log_local_format
+      @log_local_storage = log_local_storage == nil ? "" : log_local_storage
+      @log_remote_encoder = log_remote_encoder == nil ? "" : log_remote_encoder
+      @log_socket_path = log_socket_path == nil ? "" : log_socket_path
+      @log_tcp_address = log_tcp_address == nil ? "" : log_tcp_address
+      @mfa_enabled = mfa_enabled == nil ? false : mfa_enabled
+      @mfa_provider = mfa_provider == nil ? "" : mfa_provider
+      @name = name == nil ? "" : name
+      @require_secret_store = require_secret_store == nil ? false : require_secret_store
+      @saml_metadata_url = saml_metadata_url == nil ? "" : saml_metadata_url
+      @scim_provider = scim_provider == nil ? "" : scim_provider
+      @sensitive_label = sensitive_label == nil ? "" : sensitive_label
+      @session_timeout = session_timeout == nil ? nil : session_timeout
+      @session_timeout_enabled = session_timeout_enabled == nil ? false : session_timeout_enabled
+      @ssh_certificate_authority_public_key = ssh_certificate_authority_public_key == nil ? "" : ssh_certificate_authority_public_key
+      @ssh_certificate_authority_updated_at = ssh_certificate_authority_updated_at == nil ? nil : ssh_certificate_authority_updated_at
+      @updated_at = updated_at == nil ? nil : updated_at
+      @websites_subdomain = websites_subdomain == nil ? "" : websites_subdomain
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # OrganizationHistoryRecord records the state of an Organization at a given point in time,
+  # where every change to an Organization produces an OrganizationHistoryRecord.
+  class OrganizationHistoryRecord
+    # The unique identifier of the Activity that produced this change to the Organization.
+    # May be empty for some system-initiated organization updates.
+    attr_accessor :activity_id
+    # The complete Organization state at this time.
+    attr_accessor :organization
+    # The time at which the Organization state was recorded.
+    attr_accessor :timestamp
+
+    def initialize(
+      activity_id: nil,
+      organization: nil,
+      timestamp: nil
+    )
+      @activity_id = activity_id == nil ? "" : activity_id
+      @organization = organization == nil ? nil : organization
+      @timestamp = timestamp == nil ? nil : timestamp
     end
 
     def to_json(options = {})
@@ -5074,6 +5588,115 @@ module SDM
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
       @tls_required = tls_required == nil ? false : tls_required
       @username = username == nil ? "" : username
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # A Query is a record of a single client request to a resource, such as an SQL query.
+  class Query
+    # The email of the account performing this query, at the time the query was executed.
+    # If the account email is later changed, that change will not be reflected via this field.
+    attr_accessor :account_email
+    # The given name of the account performing this query, at the time the query was executed.
+    # If the account is later renamed, that change will not be reflected via this field.
+    attr_accessor :account_first_name
+    # Unique identifier of the Account that performed the Query.
+    attr_accessor :account_id
+    # The family name of the account performing this query, at the time the query was executed.
+    # If the account is later renamed, that change will not be reflected via this field.
+    attr_accessor :account_last_name
+    # The tags of the account accessed, at the time the query was executed. If the account
+    # tags are later changed, that change will not be reflected via this field.
+    attr_accessor :account_tags
+    # The duration of the Query.
+    attr_accessor :duration
+    # The unique ID of the node through which the Resource was accessed.
+    attr_accessor :egress_node_id
+    # Indicates that the body of the Query is encrypted.
+    attr_accessor :encrypted
+    # Unique identifier of the Query.
+    attr_accessor :id
+    # The captured content of the Query.
+    attr_accessor :query_body
+    # The general category of Resource against which Query was performed, e.g. "web" or "cloud".
+    attr_accessor :query_category
+    # The hash of the body of the Query.
+    attr_accessor :query_hash
+    # The symmetric key used to encrypt the body of this Query and its replay if replayable.
+    # If the Query is encrypted, this field contains an encrypted symmetric key in base64 encoding.
+    # This key must be decrypted with the organization's private key to obtain the symmetric key needed to decrypt the body.
+    # If the Query is not encrypted, this field is empty.
+    attr_accessor :query_key
+    # The number of records returned by the Query, for a database Resource.
+    attr_accessor :record_count
+    # The username of the RemoteIdentity used to access the Resource.
+    attr_accessor :remote_identity_username
+    # Indicates that the Query is replayable, e.g. for some SSH or K8s sessions.
+    attr_accessor :replayable
+    # Unique identifier of the Resource against which the Query was performed.
+    attr_accessor :resource_id
+    # The name of the resource accessed, at the time the query was executed. If the resource
+    # is later renamed, that change will not be reflected via this field.
+    attr_accessor :resource_name
+    # The tags of the resource accessed, at the time the query was executed. If the resource
+    # tags are later changed, that change will not be reflected via this field.
+    attr_accessor :resource_tags
+    # The specific type of Resource against which the Query was performed, e.g. "ssh" or "postgres".
+    attr_accessor :resource_type
+    # The time at which the Query was performed.
+    attr_accessor :timestamp
+
+    def initialize(
+      account_email: nil,
+      account_first_name: nil,
+      account_id: nil,
+      account_last_name: nil,
+      account_tags: nil,
+      duration: nil,
+      egress_node_id: nil,
+      encrypted: nil,
+      id: nil,
+      query_body: nil,
+      query_category: nil,
+      query_hash: nil,
+      query_key: nil,
+      record_count: nil,
+      remote_identity_username: nil,
+      replayable: nil,
+      resource_id: nil,
+      resource_name: nil,
+      resource_tags: nil,
+      resource_type: nil,
+      timestamp: nil
+    )
+      @account_email = account_email == nil ? "" : account_email
+      @account_first_name = account_first_name == nil ? "" : account_first_name
+      @account_id = account_id == nil ? "" : account_id
+      @account_last_name = account_last_name == nil ? "" : account_last_name
+      @account_tags = account_tags == nil ? SDM::_porcelain_zero_value_tags() : account_tags
+      @duration = duration == nil ? nil : duration
+      @egress_node_id = egress_node_id == nil ? "" : egress_node_id
+      @encrypted = encrypted == nil ? false : encrypted
+      @id = id == nil ? "" : id
+      @query_body = query_body == nil ? "" : query_body
+      @query_category = query_category == nil ? "" : query_category
+      @query_hash = query_hash == nil ? "" : query_hash
+      @query_key = query_key == nil ? "" : query_key
+      @record_count = record_count == nil ? 0 : record_count
+      @remote_identity_username = remote_identity_username == nil ? "" : remote_identity_username
+      @replayable = replayable == nil ? false : replayable
+      @resource_id = resource_id == nil ? "" : resource_id
+      @resource_name = resource_name == nil ? "" : resource_name
+      @resource_tags = resource_tags == nil ? SDM::_porcelain_zero_value_tags() : resource_tags
+      @resource_type = resource_type == nil ? "" : resource_type
+      @timestamp = timestamp == nil ? nil : timestamp
     end
 
     def to_json(options = {})
@@ -5666,6 +6289,76 @@ module SDM
     end
   end
 
+  # RemoteIdentityGroupHistory records the state of a RemoteIdentityGroup at a given point in time,
+  # where every change (create, update and delete) to a RemoteIdentityGroup produces an
+  # RemoteIdentityGroupHistory record.
+  class RemoteIdentityGroupHistory
+    # The unique identifier of the Activity that produced this change to the RemoteIdentityGroup.
+    # May be empty for some system-initiated updates.
+    attr_accessor :activity_id
+    # If this RemoteIdentityGroup was deleted, the time it was deleted.
+    attr_accessor :deleted_at
+    # The complete RemoteIdentityGroup state at this time.
+    attr_accessor :remote_identity_group
+    # The time at which the RemoteIdentityGroup state was recorded.
+    attr_accessor :timestamp
+
+    def initialize(
+      activity_id: nil,
+      deleted_at: nil,
+      remote_identity_group: nil,
+      timestamp: nil
+    )
+      @activity_id = activity_id == nil ? "" : activity_id
+      @deleted_at = deleted_at == nil ? nil : deleted_at
+      @remote_identity_group = remote_identity_group == nil ? nil : remote_identity_group
+      @timestamp = timestamp == nil ? nil : timestamp
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # RemoteIdentityHistory records the state of a RemoteIdentity at a given point in time,
+  # where every change (create, update and delete) to a RemoteIdentity produces an
+  # RemoteIdentityHistory record.
+  class RemoteIdentityHistory
+    # The unique identifier of the Activity that produced this change to the RemoteIdentity.
+    # May be empty for some system-initiated updates.
+    attr_accessor :activity_id
+    # If this RemoteIdentity was deleted, the time it was deleted.
+    attr_accessor :deleted_at
+    # The complete RemoteIdentity state at this time.
+    attr_accessor :remote_identity
+    # The time at which the RemoteIdentity state was recorded.
+    attr_accessor :timestamp
+
+    def initialize(
+      activity_id: nil,
+      deleted_at: nil,
+      remote_identity: nil,
+      timestamp: nil
+    )
+      @activity_id = activity_id == nil ? "" : activity_id
+      @deleted_at = deleted_at == nil ? nil : deleted_at
+      @remote_identity = remote_identity == nil ? nil : remote_identity
+      @timestamp = timestamp == nil ? nil : timestamp
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   # RemoteIdentityUpdateResponse returns the fields of a RemoteIdentity after it has been updated by
   # a RemoteIdentityUpdateRequest.
   class RemoteIdentityUpdateResponse
@@ -5684,6 +6377,56 @@ module SDM
       @meta = meta == nil ? nil : meta
       @rate_limit = rate_limit == nil ? nil : rate_limit
       @remote_identity = remote_identity == nil ? nil : remote_identity
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # A ReplayChunk represents a single "chunk" of data from the query replay.
+  class ReplayChunk
+    # The raw data of the ReplayChunk. The data is encrypted if the associated Query is encrypted.
+    attr_accessor :data
+    # The list of events of the ReplayChunk. If the Query is encrypted, this field is always empty
+    # and the events can be obtained by decrypting the data using the QueryKey returned with the Query.
+    attr_accessor :events
+
+    def initialize(
+      data: nil,
+      events: nil
+    )
+      @data = data == nil ? "" : data
+      @events = events == nil ? [] : events
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # A ReplayChunkEvent represents a single event within a query replay.
+  # The timing information included in each ReplayChunkEvent may be used to replay a session in real time.
+  class ReplayChunkEvent
+    # The raw data of the ReplayChunkEvent.
+    attr_accessor :data
+    # The time duration over which the data in this ReplayChunkEvent was transferred.
+    attr_accessor :duration
+
+    def initialize(
+      data: nil,
+      duration: nil
+    )
+      @data = data == nil ? "" : data
+      @duration = duration == nil ? nil : duration
     end
 
     def to_json(options = {})
@@ -5764,6 +6507,41 @@ module SDM
       @meta = meta == nil ? nil : meta
       @rate_limit = rate_limit == nil ? nil : rate_limit
       @resource = resource == nil ? nil : resource
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ResourceHistory records the state of a Resource at a given point in time,
+  # where every change (create, update and delete) to a Resource produces an
+  # ResourceHistory record.
+  class ResourceHistory
+    # The unique identifier of the Activity that produced this change to the Resource.
+    # May be empty for some system-initiated updates.
+    attr_accessor :activity_id
+    # If this Resource was deleted, the time it was deleted.
+    attr_accessor :deleted_at
+    # The complete Resource state at this time.
+    attr_accessor :resource
+    # The time at which the Resource state was recorded.
+    attr_accessor :timestamp
+
+    def initialize(
+      activity_id: nil,
+      deleted_at: nil,
+      resource: nil,
+      timestamp: nil
+    )
+      @activity_id = activity_id == nil ? "" : activity_id
+      @deleted_at = deleted_at == nil ? nil : deleted_at
+      @resource = resource == nil ? nil : resource
+      @timestamp = timestamp == nil ? nil : timestamp
     end
 
     def to_json(options = {})
@@ -5912,6 +6690,105 @@ module SDM
       @meta = meta == nil ? nil : meta
       @rate_limit = rate_limit == nil ? nil : rate_limit
       @role = role == nil ? nil : role
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # RoleHistory records the state of a Role at a given point in time,
+  # where every change (create, update and delete) to a Role produces an
+  # RoleHistory record.
+  class RoleHistory
+    # The unique identifier of the Activity that produced this change to the Role.
+    # May be empty for some system-initiated updates.
+    attr_accessor :activity_id
+    # If this Role was deleted, the time it was deleted.
+    attr_accessor :deleted_at
+    # The complete Role state at this time.
+    attr_accessor :role
+    # The time at which the Role state was recorded.
+    attr_accessor :timestamp
+
+    def initialize(
+      activity_id: nil,
+      deleted_at: nil,
+      role: nil,
+      timestamp: nil
+    )
+      @activity_id = activity_id == nil ? "" : activity_id
+      @deleted_at = deleted_at == nil ? nil : deleted_at
+      @role = role == nil ? nil : role
+      @timestamp = timestamp == nil ? nil : timestamp
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # RoleResource represents an individual access grant of a Role to a Resource.
+  class RoleResource
+    # The most recent time at which access was granted. If access was granted,
+    # revoked, and granted again, this will reflect the later time.
+    attr_accessor :granted_at
+    # The unique identifier of the Resource to which access is granted.
+    attr_accessor :resource_id
+    # The unique identifier of the Role to which access is granted.
+    attr_accessor :role_id
+
+    def initialize(
+      granted_at: nil,
+      resource_id: nil,
+      role_id: nil
+    )
+      @granted_at = granted_at == nil ? nil : granted_at
+      @resource_id = resource_id == nil ? "" : resource_id
+      @role_id = role_id == nil ? "" : role_id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # RoleResourceHistory records the state of a RoleResource at a given point in time,
+  # where every change (create or delete) to a RoleResource produces an
+  # RoleResourceHistory record.
+  class RoleResourceHistory
+    # The unique identifier of the Activity that produced this change to the RoleResource.
+    # May be empty for some system-initiated updates.
+    attr_accessor :activity_id
+    # If this RoleResource was deleted, the time it was deleted.
+    attr_accessor :deleted_at
+    # The complete RoleResource state at this time.
+    attr_accessor :role_resource
+    # The time at which the RoleResource state was recorded.
+    attr_accessor :timestamp
+
+    def initialize(
+      activity_id: nil,
+      deleted_at: nil,
+      role_resource: nil,
+      timestamp: nil
+    )
+      @activity_id = activity_id == nil ? "" : activity_id
+      @deleted_at = deleted_at == nil ? nil : deleted_at
+      @role_resource = role_resource == nil ? nil : role_resource
+      @timestamp = timestamp == nil ? nil : timestamp
     end
 
     def to_json(options = {})
@@ -6318,6 +7195,41 @@ module SDM
       @meta = meta == nil ? nil : meta
       @rate_limit = rate_limit == nil ? nil : rate_limit
       @secret_store = secret_store == nil ? nil : secret_store
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # SecretStoreHistory records the state of a SecretStore at a given point in time,
+  # where every change (create, update and delete) to a SecretStore produces an
+  # SecretStoreHistory record.
+  class SecretStoreHistory
+    # The unique identifier of the Activity that produced this change to the SecretStore.
+    # May be empty for some system-initiated updates.
+    attr_accessor :activity_id
+    # If this SecretStore was deleted, the time it was deleted.
+    attr_accessor :deleted_at
+    # The complete SecretStore state at this time.
+    attr_accessor :secret_store
+    # The time at which the SecretStore state was recorded.
+    attr_accessor :timestamp
+
+    def initialize(
+      activity_id: nil,
+      deleted_at: nil,
+      secret_store: nil,
+      timestamp: nil
+    )
+      @activity_id = activity_id == nil ? "" : activity_id
+      @deleted_at = deleted_at == nil ? nil : deleted_at
+      @secret_store = secret_store == nil ? nil : secret_store
+      @timestamp = timestamp == nil ? nil : timestamp
     end
 
     def to_json(options = {})

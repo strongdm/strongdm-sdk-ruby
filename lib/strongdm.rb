@@ -29,7 +29,7 @@ module SDM #:nodoc:
     DEFAULT_BASE_RETRY_DELAY = 0.0030 # 30 ms
     DEFAULT_MAX_RETRY_DELAY = 300 # 300 seconds
     API_VERSION = "2021-08-23"
-    USER_AGENT = "strongdm-sdk-ruby/3.6.1"
+    USER_AGENT = "strongdm-sdk-ruby/3.7.0"
     private_constant :DEFAULT_MAX_RETRIES, :DEFAULT_BASE_RETRY_DELAY, :DEFAULT_MAX_RETRY_DELAY, :API_VERSION, :USER_AGENT
 
     # Creates a new strongDM API client.
@@ -43,6 +43,7 @@ module SDM #:nodoc:
       @base_retry_delay = DEFAULT_BASE_RETRY_DELAY
       @max_retry_delay = DEFAULT_MAX_RETRY_DELAY
       @expose_rate_limit_errors = (not retry_rate_limit_errors)
+      @snapshot_time = nil
       begin
         if insecure
           @channel = GRPC::Core::Channel.new(host, {}, :this_channel_is_insecure)
@@ -54,15 +55,32 @@ module SDM #:nodoc:
         raise Plumbing::convert_error_to_porcelain(exception)
       end
       @account_attachments = AccountAttachments.new(@channel, self)
+      @account_attachments_history = AccountAttachmentsHistory.new(@channel, self)
       @account_grants = AccountGrants.new(@channel, self)
+      @account_grants_history = AccountGrantsHistory.new(@channel, self)
+      @account_permissions = AccountPermissions.new(@channel, self)
+      @account_resources = AccountResources.new(@channel, self)
       @accounts = Accounts.new(@channel, self)
+      @accounts_history = AccountsHistory.new(@channel, self)
+      @activities = Activities.new(@channel, self)
       @control_panel = ControlPanel.new(@channel, self)
       @nodes = Nodes.new(@channel, self)
+      @nodes_history = NodesHistory.new(@channel, self)
+      @organization_history = OrganizationHistory.new(@channel, self)
+      @queries = Queries.new(@channel, self)
       @remote_identities = RemoteIdentities.new(@channel, self)
+      @remote_identities_history = RemoteIdentitiesHistory.new(@channel, self)
       @remote_identity_groups = RemoteIdentityGroups.new(@channel, self)
+      @remote_identity_groups_history = RemoteIdentityGroupsHistory.new(@channel, self)
+      @replays = Replays.new(@channel, self)
       @resources = Resources.new(@channel, self)
+      @resources_history = ResourcesHistory.new(@channel, self)
+      @role_resources = RoleResources.new(@channel, self)
+      @role_resources_history = RoleResourcesHistory.new(@channel, self)
       @roles = Roles.new(@channel, self)
+      @roles_history = RolesHistory.new(@channel, self)
       @secret_stores = SecretStores.new(@channel, self)
+      @secret_stores_history = SecretStoresHistory.new(@channel, self)
       @_test_options = Hash.new
     end
 
@@ -137,26 +155,64 @@ module SDM #:nodoc:
       return (err.code() == 13 or err.code() == 14)
     end
 
+    # Constructs a read-only client that will provide historical data from the provided timestamp.
+    # See {SnapshotClient}.
+    def snapshot_at(snapshot_time)
+      client = self.clone
+      client.snapshot_time = snapshot_time
+      return SnapshotClient.new(client)
+    end
+
     attr_reader :max_retries
     attr_reader :base_retry_delay
     attr_reader :max_retry_delay
 
     # API authentication token (read-only).
     attr_reader :api_access_key
+    # Optional timestamp at which to provide historical data
+    attr_reader :snapshot_time
     # AccountAttachments assign an account to a role.
     #
     # See {AccountAttachments}.
     attr_reader :account_attachments
+    # AccountAttachmentsHistory records all changes to the state of an AccountAttachment.
+    #
+    # See {AccountAttachmentsHistory}.
+    attr_reader :account_attachments_history
     # AccountGrants assign a resource directly to an account, giving the account the permission to connect to that resource.
     #
     # See {AccountGrants}.
     attr_reader :account_grants
+    # AccountGrantsHistory records all changes to the state of an AccountGrant.
+    #
+    # See {AccountGrantsHistory}.
+    attr_reader :account_grants_history
+    # AccountPermissions records the granular permissions accounts have, allowing them to execute
+    # relevant commands via StrongDM's APIs.
+    #
+    # See {AccountPermissions}.
+    attr_reader :account_permissions
+    # AccountResources enumerates the resources to which accounts have access.
+    # The AccountResources service is read-only.
+    #
+    # See {AccountResources}.
+    attr_reader :account_resources
     # Accounts are users that have access to strongDM. There are two types of accounts:
     # 1. **Users:** humans who are authenticated through username and password or SSO.
     # 2. **Service Accounts:** machines that are authenticated using a service token.
     #
     # See {Accounts}.
     attr_reader :accounts
+    # AccountsHistory records all changes to the state of an Account.
+    #
+    # See {AccountsHistory}.
+    attr_reader :accounts_history
+    # An Activity is a record of an action taken against a strongDM deployment, e.g.
+    # a user creation, resource deletion, sso configuration change, etc. The Activities
+    # service is read-only.
+    #
+    # See {Activities}.
+    attr_reader :activities
     # ControlPanel contains all administrative controls.
     #
     # See {ControlPanel}.
@@ -167,31 +223,193 @@ module SDM #:nodoc:
     #
     # See {Nodes}.
     attr_reader :nodes
+    # NodesHistory records all changes to the state of a Node.
+    #
+    # See {NodesHistory}.
+    attr_reader :nodes_history
+    # OrganizationHistory records all changes to the state of an Organization.
+    #
+    # See {OrganizationHistory}.
+    attr_reader :organization_history
+    # A Query is a record of a single client request to a resource, such as an SQL query.
+    # Long-running SSH, RDP, or Kubernetes interactive sessions also count as queries.
+    # The Queries service is read-only.
+    #
+    # See {Queries}.
+    attr_reader :queries
     # RemoteIdentities assign a resource directly to an account, giving the account the permission to connect to that resource.
     #
     # See {RemoteIdentities}.
     attr_reader :remote_identities
+    # RemoteIdentitiesHistory records all changes to the state of a RemoteIdentity.
+    #
+    # See {RemoteIdentitiesHistory}.
+    attr_reader :remote_identities_history
     # A RemoteIdentityGroup is a named grouping of Remote Identities for Accounts.
     # An Account's relationship to a RemoteIdentityGroup is defined via RemoteIdentity objects.
     #
     # See {RemoteIdentityGroups}.
     attr_reader :remote_identity_groups
+    # RemoteIdentityGroupsHistory records all changes to the state of a RemoteIdentityGroup.
+    #
+    # See {RemoteIdentityGroupsHistory}.
+    attr_reader :remote_identity_groups_history
+    # A Replay captures the data transferred over a long-running SSH, RDP, or Kubernetes interactive session
+    # (otherwise referred to as a query). The Replays service is read-only.
+    #
+    # See {Replays}.
+    attr_reader :replays
     # Resources are databases, servers, clusters, websites, or clouds that strongDM
     # delegates access to.
     #
     # See {Resources}.
     attr_reader :resources
+    # ResourcesHistory records all changes to the state of a Resource.
+    #
+    # See {ResourcesHistory}.
+    attr_reader :resources_history
+    # RoleResources enumerates the resources to which roles have access.
+    # The RoleResources service is read-only.
+    #
+    # See {RoleResources}.
+    attr_reader :role_resources
+    # RoleResourcesHistory records all changes to the state of a RoleResource.
+    #
+    # See {RoleResourcesHistory}.
+    attr_reader :role_resources_history
     # A Role has a list of access rules which determine which Resources the members
     # of the Role have access to. An Account can be a member of multiple Roles via
     # AccountAttachments.
     #
     # See {Roles}.
     attr_reader :roles
+    # RolesHistory records all changes to the state of a Role.
+    #
+    # See {RolesHistory}.
+    attr_reader :roles_history
     # SecretStores are servers where resource secrets (passwords, keys) are stored.
     #
     # See {SecretStores}.
     attr_reader :secret_stores
+    # SecretStoresHistory records all changes to the state of a SecretStore.
+    #
+    # See {SecretStoresHistory}.
+    attr_reader :secret_stores_history
     # @private
     attr_reader :_test_options
+
+    protected
+
+    attr_writer :snapshot_time
+
+    private
+
+    def initialize_copy(other)
+      @account_attachments = AccountAttachments.new(@channel, self)
+      @account_attachments_history = AccountAttachmentsHistory.new(@channel, self)
+      @account_grants = AccountGrants.new(@channel, self)
+      @account_grants_history = AccountGrantsHistory.new(@channel, self)
+      @account_permissions = AccountPermissions.new(@channel, self)
+      @account_resources = AccountResources.new(@channel, self)
+      @accounts = Accounts.new(@channel, self)
+      @accounts_history = AccountsHistory.new(@channel, self)
+      @activities = Activities.new(@channel, self)
+      @control_panel = ControlPanel.new(@channel, self)
+      @nodes = Nodes.new(@channel, self)
+      @nodes_history = NodesHistory.new(@channel, self)
+      @organization_history = OrganizationHistory.new(@channel, self)
+      @queries = Queries.new(@channel, self)
+      @remote_identities = RemoteIdentities.new(@channel, self)
+      @remote_identities_history = RemoteIdentitiesHistory.new(@channel, self)
+      @remote_identity_groups = RemoteIdentityGroups.new(@channel, self)
+      @remote_identity_groups_history = RemoteIdentityGroupsHistory.new(@channel, self)
+      @replays = Replays.new(@channel, self)
+      @resources = Resources.new(@channel, self)
+      @resources_history = ResourcesHistory.new(@channel, self)
+      @role_resources = RoleResources.new(@channel, self)
+      @role_resources_history = RoleResourcesHistory.new(@channel, self)
+      @roles = Roles.new(@channel, self)
+      @roles_history = RolesHistory.new(@channel, self)
+      @secret_stores = SecretStores.new(@channel, self)
+      @secret_stores_history = SecretStoresHistory.new(@channel, self)
+    end
+  end
+
+  # SnapshotClient exposes methods to query historical records at a provided timestamp.
+  class SnapshotClient
+    def initialize(client)
+      @account_attachments = SnapshotAccountAttachments.new(client.account_attachments)
+      @account_grants = SnapshotAccountGrants.new(client.account_grants)
+      @account_permissions = SnapshotAccountPermissions.new(client.account_permissions)
+      @account_resources = SnapshotAccountResources.new(client.account_resources)
+      @accounts = SnapshotAccounts.new(client.accounts)
+      @nodes = SnapshotNodes.new(client.nodes)
+      @remote_identities = SnapshotRemoteIdentities.new(client.remote_identities)
+      @remote_identity_groups = SnapshotRemoteIdentityGroups.new(client.remote_identity_groups)
+      @resources = SnapshotResources.new(client.resources)
+      @role_resources = SnapshotRoleResources.new(client.role_resources)
+      @roles = SnapshotRoles.new(client.roles)
+      @secret_stores = SnapshotSecretStores.new(client.secret_stores)
+    end
+
+    # AccountAttachments assign an account to a role.
+    #
+    # See {SnapshotAccountAttachments}.
+    attr_reader :account_attachments
+    # AccountGrants assign a resource directly to an account, giving the account the permission to connect to that resource.
+    #
+    # See {SnapshotAccountGrants}.
+    attr_reader :account_grants
+    # AccountPermissions records the granular permissions accounts have, allowing them to execute
+    # relevant commands via StrongDM's APIs.
+    #
+    # See {SnapshotAccountPermissions}.
+    attr_reader :account_permissions
+    # AccountResources enumerates the resources to which accounts have access.
+    # The AccountResources service is read-only.
+    #
+    # See {SnapshotAccountResources}.
+    attr_reader :account_resources
+    # Accounts are users that have access to strongDM. There are two types of accounts:
+    # 1. **Users:** humans who are authenticated through username and password or SSO.
+    # 2. **Service Accounts:** machines that are authenticated using a service token.
+    #
+    # See {SnapshotAccounts}.
+    attr_reader :accounts
+    # Nodes make up the strongDM network, and allow your users to connect securely to your resources. There are two types of nodes:
+    # - **Gateways** are the entry points into network. They listen for connection from the strongDM client, and provide access to databases and servers.
+    # - **Relays** are used to extend the strongDM network into segmented subnets. They provide access to databases and servers but do not listen for incoming connections.
+    #
+    # See {SnapshotNodes}.
+    attr_reader :nodes
+    # RemoteIdentities assign a resource directly to an account, giving the account the permission to connect to that resource.
+    #
+    # See {SnapshotRemoteIdentities}.
+    attr_reader :remote_identities
+    # A RemoteIdentityGroup is a named grouping of Remote Identities for Accounts.
+    # An Account's relationship to a RemoteIdentityGroup is defined via RemoteIdentity objects.
+    #
+    # See {SnapshotRemoteIdentityGroups}.
+    attr_reader :remote_identity_groups
+    # Resources are databases, servers, clusters, websites, or clouds that strongDM
+    # delegates access to.
+    #
+    # See {SnapshotResources}.
+    attr_reader :resources
+    # RoleResources enumerates the resources to which roles have access.
+    # The RoleResources service is read-only.
+    #
+    # See {SnapshotRoleResources}.
+    attr_reader :role_resources
+    # A Role has a list of access rules which determine which Resources the members
+    # of the Role have access to. An Account can be a member of multiple Roles via
+    # AccountAttachments.
+    #
+    # See {SnapshotRoles}.
+    attr_reader :roles
+    # SecretStores are servers where resource secrets (passwords, keys) are stored.
+    #
+    # See {SnapshotSecretStores}.
+    attr_reader :secret_stores
   end
 end

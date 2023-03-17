@@ -21,18 +21,35 @@ require "json"
 require_relative "./options_pb"
 require_relative "./spec_pb"
 require_relative "./account_attachments_pb"
+require_relative "./account_attachments_history_pb"
 require_relative "./account_grants_pb"
+require_relative "./account_grants_history_pb"
+require_relative "./account_permissions_pb"
+require_relative "./account_resources_pb"
 require_relative "./tags_pb"
 require_relative "./accounts_pb"
+require_relative "./accounts_history_pb"
+require_relative "./activities_pb"
 require_relative "./control_panel_pb"
 require_relative "./drivers_pb"
 require_relative "./nodes_pb"
+require_relative "./nodes_history_pb"
+require_relative "./organization_history_pb"
+require_relative "./queries_pb"
 require_relative "./remote_identities_pb"
+require_relative "./remote_identities_history_pb"
 require_relative "./remote_identity_groups_pb"
+require_relative "./remote_identity_groups_history_pb"
+require_relative "./replays_pb"
 require_relative "./resources_pb"
+require_relative "./resources_history_pb"
+require_relative "./role_resources_pb"
+require_relative "./role_resources_history_pb"
 require_relative "./roles_pb"
+require_relative "./roles_history_pb"
 require_relative "./secret_store_types_pb"
 require_relative "./secret_stores_pb"
+require_relative "./secret_stores_history_pb"
 require_relative "../models/porcelain"
 require_relative "../errors/errors"
 require_relative "../constants"
@@ -842,6 +859,46 @@ module SDM
       end
       items
     end
+    def self.convert_account_attachment_history_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AccountAttachmentHistory.new()
+      porcelain.account_attachment = convert_account_attachment_to_porcelain(plumbing.account_attachment)
+      porcelain.activity_id = (plumbing.activity_id)
+      porcelain.deleted_at = convert_timestamp_to_porcelain(plumbing.deleted_at)
+      porcelain.timestamp = convert_timestamp_to_porcelain(plumbing.timestamp)
+      porcelain
+    end
+
+    def self.convert_account_attachment_history_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AccountAttachmentHistory.new()
+      plumbing.account_attachment = convert_account_attachment_to_plumbing(porcelain.account_attachment)
+      plumbing.activity_id = (porcelain.activity_id)
+      plumbing.deleted_at = convert_timestamp_to_plumbing(porcelain.deleted_at)
+      plumbing.timestamp = convert_timestamp_to_plumbing(porcelain.timestamp)
+      plumbing
+    end
+    def self.convert_repeated_account_attachment_history_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_account_attachment_history_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_account_attachment_history_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_account_attachment_history_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_account_create_response_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -1110,6 +1167,172 @@ module SDM
       end
       items
     end
+    def self.convert_account_grant_history_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AccountGrantHistory.new()
+      porcelain.account_grant = convert_account_grant_to_porcelain(plumbing.account_grant)
+      porcelain.activity_id = (plumbing.activity_id)
+      porcelain.deleted_at = convert_timestamp_to_porcelain(plumbing.deleted_at)
+      porcelain.timestamp = convert_timestamp_to_porcelain(plumbing.timestamp)
+      porcelain
+    end
+
+    def self.convert_account_grant_history_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AccountGrantHistory.new()
+      plumbing.account_grant = convert_account_grant_to_plumbing(porcelain.account_grant)
+      plumbing.activity_id = (porcelain.activity_id)
+      plumbing.deleted_at = convert_timestamp_to_plumbing(porcelain.deleted_at)
+      plumbing.timestamp = convert_timestamp_to_plumbing(porcelain.timestamp)
+      plumbing
+    end
+    def self.convert_repeated_account_grant_history_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_account_grant_history_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_account_grant_history_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_account_grant_history_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_account_history_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AccountHistory.new()
+      porcelain.account = convert_account_to_porcelain(plumbing.account)
+      porcelain.activity_id = (plumbing.activity_id)
+      porcelain.deleted_at = convert_timestamp_to_porcelain(plumbing.deleted_at)
+      porcelain.timestamp = convert_timestamp_to_porcelain(plumbing.timestamp)
+      porcelain
+    end
+
+    def self.convert_account_history_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AccountHistory.new()
+      plumbing.account = convert_account_to_plumbing(porcelain.account)
+      plumbing.activity_id = (porcelain.activity_id)
+      plumbing.deleted_at = convert_timestamp_to_plumbing(porcelain.deleted_at)
+      plumbing.timestamp = convert_timestamp_to_plumbing(porcelain.timestamp)
+      plumbing
+    end
+    def self.convert_repeated_account_history_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_account_history_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_account_history_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_account_history_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_account_permission_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AccountPermission.new()
+      porcelain.account_id = (plumbing.account_id)
+      porcelain.granted_at = convert_timestamp_to_porcelain(plumbing.granted_at)
+      porcelain.permission = (plumbing.permission)
+      porcelain.scope = (plumbing.scope)
+      porcelain.scoped_id = (plumbing.scoped_id)
+      porcelain
+    end
+
+    def self.convert_account_permission_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AccountPermission.new()
+      plumbing.account_id = (porcelain.account_id)
+      plumbing.granted_at = convert_timestamp_to_plumbing(porcelain.granted_at)
+      plumbing.permission = (porcelain.permission)
+      plumbing.scope = (porcelain.scope)
+      plumbing.scoped_id = (porcelain.scoped_id)
+      plumbing
+    end
+    def self.convert_repeated_account_permission_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_account_permission_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_account_permission_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_account_permission_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_account_resource_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AccountResource.new()
+      porcelain.account_grant_id = (plumbing.account_grant_id)
+      porcelain.account_id = (plumbing.account_id)
+      porcelain.expires_at = convert_timestamp_to_porcelain(plumbing.expires_at)
+      porcelain.granted_at = convert_timestamp_to_porcelain(plumbing.granted_at)
+      porcelain.resource_id = (plumbing.resource_id)
+      porcelain.role_id = (plumbing.role_id)
+      porcelain
+    end
+
+    def self.convert_account_resource_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AccountResource.new()
+      plumbing.account_grant_id = (porcelain.account_grant_id)
+      plumbing.account_id = (porcelain.account_id)
+      plumbing.expires_at = convert_timestamp_to_plumbing(porcelain.expires_at)
+      plumbing.granted_at = convert_timestamp_to_plumbing(porcelain.granted_at)
+      plumbing.resource_id = (porcelain.resource_id)
+      plumbing.role_id = (porcelain.role_id)
+      plumbing
+    end
+    def self.convert_repeated_account_resource_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_account_resource_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_account_resource_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_account_resource_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_account_update_response_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -1144,6 +1367,174 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_account_update_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_activity_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = Activity.new()
+      porcelain.actor = convert_activity_actor_to_porcelain(plumbing.actor)
+      porcelain.completed_at = convert_timestamp_to_porcelain(plumbing.completed_at)
+      porcelain.description = (plumbing.description)
+      porcelain.entities = convert_repeated_activity_entity_to_porcelain(plumbing.entities)
+      porcelain.id = (plumbing.id)
+      porcelain.ip_address = (plumbing.ip_address)
+      porcelain.verb = (plumbing.verb)
+      porcelain
+    end
+
+    def self.convert_activity_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::Activity.new()
+      plumbing.actor = convert_activity_actor_to_plumbing(porcelain.actor)
+      plumbing.completed_at = convert_timestamp_to_plumbing(porcelain.completed_at)
+      plumbing.description = (porcelain.description)
+      plumbing.entities += convert_repeated_activity_entity_to_plumbing(porcelain.entities)
+      plumbing.id = (porcelain.id)
+      plumbing.ip_address = (porcelain.ip_address)
+      plumbing.verb = (porcelain.verb)
+      plumbing
+    end
+    def self.convert_repeated_activity_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_activity_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_activity_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_activity_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_activity_actor_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = ActivityActor.new()
+      porcelain.activity_external_id = (plumbing.activity_external_id)
+      porcelain.email = (plumbing.email)
+      porcelain.first_name = (plumbing.first_name)
+      porcelain.id = (plumbing.id)
+      porcelain.last_name = (plumbing.last_name)
+      porcelain
+    end
+
+    def self.convert_activity_actor_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::ActivityActor.new()
+      plumbing.activity_external_id = (porcelain.activity_external_id)
+      plumbing.email = (porcelain.email)
+      plumbing.first_name = (porcelain.first_name)
+      plumbing.id = (porcelain.id)
+      plumbing.last_name = (porcelain.last_name)
+      plumbing
+    end
+    def self.convert_repeated_activity_actor_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_activity_actor_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_activity_actor_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_activity_actor_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_activity_entity_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = ActivityEntity.new()
+      porcelain.email = (plumbing.email)
+      porcelain.external_id = (plumbing.external_id)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.type = (plumbing.type)
+      porcelain
+    end
+
+    def self.convert_activity_entity_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::ActivityEntity.new()
+      plumbing.email = (porcelain.email)
+      plumbing.external_id = (porcelain.external_id)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.type = (porcelain.type)
+      plumbing
+    end
+    def self.convert_repeated_activity_entity_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_activity_entity_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_activity_entity_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_activity_entity_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_activity_get_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = ActivityGetResponse.new()
+      porcelain.activity = convert_activity_to_porcelain(plumbing.activity)
+      porcelain.meta = convert_get_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_activity_get_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::ActivityGetResponse.new()
+      plumbing.activity = convert_activity_to_plumbing(porcelain.activity)
+      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_activity_get_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_activity_get_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_activity_get_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_activity_get_response_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -4725,6 +5116,46 @@ module SDM
       end
       items
     end
+    def self.convert_node_history_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = NodeHistory.new()
+      porcelain.activity_id = (plumbing.activity_id)
+      porcelain.deleted_at = convert_timestamp_to_porcelain(plumbing.deleted_at)
+      porcelain.node = convert_node_to_porcelain(plumbing.node)
+      porcelain.timestamp = convert_timestamp_to_porcelain(plumbing.timestamp)
+      porcelain
+    end
+
+    def self.convert_node_history_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::NodeHistory.new()
+      plumbing.activity_id = (porcelain.activity_id)
+      plumbing.deleted_at = convert_timestamp_to_plumbing(porcelain.deleted_at)
+      plumbing.node = convert_node_to_plumbing(porcelain.node)
+      plumbing.timestamp = convert_timestamp_to_plumbing(porcelain.timestamp)
+      plumbing
+    end
+    def self.convert_repeated_node_history_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_node_history_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_node_history_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_node_history_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_node_update_response_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -4819,6 +5250,124 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_oracle_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_organization_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = Organization.new()
+      porcelain.auth_provider = (plumbing.auth_provider)
+      porcelain.created_at = convert_timestamp_to_porcelain(plumbing.created_at)
+      porcelain.idle_timeout = convert_duration_to_porcelain(plumbing.idle_timeout)
+      porcelain.idle_timeout_enabled = (plumbing.idle_timeout_enabled)
+      porcelain.kind = (plumbing.kind)
+      porcelain.log_local_encoder = (plumbing.log_local_encoder)
+      porcelain.log_local_format = (plumbing.log_local_format)
+      porcelain.log_local_storage = (plumbing.log_local_storage)
+      porcelain.log_remote_encoder = (plumbing.log_remote_encoder)
+      porcelain.log_socket_path = (plumbing.log_socket_path)
+      porcelain.log_tcp_address = (plumbing.log_tcp_address)
+      porcelain.mfa_enabled = (plumbing.mfa_enabled)
+      porcelain.mfa_provider = (plumbing.mfa_provider)
+      porcelain.name = (plumbing.name)
+      porcelain.require_secret_store = (plumbing.require_secret_store)
+      porcelain.saml_metadata_url = (plumbing.saml_metadata_url)
+      porcelain.scim_provider = (plumbing.scim_provider)
+      porcelain.sensitive_label = (plumbing.sensitive_label)
+      porcelain.session_timeout = convert_duration_to_porcelain(plumbing.session_timeout)
+      porcelain.session_timeout_enabled = (plumbing.session_timeout_enabled)
+      porcelain.ssh_certificate_authority_public_key = (plumbing.ssh_certificate_authority_public_key)
+      porcelain.ssh_certificate_authority_updated_at = convert_timestamp_to_porcelain(plumbing.ssh_certificate_authority_updated_at)
+      porcelain.updated_at = convert_timestamp_to_porcelain(plumbing.updated_at)
+      porcelain.websites_subdomain = (plumbing.websites_subdomain)
+      porcelain
+    end
+
+    def self.convert_organization_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::Organization.new()
+      plumbing.auth_provider = (porcelain.auth_provider)
+      plumbing.created_at = convert_timestamp_to_plumbing(porcelain.created_at)
+      plumbing.idle_timeout = convert_duration_to_plumbing(porcelain.idle_timeout)
+      plumbing.idle_timeout_enabled = (porcelain.idle_timeout_enabled)
+      plumbing.kind = (porcelain.kind)
+      plumbing.log_local_encoder = (porcelain.log_local_encoder)
+      plumbing.log_local_format = (porcelain.log_local_format)
+      plumbing.log_local_storage = (porcelain.log_local_storage)
+      plumbing.log_remote_encoder = (porcelain.log_remote_encoder)
+      plumbing.log_socket_path = (porcelain.log_socket_path)
+      plumbing.log_tcp_address = (porcelain.log_tcp_address)
+      plumbing.mfa_enabled = (porcelain.mfa_enabled)
+      plumbing.mfa_provider = (porcelain.mfa_provider)
+      plumbing.name = (porcelain.name)
+      plumbing.require_secret_store = (porcelain.require_secret_store)
+      plumbing.saml_metadata_url = (porcelain.saml_metadata_url)
+      plumbing.scim_provider = (porcelain.scim_provider)
+      plumbing.sensitive_label = (porcelain.sensitive_label)
+      plumbing.session_timeout = convert_duration_to_plumbing(porcelain.session_timeout)
+      plumbing.session_timeout_enabled = (porcelain.session_timeout_enabled)
+      plumbing.ssh_certificate_authority_public_key = (porcelain.ssh_certificate_authority_public_key)
+      plumbing.ssh_certificate_authority_updated_at = convert_timestamp_to_plumbing(porcelain.ssh_certificate_authority_updated_at)
+      plumbing.updated_at = convert_timestamp_to_plumbing(porcelain.updated_at)
+      plumbing.websites_subdomain = (porcelain.websites_subdomain)
+      plumbing
+    end
+    def self.convert_repeated_organization_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_organization_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_organization_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_organization_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_organization_history_record_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = OrganizationHistoryRecord.new()
+      porcelain.activity_id = (plumbing.activity_id)
+      porcelain.organization = convert_organization_to_porcelain(plumbing.organization)
+      porcelain.timestamp = convert_timestamp_to_porcelain(plumbing.timestamp)
+      porcelain
+    end
+
+    def self.convert_organization_history_record_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::OrganizationHistoryRecord.new()
+      plumbing.activity_id = (porcelain.activity_id)
+      plumbing.organization = convert_organization_to_plumbing(porcelain.organization)
+      plumbing.timestamp = convert_timestamp_to_plumbing(porcelain.timestamp)
+      plumbing
+    end
+    def self.convert_repeated_organization_history_record_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_organization_history_record_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_organization_history_record_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_organization_history_record_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -4939,6 +5488,80 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_presto_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_query_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = Query.new()
+      porcelain.account_email = (plumbing.account_email)
+      porcelain.account_first_name = (plumbing.account_first_name)
+      porcelain.account_id = (plumbing.account_id)
+      porcelain.account_last_name = (plumbing.account_last_name)
+      porcelain.account_tags = convert_tags_to_porcelain(plumbing.account_tags)
+      porcelain.duration = convert_duration_to_porcelain(plumbing.duration)
+      porcelain.egress_node_id = (plumbing.egress_node_id)
+      porcelain.encrypted = (plumbing.encrypted)
+      porcelain.id = (plumbing.id)
+      porcelain.query_body = (plumbing.query_body)
+      porcelain.query_category = (plumbing.query_category)
+      porcelain.query_hash = (plumbing.query_hash)
+      porcelain.query_key = (plumbing.query_key)
+      porcelain.record_count = (plumbing.record_count)
+      porcelain.remote_identity_username = (plumbing.remote_identity_username)
+      porcelain.replayable = (plumbing.replayable)
+      porcelain.resource_id = (plumbing.resource_id)
+      porcelain.resource_name = (plumbing.resource_name)
+      porcelain.resource_tags = convert_tags_to_porcelain(plumbing.resource_tags)
+      porcelain.resource_type = (plumbing.resource_type)
+      porcelain.timestamp = convert_timestamp_to_porcelain(plumbing.timestamp)
+      porcelain
+    end
+
+    def self.convert_query_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::Query.new()
+      plumbing.account_email = (porcelain.account_email)
+      plumbing.account_first_name = (porcelain.account_first_name)
+      plumbing.account_id = (porcelain.account_id)
+      plumbing.account_last_name = (porcelain.account_last_name)
+      plumbing.account_tags = convert_tags_to_plumbing(porcelain.account_tags)
+      plumbing.duration = convert_duration_to_plumbing(porcelain.duration)
+      plumbing.egress_node_id = (porcelain.egress_node_id)
+      plumbing.encrypted = (porcelain.encrypted)
+      plumbing.id = (porcelain.id)
+      plumbing.query_body = (porcelain.query_body)
+      plumbing.query_category = (porcelain.query_category)
+      plumbing.query_hash = (porcelain.query_hash)
+      plumbing.query_key = (porcelain.query_key)
+      plumbing.record_count = (porcelain.record_count)
+      plumbing.remote_identity_username = (porcelain.remote_identity_username)
+      plumbing.replayable = (porcelain.replayable)
+      plumbing.resource_id = (porcelain.resource_id)
+      plumbing.resource_name = (porcelain.resource_name)
+      plumbing.resource_tags = convert_tags_to_plumbing(porcelain.resource_tags)
+      plumbing.resource_type = (porcelain.resource_type)
+      plumbing.timestamp = convert_timestamp_to_plumbing(porcelain.timestamp)
+      plumbing
+    end
+    def self.convert_repeated_query_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_query_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_query_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_query_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -5543,6 +6166,86 @@ module SDM
       end
       items
     end
+    def self.convert_remote_identity_group_history_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = RemoteIdentityGroupHistory.new()
+      porcelain.activity_id = (plumbing.activity_id)
+      porcelain.deleted_at = convert_timestamp_to_porcelain(plumbing.deleted_at)
+      porcelain.remote_identity_group = convert_remote_identity_group_to_porcelain(plumbing.remote_identity_group)
+      porcelain.timestamp = convert_timestamp_to_porcelain(plumbing.timestamp)
+      porcelain
+    end
+
+    def self.convert_remote_identity_group_history_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::RemoteIdentityGroupHistory.new()
+      plumbing.activity_id = (porcelain.activity_id)
+      plumbing.deleted_at = convert_timestamp_to_plumbing(porcelain.deleted_at)
+      plumbing.remote_identity_group = convert_remote_identity_group_to_plumbing(porcelain.remote_identity_group)
+      plumbing.timestamp = convert_timestamp_to_plumbing(porcelain.timestamp)
+      plumbing
+    end
+    def self.convert_repeated_remote_identity_group_history_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_remote_identity_group_history_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_remote_identity_group_history_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_remote_identity_group_history_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_remote_identity_history_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = RemoteIdentityHistory.new()
+      porcelain.activity_id = (plumbing.activity_id)
+      porcelain.deleted_at = convert_timestamp_to_porcelain(plumbing.deleted_at)
+      porcelain.remote_identity = convert_remote_identity_to_porcelain(plumbing.remote_identity)
+      porcelain.timestamp = convert_timestamp_to_porcelain(plumbing.timestamp)
+      porcelain
+    end
+
+    def self.convert_remote_identity_history_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::RemoteIdentityHistory.new()
+      plumbing.activity_id = (porcelain.activity_id)
+      plumbing.deleted_at = convert_timestamp_to_plumbing(porcelain.deleted_at)
+      plumbing.remote_identity = convert_remote_identity_to_plumbing(porcelain.remote_identity)
+      plumbing.timestamp = convert_timestamp_to_plumbing(porcelain.timestamp)
+      plumbing
+    end
+    def self.convert_repeated_remote_identity_history_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_remote_identity_history_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_remote_identity_history_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_remote_identity_history_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_remote_identity_update_response_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -5577,6 +6280,78 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_remote_identity_update_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_replay_chunk_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = ReplayChunk.new()
+      porcelain.data = (plumbing.data)
+      porcelain.events = convert_repeated_replay_chunk_event_to_porcelain(plumbing.events)
+      porcelain
+    end
+
+    def self.convert_replay_chunk_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::ReplayChunk.new()
+      plumbing.data = (porcelain.data)
+      plumbing.events += convert_repeated_replay_chunk_event_to_plumbing(porcelain.events)
+      plumbing
+    end
+    def self.convert_repeated_replay_chunk_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_replay_chunk_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_replay_chunk_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_replay_chunk_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_replay_chunk_event_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = ReplayChunkEvent.new()
+      porcelain.data = (plumbing.data)
+      porcelain.duration = convert_duration_to_porcelain(plumbing.duration)
+      porcelain
+    end
+
+    def self.convert_replay_chunk_event_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::ReplayChunkEvent.new()
+      plumbing.data = (porcelain.data)
+      plumbing.duration = convert_duration_to_plumbing(porcelain.duration)
+      plumbing
+    end
+    def self.convert_repeated_replay_chunk_event_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_replay_chunk_event_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_replay_chunk_event_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_replay_chunk_event_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -6180,6 +6955,46 @@ module SDM
       end
       items
     end
+    def self.convert_resource_history_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = ResourceHistory.new()
+      porcelain.activity_id = (plumbing.activity_id)
+      porcelain.deleted_at = convert_timestamp_to_porcelain(plumbing.deleted_at)
+      porcelain.resource = convert_resource_to_porcelain(plumbing.resource)
+      porcelain.timestamp = convert_timestamp_to_porcelain(plumbing.timestamp)
+      porcelain
+    end
+
+    def self.convert_resource_history_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::ResourceHistory.new()
+      plumbing.activity_id = (porcelain.activity_id)
+      plumbing.deleted_at = convert_timestamp_to_plumbing(porcelain.deleted_at)
+      plumbing.resource = convert_resource_to_plumbing(porcelain.resource)
+      plumbing.timestamp = convert_timestamp_to_plumbing(porcelain.timestamp)
+      plumbing
+    end
+    def self.convert_repeated_resource_history_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_resource_history_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_resource_history_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_resource_history_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_resource_update_response_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -6368,6 +7183,124 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_role_get_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_role_history_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = RoleHistory.new()
+      porcelain.activity_id = (plumbing.activity_id)
+      porcelain.deleted_at = convert_timestamp_to_porcelain(plumbing.deleted_at)
+      porcelain.role = convert_role_to_porcelain(plumbing.role)
+      porcelain.timestamp = convert_timestamp_to_porcelain(plumbing.timestamp)
+      porcelain
+    end
+
+    def self.convert_role_history_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::RoleHistory.new()
+      plumbing.activity_id = (porcelain.activity_id)
+      plumbing.deleted_at = convert_timestamp_to_plumbing(porcelain.deleted_at)
+      plumbing.role = convert_role_to_plumbing(porcelain.role)
+      plumbing.timestamp = convert_timestamp_to_plumbing(porcelain.timestamp)
+      plumbing
+    end
+    def self.convert_repeated_role_history_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_role_history_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_role_history_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_role_history_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_role_resource_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = RoleResource.new()
+      porcelain.granted_at = convert_timestamp_to_porcelain(plumbing.granted_at)
+      porcelain.resource_id = (plumbing.resource_id)
+      porcelain.role_id = (plumbing.role_id)
+      porcelain
+    end
+
+    def self.convert_role_resource_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::RoleResource.new()
+      plumbing.granted_at = convert_timestamp_to_plumbing(porcelain.granted_at)
+      plumbing.resource_id = (porcelain.resource_id)
+      plumbing.role_id = (porcelain.role_id)
+      plumbing
+    end
+    def self.convert_repeated_role_resource_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_role_resource_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_role_resource_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_role_resource_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_role_resource_history_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = RoleResourceHistory.new()
+      porcelain.activity_id = (plumbing.activity_id)
+      porcelain.deleted_at = convert_timestamp_to_porcelain(plumbing.deleted_at)
+      porcelain.role_resource = convert_role_resource_to_porcelain(plumbing.role_resource)
+      porcelain.timestamp = convert_timestamp_to_porcelain(plumbing.timestamp)
+      porcelain
+    end
+
+    def self.convert_role_resource_history_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::RoleResourceHistory.new()
+      plumbing.activity_id = (porcelain.activity_id)
+      plumbing.deleted_at = convert_timestamp_to_plumbing(porcelain.deleted_at)
+      plumbing.role_resource = convert_role_resource_to_plumbing(porcelain.role_resource)
+      plumbing.timestamp = convert_timestamp_to_plumbing(porcelain.timestamp)
+      plumbing
+    end
+    def self.convert_repeated_role_resource_history_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_role_resource_history_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_role_resource_history_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_role_resource_history_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -6857,6 +7790,46 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_secret_store_get_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_secret_store_history_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = SecretStoreHistory.new()
+      porcelain.activity_id = (plumbing.activity_id)
+      porcelain.deleted_at = convert_timestamp_to_porcelain(plumbing.deleted_at)
+      porcelain.secret_store = convert_secret_store_to_porcelain(plumbing.secret_store)
+      porcelain.timestamp = convert_timestamp_to_porcelain(plumbing.timestamp)
+      porcelain
+    end
+
+    def self.convert_secret_store_history_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::SecretStoreHistory.new()
+      plumbing.activity_id = (porcelain.activity_id)
+      plumbing.deleted_at = convert_timestamp_to_plumbing(porcelain.deleted_at)
+      plumbing.secret_store = convert_secret_store_to_plumbing(porcelain.secret_store)
+      plumbing.timestamp = convert_timestamp_to_plumbing(porcelain.timestamp)
+      plumbing
+    end
+    def self.convert_repeated_secret_store_history_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_secret_store_history_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_secret_store_history_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_secret_store_history_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
