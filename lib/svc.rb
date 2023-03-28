@@ -662,6 +662,62 @@ module SDM #:nodoc:
     end
   end
 
+  # AccountResourcesHistory records all changes to the state of a AccountResource.
+  #
+  # See {AccountResourceHistory}.
+  class AccountResourcesHistory
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::AccountResourcesHistory::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # List gets a list of AccountResourceHistory records matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::AccountResourceHistoryListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      page_size_option = @parent._test_options["PageSize"]
+      if page_size_option.is_a? Integer
+        req.meta.limit = page_size_option
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("AccountResourcesHistory.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.history.each do |plumbing_item|
+            g.yield Plumbing::convert_account_resource_history_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
   # Accounts are users that have access to strongDM. There are two types of accounts:
   # 1. **Users:** humans who are authenticated through username and password or SSO.
   # 2. **Service Accounts:** machines that are authenticated using a service token.

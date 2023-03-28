@@ -26,6 +26,7 @@ require_relative "./account_grants_pb"
 require_relative "./account_grants_history_pb"
 require_relative "./account_permissions_pb"
 require_relative "./account_resources_pb"
+require_relative "./account_resources_history_pb"
 require_relative "./tags_pb"
 require_relative "./accounts_pb"
 require_relative "./accounts_history_pb"
@@ -1339,6 +1340,46 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_account_resource_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_account_resource_history_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AccountResourceHistory.new()
+      porcelain.account_resource = convert_account_resource_to_porcelain(plumbing.account_resource)
+      porcelain.activity_id = (plumbing.activity_id)
+      porcelain.deleted_at = convert_timestamp_to_porcelain(plumbing.deleted_at)
+      porcelain.timestamp = convert_timestamp_to_porcelain(plumbing.timestamp)
+      porcelain
+    end
+
+    def self.convert_account_resource_history_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AccountResourceHistory.new()
+      plumbing.account_resource = convert_account_resource_to_plumbing(porcelain.account_resource)
+      plumbing.activity_id = (porcelain.activity_id)
+      plumbing.deleted_at = convert_timestamp_to_plumbing(porcelain.deleted_at)
+      plumbing.timestamp = convert_timestamp_to_plumbing(porcelain.timestamp)
+      plumbing
+    end
+    def self.convert_repeated_account_resource_history_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_account_resource_history_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_account_resource_history_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_account_resource_history_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items

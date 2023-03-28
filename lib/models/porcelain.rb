@@ -1143,6 +1143,41 @@ module SDM
     end
   end
 
+  # AccountResourceHistory records the state of a AccountResource at a given point in time,
+  # where every change (create or delete) to a AccountResource produces an
+  # AccountResourceHistory record.
+  class AccountResourceHistory
+    # The complete AccountResource state at this time.
+    attr_accessor :account_resource
+    # The unique identifier of the Activity that produced this change to the AccountResource.
+    # May be empty for some system-initiated updates.
+    attr_accessor :activity_id
+    # If this AccountResource was deleted, the time it was deleted.
+    attr_accessor :deleted_at
+    # The time at which the AccountResource state was recorded.
+    attr_accessor :timestamp
+
+    def initialize(
+      account_resource: nil,
+      activity_id: nil,
+      deleted_at: nil,
+      timestamp: nil
+    )
+      @account_resource = account_resource == nil ? nil : account_resource
+      @activity_id = activity_id == nil ? "" : activity_id
+      @deleted_at = deleted_at == nil ? nil : deleted_at
+      @timestamp = timestamp == nil ? nil : timestamp
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   # AccountUpdateResponse returns the fields of a Account after it has been updated by
   # a AccountUpdateRequest.
   class AccountUpdateResponse
