@@ -1726,6 +1726,72 @@ module SDM
       end
       items
     end
+    def self.convert_amazon_eks_instance_profile_user_impersonation_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AmazonEKSInstanceProfileUserImpersonation.new()
+      porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.certificate_authority = (plumbing.certificate_authority)
+      porcelain.cluster_name = (plumbing.cluster_name)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.endpoint = (plumbing.endpoint)
+      porcelain.healthcheck_namespace = (plumbing.healthcheck_namespace)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.region = (plumbing.region)
+      porcelain.remote_identity_group_id = (plumbing.remote_identity_group_id)
+      porcelain.remote_identity_healthcheck_username = (plumbing.remote_identity_healthcheck_username)
+      porcelain.role_arn = (plumbing.role_arn)
+      porcelain.role_external_id = (plumbing.role_external_id)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.subdomain = (plumbing.subdomain)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_amazon_eks_instance_profile_user_impersonation_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AmazonEKSInstanceProfileUserImpersonation.new()
+      plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.certificate_authority = (porcelain.certificate_authority)
+      plumbing.cluster_name = (porcelain.cluster_name)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.endpoint = (porcelain.endpoint)
+      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.region = (porcelain.region)
+      plumbing.remote_identity_group_id = (porcelain.remote_identity_group_id)
+      plumbing.remote_identity_healthcheck_username = (porcelain.remote_identity_healthcheck_username)
+      plumbing.role_arn = (porcelain.role_arn)
+      plumbing.role_external_id = (porcelain.role_external_id)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.subdomain = (porcelain.subdomain)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_amazon_eks_instance_profile_user_impersonation_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_amazon_eks_instance_profile_user_impersonation_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_amazon_eks_instance_profile_user_impersonation_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_amazon_eks_instance_profile_user_impersonation_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_amazon_eks_user_impersonation_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -5647,6 +5713,7 @@ module SDM
       porcelain.account_id = (plumbing.account_id)
       porcelain.account_last_name = (plumbing.account_last_name)
       porcelain.account_tags = convert_tags_to_porcelain(plumbing.account_tags)
+      porcelain.completed_at = convert_timestamp_to_porcelain(plumbing.completed_at)
       porcelain.duration = convert_duration_to_porcelain(plumbing.duration)
       porcelain.egress_node_id = (plumbing.egress_node_id)
       porcelain.encrypted = (plumbing.encrypted)
@@ -5676,6 +5743,7 @@ module SDM
       plumbing.account_id = (porcelain.account_id)
       plumbing.account_last_name = (porcelain.account_last_name)
       plumbing.account_tags = convert_tags_to_plumbing(porcelain.account_tags)
+      plumbing.completed_at = convert_timestamp_to_plumbing(porcelain.completed_at)
       plumbing.duration = convert_duration_to_plumbing(porcelain.duration)
       plumbing.egress_node_id = (porcelain.egress_node_id)
       plumbing.encrypted = (porcelain.encrypted)
@@ -6537,6 +6605,9 @@ module SDM
       if porcelain.instance_of? AmazonEKSInstanceProfile
         plumbing.amazon_eks_instance_profile = convert_amazon_eks_instance_profile_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? AmazonEKSInstanceProfileUserImpersonation
+        plumbing.amazon_eks_instance_profile_user_impersonation = convert_amazon_eks_instance_profile_user_impersonation_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? AmazonEKSUserImpersonation
         plumbing.amazon_eks_user_impersonation = convert_amazon_eks_user_impersonation_to_plumbing(porcelain)
       end
@@ -6744,6 +6815,9 @@ module SDM
       if porcelain.instance_of? Teradata
         plumbing.teradata = convert_teradata_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? Trino
+        plumbing.trino = convert_trino_to_plumbing(porcelain)
+      end
       plumbing
     end
 
@@ -6771,6 +6845,9 @@ module SDM
       end
       if plumbing.amazon_eks_instance_profile != nil
         return convert_amazon_eks_instance_profile_to_porcelain(plumbing.amazon_eks_instance_profile)
+      end
+      if plumbing.amazon_eks_instance_profile_user_impersonation != nil
+        return convert_amazon_eks_instance_profile_user_impersonation_to_porcelain(plumbing.amazon_eks_instance_profile_user_impersonation)
       end
       if plumbing.amazon_eks_user_impersonation != nil
         return convert_amazon_eks_user_impersonation_to_porcelain(plumbing.amazon_eks_user_impersonation)
@@ -6978,6 +7055,9 @@ module SDM
       end
       if plumbing.teradata != nil
         return convert_teradata_to_porcelain(plumbing.teradata)
+      end
+      if plumbing.trino != nil
+        return convert_trino_to_porcelain(plumbing.trino)
       end
       raise UnknownError.new("unknown polymorphic type, please upgrade your SDK")
     end
@@ -8455,6 +8535,66 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_teradata_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_trino_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = Trino.new()
+      porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.database = (plumbing.database)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.password = (plumbing.password)
+      porcelain.port = (plumbing.port)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.subdomain = (plumbing.subdomain)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.username = (plumbing.username)
+      porcelain
+    end
+
+    def self.convert_trino_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::Trino.new()
+      plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.database = (porcelain.database)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.subdomain = (porcelain.subdomain)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
+      plumbing
+    end
+    def self.convert_repeated_trino_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_trino_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_trino_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_trino_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items

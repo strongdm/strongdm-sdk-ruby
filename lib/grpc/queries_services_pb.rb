@@ -20,7 +20,7 @@ require "queries_pb"
 
 module V1
   module Queries
-    # A Query is a record of a single client request to a resource, such as an SQL query.
+    # A Query is a record of a single client request to a resource, such as a SQL query.
     # Long-running SSH, RDP, or Kubernetes interactive sessions also count as queries.
     # The Queries service is read-only.
     class Service

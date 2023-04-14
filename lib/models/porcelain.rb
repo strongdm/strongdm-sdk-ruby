@@ -1527,6 +1527,89 @@ module SDM
     end
   end
 
+  class AmazonEKSInstanceProfileUserImpersonation
+    # Bind interface
+    attr_accessor :bind_interface
+
+    attr_accessor :certificate_authority
+
+    attr_accessor :cluster_name
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
+
+    attr_accessor :endpoint
+    # The path used to check the health of your connection.  Defaults to `default`.
+    attr_accessor :healthcheck_namespace
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+
+    attr_accessor :region
+
+    attr_accessor :remote_identity_group_id
+
+    attr_accessor :remote_identity_healthcheck_username
+
+    attr_accessor :role_arn
+
+    attr_accessor :role_external_id
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    attr_accessor :subdomain
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      bind_interface: nil,
+      certificate_authority: nil,
+      cluster_name: nil,
+      egress_filter: nil,
+      endpoint: nil,
+      healthcheck_namespace: nil,
+      healthy: nil,
+      id: nil,
+      name: nil,
+      region: nil,
+      remote_identity_group_id: nil,
+      remote_identity_healthcheck_username: nil,
+      role_arn: nil,
+      role_external_id: nil,
+      secret_store_id: nil,
+      subdomain: nil,
+      tags: nil
+    )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
+      @certificate_authority = certificate_authority == nil ? "" : certificate_authority
+      @cluster_name = cluster_name == nil ? "" : cluster_name
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @endpoint = endpoint == nil ? "" : endpoint
+      @healthcheck_namespace = healthcheck_namespace == nil ? "" : healthcheck_namespace
+      @healthy = healthy == nil ? false : healthy
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @region = region == nil ? "" : region
+      @remote_identity_group_id = remote_identity_group_id == nil ? "" : remote_identity_group_id
+      @remote_identity_healthcheck_username = remote_identity_healthcheck_username == nil ? "" : remote_identity_healthcheck_username
+      @role_arn = role_arn == nil ? "" : role_arn
+      @role_external_id = role_external_id == nil ? "" : role_external_id
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @subdomain = subdomain == nil ? "" : subdomain
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class AmazonEKSUserImpersonation
     attr_accessor :access_key
     # Bind interface
@@ -2082,7 +2165,6 @@ module SDM
     end
   end
 
-  # AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class AzureMysql
     # Bind interface
     attr_accessor :bind_interface
@@ -5842,7 +5924,11 @@ module SDM
     end
   end
 
-  # A Query is a record of a single client request to a resource, such as an SQL query.
+  # A Query is a record of a single client request to a resource, such as a SQL query.
+  # Longer-running queries including long-running SSH commands and SSH, RDP, or Kubernetes
+  # interactive sessions will return two Query records with the same identifier, one record
+  # at the start of the query and a second record upon the completion of the query with
+  # additional detail.
   class Query
     # The email of the account performing this query, at the time the query was executed.
     # If the account email is later changed, that change will not be reflected via this field.
@@ -5858,6 +5944,9 @@ module SDM
     # The tags of the account accessed, at the time the query was executed. If the account
     # tags are later changed, that change will not be reflected via this field.
     attr_accessor :account_tags
+    # The time at which the Query was completed.
+    # Empty if this record indicates the start of a long-running query.
+    attr_accessor :completed_at
     # The duration of the Query.
     attr_accessor :duration
     # The unique ID of the node through which the Resource was accessed.
@@ -5893,7 +5982,7 @@ module SDM
     attr_accessor :resource_tags
     # The specific type of Resource against which the Query was performed, e.g. "ssh" or "postgres".
     attr_accessor :resource_type
-    # The time at which the Query was performed.
+    # The time at which the Query was started.
     attr_accessor :timestamp
 
     def initialize(
@@ -5902,6 +5991,7 @@ module SDM
       account_id: nil,
       account_last_name: nil,
       account_tags: nil,
+      completed_at: nil,
       duration: nil,
       egress_node_id: nil,
       encrypted: nil,
@@ -5924,6 +6014,7 @@ module SDM
       @account_id = account_id == nil ? "" : account_id
       @account_last_name = account_last_name == nil ? "" : account_last_name
       @account_tags = account_tags == nil ? SDM::_porcelain_zero_value_tags() : account_tags
+      @completed_at = completed_at == nil ? nil : completed_at
       @duration = duration == nil ? nil : duration
       @egress_node_id = egress_node_id == nil ? "" : egress_node_id
       @encrypted = encrypted == nil ? false : encrypted
@@ -7984,6 +8075,78 @@ module SDM
       username: nil
     )
       @bind_interface = bind_interface == nil ? "" : bind_interface
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @subdomain = subdomain == nil ? "" : subdomain
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class Trino
+    # Bind interface
+    attr_accessor :bind_interface
+
+    attr_accessor :database
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
+    attr_accessor :hostname
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+
+    attr_accessor :password
+
+    attr_accessor :port
+
+    attr_accessor :port_override
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    attr_accessor :subdomain
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    attr_accessor :username
+
+    def initialize(
+      bind_interface: nil,
+      database: nil,
+      egress_filter: nil,
+      healthy: nil,
+      hostname: nil,
+      id: nil,
+      name: nil,
+      password: nil,
+      port: nil,
+      port_override: nil,
+      secret_store_id: nil,
+      subdomain: nil,
+      tags: nil,
+      username: nil
+    )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
+      @database = database == nil ? "" : database
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
       @hostname = hostname == nil ? "" : hostname

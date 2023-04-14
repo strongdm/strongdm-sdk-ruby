@@ -29,7 +29,7 @@ module SDM #:nodoc:
     DEFAULT_BASE_RETRY_DELAY = 0.0030 # 30 ms
     DEFAULT_MAX_RETRY_DELAY = 300 # 300 seconds
     API_VERSION = "2021-08-23"
-    USER_AGENT = "strongdm-sdk-ruby/3.10.0"
+    USER_AGENT = "strongdm-sdk-ruby/3.11.0"
     private_constant :DEFAULT_MAX_RETRIES, :DEFAULT_BASE_RETRY_DELAY, :DEFAULT_MAX_RETRY_DELAY, :API_VERSION, :USER_AGENT
 
     # Creates a new strongDM API client.
@@ -236,7 +236,7 @@ module SDM #:nodoc:
     #
     # See {OrganizationHistory}.
     attr_reader :organization_history
-    # A Query is a record of a single client request to a resource, such as an SQL query.
+    # A Query is a record of a single client request to a resource, such as a SQL query.
     # Long-running SSH, RDP, or Kubernetes interactive sessions also count as queries.
     # The Queries service is read-only.
     #

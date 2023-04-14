@@ -56,6 +56,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :account_email, :string, 20
       optional :account_tags, :message, 21, "v1.Tags"
       optional :query_key_id, :string, 22
+      optional :completed_at, :message, 23, "google.protobuf.Timestamp"
     end
   end
 end
