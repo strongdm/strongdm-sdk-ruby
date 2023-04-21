@@ -5713,6 +5713,7 @@ module SDM
       porcelain.account_id = (plumbing.account_id)
       porcelain.account_last_name = (plumbing.account_last_name)
       porcelain.account_tags = convert_tags_to_porcelain(plumbing.account_tags)
+      porcelain.capture = convert_query_capture_to_porcelain(plumbing.capture)
       porcelain.completed_at = convert_timestamp_to_porcelain(plumbing.completed_at)
       porcelain.duration = convert_duration_to_porcelain(plumbing.duration)
       porcelain.egress_node_id = (plumbing.egress_node_id)
@@ -5743,6 +5744,7 @@ module SDM
       plumbing.account_id = (porcelain.account_id)
       plumbing.account_last_name = (porcelain.account_last_name)
       plumbing.account_tags = convert_tags_to_plumbing(porcelain.account_tags)
+      plumbing.capture = convert_query_capture_to_plumbing(porcelain.capture)
       plumbing.completed_at = convert_timestamp_to_plumbing(porcelain.completed_at)
       plumbing.duration = convert_duration_to_plumbing(porcelain.duration)
       plumbing.egress_node_id = (porcelain.egress_node_id)
@@ -5775,6 +5777,64 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_query_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_query_capture_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = QueryCapture.new()
+      porcelain.client_command = (plumbing.client_command)
+      porcelain.command = (plumbing.command)
+      porcelain.container = (plumbing.container)
+      porcelain.env = (plumbing.env)
+      porcelain.file_name = (plumbing.file_name)
+      porcelain.file_size = (plumbing.file_size)
+      porcelain.height = (plumbing.height)
+      porcelain.pod = (plumbing.pod)
+      porcelain.request_body = (plumbing.request_body)
+      porcelain.request_method = (plumbing.request_method)
+      porcelain.request_uri = (plumbing.request_uri)
+      porcelain.type = (plumbing.type)
+      porcelain.width = (plumbing.width)
+      porcelain
+    end
+
+    def self.convert_query_capture_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::QueryCapture.new()
+      plumbing.client_command = (porcelain.client_command)
+      plumbing.command = (porcelain.command)
+      plumbing.container = (porcelain.container)
+      plumbing.env = (porcelain.env)
+      plumbing.file_name = (porcelain.file_name)
+      plumbing.file_size = (porcelain.file_size)
+      plumbing.height = (porcelain.height)
+      plumbing.pod = (porcelain.pod)
+      plumbing.request_body = (porcelain.request_body)
+      plumbing.request_method = (porcelain.request_method)
+      plumbing.request_uri = (porcelain.request_uri)
+      plumbing.type = (porcelain.type)
+      plumbing.width = (porcelain.width)
+      plumbing
+    end
+    def self.convert_repeated_query_capture_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_query_capture_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_query_capture_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_query_capture_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items

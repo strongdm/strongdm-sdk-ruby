@@ -57,6 +57,22 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :account_tags, :message, 21, "v1.Tags"
       optional :query_key_id, :string, 22
       optional :completed_at, :message, 23, "google.protobuf.Timestamp"
+      optional :capture, :message, 24, "v1.QueryCapture"
+    end
+    add_message "v1.QueryCapture" do
+      optional :width, :int32, 1
+      optional :height, :int32, 2
+      optional :command, :string, 3
+      map :env, :string, :string, 4
+      optional :type, :string, 5
+      optional :file_name, :string, 6
+      optional :file_size, :int64, 7
+      optional :client_command, :string, 8
+      optional :pod, :string, 9
+      optional :container, :string, 10
+      optional :request_method, :string, 11
+      optional :request_uri, :string, 12
+      optional :request_body, :bytes, 13
     end
   end
 end
@@ -65,4 +81,5 @@ module V1
   QueryListRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.QueryListRequest").msgclass
   QueryListResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.QueryListResponse").msgclass
   Query = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Query").msgclass
+  QueryCapture = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.QueryCapture").msgclass
 end

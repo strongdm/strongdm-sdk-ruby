@@ -5944,6 +5944,9 @@ module SDM
     # The tags of the account accessed, at the time the query was executed. If the account
     # tags are later changed, that change will not be reflected via this field.
     attr_accessor :account_tags
+    # For queries against SSH, Kubernetes, and RDP resources, this contains additional information
+    # about the captured query.
+    attr_accessor :capture
     # The time at which the Query was completed.
     # Empty if this record indicates the start of a long-running query.
     attr_accessor :completed_at
@@ -5956,6 +5959,7 @@ module SDM
     # Unique identifier of the Query.
     attr_accessor :id
     # The captured content of the Query.
+    # For queries against SSH, Kubernetes, and RDP resources, this contains a JSON representation of the QueryCapture.
     attr_accessor :query_body
     # The general category of Resource against which Query was performed, e.g. "web" or "cloud".
     attr_accessor :query_category
@@ -5991,6 +5995,7 @@ module SDM
       account_id: nil,
       account_last_name: nil,
       account_tags: nil,
+      capture: nil,
       completed_at: nil,
       duration: nil,
       egress_node_id: nil,
@@ -6014,6 +6019,7 @@ module SDM
       @account_id = account_id == nil ? "" : account_id
       @account_last_name = account_last_name == nil ? "" : account_last_name
       @account_tags = account_tags == nil ? SDM::_porcelain_zero_value_tags() : account_tags
+      @capture = capture == nil ? nil : capture
       @completed_at = completed_at == nil ? nil : completed_at
       @duration = duration == nil ? nil : duration
       @egress_node_id = egress_node_id == nil ? "" : egress_node_id
@@ -6031,6 +6037,74 @@ module SDM
       @resource_tags = resource_tags == nil ? SDM::_porcelain_zero_value_tags() : resource_tags
       @resource_type = resource_type == nil ? "" : resource_type
       @timestamp = timestamp == nil ? nil : timestamp
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # A QueryCapture contains additional information about queries against SSH, Kubernetes, and RDP resources.
+  class QueryCapture
+    # The command executed on the client for a Kubernetes session.
+    attr_accessor :client_command
+    # The command executed over an SSH or Kubernetes session.
+    attr_accessor :command
+    # The target container of a Kubernetes operation.
+    attr_accessor :container
+    # The environment variables for an SSH or Kubernetes session.
+    attr_accessor :env
+    # The remote file name of an SCP operation.
+    attr_accessor :file_name
+    # The file size transferred for an SCP operation.
+    attr_accessor :file_size
+    # The height of the terminal or window for SSH, Kubernetes, and RDP interactive sessions.
+    attr_accessor :height
+    # The target pod of a Kubernetes operation.
+    attr_accessor :pod
+    # The HTTP request body of a Kubernetes operation.
+    attr_accessor :request_body
+    # The HTTP request method of a Kubernetes operation.
+    attr_accessor :request_method
+    # The HTTP request URI of a Kubernetes operation.
+    attr_accessor :request_uri
+    # The CaptureType of this query capture.
+    attr_accessor :type
+    # The width of the terminal or window for SSH, Kubernetes, and RDP interactive sessions.
+    attr_accessor :width
+
+    def initialize(
+      client_command: nil,
+      command: nil,
+      container: nil,
+      env: nil,
+      file_name: nil,
+      file_size: nil,
+      height: nil,
+      pod: nil,
+      request_body: nil,
+      request_method: nil,
+      request_uri: nil,
+      type: nil,
+      width: nil
+    )
+      @client_command = client_command == nil ? "" : client_command
+      @command = command == nil ? "" : command
+      @container = container == nil ? "" : container
+      @env = env == nil ? {} : env
+      @file_name = file_name == nil ? "" : file_name
+      @file_size = file_size == nil ? 0 : file_size
+      @height = height == nil ? 0 : height
+      @pod = pod == nil ? "" : pod
+      @request_body = request_body == nil ? "" : request_body
+      @request_method = request_method == nil ? "" : request_method
+      @request_uri = request_uri == nil ? "" : request_uri
+      @type = type == nil ? "" : type
+      @width = width == nil ? 0 : width
     end
 
     def to_json(options = {})
