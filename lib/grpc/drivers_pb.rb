@@ -195,8 +195,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :subdomain, :string, 32775
       optional :access_key, :string, 1
       optional :healthcheck_region, :string, 4
+      optional :port_override, :int32, 10
       optional :role_arn, :string, 5
       optional :role_external_id, :string, 6
       optional :secret_access_key, :string, 2
@@ -407,8 +409,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :subdomain, :string, 32775
       optional :app_id, :string, 1
       optional :password, :string, 3
+      optional :port_override, :int32, 8
       optional :tenant_id, :string, 2
     end
     add_message "v1.AzureCertificate" do
@@ -419,8 +423,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :subdomain, :string, 32775
       optional :app_id, :string, 1
       optional :client_certificate, :string, 3
+      optional :port_override, :int32, 10
       optional :tenant_id, :string, 2
     end
     add_message "v1.AzureMysql" do
@@ -674,7 +680,9 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :subdomain, :string, 32775
       optional :keyfile, :string, 1
+      optional :port_override, :int32, 11
       optional :scopes, :string, 2
     end
     add_message "v1.GoogleGKE" do

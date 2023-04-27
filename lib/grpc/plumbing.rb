@@ -463,10 +463,12 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.id = (plumbing.id)
       porcelain.name = (plumbing.name)
+      porcelain.port_override = (plumbing.port_override)
       porcelain.role_arn = (plumbing.role_arn)
       porcelain.role_external_id = (plumbing.role_external_id)
       porcelain.secret_access_key = (plumbing.secret_access_key)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain
     end
@@ -483,10 +485,12 @@ module SDM
       plumbing.healthy = (porcelain.healthy)
       plumbing.id = (porcelain.id)
       plumbing.name = (porcelain.name)
+      plumbing.port_override = (porcelain.port_override)
       plumbing.role_arn = (porcelain.role_arn)
       plumbing.role_external_id = (porcelain.role_external_id)
       plumbing.secret_access_key = (porcelain.secret_access_key)
       plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing
     end
@@ -2176,7 +2180,9 @@ module SDM
       porcelain.id = (plumbing.id)
       porcelain.name = (plumbing.name)
       porcelain.password = (plumbing.password)
+      porcelain.port_override = (plumbing.port_override)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.tenant_id = (plumbing.tenant_id)
       porcelain
@@ -2194,7 +2200,9 @@ module SDM
       plumbing.id = (porcelain.id)
       plumbing.name = (porcelain.name)
       plumbing.password = (porcelain.password)
+      plumbing.port_override = (porcelain.port_override)
       plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing.tenant_id = (porcelain.tenant_id)
       plumbing
@@ -2228,7 +2236,9 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.id = (plumbing.id)
       porcelain.name = (plumbing.name)
+      porcelain.port_override = (plumbing.port_override)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.tenant_id = (plumbing.tenant_id)
       porcelain
@@ -2246,7 +2256,9 @@ module SDM
       plumbing.healthy = (porcelain.healthy)
       plumbing.id = (porcelain.id)
       plumbing.name = (porcelain.name)
+      plumbing.port_override = (porcelain.port_override)
       plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing.tenant_id = (porcelain.tenant_id)
       plumbing
@@ -3527,8 +3539,10 @@ module SDM
       porcelain.id = (plumbing.id)
       porcelain.keyfile = (plumbing.keyfile)
       porcelain.name = (plumbing.name)
+      porcelain.port_override = (plumbing.port_override)
       porcelain.scopes = (plumbing.scopes)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain
     end
@@ -3544,8 +3558,10 @@ module SDM
       plumbing.id = (porcelain.id)
       plumbing.keyfile = (porcelain.keyfile)
       plumbing.name = (porcelain.name)
+      plumbing.port_override = (porcelain.port_override)
       plumbing.scopes = (porcelain.scopes)
       plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing
     end

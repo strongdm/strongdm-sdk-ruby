@@ -402,6 +402,8 @@ module SDM
     # Unique human-readable name of the Resource.
     attr_accessor :name
 
+    attr_accessor :port_override
+
     attr_accessor :role_arn
 
     attr_accessor :role_external_id
@@ -409,6 +411,8 @@ module SDM
     attr_accessor :secret_access_key
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
 
@@ -420,10 +424,12 @@ module SDM
       healthy: nil,
       id: nil,
       name: nil,
+      port_override: nil,
       role_arn: nil,
       role_external_id: nil,
       secret_access_key: nil,
       secret_store_id: nil,
+      subdomain: nil,
       tags: nil
     )
       @access_key = access_key == nil ? "" : access_key
@@ -433,10 +439,12 @@ module SDM
       @healthy = healthy == nil ? false : healthy
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
+      @port_override = port_override == nil ? 0 : port_override
       @role_arn = role_arn == nil ? "" : role_arn
       @role_external_id = role_external_id == nil ? "" : role_external_id
       @secret_access_key = secret_access_key == nil ? "" : secret_access_key
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
@@ -2071,8 +2079,12 @@ module SDM
     attr_accessor :name
 
     attr_accessor :password
+
+    attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
 
@@ -2086,7 +2098,9 @@ module SDM
       id: nil,
       name: nil,
       password: nil,
+      port_override: nil,
       secret_store_id: nil,
+      subdomain: nil,
       tags: nil,
       tenant_id: nil
     )
@@ -2097,7 +2111,9 @@ module SDM
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
       @password = password == nil ? "" : password
+      @port_override = port_override == nil ? 0 : port_override
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
       @tenant_id = tenant_id == nil ? "" : tenant_id
     end
@@ -2125,8 +2141,12 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
+
+    attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
 
@@ -2140,7 +2160,9 @@ module SDM
       healthy: nil,
       id: nil,
       name: nil,
+      port_override: nil,
       secret_store_id: nil,
+      subdomain: nil,
       tags: nil,
       tenant_id: nil
     )
@@ -2151,7 +2173,9 @@ module SDM
       @healthy = healthy == nil ? false : healthy
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
+      @port_override = port_override == nil ? 0 : port_override
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
       @tenant_id = tenant_id == nil ? "" : tenant_id
     end
@@ -3496,9 +3520,13 @@ module SDM
     # Unique human-readable name of the Resource.
     attr_accessor :name
 
+    attr_accessor :port_override
+
     attr_accessor :scopes
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
 
@@ -3509,8 +3537,10 @@ module SDM
       id: nil,
       keyfile: nil,
       name: nil,
+      port_override: nil,
       scopes: nil,
       secret_store_id: nil,
+      subdomain: nil,
       tags: nil
     )
       @bind_interface = bind_interface == nil ? "" : bind_interface
@@ -3519,8 +3549,10 @@ module SDM
       @id = id == nil ? "" : id
       @keyfile = keyfile == nil ? "" : keyfile
       @name = name == nil ? "" : name
+      @port_override = port_override == nil ? 0 : port_override
       @scopes = scopes == nil ? "" : scopes
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
