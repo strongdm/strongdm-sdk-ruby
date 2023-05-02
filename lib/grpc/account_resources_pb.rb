@@ -38,6 +38,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :expires_at, :message, 4, "google.protobuf.Timestamp"
       optional :role_id, :string, 5
       optional :account_grant_id, :string, 6
+      optional :created_at, :message, 7, "google.protobuf.Timestamp"
     end
   end
 end

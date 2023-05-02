@@ -62,6 +62,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :sensitive_label, :string, 22
       optional :saml_metadata_url, :string, 23
       optional :kind, :string, 24
+      optional :id, :string, 25
     end
   end
 end

@@ -1115,6 +1115,9 @@ module SDM
     attr_accessor :account_grant_id
     # The unique identifier of the Account to which access is granted.
     attr_accessor :account_id
+    # The time this grant was created, distinct from 'granted at' in the case where access is scheduled
+    # for the future. If access was granted, revoked, and granted again, this will reflect the later creation time.
+    attr_accessor :created_at
     # The time at which access will expire. If empty, this access has no expiration.
     attr_accessor :expires_at
     # The most recent time at which access was granted. If access was granted,
@@ -1129,6 +1132,7 @@ module SDM
     def initialize(
       account_grant_id: nil,
       account_id: nil,
+      created_at: nil,
       expires_at: nil,
       granted_at: nil,
       resource_id: nil,
@@ -1136,6 +1140,7 @@ module SDM
     )
       @account_grant_id = account_grant_id == nil ? "" : account_grant_id
       @account_id = account_id == nil ? "" : account_id
+      @created_at = created_at == nil ? nil : created_at
       @expires_at = expires_at == nil ? nil : expires_at
       @granted_at = granted_at == nil ? nil : granted_at
       @resource_id = resource_id == nil ? "" : resource_id
