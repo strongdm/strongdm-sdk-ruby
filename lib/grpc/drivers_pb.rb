@@ -254,6 +254,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :cluster_name, :string, 7
       optional :endpoint, :string, 1
       optional :healthcheck_namespace, :string, 9
+      optional :port_override, :int32, 15
       optional :region, :string, 6
       optional :remote_identity_group_id, :string, 11
       optional :remote_identity_healthcheck_username, :string, 12
@@ -274,6 +275,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :cluster_name, :string, 5
       optional :endpoint, :string, 1
       optional :healthcheck_namespace, :string, 8
+      optional :port_override, :int32, 15
       optional :region, :string, 4
       optional :remote_identity_group_id, :string, 9
       optional :remote_identity_healthcheck_username, :string, 10
@@ -293,6 +295,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :cluster_name, :string, 5
       optional :endpoint, :string, 1
       optional :healthcheck_namespace, :string, 8
+      optional :port_override, :int32, 15
       optional :region, :string, 4
       optional :remote_identity_group_id, :string, 9
       optional :remote_identity_healthcheck_username, :string, 10
@@ -313,6 +316,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :cluster_name, :string, 7
       optional :endpoint, :string, 1
       optional :healthcheck_namespace, :string, 9
+      optional :port_override, :int32, 15
       optional :region, :string, 6
       optional :role_arn, :string, 8
       optional :role_external_id, :string, 10

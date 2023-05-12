@@ -1388,6 +1388,8 @@ module SDM
     # Unique human-readable name of the Resource.
     attr_accessor :name
 
+    attr_accessor :port_override
+
     attr_accessor :region
 
     attr_accessor :remote_identity_group_id
@@ -1417,6 +1419,7 @@ module SDM
       healthy: nil,
       id: nil,
       name: nil,
+      port_override: nil,
       region: nil,
       remote_identity_group_id: nil,
       remote_identity_healthcheck_username: nil,
@@ -1437,6 +1440,7 @@ module SDM
       @healthy = healthy == nil ? false : healthy
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
+      @port_override = port_override == nil ? 0 : port_override
       @region = region == nil ? "" : region
       @remote_identity_group_id = remote_identity_group_id == nil ? "" : remote_identity_group_id
       @remote_identity_healthcheck_username = remote_identity_healthcheck_username == nil ? "" : remote_identity_healthcheck_username
@@ -1477,6 +1481,8 @@ module SDM
     # Unique human-readable name of the Resource.
     attr_accessor :name
 
+    attr_accessor :port_override
+
     attr_accessor :region
 
     attr_accessor :remote_identity_group_id
@@ -1503,6 +1509,7 @@ module SDM
       healthy: nil,
       id: nil,
       name: nil,
+      port_override: nil,
       region: nil,
       remote_identity_group_id: nil,
       remote_identity_healthcheck_username: nil,
@@ -1521,6 +1528,7 @@ module SDM
       @healthy = healthy == nil ? false : healthy
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
+      @port_override = port_override == nil ? 0 : port_override
       @region = region == nil ? "" : region
       @remote_identity_group_id = remote_identity_group_id == nil ? "" : remote_identity_group_id
       @remote_identity_healthcheck_username = remote_identity_healthcheck_username == nil ? "" : remote_identity_healthcheck_username
@@ -1560,6 +1568,8 @@ module SDM
     # Unique human-readable name of the Resource.
     attr_accessor :name
 
+    attr_accessor :port_override
+
     attr_accessor :region
 
     attr_accessor :remote_identity_group_id
@@ -1586,6 +1596,7 @@ module SDM
       healthy: nil,
       id: nil,
       name: nil,
+      port_override: nil,
       region: nil,
       remote_identity_group_id: nil,
       remote_identity_healthcheck_username: nil,
@@ -1604,6 +1615,7 @@ module SDM
       @healthy = healthy == nil ? false : healthy
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
+      @port_override = port_override == nil ? 0 : port_override
       @region = region == nil ? "" : region
       @remote_identity_group_id = remote_identity_group_id == nil ? "" : remote_identity_group_id
       @remote_identity_healthcheck_username = remote_identity_healthcheck_username == nil ? "" : remote_identity_healthcheck_username
@@ -1644,6 +1656,8 @@ module SDM
     # Unique human-readable name of the Resource.
     attr_accessor :name
 
+    attr_accessor :port_override
+
     attr_accessor :region
 
     attr_accessor :role_arn
@@ -1669,6 +1683,7 @@ module SDM
       healthy: nil,
       id: nil,
       name: nil,
+      port_override: nil,
       region: nil,
       role_arn: nil,
       role_external_id: nil,
@@ -1687,6 +1702,7 @@ module SDM
       @healthy = healthy == nil ? false : healthy
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
+      @port_override = port_override == nil ? 0 : port_override
       @region = region == nil ? "" : region
       @role_arn = role_arn == nil ? "" : role_arn
       @role_external_id = role_external_id == nil ? "" : role_external_id
