@@ -7389,6 +7389,180 @@ module SDM
     end
   end
 
+  class SQLServerAzureAD
+    # Bind interface
+    attr_accessor :bind_interface
+
+    attr_accessor :client_id
+
+    attr_accessor :database
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
+    attr_accessor :hostname
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+
+    attr_accessor :override_database
+
+    attr_accessor :port
+
+    attr_accessor :port_override
+
+    attr_accessor :schema
+
+    attr_accessor :secret
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    attr_accessor :subdomain
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    attr_accessor :tenant_id
+
+    def initialize(
+      bind_interface: nil,
+      client_id: nil,
+      database: nil,
+      egress_filter: nil,
+      healthy: nil,
+      hostname: nil,
+      id: nil,
+      name: nil,
+      override_database: nil,
+      port: nil,
+      port_override: nil,
+      schema: nil,
+      secret: nil,
+      secret_store_id: nil,
+      subdomain: nil,
+      tags: nil,
+      tenant_id: nil
+    )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
+      @client_id = client_id == nil ? "" : client_id
+      @database = database == nil ? "" : database
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @override_database = override_database == nil ? false : override_database
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @schema = schema == nil ? "" : schema
+      @secret = secret == nil ? "" : secret
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @subdomain = subdomain == nil ? "" : subdomain
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tenant_id = tenant_id == nil ? "" : tenant_id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  class SQLServerKerberosAD
+    # Bind interface
+    attr_accessor :bind_interface
+
+    attr_accessor :database
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+
+    attr_accessor :hostname
+    # Unique identifier of the Resource.
+    attr_accessor :id
+
+    attr_accessor :keytab
+
+    attr_accessor :krb_config
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+
+    attr_accessor :override_database
+
+    attr_accessor :port
+
+    attr_accessor :port_override
+
+    attr_accessor :realm
+
+    attr_accessor :schema
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+
+    attr_accessor :server_spn
+    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    attr_accessor :subdomain
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    attr_accessor :username
+
+    def initialize(
+      bind_interface: nil,
+      database: nil,
+      egress_filter: nil,
+      healthy: nil,
+      hostname: nil,
+      id: nil,
+      keytab: nil,
+      krb_config: nil,
+      name: nil,
+      override_database: nil,
+      port: nil,
+      port_override: nil,
+      realm: nil,
+      schema: nil,
+      secret_store_id: nil,
+      server_spn: nil,
+      subdomain: nil,
+      tags: nil,
+      username: nil
+    )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
+      @database = database == nil ? "" : database
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @keytab = keytab == nil ? "" : keytab
+      @krb_config = krb_config == nil ? "" : krb_config
+      @name = name == nil ? "" : name
+      @override_database = override_database == nil ? false : override_database
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @realm = realm == nil ? "" : realm
+      @schema = schema == nil ? "" : schema
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @server_spn = server_spn == nil ? "" : server_spn
+      @subdomain = subdomain == nil ? "" : subdomain
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class SSH
     attr_accessor :allow_deprecated_key_exchanges
     # Bind interface

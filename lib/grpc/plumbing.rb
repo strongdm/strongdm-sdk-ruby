@@ -6883,6 +6883,12 @@ module SDM
       if porcelain.instance_of? SQLServer
         plumbing.sql_server = convert_sql_server_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? SQLServerAzureAD
+        plumbing.sql_server_azure_ad = convert_sql_server_azure_ad_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? SQLServerKerberosAD
+        plumbing.sql_server_kerberos_ad = convert_sql_server_kerberos_ad_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? SSH
         plumbing.ssh = convert_ssh_to_plumbing(porcelain)
       end
@@ -7123,6 +7129,12 @@ module SDM
       end
       if plumbing.sql_server != nil
         return convert_sql_server_to_porcelain(plumbing.sql_server)
+      end
+      if plumbing.sql_server_azure_ad != nil
+        return convert_sql_server_azure_ad_to_porcelain(plumbing.sql_server_azure_ad)
+      end
+      if plumbing.sql_server_kerberos_ad != nil
+        return convert_sql_server_kerberos_ad_to_porcelain(plumbing.sql_server_kerberos_ad)
       end
       if plumbing.ssh != nil
         return convert_ssh_to_porcelain(plumbing.ssh)
@@ -7724,6 +7736,142 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_sql_server_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_sql_server_azure_ad_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = SQLServerAzureAD.new()
+      porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.client_id = (plumbing.client_id)
+      porcelain.database = (plumbing.database)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.override_database = (plumbing.override_database)
+      porcelain.port = (plumbing.port)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.schema = (plumbing.schema)
+      porcelain.secret = (plumbing.secret)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.subdomain = (plumbing.subdomain)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.tenant_id = (plumbing.tenant_id)
+      porcelain
+    end
+
+    def self.convert_sql_server_azure_ad_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::SQLServerAzureAD.new()
+      plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.client_id = (porcelain.client_id)
+      plumbing.database = (porcelain.database)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.override_database = (porcelain.override_database)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.schema = (porcelain.schema)
+      plumbing.secret = (porcelain.secret)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.subdomain = (porcelain.subdomain)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.tenant_id = (porcelain.tenant_id)
+      plumbing
+    end
+    def self.convert_repeated_sql_server_azure_ad_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_sql_server_azure_ad_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_sql_server_azure_ad_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_sql_server_azure_ad_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_sql_server_kerberos_ad_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = SQLServerKerberosAD.new()
+      porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.database = (plumbing.database)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.id = (plumbing.id)
+      porcelain.keytab = (plumbing.keytab)
+      porcelain.krb_config = (plumbing.krb_config)
+      porcelain.name = (plumbing.name)
+      porcelain.override_database = (plumbing.override_database)
+      porcelain.port = (plumbing.port)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.realm = (plumbing.realm)
+      porcelain.schema = (plumbing.schema)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.server_spn = (plumbing.server_spn)
+      porcelain.subdomain = (plumbing.subdomain)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.username = (plumbing.username)
+      porcelain
+    end
+
+    def self.convert_sql_server_kerberos_ad_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::SQLServerKerberosAD.new()
+      plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.database = (porcelain.database)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.keytab = (porcelain.keytab)
+      plumbing.krb_config = (porcelain.krb_config)
+      plumbing.name = (porcelain.name)
+      plumbing.override_database = (porcelain.override_database)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.realm = (porcelain.realm)
+      plumbing.schema = (porcelain.schema)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.server_spn = (porcelain.server_spn)
+      plumbing.subdomain = (porcelain.subdomain)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
+      plumbing
+    end
+    def self.convert_repeated_sql_server_kerberos_ad_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_sql_server_kerberos_ad_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_sql_server_kerberos_ad_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_sql_server_kerberos_ad_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items

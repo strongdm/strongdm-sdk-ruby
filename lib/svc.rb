@@ -2126,6 +2126,8 @@ module SDM #:nodoc:
   # {Snowflake}
   # {Snowsight}
   # {SQLServer}
+  # {SQLServerAzureAD}
+  # {SQLServerKerberosAD}
   # {SSH}
   # {SSHCert}
   # {SSHCustomerKey}

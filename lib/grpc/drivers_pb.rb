@@ -91,6 +91,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :redis, :message, 1600, "v1.Redis"
         optional :redshift, :message, 1304, "v1.Redshift"
         optional :sql_server, :message, 1800, "v1.SQLServer"
+        optional :sql_server_azure_ad, :message, 1805, "v1.SQLServerAzureAD"
+        optional :sql_server_kerberos_ad, :message, 1810, "v1.SQLServerKerberosAD"
         optional :ssh, :message, 1900, "v1.SSH"
         optional :ssh_cert, :message, 1901, "v1.SSHCert"
         optional :ssh_customer_key, :message, 1902, "v1.SSHCustomerKey"
@@ -1237,6 +1239,46 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :schema, :string, 6
       optional :username, :string, 2
     end
+    add_message "v1.SQLServerAzureAD" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :subdomain, :string, 32775
+      optional :client_id, :string, 2
+      optional :database, :string, 4
+      optional :hostname, :string, 1
+      optional :override_database, :bool, 8
+      optional :port, :int32, 7
+      optional :port_override, :int32, 5
+      optional :schema, :string, 6
+      optional :secret, :string, 3
+      optional :tenant_id, :string, 9
+    end
+    add_message "v1.SQLServerKerberosAD" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :subdomain, :string, 32775
+      optional :database, :string, 4
+      optional :hostname, :string, 1
+      optional :keytab, :string, 3
+      optional :krb_config, :string, 9
+      optional :override_database, :bool, 8
+      optional :port, :int32, 7
+      optional :port_override, :int32, 5
+      optional :realm, :string, 11
+      optional :schema, :string, 6
+      optional :server_spn, :string, 10
+      optional :username, :string, 2
+    end
     add_message "v1.SSH" do
       optional :id, :string, 32768
       optional :name, :string, 32769
@@ -1470,6 +1512,8 @@ module V1
   Redis = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Redis").msgclass
   Redshift = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Redshift").msgclass
   SQLServer = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SQLServer").msgclass
+  SQLServerAzureAD = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SQLServerAzureAD").msgclass
+  SQLServerKerberosAD = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SQLServerKerberosAD").msgclass
   SSH = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SSH").msgclass
   SSHCert = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SSHCert").msgclass
   SSHCustomerKey = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SSHCustomerKey").msgclass

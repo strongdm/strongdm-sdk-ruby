@@ -17,6 +17,7 @@
 
 require "google/protobuf"
 
+require "google/protobuf/timestamp_pb"
 require "options_pb"
 require "spec_pb"
 require "tags_pb"
@@ -72,6 +73,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       oneof :account do
         optional :user, :message, 1, "v1.User"
         optional :service, :message, 2, "v1.Service"
+        optional :token, :message, 3, "v1.Token"
       end
     end
     add_message "v1.User" do
@@ -91,6 +93,14 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :suspended, :bool, 3
       optional :tags, :message, 4, "v1.Tags"
     end
+    add_message "v1.Token" do
+      optional :id, :string, 1
+      optional :name, :string, 2
+      optional :suspended, :bool, 3
+      optional :tags, :message, 4, "v1.Tags"
+      optional :rekeyed, :message, 5, "google.protobuf.Timestamp"
+      optional :deadline, :message, 6, "google.protobuf.Timestamp"
+    end
   end
 end
 
@@ -108,4 +118,5 @@ module V1
   Account = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Account").msgclass
   User = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.User").msgclass
   Service = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Service").msgclass
+  Token = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Token").msgclass
 end
