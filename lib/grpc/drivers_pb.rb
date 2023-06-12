@@ -388,6 +388,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :password, :string, 3
       optional :port, :int32, 6
       optional :port_override, :int32, 5
+      optional :require_native_auth, :bool, 7
+      optional :use_azure_single_server_usernames, :bool, 10
       optional :username, :string, 2
     end
     add_message "v1.AuroraPostgres" do
@@ -449,6 +451,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :password, :string, 3
       optional :port, :int32, 6
       optional :port_override, :int32, 5
+      optional :require_native_auth, :bool, 7
+      optional :use_azure_single_server_usernames, :bool, 9
       optional :username, :string, 2
     end
     add_message "v1.AzurePostgres" do
@@ -530,6 +534,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :password, :string, 3
       optional :port, :int32, 6
       optional :port_override, :int32, 5
+      optional :require_native_auth, :bool, 7
+      optional :use_azure_single_server_usernames, :bool, 9
       optional :username, :string, 2
     end
     add_message "v1.Cockroach" do
@@ -887,7 +893,9 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :password, :string, 3
       optional :port, :int32, 6
       optional :port_override, :int32, 5
+      optional :require_native_auth, :bool, 14
       optional :server_name, :string, 13
+      optional :use_azure_single_server_usernames, :bool, 16
       optional :username, :string, 2
     end
     add_message "v1.MTLSPostgres" do
@@ -925,6 +933,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :password, :string, 3
       optional :port, :int32, 6
       optional :port_override, :int32, 5
+      optional :require_native_auth, :bool, 7
+      optional :use_azure_single_server_usernames, :bool, 9
       optional :username, :string, 2
     end
     add_message "v1.Memcached" do
@@ -954,6 +964,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :password, :string, 3
       optional :port, :int32, 6
       optional :port_override, :int32, 5
+      optional :require_native_auth, :bool, 7
+      optional :use_azure_single_server_usernames, :bool, 9
       optional :username, :string, 2
     end
     add_message "v1.MongoHost" do
@@ -1059,6 +1071,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :password, :string, 3
       optional :port, :int32, 6
       optional :port_override, :int32, 5
+      optional :require_native_auth, :bool, 7
+      optional :use_azure_single_server_usernames, :bool, 10
       optional :username, :string, 2
     end
     add_message "v1.Neptune" do
@@ -1347,6 +1361,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :password, :string, 3
       optional :port, :int32, 6
       optional :port_override, :int32, 5
+      optional :require_native_auth, :bool, 7
+      optional :use_azure_single_server_usernames, :bool, 9
       optional :username, :string, 2
     end
     add_message "v1.Snowflake" do

@@ -2071,9 +2071,11 @@ module SDM
       porcelain.password = (plumbing.password)
       porcelain.port = (plumbing.port)
       porcelain.port_override = (plumbing.port_override)
+      porcelain.require_native_auth = (plumbing.require_native_auth)
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.use_azure_single_server_usernames = (plumbing.use_azure_single_server_usernames)
       porcelain.username = (plumbing.username)
       porcelain
     end
@@ -2093,9 +2095,11 @@ module SDM
       plumbing.password = (porcelain.password)
       plumbing.port = (porcelain.port)
       plumbing.port_override = (porcelain.port_override)
+      plumbing.require_native_auth = (porcelain.require_native_auth)
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.use_azure_single_server_usernames = (porcelain.use_azure_single_server_usernames)
       plumbing.username = (porcelain.username)
       plumbing
     end
@@ -2305,9 +2309,11 @@ module SDM
       porcelain.password = (plumbing.password)
       porcelain.port = (plumbing.port)
       porcelain.port_override = (plumbing.port_override)
+      porcelain.require_native_auth = (plumbing.require_native_auth)
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.use_azure_single_server_usernames = (plumbing.use_azure_single_server_usernames)
       porcelain.username = (plumbing.username)
       porcelain
     end
@@ -2327,9 +2333,11 @@ module SDM
       plumbing.password = (porcelain.password)
       plumbing.port = (porcelain.port)
       plumbing.port_override = (porcelain.port_override)
+      plumbing.require_native_auth = (porcelain.require_native_auth)
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.use_azure_single_server_usernames = (porcelain.use_azure_single_server_usernames)
       plumbing.username = (porcelain.username)
       plumbing
     end
@@ -2647,9 +2655,11 @@ module SDM
       porcelain.password = (plumbing.password)
       porcelain.port = (plumbing.port)
       porcelain.port_override = (plumbing.port_override)
+      porcelain.require_native_auth = (plumbing.require_native_auth)
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.use_azure_single_server_usernames = (plumbing.use_azure_single_server_usernames)
       porcelain.username = (plumbing.username)
       porcelain
     end
@@ -2669,9 +2679,11 @@ module SDM
       plumbing.password = (porcelain.password)
       plumbing.port = (porcelain.port)
       plumbing.port_override = (porcelain.port_override)
+      plumbing.require_native_auth = (porcelain.require_native_auth)
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.use_azure_single_server_usernames = (porcelain.use_azure_single_server_usernames)
       plumbing.username = (porcelain.username)
       plumbing
     end
@@ -4400,10 +4412,12 @@ module SDM
       porcelain.password = (plumbing.password)
       porcelain.port = (plumbing.port)
       porcelain.port_override = (plumbing.port_override)
+      porcelain.require_native_auth = (plumbing.require_native_auth)
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.server_name = (plumbing.server_name)
       porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.use_azure_single_server_usernames = (plumbing.use_azure_single_server_usernames)
       porcelain.username = (plumbing.username)
       porcelain
     end
@@ -4426,10 +4440,12 @@ module SDM
       plumbing.password = (porcelain.password)
       plumbing.port = (porcelain.port)
       plumbing.port_override = (porcelain.port_override)
+      plumbing.require_native_auth = (porcelain.require_native_auth)
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.server_name = (porcelain.server_name)
       plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.use_azure_single_server_usernames = (porcelain.use_azure_single_server_usernames)
       plumbing.username = (porcelain.username)
       plumbing
     end
@@ -4535,9 +4551,11 @@ module SDM
       porcelain.password = (plumbing.password)
       porcelain.port = (plumbing.port)
       porcelain.port_override = (plumbing.port_override)
+      porcelain.require_native_auth = (plumbing.require_native_auth)
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.use_azure_single_server_usernames = (plumbing.use_azure_single_server_usernames)
       porcelain.username = (plumbing.username)
       porcelain
     end
@@ -4557,9 +4575,11 @@ module SDM
       plumbing.password = (porcelain.password)
       plumbing.port = (porcelain.port)
       plumbing.port_override = (porcelain.port_override)
+      plumbing.require_native_auth = (porcelain.require_native_auth)
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.use_azure_single_server_usernames = (porcelain.use_azure_single_server_usernames)
       plumbing.username = (porcelain.username)
       plumbing
     end
@@ -4649,9 +4669,11 @@ module SDM
       porcelain.password = (plumbing.password)
       porcelain.port = (plumbing.port)
       porcelain.port_override = (plumbing.port_override)
+      porcelain.require_native_auth = (plumbing.require_native_auth)
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.use_azure_single_server_usernames = (plumbing.use_azure_single_server_usernames)
       porcelain.username = (plumbing.username)
       porcelain
     end
@@ -4671,9 +4693,11 @@ module SDM
       plumbing.password = (porcelain.password)
       plumbing.port = (porcelain.port)
       plumbing.port_override = (porcelain.port_override)
+      plumbing.require_native_auth = (porcelain.require_native_auth)
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.use_azure_single_server_usernames = (porcelain.use_azure_single_server_usernames)
       plumbing.username = (porcelain.username)
       plumbing
     end
@@ -5027,9 +5051,11 @@ module SDM
       porcelain.password = (plumbing.password)
       porcelain.port = (plumbing.port)
       porcelain.port_override = (plumbing.port_override)
+      porcelain.require_native_auth = (plumbing.require_native_auth)
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.use_azure_single_server_usernames = (plumbing.use_azure_single_server_usernames)
       porcelain.username = (plumbing.username)
       porcelain
     end
@@ -5049,9 +5075,11 @@ module SDM
       plumbing.password = (porcelain.password)
       plumbing.port = (porcelain.port)
       plumbing.port_override = (porcelain.port_override)
+      plumbing.require_native_auth = (porcelain.require_native_auth)
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.use_azure_single_server_usernames = (porcelain.use_azure_single_server_usernames)
       plumbing.username = (porcelain.username)
       plumbing
     end
@@ -8404,9 +8432,11 @@ module SDM
       porcelain.password = (plumbing.password)
       porcelain.port = (plumbing.port)
       porcelain.port_override = (plumbing.port_override)
+      porcelain.require_native_auth = (plumbing.require_native_auth)
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.use_azure_single_server_usernames = (plumbing.use_azure_single_server_usernames)
       porcelain.username = (plumbing.username)
       porcelain
     end
@@ -8426,9 +8456,11 @@ module SDM
       plumbing.password = (porcelain.password)
       plumbing.port = (porcelain.port)
       plumbing.port_override = (porcelain.port_override)
+      plumbing.require_native_auth = (porcelain.require_native_auth)
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.use_azure_single_server_usernames = (porcelain.use_azure_single_server_usernames)
       plumbing.username = (porcelain.username)
       plumbing
     end

@@ -1961,12 +1961,16 @@ module SDM
     attr_accessor :port
 
     attr_accessor :port_override
+
+    attr_accessor :require_native_auth
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+
+    attr_accessor :use_azure_single_server_usernames
 
     attr_accessor :username
 
@@ -1981,9 +1985,11 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      require_native_auth: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
+      use_azure_single_server_usernames: nil,
       username: nil
     )
       @bind_interface = bind_interface == nil ? "" : bind_interface
@@ -1996,9 +2002,11 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @require_native_auth = require_native_auth == nil ? false : require_native_auth
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @use_azure_single_server_usernames = use_azure_single_server_usernames == nil ? false : use_azure_single_server_usernames
       @username = username == nil ? "" : username
     end
 
@@ -2231,12 +2239,16 @@ module SDM
     attr_accessor :port
 
     attr_accessor :port_override
+
+    attr_accessor :require_native_auth
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+
+    attr_accessor :use_azure_single_server_usernames
 
     attr_accessor :username
 
@@ -2251,9 +2263,11 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      require_native_auth: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
+      use_azure_single_server_usernames: nil,
       username: nil
     )
       @bind_interface = bind_interface == nil ? "" : bind_interface
@@ -2266,9 +2280,11 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @require_native_auth = require_native_auth == nil ? false : require_native_auth
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @use_azure_single_server_usernames = use_azure_single_server_usernames == nil ? false : use_azure_single_server_usernames
       @username = username == nil ? "" : username
     end
 
@@ -2621,12 +2637,16 @@ module SDM
     attr_accessor :port
 
     attr_accessor :port_override
+
+    attr_accessor :require_native_auth
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+
+    attr_accessor :use_azure_single_server_usernames
 
     attr_accessor :username
 
@@ -2641,9 +2661,11 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      require_native_auth: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
+      use_azure_single_server_usernames: nil,
       username: nil
     )
       @bind_interface = bind_interface == nil ? "" : bind_interface
@@ -2656,9 +2678,11 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @require_native_auth = require_native_auth == nil ? false : require_native_auth
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @use_azure_single_server_usernames = use_azure_single_server_usernames == nil ? false : use_azure_single_server_usernames
       @username = username == nil ? "" : username
     end
 
@@ -4513,6 +4537,8 @@ module SDM
     attr_accessor :port
 
     attr_accessor :port_override
+
+    attr_accessor :require_native_auth
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
 
@@ -4521,6 +4547,8 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+
+    attr_accessor :use_azure_single_server_usernames
 
     attr_accessor :username
 
@@ -4538,10 +4566,12 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      require_native_auth: nil,
       secret_store_id: nil,
       server_name: nil,
       subdomain: nil,
       tags: nil,
+      use_azure_single_server_usernames: nil,
       username: nil
     )
       @bind_interface = bind_interface == nil ? "" : bind_interface
@@ -4557,10 +4587,12 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @require_native_auth = require_native_auth == nil ? false : require_native_auth
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @server_name = server_name == nil ? "" : server_name
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @use_azure_single_server_usernames = use_azure_single_server_usernames == nil ? false : use_azure_single_server_usernames
       @username = username == nil ? "" : username
     end
 
@@ -4685,12 +4717,16 @@ module SDM
     attr_accessor :port
 
     attr_accessor :port_override
+
+    attr_accessor :require_native_auth
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+
+    attr_accessor :use_azure_single_server_usernames
 
     attr_accessor :username
 
@@ -4705,9 +4741,11 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      require_native_auth: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
+      use_azure_single_server_usernames: nil,
       username: nil
     )
       @bind_interface = bind_interface == nil ? "" : bind_interface
@@ -4720,9 +4758,11 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @require_native_auth = require_native_auth == nil ? false : require_native_auth
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @use_azure_single_server_usernames = use_azure_single_server_usernames == nil ? false : use_azure_single_server_usernames
       @username = username == nil ? "" : username
     end
 
@@ -4815,12 +4855,16 @@ module SDM
     attr_accessor :port
 
     attr_accessor :port_override
+
+    attr_accessor :require_native_auth
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+
+    attr_accessor :use_azure_single_server_usernames
 
     attr_accessor :username
 
@@ -4835,9 +4879,11 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      require_native_auth: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
+      use_azure_single_server_usernames: nil,
       username: nil
     )
       @bind_interface = bind_interface == nil ? "" : bind_interface
@@ -4850,9 +4896,11 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @require_native_auth = require_native_auth == nil ? false : require_native_auth
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @use_azure_single_server_usernames = use_azure_single_server_usernames == nil ? false : use_azure_single_server_usernames
       @username = username == nil ? "" : username
     end
 
@@ -5275,12 +5323,16 @@ module SDM
     attr_accessor :port
 
     attr_accessor :port_override
+
+    attr_accessor :require_native_auth
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+
+    attr_accessor :use_azure_single_server_usernames
 
     attr_accessor :username
 
@@ -5295,9 +5347,11 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      require_native_auth: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
+      use_azure_single_server_usernames: nil,
       username: nil
     )
       @bind_interface = bind_interface == nil ? "" : bind_interface
@@ -5310,9 +5364,11 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @require_native_auth = require_native_auth == nil ? false : require_native_auth
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @use_azure_single_server_usernames = use_azure_single_server_usernames == nil ? false : use_azure_single_server_usernames
       @username = username == nil ? "" : username
     end
 
@@ -7995,12 +8051,16 @@ module SDM
     attr_accessor :port
 
     attr_accessor :port_override
+
+    attr_accessor :require_native_auth
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+
+    attr_accessor :use_azure_single_server_usernames
 
     attr_accessor :username
 
@@ -8015,9 +8075,11 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      require_native_auth: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
+      use_azure_single_server_usernames: nil,
       username: nil
     )
       @bind_interface = bind_interface == nil ? "" : bind_interface
@@ -8030,9 +8092,11 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @require_native_auth = require_native_auth == nil ? false : require_native_auth
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @use_azure_single_server_usernames = use_azure_single_server_usernames == nil ? false : use_azure_single_server_usernames
       @username = username == nil ? "" : username
     end
 
