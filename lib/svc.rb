@@ -2076,6 +2076,8 @@ module SDM #:nodoc:
   # {AzureCertificate}
   # {AzureMysql}
   # {AzurePostgres}
+  # {AzurePostgresFlexible}
+  # {AzurePostgresSingle}
   # {BigQuery}
   # {Cassandra}
   # {Citus}

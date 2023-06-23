@@ -83,6 +83,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :device, :string, 6
       optional :location, :string, 7
       optional :version, :string, 8
+      optional :uuid, :string, 9
+      optional :connects_to, :string, 10
     end
     add_message "v1.Gateway" do
       optional :id, :string, 1
@@ -95,6 +97,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :device, :string, 8
       optional :location, :string, 9
       optional :version, :string, 10
+      optional :uuid, :string, 11
+      optional :connects_to, :string, 12
     end
   end
 end

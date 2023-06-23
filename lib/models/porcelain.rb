@@ -17,13 +17,13 @@
 
 module SDM
   class AKS
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # The CA to authenticate TLS connections with.
     attr_accessor :certificate_authority
-
+    # The certificate to authenticate TLS connections with.
     attr_accessor :client_certificate
-
+    # The key to authenticate TLS connections with.
     attr_accessor :client_key
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -31,19 +31,19 @@ module SDM
     attr_accessor :healthcheck_namespace
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-
+    # The ID of the remote identity group to use for remote identity connections.
     attr_accessor :remote_identity_group_id
-
+    # The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
     attr_accessor :remote_identity_healthcheck_username
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -100,7 +100,7 @@ module SDM
   end
 
   class AKSBasicAuth
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -108,17 +108,17 @@ module SDM
     attr_accessor :healthcheck_namespace
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -126,7 +126,7 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -171,7 +171,7 @@ module SDM
   end
 
   class AKSServiceAccount
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -179,19 +179,19 @@ module SDM
     attr_accessor :healthcheck_namespace
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-
+    # The ID of the remote identity group to use for remote identity connections.
     attr_accessor :remote_identity_group_id
-
+    # The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
     attr_accessor :remote_identity_healthcheck_username
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -199,7 +199,7 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # The API token to authenticate with.
     attr_accessor :token
 
     def initialize(
@@ -246,7 +246,7 @@ module SDM
   end
 
   class AKSServiceAccountUserImpersonation
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -254,15 +254,15 @@ module SDM
     attr_accessor :healthcheck_namespace
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -270,7 +270,7 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # The API token to authenticate with.
     attr_accessor :token
 
     def initialize(
@@ -313,13 +313,13 @@ module SDM
   end
 
   class AKSUserImpersonation
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # The CA to authenticate TLS connections with.
     attr_accessor :certificate_authority
-
+    # The certificate to authenticate TLS connections with.
     attr_accessor :client_certificate
-
+    # The key to authenticate TLS connections with.
     attr_accessor :client_key
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -327,15 +327,15 @@ module SDM
     attr_accessor :healthcheck_namespace
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -388,12 +388,13 @@ module SDM
   end
 
   class AWS
+    # The Access Key ID to use to authenticate.
     attr_accessor :access_key
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
-
+    # The AWS region healthcheck requests should attempt to connect to.
     attr_accessor :healthcheck_region
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
@@ -401,13 +402,13 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-
+    # The role to assume after logging in.
     attr_accessor :role_arn
-
+    # The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
     attr_accessor :role_external_id
-
+    # The Secret Access Key to use to authenticate.
     attr_accessor :secret_access_key
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -459,11 +460,11 @@ module SDM
 
   # AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class AWSConsole
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
-
+    # If true, prefer environment variables to authenticate connection even if EC2 roles are configured.
     attr_accessor :enable_env_variables
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
@@ -471,23 +472,23 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-
+    # The AWS region to connect to.
     attr_accessor :region
-
+    # The ID of the remote identity group to use for remote identity connections.
     attr_accessor :remote_identity_group_id
-
+    # The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
     attr_accessor :remote_identity_healthcheck_username
-
+    # The role to assume after logging in.
     attr_accessor :role_arn
-
+    # The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
     attr_accessor :role_external_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-
+    # The length of time in seconds AWS console sessions will live before needing to reauthenticate.
     attr_accessor :session_expiry
-
+    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -539,8 +540,9 @@ module SDM
 
   # AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class AWSConsoleStaticKeyPair
+    # The Access Key ID to authenticate with.
     attr_accessor :access_key
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -550,25 +552,25 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-
+    # The AWS region to connect to.
     attr_accessor :region
-
+    # The ID of the remote identity group to use for remote identity connections.
     attr_accessor :remote_identity_group_id
-
+    # The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
     attr_accessor :remote_identity_healthcheck_username
-
+    # The role to assume after logging in.
     attr_accessor :role_arn
-
+    # The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
     attr_accessor :role_external_id
-
+    # The Secret Access Key to authenticate with.
     attr_accessor :secret_access_key
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-
+    # The length of time in seconds AWS console sessions will live before needing to reauthenticate.
     attr_accessor :session_expiry
-
+    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -625,7 +627,7 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the SecretStore.
     attr_accessor :name
-
+    # The AWS region to target e.g. us-east-1
     attr_accessor :region
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -1368,16 +1370,17 @@ module SDM
   end
 
   class AmazonEKS
+    # The Access Key ID to use to authenticate.
     attr_accessor :access_key
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # The CA to authenticate TLS connections with.
     attr_accessor :certificate_authority
-
+    # The name of the cluster to connect to.
     attr_accessor :cluster_name
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
-
+    # The endpoint to dial.
     attr_accessor :endpoint
     # The path used to check the health of your connection.  Defaults to `default`.
     attr_accessor :healthcheck_namespace
@@ -1387,19 +1390,19 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-
+    # The AWS region to connect to e.g. us-east-1.
     attr_accessor :region
-
+    # The ID of the remote identity group to use for remote identity connections.
     attr_accessor :remote_identity_group_id
-
+    # The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
     attr_accessor :remote_identity_healthcheck_username
-
+    # The role to assume after logging in.
     attr_accessor :role_arn
-
+    # The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
     attr_accessor :role_external_id
-
+    # The Secret Access Key to use to authenticate.
     attr_accessor :secret_access_key
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -1462,15 +1465,15 @@ module SDM
   end
 
   class AmazonEKSInstanceProfile
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # The CA to authenticate TLS connections with.
     attr_accessor :certificate_authority
-
+    # The name of the cluster to connect to.
     attr_accessor :cluster_name
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
-
+    # The endpoint to dial.
     attr_accessor :endpoint
     # The path used to check the health of your connection.  Defaults to `default`.
     attr_accessor :healthcheck_namespace
@@ -1480,17 +1483,17 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-
+    # The AWS region to connect to e.g. us-east-1.
     attr_accessor :region
-
+    # The ID of the remote identity group to use for remote identity connections.
     attr_accessor :remote_identity_group_id
-
+    # The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
     attr_accessor :remote_identity_healthcheck_username
-
+    # The role to assume after logging in.
     attr_accessor :role_arn
-
+    # The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
     attr_accessor :role_external_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -1549,15 +1552,15 @@ module SDM
   end
 
   class AmazonEKSInstanceProfileUserImpersonation
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # The CA to authenticate TLS connections with.
     attr_accessor :certificate_authority
-
+    # The name of the cluster to connect to.
     attr_accessor :cluster_name
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
-
+    # The endpoint to dial.
     attr_accessor :endpoint
     # The path used to check the health of your connection.  Defaults to `default`.
     attr_accessor :healthcheck_namespace
@@ -1567,17 +1570,17 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-
+    # The AWS region to connect to e.g. us-east-1.
     attr_accessor :region
-
+    # The ID of the remote identity group to use for remote identity connections.
     attr_accessor :remote_identity_group_id
-
+    # The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
     attr_accessor :remote_identity_healthcheck_username
-
+    # The role to assume after logging in.
     attr_accessor :role_arn
-
+    # The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
     attr_accessor :role_external_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -1636,16 +1639,17 @@ module SDM
   end
 
   class AmazonEKSUserImpersonation
+    # The Access Key ID to use to authenticate.
     attr_accessor :access_key
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # The CA to authenticate TLS connections with.
     attr_accessor :certificate_authority
-
+    # The name of the cluster to connect to.
     attr_accessor :cluster_name
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
-
+    # The endpoint to dial.
     attr_accessor :endpoint
     # The path used to check the health of your connection.  Defaults to `default`.
     attr_accessor :healthcheck_namespace
@@ -1655,15 +1659,15 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-
+    # The AWS region to connect to e.g. us-east-1.
     attr_accessor :region
-
+    # The role to assume after logging in.
     attr_accessor :role_arn
-
+    # The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
     attr_accessor :role_external_id
-
+    # The Secret Access Key to use to authenticate.
     attr_accessor :secret_access_key
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -1722,12 +1726,13 @@ module SDM
   end
 
   class AmazonES
+    # The Access Key ID to use to authenticate.
     attr_accessor :access_key
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
-
+    # The endpoint to dial e.g. search-?.region.es.amazonaws.com"
     attr_accessor :endpoint
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
@@ -1735,15 +1740,15 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-
+    # The AWS region to connect to e.g. us-east-1.
     attr_accessor :region
-
+    # The role to assume after logging in.
     attr_accessor :role_arn
-
+    # The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
     attr_accessor :role_external_id
-
+    # The Secret Access Key to use to authenticate.
     attr_accessor :secret_access_key
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -1796,23 +1801,23 @@ module SDM
   end
 
   class AmazonMQAMQP091
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -1820,9 +1825,9 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # If set, TLS must be used to connect to this resource.
     attr_accessor :tls_required
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -1867,8 +1872,9 @@ module SDM
   end
 
   class Athena
+    # The Access Key ID to use to authenticate.
     attr_accessor :access_key
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -1878,17 +1884,17 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The AWS S3 output location.
     attr_accessor :output
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-
+    # The AWS region to connect to e.g. us-east-1.
     attr_accessor :region
-
+    # The role to assume after logging in.
     attr_accessor :role_arn
-
+    # The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
     attr_accessor :role_external_id
-
+    # The Secret Access Key to use to authenticate.
     attr_accessor :secret_access_key
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -1941,27 +1947,27 @@ module SDM
   end
 
   class AuroraMysql
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-
+    # Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
     attr_accessor :require_native_auth
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -1969,9 +1975,9 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # If true, appends the hostname to the username when hitting a database.azure.com address
     attr_accessor :use_azure_single_server_usernames
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -2020,27 +2026,27 @@ module SDM
   end
 
   class AuroraPostgres
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
     attr_accessor :override_database
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -2048,7 +2054,7 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -2095,8 +2101,9 @@ module SDM
   end
 
   class Azure
+    # The application ID to authenticate with.
     attr_accessor :app_id
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -2106,9 +2113,9 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -2116,7 +2123,7 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # The tenant ID to authenticate to.
     attr_accessor :tenant_id
 
     def initialize(
@@ -2157,10 +2164,11 @@ module SDM
   end
 
   class AzureCertificate
+    # The application ID to authenticate with.
     attr_accessor :app_id
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # The service Principal certificate file, both private and public key included.
     attr_accessor :client_certificate
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -2170,7 +2178,7 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -2178,7 +2186,7 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # The tenant ID to authenticate to.
     attr_accessor :tenant_id
 
     def initialize(
@@ -2219,27 +2227,27 @@ module SDM
   end
 
   class AzureMysql
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-
+    # Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
     attr_accessor :require_native_auth
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -2247,9 +2255,9 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # If true, appends the hostname to the username when hitting a database.azure.com address
     attr_accessor :use_azure_single_server_usernames
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -2298,27 +2306,27 @@ module SDM
   end
 
   class AzurePostgres
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
     attr_accessor :override_database
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -2326,7 +2334,159 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # The username to authenticate with.
+    attr_accessor :username
 
+    def initialize(
+      bind_interface: nil,
+      database: nil,
+      egress_filter: nil,
+      healthy: nil,
+      hostname: nil,
+      id: nil,
+      name: nil,
+      override_database: nil,
+      password: nil,
+      port: nil,
+      port_override: nil,
+      secret_store_id: nil,
+      subdomain: nil,
+      tags: nil,
+      username: nil
+    )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
+      @database = database == nil ? "" : database
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @override_database = override_database == nil ? false : override_database
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @subdomain = subdomain == nil ? "" : subdomain
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # AzurePostgresFlexible is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class AzurePostgresFlexible
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    attr_accessor :bind_interface
+    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    attr_accessor :database
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # The host to dial to initiate a connection from the egress node to this resource.
+    attr_accessor :hostname
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+    attr_accessor :override_database
+    # The password to authenticate with.
+    attr_accessor :password
+    # The port to dial to initiate a connection from the egress node to this resource.
+    attr_accessor :port
+    # The local port used by clients to connect to this resource.
+    attr_accessor :port_override
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    attr_accessor :subdomain
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+    # The username to authenticate with.
+    attr_accessor :username
+
+    def initialize(
+      bind_interface: nil,
+      database: nil,
+      egress_filter: nil,
+      healthy: nil,
+      hostname: nil,
+      id: nil,
+      name: nil,
+      override_database: nil,
+      password: nil,
+      port: nil,
+      port_override: nil,
+      secret_store_id: nil,
+      subdomain: nil,
+      tags: nil,
+      username: nil
+    )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
+      @database = database == nil ? "" : database
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @override_database = override_database == nil ? false : override_database
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @subdomain = subdomain == nil ? "" : subdomain
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # AzurePostgresSingle is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class AzurePostgresSingle
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    attr_accessor :bind_interface
+    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    attr_accessor :database
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # The host to dial to initiate a connection from the egress node to this resource.
+    attr_accessor :hostname
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+    attr_accessor :override_database
+    # The password to authenticate with.
+    attr_accessor :password
+    # The port to dial to initiate a connection from the egress node to this resource.
+    attr_accessor :port
+    # The local port used by clients to connect to this resource.
+    attr_accessor :port_override
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    attr_accessor :subdomain
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -2379,7 +2539,7 @@ module SDM
     attr_accessor :name
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # The URI of the key vault to target e.g. https://myvault.vault.azure.net
     attr_accessor :vault_uri
 
     def initialize(
@@ -2404,11 +2564,11 @@ module SDM
   end
 
   class BigQuery
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
-
+    # The endpoint to dial.
     attr_accessor :endpoint
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
@@ -2416,11 +2576,11 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-
+    # The JSON Private key to authenticate with.
     attr_accessor :private_key
-
+    # The project to connect to.
     attr_accessor :project
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -2428,7 +2588,7 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -2471,23 +2631,23 @@ module SDM
   end
 
   class Cassandra
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -2495,9 +2655,9 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # If set, TLS must be used to connect to this resource.
     attr_accessor :tls_required
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -2542,27 +2702,27 @@ module SDM
   end
 
   class Citus
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
     attr_accessor :override_database
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -2570,7 +2730,7 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -2617,27 +2777,27 @@ module SDM
   end
 
   class Clustrix
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-
+    # Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
     attr_accessor :require_native_auth
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -2645,9 +2805,9 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # If true, appends the hostname to the username when hitting a database.azure.com address
     attr_accessor :use_azure_single_server_usernames
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -2696,27 +2856,27 @@ module SDM
   end
 
   class Cockroach
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
     attr_accessor :override_database
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -2724,7 +2884,7 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -2843,6 +3003,7 @@ module SDM
   end
 
   class CyberarkConjurStore
+    # The URL of the Cyberark instance
     attr_accessor :appurl
     # Unique identifier of the SecretStore.
     attr_accessor :id
@@ -2874,6 +3035,7 @@ module SDM
 
   # CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class CyberarkPAMExperimentalStore
+    # The URL of the Cyberark instance
     attr_accessor :appurl
     # Unique identifier of the SecretStore.
     attr_accessor :id
@@ -2904,6 +3066,7 @@ module SDM
   end
 
   class CyberarkPAMStore
+    # The URL of the Cyberark instance
     attr_accessor :appurl
     # Unique identifier of the SecretStore.
     attr_accessor :id
@@ -2934,23 +3097,23 @@ module SDM
   end
 
   class DB2I
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -2958,9 +3121,9 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # If set, TLS must be used to connect to this resource.
     attr_accessor :tls_required
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -3005,25 +3168,25 @@ module SDM
   end
 
   class DB2LUW
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -3031,7 +3194,7 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -3094,11 +3257,11 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the SecretStore.
     attr_accessor :name
-
+    # The URL of the Delinea instance
     attr_accessor :server_url
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # The tenant name to target
     attr_accessor :tenant_name
 
     def initialize(
@@ -3125,24 +3288,25 @@ module SDM
   end
 
   class DocumentDBHost
+    # The authentication database to use.
     attr_accessor :auth_database
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -3150,7 +3314,7 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -3195,10 +3359,11 @@ module SDM
   end
 
   class DocumentDBReplicaSet
+    # The authentication database to use.
     attr_accessor :auth_database
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # Set to connect to a replica instead of the primary node.
     attr_accessor :connect_to_replica
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -3210,11 +3375,11 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-
+    # The name of the mongo replicaset.
     attr_accessor :replica_set
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -3222,7 +3387,7 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -3269,23 +3434,23 @@ module SDM
   end
 
   class Druid
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -3293,7 +3458,7 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -3336,12 +3501,13 @@ module SDM
   end
 
   class DynamoDB
+    # The Access Key ID to use to authenticate.
     attr_accessor :access_key
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
-
+    # The endpoint to dial e.g. dynamodb.region.amazonaws.com
     attr_accessor :endpoint
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
@@ -3349,15 +3515,15 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-
+    # The region to authenticate requests against e.g. us-east-1
     attr_accessor :region
-
+    # The role to assume after logging in.
     attr_accessor :role_arn
-
+    # The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
     attr_accessor :role_external_id
-
+    # The Secret Access Key to use to authenticate.
     attr_accessor :secret_access_key
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -3410,23 +3576,23 @@ module SDM
   end
 
   class Elastic
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -3434,9 +3600,9 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # If set, TLS must be used to connect to this resource.
     attr_accessor :tls_required
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -3481,23 +3647,23 @@ module SDM
   end
 
   class ElasticacheRedis
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -3505,9 +3671,9 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # If set, TLS must be used to connect to this resource.
     attr_accessor :tls_required
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -3552,7 +3718,7 @@ module SDM
   end
 
   class GCP
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -3560,13 +3726,13 @@ module SDM
     attr_accessor :healthy
     # Unique identifier of the Resource.
     attr_accessor :id
-
+    # The service account keyfile to authenticate with.
     attr_accessor :keyfile
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-
+    # Space separated scopes that this login should assume into when authenticating.
     attr_accessor :scopes
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -3615,7 +3781,7 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the SecretStore.
     attr_accessor :name
-
+    # The GCP project ID to target.
     attr_accessor :projectid
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -3646,11 +3812,14 @@ module SDM
     # The hostname/port tuple which the gateway daemon will bind to.
     # If not provided on create, set to "0.0.0.0:listen_address_port".
     attr_accessor :bind_address
+    # ConnectsTo can be used to restrict the peering between relays and
+    # gateways.
+    attr_accessor :connects_to
     # Device is a read only device name uploaded by the gateway process when
     # it comes online.
     attr_accessor :device
     # GatewayFilter can be used to restrict the peering between relays and
-    # gateways.
+    # gateways. Deprecated.
     attr_accessor :gateway_filter
     # Unique identifier of the Gateway.
     attr_accessor :id
@@ -3672,6 +3841,7 @@ module SDM
 
     def initialize(
       bind_address: nil,
+      connects_to: nil,
       device: nil,
       gateway_filter: nil,
       id: nil,
@@ -3683,6 +3853,7 @@ module SDM
       version: nil
     )
       @bind_address = bind_address == nil ? "" : bind_address
+      @connects_to = connects_to == nil ? "" : connects_to
       @device = device == nil ? "" : device
       @gateway_filter = gateway_filter == nil ? "" : gateway_filter
       @id = id == nil ? "" : id
@@ -3718,13 +3889,13 @@ module SDM
   end
 
   class GoogleGKE
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # The CA to authenticate TLS connections with.
     attr_accessor :certificate_authority
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
-
+    # The endpoint to dial.
     attr_accessor :endpoint
     # The path used to check the health of your connection.  Defaults to `default`.
     attr_accessor :healthcheck_namespace
@@ -3734,13 +3905,13 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The ID of the remote identity group to use for remote identity connections.
     attr_accessor :remote_identity_group_id
-
+    # The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
     attr_accessor :remote_identity_healthcheck_username
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-
+    # The service account key to authenticate with.
     attr_accessor :service_account_key
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
     attr_accessor :subdomain
@@ -3789,13 +3960,13 @@ module SDM
   end
 
   class GoogleGKEUserImpersonation
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # The CA to authenticate TLS connections with.
     attr_accessor :certificate_authority
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
-
+    # The endpoint to dial.
     attr_accessor :endpoint
     # The path used to check the health of your connection.  Defaults to `default`.
     attr_accessor :healthcheck_namespace
@@ -3807,7 +3978,7 @@ module SDM
     attr_accessor :name
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-
+    # The service account key to authenticate with.
     attr_accessor :service_account_key
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
     attr_accessor :subdomain
@@ -3852,27 +4023,27 @@ module SDM
   end
 
   class Greenplum
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
     attr_accessor :override_database
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -3880,7 +4051,7 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -3927,20 +4098,21 @@ module SDM
   end
 
   class HTTPAuth
+    # The content to set as the authorization header.
     attr_accessor :auth_header
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # Automatically redirect to this path upon connecting.
     attr_accessor :default_path
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
-
+    # Header names (e.g. Authorization), to omit from logs.
     attr_accessor :headers_blacklist
-
+    # This path will be used to check the health of your site.
     attr_accessor :healthcheck_path
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host header will be overwritten with this field if provided.
     attr_accessor :host_override
     # Unique identifier of the Resource.
     attr_accessor :id
@@ -3948,11 +4120,11 @@ module SDM
     attr_accessor :name
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-
+    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # The base address of your website without the path.
     attr_accessor :url
 
     def initialize(
@@ -3997,35 +4169,35 @@ module SDM
   end
 
   class HTTPBasicAuth
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # Automatically redirect to this path upon connecting.
     attr_accessor :default_path
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
-
+    # Header names (e.g. Authorization), to omit from logs.
     attr_accessor :headers_blacklist
-
+    # This path will be used to check the health of your site.
     attr_accessor :healthcheck_path
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host header will be overwritten with this field if provided.
     attr_accessor :host_override
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The password to authenticate with.
     attr_accessor :password
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-
+    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # The base address of your website without the path.
     attr_accessor :url
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -4072,19 +4244,19 @@ module SDM
   end
 
   class HTTPNoAuth
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # Automatically redirect to this path upon connecting.
     attr_accessor :default_path
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
-
+    # Header names (e.g. Authorization), to omit from logs.
     attr_accessor :headers_blacklist
-
+    # This path will be used to check the health of your site.
     attr_accessor :healthcheck_path
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host header will be overwritten with this field if provided.
     attr_accessor :host_override
     # Unique identifier of the Resource.
     attr_accessor :id
@@ -4092,11 +4264,11 @@ module SDM
     attr_accessor :name
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-
+    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # The base address of your website without the path.
     attr_accessor :url
 
     def initialize(
@@ -4139,13 +4311,13 @@ module SDM
   end
 
   class Kubernetes
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # The CA to authenticate TLS connections with.
     attr_accessor :certificate_authority
-
+    # The certificate to authenticate TLS connections with.
     attr_accessor :client_certificate
-
+    # The key to authenticate TLS connections with.
     attr_accessor :client_key
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -4153,19 +4325,19 @@ module SDM
     attr_accessor :healthcheck_namespace
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-
+    # The ID of the remote identity group to use for remote identity connections.
     attr_accessor :remote_identity_group_id
-
+    # The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
     attr_accessor :remote_identity_healthcheck_username
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -4222,7 +4394,7 @@ module SDM
   end
 
   class KubernetesBasicAuth
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -4230,17 +4402,17 @@ module SDM
     attr_accessor :healthcheck_namespace
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -4248,7 +4420,7 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -4293,7 +4465,7 @@ module SDM
   end
 
   class KubernetesServiceAccount
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -4301,19 +4473,19 @@ module SDM
     attr_accessor :healthcheck_namespace
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-
+    # The ID of the remote identity group to use for remote identity connections.
     attr_accessor :remote_identity_group_id
-
+    # The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
     attr_accessor :remote_identity_healthcheck_username
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -4321,7 +4493,7 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # The API token to authenticate with.
     attr_accessor :token
 
     def initialize(
@@ -4368,7 +4540,7 @@ module SDM
   end
 
   class KubernetesServiceAccountUserImpersonation
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -4376,15 +4548,15 @@ module SDM
     attr_accessor :healthcheck_namespace
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -4392,7 +4564,7 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # The API token to authenticate with.
     attr_accessor :token
 
     def initialize(
@@ -4435,13 +4607,13 @@ module SDM
   end
 
   class KubernetesUserImpersonation
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # The CA to authenticate TLS connections with.
     attr_accessor :certificate_authority
-
+    # The certificate to authenticate TLS connections with.
     attr_accessor :client_certificate
-
+    # The key to authenticate TLS connections with.
     attr_accessor :client_key
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -4449,15 +4621,15 @@ module SDM
     attr_accessor :healthcheck_namespace
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -4511,45 +4683,45 @@ module SDM
 
   # MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class MTLSMysql
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # The CA to authenticate TLS connections with.
     attr_accessor :certificate_authority
-
+    # The certificate to authenticate TLS connections with.
     attr_accessor :client_certificate
-
+    # The key to authenticate TLS connections with.
     attr_accessor :client_key
-
+    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-
+    # Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
     attr_accessor :require_native_auth
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-
+    # Server name for TLS verification (unverified by StrongDM if empty)
     attr_accessor :server_name
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # If true, appends the hostname to the username when hitting a database.azure.com address
     attr_accessor :use_azure_single_server_usernames
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -4606,43 +4778,43 @@ module SDM
   end
 
   class MTLSPostgres
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # The CA to authenticate TLS connections with.
     attr_accessor :certificate_authority
-
+    # The certificate to authenticate TLS connections with.
     attr_accessor :client_certificate
-
+    # The key to authenticate TLS connections with.
     attr_accessor :client_key
-
+    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
     attr_accessor :override_database
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-
+    # Server name for TLS verification (unverified by StrongDM if empty)
     attr_accessor :server_name
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -4697,27 +4869,27 @@ module SDM
   end
 
   class Maria
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-
+    # Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
     attr_accessor :require_native_auth
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -4725,9 +4897,9 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # If true, appends the hostname to the username when hitting a database.azure.com address
     attr_accessor :use_azure_single_server_usernames
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -4776,21 +4948,21 @@ module SDM
   end
 
   class Memcached
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -4835,27 +5007,27 @@ module SDM
   end
 
   class Memsql
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-
+    # Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
     attr_accessor :require_native_auth
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -4863,9 +5035,9 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # If true, appends the hostname to the username when hitting a database.azure.com address
     attr_accessor :use_azure_single_server_usernames
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -4915,24 +5087,25 @@ module SDM
 
   # MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class MongoHost
+    # The authentication database to use.
     attr_accessor :auth_database
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -4940,9 +5113,9 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # If set, TLS must be used to connect to this resource.
     attr_accessor :tls_required
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -4989,26 +5162,27 @@ module SDM
   end
 
   class MongoLegacyHost
+    # The authentication database to use.
     attr_accessor :auth_database
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-
+    # The name of the mongo replicaset.
     attr_accessor :replica_set
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -5016,9 +5190,9 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # If set, TLS must be used to connect to this resource.
     attr_accessor :tls_required
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -5067,28 +5241,29 @@ module SDM
   end
 
   class MongoLegacyReplicaset
+    # The authentication database to use.
     attr_accessor :auth_database
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # Set to connect to a replica instead of the primary node.
     attr_accessor :connect_to_replica
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-
+    # The name of the mongo replicaset.
     attr_accessor :replica_set
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -5096,9 +5271,9 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # If set, TLS must be used to connect to this resource.
     attr_accessor :tls_required
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -5150,28 +5325,29 @@ module SDM
 
   # MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class MongoReplicaSet
+    # The authentication database to use.
     attr_accessor :auth_database
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # Set to connect to a replica instead of the primary node.
     attr_accessor :connect_to_replica
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-
+    # The name of the mongo replicaset.
     attr_accessor :replica_set
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -5179,9 +5355,9 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # If set, TLS must be used to connect to this resource.
     attr_accessor :tls_required
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -5233,22 +5409,23 @@ module SDM
 
   # MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class MongoShardedCluster
+    # The authentication database to use.
     attr_accessor :auth_database
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -5256,9 +5433,9 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # If set, TLS must be used to connect to this resource.
     attr_accessor :tls_required
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -5303,27 +5480,27 @@ module SDM
   end
 
   class Mysql
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-
+    # Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
     attr_accessor :require_native_auth
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -5331,9 +5508,9 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # If true, appends the hostname to the username when hitting a database.azure.com address
     attr_accessor :use_azure_single_server_usernames
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -5382,11 +5559,11 @@ module SDM
   end
 
   class Neptune
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
-
+    # The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
     attr_accessor :endpoint
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
@@ -5394,9 +5571,9 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -5441,12 +5618,13 @@ module SDM
   end
 
   class NeptuneIAM
+    # The Access Key ID to use to authenticate.
     attr_accessor :access_key
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
-
+    # The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
     attr_accessor :endpoint
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
@@ -5454,17 +5632,17 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-
+    # The AWS region to connect to.
     attr_accessor :region
-
+    # The role to assume after logging in.
     attr_accessor :role_arn
-
+    # The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
     attr_accessor :role_external_id
-
+    # The Secret Access Key to use to authenticate.
     attr_accessor :secret_access_key
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -5668,25 +5846,25 @@ module SDM
   end
 
   class Oracle
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -5694,9 +5872,9 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # If set, TLS must be used to connect to this resource.
     attr_accessor :tls_required
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -5884,27 +6062,27 @@ module SDM
   end
 
   class Postgres
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
     attr_accessor :override_database
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -5912,7 +6090,7 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -5959,25 +6137,25 @@ module SDM
   end
 
   class Presto
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -5985,9 +6163,9 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # If set, TLS must be used to connect to this resource.
     attr_accessor :tls_required
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -6226,25 +6404,25 @@ module SDM
   end
 
   class RDP
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # When set, network level authentication will not be used. May resolve unexpected authentication errors to older servers. When set, healthchecks cannot detect if a provided username / password pair is correct.
     attr_accessor :downgrade_nla_connections
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -6252,7 +6430,7 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -6297,23 +6475,23 @@ module SDM
   end
 
   class RabbitMQAMQP091
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -6321,9 +6499,9 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # If set, TLS must be used to connect to this resource.
     attr_accessor :tls_required
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -6403,21 +6581,21 @@ module SDM
   end
 
   class RawTCP
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -6462,23 +6640,23 @@ module SDM
   end
 
   class Redis
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -6486,9 +6664,9 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # If set, TLS must be used to connect to this resource.
     attr_accessor :tls_required
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -6533,27 +6711,27 @@ module SDM
   end
 
   class Redshift
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
     attr_accessor :override_database
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -6561,7 +6739,7 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -6609,11 +6787,14 @@ module SDM
 
   # Relay represents a StrongDM CLI installation running in relay mode.
   class Relay
+    # ConnectsTo can be used to restrict the peering between relays and
+    # gateways.
+    attr_accessor :connects_to
     # Device is a read only device name uploaded by the gateway process when
     # it comes online.
     attr_accessor :device
     # GatewayFilter can be used to restrict the peering between relays and
-    # gateways.
+    # gateways. Deprecated.
     attr_accessor :gateway_filter
     # Unique identifier of the Relay.
     attr_accessor :id
@@ -6633,6 +6814,7 @@ module SDM
     attr_accessor :version
 
     def initialize(
+      connects_to: nil,
       device: nil,
       gateway_filter: nil,
       id: nil,
@@ -6642,6 +6824,7 @@ module SDM
       tags: nil,
       version: nil
     )
+      @connects_to = connects_to == nil ? "" : connects_to
       @device = device == nil ? "" : device
       @gateway_filter = gateway_filter == nil ? "" : gateway_filter
       @id = id == nil ? "" : id
@@ -7367,29 +7550,29 @@ module SDM
   end
 
   class SQLServer
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
     attr_accessor :override_database
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-
+    # The Schema to use to direct initial requests.
     attr_accessor :schema
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -7397,7 +7580,7 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -7446,31 +7629,31 @@ module SDM
   end
 
   class SQLServerAzureAD
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # The Azure AD application (client) ID with which to authenticate.
     attr_accessor :client_id
-
+    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
     attr_accessor :override_database
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-
+    # The Schema to use to direct initial requests.
     attr_accessor :schema
-
+    # The Azure AD client secret (application password) with which to authenticate.
     attr_accessor :secret
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -7478,7 +7661,7 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # The Azure AD directory (tenant) ID with which to authenticate.
     attr_accessor :tenant_id
 
     def initialize(
@@ -7529,43 +7712,43 @@ module SDM
   end
 
   class SQLServerKerberosAD
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
-
+    # The keytab file in base64 format containing an entry with the principal name (username@realm) and key version number with which to authenticate.
     attr_accessor :keytab
-
+    # The Kerberos 5 configuration file (krb5.conf) specifying the Active Directory server (KDC) for the configured realm.
     attr_accessor :krb_config
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
     attr_accessor :override_database
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-
+    # The Active Directory domain (realm) to which the configured username belongs.
     attr_accessor :realm
-
+    # The Schema to use to direct initial requests.
     attr_accessor :schema
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-
+    # The Service Principal Name of the Microsoft SQL Server instance in Active Directory.
     attr_accessor :server_spn
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -7620,28 +7803,29 @@ module SDM
   end
 
   class SSH
+    # Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
     attr_accessor :allow_deprecated_key_exchanges
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
-
+    # The key type to use e.g. rsa-2048 or ed25519
     attr_accessor :key_type
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # Whether port forwarding is allowed through this server.
     attr_accessor :port_forwarding
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-
+    # The public key to append to a server's authorized keys. This will be generated after resource creation.
     attr_accessor :public_key
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -7649,7 +7833,7 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -7698,30 +7882,31 @@ module SDM
   end
 
   class SSHCert
+    # Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
     attr_accessor :allow_deprecated_key_exchanges
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
-
+    # The key type to use e.g. rsa-2048 or ed25519
     attr_accessor :key_type
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # Whether port forwarding is allowed through this server.
     attr_accessor :port_forwarding
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-
+    # The ID of the remote identity group to use for remote identity connections.
     attr_accessor :remote_identity_group_id
-
+    # The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
     attr_accessor :remote_identity_healthcheck_username
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -7729,7 +7914,7 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -7780,26 +7965,27 @@ module SDM
   end
 
   class SSHCustomerKey
+    # Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
     attr_accessor :allow_deprecated_key_exchanges
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # Whether port forwarding is allowed through this server.
     attr_accessor :port_forwarding
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-
+    # The private key used to authenticate with the server.
     attr_accessor :private_key
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -7807,7 +7993,7 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -8031,27 +8217,27 @@ module SDM
   end
 
   class SingleStore
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-
+    # Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
     attr_accessor :require_native_auth
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -8059,9 +8245,9 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # If true, appends the hostname to the username when hitting a database.azure.com address
     attr_accessor :use_azure_single_server_usernames
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -8110,25 +8296,25 @@ module SDM
   end
 
   class Snowflake
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-
+    # The schema to provide on authentication.
     attr_accessor :schema
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -8136,7 +8322,7 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -8182,11 +8368,11 @@ module SDM
 
   # Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class Snowsight
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
-
+    # The StrongDM user email to use for healthchecks.
     attr_accessor :healthcheck_username
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
@@ -8194,13 +8380,13 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-
+    # The Metadata for your snowflake IDP integration
     attr_accessor :samlmetadata
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-
+    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -8241,23 +8427,23 @@ module SDM
   end
 
   class Sybase
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -8265,7 +8451,7 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -8308,23 +8494,23 @@ module SDM
   end
 
   class SybaseIQ
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -8332,7 +8518,7 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -8375,8 +8561,9 @@ module SDM
   end
 
   class Tag
+    # The name or key of this tag. Each name can only refer to one value on a tagged entity.
     attr_accessor :name
-
+    # The value of this tag.
     attr_accessor :value
 
     def initialize(
@@ -8397,23 +8584,23 @@ module SDM
   end
 
   class Teradata
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -8421,7 +8608,7 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -8465,25 +8652,25 @@ module SDM
 
   # Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class Trino
-    # Bind interface
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-
+    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-
+    # The host to dial to initiate a connection from the egress node to this resource.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-
+    # The password to authenticate with.
     attr_accessor :password
-
+    # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-
+    # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
@@ -8491,7 +8678,7 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-
+    # The username to authenticate with.
     attr_accessor :username
 
     def initialize(
@@ -8607,9 +8794,9 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the SecretStore.
     attr_accessor :name
-
+    # The namespace to make requests within
     attr_accessor :namespace
-
+    # The URL of the Vault to target
     attr_accessor :server_address
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -8638,18 +8825,19 @@ module SDM
   end
 
   class VaultTLSStore
+    # A path to a CA file accessible by a Node
     attr_accessor :ca_cert_path
-
+    # A path to a client certificate file accessible by a Node
     attr_accessor :client_cert_path
-
+    # A path to a client key file accessible by a Node
     attr_accessor :client_key_path
     # Unique identifier of the SecretStore.
     attr_accessor :id
     # Unique human-readable name of the SecretStore.
     attr_accessor :name
-
+    # The namespace to make requests within
     attr_accessor :namespace
-
+    # The URL of the Vault to target
     attr_accessor :server_address
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -8688,9 +8876,9 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the SecretStore.
     attr_accessor :name
-
+    # The namespace to make requests within
     attr_accessor :namespace
-
+    # The URL of the Vault to target
     attr_accessor :server_address
     # Tags is a map of key, value pairs.
     attr_accessor :tags
