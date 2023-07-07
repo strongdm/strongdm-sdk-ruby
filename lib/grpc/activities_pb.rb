@@ -48,6 +48,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       repeated :entities, :message, 5, "v1.ActivityEntity"
       optional :ip_address, :string, 6
       optional :actor, :message, 7, "v1.ActivityActor"
+      optional :user_agent, :string, 8
     end
     add_message "v1.ActivityEntity" do
       optional :id, :string, 1

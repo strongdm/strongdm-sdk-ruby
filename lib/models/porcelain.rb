@@ -1241,6 +1241,9 @@ module SDM
     attr_accessor :id
     # The IP from which this action was taken.
     attr_accessor :ip_address
+    # The User Agent present when this request was executed. Generally a client type and version
+    # like strongdm-cli/55.66.77
+    attr_accessor :user_agent
     # The kind of activity which has taken place.
     attr_accessor :verb
 
@@ -1251,6 +1254,7 @@ module SDM
       entities: nil,
       id: nil,
       ip_address: nil,
+      user_agent: nil,
       verb: nil
     )
       @actor = actor == nil ? nil : actor
@@ -1259,6 +1263,7 @@ module SDM
       @entities = entities == nil ? [] : entities
       @id = id == nil ? "" : id
       @ip_address = ip_address == nil ? "" : ip_address
+      @user_agent = user_agent == nil ? "" : user_agent
       @verb = verb == nil ? "" : verb
     end
 
@@ -2380,8 +2385,8 @@ module SDM
     end
   end
 
-  # AzurePostgresFlexible is currently unstable, and its API may change, or it may be removed, without a major version bump.
-  class AzurePostgresFlexible
+  # AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class AzurePostgresManagedIdentity
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
@@ -2410,6 +2415,8 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # If true, appends the hostname to the username when hitting a database.azure.com address
+    attr_accessor :use_azure_single_server_usernames
     # The username to authenticate with.
     attr_accessor :username
 
@@ -2428,6 +2435,7 @@ module SDM
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
+      use_azure_single_server_usernames: nil,
       username: nil
     )
       @bind_interface = bind_interface == nil ? "" : bind_interface
@@ -2444,82 +2452,7 @@ module SDM
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
-      @username = username == nil ? "" : username
-    end
-
-    def to_json(options = {})
-      hash = {}
-      self.instance_variables.each do |var|
-        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
-      end
-      hash.to_json
-    end
-  end
-
-  # AzurePostgresSingle is currently unstable, and its API may change, or it may be removed, without a major version bump.
-  class AzurePostgresSingle
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
-    attr_accessor :bind_interface
-    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-    attr_accessor :database
-    # A filter applied to the routing logic to pin datasource to nodes.
-    attr_accessor :egress_filter
-    # True if the datasource is reachable and the credentials are valid.
-    attr_accessor :healthy
-    # The host to dial to initiate a connection from the egress node to this resource.
-    attr_accessor :hostname
-    # Unique identifier of the Resource.
-    attr_accessor :id
-    # Unique human-readable name of the Resource.
-    attr_accessor :name
-    # If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
-    attr_accessor :override_database
-    # The password to authenticate with.
-    attr_accessor :password
-    # The port to dial to initiate a connection from the egress node to this resource.
-    attr_accessor :port
-    # The local port used by clients to connect to this resource.
-    attr_accessor :port_override
-    # ID of the secret store containing credentials for this resource, if any.
-    attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
-    attr_accessor :subdomain
-    # Tags is a map of key, value pairs.
-    attr_accessor :tags
-    # The username to authenticate with.
-    attr_accessor :username
-
-    def initialize(
-      bind_interface: nil,
-      database: nil,
-      egress_filter: nil,
-      healthy: nil,
-      hostname: nil,
-      id: nil,
-      name: nil,
-      override_database: nil,
-      password: nil,
-      port: nil,
-      port_override: nil,
-      secret_store_id: nil,
-      subdomain: nil,
-      tags: nil,
-      username: nil
-    )
-      @bind_interface = bind_interface == nil ? "" : bind_interface
-      @database = database == nil ? "" : database
-      @egress_filter = egress_filter == nil ? "" : egress_filter
-      @healthy = healthy == nil ? false : healthy
-      @hostname = hostname == nil ? "" : hostname
-      @id = id == nil ? "" : id
-      @name = name == nil ? "" : name
-      @override_database = override_database == nil ? false : override_database
-      @password = password == nil ? "" : password
-      @port = port == nil ? 0 : port
-      @port_override = port_override == nil ? 0 : port_override
-      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
-      @subdomain = subdomain == nil ? "" : subdomain
-      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @use_azure_single_server_usernames = use_azure_single_server_usernames == nil ? false : use_azure_single_server_usernames
       @username = username == nil ? "" : username
     end
 
@@ -3828,6 +3761,19 @@ module SDM
     # Location is a read only network location uploaded by the gateway process
     # when it comes online.
     attr_accessor :location
+    # Maintenance Windows define when this node is allowed to restart. If a node
+    # is requested to restart, it will check each window to determine if any of
+    # them permit it to restart, and if any do, it will. This check is repeated
+    # per window until the restart is successfully completed.
+    #
+    # If not set here, may be set on the command line or via an environment variable
+    # on the process itself; any server setting will take precedence over local
+    # settings. This setting is ineffective for nodes below version 38.44.0.
+    #
+    # If this setting is not applied via this remote configuration or via local
+    # configuration, the default setting is used: always allow restarts if serving
+    # no connections, and allow a restart even if serving connections between 7-8 UTC, any day.
+    attr_accessor :maintenance_windows
     # Unique human-readable name of the Gateway. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
     attr_accessor :name
     # The current state of the gateway. One of: "new", "verifying_restart",
@@ -3847,6 +3793,7 @@ module SDM
       id: nil,
       listen_address: nil,
       location: nil,
+      maintenance_windows: nil,
       name: nil,
       state: nil,
       tags: nil,
@@ -3859,6 +3806,7 @@ module SDM
       @id = id == nil ? "" : id
       @listen_address = listen_address == nil ? "" : listen_address
       @location = location == nil ? "" : location
+      @maintenance_windows = maintenance_windows == nil ? [] : maintenance_windows
       @name = name == nil ? "" : name
       @state = state == nil ? "" : state
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -5816,6 +5764,38 @@ module SDM
     end
   end
 
+  class NodeMaintenanceWindow
+    # Cron job syntax for when this maintenance window is active. On this schedule, associated
+    # nodes will restart if requested, provided other checks allow the restart to proceed. Times
+    # are represented in UTC.
+    # e.g. * 7 * * 0,6 to check for a restart at every minute from 7:00 to 8:00 UTC on Sunday and
+    # Saturday. Not all possible inputs are supported: the month and day of month selections
+    # must be '*'.
+    attr_accessor :cron_schedule
+    # Require Idleness defines whether this window can sever live connections. If true,
+    # this window will not allow a node to be restarted unless it is serving no connections.
+    # If false, given a restart of the node has been requested (for an update, usually), the
+    # node will restart as soon as it enters an allowed day / hour combination. At least one
+    # maintenance window, out of all configured windows for a node, must have this as false.
+    attr_accessor :require_idleness
+
+    def initialize(
+      cron_schedule: nil,
+      require_idleness: nil
+    )
+      @cron_schedule = cron_schedule == nil ? "" : cron_schedule
+      @require_idleness = require_idleness == nil ? false : require_idleness
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   # NodeUpdateResponse returns the fields of a Node after it has been updated by
   # a NodeUpdateRequest.
   class NodeUpdateResponse
@@ -6801,6 +6781,19 @@ module SDM
     # Location is a read only network location uploaded by the gateway process
     # when it comes online.
     attr_accessor :location
+    # Maintenance Windows define when this node is allowed to restart. If a node
+    # is requested to restart, it will check each window to determine if any of
+    # them permit it to restart, and if any do, it will. This check is repeated
+    # per window until the restart is successfully completed.
+    #
+    # If not set here, may be set on the command line or via an environment variable
+    # on the process itself; any server setting will take precedence over local
+    # settings. This setting is ineffective for nodes below version 38.44.0.
+    #
+    # If this setting is not applied via this remote configuration or via local
+    # configuration, the default setting is used: always allow restarts if serving
+    # no connections, and allow a restart even if serving connections between 7-8 UTC, any day.
+    attr_accessor :maintenance_windows
     # Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
     attr_accessor :name
     # The current state of the relay. One of: "new", "verifying_restart",
@@ -6819,6 +6812,7 @@ module SDM
       gateway_filter: nil,
       id: nil,
       location: nil,
+      maintenance_windows: nil,
       name: nil,
       state: nil,
       tags: nil,
@@ -6829,6 +6823,7 @@ module SDM
       @gateway_filter = gateway_filter == nil ? "" : gateway_filter
       @id = id == nil ? "" : id
       @location = location == nil ? "" : location
+      @maintenance_windows = maintenance_windows == nil ? [] : maintenance_windows
       @name = name == nil ? "" : name
       @state = state == nil ? "" : state
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags

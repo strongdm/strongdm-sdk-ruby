@@ -85,6 +85,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :version, :string, 8
       optional :uuid, :string, 9
       optional :connects_to, :string, 10
+      repeated :maintenance_windows, :message, 11, "v1.NodeMaintenanceWindow"
     end
     add_message "v1.Gateway" do
       optional :id, :string, 1
@@ -99,6 +100,11 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :version, :string, 10
       optional :uuid, :string, 11
       optional :connects_to, :string, 12
+      repeated :maintenance_windows, :message, 13, "v1.NodeMaintenanceWindow"
+    end
+    add_message "v1.NodeMaintenanceWindow" do
+      optional :cron_schedule, :string, 1
+      optional :require_idleness, :bool, 2
     end
   end
 end
@@ -117,4 +123,5 @@ module V1
   Node = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Node").msgclass
   Relay = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Relay").msgclass
   Gateway = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Gateway").msgclass
+  NodeMaintenanceWindow = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.NodeMaintenanceWindow").msgclass
 end

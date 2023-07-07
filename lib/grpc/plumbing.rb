@@ -1439,6 +1439,7 @@ module SDM
       porcelain.entities = convert_repeated_activity_entity_to_porcelain(plumbing.entities)
       porcelain.id = (plumbing.id)
       porcelain.ip_address = (plumbing.ip_address)
+      porcelain.user_agent = (plumbing.user_agent)
       porcelain.verb = (plumbing.verb)
       porcelain
     end
@@ -1454,6 +1455,7 @@ module SDM
       plumbing.entities += convert_repeated_activity_entity_to_plumbing(porcelain.entities)
       plumbing.id = (porcelain.id)
       plumbing.ip_address = (porcelain.ip_address)
+      plumbing.user_agent = (porcelain.user_agent)
       plumbing.verb = (porcelain.verb)
       plumbing
     end
@@ -2420,11 +2422,11 @@ module SDM
       end
       items
     end
-    def self.convert_azure_postgres_flexible_to_porcelain(plumbing)
+    def self.convert_azure_postgres_managed_identity_to_porcelain(plumbing)
       if plumbing == nil
         return nil
       end
-      porcelain = AzurePostgresFlexible.new()
+      porcelain = AzurePostgresManagedIdentity.new()
       porcelain.bind_interface = (plumbing.bind_interface)
       porcelain.database = (plumbing.database)
       porcelain.egress_filter = (plumbing.egress_filter)
@@ -2439,15 +2441,16 @@ module SDM
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.use_azure_single_server_usernames = (plumbing.use_azure_single_server_usernames)
       porcelain.username = (plumbing.username)
       porcelain
     end
 
-    def self.convert_azure_postgres_flexible_to_plumbing(porcelain)
+    def self.convert_azure_postgres_managed_identity_to_plumbing(porcelain)
       if porcelain == nil
         return nil
       end
-      plumbing = V1::AzurePostgresFlexible.new()
+      plumbing = V1::AzurePostgresManagedIdentity.new()
       plumbing.bind_interface = (porcelain.bind_interface)
       plumbing.database = (porcelain.database)
       plumbing.egress_filter = (porcelain.egress_filter)
@@ -2462,84 +2465,23 @@ module SDM
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.use_azure_single_server_usernames = (porcelain.use_azure_single_server_usernames)
       plumbing.username = (porcelain.username)
       plumbing
     end
-    def self.convert_repeated_azure_postgres_flexible_to_plumbing(porcelains)
+    def self.convert_repeated_azure_postgres_managed_identity_to_plumbing(porcelains)
       items = Array.new
       porcelains.each do |porcelain|
-        plumbing = convert_azure_postgres_flexible_to_plumbing(porcelain)
+        plumbing = convert_azure_postgres_managed_identity_to_plumbing(porcelain)
         items.append(plumbing)
       end
       items
     end
 
-    def self.convert_repeated_azure_postgres_flexible_to_porcelain(plumbings)
+    def self.convert_repeated_azure_postgres_managed_identity_to_porcelain(plumbings)
       items = Array.new
       plumbings.each do |plumbing|
-        porcelain = convert_azure_postgres_flexible_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
-    def self.convert_azure_postgres_single_to_porcelain(plumbing)
-      if plumbing == nil
-        return nil
-      end
-      porcelain = AzurePostgresSingle.new()
-      porcelain.bind_interface = (plumbing.bind_interface)
-      porcelain.database = (plumbing.database)
-      porcelain.egress_filter = (plumbing.egress_filter)
-      porcelain.healthy = (plumbing.healthy)
-      porcelain.hostname = (plumbing.hostname)
-      porcelain.id = (plumbing.id)
-      porcelain.name = (plumbing.name)
-      porcelain.override_database = (plumbing.override_database)
-      porcelain.password = (plumbing.password)
-      porcelain.port = (plumbing.port)
-      porcelain.port_override = (plumbing.port_override)
-      porcelain.secret_store_id = (plumbing.secret_store_id)
-      porcelain.subdomain = (plumbing.subdomain)
-      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
-      porcelain.username = (plumbing.username)
-      porcelain
-    end
-
-    def self.convert_azure_postgres_single_to_plumbing(porcelain)
-      if porcelain == nil
-        return nil
-      end
-      plumbing = V1::AzurePostgresSingle.new()
-      plumbing.bind_interface = (porcelain.bind_interface)
-      plumbing.database = (porcelain.database)
-      plumbing.egress_filter = (porcelain.egress_filter)
-      plumbing.healthy = (porcelain.healthy)
-      plumbing.hostname = (porcelain.hostname)
-      plumbing.id = (porcelain.id)
-      plumbing.name = (porcelain.name)
-      plumbing.override_database = (porcelain.override_database)
-      plumbing.password = (porcelain.password)
-      plumbing.port = (porcelain.port)
-      plumbing.port_override = (porcelain.port_override)
-      plumbing.secret_store_id = (porcelain.secret_store_id)
-      plumbing.subdomain = (porcelain.subdomain)
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
-      plumbing.username = (porcelain.username)
-      plumbing
-    end
-    def self.convert_repeated_azure_postgres_single_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = convert_azure_postgres_single_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.convert_repeated_azure_postgres_single_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = convert_azure_postgres_single_to_porcelain(plumbing)
+        porcelain = convert_azure_postgres_managed_identity_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -3780,6 +3722,7 @@ module SDM
       porcelain.id = (plumbing.id)
       porcelain.listen_address = (plumbing.listen_address)
       porcelain.location = (plumbing.location)
+      porcelain.maintenance_windows = convert_repeated_node_maintenance_window_to_porcelain(plumbing.maintenance_windows)
       porcelain.name = (plumbing.name)
       porcelain.state = (plumbing.state)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
@@ -3799,6 +3742,7 @@ module SDM
       plumbing.id = (porcelain.id)
       plumbing.listen_address = (porcelain.listen_address)
       plumbing.location = (porcelain.location)
+      plumbing.maintenance_windows += convert_repeated_node_maintenance_window_to_plumbing(porcelain.maintenance_windows)
       plumbing.name = (porcelain.name)
       plumbing.state = (porcelain.state)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
@@ -5541,6 +5485,42 @@ module SDM
       end
       items
     end
+    def self.convert_node_maintenance_window_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = NodeMaintenanceWindow.new()
+      porcelain.cron_schedule = (plumbing.cron_schedule)
+      porcelain.require_idleness = (plumbing.require_idleness)
+      porcelain
+    end
+
+    def self.convert_node_maintenance_window_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::NodeMaintenanceWindow.new()
+      plumbing.cron_schedule = (porcelain.cron_schedule)
+      plumbing.require_idleness = (porcelain.require_idleness)
+      plumbing
+    end
+    def self.convert_repeated_node_maintenance_window_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_node_maintenance_window_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_node_maintenance_window_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_node_maintenance_window_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_node_update_response_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -6365,6 +6345,7 @@ module SDM
       porcelain.gateway_filter = (plumbing.gateway_filter)
       porcelain.id = (plumbing.id)
       porcelain.location = (plumbing.location)
+      porcelain.maintenance_windows = convert_repeated_node_maintenance_window_to_porcelain(plumbing.maintenance_windows)
       porcelain.name = (plumbing.name)
       porcelain.state = (plumbing.state)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
@@ -6382,6 +6363,7 @@ module SDM
       plumbing.gateway_filter = (porcelain.gateway_filter)
       plumbing.id = (porcelain.id)
       plumbing.location = (porcelain.location)
+      plumbing.maintenance_windows += convert_repeated_node_maintenance_window_to_plumbing(porcelain.maintenance_windows)
       plumbing.name = (porcelain.name)
       plumbing.state = (porcelain.state)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
@@ -6889,11 +6871,8 @@ module SDM
       if porcelain.instance_of? AzurePostgres
         plumbing.azure_postgres = convert_azure_postgres_to_plumbing(porcelain)
       end
-      if porcelain.instance_of? AzurePostgresFlexible
-        plumbing.azure_postgres_flexible = convert_azure_postgres_flexible_to_plumbing(porcelain)
-      end
-      if porcelain.instance_of? AzurePostgresSingle
-        plumbing.azure_postgres_single = convert_azure_postgres_single_to_plumbing(porcelain)
+      if porcelain.instance_of? AzurePostgresManagedIdentity
+        plumbing.azure_postgres_managed_identity = convert_azure_postgres_managed_identity_to_plumbing(porcelain)
       end
       if porcelain.instance_of? BigQuery
         plumbing.big_query = convert_big_query_to_plumbing(porcelain)
@@ -7142,11 +7121,8 @@ module SDM
       if plumbing.azure_postgres != nil
         return convert_azure_postgres_to_porcelain(plumbing.azure_postgres)
       end
-      if plumbing.azure_postgres_flexible != nil
-        return convert_azure_postgres_flexible_to_porcelain(plumbing.azure_postgres_flexible)
-      end
-      if plumbing.azure_postgres_single != nil
-        return convert_azure_postgres_single_to_porcelain(plumbing.azure_postgres_single)
+      if plumbing.azure_postgres_managed_identity != nil
+        return convert_azure_postgres_managed_identity_to_porcelain(plumbing.azure_postgres_managed_identity)
       end
       if plumbing.big_query != nil
         return convert_big_query_to_porcelain(plumbing.big_query)
