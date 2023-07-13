@@ -6253,6 +6253,8 @@ module SDM
     attr_accessor :resource_tags
     # The specific type of Resource against which the Query was performed, e.g. "ssh" or "postgres".
     attr_accessor :resource_type
+    # The IP address the Query was performed from, as detected at the ingress gateway.
+    attr_accessor :source_ip
     # The time at which the Query was started.
     attr_accessor :timestamp
 
@@ -6279,6 +6281,7 @@ module SDM
       resource_name: nil,
       resource_tags: nil,
       resource_type: nil,
+      source_ip: nil,
       timestamp: nil
     )
       @account_email = account_email == nil ? "" : account_email
@@ -6303,6 +6306,7 @@ module SDM
       @resource_name = resource_name == nil ? "" : resource_name
       @resource_tags = resource_tags == nil ? SDM::_porcelain_zero_value_tags() : resource_tags
       @resource_type = resource_type == nil ? "" : resource_type
+      @source_ip = source_ip == nil ? "" : source_ip
       @timestamp = timestamp == nil ? nil : timestamp
     end
 

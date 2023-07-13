@@ -58,6 +58,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :query_key_id, :string, 22
       optional :completed_at, :message, 23, "google.protobuf.Timestamp"
       optional :capture, :message, 24, "v1.QueryCapture"
+      optional :source_ip, :string, 25
     end
     add_message "v1.QueryCapture" do
       optional :width, :int32, 1

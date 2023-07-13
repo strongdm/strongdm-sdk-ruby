@@ -5890,6 +5890,7 @@ module SDM
       porcelain.resource_name = (plumbing.resource_name)
       porcelain.resource_tags = convert_tags_to_porcelain(plumbing.resource_tags)
       porcelain.resource_type = (plumbing.resource_type)
+      porcelain.source_ip = (plumbing.source_ip)
       porcelain.timestamp = convert_timestamp_to_porcelain(plumbing.timestamp)
       porcelain
     end
@@ -5921,6 +5922,7 @@ module SDM
       plumbing.resource_name = (porcelain.resource_name)
       plumbing.resource_tags = convert_tags_to_plumbing(porcelain.resource_tags)
       plumbing.resource_type = (porcelain.resource_type)
+      plumbing.source_ip = (porcelain.source_ip)
       plumbing.timestamp = convert_timestamp_to_plumbing(porcelain.timestamp)
       plumbing
     end
