@@ -3716,7 +3716,6 @@ module SDM
       end
       porcelain = Gateway.new()
       porcelain.bind_address = (plumbing.bind_address)
-      porcelain.connects_to = (plumbing.connects_to)
       porcelain.device = (plumbing.device)
       porcelain.gateway_filter = (plumbing.gateway_filter)
       porcelain.id = (plumbing.id)
@@ -3736,7 +3735,6 @@ module SDM
       end
       plumbing = V1::Gateway.new()
       plumbing.bind_address = (porcelain.bind_address)
-      plumbing.connects_to = (porcelain.connects_to)
       plumbing.device = (porcelain.device)
       plumbing.gateway_filter = (porcelain.gateway_filter)
       plumbing.id = (porcelain.id)
@@ -6342,7 +6340,6 @@ module SDM
         return nil
       end
       porcelain = Relay.new()
-      porcelain.connects_to = (plumbing.connects_to)
       porcelain.device = (plumbing.device)
       porcelain.gateway_filter = (plumbing.gateway_filter)
       porcelain.id = (plumbing.id)
@@ -6360,7 +6357,6 @@ module SDM
         return nil
       end
       plumbing = V1::Relay.new()
-      plumbing.connects_to = (porcelain.connects_to)
       plumbing.device = (porcelain.device)
       plumbing.gateway_filter = (porcelain.gateway_filter)
       plumbing.id = (porcelain.id)

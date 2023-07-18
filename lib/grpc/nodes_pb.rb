@@ -84,7 +84,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :location, :string, 7
       optional :version, :string, 8
       optional :uuid, :string, 9
-      optional :connects_to, :string, 10
       repeated :maintenance_windows, :message, 11, "v1.NodeMaintenanceWindow"
     end
     add_message "v1.Gateway" do
@@ -99,7 +98,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :location, :string, 9
       optional :version, :string, 10
       optional :uuid, :string, 11
-      optional :connects_to, :string, 12
       repeated :maintenance_windows, :message, 13, "v1.NodeMaintenanceWindow"
     end
     add_message "v1.NodeMaintenanceWindow" do

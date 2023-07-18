@@ -107,6 +107,7 @@ module SDM
     ACCESS_REQUEST = "access_request"
     WORKFLOW = "workflow"
     NODE = "node"
+    PEERING_GROUP = "peering_group"
   end
 
   # Activity Verbs, describe which kind of activity has taken place.
@@ -268,6 +269,8 @@ module SDM
     DEPRECATED_DATASOURCE_GRANT = "datasource:grant"
     DATASOURCE_DELETE = "datasource:delete"
     DATASOURCE_UPDATE = "datasource:update"
+    RESOURCE_LOCK_DELETE = "resourcelock:delete"
+    RESOURCE_LOCK_LIST = "resourcelock:list"
     SECRET_STORE_CREATE = "secretstore:create"
     SECRET_STORE_LIST = "secretstore:list"
     SECRET_STORE_DELETE = "secretstore:delete"

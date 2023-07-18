@@ -3745,9 +3745,6 @@ module SDM
     # The hostname/port tuple which the gateway daemon will bind to.
     # If not provided on create, set to "0.0.0.0:listen_address_port".
     attr_accessor :bind_address
-    # ConnectsTo can be used to restrict the peering between relays and
-    # gateways.
-    attr_accessor :connects_to
     # Device is a read only device name uploaded by the gateway process when
     # it comes online.
     attr_accessor :device
@@ -3787,7 +3784,6 @@ module SDM
 
     def initialize(
       bind_address: nil,
-      connects_to: nil,
       device: nil,
       gateway_filter: nil,
       id: nil,
@@ -3800,7 +3796,6 @@ module SDM
       version: nil
     )
       @bind_address = bind_address == nil ? "" : bind_address
-      @connects_to = connects_to == nil ? "" : connects_to
       @device = device == nil ? "" : device
       @gateway_filter = gateway_filter == nil ? "" : gateway_filter
       @id = id == nil ? "" : id
@@ -6771,9 +6766,6 @@ module SDM
 
   # Relay represents a StrongDM CLI installation running in relay mode.
   class Relay
-    # ConnectsTo can be used to restrict the peering between relays and
-    # gateways.
-    attr_accessor :connects_to
     # Device is a read only device name uploaded by the gateway process when
     # it comes online.
     attr_accessor :device
@@ -6811,7 +6803,6 @@ module SDM
     attr_accessor :version
 
     def initialize(
-      connects_to: nil,
       device: nil,
       gateway_filter: nil,
       id: nil,
@@ -6822,7 +6813,6 @@ module SDM
       tags: nil,
       version: nil
     )
-      @connects_to = connects_to == nil ? "" : connects_to
       @device = device == nil ? "" : device
       @gateway_filter = gateway_filter == nil ? "" : gateway_filter
       @id = id == nil ? "" : id
