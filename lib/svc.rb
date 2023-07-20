@@ -1486,6 +1486,738 @@ module SDM #:nodoc:
     end
   end
 
+  # PeeringGroupNodes provides the building blocks necessary to obtain attach a node to a peering group.
+  #
+  # See {PeeringGroupNode}.
+  class PeeringGroupNodes
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::PeeringGroupNodes::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # Create attaches a Node to a PeeringGroup
+    def create(
+      peering_group_node,
+      deadline: nil
+    )
+      req = V1::PeeringGroupNodeCreateRequest.new()
+
+      req.peering_group_node = Plumbing::convert_peering_group_node_to_plumbing(peering_group_node)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.create(req, metadata: @parent.get_metadata("PeeringGroupNodes.Create", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = PeeringGroupNodeCreateResponse.new()
+      resp.meta = Plumbing::convert_create_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.peering_group_node = Plumbing::convert_peering_group_node_to_porcelain(plumbing_response.peering_group_node)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Delete detaches a Node to a PeeringGroup.
+    def delete(
+      id,
+      deadline: nil
+    )
+      req = V1::PeeringGroupNodeDeleteRequest.new()
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("PeeringGroupNodes.Delete", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = PeeringGroupNodeDeleteResponse.new()
+      resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Get reads the information of one peering group to node attachment.
+    def get(
+      id,
+      deadline: nil
+    )
+      req = V1::PeeringGroupNodeGetRequest.new()
+      if not @parent.snapshot_time.nil?
+        req.meta = V1::GetRequestMetadata.new()
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.get(req, metadata: @parent.get_metadata("PeeringGroupNodes.Get", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = PeeringGroupNodeGetResponse.new()
+      resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.peering_group_node = Plumbing::convert_peering_group_node_to_porcelain(plumbing_response.peering_group_node)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # List gets a list of peering group node attachments.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::PeeringGroupNodeListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      page_size_option = @parent._test_options["PageSize"]
+      if page_size_option.is_a? Integer
+        req.meta.limit = page_size_option
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("PeeringGroupNodes.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.peering_group_nodes.each do |plumbing_item|
+            g.yield Plumbing::convert_peering_group_node_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # SnapshotPeeringGroupNodes exposes the read only methods of the PeeringGroupNodes
+  # service for historical queries.
+  class SnapshotPeeringGroupNodes
+    extend Gem::Deprecate
+
+    def initialize(peering_group_nodes)
+      @peering_group_nodes = peering_group_nodes
+    end
+
+    # Get reads the information of one peering group to node attachment.
+    def get(
+      id,
+      deadline: nil
+    )
+      return @peering_group_nodes.get(
+               id,
+               deadline: deadline,
+             )
+    end
+
+    # List gets a list of peering group node attachments.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      return @peering_group_nodes.list(
+               filter,
+                            *args,
+                            deadline: deadline,
+             )
+    end
+  end
+
+  # PeeringGroupPeers provides the building blocks necessary to link two peering groups.
+  #
+  # See {PeeringGroupPeer}.
+  class PeeringGroupPeers
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::PeeringGroupPeers::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # Create links two peering groups.
+    def create(
+      peering_group_peer,
+      deadline: nil
+    )
+      req = V1::PeeringGroupPeerCreateRequest.new()
+
+      req.peering_group_peer = Plumbing::convert_peering_group_peer_to_plumbing(peering_group_peer)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.create(req, metadata: @parent.get_metadata("PeeringGroupPeers.Create", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = PeeringGroupPeerCreateResponse.new()
+      resp.meta = Plumbing::convert_create_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.peering_group_peer = Plumbing::convert_peering_group_peer_to_porcelain(plumbing_response.peering_group_peer)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Delete unlinks two peering groups.
+    def delete(
+      id,
+      deadline: nil
+    )
+      req = V1::PeeringGroupPeerDeleteRequest.new()
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("PeeringGroupPeers.Delete", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = PeeringGroupPeerDeleteResponse.new()
+      resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Get reads the information of one peering group link.
+    def get(
+      id,
+      deadline: nil
+    )
+      req = V1::PeeringGroupPeerGetRequest.new()
+      if not @parent.snapshot_time.nil?
+        req.meta = V1::GetRequestMetadata.new()
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.get(req, metadata: @parent.get_metadata("PeeringGroupPeers.Get", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = PeeringGroupPeerGetResponse.new()
+      resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.peering_group_peer = Plumbing::convert_peering_group_peer_to_porcelain(plumbing_response.peering_group_peer)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # List gets a list of peering group links.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::PeeringGroupPeerListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      page_size_option = @parent._test_options["PageSize"]
+      if page_size_option.is_a? Integer
+        req.meta.limit = page_size_option
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("PeeringGroupPeers.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.peering_group_peers.each do |plumbing_item|
+            g.yield Plumbing::convert_peering_group_peer_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # SnapshotPeeringGroupPeers exposes the read only methods of the PeeringGroupPeers
+  # service for historical queries.
+  class SnapshotPeeringGroupPeers
+    extend Gem::Deprecate
+
+    def initialize(peering_group_peers)
+      @peering_group_peers = peering_group_peers
+    end
+
+    # Get reads the information of one peering group link.
+    def get(
+      id,
+      deadline: nil
+    )
+      return @peering_group_peers.get(
+               id,
+               deadline: deadline,
+             )
+    end
+
+    # List gets a list of peering group links.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      return @peering_group_peers.list(
+               filter,
+                            *args,
+                            deadline: deadline,
+             )
+    end
+  end
+
+  # PeeringGroupResources provides the building blocks necessary to obtain attach a resource to a peering group.
+  #
+  # See {PeeringGroupResource}.
+  class PeeringGroupResources
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::PeeringGroupResources::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # Create attaches a Resource to a PeeringGroup
+    def create(
+      peering_group_resource,
+      deadline: nil
+    )
+      req = V1::PeeringGroupResourceCreateRequest.new()
+
+      req.peering_group_resource = Plumbing::convert_peering_group_resource_to_plumbing(peering_group_resource)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.create(req, metadata: @parent.get_metadata("PeeringGroupResources.Create", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = PeeringGroupResourceCreateResponse.new()
+      resp.meta = Plumbing::convert_create_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.peering_group_resource = Plumbing::convert_peering_group_resource_to_porcelain(plumbing_response.peering_group_resource)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Delete detaches a Resource to a PeeringGroup
+    def delete(
+      id,
+      deadline: nil
+    )
+      req = V1::PeeringGroupResourceDeleteRequest.new()
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("PeeringGroupResources.Delete", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = PeeringGroupResourceDeleteResponse.new()
+      resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Get reads the information of one peering group to resource attachment.
+    def get(
+      id,
+      deadline: nil
+    )
+      req = V1::PeeringGroupResourceGetRequest.new()
+      if not @parent.snapshot_time.nil?
+        req.meta = V1::GetRequestMetadata.new()
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.get(req, metadata: @parent.get_metadata("PeeringGroupResources.Get", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = PeeringGroupResourceGetResponse.new()
+      resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.peering_group_resource = Plumbing::convert_peering_group_resource_to_porcelain(plumbing_response.peering_group_resource)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # List gets a list of peering group resource attachments.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::PeeringGroupResourceListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      page_size_option = @parent._test_options["PageSize"]
+      if page_size_option.is_a? Integer
+        req.meta.limit = page_size_option
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("PeeringGroupResources.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.peering_group_resources.each do |plumbing_item|
+            g.yield Plumbing::convert_peering_group_resource_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # SnapshotPeeringGroupResources exposes the read only methods of the PeeringGroupResources
+  # service for historical queries.
+  class SnapshotPeeringGroupResources
+    extend Gem::Deprecate
+
+    def initialize(peering_group_resources)
+      @peering_group_resources = peering_group_resources
+    end
+
+    # Get reads the information of one peering group to resource attachment.
+    def get(
+      id,
+      deadline: nil
+    )
+      return @peering_group_resources.get(
+               id,
+               deadline: deadline,
+             )
+    end
+
+    # List gets a list of peering group resource attachments.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      return @peering_group_resources.list(
+               filter,
+                            *args,
+                            deadline: deadline,
+             )
+    end
+  end
+
+  # PeeringGroups provides the building blocks necessary to obtain explicit network topology and routing.
+  #
+  # See {PeeringGroup}.
+  class PeeringGroups
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::PeeringGroups::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # Create registers a new PeeringGroup.
+    def create(
+      peering_group,
+      deadline: nil
+    )
+      req = V1::PeeringGroupCreateRequest.new()
+
+      req.peering_group = Plumbing::convert_peering_group_to_plumbing(peering_group)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.create(req, metadata: @parent.get_metadata("PeeringGroups.Create", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = PeeringGroupCreateResponse.new()
+      resp.meta = Plumbing::convert_create_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.peering_group = Plumbing::convert_peering_group_to_porcelain(plumbing_response.peering_group)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Delete removes a PeeringGroup by ID.
+    def delete(
+      id,
+      deadline: nil
+    )
+      req = V1::PeeringGroupDeleteRequest.new()
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("PeeringGroups.Delete", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = PeeringGroupDeleteResponse.new()
+      resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Get reads one PeeringGroup by ID. It will load all its dependencies.
+    def get(
+      id,
+      deadline: nil
+    )
+      req = V1::PeeringGroupGetRequest.new()
+      if not @parent.snapshot_time.nil?
+        req.meta = V1::GetRequestMetadata.new()
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.get(req, metadata: @parent.get_metadata("PeeringGroups.Get", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = PeeringGroupGetResponse.new()
+      resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.peering_group = Plumbing::convert_peering_group_to_porcelain(plumbing_response.peering_group)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # List gets a list of Peering Groups.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::PeeringGroupListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      page_size_option = @parent._test_options["PageSize"]
+      if page_size_option.is_a? Integer
+        req.meta.limit = page_size_option
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("PeeringGroups.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.peering_groups.each do |plumbing_item|
+            g.yield Plumbing::convert_peering_group_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # SnapshotPeeringGroups exposes the read only methods of the PeeringGroups
+  # service for historical queries.
+  class SnapshotPeeringGroups
+    extend Gem::Deprecate
+
+    def initialize(peering_groups)
+      @peering_groups = peering_groups
+    end
+
+    # Get reads one PeeringGroup by ID. It will load all its dependencies.
+    def get(
+      id,
+      deadline: nil
+    )
+      return @peering_groups.get(
+               id,
+               deadline: deadline,
+             )
+    end
+
+    # List gets a list of Peering Groups.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      return @peering_groups.list(
+               filter,
+                            *args,
+                            deadline: deadline,
+             )
+    end
+  end
+
   # A Query is a record of a single client request to a resource, such as a SQL query.
   # Long-running SSH, RDP, or Kubernetes interactive sessions also count as queries.
   # The Queries service is read-only.

@@ -6036,6 +6036,435 @@ module SDM
     end
   end
 
+  # PeeringGroups are the building blocks used for explicit network topology making.
+  # They may be linked to other peering groups. Sets of PeeringGroupResource and PeeringGroupNode can be attached to a peering group.
+  class PeeringGroup
+    # Unique identifier of the PeeringGroup.
+    attr_accessor :id
+    # Unique human-readable name of the PeeringGroup.
+    attr_accessor :name
+
+    def initialize(
+      id: nil,
+      name: nil
+    )
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # PeeringGroupCreateResponse reports how the PeeringGroup was created in the system.
+  class PeeringGroupCreateResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # The created PeeringGroup.
+    attr_accessor :peering_group
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      meta: nil,
+      peering_group: nil,
+      rate_limit: nil
+    )
+      @meta = meta == nil ? nil : meta
+      @peering_group = peering_group == nil ? nil : peering_group
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # PeeringGroupDeleteResponse returns information about a PeeringGroup that was deleted.
+  class PeeringGroupDeleteResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      meta: nil,
+      rate_limit: nil
+    )
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # PeeringGroupGetResponse returns a requested PeeringGroup.
+  class PeeringGroupGetResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # The requested PeeringGroup.
+    attr_accessor :peering_group
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      meta: nil,
+      peering_group: nil,
+      rate_limit: nil
+    )
+      @meta = meta == nil ? nil : meta
+      @peering_group = peering_group == nil ? nil : peering_group
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # PeeringGroupNode represents the attachment between a PeeringGroup and a Node.
+  class PeeringGroupNode
+    # Peering Group ID to which the node will be attached to.
+    attr_accessor :group_id
+    # Unique identifier of the Attachment.
+    attr_accessor :id
+    # Node ID to be attached.
+    attr_accessor :node_id
+
+    def initialize(
+      group_id: nil,
+      id: nil,
+      node_id: nil
+    )
+      @group_id = group_id == nil ? "" : group_id
+      @id = id == nil ? "" : id
+      @node_id = node_id == nil ? "" : node_id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # PeeringGroupNodeCreateResponse reports how the PeeringGroupNode was created in the system.
+  class PeeringGroupNodeCreateResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # The created PeeringGroupNode.
+    attr_accessor :peering_group_node
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      meta: nil,
+      peering_group_node: nil,
+      rate_limit: nil
+    )
+      @meta = meta == nil ? nil : meta
+      @peering_group_node = peering_group_node == nil ? nil : peering_group_node
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # PeeringGroupNodeDeleteResponse returns information about a PeeringGroupNode that was deleted.
+  class PeeringGroupNodeDeleteResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      meta: nil,
+      rate_limit: nil
+    )
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # PeeringGroupNodeGetResponse returns a requested PeeringGroupNode.
+  class PeeringGroupNodeGetResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # The requested PeeringGroupNode.
+    attr_accessor :peering_group_node
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      meta: nil,
+      peering_group_node: nil,
+      rate_limit: nil
+    )
+      @meta = meta == nil ? nil : meta
+      @peering_group_node = peering_group_node == nil ? nil : peering_group_node
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # PeeringGroupPeer represents the link between two PeeringGroups
+  class PeeringGroupPeer
+    # Group ID from which the link will originate.
+    attr_accessor :group_id
+    # Unique identifier of the Attachment.
+    attr_accessor :id
+    # Peering Group ID to which Group ID will link.
+    attr_accessor :peers_with_group_id
+
+    def initialize(
+      group_id: nil,
+      id: nil,
+      peers_with_group_id: nil
+    )
+      @group_id = group_id == nil ? "" : group_id
+      @id = id == nil ? "" : id
+      @peers_with_group_id = peers_with_group_id == nil ? "" : peers_with_group_id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # PeeringGroupPeerCreateResponse reports how the PeeringGroupPeer was created in the system.
+  class PeeringGroupPeerCreateResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # The created PeeringGroupPeer.
+    attr_accessor :peering_group_peer
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      meta: nil,
+      peering_group_peer: nil,
+      rate_limit: nil
+    )
+      @meta = meta == nil ? nil : meta
+      @peering_group_peer = peering_group_peer == nil ? nil : peering_group_peer
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # PeeringGroupPeerDeleteResponse returns information about a PeeringGroupPeer that was deleted.
+  class PeeringGroupPeerDeleteResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      meta: nil,
+      rate_limit: nil
+    )
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # PeeringGroupPeerGetResponse returns a requested PeeringGroupPeer.
+  class PeeringGroupPeerGetResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # The requested PeeringGroupPeer.
+    attr_accessor :peering_group_peer
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      meta: nil,
+      peering_group_peer: nil,
+      rate_limit: nil
+    )
+      @meta = meta == nil ? nil : meta
+      @peering_group_peer = peering_group_peer == nil ? nil : peering_group_peer
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # PeeringGroupResource represents the attachment between a PeeringGroup and a Resource.
+  class PeeringGroupResource
+    # Peering Group ID to which the resource will be attached to.
+    attr_accessor :group_id
+    # Unique identifier of the Attachment.
+    attr_accessor :id
+    # Resource ID to be attached.
+    attr_accessor :resource_id
+
+    def initialize(
+      group_id: nil,
+      id: nil,
+      resource_id: nil
+    )
+      @group_id = group_id == nil ? "" : group_id
+      @id = id == nil ? "" : id
+      @resource_id = resource_id == nil ? "" : resource_id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # PeeringGroupResourceCreateResponse reports how the attachment was created in the system.
+  class PeeringGroupResourceCreateResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # The created PeeringGroupResource.
+    attr_accessor :peering_group_resource
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      meta: nil,
+      peering_group_resource: nil,
+      rate_limit: nil
+    )
+      @meta = meta == nil ? nil : meta
+      @peering_group_resource = peering_group_resource == nil ? nil : peering_group_resource
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # PeeringGroupResourceDeleteResponse returns information about a PeeringGroupResource that was deleted.
+  class PeeringGroupResourceDeleteResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      meta: nil,
+      rate_limit: nil
+    )
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # PeeringGroupResourceGetResponse returns a requested PeeringGroupResource.
+  class PeeringGroupResourceGetResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # The requested PeeringGroupResource.
+    attr_accessor :peering_group_resource
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      meta: nil,
+      peering_group_resource: nil,
+      rate_limit: nil
+    )
+      @meta = meta == nil ? nil : meta
+      @peering_group_resource = peering_group_resource == nil ? nil : peering_group_resource
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class Postgres
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface

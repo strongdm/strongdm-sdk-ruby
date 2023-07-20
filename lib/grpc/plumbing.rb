@@ -36,6 +36,10 @@ require_relative "./drivers_pb"
 require_relative "./nodes_pb"
 require_relative "./nodes_history_pb"
 require_relative "./organization_history_pb"
+require_relative "./peering_group_nodes_pb"
+require_relative "./peering_group_peers_pb"
+require_relative "./peering_group_resources_pb"
+require_relative "./peering_groups_pb"
 require_relative "./queries_pb"
 require_relative "./remote_identities_pb"
 require_relative "./remote_identities_history_pb"
@@ -5733,6 +5737,604 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_organization_history_record_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_peering_group_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = PeeringGroup.new()
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain
+    end
+
+    def self.convert_peering_group_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::PeeringGroup.new()
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing
+    end
+    def self.convert_repeated_peering_group_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_peering_group_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_peering_group_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_peering_group_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_peering_group_create_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = PeeringGroupCreateResponse.new()
+      porcelain.meta = convert_create_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.peering_group = convert_peering_group_to_porcelain(plumbing.peering_group)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_peering_group_create_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::PeeringGroupCreateResponse.new()
+      plumbing.meta = convert_create_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.peering_group = convert_peering_group_to_plumbing(porcelain.peering_group)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_peering_group_create_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_peering_group_create_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_peering_group_create_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_peering_group_create_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_peering_group_delete_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = PeeringGroupDeleteResponse.new()
+      porcelain.meta = convert_delete_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_peering_group_delete_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::PeeringGroupDeleteResponse.new()
+      plumbing.meta = convert_delete_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_peering_group_delete_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_peering_group_delete_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_peering_group_delete_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_peering_group_delete_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_peering_group_get_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = PeeringGroupGetResponse.new()
+      porcelain.meta = convert_get_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.peering_group = convert_peering_group_to_porcelain(plumbing.peering_group)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_peering_group_get_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::PeeringGroupGetResponse.new()
+      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.peering_group = convert_peering_group_to_plumbing(porcelain.peering_group)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_peering_group_get_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_peering_group_get_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_peering_group_get_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_peering_group_get_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_peering_group_node_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = PeeringGroupNode.new()
+      porcelain.group_id = (plumbing.group_id)
+      porcelain.id = (plumbing.id)
+      porcelain.node_id = (plumbing.node_id)
+      porcelain
+    end
+
+    def self.convert_peering_group_node_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::PeeringGroupNode.new()
+      plumbing.group_id = (porcelain.group_id)
+      plumbing.id = (porcelain.id)
+      plumbing.node_id = (porcelain.node_id)
+      plumbing
+    end
+    def self.convert_repeated_peering_group_node_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_peering_group_node_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_peering_group_node_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_peering_group_node_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_peering_group_node_create_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = PeeringGroupNodeCreateResponse.new()
+      porcelain.meta = convert_create_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.peering_group_node = convert_peering_group_node_to_porcelain(plumbing.peering_group_node)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_peering_group_node_create_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::PeeringGroupNodeCreateResponse.new()
+      plumbing.meta = convert_create_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.peering_group_node = convert_peering_group_node_to_plumbing(porcelain.peering_group_node)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_peering_group_node_create_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_peering_group_node_create_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_peering_group_node_create_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_peering_group_node_create_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_peering_group_node_delete_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = PeeringGroupNodeDeleteResponse.new()
+      porcelain.meta = convert_delete_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_peering_group_node_delete_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::PeeringGroupNodeDeleteResponse.new()
+      plumbing.meta = convert_delete_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_peering_group_node_delete_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_peering_group_node_delete_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_peering_group_node_delete_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_peering_group_node_delete_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_peering_group_node_get_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = PeeringGroupNodeGetResponse.new()
+      porcelain.meta = convert_get_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.peering_group_node = convert_peering_group_node_to_porcelain(plumbing.peering_group_node)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_peering_group_node_get_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::PeeringGroupNodeGetResponse.new()
+      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.peering_group_node = convert_peering_group_node_to_plumbing(porcelain.peering_group_node)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_peering_group_node_get_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_peering_group_node_get_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_peering_group_node_get_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_peering_group_node_get_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_peering_group_peer_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = PeeringGroupPeer.new()
+      porcelain.group_id = (plumbing.group_id)
+      porcelain.id = (plumbing.id)
+      porcelain.peers_with_group_id = (plumbing.peers_with_group_id)
+      porcelain
+    end
+
+    def self.convert_peering_group_peer_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::PeeringGroupPeer.new()
+      plumbing.group_id = (porcelain.group_id)
+      plumbing.id = (porcelain.id)
+      plumbing.peers_with_group_id = (porcelain.peers_with_group_id)
+      plumbing
+    end
+    def self.convert_repeated_peering_group_peer_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_peering_group_peer_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_peering_group_peer_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_peering_group_peer_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_peering_group_peer_create_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = PeeringGroupPeerCreateResponse.new()
+      porcelain.meta = convert_create_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.peering_group_peer = convert_peering_group_peer_to_porcelain(plumbing.peering_group_peer)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_peering_group_peer_create_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::PeeringGroupPeerCreateResponse.new()
+      plumbing.meta = convert_create_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.peering_group_peer = convert_peering_group_peer_to_plumbing(porcelain.peering_group_peer)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_peering_group_peer_create_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_peering_group_peer_create_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_peering_group_peer_create_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_peering_group_peer_create_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_peering_group_peer_delete_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = PeeringGroupPeerDeleteResponse.new()
+      porcelain.meta = convert_delete_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_peering_group_peer_delete_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::PeeringGroupPeerDeleteResponse.new()
+      plumbing.meta = convert_delete_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_peering_group_peer_delete_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_peering_group_peer_delete_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_peering_group_peer_delete_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_peering_group_peer_delete_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_peering_group_peer_get_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = PeeringGroupPeerGetResponse.new()
+      porcelain.meta = convert_get_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.peering_group_peer = convert_peering_group_peer_to_porcelain(plumbing.peering_group_peer)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_peering_group_peer_get_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::PeeringGroupPeerGetResponse.new()
+      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.peering_group_peer = convert_peering_group_peer_to_plumbing(porcelain.peering_group_peer)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_peering_group_peer_get_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_peering_group_peer_get_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_peering_group_peer_get_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_peering_group_peer_get_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_peering_group_resource_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = PeeringGroupResource.new()
+      porcelain.group_id = (plumbing.group_id)
+      porcelain.id = (plumbing.id)
+      porcelain.resource_id = (plumbing.resource_id)
+      porcelain
+    end
+
+    def self.convert_peering_group_resource_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::PeeringGroupResource.new()
+      plumbing.group_id = (porcelain.group_id)
+      plumbing.id = (porcelain.id)
+      plumbing.resource_id = (porcelain.resource_id)
+      plumbing
+    end
+    def self.convert_repeated_peering_group_resource_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_peering_group_resource_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_peering_group_resource_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_peering_group_resource_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_peering_group_resource_create_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = PeeringGroupResourceCreateResponse.new()
+      porcelain.meta = convert_create_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.peering_group_resource = convert_peering_group_resource_to_porcelain(plumbing.peering_group_resource)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_peering_group_resource_create_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::PeeringGroupResourceCreateResponse.new()
+      plumbing.meta = convert_create_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.peering_group_resource = convert_peering_group_resource_to_plumbing(porcelain.peering_group_resource)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_peering_group_resource_create_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_peering_group_resource_create_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_peering_group_resource_create_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_peering_group_resource_create_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_peering_group_resource_delete_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = PeeringGroupResourceDeleteResponse.new()
+      porcelain.meta = convert_delete_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_peering_group_resource_delete_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::PeeringGroupResourceDeleteResponse.new()
+      plumbing.meta = convert_delete_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_peering_group_resource_delete_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_peering_group_resource_delete_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_peering_group_resource_delete_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_peering_group_resource_delete_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_peering_group_resource_get_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = PeeringGroupResourceGetResponse.new()
+      porcelain.meta = convert_get_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.peering_group_resource = convert_peering_group_resource_to_porcelain(plumbing.peering_group_resource)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_peering_group_resource_get_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::PeeringGroupResourceGetResponse.new()
+      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.peering_group_resource = convert_peering_group_resource_to_plumbing(porcelain.peering_group_resource)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_peering_group_resource_get_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_peering_group_resource_get_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_peering_group_resource_get_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_peering_group_resource_get_response_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
