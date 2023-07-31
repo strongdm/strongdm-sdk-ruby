@@ -728,6 +728,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :certificate_authority, :string, 2
       optional :endpoint, :string, 1
       optional :healthcheck_namespace, :string, 6
+      optional :port_override, :int32, 14
       optional :remote_identity_group_id, :string, 7
       optional :remote_identity_healthcheck_username, :string, 8
       optional :service_account_key, :string, 4
@@ -744,6 +745,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :certificate_authority, :string, 2
       optional :endpoint, :string, 1
       optional :healthcheck_namespace, :string, 6
+      optional :port_override, :int32, 12
       optional :service_account_key, :string, 4
     end
     add_message "v1.Greenplum" do

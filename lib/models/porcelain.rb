@@ -3848,6 +3848,8 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
+    # The local port used by clients to connect to this resource.
+    attr_accessor :port_override
     # The ID of the remote identity group to use for remote identity connections.
     attr_accessor :remote_identity_group_id
     # The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
@@ -3870,6 +3872,7 @@ module SDM
       healthy: nil,
       id: nil,
       name: nil,
+      port_override: nil,
       remote_identity_group_id: nil,
       remote_identity_healthcheck_username: nil,
       secret_store_id: nil,
@@ -3885,6 +3888,7 @@ module SDM
       @healthy = healthy == nil ? false : healthy
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
+      @port_override = port_override == nil ? 0 : port_override
       @remote_identity_group_id = remote_identity_group_id == nil ? "" : remote_identity_group_id
       @remote_identity_healthcheck_username = remote_identity_healthcheck_username == nil ? "" : remote_identity_healthcheck_username
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
@@ -3919,6 +3923,8 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
+    # The local port used by clients to connect to this resource.
+    attr_accessor :port_override
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # The service account key to authenticate with.
@@ -3937,6 +3943,7 @@ module SDM
       healthy: nil,
       id: nil,
       name: nil,
+      port_override: nil,
       secret_store_id: nil,
       service_account_key: nil,
       subdomain: nil,
@@ -3950,6 +3957,7 @@ module SDM
       @healthy = healthy == nil ? false : healthy
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
+      @port_override = port_override == nil ? 0 : port_override
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @service_account_key = service_account_key == nil ? "" : service_account_key
       @subdomain = subdomain == nil ? "" : subdomain
