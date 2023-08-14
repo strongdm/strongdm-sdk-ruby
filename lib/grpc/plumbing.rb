@@ -20,6 +20,9 @@ require "google/protobuf/well_known_types"
 require "json"
 require_relative "./options_pb"
 require_relative "./spec_pb"
+require_relative "./access_requests_pb"
+require_relative "./access_request_events_history_pb"
+require_relative "./access_requests_history_pb"
 require_relative "./account_attachments_pb"
 require_relative "./account_attachments_history_pb"
 require_relative "./account_grants_pb"
@@ -55,6 +58,11 @@ require_relative "./roles_history_pb"
 require_relative "./secret_store_types_pb"
 require_relative "./secret_stores_pb"
 require_relative "./secret_stores_history_pb"
+require_relative "./workflows_pb"
+require_relative "./workflow_approvers_history_pb"
+require_relative "./workflow_assignments_history_pb"
+require_relative "./workflow_roles_history_pb"
+require_relative "./workflows_history_pb"
 require_relative "../models/porcelain"
 require_relative "../errors/errors"
 require_relative "../constants"
@@ -681,6 +689,180 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_aws_store_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_access_request_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AccessRequest.new()
+      porcelain.account_id = (plumbing.account_id)
+      porcelain.grant_id = (plumbing.grant_id)
+      porcelain.id = (plumbing.id)
+      porcelain.reason = (plumbing.reason)
+      porcelain.resource_id = (plumbing.resource_id)
+      porcelain.start_from = convert_timestamp_to_porcelain(plumbing.start_from)
+      porcelain.status = (plumbing.status)
+      porcelain.status_at = convert_timestamp_to_porcelain(plumbing.status_at)
+      porcelain.valid_until = convert_timestamp_to_porcelain(plumbing.valid_until)
+      porcelain.workflow_id = (plumbing.workflow_id)
+      porcelain
+    end
+
+    def self.convert_access_request_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AccessRequest.new()
+      plumbing.account_id = (porcelain.account_id)
+      plumbing.grant_id = (porcelain.grant_id)
+      plumbing.id = (porcelain.id)
+      plumbing.reason = (porcelain.reason)
+      plumbing.resource_id = (porcelain.resource_id)
+      plumbing.start_from = convert_timestamp_to_plumbing(porcelain.start_from)
+      plumbing.status = (porcelain.status)
+      plumbing.status_at = convert_timestamp_to_plumbing(porcelain.status_at)
+      plumbing.valid_until = convert_timestamp_to_plumbing(porcelain.valid_until)
+      plumbing.workflow_id = (porcelain.workflow_id)
+      plumbing
+    end
+    def self.convert_repeated_access_request_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_access_request_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_access_request_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_access_request_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_access_request_event_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AccessRequestEvent.new()
+      porcelain.actor_id = (plumbing.actor_id)
+      porcelain.id = (plumbing.id)
+      porcelain.metadata = (plumbing.metadata)
+      porcelain.request_id = (plumbing.request_id)
+      porcelain.type = (plumbing.type)
+      porcelain
+    end
+
+    def self.convert_access_request_event_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AccessRequestEvent.new()
+      plumbing.actor_id = (porcelain.actor_id)
+      plumbing.id = (porcelain.id)
+      plumbing.metadata = (porcelain.metadata)
+      plumbing.request_id = (porcelain.request_id)
+      plumbing.type = (porcelain.type)
+      plumbing
+    end
+    def self.convert_repeated_access_request_event_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_access_request_event_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_access_request_event_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_access_request_event_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_access_request_event_history_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AccessRequestEventHistory.new()
+      porcelain.access_request_event = convert_access_request_event_to_porcelain(plumbing.access_request_event)
+      porcelain.activity_id = (plumbing.activity_id)
+      porcelain.deleted_at = convert_timestamp_to_porcelain(plumbing.deleted_at)
+      porcelain.timestamp = convert_timestamp_to_porcelain(plumbing.timestamp)
+      porcelain
+    end
+
+    def self.convert_access_request_event_history_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AccessRequestEventHistory.new()
+      plumbing.access_request_event = convert_access_request_event_to_plumbing(porcelain.access_request_event)
+      plumbing.activity_id = (porcelain.activity_id)
+      plumbing.deleted_at = convert_timestamp_to_plumbing(porcelain.deleted_at)
+      plumbing.timestamp = convert_timestamp_to_plumbing(porcelain.timestamp)
+      plumbing
+    end
+    def self.convert_repeated_access_request_event_history_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_access_request_event_history_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_access_request_event_history_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_access_request_event_history_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_access_request_history_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AccessRequestHistory.new()
+      porcelain.access_request = convert_access_request_to_porcelain(plumbing.access_request)
+      porcelain.activity_id = (plumbing.activity_id)
+      porcelain.deleted_at = convert_timestamp_to_porcelain(plumbing.deleted_at)
+      porcelain.timestamp = convert_timestamp_to_porcelain(plumbing.timestamp)
+      porcelain
+    end
+
+    def self.convert_access_request_history_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AccessRequestHistory.new()
+      plumbing.access_request = convert_access_request_to_plumbing(porcelain.access_request)
+      plumbing.activity_id = (porcelain.activity_id)
+      plumbing.deleted_at = convert_timestamp_to_plumbing(porcelain.deleted_at)
+      plumbing.timestamp = convert_timestamp_to_plumbing(porcelain.timestamp)
+      plumbing
+    end
+    def self.convert_repeated_access_request_history_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_access_request_history_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_access_request_history_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_access_request_history_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -9795,6 +9977,320 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_vault_token_store_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_workflow_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = Workflow.new()
+      porcelain.access_rules = convert_access_rules_to_porcelain(plumbing.access_rules)
+      porcelain.auto_grant = (plumbing.auto_grant)
+      porcelain.description = (plumbing.description)
+      porcelain.enabled = (plumbing.enabled)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.weight = (plumbing.weight)
+      porcelain
+    end
+
+    def self.convert_workflow_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::Workflow.new()
+      plumbing.access_rules = convert_access_rules_to_plumbing(porcelain.access_rules)
+      plumbing.auto_grant = (porcelain.auto_grant)
+      plumbing.description = (porcelain.description)
+      plumbing.enabled = (porcelain.enabled)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.weight = (porcelain.weight)
+      plumbing
+    end
+    def self.convert_repeated_workflow_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_workflow_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_workflow_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_workflow_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_workflow_approver_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = WorkflowApprover.new()
+      porcelain.approver_id = (plumbing.approver_id)
+      porcelain.workflow_id = (plumbing.workflow_id)
+      porcelain
+    end
+
+    def self.convert_workflow_approver_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::WorkflowApprover.new()
+      plumbing.approver_id = (porcelain.approver_id)
+      plumbing.workflow_id = (porcelain.workflow_id)
+      plumbing
+    end
+    def self.convert_repeated_workflow_approver_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_workflow_approver_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_workflow_approver_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_workflow_approver_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_workflow_approver_history_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = WorkflowApproverHistory.new()
+      porcelain.activity_id = (plumbing.activity_id)
+      porcelain.deleted_at = convert_timestamp_to_porcelain(plumbing.deleted_at)
+      porcelain.timestamp = convert_timestamp_to_porcelain(plumbing.timestamp)
+      porcelain.workflow_approver = convert_workflow_approver_to_porcelain(plumbing.workflow_approver)
+      porcelain
+    end
+
+    def self.convert_workflow_approver_history_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::WorkflowApproverHistory.new()
+      plumbing.activity_id = (porcelain.activity_id)
+      plumbing.deleted_at = convert_timestamp_to_plumbing(porcelain.deleted_at)
+      plumbing.timestamp = convert_timestamp_to_plumbing(porcelain.timestamp)
+      plumbing.workflow_approver = convert_workflow_approver_to_plumbing(porcelain.workflow_approver)
+      plumbing
+    end
+    def self.convert_repeated_workflow_approver_history_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_workflow_approver_history_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_workflow_approver_history_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_workflow_approver_history_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_workflow_assignment_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = WorkflowAssignment.new()
+      porcelain.resource_id = (plumbing.resource_id)
+      porcelain.workflow_id = (plumbing.workflow_id)
+      porcelain
+    end
+
+    def self.convert_workflow_assignment_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::WorkflowAssignment.new()
+      plumbing.resource_id = (porcelain.resource_id)
+      plumbing.workflow_id = (porcelain.workflow_id)
+      plumbing
+    end
+    def self.convert_repeated_workflow_assignment_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_workflow_assignment_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_workflow_assignment_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_workflow_assignment_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_workflow_assignment_history_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = WorkflowAssignmentHistory.new()
+      porcelain.activity_id = (plumbing.activity_id)
+      porcelain.deleted_at = convert_timestamp_to_porcelain(plumbing.deleted_at)
+      porcelain.timestamp = convert_timestamp_to_porcelain(plumbing.timestamp)
+      porcelain.workflow_assignment = convert_workflow_assignment_to_porcelain(plumbing.workflow_assignment)
+      porcelain
+    end
+
+    def self.convert_workflow_assignment_history_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::WorkflowAssignmentHistory.new()
+      plumbing.activity_id = (porcelain.activity_id)
+      plumbing.deleted_at = convert_timestamp_to_plumbing(porcelain.deleted_at)
+      plumbing.timestamp = convert_timestamp_to_plumbing(porcelain.timestamp)
+      plumbing.workflow_assignment = convert_workflow_assignment_to_plumbing(porcelain.workflow_assignment)
+      plumbing
+    end
+    def self.convert_repeated_workflow_assignment_history_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_workflow_assignment_history_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_workflow_assignment_history_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_workflow_assignment_history_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_workflow_history_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = WorkflowHistory.new()
+      porcelain.activity_id = (plumbing.activity_id)
+      porcelain.deleted_at = convert_timestamp_to_porcelain(plumbing.deleted_at)
+      porcelain.timestamp = convert_timestamp_to_porcelain(plumbing.timestamp)
+      porcelain.workflow = convert_workflow_to_porcelain(plumbing.workflow)
+      porcelain
+    end
+
+    def self.convert_workflow_history_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::WorkflowHistory.new()
+      plumbing.activity_id = (porcelain.activity_id)
+      plumbing.deleted_at = convert_timestamp_to_plumbing(porcelain.deleted_at)
+      plumbing.timestamp = convert_timestamp_to_plumbing(porcelain.timestamp)
+      plumbing.workflow = convert_workflow_to_plumbing(porcelain.workflow)
+      plumbing
+    end
+    def self.convert_repeated_workflow_history_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_workflow_history_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_workflow_history_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_workflow_history_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_workflow_role_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = WorkflowRole.new()
+      porcelain.role_id = (plumbing.role_id)
+      porcelain.workflow_id = (plumbing.workflow_id)
+      porcelain
+    end
+
+    def self.convert_workflow_role_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::WorkflowRole.new()
+      plumbing.role_id = (porcelain.role_id)
+      plumbing.workflow_id = (porcelain.workflow_id)
+      plumbing
+    end
+    def self.convert_repeated_workflow_role_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_workflow_role_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_workflow_role_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_workflow_role_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_workflow_role_history_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = WorkflowRoleHistory.new()
+      porcelain.activity_id = (plumbing.activity_id)
+      porcelain.deleted_at = convert_timestamp_to_porcelain(plumbing.deleted_at)
+      porcelain.timestamp = convert_timestamp_to_porcelain(plumbing.timestamp)
+      porcelain.workflow_role = convert_workflow_role_to_porcelain(plumbing.workflow_role)
+      porcelain
+    end
+
+    def self.convert_workflow_role_history_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::WorkflowRoleHistory.new()
+      plumbing.activity_id = (porcelain.activity_id)
+      plumbing.deleted_at = convert_timestamp_to_plumbing(porcelain.deleted_at)
+      plumbing.timestamp = convert_timestamp_to_plumbing(porcelain.timestamp)
+      plumbing.workflow_role = convert_workflow_role_to_plumbing(porcelain.workflow_role)
+      plumbing
+    end
+    def self.convert_repeated_workflow_role_history_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_workflow_role_history_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_workflow_role_history_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_workflow_role_history_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items

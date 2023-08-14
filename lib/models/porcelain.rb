@@ -653,6 +653,170 @@ module SDM
     end
   end
 
+  # AccessRequests are requests for access to a resource that may match a Workflow.
+  class AccessRequest
+    # The account that initiated the request.
+    attr_accessor :account_id
+    # The account grant created, if it exists.
+    attr_accessor :grant_id
+    # The access request id.
+    attr_accessor :id
+    # The reason the access was requested.
+    attr_accessor :reason
+    # The resource id.
+    attr_accessor :resource_id
+    # The timestamp when the requested access will be granted.
+    # If this field is not specified it will default to the current time.
+    attr_accessor :start_from
+    # The status of the access request.
+    attr_accessor :status
+    # The timestamp when the status changed.
+    attr_accessor :status_at
+    # The timestamp when the requested access will expire.
+    attr_accessor :valid_until
+    # The workflow the request bound to.
+    attr_accessor :workflow_id
+
+    def initialize(
+      account_id: nil,
+      grant_id: nil,
+      id: nil,
+      reason: nil,
+      resource_id: nil,
+      start_from: nil,
+      status: nil,
+      status_at: nil,
+      valid_until: nil,
+      workflow_id: nil
+    )
+      @account_id = account_id == nil ? "" : account_id
+      @grant_id = grant_id == nil ? "" : grant_id
+      @id = id == nil ? "" : id
+      @reason = reason == nil ? "" : reason
+      @resource_id = resource_id == nil ? "" : resource_id
+      @start_from = start_from == nil ? nil : start_from
+      @status = status == nil ? "" : status
+      @status_at = status_at == nil ? nil : status_at
+      @valid_until = valid_until == nil ? nil : valid_until
+      @workflow_id = workflow_id == nil ? "" : workflow_id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # AccessRequestEvents hold information about events related to an access
+  # request such as creation, approval and denial.
+  class AccessRequestEvent
+    # The account responsible for the event.
+    attr_accessor :actor_id
+    # The access request event id.
+    attr_accessor :id
+    # The metadata about the event
+    attr_accessor :metadata
+    # The request that the event is bound to.
+    attr_accessor :request_id
+    # The type of event.
+    attr_accessor :type
+
+    def initialize(
+      actor_id: nil,
+      id: nil,
+      metadata: nil,
+      request_id: nil,
+      type: nil
+    )
+      @actor_id = actor_id == nil ? "" : actor_id
+      @id = id == nil ? "" : id
+      @metadata = metadata == nil ? "" : metadata
+      @request_id = request_id == nil ? "" : request_id
+      @type = type == nil ? "" : type
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # AccessRequestEventHistory records the state of a AccessRequest at a given point in time,
+  # where every change (create, update and delete) to a AccessRequest produces an
+  # AccessRequestEventHistory record.
+  class AccessRequestEventHistory
+    # The complete AccessRequestEvent state at this time.
+    attr_accessor :access_request_event
+    # The unique identifier of the Activity that produced this change to the AccessRequest.
+    # May be empty for some system-initiated updates.
+    attr_accessor :activity_id
+    # If this Workflow was deleted, the time it was deleted.
+    attr_accessor :deleted_at
+    # The time at which the AccessRequest state was recorded.
+    attr_accessor :timestamp
+
+    def initialize(
+      access_request_event: nil,
+      activity_id: nil,
+      deleted_at: nil,
+      timestamp: nil
+    )
+      @access_request_event = access_request_event == nil ? nil : access_request_event
+      @activity_id = activity_id == nil ? "" : activity_id
+      @deleted_at = deleted_at == nil ? nil : deleted_at
+      @timestamp = timestamp == nil ? nil : timestamp
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # AccessRequestHistory records the state of a AccessRequest at a given point in time,
+  # where every change (create, update and delete) to a AccessRequest produces an
+  # AccessRequestHistory record.
+  class AccessRequestHistory
+    # The complete AccessRequest state at this time.
+    attr_accessor :access_request
+    # The unique identifier of the Activity that produced this change to the AccessRequest.
+    # May be empty for some system-initiated updates.
+    attr_accessor :activity_id
+    # If this Workflow was deleted, the time it was deleted.
+    attr_accessor :deleted_at
+    # The time at which the AccessRequest state was recorded.
+    attr_accessor :timestamp
+
+    def initialize(
+      access_request: nil,
+      activity_id: nil,
+      deleted_at: nil,
+      timestamp: nil
+    )
+      @access_request = access_request == nil ? nil : access_request
+      @activity_id = activity_id == nil ? "" : activity_id
+      @deleted_at = deleted_at == nil ? nil : deleted_at
+      @timestamp = timestamp == nil ? nil : timestamp
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   # AccountAttachments assign an account to a role.
   class AccountAttachment
     # The id of the account of this AccountAttachment.
@@ -9321,6 +9485,266 @@ module SDM
       @namespace = namespace == nil ? "" : namespace
       @server_address = server_address == nil ? "" : server_address
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # Workflows are the collection of rules that define the resources to which access can be requested,
+  # the users that can request that access, and the mechanism for approving those requests which can either
+  # but automatic approval or a set of users authorized to approve the requests.
+  class Workflow
+    # AccessRules is a list of access rules defining the resources this Workflow provides access to.
+    attr_accessor :access_rules
+    # Optional auto grant setting to automatically approve requests or not, defaults to false.
+    attr_accessor :auto_grant
+    # Optional description of the Workflow.
+    attr_accessor :description
+    # Optional enabled state for workflow. This setting may be overridden by the system if
+    # the workflow doesn't meet the requirements to be enabled or if other conditions prevent
+    # enabling the workflow.
+    attr_accessor :enabled
+    # Unique identifier of the Workflow.
+    attr_accessor :id
+    # Unique human-readable name of the Workflow.
+    attr_accessor :name
+    # Optional weight for workflow to specify it's priority in matching a request.
+    attr_accessor :weight
+
+    def initialize(
+      access_rules: nil,
+      auto_grant: nil,
+      description: nil,
+      enabled: nil,
+      id: nil,
+      name: nil,
+      weight: nil
+    )
+      @access_rules = access_rules == nil ? SDM::_porcelain_zero_value_access_rules() : access_rules
+      @auto_grant = auto_grant == nil ? false : auto_grant
+      @description = description == nil ? "" : description
+      @enabled = enabled == nil ? false : enabled
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @weight = weight == nil ? 0 : weight
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # WorkflowApprover is an account with the ability to approve requests bound to a workflow.
+  class WorkflowApprover
+    # The approver id.
+    attr_accessor :approver_id
+    # The workflow id.
+    attr_accessor :workflow_id
+
+    def initialize(
+      approver_id: nil,
+      workflow_id: nil
+    )
+      @approver_id = approver_id == nil ? "" : approver_id
+      @workflow_id = workflow_id == nil ? "" : workflow_id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # WorkflowApproverHistory records the state of a WorkflowApprover at a given point in time,
+  # where every change (create, update and delete) to a WorkflowApprover produces an
+  # WorkflowApproverHistory record.
+  class WorkflowApproverHistory
+    # The unique identifier of the Activity that produced this change to the Workflow.
+    # May be empty for some system-initiated updates.
+    attr_accessor :activity_id
+    # If this Workflow was deleted, the time it was deleted.
+    attr_accessor :deleted_at
+    # The time at which the Workflow state was recorded.
+    attr_accessor :timestamp
+    # The complete WorkflowApprover state at this time.
+    attr_accessor :workflow_approver
+
+    def initialize(
+      activity_id: nil,
+      deleted_at: nil,
+      timestamp: nil,
+      workflow_approver: nil
+    )
+      @activity_id = activity_id == nil ? "" : activity_id
+      @deleted_at = deleted_at == nil ? nil : deleted_at
+      @timestamp = timestamp == nil ? nil : timestamp
+      @workflow_approver = workflow_approver == nil ? nil : workflow_approver
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # WorkflowAssignment links a Resource to a Workflow.
+  class WorkflowAssignment
+    # The resource id.
+    attr_accessor :resource_id
+    # The workflow id.
+    attr_accessor :workflow_id
+
+    def initialize(
+      resource_id: nil,
+      workflow_id: nil
+    )
+      @resource_id = resource_id == nil ? "" : resource_id
+      @workflow_id = workflow_id == nil ? "" : workflow_id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # WorkflowAssignmentHistory records the state of a WorkflowAssignment at a given point in time,
+  # where every change (create, update and delete) to a WorkflowAssignment produces an
+  # WorkflowAssignmentHistory record.
+  class WorkflowAssignmentHistory
+    # The unique identifier of the Activity that produced this change to the Workflow.
+    # May be empty for some system-initiated updates.
+    attr_accessor :activity_id
+    # If this Workflow was deleted, the time it was deleted.
+    attr_accessor :deleted_at
+    # The time at which the Workflow state was recorded.
+    attr_accessor :timestamp
+    # The complete WorkflowAssignment state at this time.
+    attr_accessor :workflow_assignment
+
+    def initialize(
+      activity_id: nil,
+      deleted_at: nil,
+      timestamp: nil,
+      workflow_assignment: nil
+    )
+      @activity_id = activity_id == nil ? "" : activity_id
+      @deleted_at = deleted_at == nil ? nil : deleted_at
+      @timestamp = timestamp == nil ? nil : timestamp
+      @workflow_assignment = workflow_assignment == nil ? nil : workflow_assignment
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # WorkflowHistory records the state of a Workflow at a given point in time,
+  # where every change (create, update and delete) to a Workflow produces an
+  # WorkflowHistory record.
+  class WorkflowHistory
+    # The unique identifier of the Activity that produced this change to the Workflow.
+    # May be empty for some system-initiated updates.
+    attr_accessor :activity_id
+    # If this Workflow was deleted, the time it was deleted.
+    attr_accessor :deleted_at
+    # The time at which the Workflow state was recorded.
+    attr_accessor :timestamp
+    # The complete Workflow state at this time.
+    attr_accessor :workflow
+
+    def initialize(
+      activity_id: nil,
+      deleted_at: nil,
+      timestamp: nil,
+      workflow: nil
+    )
+      @activity_id = activity_id == nil ? "" : activity_id
+      @deleted_at = deleted_at == nil ? nil : deleted_at
+      @timestamp = timestamp == nil ? nil : timestamp
+      @workflow = workflow == nil ? nil : workflow
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # WorkflowRole links a Role to a Workflow.
+  class WorkflowRole
+    # The role id.
+    attr_accessor :role_id
+    # The workflow id.
+    attr_accessor :workflow_id
+
+    def initialize(
+      role_id: nil,
+      workflow_id: nil
+    )
+      @role_id = role_id == nil ? "" : role_id
+      @workflow_id = workflow_id == nil ? "" : workflow_id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # WorkflowRolesHistory records the state of a Workflow at a given point in time,
+  # where every change (create, update and delete) to a WorkflowRole produces a
+  # WorkflowRoleHistory record.
+  class WorkflowRoleHistory
+    # The unique identifier of the Activity that produced this change to the Workflow.
+    # May be empty for some system-initiated updates.
+    attr_accessor :activity_id
+    # If this WorkflowRole was deleted, the time it was deleted.
+    attr_accessor :deleted_at
+    # The time at which the Workflow state was recorded.
+    attr_accessor :timestamp
+    # The complete WorkflowRole state at this time.
+    attr_accessor :workflow_role
+
+    def initialize(
+      activity_id: nil,
+      deleted_at: nil,
+      timestamp: nil,
+      workflow_role: nil
+    )
+      @activity_id = activity_id == nil ? "" : activity_id
+      @deleted_at = deleted_at == nil ? nil : deleted_at
+      @timestamp = timestamp == nil ? nil : timestamp
+      @workflow_role = workflow_role == nil ? nil : workflow_role
     end
 
     def to_json(options = {})

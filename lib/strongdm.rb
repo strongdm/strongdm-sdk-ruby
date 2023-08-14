@@ -29,7 +29,7 @@ module SDM #:nodoc:
     DEFAULT_BASE_RETRY_DELAY = 0.0030 # 30 ms
     DEFAULT_MAX_RETRY_DELAY = 300 # 300 seconds
     API_VERSION = "2021-08-23"
-    USER_AGENT = "strongdm-sdk-ruby/4.3.0"
+    USER_AGENT = "strongdm-sdk-ruby/4.4.0"
     private_constant :DEFAULT_MAX_RETRIES, :DEFAULT_BASE_RETRY_DELAY, :DEFAULT_MAX_RETRY_DELAY, :API_VERSION, :USER_AGENT
 
     # Creates a new strongDM API client.
@@ -54,6 +54,9 @@ module SDM #:nodoc:
       rescue => exception
         raise Plumbing::convert_error_to_porcelain(exception)
       end
+      @access_requests = AccessRequests.new(@channel, self)
+      @access_request_events_history = AccessRequestEventsHistory.new(@channel, self)
+      @access_requests_history = AccessRequestsHistory.new(@channel, self)
       @account_attachments = AccountAttachments.new(@channel, self)
       @account_attachments_history = AccountAttachmentsHistory.new(@channel, self)
       @account_grants = AccountGrants.new(@channel, self)
@@ -86,6 +89,11 @@ module SDM #:nodoc:
       @roles_history = RolesHistory.new(@channel, self)
       @secret_stores = SecretStores.new(@channel, self)
       @secret_stores_history = SecretStoresHistory.new(@channel, self)
+      @workflows = Workflows.new(@channel, self)
+      @workflow_approvers_history = WorkflowApproversHistory.new(@channel, self)
+      @workflow_assignments_history = WorkflowAssignmentsHistory.new(@channel, self)
+      @workflow_roles_history = WorkflowRolesHistory.new(@channel, self)
+      @workflows_history = WorkflowsHistory.new(@channel, self)
       @_test_options = Hash.new
     end
 
@@ -176,6 +184,18 @@ module SDM #:nodoc:
     attr_reader :api_access_key
     # Optional timestamp at which to provide historical data
     attr_reader :snapshot_time
+    # AccessRequests are requests for access to a resource that may match a Workflow.
+    #
+    # See {AccessRequests}.
+    attr_reader :access_requests
+    # AccessRequestEventsHistory provides records of all changes to the state of an AccessRequest.
+    #
+    # See {AccessRequestEventsHistory}.
+    attr_reader :access_request_events_history
+    # AccessRequestsHistory provides records of all changes to the state of an AccessRequest.
+    #
+    # See {AccessRequestsHistory}.
+    attr_reader :access_requests_history
     # AccountAttachments assign an account to a role.
     #
     # See {AccountAttachments}.
@@ -320,6 +340,28 @@ module SDM #:nodoc:
     #
     # See {SecretStoresHistory}.
     attr_reader :secret_stores_history
+    # Workflows are the collection of rules that define the resources to which access can be requested,
+    # the users that can request that access, and the mechanism for approving those requests which can either
+    # but automatic approval or a set of users authorized to approve the requests.
+    #
+    # See {Workflows}.
+    attr_reader :workflows
+    # WorkflowApproversHistory provides records of all changes to the state of a WorkflowApprover.
+    #
+    # See {WorkflowApproversHistory}.
+    attr_reader :workflow_approvers_history
+    # WorkflowAssignmentsHistory provides records of all changes to the state of a WorkflowAssignment.
+    #
+    # See {WorkflowAssignmentsHistory}.
+    attr_reader :workflow_assignments_history
+    # WorkflowRolesHistory provides records of all changes to the state of a WorkflowRole
+    #
+    # See {WorkflowRolesHistory}.
+    attr_reader :workflow_roles_history
+    # WorkflowsHistory provides records of all changes to the state of a Workflow.
+    #
+    # See {WorkflowsHistory}.
+    attr_reader :workflows_history
     # @private
     attr_reader :_test_options
 
@@ -330,6 +372,9 @@ module SDM #:nodoc:
     private
 
     def initialize_copy(other)
+      @access_requests = AccessRequests.new(@channel, self)
+      @access_request_events_history = AccessRequestEventsHistory.new(@channel, self)
+      @access_requests_history = AccessRequestsHistory.new(@channel, self)
       @account_attachments = AccountAttachments.new(@channel, self)
       @account_attachments_history = AccountAttachmentsHistory.new(@channel, self)
       @account_grants = AccountGrants.new(@channel, self)
@@ -362,12 +407,18 @@ module SDM #:nodoc:
       @roles_history = RolesHistory.new(@channel, self)
       @secret_stores = SecretStores.new(@channel, self)
       @secret_stores_history = SecretStoresHistory.new(@channel, self)
+      @workflows = Workflows.new(@channel, self)
+      @workflow_approvers_history = WorkflowApproversHistory.new(@channel, self)
+      @workflow_assignments_history = WorkflowAssignmentsHistory.new(@channel, self)
+      @workflow_roles_history = WorkflowRolesHistory.new(@channel, self)
+      @workflows_history = WorkflowsHistory.new(@channel, self)
     end
   end
 
   # SnapshotClient exposes methods to query historical records at a provided timestamp.
   class SnapshotClient
     def initialize(client)
+      @access_requests = SnapshotAccessRequests.new(client.access_requests)
       @account_attachments = SnapshotAccountAttachments.new(client.account_attachments)
       @account_grants = SnapshotAccountGrants.new(client.account_grants)
       @account_permissions = SnapshotAccountPermissions.new(client.account_permissions)
@@ -384,8 +435,13 @@ module SDM #:nodoc:
       @role_resources = SnapshotRoleResources.new(client.role_resources)
       @roles = SnapshotRoles.new(client.roles)
       @secret_stores = SnapshotSecretStores.new(client.secret_stores)
+      @workflows = SnapshotWorkflows.new(client.workflows)
     end
 
+    # AccessRequests are requests for access to a resource that may match a Workflow.
+    #
+    # See {SnapshotAccessRequests}.
+    attr_reader :access_requests
     # AccountAttachments assign an account to a role.
     #
     # See {SnapshotAccountAttachments}.
@@ -461,5 +517,11 @@ module SDM #:nodoc:
     #
     # See {SnapshotSecretStores}.
     attr_reader :secret_stores
+    # Workflows are the collection of rules that define the resources to which access can be requested,
+    # the users that can request that access, and the mechanism for approving those requests which can either
+    # but automatic approval or a set of users authorized to approve the requests.
+    #
+    # See {SnapshotWorkflows}.
+    attr_reader :workflows
   end
 end
