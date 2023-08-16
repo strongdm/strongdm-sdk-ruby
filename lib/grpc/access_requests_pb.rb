@@ -29,6 +29,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.AccessRequestListResponse" do
       optional :meta, :message, 1, "v1.ListResponseMetadata"
       repeated :access_requests, :message, 2, "v1.AccessRequest"
+      optional :rate_limit, :message, 3, "v1.RateLimitMetadata"
     end
     add_message "v1.AccessRequest" do
       optional :id, :string, 1

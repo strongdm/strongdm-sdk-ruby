@@ -867,6 +867,80 @@ module SDM
       end
       items
     end
+    def self.convert_access_request_list_request_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AccessRequestListRequest.new()
+      porcelain.filter = (plumbing.filter)
+      porcelain.meta = convert_list_request_metadata_to_porcelain(plumbing.meta)
+      porcelain
+    end
+
+    def self.convert_access_request_list_request_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AccessRequestListRequest.new()
+      plumbing.filter = (porcelain.filter)
+      plumbing.meta = convert_list_request_metadata_to_plumbing(porcelain.meta)
+      plumbing
+    end
+    def self.convert_repeated_access_request_list_request_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_access_request_list_request_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_access_request_list_request_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_access_request_list_request_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_access_request_list_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AccessRequestListResponse.new()
+      porcelain.access_requests = convert_repeated_access_request_to_porcelain(plumbing.access_requests)
+      porcelain.meta = convert_list_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_access_request_list_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AccessRequestListResponse.new()
+      plumbing.access_requests += convert_repeated_access_request_to_plumbing(porcelain.access_requests)
+      plumbing.meta = convert_list_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_access_request_list_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_access_request_list_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_access_request_list_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_access_request_list_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_account_to_plumbing(porcelain)
       if porcelain == nil
         return nil
@@ -10215,6 +10289,80 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_workflow_history_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_workflow_list_request_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = WorkflowListRequest.new()
+      porcelain.filter = (plumbing.filter)
+      porcelain.meta = convert_list_request_metadata_to_porcelain(plumbing.meta)
+      porcelain
+    end
+
+    def self.convert_workflow_list_request_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::WorkflowListRequest.new()
+      plumbing.filter = (porcelain.filter)
+      plumbing.meta = convert_list_request_metadata_to_plumbing(porcelain.meta)
+      plumbing
+    end
+    def self.convert_repeated_workflow_list_request_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_workflow_list_request_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_workflow_list_request_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_workflow_list_request_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_workflow_list_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = WorkflowListResponse.new()
+      porcelain.meta = convert_list_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain.workflows = convert_repeated_workflow_to_porcelain(plumbing.workflows)
+      porcelain
+    end
+
+    def self.convert_workflow_list_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::WorkflowListResponse.new()
+      plumbing.meta = convert_list_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing.workflows += convert_repeated_workflow_to_plumbing(porcelain.workflows)
+      plumbing
+    end
+    def self.convert_repeated_workflow_list_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_workflow_list_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_workflow_list_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_workflow_list_response_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items

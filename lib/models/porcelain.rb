@@ -817,6 +817,47 @@ module SDM
     end
   end
 
+  # AccessRequestListRequest specifies criteria for retrieving a list of
+  # AccessRequest records
+  class AccessRequestListRequest
+    # A human-readable filter query string.
+    attr_accessor :filter
+
+    def initialize(
+      filter: nil
+    )
+      @filter = filter == nil ? "" : filter
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # AccessRequestListResponse reports how the Workflow was created in the system.
+  class AccessRequestListResponse
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      rate_limit: nil
+    )
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   # AccountAttachments assign an account to a role.
   class AccountAttachment
     # The id of the account of this AccountAttachment.
@@ -9686,6 +9727,48 @@ module SDM
       @deleted_at = deleted_at == nil ? nil : deleted_at
       @timestamp = timestamp == nil ? nil : timestamp
       @workflow = workflow == nil ? nil : workflow
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # WorkflowListRequest specifies criteria for retrieving a list of
+  # Workflow records
+  class WorkflowListRequest
+    # A human-readable filter query string.
+    attr_accessor :filter
+
+    def initialize(
+      filter: nil
+    )
+      @filter = filter == nil ? "" : filter
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # WorkflowListResponse returns a list of Workflow records that meet
+  # the criteria of a WorkflowListRequest.
+  class WorkflowListResponse
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      rate_limit: nil
+    )
+      @rate_limit = rate_limit == nil ? nil : rate_limit
     end
 
     def to_json(options = {})
