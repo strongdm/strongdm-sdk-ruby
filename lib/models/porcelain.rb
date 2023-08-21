@@ -2159,7 +2159,7 @@ module SDM
   class AuroraMysql
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    # The database for healthchecks. Does not affect client requests
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -2439,7 +2439,7 @@ module SDM
   class AzureMysql
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    # The database for healthchecks. Does not affect client requests.
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -2917,7 +2917,7 @@ module SDM
   class Clustrix
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    # The database for healthchecks. Does not affect client requests.
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -4847,7 +4847,7 @@ module SDM
     attr_accessor :client_certificate
     # The key to authenticate TLS connections with.
     attr_accessor :client_key
-    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    # The database for healthchecks. Does not affect client requests.
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -5027,7 +5027,7 @@ module SDM
   class Maria
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    # The database for healthchecks. Does not affect client requests.
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -5165,7 +5165,7 @@ module SDM
   class Memsql
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    # The database for healthchecks. Does not affect client requests.
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -5638,7 +5638,7 @@ module SDM
   class Mysql
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    # The database for healthchecks. Does not affect client requests.
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -8183,7 +8183,7 @@ module SDM
   class SQLServer
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    # The database for healthchecks, and used for clients if Override Default Database is true.
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -8264,7 +8264,7 @@ module SDM
     attr_accessor :bind_interface
     # The Azure AD application (client) ID with which to authenticate.
     attr_accessor :client_id
-    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    # The database for healthchecks, and used for clients if Override Default Database is true.
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -8345,7 +8345,7 @@ module SDM
   class SQLServerKerberosAD
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    # The database for healthchecks, and used for clients if Override Default Database is true.
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -8850,7 +8850,7 @@ module SDM
   class SingleStore
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    # The database for healthchecks. Does not affect client requests.
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
