@@ -8181,6 +8181,9 @@ module SDM
   end
 
   class SQLServer
+    # Whether to allow deprecated encryption protocols to be used for this resource. For example,
+    # TLS 1.0.
+    attr_accessor :allow_deprecated_encryption
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # The database for healthchecks, and used for clients if Override Default Database is true.
@@ -8215,6 +8218,7 @@ module SDM
     attr_accessor :username
 
     def initialize(
+      allow_deprecated_encryption: nil,
       bind_interface: nil,
       database: nil,
       egress_filter: nil,
@@ -8232,6 +8236,7 @@ module SDM
       tags: nil,
       username: nil
     )
+      @allow_deprecated_encryption = allow_deprecated_encryption == nil ? false : allow_deprecated_encryption
       @bind_interface = bind_interface == nil ? "" : bind_interface
       @database = database == nil ? "" : database
       @egress_filter = egress_filter == nil ? "" : egress_filter
@@ -8260,6 +8265,9 @@ module SDM
   end
 
   class SQLServerAzureAD
+    # Whether to allow deprecated encryption protocols to be used for this resource. For example,
+    # TLS 1.0.
+    attr_accessor :allow_deprecated_encryption
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # The Azure AD application (client) ID with which to authenticate.
@@ -8296,6 +8304,7 @@ module SDM
     attr_accessor :tenant_id
 
     def initialize(
+      allow_deprecated_encryption: nil,
       bind_interface: nil,
       client_id: nil,
       database: nil,
@@ -8314,6 +8323,7 @@ module SDM
       tags: nil,
       tenant_id: nil
     )
+      @allow_deprecated_encryption = allow_deprecated_encryption == nil ? false : allow_deprecated_encryption
       @bind_interface = bind_interface == nil ? "" : bind_interface
       @client_id = client_id == nil ? "" : client_id
       @database = database == nil ? "" : database
@@ -8343,6 +8353,9 @@ module SDM
   end
 
   class SQLServerKerberosAD
+    # Whether to allow deprecated encryption protocols to be used for this resource. For example,
+    # TLS 1.0.
+    attr_accessor :allow_deprecated_encryption
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # The database for healthchecks, and used for clients if Override Default Database is true.
@@ -8383,6 +8396,7 @@ module SDM
     attr_accessor :username
 
     def initialize(
+      allow_deprecated_encryption: nil,
       bind_interface: nil,
       database: nil,
       egress_filter: nil,
@@ -8403,6 +8417,7 @@ module SDM
       tags: nil,
       username: nil
     )
+      @allow_deprecated_encryption = allow_deprecated_encryption == nil ? false : allow_deprecated_encryption
       @bind_interface = bind_interface == nil ? "" : bind_interface
       @database = database == nil ? "" : database
       @egress_filter = egress_filter == nil ? "" : egress_filter

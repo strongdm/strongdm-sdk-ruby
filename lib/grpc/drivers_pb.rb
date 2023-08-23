@@ -1266,6 +1266,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
       optional :subdomain, :string, 32775
+      optional :allow_deprecated_encryption, :bool, 9
       optional :database, :string, 4
       optional :hostname, :string, 1
       optional :override_database, :bool, 8
@@ -1284,6 +1285,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
       optional :subdomain, :string, 32775
+      optional :allow_deprecated_encryption, :bool, 10
       optional :client_id, :string, 2
       optional :database, :string, 4
       optional :hostname, :string, 1
@@ -1303,6 +1305,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
       optional :subdomain, :string, 32775
+      optional :allow_deprecated_encryption, :bool, 12
       optional :database, :string, 4
       optional :hostname, :string, 1
       optional :keytab, :string, 3

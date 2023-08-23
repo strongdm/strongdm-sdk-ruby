@@ -8685,6 +8685,7 @@ module SDM
         return nil
       end
       porcelain = SQLServer.new()
+      porcelain.allow_deprecated_encryption = (plumbing.allow_deprecated_encryption)
       porcelain.bind_interface = (plumbing.bind_interface)
       porcelain.database = (plumbing.database)
       porcelain.egress_filter = (plumbing.egress_filter)
@@ -8709,6 +8710,7 @@ module SDM
         return nil
       end
       plumbing = V1::SQLServer.new()
+      plumbing.allow_deprecated_encryption = (porcelain.allow_deprecated_encryption)
       plumbing.bind_interface = (porcelain.bind_interface)
       plumbing.database = (porcelain.database)
       plumbing.egress_filter = (porcelain.egress_filter)
@@ -8749,6 +8751,7 @@ module SDM
         return nil
       end
       porcelain = SQLServerAzureAD.new()
+      porcelain.allow_deprecated_encryption = (plumbing.allow_deprecated_encryption)
       porcelain.bind_interface = (plumbing.bind_interface)
       porcelain.client_id = (plumbing.client_id)
       porcelain.database = (plumbing.database)
@@ -8774,6 +8777,7 @@ module SDM
         return nil
       end
       plumbing = V1::SQLServerAzureAD.new()
+      plumbing.allow_deprecated_encryption = (porcelain.allow_deprecated_encryption)
       plumbing.bind_interface = (porcelain.bind_interface)
       plumbing.client_id = (porcelain.client_id)
       plumbing.database = (porcelain.database)
@@ -8815,6 +8819,7 @@ module SDM
         return nil
       end
       porcelain = SQLServerKerberosAD.new()
+      porcelain.allow_deprecated_encryption = (plumbing.allow_deprecated_encryption)
       porcelain.bind_interface = (plumbing.bind_interface)
       porcelain.database = (plumbing.database)
       porcelain.egress_filter = (plumbing.egress_filter)
@@ -8842,6 +8847,7 @@ module SDM
         return nil
       end
       plumbing = V1::SQLServerKerberosAD.new()
+      plumbing.allow_deprecated_encryption = (porcelain.allow_deprecated_encryption)
       plumbing.bind_interface = (porcelain.bind_interface)
       plumbing.database = (porcelain.database)
       plumbing.egress_filter = (porcelain.egress_filter)
