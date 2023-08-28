@@ -2544,7 +2544,7 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-    # The username to authenticate with.
+    # The username to authenticate with. For Azure Postgres, this also will include the hostname of the target server for Azure Single Server compatibility. For Flexible servers, use the normal Postgres type.
     attr_accessor :username
 
     def initialize(
