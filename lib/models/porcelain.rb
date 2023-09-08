@@ -458,7 +458,6 @@ module SDM
     end
   end
 
-  # AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class AWSConsole
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
@@ -538,7 +537,6 @@ module SDM
     end
   end
 
-  # AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class AWSConsoleStaticKeyPair
     # The Access Key ID to authenticate with.
     attr_accessor :access_key
@@ -7037,6 +7035,8 @@ module SDM
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
+    # When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+    attr_accessor :lock_required
     # Unique human-readable name of the Resource.
     attr_accessor :name
     # The password to authenticate with.
@@ -7061,6 +7061,7 @@ module SDM
       healthy: nil,
       hostname: nil,
       id: nil,
+      lock_required: nil,
       name: nil,
       password: nil,
       port: nil,
@@ -7076,6 +7077,7 @@ module SDM
       @healthy = healthy == nil ? false : healthy
       @hostname = hostname == nil ? "" : hostname
       @id = id == nil ? "" : id
+      @lock_required = lock_required == nil ? false : lock_required
       @name = name == nil ? "" : name
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
@@ -9012,7 +9014,6 @@ module SDM
     end
   end
 
-  # Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class Snowsight
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
