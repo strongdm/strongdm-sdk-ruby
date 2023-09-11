@@ -47,9 +47,8 @@ module SDM #:nodoc:
     )
       req = V1::AccessRequestListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -126,9 +125,8 @@ module SDM #:nodoc:
     )
       req = V1::AccessRequestEventHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -182,9 +180,8 @@ module SDM #:nodoc:
     )
       req = V1::AccessRequestHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -331,9 +328,8 @@ module SDM #:nodoc:
     )
       req = V1::AccountAttachmentListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -421,9 +417,8 @@ module SDM #:nodoc:
     )
       req = V1::AccountAttachmentHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -570,9 +565,8 @@ module SDM #:nodoc:
     )
       req = V1::AccountGrantListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -660,9 +654,8 @@ module SDM #:nodoc:
     )
       req = V1::AccountGrantHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -717,9 +710,8 @@ module SDM #:nodoc:
     )
       req = V1::AccountPermissionListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -797,9 +789,8 @@ module SDM #:nodoc:
     )
       req = V1::AccountResourceListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -876,9 +867,8 @@ module SDM #:nodoc:
     )
       req = V1::AccountResourceHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -1060,9 +1050,8 @@ module SDM #:nodoc:
     )
       req = V1::AccountListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -1150,9 +1139,8 @@ module SDM #:nodoc:
     )
       req = V1::AccountHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -1245,9 +1233,8 @@ module SDM #:nodoc:
     )
       req = V1::ActivityListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -1501,9 +1488,8 @@ module SDM #:nodoc:
     )
       req = V1::NodeListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -1591,9 +1577,8 @@ module SDM #:nodoc:
     )
       req = V1::NodeHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -1647,9 +1632,8 @@ module SDM #:nodoc:
     )
       req = V1::OrganizationHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -1796,9 +1780,8 @@ module SDM #:nodoc:
     )
       req = V1::PeeringGroupNodeListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -1979,9 +1962,8 @@ module SDM #:nodoc:
     )
       req = V1::PeeringGroupPeerListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -2162,9 +2144,8 @@ module SDM #:nodoc:
     )
       req = V1::PeeringGroupResourceListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -2345,9 +2326,8 @@ module SDM #:nodoc:
     )
       req = V1::PeeringGroupListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -2437,9 +2417,8 @@ module SDM #:nodoc:
     )
       req = V1::QueryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -2616,9 +2595,8 @@ module SDM #:nodoc:
     )
       req = V1::RemoteIdentityListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -2706,9 +2684,8 @@ module SDM #:nodoc:
     )
       req = V1::RemoteIdentityHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -2797,9 +2774,8 @@ module SDM #:nodoc:
     )
       req = V1::RemoteIdentityGroupListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -2887,9 +2863,8 @@ module SDM #:nodoc:
     )
       req = V1::RemoteIdentityGroupHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -2944,9 +2919,8 @@ module SDM #:nodoc:
     )
       req = V1::ReplayListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -3082,9 +3056,8 @@ module SDM #:nodoc:
     )
       req = V1::EnumerateTagsRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -3245,9 +3218,8 @@ module SDM #:nodoc:
     )
       req = V1::ResourceListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -3335,9 +3307,8 @@ module SDM #:nodoc:
     )
       req = V1::ResourceHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -3392,9 +3363,8 @@ module SDM #:nodoc:
     )
       req = V1::RoleResourceListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -3471,9 +3441,8 @@ module SDM #:nodoc:
     )
       req = V1::RoleResourceHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -3652,9 +3621,8 @@ module SDM #:nodoc:
     )
       req = V1::RoleListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -3742,9 +3710,8 @@ module SDM #:nodoc:
     )
       req = V1::RoleHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -3930,9 +3897,8 @@ module SDM #:nodoc:
     )
       req = V1::SecretStoreListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -4020,9 +3986,8 @@ module SDM #:nodoc:
     )
       req = V1::SecretStoreHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -4078,9 +4043,8 @@ module SDM #:nodoc:
     )
       req = V1::WorkflowListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -4157,9 +4121,8 @@ module SDM #:nodoc:
     )
       req = V1::WorkflowApproversHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -4213,9 +4176,8 @@ module SDM #:nodoc:
     )
       req = V1::WorkflowAssignmentsHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -4269,9 +4231,8 @@ module SDM #:nodoc:
     )
       req = V1::WorkflowRolesHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time
@@ -4325,9 +4286,8 @@ module SDM #:nodoc:
     )
       req = V1::WorkflowHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      page_size_option = @parent._test_options["PageSize"]
-      if page_size_option.is_a? Integer
-        req.meta.limit = page_size_option
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
         req.meta.snapshot_at = @parent.snapshot_time

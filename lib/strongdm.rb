@@ -29,11 +29,11 @@ module SDM #:nodoc:
     DEFAULT_BASE_RETRY_DELAY = 0.0030 # 30 ms
     DEFAULT_MAX_RETRY_DELAY = 300 # 300 seconds
     API_VERSION = "2021-08-23"
-    USER_AGENT = "strongdm-sdk-ruby/4.6.1"
+    USER_AGENT = "strongdm-sdk-ruby/4.7.0"
     private_constant :DEFAULT_MAX_RETRIES, :DEFAULT_BASE_RETRY_DELAY, :DEFAULT_MAX_RETRY_DELAY, :API_VERSION, :USER_AGENT
 
     # Creates a new strongDM API client.
-    def initialize(api_access_key, api_secret_key, host: "api.strongdm.com:443", insecure: false, retry_rate_limit_errors: true)
+    def initialize(api_access_key, api_secret_key, host: "api.strongdm.com:443", insecure: false, retry_rate_limit_errors: true, page_limit: 50)
       raise TypeError, "client access key must be a string" unless api_access_key.kind_of?(String)
       raise TypeError, "client secret key must be a string" unless api_secret_key.kind_of?(String)
       raise TypeError, "client host must be a string" unless host.kind_of?(String)
@@ -42,6 +42,7 @@ module SDM #:nodoc:
       @max_retries = DEFAULT_MAX_RETRIES
       @base_retry_delay = DEFAULT_BASE_RETRY_DELAY
       @max_retry_delay = DEFAULT_MAX_RETRY_DELAY
+      @page_limit = page_limit
       @expose_rate_limit_errors = (not retry_rate_limit_errors)
       @snapshot_time = nil
       begin
@@ -94,7 +95,6 @@ module SDM #:nodoc:
       @workflow_assignments_history = WorkflowAssignmentsHistory.new(@channel, self)
       @workflow_roles_history = WorkflowRolesHistory.new(@channel, self)
       @workflows_history = WorkflowsHistory.new(@channel, self)
-      @_test_options = Hash.new
     end
 
     # Closes this client and releases all resources held by it.
@@ -179,6 +179,7 @@ module SDM #:nodoc:
     attr_reader :max_retries
     attr_reader :base_retry_delay
     attr_reader :max_retry_delay
+    attr_accessor :page_limit
 
     # API authentication token (read-only).
     attr_reader :api_access_key
@@ -362,8 +363,6 @@ module SDM #:nodoc:
     #
     # See {WorkflowsHistory}.
     attr_reader :workflows_history
-    # @private
-    attr_reader :_test_options
 
     protected
 
