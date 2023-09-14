@@ -22,7 +22,7 @@ module V1
   module Workflows
     # Workflows are the collection of rules that define the resources to which access can be requested,
     # the users that can request that access, and the mechanism for approving those requests which can either
-    # but automatic approval or a set of users authorized to approve the requests.
+    # be automatic approval or a set of users authorized to approve the requests.
     class Service
       include GRPC::GenericService
 
@@ -30,6 +30,14 @@ module V1
       self.unmarshal_class_method = :decode
       self.service_name = "v1.Workflows"
 
+      # Create creates a new workflow and requires a name for the workflow.
+      rpc :Create, V1::WorkflowCreateRequest, V1::WorkflowCreateResponse
+      # Get reads one workflow by ID.
+      rpc :Get, V1::WorkflowGetRequest, V1::WorkflowGetResponse
+      # Delete deletes an existing workflow.
+      rpc :Delete, V1::WorkflowDeleteRequest, V1::WorkflowDeleteResponse
+      # Update updates an existing workflow.
+      rpc :Update, V1::WorkflowUpdateRequest, V1::WorkflowUpdateResponse
       # Lists existing workflows.
       rpc :List, V1::WorkflowListRequest, V1::WorkflowListResponse
     end

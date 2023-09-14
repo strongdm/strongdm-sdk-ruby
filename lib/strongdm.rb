@@ -29,7 +29,7 @@ module SDM #:nodoc:
     DEFAULT_BASE_RETRY_DELAY = 0.0030 # 30 ms
     DEFAULT_MAX_RETRY_DELAY = 300 # 300 seconds
     API_VERSION = "2021-08-23"
-    USER_AGENT = "strongdm-sdk-ruby/4.7.0"
+    USER_AGENT = "strongdm-sdk-ruby/4.8.0"
     private_constant :DEFAULT_MAX_RETRIES, :DEFAULT_BASE_RETRY_DELAY, :DEFAULT_MAX_RETRY_DELAY, :API_VERSION, :USER_AGENT
 
     # Creates a new strongDM API client.
@@ -90,10 +90,13 @@ module SDM #:nodoc:
       @roles_history = RolesHistory.new(@channel, self)
       @secret_stores = SecretStores.new(@channel, self)
       @secret_stores_history = SecretStoresHistory.new(@channel, self)
-      @workflows = Workflows.new(@channel, self)
+      @workflow_approvers = WorkflowApprovers.new(@channel, self)
       @workflow_approvers_history = WorkflowApproversHistory.new(@channel, self)
+      @workflow_assignments = WorkflowAssignments.new(@channel, self)
       @workflow_assignments_history = WorkflowAssignmentsHistory.new(@channel, self)
+      @workflow_roles = WorkflowRoles.new(@channel, self)
       @workflow_roles_history = WorkflowRolesHistory.new(@channel, self)
+      @workflows = Workflows.new(@channel, self)
       @workflows_history = WorkflowsHistory.new(@channel, self)
     end
 
@@ -341,24 +344,38 @@ module SDM #:nodoc:
     #
     # See {SecretStoresHistory}.
     attr_reader :secret_stores_history
-    # Workflows are the collection of rules that define the resources to which access can be requested,
-    # the users that can request that access, and the mechanism for approving those requests which can either
-    # but automatic approval or a set of users authorized to approve the requests.
+    # WorkflowApprovers is an account with the ability to approve requests bound to a workflow.
     #
-    # See {Workflows}.
-    attr_reader :workflows
+    # See {WorkflowApprovers}.
+    attr_reader :workflow_approvers
     # WorkflowApproversHistory provides records of all changes to the state of a WorkflowApprover.
     #
     # See {WorkflowApproversHistory}.
     attr_reader :workflow_approvers_history
+    # WorkflowAssignments links a Resource to a Workflow. The assigned resources are those that a user can request
+    # access to via the workflow.
+    #
+    # See {WorkflowAssignments}.
+    attr_reader :workflow_assignments
     # WorkflowAssignmentsHistory provides records of all changes to the state of a WorkflowAssignment.
     #
     # See {WorkflowAssignmentsHistory}.
     attr_reader :workflow_assignments_history
+    # WorkflowRole links a role to a workflow. The linked roles indicate which roles a user must be a part of
+    # to request access to a resource via the workflow.
+    #
+    # See {WorkflowRoles}.
+    attr_reader :workflow_roles
     # WorkflowRolesHistory provides records of all changes to the state of a WorkflowRole
     #
     # See {WorkflowRolesHistory}.
     attr_reader :workflow_roles_history
+    # Workflows are the collection of rules that define the resources to which access can be requested,
+    # the users that can request that access, and the mechanism for approving those requests which can either
+    # be automatic approval or a set of users authorized to approve the requests.
+    #
+    # See {Workflows}.
+    attr_reader :workflows
     # WorkflowsHistory provides records of all changes to the state of a Workflow.
     #
     # See {WorkflowsHistory}.
@@ -406,10 +423,13 @@ module SDM #:nodoc:
       @roles_history = RolesHistory.new(@channel, self)
       @secret_stores = SecretStores.new(@channel, self)
       @secret_stores_history = SecretStoresHistory.new(@channel, self)
-      @workflows = Workflows.new(@channel, self)
+      @workflow_approvers = WorkflowApprovers.new(@channel, self)
       @workflow_approvers_history = WorkflowApproversHistory.new(@channel, self)
+      @workflow_assignments = WorkflowAssignments.new(@channel, self)
       @workflow_assignments_history = WorkflowAssignmentsHistory.new(@channel, self)
+      @workflow_roles = WorkflowRoles.new(@channel, self)
       @workflow_roles_history = WorkflowRolesHistory.new(@channel, self)
+      @workflows = Workflows.new(@channel, self)
       @workflows_history = WorkflowsHistory.new(@channel, self)
     end
   end
@@ -434,6 +454,9 @@ module SDM #:nodoc:
       @role_resources = SnapshotRoleResources.new(client.role_resources)
       @roles = SnapshotRoles.new(client.roles)
       @secret_stores = SnapshotSecretStores.new(client.secret_stores)
+      @workflow_approvers = SnapshotWorkflowApprovers.new(client.workflow_approvers)
+      @workflow_assignments = SnapshotWorkflowAssignments.new(client.workflow_assignments)
+      @workflow_roles = SnapshotWorkflowRoles.new(client.workflow_roles)
       @workflows = SnapshotWorkflows.new(client.workflows)
     end
 
@@ -516,9 +539,23 @@ module SDM #:nodoc:
     #
     # See {SnapshotSecretStores}.
     attr_reader :secret_stores
+    # WorkflowApprovers is an account with the ability to approve requests bound to a workflow.
+    #
+    # See {SnapshotWorkflowApprovers}.
+    attr_reader :workflow_approvers
+    # WorkflowAssignments links a Resource to a Workflow. The assigned resources are those that a user can request
+    # access to via the workflow.
+    #
+    # See {SnapshotWorkflowAssignments}.
+    attr_reader :workflow_assignments
+    # WorkflowRole links a role to a workflow. The linked roles indicate which roles a user must be a part of
+    # to request access to a resource via the workflow.
+    #
+    # See {SnapshotWorkflowRoles}.
+    attr_reader :workflow_roles
     # Workflows are the collection of rules that define the resources to which access can be requested,
     # the users that can request that access, and the mechanism for approving those requests which can either
-    # but automatic approval or a set of users authorized to approve the requests.
+    # be automatic approval or a set of users authorized to approve the requests.
     #
     # See {SnapshotWorkflows}.
     attr_reader :workflows

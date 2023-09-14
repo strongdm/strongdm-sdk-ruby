@@ -21,6 +21,42 @@ require "options_pb"
 require "spec_pb"
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("workflows.proto", :syntax => :proto3) do
+    add_message "v1.WorkflowCreateRequest" do
+      optional :meta, :message, 1, "v1.CreateRequestMetadata"
+      optional :workflow, :message, 2, "v1.Workflow"
+    end
+    add_message "v1.WorkflowCreateResponse" do
+      optional :meta, :message, 1, "v1.CreateResponseMetadata"
+      optional :workflow, :message, 2, "v1.Workflow"
+      optional :rate_limit, :message, 3, "v1.RateLimitMetadata"
+    end
+    add_message "v1.WorkflowGetRequest" do
+      optional :meta, :message, 1, "v1.GetRequestMetadata"
+      optional :id, :string, 2
+    end
+    add_message "v1.WorkflowGetResponse" do
+      optional :meta, :message, 1, "v1.GetResponseMetadata"
+      optional :workflow, :message, 2, "v1.Workflow"
+      optional :rate_limit, :message, 3, "v1.RateLimitMetadata"
+    end
+    add_message "v1.WorkflowUpdateRequest" do
+      optional :meta, :message, 1, "v1.UpdateRequestMetadata"
+      optional :workflow, :message, 2, "v1.Workflow"
+    end
+    add_message "v1.WorkflowUpdateResponse" do
+      optional :meta, :message, 1, "v1.UpdateResponseMetadata"
+      optional :workflow, :message, 2, "v1.Workflow"
+      optional :rate_limit, :message, 3, "v1.RateLimitMetadata"
+    end
+    add_message "v1.WorkflowDeleteRequest" do
+      optional :meta, :message, 1, "v1.DeleteRequestMetadata"
+      optional :id, :string, 2
+    end
+    add_message "v1.WorkflowDeleteResponse" do
+      optional :meta, :message, 1, "v1.DeleteResponseMetadata"
+      optional :id, :string, 2
+      optional :rate_limit, :message, 3, "v1.RateLimitMetadata"
+    end
     add_message "v1.WorkflowListRequest" do
       optional :meta, :message, 1, "v1.ListRequestMetadata"
       optional :filter, :string, 2
@@ -40,26 +76,19 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :requires_reason, :bool, 7
       optional :access_rules, :string, 8
     end
-    add_message "v1.WorkflowRole" do
-      optional :workflow_id, :string, 2
-      optional :role_id, :string, 3
-    end
-    add_message "v1.WorkflowApprover" do
-      optional :workflow_id, :string, 2
-      optional :approver_id, :string, 3
-    end
-    add_message "v1.WorkflowAssignment" do
-      optional :workflow_id, :string, 2
-      optional :resource_id, :string, 3
-    end
   end
 end
 
 module V1
+  WorkflowCreateRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.WorkflowCreateRequest").msgclass
+  WorkflowCreateResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.WorkflowCreateResponse").msgclass
+  WorkflowGetRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.WorkflowGetRequest").msgclass
+  WorkflowGetResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.WorkflowGetResponse").msgclass
+  WorkflowUpdateRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.WorkflowUpdateRequest").msgclass
+  WorkflowUpdateResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.WorkflowUpdateResponse").msgclass
+  WorkflowDeleteRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.WorkflowDeleteRequest").msgclass
+  WorkflowDeleteResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.WorkflowDeleteResponse").msgclass
   WorkflowListRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.WorkflowListRequest").msgclass
   WorkflowListResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.WorkflowListResponse").msgclass
   Workflow = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Workflow").msgclass
-  WorkflowRole = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.WorkflowRole").msgclass
-  WorkflowApprover = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.WorkflowApprover").msgclass
-  WorkflowAssignment = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.WorkflowAssignment").msgclass
 end

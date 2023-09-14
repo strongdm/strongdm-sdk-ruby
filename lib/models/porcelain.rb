@@ -9564,7 +9564,9 @@ module SDM
     attr_accessor :description
     # Optional enabled state for workflow. This setting may be overridden by the system if
     # the workflow doesn't meet the requirements to be enabled or if other conditions prevent
-    # enabling the workflow.
+    # enabling the workflow. The requirements to enable a workflow are that the workflow must be
+    # either set up for with auto grant enabled or have one or more WorkflowApprovers created for
+    # the workflow.
     attr_accessor :enabled
     # Unique identifier of the Workflow.
     attr_accessor :id
@@ -9604,14 +9606,18 @@ module SDM
   class WorkflowApprover
     # The approver id.
     attr_accessor :approver_id
+    # Unique identifier of the WorkflowApprover.
+    attr_accessor :id
     # The workflow id.
     attr_accessor :workflow_id
 
     def initialize(
       approver_id: nil,
+      id: nil,
       workflow_id: nil
     )
       @approver_id = approver_id == nil ? "" : approver_id
+      @id = id == nil ? "" : id
       @workflow_id = workflow_id == nil ? "" : workflow_id
     end
 
@@ -9624,16 +9630,42 @@ module SDM
     end
   end
 
-  # WorkflowApproverHistory records the state of a WorkflowApprover at a given point in time,
-  # where every change (create, update and delete) to a WorkflowApprover produces an
-  # WorkflowApproverHistory record.
+  # WorkflowApproverGetResponse returns a requested WorkflowApprover.
+  class WorkflowApproverGetResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+    # The requested WorkflowApprover.
+    attr_accessor :workflow_approver
+
+    def initialize(
+      meta: nil,
+      rate_limit: nil,
+      workflow_approver: nil
+    )
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+      @workflow_approver = workflow_approver == nil ? nil : workflow_approver
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # WorkflowApproverHistory provides records of all changes to the state of a WorkflowApprover.
   class WorkflowApproverHistory
-    # The unique identifier of the Activity that produced this change to the Workflow.
+    # The unique identifier of the Activity that produced this change to the WorkflowApprover.
     # May be empty for some system-initiated updates.
     attr_accessor :activity_id
-    # If this Workflow was deleted, the time it was deleted.
+    # If this WorkflowApprover was deleted, the time it was deleted.
     attr_accessor :deleted_at
-    # The time at which the Workflow state was recorded.
+    # The time at which the WorkflowApprover state was recorded.
     attr_accessor :timestamp
     # The complete WorkflowApprover state at this time.
     attr_accessor :workflow_approver
@@ -9659,7 +9691,135 @@ module SDM
     end
   end
 
-  # WorkflowAssignment links a Resource to a Workflow.
+  # WorkflowApproversCreateRequest specifies the workflowID and approverID of a new
+  # workflow approver to be created.
+  class WorkflowApproversCreateRequest
+    # Parameters to define the new WorkflowApprover.
+    attr_accessor :workflow_approver
+
+    def initialize(
+      workflow_approver: nil
+    )
+      @workflow_approver = workflow_approver == nil ? nil : workflow_approver
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # WorkflowApproversCreateResponse reports how the WorkflowApprover was created in the system.
+  class WorkflowApproversCreateResponse
+    # Rate limit information.
+    attr_accessor :rate_limit
+    # The created workflow approver.
+    attr_accessor :workflow_approver
+
+    def initialize(
+      rate_limit: nil,
+      workflow_approver: nil
+    )
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+      @workflow_approver = workflow_approver == nil ? nil : workflow_approver
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # WorkflowApproversDeleteRequest specifies the ID of a WorkflowApprover to be deleted.
+  class WorkflowApproversDeleteRequest
+    # The unique identifier of the WorkflowApprover to delete.
+    attr_accessor :id
+
+    def initialize(
+      id: nil
+    )
+      @id = id == nil ? "" : id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # WorkflowApproversDeleteResponse reports how the WorkflowApprover was deleted in the system.
+  class WorkflowApproversDeleteResponse
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      rate_limit: nil
+    )
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # WorkflowApproversListRequest specifies criteria for retrieving a list of
+  # WorkflowApprover records
+  class WorkflowApproversListRequest
+    # A human-readable filter query string.
+    attr_accessor :filter
+
+    def initialize(
+      filter: nil
+    )
+      @filter = filter == nil ? "" : filter
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # WorkflowApproversListResponse returns a list of WorkflowApprover records that meet
+  # the criteria of a WorkflowApproversListRequest.
+  class WorkflowApproversListResponse
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      rate_limit: nil
+    )
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # WorkflowAssignment links a Resource to a Workflow. The assigned resources are those that a user can request
+  # access to via the workflow.
   class WorkflowAssignment
     # The resource id.
     attr_accessor :resource_id
@@ -9683,16 +9843,14 @@ module SDM
     end
   end
 
-  # WorkflowAssignmentHistory records the state of a WorkflowAssignment at a given point in time,
-  # where every change (create, update and delete) to a WorkflowAssignment produces an
-  # WorkflowAssignmentHistory record.
+  # WorkflowAssignmentsHistory provides records of all changes to the state of a WorkflowAssignment.
   class WorkflowAssignmentHistory
-    # The unique identifier of the Activity that produced this change to the Workflow.
+    # The unique identifier of the Activity that produced this change to the WorkflowAssignment.
     # May be empty for some system-initiated updates.
     attr_accessor :activity_id
-    # If this Workflow was deleted, the time it was deleted.
+    # If this WorkflowAssignment was deleted, the time it was deleted.
     attr_accessor :deleted_at
-    # The time at which the Workflow state was recorded.
+    # The time at which the WorkflowAssignment state was recorded.
     attr_accessor :timestamp
     # The complete WorkflowAssignment state at this time.
     attr_accessor :workflow_assignment
@@ -9718,9 +9876,125 @@ module SDM
     end
   end
 
-  # WorkflowHistory records the state of a Workflow at a given point in time,
-  # where every change (create, update and delete) to a Workflow produces an
-  # WorkflowHistory record.
+  # WorkflowAssignmentsListRequest specifies criteria for retrieving a list of
+  # WorkflowAssignment records
+  class WorkflowAssignmentsListRequest
+    # A human-readable filter query string.
+    attr_accessor :filter
+
+    def initialize(
+      filter: nil
+    )
+      @filter = filter == nil ? "" : filter
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # WorkflowAssignmentsListResponse returns a list of WorkflowAssignment records that meet
+  # the criteria of a WorkflowAssignmentsListRequest.
+  class WorkflowAssignmentsListResponse
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      rate_limit: nil
+    )
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # WorkflowCreateResponse reports how the Workflow was created in the system.
+  class WorkflowCreateResponse
+    # Rate limit information.
+    attr_accessor :rate_limit
+    # The created workflow.
+    attr_accessor :workflow
+
+    def initialize(
+      rate_limit: nil,
+      workflow: nil
+    )
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+      @workflow = workflow == nil ? nil : workflow
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # WorkflowDeleteResponse returns information about a Workflow that was deleted.
+  class WorkflowDeleteResponse
+    # The deleted workflow id.
+    attr_accessor :id
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      id: nil,
+      rate_limit: nil
+    )
+      @id = id == nil ? "" : id
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # WorkflowGetResponse returns a requested Workflow.
+  class WorkflowGetResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+    # The requested Workflow.
+    attr_accessor :workflow
+
+    def initialize(
+      meta: nil,
+      rate_limit: nil,
+      workflow: nil
+    )
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+      @workflow = workflow == nil ? nil : workflow
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # WorkflowsHistory provides records of all changes to the state of a Workflow.
   class WorkflowHistory
     # The unique identifier of the Activity that produced this change to the Workflow.
     # May be empty for some system-initiated updates.
@@ -9753,27 +10027,6 @@ module SDM
     end
   end
 
-  # WorkflowListRequest specifies criteria for retrieving a list of
-  # Workflow records
-  class WorkflowListRequest
-    # A human-readable filter query string.
-    attr_accessor :filter
-
-    def initialize(
-      filter: nil
-    )
-      @filter = filter == nil ? "" : filter
-    end
-
-    def to_json(options = {})
-      hash = {}
-      self.instance_variables.each do |var|
-        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
-      end
-      hash.to_json
-    end
-  end
-
   # WorkflowListResponse returns a list of Workflow records that meet
   # the criteria of a WorkflowListRequest.
   class WorkflowListResponse
@@ -9795,17 +10048,22 @@ module SDM
     end
   end
 
-  # WorkflowRole links a Role to a Workflow.
+  # WorkflowRole links a role to a workflow. The linked roles indicate which roles a user must be a part of
+  # to request access to a resource via the workflow.
   class WorkflowRole
+    # Unique identifier of the WorkflowRole.
+    attr_accessor :id
     # The role id.
     attr_accessor :role_id
     # The workflow id.
     attr_accessor :workflow_id
 
     def initialize(
+      id: nil,
       role_id: nil,
       workflow_id: nil
     )
+      @id = id == nil ? "" : id
       @role_id = role_id == nil ? "" : role_id
       @workflow_id = workflow_id == nil ? "" : workflow_id
     end
@@ -9819,16 +10077,42 @@ module SDM
     end
   end
 
-  # WorkflowRolesHistory records the state of a Workflow at a given point in time,
-  # where every change (create, update and delete) to a WorkflowRole produces a
-  # WorkflowRoleHistory record.
+  # WorkflowRoleGetResponse returns a requested WorkflowRole.
+  class WorkflowRoleGetResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+    # The requested WorkflowRole.
+    attr_accessor :workflow_role
+
+    def initialize(
+      meta: nil,
+      rate_limit: nil,
+      workflow_role: nil
+    )
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+      @workflow_role = workflow_role == nil ? nil : workflow_role
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # WorkflowRolesHistory provides records of all changes to the state of a WorkflowRole
   class WorkflowRoleHistory
-    # The unique identifier of the Activity that produced this change to the Workflow.
+    # The unique identifier of the Activity that produced this change to the WorkflowRole.
     # May be empty for some system-initiated updates.
     attr_accessor :activity_id
     # If this WorkflowRole was deleted, the time it was deleted.
     attr_accessor :deleted_at
-    # The time at which the Workflow state was recorded.
+    # The time at which the WorkflowRole state was recorded.
     attr_accessor :timestamp
     # The complete WorkflowRole state at this time.
     attr_accessor :workflow_role
@@ -9843,6 +10127,158 @@ module SDM
       @deleted_at = deleted_at == nil ? nil : deleted_at
       @timestamp = timestamp == nil ? nil : timestamp
       @workflow_role = workflow_role == nil ? nil : workflow_role
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # WorkflowRolesCreateRequest specifies the workflowID and roleID of a new
+  # workflow role to be created.
+  class WorkflowRolesCreateRequest
+    # Parameters to define the new WorkflowRole.
+    attr_accessor :workflow_role
+
+    def initialize(
+      workflow_role: nil
+    )
+      @workflow_role = workflow_role == nil ? nil : workflow_role
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # WorkflowRolesCreateResponse reports how the WorkflowRole was created in the system.
+  class WorkflowRolesCreateResponse
+    # Rate limit information.
+    attr_accessor :rate_limit
+    # The created workflow role.
+    attr_accessor :workflow_role
+
+    def initialize(
+      rate_limit: nil,
+      workflow_role: nil
+    )
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+      @workflow_role = workflow_role == nil ? nil : workflow_role
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # WorkflowRolesDeleteRequest specifies the ID of a WorkflowRole to be deleted.
+  class WorkflowRolesDeleteRequest
+    # The unique identifier of the WorkflowRole to delete.
+    attr_accessor :id
+
+    def initialize(
+      id: nil
+    )
+      @id = id == nil ? "" : id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # WorkflowRolesDeleteResponse reports how the WorkflowRole was deleted in the system.
+  class WorkflowRolesDeleteResponse
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      rate_limit: nil
+    )
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # WorkflowRolesListRequest specifies criteria for retrieving a list of
+  # WorkflowRole records
+  class WorkflowRolesListRequest
+    # A human-readable filter query string.
+    attr_accessor :filter
+
+    def initialize(
+      filter: nil
+    )
+      @filter = filter == nil ? "" : filter
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # WorkflowRolesListResponse returns a list of WorkflowRole records that meet
+  # the criteria of a WorkflowRolesListRequest.
+  class WorkflowRolesListResponse
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      rate_limit: nil
+    )
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # WorkflowUpdateResponse returns the fields of a Workflow after it has been updated by
+  # a WorkflowUpdateRequest.
+  class WorkflowUpdateResponse
+    # Rate limit information.
+    attr_accessor :rate_limit
+    # The updated workflow.
+    attr_accessor :workflow
+
+    def initialize(
+      rate_limit: nil,
+      workflow: nil
+    )
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+      @workflow = workflow == nil ? nil : workflow
     end
 
     def to_json(options = {})

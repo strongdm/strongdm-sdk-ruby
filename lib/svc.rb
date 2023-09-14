@@ -4018,30 +4018,119 @@ module SDM #:nodoc:
     end
   end
 
-  # Workflows are the collection of rules that define the resources to which access can be requested,
-  # the users that can request that access, and the mechanism for approving those requests which can either
-  # but automatic approval or a set of users authorized to approve the requests.
+  # WorkflowApprovers is an account with the ability to approve requests bound to a workflow.
   #
-  # See {Workflow}.
-  class Workflows
+  # See {WorkflowApprover}.
+  class WorkflowApprovers
     extend Gem::Deprecate
 
     def initialize(channel, parent)
       begin
-        @stub = V1::Workflows::Stub.new(nil, nil, channel_override: channel)
+        @stub = V1::WorkflowApprovers::Stub.new(nil, nil, channel_override: channel)
       rescue => exception
         raise Plumbing::convert_error_to_porcelain(exception)
       end
       @parent = parent
     end
 
-    # Lists existing workflows.
+    # Create creates a new workflow approver
+    def create(
+      workflow_approver,
+      deadline: nil
+    )
+      req = V1::WorkflowApproversCreateRequest.new()
+
+      req.workflow_approver = Plumbing::convert_workflow_approver_to_plumbing(workflow_approver)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.create(req, metadata: @parent.get_metadata("WorkflowApprovers.Create", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = WorkflowApproversCreateResponse.new()
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.workflow_approver = Plumbing::convert_workflow_approver_to_porcelain(plumbing_response.workflow_approver)
+      resp
+    end
+
+    # Get reads one workflow approver by ID.
+    def get(
+      id,
+      deadline: nil
+    )
+      req = V1::WorkflowApproverGetRequest.new()
+      if not @parent.snapshot_time.nil?
+        req.meta = V1::GetRequestMetadata.new()
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.get(req, metadata: @parent.get_metadata("WorkflowApprovers.Get", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = WorkflowApproverGetResponse.new()
+      resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.workflow_approver = Plumbing::convert_workflow_approver_to_porcelain(plumbing_response.workflow_approver)
+      resp
+    end
+
+    # Delete deletes a workflow approver
+    def delete(
+      id,
+      deadline: nil
+    )
+      req = V1::WorkflowApproversDeleteRequest.new()
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("WorkflowApprovers.Delete", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = WorkflowApproversDeleteResponse.new()
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Lists existing workflow approvers.
     def list(
       filter,
       *args,
       deadline: nil
     )
-      req = V1::WorkflowListRequest.new()
+      req = V1::WorkflowApproversListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
       if @parent.page_limit > 0
         req.meta.limit = @parent.page_limit
@@ -4055,7 +4144,7 @@ module SDM #:nodoc:
         tries = 0
         loop do
           begin
-            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("Workflows.List", req), deadline: deadline)
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("WorkflowApprovers.List", req), deadline: deadline)
           rescue => exception
             if (@parent.shouldRetry(tries, exception))
               tries + +@parent.jitterSleep(tries)
@@ -4064,8 +4153,8 @@ module SDM #:nodoc:
             raise Plumbing::convert_error_to_porcelain(exception)
           end
           tries = 0
-          plumbing_response.workflows.each do |plumbing_item|
-            g.yield Plumbing::convert_workflow_to_porcelain(plumbing_item)
+          plumbing_response.workflow_approvers.each do |plumbing_item|
+            g.yield Plumbing::convert_workflow_approver_to_porcelain(plumbing_item)
           end
           break if plumbing_response.meta.next_cursor == ""
           req.meta.cursor = plumbing_response.meta.next_cursor
@@ -4075,22 +4164,33 @@ module SDM #:nodoc:
     end
   end
 
-  # SnapshotWorkflows exposes the read only methods of the Workflows
+  # SnapshotWorkflowApprovers exposes the read only methods of the WorkflowApprovers
   # service for historical queries.
-  class SnapshotWorkflows
+  class SnapshotWorkflowApprovers
     extend Gem::Deprecate
 
-    def initialize(workflows)
-      @workflows = workflows
+    def initialize(workflow_approvers)
+      @workflow_approvers = workflow_approvers
     end
 
-    # Lists existing workflows.
+    # Get reads one workflow approver by ID.
+    def get(
+      id,
+      deadline: nil
+    )
+      return @workflow_approvers.get(
+               id,
+               deadline: deadline,
+             )
+    end
+
+    # Lists existing workflow approvers.
     def list(
       filter,
       *args,
       deadline: nil
     )
-      return @workflows.list(
+      return @workflow_approvers.list(
                filter,
                             *args,
                             deadline: deadline,
@@ -4153,6 +4253,85 @@ module SDM #:nodoc:
     end
   end
 
+  # WorkflowAssignments links a Resource to a Workflow. The assigned resources are those that a user can request
+  # access to via the workflow.
+  #
+  # See {WorkflowAssignment}.
+  class WorkflowAssignments
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::WorkflowAssignments::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # Lists existing workflow assignments.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::WorkflowAssignmentsListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("WorkflowAssignments.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.workflow_assignments.each do |plumbing_item|
+            g.yield Plumbing::convert_workflow_assignment_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # SnapshotWorkflowAssignments exposes the read only methods of the WorkflowAssignments
+  # service for historical queries.
+  class SnapshotWorkflowAssignments
+    extend Gem::Deprecate
+
+    def initialize(workflow_assignments)
+      @workflow_assignments = workflow_assignments
+    end
+
+    # Lists existing workflow assignments.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      return @workflow_assignments.list(
+               filter,
+                            *args,
+                            deadline: deadline,
+             )
+    end
+  end
+
   # WorkflowAssignmentsHistory provides records of all changes to the state of a WorkflowAssignment.
   #
   # See {WorkflowAssignmentHistory}.
@@ -4208,6 +4387,187 @@ module SDM #:nodoc:
     end
   end
 
+  # WorkflowRole links a role to a workflow. The linked roles indicate which roles a user must be a part of
+  # to request access to a resource via the workflow.
+  #
+  # See {WorkflowRole}.
+  class WorkflowRoles
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::WorkflowRoles::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # Create creates a new workflow role
+    def create(
+      workflow_role,
+      deadline: nil
+    )
+      req = V1::WorkflowRolesCreateRequest.new()
+
+      req.workflow_role = Plumbing::convert_workflow_role_to_plumbing(workflow_role)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.create(req, metadata: @parent.get_metadata("WorkflowRoles.Create", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = WorkflowRolesCreateResponse.new()
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.workflow_role = Plumbing::convert_workflow_role_to_porcelain(plumbing_response.workflow_role)
+      resp
+    end
+
+    # Get reads one workflow role by ID.
+    def get(
+      id,
+      deadline: nil
+    )
+      req = V1::WorkflowRoleGetRequest.new()
+      if not @parent.snapshot_time.nil?
+        req.meta = V1::GetRequestMetadata.new()
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.get(req, metadata: @parent.get_metadata("WorkflowRoles.Get", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = WorkflowRoleGetResponse.new()
+      resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.workflow_role = Plumbing::convert_workflow_role_to_porcelain(plumbing_response.workflow_role)
+      resp
+    end
+
+    # Delete deletes a workflow role
+    def delete(
+      id,
+      deadline: nil
+    )
+      req = V1::WorkflowRolesDeleteRequest.new()
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("WorkflowRoles.Delete", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = WorkflowRolesDeleteResponse.new()
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Lists existing workflow roles.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::WorkflowRolesListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("WorkflowRoles.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.workflow_role.each do |plumbing_item|
+            g.yield Plumbing::convert_workflow_role_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # SnapshotWorkflowRoles exposes the read only methods of the WorkflowRoles
+  # service for historical queries.
+  class SnapshotWorkflowRoles
+    extend Gem::Deprecate
+
+    def initialize(workflow_roles)
+      @workflow_roles = workflow_roles
+    end
+
+    # Get reads one workflow role by ID.
+    def get(
+      id,
+      deadline: nil
+    )
+      return @workflow_roles.get(
+               id,
+               deadline: deadline,
+             )
+    end
+
+    # Lists existing workflow roles.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      return @workflow_roles.list(
+               filter,
+                            *args,
+                            deadline: deadline,
+             )
+    end
+  end
+
   # WorkflowRolesHistory provides records of all changes to the state of a WorkflowRole
   #
   # See {WorkflowRoleHistory}.
@@ -4260,6 +4620,218 @@ module SDM #:nodoc:
         end
       }
       resp
+    end
+  end
+
+  # Workflows are the collection of rules that define the resources to which access can be requested,
+  # the users that can request that access, and the mechanism for approving those requests which can either
+  # be automatic approval or a set of users authorized to approve the requests.
+  #
+  # See {Workflow}.
+  class Workflows
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::Workflows::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # Create creates a new workflow and requires a name for the workflow.
+    def create(
+      workflow,
+      deadline: nil
+    )
+      req = V1::WorkflowCreateRequest.new()
+
+      req.workflow = Plumbing::convert_workflow_to_plumbing(workflow)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.create(req, metadata: @parent.get_metadata("Workflows.Create", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = WorkflowCreateResponse.new()
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.workflow = Plumbing::convert_workflow_to_porcelain(plumbing_response.workflow)
+      resp
+    end
+
+    # Get reads one workflow by ID.
+    def get(
+      id,
+      deadline: nil
+    )
+      req = V1::WorkflowGetRequest.new()
+      if not @parent.snapshot_time.nil?
+        req.meta = V1::GetRequestMetadata.new()
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.get(req, metadata: @parent.get_metadata("Workflows.Get", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = WorkflowGetResponse.new()
+      resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.workflow = Plumbing::convert_workflow_to_porcelain(plumbing_response.workflow)
+      resp
+    end
+
+    # Delete deletes an existing workflow.
+    def delete(
+      id,
+      deadline: nil
+    )
+      req = V1::WorkflowDeleteRequest.new()
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("Workflows.Delete", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = WorkflowDeleteResponse.new()
+      resp.id = (plumbing_response.id)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Update updates an existing workflow.
+    def update(
+      workflow,
+      deadline: nil
+    )
+      req = V1::WorkflowUpdateRequest.new()
+
+      req.workflow = Plumbing::convert_workflow_to_plumbing(workflow)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.update(req, metadata: @parent.get_metadata("Workflows.Update", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = WorkflowUpdateResponse.new()
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.workflow = Plumbing::convert_workflow_to_porcelain(plumbing_response.workflow)
+      resp
+    end
+
+    # Lists existing workflows.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::WorkflowListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("Workflows.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.workflows.each do |plumbing_item|
+            g.yield Plumbing::convert_workflow_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # SnapshotWorkflows exposes the read only methods of the Workflows
+  # service for historical queries.
+  class SnapshotWorkflows
+    extend Gem::Deprecate
+
+    def initialize(workflows)
+      @workflows = workflows
+    end
+
+    # Get reads one workflow by ID.
+    def get(
+      id,
+      deadline: nil
+    )
+      return @workflows.get(
+               id,
+               deadline: deadline,
+             )
+    end
+
+    # Lists existing workflows.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      return @workflows.list(
+               filter,
+                            *args,
+                            deadline: deadline,
+             )
     end
   end
 
