@@ -2447,6 +2447,68 @@ module SDM
       end
       items
     end
+    def self.convert_aurora_postgres_iam_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AuroraPostgresIAM.new()
+      porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.database = (plumbing.database)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.override_database = (plumbing.override_database)
+      porcelain.port = (plumbing.port)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.region = (plumbing.region)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.subdomain = (plumbing.subdomain)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.username = (plumbing.username)
+      porcelain
+    end
+
+    def self.convert_aurora_postgres_iam_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AuroraPostgresIAM.new()
+      plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.database = (porcelain.database)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.override_database = (porcelain.override_database)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.region = (porcelain.region)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.subdomain = (porcelain.subdomain)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
+      plumbing
+    end
+    def self.convert_repeated_aurora_postgres_iam_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_aurora_postgres_iam_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_aurora_postgres_iam_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_aurora_postgres_iam_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_azure_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -6926,6 +6988,68 @@ module SDM
       end
       items
     end
+    def self.convert_rds_postgres_iam_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = RDSPostgresIAM.new()
+      porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.database = (plumbing.database)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.override_database = (plumbing.override_database)
+      porcelain.port = (plumbing.port)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.region = (plumbing.region)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.subdomain = (plumbing.subdomain)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.username = (plumbing.username)
+      porcelain
+    end
+
+    def self.convert_rds_postgres_iam_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::RDSPostgresIAM.new()
+      plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.database = (porcelain.database)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.override_database = (porcelain.override_database)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.region = (porcelain.region)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.subdomain = (porcelain.subdomain)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
+      plumbing
+    end
+    def self.convert_repeated_rds_postgres_iam_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_rds_postgres_iam_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_rds_postgres_iam_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_rds_postgres_iam_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_rabbit_mqamqp_091_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -7715,6 +7839,9 @@ module SDM
       if porcelain.instance_of? AuroraPostgres
         plumbing.aurora_postgres = convert_aurora_postgres_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? AuroraPostgresIAM
+        plumbing.aurora_postgres_iam = convert_aurora_postgres_iam_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? AWS
         plumbing.aws = convert_aws_to_plumbing(porcelain)
       end
@@ -7871,6 +7998,9 @@ module SDM
       if porcelain.instance_of? RDP
         plumbing.rdp = convert_rdp_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? RDSPostgresIAM
+        plumbing.rds_postgres_iam = convert_rds_postgres_iam_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? Redis
         plumbing.redis = convert_redis_to_plumbing(porcelain)
       end
@@ -7964,6 +8094,9 @@ module SDM
       end
       if plumbing.aurora_postgres != nil
         return convert_aurora_postgres_to_porcelain(plumbing.aurora_postgres)
+      end
+      if plumbing.aurora_postgres_iam != nil
+        return convert_aurora_postgres_iam_to_porcelain(plumbing.aurora_postgres_iam)
       end
       if plumbing.aws != nil
         return convert_aws_to_porcelain(plumbing.aws)
@@ -8120,6 +8253,9 @@ module SDM
       end
       if plumbing.rdp != nil
         return convert_rdp_to_porcelain(plumbing.rdp)
+      end
+      if plumbing.rds_postgres_iam != nil
+        return convert_rds_postgres_iam_to_porcelain(plumbing.rds_postgres_iam)
       end
       if plumbing.redis != nil
         return convert_redis_to_porcelain(plumbing.redis)

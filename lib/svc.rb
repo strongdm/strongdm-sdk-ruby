@@ -2969,6 +2969,7 @@ module SDM #:nodoc:
   # {Athena}
   # {AuroraMysql}
   # {AuroraPostgres}
+  # {AuroraPostgresIAM}
   # {AWS}
   # {AWSConsole}
   # {AWSConsoleStaticKeyPair}
@@ -3021,6 +3022,7 @@ module SDM #:nodoc:
   # {RabbitMQAMQP091}
   # {RawTCP}
   # {RDP}
+  # {RDSPostgresIAM}
   # {Redis}
   # {Redshift}
   # {SingleStore}

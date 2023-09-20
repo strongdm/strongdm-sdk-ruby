@@ -40,6 +40,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :athena, :message, 100, "v1.Athena"
         optional :aurora_mysql, :message, 1101, "v1.AuroraMysql"
         optional :aurora_postgres, :message, 1301, "v1.AuroraPostgres"
+        optional :aurora_postgres_iam, :message, 1309, "v1.AuroraPostgresIAM"
         optional :azure, :message, 2800, "v1.Azure"
         optional :azure_certificate, :message, 2801, "v1.AzureCertificate"
         optional :azure_mysql, :message, 1107, "v1.AzureMysql"
@@ -87,6 +88,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :postgres, :message, 1300, "v1.Postgres"
         optional :presto, :message, 1400, "v1.Presto"
         optional :rdp, :message, 1500, "v1.RDP"
+        optional :rds_postgres_iam, :message, 1310, "v1.RDSPostgresIAM"
         optional :rabbit_mqamqp_091, :message, 2500, "v1.RabbitMQAMQP091"
         optional :raw_tcp, :message, 2600, "v1.RawTCP"
         optional :redis, :message, 1600, "v1.Redis"
@@ -408,6 +410,23 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :password, :string, 3
       optional :port, :int32, 6
       optional :port_override, :int32, 5
+      optional :username, :string, 2
+    end
+    add_message "v1.AuroraPostgresIAM" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :subdomain, :string, 32775
+      optional :database, :string, 4
+      optional :hostname, :string, 1
+      optional :override_database, :bool, 7
+      optional :port, :int32, 6
+      optional :port_override, :int32, 5
+      optional :region, :string, 3
       optional :username, :string, 2
     end
     add_message "v1.Azure" do
@@ -1195,6 +1214,23 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port_override, :int32, 4
       optional :username, :string, 2
     end
+    add_message "v1.RDSPostgresIAM" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :subdomain, :string, 32775
+      optional :database, :string, 4
+      optional :hostname, :string, 1
+      optional :override_database, :bool, 7
+      optional :port, :int32, 6
+      optional :port_override, :int32, 5
+      optional :region, :string, 3
+      optional :username, :string, 2
+    end
     add_message "v1.RabbitMQAMQP091" do
       optional :id, :string, 32768
       optional :name, :string, 32769
@@ -1502,6 +1538,7 @@ module V1
   Athena = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Athena").msgclass
   AuroraMysql = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuroraMysql").msgclass
   AuroraPostgres = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuroraPostgres").msgclass
+  AuroraPostgresIAM = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuroraPostgresIAM").msgclass
   Azure = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Azure").msgclass
   AzureCertificate = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AzureCertificate").msgclass
   AzureMysql = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AzureMysql").msgclass
@@ -1549,6 +1586,7 @@ module V1
   Postgres = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Postgres").msgclass
   Presto = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Presto").msgclass
   RDP = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RDP").msgclass
+  RDSPostgresIAM = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RDSPostgresIAM").msgclass
   RabbitMQAMQP091 = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RabbitMQAMQP091").msgclass
   RawTCP = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RawTCP").msgclass
   Redis = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Redis").msgclass
