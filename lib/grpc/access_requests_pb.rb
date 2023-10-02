@@ -20,6 +20,7 @@ require "google/protobuf"
 require "google/protobuf/timestamp_pb"
 require "options_pb"
 require "spec_pb"
+require "tags_pb"
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("access_requests.proto", :syntax => :proto3) do
     add_message "v1.AccessRequestListRequest" do
@@ -50,6 +51,21 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :type, :string, 4
       optional :metadata, :string, 5
     end
+    add_message "v1.RequestableResource" do
+      optional :id, :string, 1
+      optional :name, :string, 2
+      optional :healthy, :bool, 3
+      optional :type, :string, 4
+      optional :authentication, :string, 5
+      optional :tags, :message, 6, "v1.Tags"
+      optional :access, :string, 7
+    end
+    add_message "v1.AccessRequestConfig" do
+      optional :resource_id, :string, 1
+      optional :reason, :string, 2
+      optional :start_from, :message, 3, "google.protobuf.Timestamp"
+      optional :duration, :string, 4
+    end
   end
 end
 
@@ -58,4 +74,6 @@ module V1
   AccessRequestListResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AccessRequestListResponse").msgclass
   AccessRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AccessRequest").msgclass
   AccessRequestEvent = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AccessRequestEvent").msgclass
+  RequestableResource = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RequestableResource").msgclass
+  AccessRequestConfig = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AccessRequestConfig").msgclass
 end

@@ -20,6 +20,7 @@ require "google/protobuf/well_known_types"
 require "json"
 require_relative "./options_pb"
 require_relative "./spec_pb"
+require_relative "./tags_pb"
 require_relative "./access_requests_pb"
 require_relative "./access_request_events_history_pb"
 require_relative "./access_requests_history_pb"
@@ -30,7 +31,6 @@ require_relative "./account_grants_history_pb"
 require_relative "./account_permissions_pb"
 require_relative "./account_resources_pb"
 require_relative "./account_resources_history_pb"
-require_relative "./tags_pb"
 require_relative "./accounts_pb"
 require_relative "./accounts_history_pb"
 require_relative "./activities_pb"
@@ -744,6 +744,46 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_access_request_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_access_request_config_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AccessRequestConfig.new()
+      porcelain.duration = (plumbing.duration)
+      porcelain.reason = (plumbing.reason)
+      porcelain.resource_id = (plumbing.resource_id)
+      porcelain.start_from = convert_timestamp_to_porcelain(plumbing.start_from)
+      porcelain
+    end
+
+    def self.convert_access_request_config_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AccessRequestConfig.new()
+      plumbing.duration = (porcelain.duration)
+      plumbing.reason = (porcelain.reason)
+      plumbing.resource_id = (porcelain.resource_id)
+      plumbing.start_from = convert_timestamp_to_plumbing(porcelain.start_from)
+      plumbing
+    end
+    def self.convert_repeated_access_request_config_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_access_request_config_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_access_request_config_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_access_request_config_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -7788,6 +7828,52 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_replay_chunk_event_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_requestable_resource_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = RequestableResource.new()
+      porcelain.access = (plumbing.access)
+      porcelain.authentication = (plumbing.authentication)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.type = (plumbing.type)
+      porcelain
+    end
+
+    def self.convert_requestable_resource_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::RequestableResource.new()
+      plumbing.access = (porcelain.access)
+      plumbing.authentication = (porcelain.authentication)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.type = (porcelain.type)
+      plumbing
+    end
+    def self.convert_repeated_requestable_resource_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_requestable_resource_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_requestable_resource_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_requestable_resource_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items

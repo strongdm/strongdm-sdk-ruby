@@ -39,7 +39,7 @@ module SDM #:nodoc:
       @parent = parent
     end
 
-    # Lists existing workflows.
+    # Lists existing access requests.
     def list(
       filter,
       *args,
@@ -88,7 +88,7 @@ module SDM #:nodoc:
       @access_requests = access_requests
     end
 
-    # Lists existing workflows.
+    # Lists existing access requests.
     def list(
       filter,
       *args,

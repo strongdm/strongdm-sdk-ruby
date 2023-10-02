@@ -708,6 +708,38 @@ module SDM
     end
   end
 
+  # AccessRequestConfig holds the information required to request access to a resource
+  class AccessRequestConfig
+    # The time access should end, defaults to the next occurance of 5 pm
+    attr_accessor :duration
+    # The reason for access
+    attr_accessor :reason
+    # The resource for which access is being requested
+    attr_accessor :resource_id
+    # The time access should start, defaults to now
+    attr_accessor :start_from
+
+    def initialize(
+      duration: nil,
+      reason: nil,
+      resource_id: nil,
+      start_from: nil
+    )
+      @duration = duration == nil ? "" : duration
+      @reason = reason == nil ? "" : reason
+      @resource_id = resource_id == nil ? "" : resource_id
+      @start_from = start_from == nil ? nil : start_from
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   # AccessRequestEvents hold information about events related to an access
   # request such as creation, approval and denial.
   class AccessRequestEvent
@@ -836,7 +868,8 @@ module SDM
     end
   end
 
-  # AccessRequestListResponse reports how the Workflow was created in the system.
+  # AccessRequestListResponse returns a list of access requests records that meet
+  # the criteria of a AccessRequestListRequest.
   class AccessRequestListResponse
     # Rate limit information.
     attr_accessor :rate_limit
@@ -7931,6 +7964,50 @@ module SDM
     )
       @data = data == nil ? "" : data
       @duration = duration == nil ? nil : duration
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # RequestableResource is a resource that can be requested via an AccessRequestConfig
+  class RequestableResource
+    # The current state of the user's access to the resources
+    attr_accessor :access
+    # The type of authentication for the resource
+    attr_accessor :authentication
+    # The health check status of the reasource
+    attr_accessor :healthy
+    # The resource id.
+    attr_accessor :id
+    # The resource name.
+    attr_accessor :name
+    # Any tags attached to this resource
+    attr_accessor :tags
+    # The resource type
+    attr_accessor :type
+
+    def initialize(
+      access: nil,
+      authentication: nil,
+      healthy: nil,
+      id: nil,
+      name: nil,
+      tags: nil,
+      type: nil
+    )
+      @access = access == nil ? "" : access
+      @authentication = authentication == nil ? "" : authentication
+      @healthy = healthy == nil ? false : healthy
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @type = type == nil ? "" : type
     end
 
     def to_json(options = {})

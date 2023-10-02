@@ -28,7 +28,7 @@ module V1
       self.unmarshal_class_method = :decode
       self.service_name = "v1.AccessRequests"
 
-      # Lists existing workflows.
+      # Lists existing access requests.
       rpc :List, V1::AccessRequestListRequest, V1::AccessRequestListResponse
     end
 
