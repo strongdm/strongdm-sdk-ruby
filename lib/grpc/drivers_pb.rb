@@ -427,6 +427,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port, :int32, 6
       optional :port_override, :int32, 5
       optional :region, :string, 3
+      optional :role_assumption_arn, :string, 10
       optional :username, :string, 2
     end
     add_message "v1.Azure" do
@@ -1229,6 +1230,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port, :int32, 6
       optional :port_override, :int32, 5
       optional :region, :string, 3
+      optional :role_assumption_arn, :string, 10
       optional :username, :string, 2
     end
     add_message "v1.RabbitMQAMQP091" do

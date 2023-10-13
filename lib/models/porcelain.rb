@@ -2365,6 +2365,8 @@ module SDM
     attr_accessor :port_override
     # The AWS region to connect to.
     attr_accessor :region
+    # If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+    attr_accessor :role_assumption_arn
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -2386,6 +2388,7 @@ module SDM
       port: nil,
       port_override: nil,
       region: nil,
+      role_assumption_arn: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -2402,6 +2405,7 @@ module SDM
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
       @region = region == nil ? "" : region
+      @role_assumption_arn = role_assumption_arn == nil ? "" : role_assumption_arn
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -7229,6 +7233,8 @@ module SDM
     attr_accessor :port_override
     # The AWS region to connect to.
     attr_accessor :region
+    # If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+    attr_accessor :role_assumption_arn
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -7250,6 +7256,7 @@ module SDM
       port: nil,
       port_override: nil,
       region: nil,
+      role_assumption_arn: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -7266,6 +7273,7 @@ module SDM
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
       @region = region == nil ? "" : region
+      @role_assumption_arn = role_assumption_arn == nil ? "" : role_assumption_arn
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags

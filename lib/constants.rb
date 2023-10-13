@@ -27,6 +27,7 @@ module SDM
     RELAY = "relay"
     ADMIN_TOKEN = "admin-token"
     SCIM_TOKEN = "scim-token"
+    SERVICE_NOW_TOKEN = "servicenow-token"
     SERVICE = "service"
     SUSPENDED = "suspended"
     EMPTY = ""
