@@ -23,14 +23,14 @@ module V1
     # AccountResources enumerates the resources to which accounts have access.
     # The AccountResources service is read-only.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = "v1.AccountResources"
 
       # List gets a list of AccountResource records matching a given set of criteria.
-      rpc :List, V1::AccountResourceListRequest, V1::AccountResourceListResponse
+      rpc :List, ::V1::AccountResourceListRequest, ::V1::AccountResourceListResponse
     end
 
     Stub = Service.rpc_stub_class

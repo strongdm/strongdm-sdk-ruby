@@ -20,6 +20,7 @@ require "google/protobuf"
 require "google/protobuf/timestamp_pb"
 require "options_pb"
 require "spec_pb"
+
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("account_resources.proto", :syntax => :proto3) do
     add_message "v1.AccountResourceListRequest" do

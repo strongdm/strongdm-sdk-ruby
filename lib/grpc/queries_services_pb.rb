@@ -24,14 +24,14 @@ module V1
     # Long-running SSH, RDP, or Kubernetes interactive sessions also count as queries.
     # The Queries service is read-only.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = "v1.Queries"
 
       # List gets a list of Queries matching a given set of criteria.
-      rpc :List, V1::QueryListRequest, V1::QueryListResponse
+      rpc :List, ::V1::QueryListRequest, ::V1::QueryListResponse
     end
 
     Stub = Service.rpc_stub_class

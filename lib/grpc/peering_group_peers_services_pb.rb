@@ -22,20 +22,20 @@ module V1
   module PeeringGroupPeers
     # PeeringGroupPeers provides the building blocks necessary to link two peering groups.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = "v1.PeeringGroupPeers"
 
       # Create links two peering groups.
-      rpc :Create, V1::PeeringGroupPeerCreateRequest, V1::PeeringGroupPeerCreateResponse
+      rpc :Create, ::V1::PeeringGroupPeerCreateRequest, ::V1::PeeringGroupPeerCreateResponse
       # Delete unlinks two peering groups.
-      rpc :Delete, V1::PeeringGroupPeerDeleteRequest, V1::PeeringGroupPeerDeleteResponse
+      rpc :Delete, ::V1::PeeringGroupPeerDeleteRequest, ::V1::PeeringGroupPeerDeleteResponse
       # Get reads the information of one peering group link.
-      rpc :Get, V1::PeeringGroupPeerGetRequest, V1::PeeringGroupPeerGetResponse
+      rpc :Get, ::V1::PeeringGroupPeerGetRequest, ::V1::PeeringGroupPeerGetResponse
       # List gets a list of peering group links.
-      rpc :List, V1::PeeringGroupPeerListRequest, V1::PeeringGroupPeerListResponse
+      rpc :List, ::V1::PeeringGroupPeerListRequest, ::V1::PeeringGroupPeerListResponse
     end
 
     Stub = Service.rpc_stub_class

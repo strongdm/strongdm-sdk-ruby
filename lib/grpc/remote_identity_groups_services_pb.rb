@@ -23,7 +23,7 @@ module V1
     # A RemoteIdentityGroup is a named grouping of Remote Identities for Accounts.
     # An Account's relationship to a RemoteIdentityGroup is defined via RemoteIdentity objects.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
@@ -36,7 +36,7 @@ module V1
       # }
       #
       # Get reads one RemoteIdentityGroup by ID.
-      rpc :Get, V1::RemoteIdentityGroupGetRequest, V1::RemoteIdentityGroupGetResponse
+      rpc :Get, ::V1::RemoteIdentityGroupGetRequest, ::V1::RemoteIdentityGroupGetResponse
       # // Update replaces all the fields of a RemoteIdentityGroup by ID.
       # rpc Update(RemoteIdentityGroupUpdateRequest) returns (RemoteIdentityGroupUpdateResponse) {
       #     option (v1.method_options).method = "put";
@@ -50,7 +50,7 @@ module V1
       # }
       #
       # List gets a list of RemoteIdentityGroups matching a given set of criteria.
-      rpc :List, V1::RemoteIdentityGroupListRequest, V1::RemoteIdentityGroupListResponse
+      rpc :List, ::V1::RemoteIdentityGroupListRequest, ::V1::RemoteIdentityGroupListResponse
     end
 
     Stub = Service.rpc_stub_class

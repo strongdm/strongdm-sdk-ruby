@@ -21,6 +21,7 @@ require "google/protobuf/timestamp_pb"
 require "workflow_assignments_pb"
 require "options_pb"
 require "spec_pb"
+
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("workflow_assignments_history.proto", :syntax => :proto3) do
     add_message "v1.WorkflowAssignmentsHistoryListRequest" do

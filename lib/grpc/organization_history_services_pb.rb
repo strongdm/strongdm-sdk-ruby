@@ -22,14 +22,14 @@ module V1
   module OrganizationHistory
     # OrganizationHistory records all changes to the state of an Organization.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = "v1.OrganizationHistory"
 
       # List gets a list of OrganizationHistory records matching a given set of criteria.
-      rpc :List, V1::OrganizationHistoryListRequest, V1::OrganizationHistoryListResponse
+      rpc :List, ::V1::OrganizationHistoryListRequest, ::V1::OrganizationHistoryListResponse
     end
 
     Stub = Service.rpc_stub_class

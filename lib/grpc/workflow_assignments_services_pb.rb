@@ -23,14 +23,14 @@ module V1
     # WorkflowAssignments links a Resource to a Workflow. The assigned resources are those that a user can request
     # access to via the workflow.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = "v1.WorkflowAssignments"
 
       # Lists existing workflow assignments.
-      rpc :List, V1::WorkflowAssignmentsListRequest, V1::WorkflowAssignmentsListResponse
+      rpc :List, ::V1::WorkflowAssignmentsListRequest, ::V1::WorkflowAssignmentsListResponse
     end
 
     Stub = Service.rpc_stub_class

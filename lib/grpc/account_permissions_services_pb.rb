@@ -23,14 +23,14 @@ module V1
     # AccountPermissions records the granular permissions accounts have, allowing them to execute
     # relevant commands via StrongDM's APIs.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = "v1.AccountPermissions"
 
       # List gets a list of Permission records matching a given set of criteria.
-      rpc :List, V1::AccountPermissionListRequest, V1::AccountPermissionListResponse
+      rpc :List, ::V1::AccountPermissionListRequest, ::V1::AccountPermissionListResponse
     end
 
     Stub = Service.rpc_stub_class

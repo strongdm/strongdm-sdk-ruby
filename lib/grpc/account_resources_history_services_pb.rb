@@ -22,14 +22,14 @@ module V1
   module AccountResourcesHistory
     # AccountResourcesHistory records all changes to the state of a AccountResource.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = "v1.AccountResourcesHistory"
 
       # List gets a list of AccountResourceHistory records matching a given set of criteria.
-      rpc :List, V1::AccountResourceHistoryListRequest, V1::AccountResourceHistoryListResponse
+      rpc :List, ::V1::AccountResourceHistoryListRequest, ::V1::AccountResourceHistoryListResponse
     end
 
     Stub = Service.rpc_stub_class

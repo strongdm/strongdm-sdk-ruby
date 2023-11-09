@@ -22,20 +22,20 @@ module V1
   module AccountAttachments
     # AccountAttachments assign an account to a role.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = "v1.AccountAttachments"
 
       # Create registers a new AccountAttachment.
-      rpc :Create, V1::AccountAttachmentCreateRequest, V1::AccountAttachmentCreateResponse
+      rpc :Create, ::V1::AccountAttachmentCreateRequest, ::V1::AccountAttachmentCreateResponse
       # Get reads one AccountAttachment by ID.
-      rpc :Get, V1::AccountAttachmentGetRequest, V1::AccountAttachmentGetResponse
+      rpc :Get, ::V1::AccountAttachmentGetRequest, ::V1::AccountAttachmentGetResponse
       # Delete removes a AccountAttachment by ID.
-      rpc :Delete, V1::AccountAttachmentDeleteRequest, V1::AccountAttachmentDeleteResponse
+      rpc :Delete, ::V1::AccountAttachmentDeleteRequest, ::V1::AccountAttachmentDeleteResponse
       # List gets a list of AccountAttachments matching a given set of criteria.
-      rpc :List, V1::AccountAttachmentListRequest, V1::AccountAttachmentListResponse
+      rpc :List, ::V1::AccountAttachmentListRequest, ::V1::AccountAttachmentListResponse
     end
 
     Stub = Service.rpc_stub_class

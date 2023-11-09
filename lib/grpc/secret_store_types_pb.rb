@@ -19,6 +19,7 @@ require "google/protobuf"
 
 require "options_pb"
 require "tags_pb"
+
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("secret_store_types.proto", :syntax => :proto3) do
     add_message "v1.SecretStore" do

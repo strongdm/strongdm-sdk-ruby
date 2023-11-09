@@ -22,14 +22,14 @@ module V1
   module ResourcesHistory
     # ResourcesHistory records all changes to the state of a Resource.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = "v1.ResourcesHistory"
 
       # List gets a list of ResourceHistory records matching a given set of criteria.
-      rpc :List, V1::ResourceHistoryListRequest, V1::ResourceHistoryListResponse
+      rpc :List, ::V1::ResourceHistoryListRequest, ::V1::ResourceHistoryListResponse
     end
 
     Stub = Service.rpc_stub_class

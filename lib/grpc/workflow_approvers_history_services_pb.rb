@@ -22,14 +22,14 @@ module V1
   module WorkflowApproversHistory
     # WorkflowApproversHistory provides records of all changes to the state of a WorkflowApprover.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = "v1.WorkflowApproversHistory"
 
       # List gets a list of WorkflowApproversHistory records matching a given set of criteria.
-      rpc :List, V1::WorkflowApproversHistoryListRequest, V1::WorkflowApproversHistoryListResponse
+      rpc :List, ::V1::WorkflowApproversHistoryListRequest, ::V1::WorkflowApproversHistoryListResponse
     end
 
     Stub = Service.rpc_stub_class

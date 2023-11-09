@@ -22,14 +22,14 @@ module V1
   module WorkflowAssignmentsHistory
     # WorkflowAssignmentsHistory provides records of all changes to the state of a WorkflowAssignment.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = "v1.WorkflowAssignmentsHistory"
 
       # List gets a list of WorkflowAssignmentsHistory records matching a given set of criteria.
-      rpc :List, V1::WorkflowAssignmentsHistoryListRequest, V1::WorkflowAssignmentsHistoryListResponse
+      rpc :List, ::V1::WorkflowAssignmentsHistoryListRequest, ::V1::WorkflowAssignmentsHistoryListResponse
     end
 
     Stub = Service.rpc_stub_class

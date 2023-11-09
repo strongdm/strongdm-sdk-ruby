@@ -22,14 +22,14 @@ module V1
   module SecretStoresHistory
     # SecretStoresHistory records all changes to the state of a SecretStore.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = "v1.SecretStoresHistory"
 
       # List gets a list of SecretStoreHistory records matching a given set of criteria.
-      rpc :List, V1::SecretStoreHistoryListRequest, V1::SecretStoreHistoryListResponse
+      rpc :List, ::V1::SecretStoreHistoryListRequest, ::V1::SecretStoreHistoryListResponse
     end
 
     Stub = Service.rpc_stub_class

@@ -24,22 +24,22 @@ module V1
     # of the Role have access to. An Account can be a member of multiple Roles via
     # AccountAttachments.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = "v1.Roles"
 
       # Create registers a new Role.
-      rpc :Create, V1::RoleCreateRequest, V1::RoleCreateResponse
+      rpc :Create, ::V1::RoleCreateRequest, ::V1::RoleCreateResponse
       # Get reads one Role by ID.
-      rpc :Get, V1::RoleGetRequest, V1::RoleGetResponse
+      rpc :Get, ::V1::RoleGetRequest, ::V1::RoleGetResponse
       # Update replaces all the fields of a Role by ID.
-      rpc :Update, V1::RoleUpdateRequest, V1::RoleUpdateResponse
+      rpc :Update, ::V1::RoleUpdateRequest, ::V1::RoleUpdateResponse
       # Delete removes a Role by ID.
-      rpc :Delete, V1::RoleDeleteRequest, V1::RoleDeleteResponse
+      rpc :Delete, ::V1::RoleDeleteRequest, ::V1::RoleDeleteResponse
       # List gets a list of Roles matching a given set of criteria.
-      rpc :List, V1::RoleListRequest, V1::RoleListResponse
+      rpc :List, ::V1::RoleListRequest, ::V1::RoleListResponse
     end
 
     Stub = Service.rpc_stub_class

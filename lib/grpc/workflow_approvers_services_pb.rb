@@ -22,20 +22,20 @@ module V1
   module WorkflowApprovers
     # WorkflowApprovers is an account with the ability to approve requests bound to a workflow.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = "v1.WorkflowApprovers"
 
       # Create creates a new workflow approver
-      rpc :Create, V1::WorkflowApproversCreateRequest, V1::WorkflowApproversCreateResponse
+      rpc :Create, ::V1::WorkflowApproversCreateRequest, ::V1::WorkflowApproversCreateResponse
       # Get reads one workflow approver by ID.
-      rpc :Get, V1::WorkflowApproverGetRequest, V1::WorkflowApproverGetResponse
+      rpc :Get, ::V1::WorkflowApproverGetRequest, ::V1::WorkflowApproverGetResponse
       # Delete deletes a workflow approver
-      rpc :Delete, V1::WorkflowApproversDeleteRequest, V1::WorkflowApproversDeleteResponse
+      rpc :Delete, ::V1::WorkflowApproversDeleteRequest, ::V1::WorkflowApproversDeleteResponse
       # Lists existing workflow approvers.
-      rpc :List, V1::WorkflowApproversListRequest, V1::WorkflowApproversListResponse
+      rpc :List, ::V1::WorkflowApproversListRequest, ::V1::WorkflowApproversListResponse
     end
 
     Stub = Service.rpc_stub_class

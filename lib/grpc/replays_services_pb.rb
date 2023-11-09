@@ -23,14 +23,14 @@ module V1
     # A Replay captures the data transferred over a long-running SSH, RDP, or Kubernetes interactive session
     # (otherwise referred to as a query). The Replays service is read-only.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = "v1.Replays"
 
       # List gets a list of ReplayChunks for the Query ID specified by the filter criteria.
-      rpc :List, V1::ReplayListRequest, V1::ReplayListResponse
+      rpc :List, ::V1::ReplayListRequest, ::V1::ReplayListResponse
     end
 
     Stub = Service.rpc_stub_class

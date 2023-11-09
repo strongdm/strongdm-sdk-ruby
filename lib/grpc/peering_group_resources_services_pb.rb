@@ -22,20 +22,20 @@ module V1
   module PeeringGroupResources
     # PeeringGroupResources provides the building blocks necessary to obtain attach a resource to a peering group.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = "v1.PeeringGroupResources"
 
       # Create attaches a Resource to a PeeringGroup
-      rpc :Create, V1::PeeringGroupResourceCreateRequest, V1::PeeringGroupResourceCreateResponse
+      rpc :Create, ::V1::PeeringGroupResourceCreateRequest, ::V1::PeeringGroupResourceCreateResponse
       # Delete detaches a Resource to a PeeringGroup
-      rpc :Delete, V1::PeeringGroupResourceDeleteRequest, V1::PeeringGroupResourceDeleteResponse
+      rpc :Delete, ::V1::PeeringGroupResourceDeleteRequest, ::V1::PeeringGroupResourceDeleteResponse
       # Get reads the information of one peering group to resource attachment.
-      rpc :Get, V1::PeeringGroupResourceGetRequest, V1::PeeringGroupResourceGetResponse
+      rpc :Get, ::V1::PeeringGroupResourceGetRequest, ::V1::PeeringGroupResourceGetResponse
       # List gets a list of peering group resource attachments.
-      rpc :List, V1::PeeringGroupResourceListRequest, V1::PeeringGroupResourceListResponse
+      rpc :List, ::V1::PeeringGroupResourceListRequest, ::V1::PeeringGroupResourceListResponse
     end
 
     Stub = Service.rpc_stub_class

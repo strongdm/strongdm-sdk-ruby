@@ -24,22 +24,22 @@ module V1
     # the users that can request that access, and the mechanism for approving those requests which can either
     # be automatic approval or a set of users authorized to approve the requests.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = "v1.Workflows"
 
       # Create creates a new workflow and requires a name for the workflow.
-      rpc :Create, V1::WorkflowCreateRequest, V1::WorkflowCreateResponse
+      rpc :Create, ::V1::WorkflowCreateRequest, ::V1::WorkflowCreateResponse
       # Get reads one workflow by ID.
-      rpc :Get, V1::WorkflowGetRequest, V1::WorkflowGetResponse
+      rpc :Get, ::V1::WorkflowGetRequest, ::V1::WorkflowGetResponse
       # Delete deletes an existing workflow.
-      rpc :Delete, V1::WorkflowDeleteRequest, V1::WorkflowDeleteResponse
+      rpc :Delete, ::V1::WorkflowDeleteRequest, ::V1::WorkflowDeleteResponse
       # Update updates an existing workflow.
-      rpc :Update, V1::WorkflowUpdateRequest, V1::WorkflowUpdateResponse
+      rpc :Update, ::V1::WorkflowUpdateRequest, ::V1::WorkflowUpdateResponse
       # Lists existing workflows.
-      rpc :List, V1::WorkflowListRequest, V1::WorkflowListResponse
+      rpc :List, ::V1::WorkflowListRequest, ::V1::WorkflowListResponse
     end
 
     Stub = Service.rpc_stub_class

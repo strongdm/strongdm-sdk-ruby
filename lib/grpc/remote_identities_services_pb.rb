@@ -22,22 +22,22 @@ module V1
   module RemoteIdentities
     # RemoteIdentities assign a resource directly to an account, giving the account the permission to connect to that resource.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = "v1.RemoteIdentities"
 
       # Create registers a new RemoteIdentity.
-      rpc :Create, V1::RemoteIdentityCreateRequest, V1::RemoteIdentityCreateResponse
+      rpc :Create, ::V1::RemoteIdentityCreateRequest, ::V1::RemoteIdentityCreateResponse
       # Get reads one RemoteIdentity by ID.
-      rpc :Get, V1::RemoteIdentityGetRequest, V1::RemoteIdentityGetResponse
+      rpc :Get, ::V1::RemoteIdentityGetRequest, ::V1::RemoteIdentityGetResponse
       # Update replaces all the fields of a RemoteIdentity by ID.
-      rpc :Update, V1::RemoteIdentityUpdateRequest, V1::RemoteIdentityUpdateResponse
+      rpc :Update, ::V1::RemoteIdentityUpdateRequest, ::V1::RemoteIdentityUpdateResponse
       # Delete removes a RemoteIdentity by ID.
-      rpc :Delete, V1::RemoteIdentityDeleteRequest, V1::RemoteIdentityDeleteResponse
+      rpc :Delete, ::V1::RemoteIdentityDeleteRequest, ::V1::RemoteIdentityDeleteResponse
       # List gets a list of RemoteIdentities matching a given set of criteria.
-      rpc :List, V1::RemoteIdentityListRequest, V1::RemoteIdentityListResponse
+      rpc :List, ::V1::RemoteIdentityListRequest, ::V1::RemoteIdentityListResponse
     end
 
     Stub = Service.rpc_stub_class

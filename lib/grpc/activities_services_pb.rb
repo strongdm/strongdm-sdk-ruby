@@ -24,19 +24,19 @@ module V1
     # a user creation, resource deletion, sso configuration change, etc. The Activities
     # service is read-only.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = "v1.Activities"
 
       # Get reads one Activity by ID.
-      rpc :Get, V1::ActivityGetRequest, V1::ActivityGetResponse
+      rpc :Get, ::V1::ActivityGetRequest, ::V1::ActivityGetResponse
       # List gets a list of Activities matching a given set of criteria.
       # The 'before' and 'after' filters can be used to control the time
       # range of the output activities. If not provided, one week of back
       # of activities will be returned.
-      rpc :List, V1::ActivityListRequest, V1::ActivityListResponse
+      rpc :List, ::V1::ActivityListRequest, ::V1::ActivityListResponse
     end
 
     Stub = Service.rpc_stub_class

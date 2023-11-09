@@ -22,20 +22,20 @@ module V1
   module PeeringGroups
     # PeeringGroups provides the building blocks necessary to obtain explicit network topology and routing.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = "v1.PeeringGroups"
 
       # Create registers a new PeeringGroup.
-      rpc :Create, V1::PeeringGroupCreateRequest, V1::PeeringGroupCreateResponse
+      rpc :Create, ::V1::PeeringGroupCreateRequest, ::V1::PeeringGroupCreateResponse
       # Delete removes a PeeringGroup by ID.
-      rpc :Delete, V1::PeeringGroupDeleteRequest, V1::PeeringGroupDeleteResponse
+      rpc :Delete, ::V1::PeeringGroupDeleteRequest, ::V1::PeeringGroupDeleteResponse
       # Get reads one PeeringGroup by ID. It will load all its dependencies.
-      rpc :Get, V1::PeeringGroupGetRequest, V1::PeeringGroupGetResponse
+      rpc :Get, ::V1::PeeringGroupGetRequest, ::V1::PeeringGroupGetResponse
       # List gets a list of Peering Groups.
-      rpc :List, V1::PeeringGroupListRequest, V1::PeeringGroupListResponse
+      rpc :List, ::V1::PeeringGroupListRequest, ::V1::PeeringGroupListResponse
     end
 
     Stub = Service.rpc_stub_class

@@ -21,6 +21,7 @@ require "google/protobuf/timestamp_pb"
 require "drivers_pb"
 require "options_pb"
 require "spec_pb"
+
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("resources_history.proto", :syntax => :proto3) do
     add_message "v1.ResourceHistoryListRequest" do

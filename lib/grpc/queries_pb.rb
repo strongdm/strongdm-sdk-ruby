@@ -22,6 +22,7 @@ require "google/protobuf/timestamp_pb"
 require "options_pb"
 require "spec_pb"
 require "tags_pb"
+
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("queries.proto", :syntax => :proto3) do
     add_message "v1.QueryListRequest" do

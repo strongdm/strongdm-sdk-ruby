@@ -22,14 +22,14 @@ module V1
   module RemoteIdentityGroupsHistory
     # RemoteIdentityGroupsHistory records all changes to the state of a RemoteIdentityGroup.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = "v1.RemoteIdentityGroupsHistory"
 
       # List gets a list of RemoteIdentityGroupHistory records matching a given set of criteria.
-      rpc :List, V1::RemoteIdentityGroupHistoryListRequest, V1::RemoteIdentityGroupHistoryListResponse
+      rpc :List, ::V1::RemoteIdentityGroupHistoryListRequest, ::V1::RemoteIdentityGroupHistoryListResponse
     end
 
     Stub = Service.rpc_stub_class

@@ -21,6 +21,7 @@ require "google/protobuf/timestamp_pb"
 require "secret_store_types_pb"
 require "options_pb"
 require "spec_pb"
+
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("secret_stores_history.proto", :syntax => :proto3) do
     add_message "v1.SecretStoreHistoryListRequest" do

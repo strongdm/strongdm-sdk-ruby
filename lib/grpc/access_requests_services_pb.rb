@@ -22,14 +22,14 @@ module V1
   module AccessRequests
     # AccessRequests are requests for access to a resource that may match a Workflow.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = "v1.AccessRequests"
 
       # Lists existing access requests.
-      rpc :List, V1::AccessRequestListRequest, V1::AccessRequestListResponse
+      rpc :List, ::V1::AccessRequestListRequest, ::V1::AccessRequestListResponse
     end
 
     Stub = Service.rpc_stub_class

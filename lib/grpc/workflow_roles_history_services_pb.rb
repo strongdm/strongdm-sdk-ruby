@@ -22,14 +22,14 @@ module V1
   module WorkflowRolesHistory
     # WorkflowRolesHistory provides records of all changes to the state of a WorkflowRole
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = "v1.WorkflowRolesHistory"
 
       # List gets a list of WorkflowRolesHistory records matching a given set of criteria.
-      rpc :List, V1::WorkflowRolesHistoryListRequest, V1::WorkflowRolesHistoryListResponse
+      rpc :List, ::V1::WorkflowRolesHistoryListRequest, ::V1::WorkflowRolesHistoryListResponse
     end
 
     Stub = Service.rpc_stub_class

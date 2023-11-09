@@ -24,22 +24,22 @@ module V1
     # 1. **Users:** humans who are authenticated through username and password or SSO.
     # 2. **Service Accounts:** machines that are authenticated using a service token.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = "v1.Accounts"
 
       # Create registers a new Account.
-      rpc :Create, V1::AccountCreateRequest, V1::AccountCreateResponse
+      rpc :Create, ::V1::AccountCreateRequest, ::V1::AccountCreateResponse
       # Get reads one Account by ID.
-      rpc :Get, V1::AccountGetRequest, V1::AccountGetResponse
+      rpc :Get, ::V1::AccountGetRequest, ::V1::AccountGetResponse
       # Update replaces all the fields of an Account by ID.
-      rpc :Update, V1::AccountUpdateRequest, V1::AccountUpdateResponse
+      rpc :Update, ::V1::AccountUpdateRequest, ::V1::AccountUpdateResponse
       # Delete removes an Account by ID.
-      rpc :Delete, V1::AccountDeleteRequest, V1::AccountDeleteResponse
+      rpc :Delete, ::V1::AccountDeleteRequest, ::V1::AccountDeleteResponse
       # List gets a list of Accounts matching a given set of criteria.
-      rpc :List, V1::AccountListRequest, V1::AccountListResponse
+      rpc :List, ::V1::AccountListRequest, ::V1::AccountListResponse
     end
 
     Stub = Service.rpc_stub_class

@@ -22,14 +22,14 @@ module V1
   module RoleResourcesHistory
     # RoleResourcesHistory records all changes to the state of a RoleResource.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = "v1.RoleResourcesHistory"
 
       # List gets a list of RoleResourceHistory records matching a given set of criteria.
-      rpc :List, V1::RoleResourceHistoryListRequest, V1::RoleResourceHistoryListResponse
+      rpc :List, ::V1::RoleResourceHistoryListRequest, ::V1::RoleResourceHistoryListResponse
     end
 
     Stub = Service.rpc_stub_class

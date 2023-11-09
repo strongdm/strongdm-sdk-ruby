@@ -19,6 +19,7 @@ require "google/protobuf"
 
 require "options_pb"
 require "spec_pb"
+
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("peering_group_resources.proto", :syntax => :proto3) do
     add_message "v1.PeeringGroupResourceCreateRequest" do

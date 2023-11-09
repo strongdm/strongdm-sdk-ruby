@@ -22,14 +22,14 @@ module V1
   module AccessRequestEventsHistory
     # AccessRequestEventsHistory provides records of all changes to the state of an AccessRequest.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = "v1.AccessRequestEventsHistory"
 
       # List gets a list of AccessRequestEventHistory records matching a given set of criteria.
-      rpc :List, V1::AccessRequestEventHistoryListRequest, V1::AccessRequestEventHistoryListResponse
+      rpc :List, ::V1::AccessRequestEventHistoryListRequest, ::V1::AccessRequestEventHistoryListResponse
     end
 
     Stub = Service.rpc_stub_class

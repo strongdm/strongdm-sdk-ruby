@@ -22,14 +22,14 @@ module V1
   module AccountGrantsHistory
     # AccountGrantsHistory records all changes to the state of an AccountGrant.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = "v1.AccountGrantsHistory"
 
       # List gets a list of AccountGrantHistory records matching a given set of criteria.
-      rpc :List, V1::AccountGrantHistoryListRequest, V1::AccountGrantHistoryListResponse
+      rpc :List, ::V1::AccountGrantHistoryListRequest, ::V1::AccountGrantHistoryListResponse
     end
 
     Stub = Service.rpc_stub_class

@@ -23,20 +23,20 @@ module V1
     # WorkflowRole links a role to a workflow. The linked roles indicate which roles a user must be a part of
     # to request access to a resource via the workflow.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = "v1.WorkflowRoles"
 
       # Create creates a new workflow role
-      rpc :Create, V1::WorkflowRolesCreateRequest, V1::WorkflowRolesCreateResponse
+      rpc :Create, ::V1::WorkflowRolesCreateRequest, ::V1::WorkflowRolesCreateResponse
       # Get reads one workflow role by ID.
-      rpc :Get, V1::WorkflowRoleGetRequest, V1::WorkflowRoleGetResponse
+      rpc :Get, ::V1::WorkflowRoleGetRequest, ::V1::WorkflowRoleGetResponse
       # Delete deletes a workflow role
-      rpc :Delete, V1::WorkflowRolesDeleteRequest, V1::WorkflowRolesDeleteResponse
+      rpc :Delete, ::V1::WorkflowRolesDeleteRequest, ::V1::WorkflowRolesDeleteResponse
       # Lists existing workflow roles.
-      rpc :List, V1::WorkflowRolesListRequest, V1::WorkflowRolesListResponse
+      rpc :List, ::V1::WorkflowRolesListRequest, ::V1::WorkflowRolesListResponse
     end
 
     Stub = Service.rpc_stub_class

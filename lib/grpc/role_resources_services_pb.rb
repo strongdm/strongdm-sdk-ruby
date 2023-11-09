@@ -23,14 +23,14 @@ module V1
     # RoleResources enumerates the resources to which roles have access.
     # The RoleResources service is read-only.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = "v1.RoleResources"
 
       # List gets a list of RoleResource records matching a given set of criteria.
-      rpc :List, V1::RoleResourceListRequest, V1::RoleResourceListResponse
+      rpc :List, ::V1::RoleResourceListRequest, ::V1::RoleResourceListResponse
     end
 
     Stub = Service.rpc_stub_class

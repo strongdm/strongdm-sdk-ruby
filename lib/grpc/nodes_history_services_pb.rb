@@ -22,14 +22,14 @@ module V1
   module NodesHistory
     # NodesHistory records all changes to the state of a Node.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = "v1.NodesHistory"
 
       # List gets a list of NodeHistory records matching a given set of criteria.
-      rpc :List, V1::NodeHistoryListRequest, V1::NodeHistoryListResponse
+      rpc :List, ::V1::NodeHistoryListRequest, ::V1::NodeHistoryListResponse
     end
 
     Stub = Service.rpc_stub_class

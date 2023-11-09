@@ -24,22 +24,22 @@ module V1
     # - **Gateways** are the entry points into network. They listen for connection from the strongDM client, and provide access to databases and servers.
     # - **Relays** are used to extend the strongDM network into segmented subnets. They provide access to databases and servers but do not listen for incoming connections.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = "v1.Nodes"
 
       # Create registers a new Node.
-      rpc :Create, V1::NodeCreateRequest, V1::NodeCreateResponse
+      rpc :Create, ::V1::NodeCreateRequest, ::V1::NodeCreateResponse
       # Get reads one Node by ID.
-      rpc :Get, V1::NodeGetRequest, V1::NodeGetResponse
+      rpc :Get, ::V1::NodeGetRequest, ::V1::NodeGetResponse
       # Update replaces all the fields of a Node by ID.
-      rpc :Update, V1::NodeUpdateRequest, V1::NodeUpdateResponse
+      rpc :Update, ::V1::NodeUpdateRequest, ::V1::NodeUpdateResponse
       # Delete removes a Node by ID.
-      rpc :Delete, V1::NodeDeleteRequest, V1::NodeDeleteResponse
+      rpc :Delete, ::V1::NodeDeleteRequest, ::V1::NodeDeleteResponse
       # List gets a list of Nodes matching a given set of criteria.
-      rpc :List, V1::NodeListRequest, V1::NodeListResponse
+      rpc :List, ::V1::NodeListRequest, ::V1::NodeListResponse
     end
 
     Stub = Service.rpc_stub_class

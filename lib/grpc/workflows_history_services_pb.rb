@@ -22,14 +22,14 @@ module V1
   module WorkflowsHistory
     # WorkflowsHistory provides records of all changes to the state of a Workflow.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = "v1.WorkflowsHistory"
 
       # List gets a list of WorkflowHistory records matching a given set of criteria.
-      rpc :List, V1::WorkflowHistoryListRequest, V1::WorkflowHistoryListResponse
+      rpc :List, ::V1::WorkflowHistoryListRequest, ::V1::WorkflowHistoryListResponse
     end
 
     Stub = Service.rpc_stub_class

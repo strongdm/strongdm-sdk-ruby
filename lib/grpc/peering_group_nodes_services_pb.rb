@@ -22,20 +22,20 @@ module V1
   module PeeringGroupNodes
     # PeeringGroupNodes provides the building blocks necessary to obtain attach a node to a peering group.
     class Service
-      include GRPC::GenericService
+      include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
       self.service_name = "v1.PeeringGroupNodes"
 
       # Create attaches a Node to a PeeringGroup
-      rpc :Create, V1::PeeringGroupNodeCreateRequest, V1::PeeringGroupNodeCreateResponse
+      rpc :Create, ::V1::PeeringGroupNodeCreateRequest, ::V1::PeeringGroupNodeCreateResponse
       # Delete detaches a Node to a PeeringGroup.
-      rpc :Delete, V1::PeeringGroupNodeDeleteRequest, V1::PeeringGroupNodeDeleteResponse
+      rpc :Delete, ::V1::PeeringGroupNodeDeleteRequest, ::V1::PeeringGroupNodeDeleteResponse
       # Get reads the information of one peering group to node attachment.
-      rpc :Get, V1::PeeringGroupNodeGetRequest, V1::PeeringGroupNodeGetResponse
+      rpc :Get, ::V1::PeeringGroupNodeGetRequest, ::V1::PeeringGroupNodeGetResponse
       # List gets a list of peering group node attachments.
-      rpc :List, V1::PeeringGroupNodeListRequest, V1::PeeringGroupNodeListResponse
+      rpc :List, ::V1::PeeringGroupNodeListRequest, ::V1::PeeringGroupNodeListResponse
     end
 
     Stub = Service.rpc_stub_class
