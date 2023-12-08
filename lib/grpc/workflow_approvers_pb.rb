@@ -60,7 +60,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.WorkflowApprover" do
       optional :id, :string, 1
       optional :workflow_id, :string, 2
-      optional :approver_id, :string, 3
+      optional :account_id, :string, 3
+      optional :role_id, :string, 4
     end
   end
 end

@@ -10343,8 +10343,9 @@ module SDM
         return nil
       end
       porcelain = WorkflowApprover.new()
-      porcelain.approver_id = (plumbing.approver_id)
+      porcelain.account_id = (plumbing.account_id)
       porcelain.id = (plumbing.id)
+      porcelain.role_id = (plumbing.role_id)
       porcelain.workflow_id = (plumbing.workflow_id)
       porcelain
     end
@@ -10354,8 +10355,9 @@ module SDM
         return nil
       end
       plumbing = V1::WorkflowApprover.new()
-      plumbing.approver_id = (porcelain.approver_id)
+      plumbing.account_id = (porcelain.account_id)
       plumbing.id = (porcelain.id)
+      plumbing.role_id = (porcelain.role_id)
       plumbing.workflow_id = (porcelain.workflow_id)
       plumbing
     end

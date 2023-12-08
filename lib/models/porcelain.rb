@@ -9837,22 +9837,26 @@ module SDM
     end
   end
 
-  # WorkflowApprover is an account with the ability to approve requests bound to a workflow.
+  # WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.
   class WorkflowApprover
-    # The approver id.
-    attr_accessor :approver_id
+    # The approver account id.
+    attr_accessor :account_id
     # Unique identifier of the WorkflowApprover.
     attr_accessor :id
+    # The approver role id
+    attr_accessor :role_id
     # The workflow id.
     attr_accessor :workflow_id
 
     def initialize(
-      approver_id: nil,
+      account_id: nil,
       id: nil,
+      role_id: nil,
       workflow_id: nil
     )
-      @approver_id = approver_id == nil ? "" : approver_id
+      @account_id = account_id == nil ? "" : account_id
       @id = id == nil ? "" : id
+      @role_id = role_id == nil ? "" : role_id
       @workflow_id = workflow_id == nil ? "" : workflow_id
     end
 

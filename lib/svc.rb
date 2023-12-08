@@ -4020,7 +4020,7 @@ module SDM #:nodoc:
     end
   end
 
-  # WorkflowApprovers is an account with the ability to approve requests bound to a workflow.
+  # WorkflowApprovers is an account or a role with the ability to approve requests bound to a workflow.
   #
   # See {WorkflowApprover}.
   class WorkflowApprovers

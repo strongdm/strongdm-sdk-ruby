@@ -20,7 +20,7 @@ require "workflow_approvers_pb"
 
 module V1
   module WorkflowApprovers
-    # WorkflowApprovers is an account with the ability to approve requests bound to a workflow.
+    # WorkflowApprovers is an account or a role with the ability to approve requests bound to a workflow.
     class Service
       include ::GRPC::GenericService
 

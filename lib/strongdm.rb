@@ -29,7 +29,7 @@ module SDM #:nodoc:
     DEFAULT_BASE_RETRY_DELAY = 0.0030 # 30 ms
     DEFAULT_MAX_RETRY_DELAY = 300 # 300 seconds
     API_VERSION = "2021-08-23"
-    USER_AGENT = "strongdm-sdk-ruby/5.0.5"
+    USER_AGENT = "strongdm-sdk-ruby/6.0.0"
     private_constant :DEFAULT_MAX_RETRIES, :DEFAULT_BASE_RETRY_DELAY, :DEFAULT_MAX_RETRY_DELAY, :API_VERSION, :USER_AGENT
 
     # Creates a new strongDM API client.
@@ -344,7 +344,7 @@ module SDM #:nodoc:
     #
     # See {SecretStoresHistory}.
     attr_reader :secret_stores_history
-    # WorkflowApprovers is an account with the ability to approve requests bound to a workflow.
+    # WorkflowApprovers is an account or a role with the ability to approve requests bound to a workflow.
     #
     # See {WorkflowApprovers}.
     attr_reader :workflow_approvers
@@ -539,7 +539,7 @@ module SDM #:nodoc:
     #
     # See {SnapshotSecretStores}.
     attr_reader :secret_stores
-    # WorkflowApprovers is an account with the ability to approve requests bound to a workflow.
+    # WorkflowApprovers is an account or a role with the ability to approve requests bound to a workflow.
     #
     # See {SnapshotWorkflowApprovers}.
     attr_reader :workflow_approvers

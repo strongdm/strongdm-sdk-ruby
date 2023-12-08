@@ -13,5 +13,5 @@
 # limitations under the License.
 #
 module SDM
-  VERSION = "5.0.5"
+  VERSION = "6.0.0"
 end
