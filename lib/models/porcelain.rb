@@ -8105,6 +8105,51 @@ module SDM
     end
   end
 
+  # ResourceHealthcheckRequest specifies requesting a healthcheck for a given resource by ID.
+  class ResourceHealthcheckRequest
+    # The unique identifier of the Resource to healthcheck.
+    attr_accessor :id
+
+    def initialize(
+      id: nil
+    )
+      @id = id == nil ? "" : id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ResourceHealthcheckResponse reports any metadata concerning a healthcheck response.
+  # Healthchecks are non blocking, and this contains no non-metadata.
+  class ResourceHealthcheckResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      meta: nil,
+      rate_limit: nil
+    )
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   # ResourceHistory records the state of a Resource at a given point in time,
   # where every change (create, update and delete) to a Resource produces an
   # ResourceHistory record.

@@ -8523,6 +8523,78 @@ module SDM
       end
       items
     end
+    def self.convert_resource_healthcheck_request_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = ResourceHealthcheckRequest.new()
+      porcelain.id = (plumbing.id)
+      porcelain.meta = convert_update_request_metadata_to_porcelain(plumbing.meta)
+      porcelain
+    end
+
+    def self.convert_resource_healthcheck_request_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::ResourceHealthcheckRequest.new()
+      plumbing.id = (porcelain.id)
+      plumbing.meta = convert_update_request_metadata_to_plumbing(porcelain.meta)
+      plumbing
+    end
+    def self.convert_repeated_resource_healthcheck_request_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_resource_healthcheck_request_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_resource_healthcheck_request_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_resource_healthcheck_request_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_resource_healthcheck_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = ResourceHealthcheckResponse.new()
+      porcelain.meta = convert_update_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_resource_healthcheck_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::ResourceHealthcheckResponse.new()
+      plumbing.meta = convert_update_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_resource_healthcheck_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_resource_healthcheck_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_resource_healthcheck_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_resource_healthcheck_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_resource_history_to_porcelain(plumbing)
       if plumbing == nil
         return nil

@@ -3250,6 +3250,37 @@ module SDM #:nodoc:
       }
       resp
     end
+
+    # Healthcheck triggers a remote healthcheck. It may take minutes to propagate across a
+    # large network of Nodes. The call will return immediately, and the updated health of the
+    # Resource can be retrieved via Get or List.
+    def healthcheck(
+      id,
+      deadline: nil
+    )
+      req = V1::ResourceHealthcheckRequest.new()
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.healthcheck(req, metadata: @parent.get_metadata("Resources.Healthcheck", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = ResourceHealthcheckResponse.new()
+      resp.meta = Plumbing::convert_update_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
   end
 
   # SnapshotResources exposes the read only methods of the Resources

@@ -41,6 +41,10 @@ module V1
       rpc :Delete, ::V1::ResourceDeleteRequest, ::V1::ResourceDeleteResponse
       # List gets a list of Resources matching a given set of criteria.
       rpc :List, ::V1::ResourceListRequest, ::V1::ResourceListResponse
+      # Healthcheck triggers a remote healthcheck. It may take minutes to propagate across a
+      # large network of Nodes. The call will return immediately, and the updated health of the
+      # Resource can be retrieved via Get or List.
+      rpc :Healthcheck, ::V1::ResourceHealthcheckRequest, ::V1::ResourceHealthcheckResponse
     end
 
     Stub = Service.rpc_stub_class

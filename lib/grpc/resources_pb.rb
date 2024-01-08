@@ -78,6 +78,14 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       repeated :matches, :message, 2, "v1.Tag"
       optional :rate_limit, :message, 3, "v1.RateLimitMetadata"
     end
+    add_message "v1.ResourceHealthcheckRequest" do
+      optional :meta, :message, 1, "v1.UpdateRequestMetadata"
+      optional :id, :string, 2
+    end
+    add_message "v1.ResourceHealthcheckResponse" do
+      optional :meta, :message, 1, "v1.UpdateResponseMetadata"
+      optional :rate_limit, :message, 2, "v1.RateLimitMetadata"
+    end
   end
 end
 
@@ -94,4 +102,6 @@ module V1
   ResourceListResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ResourceListResponse").msgclass
   EnumerateTagsRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.EnumerateTagsRequest").msgclass
   EnumerateTagsResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.EnumerateTagsResponse").msgclass
+  ResourceHealthcheckRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ResourceHealthcheckRequest").msgclass
+  ResourceHealthcheckResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ResourceHealthcheckResponse").msgclass
 end
