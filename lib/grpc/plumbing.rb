@@ -3199,6 +3199,44 @@ module SDM
       end
       items
     end
+    def self.convert_control_panel_get_rdpca_public_key_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = ControlPanelGetRDPCAPublicKeyResponse.new()
+      porcelain.meta = convert_get_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.public_key = (plumbing.public_key)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_control_panel_get_rdpca_public_key_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::ControlPanelGetRDPCAPublicKeyResponse.new()
+      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.public_key = (porcelain.public_key)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_control_panel_get_rdpca_public_key_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_control_panel_get_rdpca_public_key_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_control_panel_get_rdpca_public_key_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_control_panel_get_rdpca_public_key_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_control_panel_get_sshca_public_key_response_to_porcelain(plumbing)
       if plumbing == nil
         return nil

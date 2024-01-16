@@ -1306,6 +1306,34 @@ module SDM #:nodoc:
       resp
     end
 
+    # GetRDPCAPublicKey retrieves the RDP CA public key.
+    def get_rdpca_public_key(
+      deadline: nil
+    )
+      req = V1::ControlPanelGetRDPCAPublicKeyRequest.new()
+
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.get_rdpca_public_key(req, metadata: @parent.get_metadata("ControlPanel.GetRDPCAPublicKey", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = ControlPanelGetRDPCAPublicKeyResponse.new()
+      resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.public_key = (plumbing_response.public_key)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
     # VerifyJWT reports whether the given JWT token (x-sdm-token) is valid.
     def verify_jwt(
       token,

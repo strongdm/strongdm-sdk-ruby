@@ -30,6 +30,8 @@ module V1
 
       # GetSSHCAPublicKey retrieves the SSH CA public key.
       rpc :GetSSHCAPublicKey, ::V1::ControlPanelGetSSHCAPublicKeyRequest, ::V1::ControlPanelGetSSHCAPublicKeyResponse
+      # GetRDPCAPublicKey retrieves the RDP CA public key.
+      rpc :GetRDPCAPublicKey, ::V1::ControlPanelGetRDPCAPublicKeyRequest, ::V1::ControlPanelGetRDPCAPublicKeyResponse
       # VerifyJWT reports whether the given JWT token (x-sdm-token) is valid.
       rpc :VerifyJWT, ::V1::ControlPanelVerifyJWTRequest, ::V1::ControlPanelVerifyJWTResponse
     end

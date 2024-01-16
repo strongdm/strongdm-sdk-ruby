@@ -60,6 +60,9 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :completed_at, :message, 23, "google.protobuf.Timestamp"
       optional :capture, :message, 24, "v1.QueryCapture"
       optional :source_ip, :string, 25
+      optional :authentication_id, :string, 26
+      optional :target, :string, 27
+      optional :authzJson, :string, 28
     end
     add_message "v1.QueryCapture" do
       optional :width, :int32, 1
