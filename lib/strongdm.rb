@@ -29,7 +29,7 @@ module SDM #:nodoc:
     DEFAULT_BASE_RETRY_DELAY = 0.0030 # 30 ms
     DEFAULT_MAX_RETRY_DELAY = 300 # 300 seconds
     API_VERSION = "2021-08-23"
-    USER_AGENT = "strongdm-sdk-ruby/6.2.0"
+    USER_AGENT = "strongdm-sdk-ruby/6.2.1"
     private_constant :DEFAULT_MAX_RETRIES, :DEFAULT_BASE_RETRY_DELAY, :DEFAULT_MAX_RETRY_DELAY, :API_VERSION, :USER_AGENT
 
     # Creates a new strongDM API client.
@@ -444,10 +444,6 @@ module SDM #:nodoc:
       @account_resources = SnapshotAccountResources.new(client.account_resources)
       @accounts = SnapshotAccounts.new(client.accounts)
       @nodes = SnapshotNodes.new(client.nodes)
-      @peering_group_nodes = SnapshotPeeringGroupNodes.new(client.peering_group_nodes)
-      @peering_group_peers = SnapshotPeeringGroupPeers.new(client.peering_group_peers)
-      @peering_group_resources = SnapshotPeeringGroupResources.new(client.peering_group_resources)
-      @peering_groups = SnapshotPeeringGroups.new(client.peering_groups)
       @remote_identities = SnapshotRemoteIdentities.new(client.remote_identities)
       @remote_identity_groups = SnapshotRemoteIdentityGroups.new(client.remote_identity_groups)
       @resources = SnapshotResources.new(client.resources)
@@ -494,22 +490,6 @@ module SDM #:nodoc:
     #
     # See {SnapshotNodes}.
     attr_reader :nodes
-    # PeeringGroupNodes provides the building blocks necessary to obtain attach a node to a peering group.
-    #
-    # See {SnapshotPeeringGroupNodes}.
-    attr_reader :peering_group_nodes
-    # PeeringGroupPeers provides the building blocks necessary to link two peering groups.
-    #
-    # See {SnapshotPeeringGroupPeers}.
-    attr_reader :peering_group_peers
-    # PeeringGroupResources provides the building blocks necessary to obtain attach a resource to a peering group.
-    #
-    # See {SnapshotPeeringGroupResources}.
-    attr_reader :peering_group_resources
-    # PeeringGroups provides the building blocks necessary to obtain explicit network topology and routing.
-    #
-    # See {SnapshotPeeringGroups}.
-    attr_reader :peering_groups
     # RemoteIdentities assign a resource directly to an account, giving the account the permission to connect to that resource.
     #
     # See {SnapshotRemoteIdentities}.

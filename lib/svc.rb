@@ -1840,40 +1840,6 @@ module SDM #:nodoc:
     end
   end
 
-  # SnapshotPeeringGroupNodes exposes the read only methods of the PeeringGroupNodes
-  # service for historical queries.
-  class SnapshotPeeringGroupNodes
-    extend Gem::Deprecate
-
-    def initialize(peering_group_nodes)
-      @peering_group_nodes = peering_group_nodes
-    end
-
-    # Get reads the information of one peering group to node attachment.
-    def get(
-      id,
-      deadline: nil
-    )
-      return @peering_group_nodes.get(
-               id,
-               deadline: deadline,
-             )
-    end
-
-    # List gets a list of peering group node attachments.
-    def list(
-      filter,
-      *args,
-      deadline: nil
-    )
-      return @peering_group_nodes.list(
-               filter,
-                            *args,
-                            deadline: deadline,
-             )
-    end
-  end
-
   # PeeringGroupPeers provides the building blocks necessary to link two peering groups.
   #
   # See {PeeringGroupPeer}.
@@ -2019,40 +1985,6 @@ module SDM #:nodoc:
         end
       }
       resp
-    end
-  end
-
-  # SnapshotPeeringGroupPeers exposes the read only methods of the PeeringGroupPeers
-  # service for historical queries.
-  class SnapshotPeeringGroupPeers
-    extend Gem::Deprecate
-
-    def initialize(peering_group_peers)
-      @peering_group_peers = peering_group_peers
-    end
-
-    # Get reads the information of one peering group link.
-    def get(
-      id,
-      deadline: nil
-    )
-      return @peering_group_peers.get(
-               id,
-               deadline: deadline,
-             )
-    end
-
-    # List gets a list of peering group links.
-    def list(
-      filter,
-      *args,
-      deadline: nil
-    )
-      return @peering_group_peers.list(
-               filter,
-                            *args,
-                            deadline: deadline,
-             )
     end
   end
 
@@ -2204,40 +2136,6 @@ module SDM #:nodoc:
     end
   end
 
-  # SnapshotPeeringGroupResources exposes the read only methods of the PeeringGroupResources
-  # service for historical queries.
-  class SnapshotPeeringGroupResources
-    extend Gem::Deprecate
-
-    def initialize(peering_group_resources)
-      @peering_group_resources = peering_group_resources
-    end
-
-    # Get reads the information of one peering group to resource attachment.
-    def get(
-      id,
-      deadline: nil
-    )
-      return @peering_group_resources.get(
-               id,
-               deadline: deadline,
-             )
-    end
-
-    # List gets a list of peering group resource attachments.
-    def list(
-      filter,
-      *args,
-      deadline: nil
-    )
-      return @peering_group_resources.list(
-               filter,
-                            *args,
-                            deadline: deadline,
-             )
-    end
-  end
-
   # PeeringGroups provides the building blocks necessary to obtain explicit network topology and routing.
   #
   # See {PeeringGroup}.
@@ -2383,40 +2281,6 @@ module SDM #:nodoc:
         end
       }
       resp
-    end
-  end
-
-  # SnapshotPeeringGroups exposes the read only methods of the PeeringGroups
-  # service for historical queries.
-  class SnapshotPeeringGroups
-    extend Gem::Deprecate
-
-    def initialize(peering_groups)
-      @peering_groups = peering_groups
-    end
-
-    # Get reads one PeeringGroup by ID. It will load all its dependencies.
-    def get(
-      id,
-      deadline: nil
-    )
-      return @peering_groups.get(
-               id,
-               deadline: deadline,
-             )
-    end
-
-    # List gets a list of Peering Groups.
-    def list(
-      filter,
-      *args,
-      deadline: nil
-    )
-      return @peering_groups.list(
-               filter,
-                            *args,
-                            deadline: deadline,
-             )
     end
   end
 
