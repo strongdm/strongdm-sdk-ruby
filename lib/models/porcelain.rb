@@ -9076,6 +9076,94 @@ module SDM
     end
   end
 
+  # SecretStoreHealth denotes a secret store's health status. Note a secret store is not
+  # healthy in terms of a simple boolean, but rather healthy with respect to a particular node
+  # or set of nodes.
+  class SecretStoreHealth
+    # The time when the status last changed
+    attr_accessor :changed_at
+    # The time when the status was last checked by the node
+    attr_accessor :checked_at
+    # The error associated with this health check, if it occurred after reachability checks succeeded.
+    attr_accessor :error
+    # Any specific status or error flags associated with this health check.
+    attr_accessor :flags
+    # Associated node id for this health
+    attr_accessor :node_id
+    # The error associated with this health check, if it occurred during reachability checks.
+    attr_accessor :reachability
+    # Associated secret store for this health
+    attr_accessor :secret_store_id
+    # The status of the link between the node and secret store
+    attr_accessor :status
+
+    def initialize(
+      changed_at: nil,
+      checked_at: nil,
+      error: nil,
+      flags: nil,
+      node_id: nil,
+      reachability: nil,
+      secret_store_id: nil,
+      status: nil
+    )
+      @changed_at = changed_at == nil ? nil : changed_at
+      @checked_at = checked_at == nil ? nil : checked_at
+      @error = error == nil ? "" : error
+      @flags = flags == nil ? [] : flags
+      @node_id = node_id == nil ? "" : node_id
+      @reachability = reachability == nil ? "" : reachability
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @status = status == nil ? "" : status
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  class SecretStoreHealthListResponse
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      rate_limit: nil
+    )
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  class SecretStoreHealthcheckResponse
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      rate_limit: nil
+    )
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   # SecretStoreHistory records the state of a SecretStore at a given point in time,
   # where every change (create, update and delete) to a SecretStore produces an
   # SecretStoreHistory record.

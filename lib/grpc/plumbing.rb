@@ -55,6 +55,7 @@ require_relative "./role_resources_pb"
 require_relative "./role_resources_history_pb"
 require_relative "./roles_pb"
 require_relative "./roles_history_pb"
+require_relative "./secret_store_healths_pb"
 require_relative "./secret_store_types_pb"
 require_relative "./secret_stores_pb"
 require_relative "./secret_stores_history_pb"
@@ -9618,6 +9619,128 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_secret_store_get_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_secret_store_health_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = SecretStoreHealth.new()
+      porcelain.changed_at = convert_timestamp_to_porcelain(plumbing.changed_at)
+      porcelain.checked_at = convert_timestamp_to_porcelain(plumbing.checked_at)
+      porcelain.error = (plumbing.error)
+      porcelain.flags = (plumbing.flags)
+      porcelain.node_id = (plumbing.node_id)
+      porcelain.reachability = (plumbing.reachability)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.status = (plumbing.status)
+      porcelain
+    end
+
+    def self.convert_secret_store_health_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::SecretStoreHealth.new()
+      plumbing.changed_at = convert_timestamp_to_plumbing(porcelain.changed_at)
+      plumbing.checked_at = convert_timestamp_to_plumbing(porcelain.checked_at)
+      plumbing.error = (porcelain.error)
+      plumbing.flags += (porcelain.flags)
+      plumbing.node_id = (porcelain.node_id)
+      plumbing.reachability = (porcelain.reachability)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.status = (porcelain.status)
+      plumbing
+    end
+    def self.convert_repeated_secret_store_health_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_secret_store_health_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_secret_store_health_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_secret_store_health_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_secret_store_health_list_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = SecretStoreHealthListResponse.new()
+      porcelain.meta = convert_list_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain.secret_store_healths = convert_repeated_secret_store_health_to_porcelain(plumbing.secret_store_healths)
+      porcelain
+    end
+
+    def self.convert_secret_store_health_list_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::SecretStoreHealthListResponse.new()
+      plumbing.meta = convert_list_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing.secret_store_healths += convert_repeated_secret_store_health_to_plumbing(porcelain.secret_store_healths)
+      plumbing
+    end
+    def self.convert_repeated_secret_store_health_list_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_secret_store_health_list_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_secret_store_health_list_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_secret_store_health_list_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_secret_store_healthcheck_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = SecretStoreHealthcheckResponse.new()
+      porcelain.meta = convert_create_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_secret_store_healthcheck_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::SecretStoreHealthcheckResponse.new()
+      plumbing.meta = convert_create_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_secret_store_healthcheck_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_secret_store_healthcheck_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_secret_store_healthcheck_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_secret_store_healthcheck_response_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
