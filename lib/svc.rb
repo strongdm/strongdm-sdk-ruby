@@ -3763,8 +3763,14 @@ module SDM #:nodoc:
   # {DelineaStore}
   # {GCPStore}
   # {VaultAppRoleStore}
+  # {VaultAppRoleCertSSHStore}
+  # {VaultAppRoleCertX509Store}
   # {VaultTLSStore}
+  # {VaultTLSCertSSHStore}
+  # {VaultTLSCertX509Store}
   # {VaultTokenStore}
+  # {VaultTokenCertSSHStore}
+  # {VaultTokenCertX509Store}
   class SecretStores
     extend Gem::Deprecate
 

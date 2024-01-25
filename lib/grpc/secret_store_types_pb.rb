@@ -32,8 +32,14 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :delinea, :message, 2900, "v1.DelineaStore"
         optional :gcp, :message, 201, "v1.GCPStore"
         optional :vault_app_role, :message, 4, "v1.VaultAppRoleStore"
+        optional :vault_app_role_cert_ssh, :message, 94, "v1.VaultAppRoleCertSSHStore"
+        optional :vault_app_role_cert_x_509, :message, 95, "v1.VaultAppRoleCertX509Store"
         optional :vault_tls, :message, 1, "v1.VaultTLSStore"
+        optional :vault_tls_cert_ssh, :message, 92, "v1.VaultTLSCertSSHStore"
+        optional :vault_tls_cert_x_509, :message, 93, "v1.VaultTLSCertX509Store"
         optional :vault_token, :message, 2, "v1.VaultTokenStore"
+        optional :vault_token_cert_ssh, :message, 90, "v1.VaultTokenCertSSHStore"
+        optional :vault_token_cert_x_509, :message, 91, "v1.VaultTokenCertX509Store"
       end
     end
     add_message "v1.AWSStore" do
@@ -86,6 +92,24 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :server_address, :string, 3
       optional :tags, :message, 8, "v1.Tags"
     end
+    add_message "v1.VaultAppRoleCertSSHStore" do
+      optional :id, :string, 1
+      optional :name, :string, 2
+      optional :namespace, :string, 5
+      optional :server_address, :string, 3
+      optional :signing_role, :string, 7
+      optional :ssh_mount_point, :string, 6
+      optional :tags, :message, 8, "v1.Tags"
+    end
+    add_message "v1.VaultAppRoleCertX509Store" do
+      optional :id, :string, 1
+      optional :name, :string, 2
+      optional :namespace, :string, 5
+      optional :pki_mount_point, :string, 6
+      optional :server_address, :string, 3
+      optional :signing_role, :string, 7
+      optional :tags, :message, 8, "v1.Tags"
+    end
     add_message "v1.VaultTLSStore" do
       optional :id, :string, 1
       optional :name, :string, 2
@@ -96,11 +120,53 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :server_address, :string, 3
       optional :tags, :message, 7, "v1.Tags"
     end
+    add_message "v1.VaultTLSCertSSHStore" do
+      optional :id, :string, 1
+      optional :name, :string, 2
+      optional :CA_cert_path, :string, 4
+      optional :client_cert_path, :string, 5
+      optional :client_key_path, :string, 6
+      optional :namespace, :string, 8
+      optional :server_address, :string, 3
+      optional :signing_role, :string, 10
+      optional :ssh_mount_point, :string, 9
+      optional :tags, :message, 7, "v1.Tags"
+    end
+    add_message "v1.VaultTLSCertX509Store" do
+      optional :id, :string, 1
+      optional :name, :string, 2
+      optional :CA_cert_path, :string, 4
+      optional :client_cert_path, :string, 5
+      optional :client_key_path, :string, 6
+      optional :namespace, :string, 8
+      optional :pki_mount_point, :string, 9
+      optional :server_address, :string, 3
+      optional :signing_role, :string, 10
+      optional :tags, :message, 7, "v1.Tags"
+    end
     add_message "v1.VaultTokenStore" do
       optional :id, :string, 1
       optional :name, :string, 2
       optional :namespace, :string, 5
       optional :server_address, :string, 3
+      optional :tags, :message, 4, "v1.Tags"
+    end
+    add_message "v1.VaultTokenCertSSHStore" do
+      optional :id, :string, 1
+      optional :name, :string, 2
+      optional :namespace, :string, 5
+      optional :server_address, :string, 3
+      optional :signing_role, :string, 7
+      optional :ssh_mount_point, :string, 6
+      optional :tags, :message, 4, "v1.Tags"
+    end
+    add_message "v1.VaultTokenCertX509Store" do
+      optional :id, :string, 1
+      optional :name, :string, 2
+      optional :namespace, :string, 5
+      optional :pki_mount_point, :string, 6
+      optional :server_address, :string, 3
+      optional :signing_role, :string, 7
       optional :tags, :message, 4, "v1.Tags"
     end
   end
@@ -116,6 +182,12 @@ module V1
   DelineaStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DelineaStore").msgclass
   GCPStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GCPStore").msgclass
   VaultAppRoleStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.VaultAppRoleStore").msgclass
+  VaultAppRoleCertSSHStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.VaultAppRoleCertSSHStore").msgclass
+  VaultAppRoleCertX509Store = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.VaultAppRoleCertX509Store").msgclass
   VaultTLSStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.VaultTLSStore").msgclass
+  VaultTLSCertSSHStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.VaultTLSCertSSHStore").msgclass
+  VaultTLSCertX509Store = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.VaultTLSCertX509Store").msgclass
   VaultTokenStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.VaultTokenStore").msgclass
+  VaultTokenCertSSHStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.VaultTokenCertSSHStore").msgclass
+  VaultTokenCertX509Store = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.VaultTokenCertX509Store").msgclass
 end

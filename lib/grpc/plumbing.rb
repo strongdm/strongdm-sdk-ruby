@@ -9449,11 +9449,29 @@ module SDM
       if porcelain.instance_of? VaultAppRoleStore
         plumbing.vault_app_role = convert_vault_app_role_store_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? VaultAppRoleCertSSHStore
+        plumbing.vault_app_role_cert_ssh = convert_vault_app_role_cert_ssh_store_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? VaultAppRoleCertX509Store
+        plumbing.vault_app_role_cert_x_509 = convert_vault_app_role_cert_x_509_store_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? VaultTLSStore
         plumbing.vault_tls = convert_vault_tls_store_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? VaultTLSCertSSHStore
+        plumbing.vault_tls_cert_ssh = convert_vault_tls_cert_ssh_store_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? VaultTLSCertX509Store
+        plumbing.vault_tls_cert_x_509 = convert_vault_tls_cert_x_509_store_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? VaultTokenStore
         plumbing.vault_token = convert_vault_token_store_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? VaultTokenCertSSHStore
+        plumbing.vault_token_cert_ssh = convert_vault_token_cert_ssh_store_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? VaultTokenCertX509Store
+        plumbing.vault_token_cert_x_509 = convert_vault_token_cert_x_509_store_to_plumbing(porcelain)
       end
       plumbing
     end
@@ -9486,11 +9504,29 @@ module SDM
       if plumbing.vault_app_role != nil
         return convert_vault_app_role_store_to_porcelain(plumbing.vault_app_role)
       end
+      if plumbing.vault_app_role_cert_ssh != nil
+        return convert_vault_app_role_cert_ssh_store_to_porcelain(plumbing.vault_app_role_cert_ssh)
+      end
+      if plumbing.vault_app_role_cert_x_509 != nil
+        return convert_vault_app_role_cert_x_509_store_to_porcelain(plumbing.vault_app_role_cert_x_509)
+      end
       if plumbing.vault_tls != nil
         return convert_vault_tls_store_to_porcelain(plumbing.vault_tls)
       end
+      if plumbing.vault_tls_cert_ssh != nil
+        return convert_vault_tls_cert_ssh_store_to_porcelain(plumbing.vault_tls_cert_ssh)
+      end
+      if plumbing.vault_tls_cert_x_509 != nil
+        return convert_vault_tls_cert_x_509_store_to_porcelain(plumbing.vault_tls_cert_x_509)
+      end
       if plumbing.vault_token != nil
         return convert_vault_token_store_to_porcelain(plumbing.vault_token)
+      end
+      if plumbing.vault_token_cert_ssh != nil
+        return convert_vault_token_cert_ssh_store_to_porcelain(plumbing.vault_token_cert_ssh)
+      end
+      if plumbing.vault_token_cert_x_509 != nil
+        return convert_vault_token_cert_x_509_store_to_porcelain(plumbing.vault_token_cert_x_509)
       end
       raise UnknownError.new("unknown polymorphic type, please upgrade your SDK")
     end
@@ -10393,6 +10429,98 @@ module SDM
       end
       items
     end
+    def self.convert_vault_app_role_cert_ssh_store_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = VaultAppRoleCertSSHStore.new()
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.namespace = (plumbing.namespace)
+      porcelain.server_address = (plumbing.server_address)
+      porcelain.signing_role = (plumbing.signing_role)
+      porcelain.ssh_mount_point = (plumbing.ssh_mount_point)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_vault_app_role_cert_ssh_store_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::VaultAppRoleCertSSHStore.new()
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.namespace = (porcelain.namespace)
+      plumbing.server_address = (porcelain.server_address)
+      plumbing.signing_role = (porcelain.signing_role)
+      plumbing.ssh_mount_point = (porcelain.ssh_mount_point)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_vault_app_role_cert_ssh_store_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_vault_app_role_cert_ssh_store_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_vault_app_role_cert_ssh_store_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_vault_app_role_cert_ssh_store_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_vault_app_role_cert_x_509_store_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = VaultAppRoleCertX509Store.new()
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.namespace = (plumbing.namespace)
+      porcelain.pki_mount_point = (plumbing.pki_mount_point)
+      porcelain.server_address = (plumbing.server_address)
+      porcelain.signing_role = (plumbing.signing_role)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_vault_app_role_cert_x_509_store_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::VaultAppRoleCertX509Store.new()
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.namespace = (porcelain.namespace)
+      plumbing.pki_mount_point = (porcelain.pki_mount_point)
+      plumbing.server_address = (porcelain.server_address)
+      plumbing.signing_role = (porcelain.signing_role)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_vault_app_role_cert_x_509_store_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_vault_app_role_cert_x_509_store_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_vault_app_role_cert_x_509_store_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_vault_app_role_cert_x_509_store_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_vault_app_role_store_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -10431,6 +10559,110 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_vault_app_role_store_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_vault_tls_cert_ssh_store_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = VaultTLSCertSSHStore.new()
+      porcelain.ca_cert_path = (plumbing.CA_cert_path)
+      porcelain.client_cert_path = (plumbing.client_cert_path)
+      porcelain.client_key_path = (plumbing.client_key_path)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.namespace = (plumbing.namespace)
+      porcelain.server_address = (plumbing.server_address)
+      porcelain.signing_role = (plumbing.signing_role)
+      porcelain.ssh_mount_point = (plumbing.ssh_mount_point)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_vault_tls_cert_ssh_store_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::VaultTLSCertSSHStore.new()
+      plumbing.CA_cert_path = (porcelain.ca_cert_path)
+      plumbing.client_cert_path = (porcelain.client_cert_path)
+      plumbing.client_key_path = (porcelain.client_key_path)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.namespace = (porcelain.namespace)
+      plumbing.server_address = (porcelain.server_address)
+      plumbing.signing_role = (porcelain.signing_role)
+      plumbing.ssh_mount_point = (porcelain.ssh_mount_point)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_vault_tls_cert_ssh_store_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_vault_tls_cert_ssh_store_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_vault_tls_cert_ssh_store_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_vault_tls_cert_ssh_store_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_vault_tls_cert_x_509_store_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = VaultTLSCertX509Store.new()
+      porcelain.ca_cert_path = (plumbing.CA_cert_path)
+      porcelain.client_cert_path = (plumbing.client_cert_path)
+      porcelain.client_key_path = (plumbing.client_key_path)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.namespace = (plumbing.namespace)
+      porcelain.pki_mount_point = (plumbing.pki_mount_point)
+      porcelain.server_address = (plumbing.server_address)
+      porcelain.signing_role = (plumbing.signing_role)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_vault_tls_cert_x_509_store_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::VaultTLSCertX509Store.new()
+      plumbing.CA_cert_path = (porcelain.ca_cert_path)
+      plumbing.client_cert_path = (porcelain.client_cert_path)
+      plumbing.client_key_path = (porcelain.client_key_path)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.namespace = (porcelain.namespace)
+      plumbing.pki_mount_point = (porcelain.pki_mount_point)
+      plumbing.server_address = (porcelain.server_address)
+      plumbing.signing_role = (porcelain.signing_role)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_vault_tls_cert_x_509_store_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_vault_tls_cert_x_509_store_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_vault_tls_cert_x_509_store_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_vault_tls_cert_x_509_store_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -10479,6 +10711,98 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_vault_tls_store_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_vault_token_cert_ssh_store_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = VaultTokenCertSSHStore.new()
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.namespace = (plumbing.namespace)
+      porcelain.server_address = (plumbing.server_address)
+      porcelain.signing_role = (plumbing.signing_role)
+      porcelain.ssh_mount_point = (plumbing.ssh_mount_point)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_vault_token_cert_ssh_store_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::VaultTokenCertSSHStore.new()
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.namespace = (porcelain.namespace)
+      plumbing.server_address = (porcelain.server_address)
+      plumbing.signing_role = (porcelain.signing_role)
+      plumbing.ssh_mount_point = (porcelain.ssh_mount_point)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_vault_token_cert_ssh_store_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_vault_token_cert_ssh_store_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_vault_token_cert_ssh_store_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_vault_token_cert_ssh_store_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_vault_token_cert_x_509_store_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = VaultTokenCertX509Store.new()
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.namespace = (plumbing.namespace)
+      porcelain.pki_mount_point = (plumbing.pki_mount_point)
+      porcelain.server_address = (plumbing.server_address)
+      porcelain.signing_role = (plumbing.signing_role)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_vault_token_cert_x_509_store_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::VaultTokenCertX509Store.new()
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.namespace = (porcelain.namespace)
+      plumbing.pki_mount_point = (porcelain.pki_mount_point)
+      plumbing.server_address = (porcelain.server_address)
+      plumbing.signing_role = (porcelain.signing_role)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_vault_token_cert_x_509_store_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_vault_token_cert_x_509_store_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_vault_token_cert_x_509_store_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_vault_token_cert_x_509_store_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items

@@ -9833,6 +9833,94 @@ module SDM
     end
   end
 
+  # VaultAppRoleCertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class VaultAppRoleCertSSHStore
+    # Unique identifier of the SecretStore.
+    attr_accessor :id
+    # Unique human-readable name of the SecretStore.
+    attr_accessor :name
+    # The namespace to make requests within
+    attr_accessor :namespace
+    # The URL of the Vault to target
+    attr_accessor :server_address
+    # The signing role to be used for signing certificates
+    attr_accessor :signing_role
+    # The mount point of the SSH engine configured with the desired CA
+    attr_accessor :ssh_mount_point
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      id: nil,
+      name: nil,
+      namespace: nil,
+      server_address: nil,
+      signing_role: nil,
+      ssh_mount_point: nil,
+      tags: nil
+    )
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @namespace = namespace == nil ? "" : namespace
+      @server_address = server_address == nil ? "" : server_address
+      @signing_role = signing_role == nil ? "" : signing_role
+      @ssh_mount_point = ssh_mount_point == nil ? "" : ssh_mount_point
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # VaultAppRoleCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class VaultAppRoleCertX509Store
+    # Unique identifier of the SecretStore.
+    attr_accessor :id
+    # Unique human-readable name of the SecretStore.
+    attr_accessor :name
+    # The namespace to make requests within
+    attr_accessor :namespace
+    # The mount point of the PKI engine configured with the desired CA
+    attr_accessor :pki_mount_point
+    # The URL of the Vault to target
+    attr_accessor :server_address
+    # The signing role to be used for signing certificates
+    attr_accessor :signing_role
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      id: nil,
+      name: nil,
+      namespace: nil,
+      pki_mount_point: nil,
+      server_address: nil,
+      signing_role: nil,
+      tags: nil
+    )
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @namespace = namespace == nil ? "" : namespace
+      @pki_mount_point = pki_mount_point == nil ? "" : pki_mount_point
+      @server_address = server_address == nil ? "" : server_address
+      @signing_role = signing_role == nil ? "" : signing_role
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class VaultAppRoleStore
     # Unique identifier of the SecretStore.
     attr_accessor :id
@@ -9856,6 +9944,118 @@ module SDM
       @name = name == nil ? "" : name
       @namespace = namespace == nil ? "" : namespace
       @server_address = server_address == nil ? "" : server_address
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # VaultTLSCertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class VaultTLSCertSSHStore
+    # A path to a CA file accessible by a Node
+    attr_accessor :ca_cert_path
+    # A path to a client certificate file accessible by a Node
+    attr_accessor :client_cert_path
+    # A path to a client key file accessible by a Node
+    attr_accessor :client_key_path
+    # Unique identifier of the SecretStore.
+    attr_accessor :id
+    # Unique human-readable name of the SecretStore.
+    attr_accessor :name
+    # The namespace to make requests within
+    attr_accessor :namespace
+    # The URL of the Vault to target
+    attr_accessor :server_address
+    # The signing role to be used for signing certificates
+    attr_accessor :signing_role
+    # The mount point of the SSH engine configured with the desired CA
+    attr_accessor :ssh_mount_point
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      ca_cert_path: nil,
+      client_cert_path: nil,
+      client_key_path: nil,
+      id: nil,
+      name: nil,
+      namespace: nil,
+      server_address: nil,
+      signing_role: nil,
+      ssh_mount_point: nil,
+      tags: nil
+    )
+      @ca_cert_path = ca_cert_path == nil ? "" : ca_cert_path
+      @client_cert_path = client_cert_path == nil ? "" : client_cert_path
+      @client_key_path = client_key_path == nil ? "" : client_key_path
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @namespace = namespace == nil ? "" : namespace
+      @server_address = server_address == nil ? "" : server_address
+      @signing_role = signing_role == nil ? "" : signing_role
+      @ssh_mount_point = ssh_mount_point == nil ? "" : ssh_mount_point
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # VaultTLSCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class VaultTLSCertX509Store
+    # A path to a CA file accessible by a Node
+    attr_accessor :ca_cert_path
+    # A path to a client certificate file accessible by a Node
+    attr_accessor :client_cert_path
+    # A path to a client key file accessible by a Node
+    attr_accessor :client_key_path
+    # Unique identifier of the SecretStore.
+    attr_accessor :id
+    # Unique human-readable name of the SecretStore.
+    attr_accessor :name
+    # The namespace to make requests within
+    attr_accessor :namespace
+    # The mount point of the PKI engine configured with the desired CA
+    attr_accessor :pki_mount_point
+    # The URL of the Vault to target
+    attr_accessor :server_address
+    # The signing role to be used for signing certificates
+    attr_accessor :signing_role
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      ca_cert_path: nil,
+      client_cert_path: nil,
+      client_key_path: nil,
+      id: nil,
+      name: nil,
+      namespace: nil,
+      pki_mount_point: nil,
+      server_address: nil,
+      signing_role: nil,
+      tags: nil
+    )
+      @ca_cert_path = ca_cert_path == nil ? "" : ca_cert_path
+      @client_cert_path = client_cert_path == nil ? "" : client_cert_path
+      @client_key_path = client_key_path == nil ? "" : client_key_path
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @namespace = namespace == nil ? "" : namespace
+      @pki_mount_point = pki_mount_point == nil ? "" : pki_mount_point
+      @server_address = server_address == nil ? "" : server_address
+      @signing_role = signing_role == nil ? "" : signing_role
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
@@ -9903,6 +10103,94 @@ module SDM
       @name = name == nil ? "" : name
       @namespace = namespace == nil ? "" : namespace
       @server_address = server_address == nil ? "" : server_address
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # VaultTokenCertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class VaultTokenCertSSHStore
+    # Unique identifier of the SecretStore.
+    attr_accessor :id
+    # Unique human-readable name of the SecretStore.
+    attr_accessor :name
+    # The namespace to make requests within
+    attr_accessor :namespace
+    # The URL of the Vault to target
+    attr_accessor :server_address
+    # The signing role to be used for signing certificates
+    attr_accessor :signing_role
+    # The mount point of the SSH engine configured with the desired CA
+    attr_accessor :ssh_mount_point
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      id: nil,
+      name: nil,
+      namespace: nil,
+      server_address: nil,
+      signing_role: nil,
+      ssh_mount_point: nil,
+      tags: nil
+    )
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @namespace = namespace == nil ? "" : namespace
+      @server_address = server_address == nil ? "" : server_address
+      @signing_role = signing_role == nil ? "" : signing_role
+      @ssh_mount_point = ssh_mount_point == nil ? "" : ssh_mount_point
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # VaultTokenCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class VaultTokenCertX509Store
+    # Unique identifier of the SecretStore.
+    attr_accessor :id
+    # Unique human-readable name of the SecretStore.
+    attr_accessor :name
+    # The namespace to make requests within
+    attr_accessor :namespace
+    # The mount point of the PKI engine configured with the desired CA
+    attr_accessor :pki_mount_point
+    # The URL of the Vault to target
+    attr_accessor :server_address
+    # The signing role to be used for signing certificates
+    attr_accessor :signing_role
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      id: nil,
+      name: nil,
+      namespace: nil,
+      pki_mount_point: nil,
+      server_address: nil,
+      signing_role: nil,
+      tags: nil
+    )
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @namespace = namespace == nil ? "" : namespace
+      @pki_mount_point = pki_mount_point == nil ? "" : pki_mount_point
+      @server_address = server_address == nil ? "" : server_address
+      @signing_role = signing_role == nil ? "" : signing_role
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
