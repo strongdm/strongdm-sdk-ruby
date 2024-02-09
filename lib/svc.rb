@@ -2914,6 +2914,7 @@ module SDM #:nodoc:
   # {RabbitMQAMQP091}
   # {RawTCP}
   # {RDP}
+  # {RDPCert}
   # {RDSPostgresIAM}
   # {Redis}
   # {Redshift}

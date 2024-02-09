@@ -89,6 +89,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :postgres, :message, 1300, "v1.Postgres"
         optional :presto, :message, 1400, "v1.Presto"
         optional :rdp, :message, 1500, "v1.RDP"
+        optional :rdp_cert, :message, 1501, "v1.RDPCert"
         optional :rds_postgres_iam, :message, 1310, "v1.RDSPostgresIAM"
         optional :rabbit_mqamqp_091, :message, 2500, "v1.RabbitMQAMQP091"
         optional :raw_tcp, :message, 2600, "v1.RawTCP"
@@ -1216,6 +1217,22 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port_override, :int32, 4
       optional :username, :string, 2
     end
+    add_message "v1.RDPCert" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :subdomain, :string, 32775
+      optional :hostname, :string, 1
+      optional :port, :int32, 4
+      optional :port_override, :int32, 3
+      optional :remote_identity_group_id, :string, 5
+      optional :remote_identity_healthcheck_username, :string, 6
+      optional :username, :string, 2
+    end
     add_message "v1.RDSPostgresIAM" do
       optional :id, :string, 32768
       optional :name, :string, 32769
@@ -1589,6 +1606,7 @@ module V1
   Postgres = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Postgres").msgclass
   Presto = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Presto").msgclass
   RDP = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RDP").msgclass
+  RDPCert = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RDPCert").msgclass
   RDSPostgresIAM = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RDSPostgresIAM").msgclass
   RabbitMQAMQP091 = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RabbitMQAMQP091").msgclass
   RawTCP = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RawTCP").msgclass

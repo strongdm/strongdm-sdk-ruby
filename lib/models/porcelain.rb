@@ -7238,6 +7238,77 @@ module SDM
     end
   end
 
+  class RDPCert
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    attr_accessor :bind_interface
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # The host to dial to initiate a connection from the egress node to this resource.
+    attr_accessor :hostname
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # The port to dial to initiate a connection from the egress node to this resource.
+    attr_accessor :port
+    # The local port used by clients to connect to this resource.
+    attr_accessor :port_override
+    # The ID of the remote identity group to use for remote identity connections.
+    attr_accessor :remote_identity_group_id
+    # The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+    attr_accessor :remote_identity_healthcheck_username
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    attr_accessor :subdomain
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+    # The username to authenticate with.
+    attr_accessor :username
+
+    def initialize(
+      bind_interface: nil,
+      egress_filter: nil,
+      healthy: nil,
+      hostname: nil,
+      id: nil,
+      name: nil,
+      port: nil,
+      port_override: nil,
+      remote_identity_group_id: nil,
+      remote_identity_healthcheck_username: nil,
+      secret_store_id: nil,
+      subdomain: nil,
+      tags: nil,
+      username: nil
+    )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @remote_identity_group_id = remote_identity_group_id == nil ? "" : remote_identity_group_id
+      @remote_identity_healthcheck_username = remote_identity_healthcheck_username == nil ? "" : remote_identity_healthcheck_username
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @subdomain = subdomain == nil ? "" : subdomain
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class RDSPostgresIAM
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
