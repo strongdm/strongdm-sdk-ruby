@@ -31,6 +31,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :cyberark_pam_experimental, :message, 302, "v1.CyberarkPAMExperimentalStore"
         optional :delinea, :message, 2900, "v1.DelineaStore"
         optional :gcp, :message, 201, "v1.GCPStore"
+        optional :gcp_cert_x_509, :message, 202, "v1.GCPCertX509Store"
         optional :vault_app_role, :message, 4, "v1.VaultAppRoleStore"
         optional :vault_app_role_cert_ssh, :message, 94, "v1.VaultAppRoleCertSSHStore"
         optional :vault_app_role_cert_x_509, :message, 95, "v1.VaultAppRoleCertX509Store"
@@ -82,6 +83,15 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.GCPStore" do
       optional :id, :string, 1
       optional :name, :string, 2
+      optional :projectID, :string, 3
+      optional :tags, :message, 32771, "v1.Tags"
+    end
+    add_message "v1.GCPCertX509Store" do
+      optional :id, :string, 1
+      optional :name, :string, 2
+      optional :caID, :string, 6
+      optional :caPoolID, :string, 5
+      optional :location, :string, 4
       optional :projectID, :string, 3
       optional :tags, :message, 32771, "v1.Tags"
     end
@@ -181,6 +191,7 @@ module V1
   CyberarkPAMExperimentalStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.CyberarkPAMExperimentalStore").msgclass
   DelineaStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DelineaStore").msgclass
   GCPStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GCPStore").msgclass
+  GCPCertX509Store = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GCPCertX509Store").msgclass
   VaultAppRoleStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.VaultAppRoleStore").msgclass
   VaultAppRoleCertSSHStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.VaultAppRoleCertSSHStore").msgclass
   VaultAppRoleCertX509Store = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.VaultAppRoleCertX509Store").msgclass

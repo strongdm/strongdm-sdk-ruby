@@ -3763,6 +3763,7 @@ module SDM #:nodoc:
   # {CyberarkPAMExperimentalStore}
   # {DelineaStore}
   # {GCPStore}
+  # {GCPCertX509Store}
   # {VaultAppRoleStore}
   # {VaultAppRoleCertSSHStore}
   # {VaultAppRoleCertX509Store}

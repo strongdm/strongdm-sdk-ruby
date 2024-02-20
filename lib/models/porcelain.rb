@@ -4053,6 +4053,50 @@ module SDM
     end
   end
 
+  # GCPCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class GCPCertX509Store
+    # The ID of the target CA
+    attr_accessor :caid
+    # The ID of the target CA pool
+    attr_accessor :capoolid
+    # Unique identifier of the SecretStore.
+    attr_accessor :id
+    # The Region for the CA in GCP format e.g. us-west1
+    attr_accessor :location
+    # Unique human-readable name of the SecretStore.
+    attr_accessor :name
+    # The GCP project ID to target.
+    attr_accessor :projectid
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      caid: nil,
+      capoolid: nil,
+      id: nil,
+      location: nil,
+      name: nil,
+      projectid: nil,
+      tags: nil
+    )
+      @caid = caid == nil ? "" : caid
+      @capoolid = capoolid == nil ? "" : capoolid
+      @id = id == nil ? "" : id
+      @location = location == nil ? "" : location
+      @name = name == nil ? "" : name
+      @projectid = projectid == nil ? "" : projectid
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class GCPStore
     # Unique identifier of the SecretStore.
     attr_accessor :id

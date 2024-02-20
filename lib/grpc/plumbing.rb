@@ -4076,6 +4076,52 @@ module SDM
       end
       items
     end
+    def self.convert_gcp_cert_x_509_store_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = GCPCertX509Store.new()
+      porcelain.caid = (plumbing.caID)
+      porcelain.capoolid = (plumbing.caPoolID)
+      porcelain.id = (plumbing.id)
+      porcelain.location = (plumbing.location)
+      porcelain.name = (plumbing.name)
+      porcelain.projectid = (plumbing.projectID)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_gcp_cert_x_509_store_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::GCPCertX509Store.new()
+      plumbing.caID = (porcelain.caid)
+      plumbing.caPoolID = (porcelain.capoolid)
+      plumbing.id = (porcelain.id)
+      plumbing.location = (porcelain.location)
+      plumbing.name = (porcelain.name)
+      plumbing.projectID = (porcelain.projectid)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_gcp_cert_x_509_store_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_gcp_cert_x_509_store_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_gcp_cert_x_509_store_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_gcp_cert_x_509_store_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_gcp_store_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -9512,6 +9558,9 @@ module SDM
       if porcelain.instance_of? GCPStore
         plumbing.gcp = convert_gcp_store_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? GCPCertX509Store
+        plumbing.gcp_cert_x_509 = convert_gcp_cert_x_509_store_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? VaultAppRoleStore
         plumbing.vault_app_role = convert_vault_app_role_store_to_plumbing(porcelain)
       end
@@ -9566,6 +9615,9 @@ module SDM
       end
       if plumbing.gcp != nil
         return convert_gcp_store_to_porcelain(plumbing.gcp)
+      end
+      if plumbing.gcp_cert_x_509 != nil
+        return convert_gcp_cert_x_509_store_to_porcelain(plumbing.gcp_cert_x_509)
       end
       if plumbing.vault_app_role != nil
         return convert_vault_app_role_store_to_porcelain(plumbing.vault_app_role)
