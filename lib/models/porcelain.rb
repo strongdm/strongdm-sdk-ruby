@@ -10359,6 +10359,8 @@ module SDM
   class Workflow
     # AccessRules is a list of access rules defining the resources this Workflow provides access to.
     attr_accessor :access_rules
+    # Optional approval flow ID identifies an approval flow that linked to the workflow
+    attr_accessor :approval_flow_id
     # Optional auto grant setting to automatically approve requests or not, defaults to false.
     attr_accessor :auto_grant
     # Optional description of the Workflow.
@@ -10378,6 +10380,7 @@ module SDM
 
     def initialize(
       access_rules: nil,
+      approval_flow_id: nil,
       auto_grant: nil,
       description: nil,
       enabled: nil,
@@ -10386,6 +10389,7 @@ module SDM
       weight: nil
     )
       @access_rules = access_rules == nil ? SDM::_porcelain_zero_value_access_rules() : access_rules
+      @approval_flow_id = approval_flow_id == nil ? "" : approval_flow_id
       @auto_grant = auto_grant == nil ? false : auto_grant
       @description = description == nil ? "" : description
       @enabled = enabled == nil ? false : enabled

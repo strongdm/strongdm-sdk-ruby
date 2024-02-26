@@ -76,6 +76,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :enabled, :bool, 6
       optional :requires_reason, :bool, 7
       optional :access_rules, :string, 8
+      optional :approval_flow_id, :string, 9
     end
   end
 end
