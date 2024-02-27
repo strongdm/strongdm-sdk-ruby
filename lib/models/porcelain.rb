@@ -458,6 +458,54 @@ module SDM
     end
   end
 
+  # AWSCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class AWSCertX509Store
+    # The ARN of the CA in AWS Private CA
+    attr_accessor :caarn
+    # The ARN of the AWS certificate template for requested certificates. Must allow SAN, key usage, and ext key usage passthrough from CSR
+    attr_accessor :certificatetemplatearn
+    # Unique identifier of the SecretStore.
+    attr_accessor :id
+    # The lifetime of certificates issued by this CA represented in minutes e.g. 600 (for 10 hours). Defaults to 8 hours if not provided.
+    attr_accessor :issuedcertttlminutes
+    # Unique human-readable name of the SecretStore.
+    attr_accessor :name
+    # The AWS region to target e.g. us-east-1
+    attr_accessor :region
+    # The specified signing algorithm family (RSA or ECDSA) must match the algorithm family of the CA's secret key. e.g. SHA256WITHRSA
+    attr_accessor :signingalgo
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      caarn: nil,
+      certificatetemplatearn: nil,
+      id: nil,
+      issuedcertttlminutes: nil,
+      name: nil,
+      region: nil,
+      signingalgo: nil,
+      tags: nil
+    )
+      @caarn = caarn == nil ? "" : caarn
+      @certificatetemplatearn = certificatetemplatearn == nil ? "" : certificatetemplatearn
+      @id = id == nil ? "" : id
+      @issuedcertttlminutes = issuedcertttlminutes == nil ? "" : issuedcertttlminutes
+      @name = name == nil ? "" : name
+      @region = region == nil ? "" : region
+      @signingalgo = signingalgo == nil ? "" : signingalgo
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class AWSConsole
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface

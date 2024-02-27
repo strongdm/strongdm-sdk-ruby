@@ -3757,6 +3757,7 @@ module SDM #:nodoc:
   #
   # See:
   # {AWSStore}
+  # {AWSCertX509Store}
   # {AzureStore}
   # {CyberarkConjurStore}
   # {CyberarkPAMStore}

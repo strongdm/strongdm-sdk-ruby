@@ -25,6 +25,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.SecretStore" do
       oneof :secret_store do
         optional :aws, :message, 3, "v1.AWSStore"
+        optional :aws_cert_x_509, :message, 30, "v1.AWSCertX509Store"
         optional :azure, :message, 101, "v1.AzureStore"
         optional :cyberark_conjur, :message, 301, "v1.CyberarkConjurStore"
         optional :cyberark_pam, :message, 303, "v1.CyberarkPAMStore"
@@ -47,6 +48,16 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 1
       optional :name, :string, 2
       optional :region, :string, 3
+      optional :tags, :message, 4, "v1.Tags"
+    end
+    add_message "v1.AWSCertX509Store" do
+      optional :id, :string, 1
+      optional :name, :string, 2
+      optional :caArn, :string, 5
+      optional :certificateTemplateArn, :string, 7
+      optional :issuedCertTTLMinutes, :string, 8
+      optional :region, :string, 3
+      optional :signingAlgo, :string, 6
       optional :tags, :message, 4, "v1.Tags"
     end
     add_message "v1.AzureStore" do
@@ -185,6 +196,7 @@ end
 module V1
   SecretStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SecretStore").msgclass
   AWSStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AWSStore").msgclass
+  AWSCertX509Store = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AWSCertX509Store").msgclass
   AzureStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AzureStore").msgclass
   CyberarkConjurStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.CyberarkConjurStore").msgclass
   CyberarkPAMStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.CyberarkPAMStore").msgclass

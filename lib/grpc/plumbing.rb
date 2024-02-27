@@ -527,6 +527,54 @@ module SDM
       end
       items
     end
+    def self.convert_aws_cert_x_509_store_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AWSCertX509Store.new()
+      porcelain.caarn = (plumbing.caArn)
+      porcelain.certificatetemplatearn = (plumbing.certificateTemplateArn)
+      porcelain.id = (plumbing.id)
+      porcelain.issuedcertttlminutes = (plumbing.issuedCertTTLMinutes)
+      porcelain.name = (plumbing.name)
+      porcelain.region = (plumbing.region)
+      porcelain.signingalgo = (plumbing.signingAlgo)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_aws_cert_x_509_store_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AWSCertX509Store.new()
+      plumbing.caArn = (porcelain.caarn)
+      plumbing.certificateTemplateArn = (porcelain.certificatetemplatearn)
+      plumbing.id = (porcelain.id)
+      plumbing.issuedCertTTLMinutes = (porcelain.issuedcertttlminutes)
+      plumbing.name = (porcelain.name)
+      plumbing.region = (porcelain.region)
+      plumbing.signingAlgo = (porcelain.signingalgo)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_aws_cert_x_509_store_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_aws_cert_x_509_store_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_aws_cert_x_509_store_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_aws_cert_x_509_store_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_aws_console_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -9540,6 +9588,9 @@ module SDM
       if porcelain.instance_of? AWSStore
         plumbing.aws = convert_aws_store_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? AWSCertX509Store
+        plumbing.aws_cert_x_509 = convert_aws_cert_x_509_store_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? AzureStore
         plumbing.azure = convert_azure_store_to_plumbing(porcelain)
       end
@@ -9597,6 +9648,9 @@ module SDM
       end
       if plumbing.aws != nil
         return convert_aws_store_to_porcelain(plumbing.aws)
+      end
+      if plumbing.aws_cert_x_509 != nil
+        return convert_aws_cert_x_509_store_to_porcelain(plumbing.aws_cert_x_509)
       end
       if plumbing.azure != nil
         return convert_azure_store_to_porcelain(plumbing.azure)
