@@ -7082,6 +7082,8 @@ module SDM
     # For queries against SSH, Kubernetes, and RDP resources, this contains additional information
     # about the captured query.
     attr_accessor :capture
+    # The IP address the Query was performed from, as detected at the StrongDM control plane.
+    attr_accessor :client_ip
     # The time at which the Query was completed.
     # Empty if this record indicates the start of a long-running query.
     attr_accessor :completed_at
@@ -7133,6 +7135,7 @@ module SDM
       account_last_name: nil,
       account_tags: nil,
       capture: nil,
+      client_ip: nil,
       completed_at: nil,
       duration: nil,
       egress_node_id: nil,
@@ -7158,6 +7161,7 @@ module SDM
       @account_last_name = account_last_name == nil ? "" : account_last_name
       @account_tags = account_tags == nil ? SDM::_porcelain_zero_value_tags() : account_tags
       @capture = capture == nil ? nil : capture
+      @client_ip = client_ip == nil ? "" : client_ip
       @completed_at = completed_at == nil ? nil : completed_at
       @duration = duration == nil ? nil : duration
       @egress_node_id = egress_node_id == nil ? "" : egress_node_id
