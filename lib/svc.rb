@@ -1265,6 +1265,744 @@ module SDM #:nodoc:
     end
   end
 
+  # ApprovalWorkflowApprovers link approval workflow approvers to an ApprovalWorkflowStep
+  #
+  # See {ApprovalWorkflowApprover}.
+  class ApprovalWorkflowApprovers
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::ApprovalWorkflowApprovers::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # Create creates a new approval workflow approver.
+    def create(
+      approval_workflow_approver,
+      deadline: nil
+    )
+      req = V1::ApprovalWorkflowApproverCreateRequest.new()
+
+      req.approval_workflow_approver = Plumbing::convert_approval_workflow_approver_to_plumbing(approval_workflow_approver)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.create(req, metadata: @parent.get_metadata("ApprovalWorkflowApprovers.Create", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = ApprovalWorkflowApproverCreateResponse.new()
+      resp.approval_workflow_approver = Plumbing::convert_approval_workflow_approver_to_porcelain(plumbing_response.approval_workflow_approver)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Get reads one approval workflow approver by ID.
+    def get(
+      id,
+      deadline: nil
+    )
+      req = V1::ApprovalWorkflowApproverGetRequest.new()
+      if not @parent.snapshot_time.nil?
+        req.meta = V1::GetRequestMetadata.new()
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.get(req, metadata: @parent.get_metadata("ApprovalWorkflowApprovers.Get", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = ApprovalWorkflowApproverGetResponse.new()
+      resp.approval_workflow_approver = Plumbing::convert_approval_workflow_approver_to_porcelain(plumbing_response.approval_workflow_approver)
+      resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Delete deletes an existing approval workflow approver.
+    def delete(
+      id,
+      deadline: nil
+    )
+      req = V1::ApprovalWorkflowApproverDeleteRequest.new()
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("ApprovalWorkflowApprovers.Delete", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = ApprovalWorkflowApproverDeleteResponse.new()
+      resp.id = (plumbing_response.id)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Lists existing approval workflow approvers.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::ApprovalWorkflowApproverListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("ApprovalWorkflowApprovers.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.approval_workflow_approvers.each do |plumbing_item|
+            g.yield Plumbing::convert_approval_workflow_approver_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # SnapshotApprovalWorkflowApprovers exposes the read only methods of the ApprovalWorkflowApprovers
+  # service for historical queries.
+  class SnapshotApprovalWorkflowApprovers
+    extend Gem::Deprecate
+
+    def initialize(approval_workflow_approvers)
+      @approval_workflow_approvers = approval_workflow_approvers
+    end
+
+    # Get reads one approval workflow approver by ID.
+    def get(
+      id,
+      deadline: nil
+    )
+      return @approval_workflow_approvers.get(
+               id,
+               deadline: deadline,
+             )
+    end
+
+    # Lists existing approval workflow approvers.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      return @approval_workflow_approvers.list(
+               filter,
+                            *args,
+                            deadline: deadline,
+             )
+    end
+  end
+
+  # ApprovalWorkflowApproversHistory records all changes to the state of an ApprovalWorkflowApprover.
+  #
+  # See {ApprovalWorkflowApproverHistory}.
+  class ApprovalWorkflowApproversHistory
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::ApprovalWorkflowApproversHistory::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # List gets a list of ApprovalWorkflowApproverHistory records matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::ApprovalWorkflowApproverHistoryListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("ApprovalWorkflowApproversHistory.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.history.each do |plumbing_item|
+            g.yield Plumbing::convert_approval_workflow_approver_history_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # ApprovalWorkflowSteps link approval workflow steps to an ApprovalWorkflow
+  #
+  # See {ApprovalWorkflowStep}.
+  class ApprovalWorkflowSteps
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::ApprovalWorkflowSteps::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # Create creates a new approval workflow step.
+    def create(
+      approval_workflow_step,
+      deadline: nil
+    )
+      req = V1::ApprovalWorkflowStepCreateRequest.new()
+
+      req.approval_workflow_step = Plumbing::convert_approval_workflow_step_to_plumbing(approval_workflow_step)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.create(req, metadata: @parent.get_metadata("ApprovalWorkflowSteps.Create", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = ApprovalWorkflowStepCreateResponse.new()
+      resp.approval_workflow_step = Plumbing::convert_approval_workflow_step_to_porcelain(plumbing_response.approval_workflow_step)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Get reads one approval workflow step by ID.
+    def get(
+      id,
+      deadline: nil
+    )
+      req = V1::ApprovalWorkflowStepGetRequest.new()
+      if not @parent.snapshot_time.nil?
+        req.meta = V1::GetRequestMetadata.new()
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.get(req, metadata: @parent.get_metadata("ApprovalWorkflowSteps.Get", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = ApprovalWorkflowStepGetResponse.new()
+      resp.approval_workflow_step = Plumbing::convert_approval_workflow_step_to_porcelain(plumbing_response.approval_workflow_step)
+      resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Delete deletes an existing approval workflow step.
+    def delete(
+      id,
+      deadline: nil
+    )
+      req = V1::ApprovalWorkflowStepDeleteRequest.new()
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("ApprovalWorkflowSteps.Delete", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = ApprovalWorkflowStepDeleteResponse.new()
+      resp.id = (plumbing_response.id)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Lists existing approval workflow steps.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::ApprovalWorkflowStepListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("ApprovalWorkflowSteps.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.approval_workflow_steps.each do |plumbing_item|
+            g.yield Plumbing::convert_approval_workflow_step_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # SnapshotApprovalWorkflowSteps exposes the read only methods of the ApprovalWorkflowSteps
+  # service for historical queries.
+  class SnapshotApprovalWorkflowSteps
+    extend Gem::Deprecate
+
+    def initialize(approval_workflow_steps)
+      @approval_workflow_steps = approval_workflow_steps
+    end
+
+    # Get reads one approval workflow step by ID.
+    def get(
+      id,
+      deadline: nil
+    )
+      return @approval_workflow_steps.get(
+               id,
+               deadline: deadline,
+             )
+    end
+
+    # Lists existing approval workflow steps.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      return @approval_workflow_steps.list(
+               filter,
+                            *args,
+                            deadline: deadline,
+             )
+    end
+  end
+
+  # ApprovalWorkflowStepsHistory records all changes to the state of an ApprovalWorkflowStep.
+  #
+  # See {ApprovalWorkflowStepHistory}.
+  class ApprovalWorkflowStepsHistory
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::ApprovalWorkflowStepsHistory::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # List gets a list of ApprovalWorkflowStepHistory records matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::ApprovalWorkflowStepHistoryListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("ApprovalWorkflowStepsHistory.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.history.each do |plumbing_item|
+            g.yield Plumbing::convert_approval_workflow_step_history_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # ApprovalWorkflows are the mechanism by which requests for access can be viewed by authorized
+  # approvers and be approved or denied.
+  #
+  # See {ApprovalWorkflow}.
+  class ApprovalWorkflows
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::ApprovalWorkflows::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # Create creates a new approval workflow and requires a name and approval mode for the approval workflow.
+    def create(
+      approval_workflow,
+      deadline: nil
+    )
+      req = V1::ApprovalWorkflowCreateRequest.new()
+
+      req.approval_workflow = Plumbing::convert_approval_workflow_to_plumbing(approval_workflow)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.create(req, metadata: @parent.get_metadata("ApprovalWorkflows.Create", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = ApprovalWorkflowCreateResponse.new()
+      resp.approval_workflow = Plumbing::convert_approval_workflow_to_porcelain(plumbing_response.approval_workflow)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Get reads one approval workflow by ID.
+    def get(
+      id,
+      deadline: nil
+    )
+      req = V1::ApprovalWorkflowGetRequest.new()
+      if not @parent.snapshot_time.nil?
+        req.meta = V1::GetRequestMetadata.new()
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.get(req, metadata: @parent.get_metadata("ApprovalWorkflows.Get", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = ApprovalWorkflowGetResponse.new()
+      resp.approval_workflow = Plumbing::convert_approval_workflow_to_porcelain(plumbing_response.approval_workflow)
+      resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Delete deletes an existing approval workflow.
+    def delete(
+      id,
+      deadline: nil
+    )
+      req = V1::ApprovalWorkflowDeleteRequest.new()
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("ApprovalWorkflows.Delete", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = ApprovalWorkflowDeleteResponse.new()
+      resp.id = (plumbing_response.id)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Update updates an existing approval workflow.
+    def update(
+      approval_workflow,
+      deadline: nil
+    )
+      req = V1::ApprovalWorkflowUpdateRequest.new()
+
+      req.approval_workflow = Plumbing::convert_approval_workflow_to_plumbing(approval_workflow)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.update(req, metadata: @parent.get_metadata("ApprovalWorkflows.Update", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = ApprovalWorkflowUpdateResponse.new()
+      resp.approval_workflow = Plumbing::convert_approval_workflow_to_porcelain(plumbing_response.approval_workflow)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Lists existing approval workflows.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::ApprovalWorkflowListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("ApprovalWorkflows.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.approval_workflows.each do |plumbing_item|
+            g.yield Plumbing::convert_approval_workflow_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # SnapshotApprovalWorkflows exposes the read only methods of the ApprovalWorkflows
+  # service for historical queries.
+  class SnapshotApprovalWorkflows
+    extend Gem::Deprecate
+
+    def initialize(approval_workflows)
+      @approval_workflows = approval_workflows
+    end
+
+    # Get reads one approval workflow by ID.
+    def get(
+      id,
+      deadline: nil
+    )
+      return @approval_workflows.get(
+               id,
+               deadline: deadline,
+             )
+    end
+
+    # Lists existing approval workflows.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      return @approval_workflows.list(
+               filter,
+                            *args,
+                            deadline: deadline,
+             )
+    end
+  end
+
+  # ApprovalWorkflowsHistory records all changes to the state of an ApprovalWorkflow.
+  #
+  # See {ApprovalWorkflowHistory}.
+  class ApprovalWorkflowsHistory
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::ApprovalWorkflowsHistory::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # List gets a list of ApprovalWorkflowHistory records matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::ApprovalWorkflowHistoryListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("ApprovalWorkflowsHistory.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.history.each do |plumbing_item|
+            g.yield Plumbing::convert_approval_workflow_history_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
   # ControlPanel contains all administrative controls.
   class ControlPanel
     extend Gem::Deprecate

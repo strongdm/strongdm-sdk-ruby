@@ -29,7 +29,7 @@ module SDM #:nodoc:
     DEFAULT_BASE_RETRY_DELAY = 0.0030 # 30 ms
     DEFAULT_MAX_RETRY_DELAY = 300 # 300 seconds
     API_VERSION = "2021-08-23"
-    USER_AGENT = "strongdm-sdk-ruby/6.8.0"
+    USER_AGENT = "strongdm-sdk-ruby/6.9.0"
     private_constant :DEFAULT_MAX_RETRIES, :DEFAULT_BASE_RETRY_DELAY, :DEFAULT_MAX_RETRY_DELAY, :API_VERSION, :USER_AGENT
 
     # Creates a new strongDM API client.
@@ -68,6 +68,12 @@ module SDM #:nodoc:
       @accounts = Accounts.new(@channel, self)
       @accounts_history = AccountsHistory.new(@channel, self)
       @activities = Activities.new(@channel, self)
+      @approval_workflow_approvers = ApprovalWorkflowApprovers.new(@channel, self)
+      @approval_workflow_approvers_history = ApprovalWorkflowApproversHistory.new(@channel, self)
+      @approval_workflow_steps = ApprovalWorkflowSteps.new(@channel, self)
+      @approval_workflow_steps_history = ApprovalWorkflowStepsHistory.new(@channel, self)
+      @approval_workflows = ApprovalWorkflows.new(@channel, self)
+      @approval_workflows_history = ApprovalWorkflowsHistory.new(@channel, self)
       @control_panel = ControlPanel.new(@channel, self)
       @nodes = Nodes.new(@channel, self)
       @nodes_history = NodesHistory.new(@channel, self)
@@ -247,6 +253,31 @@ module SDM #:nodoc:
     #
     # See {Activities}.
     attr_reader :activities
+    # ApprovalWorkflowApprovers link approval workflow approvers to an ApprovalWorkflowStep
+    #
+    # See {ApprovalWorkflowApprovers}.
+    attr_reader :approval_workflow_approvers
+    # ApprovalWorkflowApproversHistory records all changes to the state of an ApprovalWorkflowApprover.
+    #
+    # See {ApprovalWorkflowApproversHistory}.
+    attr_reader :approval_workflow_approvers_history
+    # ApprovalWorkflowSteps link approval workflow steps to an ApprovalWorkflow
+    #
+    # See {ApprovalWorkflowSteps}.
+    attr_reader :approval_workflow_steps
+    # ApprovalWorkflowStepsHistory records all changes to the state of an ApprovalWorkflowStep.
+    #
+    # See {ApprovalWorkflowStepsHistory}.
+    attr_reader :approval_workflow_steps_history
+    # ApprovalWorkflows are the mechanism by which requests for access can be viewed by authorized
+    # approvers and be approved or denied.
+    #
+    # See {ApprovalWorkflows}.
+    attr_reader :approval_workflows
+    # ApprovalWorkflowsHistory records all changes to the state of an ApprovalWorkflow.
+    #
+    # See {ApprovalWorkflowsHistory}.
+    attr_reader :approval_workflows_history
     # ControlPanel contains all administrative controls.
     #
     # See {ControlPanel}.
@@ -406,6 +437,12 @@ module SDM #:nodoc:
       @accounts = Accounts.new(@channel, self)
       @accounts_history = AccountsHistory.new(@channel, self)
       @activities = Activities.new(@channel, self)
+      @approval_workflow_approvers = ApprovalWorkflowApprovers.new(@channel, self)
+      @approval_workflow_approvers_history = ApprovalWorkflowApproversHistory.new(@channel, self)
+      @approval_workflow_steps = ApprovalWorkflowSteps.new(@channel, self)
+      @approval_workflow_steps_history = ApprovalWorkflowStepsHistory.new(@channel, self)
+      @approval_workflows = ApprovalWorkflows.new(@channel, self)
+      @approval_workflows_history = ApprovalWorkflowsHistory.new(@channel, self)
       @control_panel = ControlPanel.new(@channel, self)
       @nodes = Nodes.new(@channel, self)
       @nodes_history = NodesHistory.new(@channel, self)
@@ -449,6 +486,9 @@ module SDM #:nodoc:
       @account_permissions = SnapshotAccountPermissions.new(client.account_permissions)
       @account_resources = SnapshotAccountResources.new(client.account_resources)
       @accounts = SnapshotAccounts.new(client.accounts)
+      @approval_workflow_approvers = SnapshotApprovalWorkflowApprovers.new(client.approval_workflow_approvers)
+      @approval_workflow_steps = SnapshotApprovalWorkflowSteps.new(client.approval_workflow_steps)
+      @approval_workflows = SnapshotApprovalWorkflows.new(client.approval_workflows)
       @nodes = SnapshotNodes.new(client.nodes)
       @remote_identities = SnapshotRemoteIdentities.new(client.remote_identities)
       @remote_identity_groups = SnapshotRemoteIdentityGroups.new(client.remote_identity_groups)
@@ -490,6 +530,19 @@ module SDM #:nodoc:
     #
     # See {SnapshotAccounts}.
     attr_reader :accounts
+    # ApprovalWorkflowApprovers link approval workflow approvers to an ApprovalWorkflowStep
+    #
+    # See {SnapshotApprovalWorkflowApprovers}.
+    attr_reader :approval_workflow_approvers
+    # ApprovalWorkflowSteps link approval workflow steps to an ApprovalWorkflow
+    #
+    # See {SnapshotApprovalWorkflowSteps}.
+    attr_reader :approval_workflow_steps
+    # ApprovalWorkflows are the mechanism by which requests for access can be viewed by authorized
+    # approvers and be approved or denied.
+    #
+    # See {SnapshotApprovalWorkflows}.
+    attr_reader :approval_workflows
     # Nodes make up the strongDM network, and allow your users to connect securely to your resources. There are two types of nodes:
     # - **Gateways** are the entry points into network. They listen for connection from the strongDM client, and provide access to databases and servers.
     # - **Relays** are used to extend the strongDM network into segmented subnets. They provide access to databases and servers but do not listen for incoming connections.

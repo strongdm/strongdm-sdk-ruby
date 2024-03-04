@@ -2193,6 +2193,520 @@ module SDM
     end
   end
 
+  # ApprovalWorkflows are the mechanism by which requests for access can be viewed by authorized
+  # approvers and be approved or denied.
+  class ApprovalWorkflow
+    # Approval mode of the ApprovalWorkflow
+    attr_accessor :approval_mode
+    # Optional description of the ApprovalWorkflow.
+    attr_accessor :description
+    # Unique identifier of the ApprovalWorkflow.
+    attr_accessor :id
+    # Unique human-readable name of the ApprovalWorkflow.
+    attr_accessor :name
+
+    def initialize(
+      approval_mode: nil,
+      description: nil,
+      id: nil,
+      name: nil
+    )
+      @approval_mode = approval_mode == nil ? "" : approval_mode
+      @description = description == nil ? "" : description
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ApprovalWorkflowApprover links an approval workflow approver to an ApprovalWorkflowStep
+  class ApprovalWorkflowApprover
+    # The approver account id.
+    attr_accessor :account_id
+    # The approval flow id specified the approval workflow that this approver belongs to
+    attr_accessor :approval_flow_id
+    # The approval step id specified the approval flow step that this approver belongs to
+    attr_accessor :approval_step_id
+    # Unique identifier of the ApprovalWorkflowApprover.
+    attr_accessor :id
+    # The approver role id
+    attr_accessor :role_id
+
+    def initialize(
+      account_id: nil,
+      approval_flow_id: nil,
+      approval_step_id: nil,
+      id: nil,
+      role_id: nil
+    )
+      @account_id = account_id == nil ? "" : account_id
+      @approval_flow_id = approval_flow_id == nil ? "" : approval_flow_id
+      @approval_step_id = approval_step_id == nil ? "" : approval_step_id
+      @id = id == nil ? "" : id
+      @role_id = role_id == nil ? "" : role_id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ApprovalWorkflowApproverCreateResponse reports how the ApprovalWorkflowApprover was created in the system.
+  class ApprovalWorkflowApproverCreateResponse
+    # The created approval workflow approver.
+    attr_accessor :approval_workflow_approver
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      approval_workflow_approver: nil,
+      rate_limit: nil
+    )
+      @approval_workflow_approver = approval_workflow_approver == nil ? nil : approval_workflow_approver
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ApprovalWorkflowApproverDeleteResponse returns information about an ApprovalWorkflowApprover that was deleted.
+  class ApprovalWorkflowApproverDeleteResponse
+    # The deleted approval workflow approver id.
+    attr_accessor :id
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      id: nil,
+      rate_limit: nil
+    )
+      @id = id == nil ? "" : id
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ApprovalWorkflowApproverGetResponse returns a requested ApprovalWorkflowApprover.
+  class ApprovalWorkflowApproverGetResponse
+    # The requested ApprovalWorkflowApprover.
+    attr_accessor :approval_workflow_approver
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      approval_workflow_approver: nil,
+      meta: nil,
+      rate_limit: nil
+    )
+      @approval_workflow_approver = approval_workflow_approver == nil ? nil : approval_workflow_approver
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ApprovalWorkflowApproverHistory records the state of an ApprovalWorkflowApprover at a given point in time,
+  # where every change (create or delete) to an ApprovalWorkflowApprover produces an
+  # ApprovalWorkflowApproverHistory record.
+  class ApprovalWorkflowApproverHistory
+    # The unique identifier of the Activity that produced this change to the ApprovalWorkflowApprover.
+    # May be empty for some system-initiated updates.
+    attr_accessor :activity_id
+    # The complete ApprovalWorkflowApprover state at this time.
+    attr_accessor :approval_workflow_approver
+    # If this ApprovalWorkflowApprover was deleted, the time it was deleted.
+    attr_accessor :deleted_at
+    # The time at which the ApprovalWorkflowApprover state was recorded.
+    attr_accessor :timestamp
+
+    def initialize(
+      activity_id: nil,
+      approval_workflow_approver: nil,
+      deleted_at: nil,
+      timestamp: nil
+    )
+      @activity_id = activity_id == nil ? "" : activity_id
+      @approval_workflow_approver = approval_workflow_approver == nil ? nil : approval_workflow_approver
+      @deleted_at = deleted_at == nil ? nil : deleted_at
+      @timestamp = timestamp == nil ? nil : timestamp
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ApprovalWorkflowApproverListResponse returns a list of ApprovalWorkflowApprover records that meet
+  # the criteria of an ApprovalWorkflowApproverListRequest.
+  class ApprovalWorkflowApproverListResponse
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      rate_limit: nil
+    )
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ApprovalWorkflowCreateResponse reports how the ApprovalWorkflow was created in the system.
+  class ApprovalWorkflowCreateResponse
+    # The created approval workflow.
+    attr_accessor :approval_workflow
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      approval_workflow: nil,
+      rate_limit: nil
+    )
+      @approval_workflow = approval_workflow == nil ? nil : approval_workflow
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ApprovalWorkflowDeleteResponse returns information about an ApprovalWorkflow that was deleted.
+  class ApprovalWorkflowDeleteResponse
+    # The deleted approval workflow id.
+    attr_accessor :id
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      id: nil,
+      rate_limit: nil
+    )
+      @id = id == nil ? "" : id
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ApprovalWorkflowGetResponse returns a requested ApprovalWorkflow.
+  class ApprovalWorkflowGetResponse
+    # The requested ApprovalWorkflow.
+    attr_accessor :approval_workflow
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      approval_workflow: nil,
+      meta: nil,
+      rate_limit: nil
+    )
+      @approval_workflow = approval_workflow == nil ? nil : approval_workflow
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ApprovalWorkflowHistory records the state of an ApprovalWorkflow at a given point in time,
+  # where every change (create, update and delete) to an ApprovalWorkflow produces an
+  # ApprovalWorkflowHistory record.
+  class ApprovalWorkflowHistory
+    # The unique identifier of the Activity that produced this change to the ApprovalWorkflow.
+    # May be empty for some system-initiated updates.
+    attr_accessor :activity_id
+    # The complete ApprovalWorkflow state at this time.
+    attr_accessor :approval_workflow
+    # If this ApprovalWorkflow was deleted, the time it was deleted.
+    attr_accessor :deleted_at
+    # The time at which the ApprovalWorkflow state was recorded.
+    attr_accessor :timestamp
+
+    def initialize(
+      activity_id: nil,
+      approval_workflow: nil,
+      deleted_at: nil,
+      timestamp: nil
+    )
+      @activity_id = activity_id == nil ? "" : activity_id
+      @approval_workflow = approval_workflow == nil ? nil : approval_workflow
+      @deleted_at = deleted_at == nil ? nil : deleted_at
+      @timestamp = timestamp == nil ? nil : timestamp
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ApprovalWorkflowListResponse returns a list of ApprovalWorkflow records that meet
+  # the criteria of an ApprovalWorkflowListRequest.
+  class ApprovalWorkflowListResponse
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      rate_limit: nil
+    )
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ApprovalWorkflowStep links an approval workflow step to an ApprovalWorkflow
+  class ApprovalWorkflowStep
+    # The approval flow id specified the approval workfflow that this step belongs to
+    attr_accessor :approval_flow_id
+    # Unique identifier of the ApprovalWorkflowStep.
+    attr_accessor :id
+
+    def initialize(
+      approval_flow_id: nil,
+      id: nil
+    )
+      @approval_flow_id = approval_flow_id == nil ? "" : approval_flow_id
+      @id = id == nil ? "" : id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ApprovalWorkflowStepCreateResponse reports how the ApprovalWorkflowStep was created in the system.
+  class ApprovalWorkflowStepCreateResponse
+    # The created approval workflow step.
+    attr_accessor :approval_workflow_step
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      approval_workflow_step: nil,
+      rate_limit: nil
+    )
+      @approval_workflow_step = approval_workflow_step == nil ? nil : approval_workflow_step
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ApprovalWorkflowStepDeleteResponse returns information about an ApprovalWorkflowStep that was deleted.
+  class ApprovalWorkflowStepDeleteResponse
+    # The deleted approval workflow step id.
+    attr_accessor :id
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      id: nil,
+      rate_limit: nil
+    )
+      @id = id == nil ? "" : id
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ApprovalWorkflowStepGetResponse returns a requested ApprovalWorkflowStep.
+  class ApprovalWorkflowStepGetResponse
+    # The requested ApprovalWorkflowStep.
+    attr_accessor :approval_workflow_step
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      approval_workflow_step: nil,
+      meta: nil,
+      rate_limit: nil
+    )
+      @approval_workflow_step = approval_workflow_step == nil ? nil : approval_workflow_step
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ApprovalWorkflowStepHistory records the state of an ApprovalWorkflowStep at a given point in time,
+  # where every change (create or delete) to an ApprovalWorkflowStep produces an
+  # ApprovalWorkflowStepHistory record.
+  class ApprovalWorkflowStepHistory
+    # The unique identifier of the Activity that produced this change to the ApprovalWorkflowStep.
+    # May be empty for some system-initiated updates.
+    attr_accessor :activity_id
+    # The complete ApprovalWorkflowStep state at this time.
+    attr_accessor :approval_workflow_step
+    # If this ApprovalWorkflowStep was deleted, the time it was deleted.
+    attr_accessor :deleted_at
+    # The time at which the ApprovalWorkflowStep state was recorded.
+    attr_accessor :timestamp
+
+    def initialize(
+      activity_id: nil,
+      approval_workflow_step: nil,
+      deleted_at: nil,
+      timestamp: nil
+    )
+      @activity_id = activity_id == nil ? "" : activity_id
+      @approval_workflow_step = approval_workflow_step == nil ? nil : approval_workflow_step
+      @deleted_at = deleted_at == nil ? nil : deleted_at
+      @timestamp = timestamp == nil ? nil : timestamp
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ApprovalWorkflowStepListResponse returns a list of ApprovalWorkflowStep records that meet
+  # the criteria of an ApprovalWorkflowStepListRequest.
+  class ApprovalWorkflowStepListResponse
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      rate_limit: nil
+    )
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ApprovalWorkflowUpdateResponse returns the fields of an ApprovalWorkflow after it has been updated by
+  # an ApprovalWorkflowUpdateRequest.
+  class ApprovalWorkflowUpdateResponse
+    # The updated approval workflow.
+    attr_accessor :approval_workflow
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      approval_workflow: nil,
+      rate_limit: nil
+    )
+      @approval_workflow = approval_workflow == nil ? nil : approval_workflow
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class Athena
     # The Access Key ID to use to authenticate.
     attr_accessor :access_key
