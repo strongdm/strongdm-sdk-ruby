@@ -1506,6 +1506,39 @@ module SDM
     end
   end
 
+  # ActiveDirectoryStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class ActiveDirectoryStore
+    # Unique identifier of the SecretStore.
+    attr_accessor :id
+    # Unique human-readable name of the SecretStore.
+    attr_accessor :name
+    # Hostname of server that is hosting NDES (Network Device Enrollment Services).
+    # Often this is the same host as Active Directory Certificate Services
+    attr_accessor :server_address
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      id: nil,
+      name: nil,
+      server_address: nil,
+      tags: nil
+    )
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @server_address = server_address == nil ? "" : server_address
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   # An Activity is a record of an action taken against a strongDM deployment, e.g.
   # a user creation, resource deletion, sso configuration change, etc.
   class Activity

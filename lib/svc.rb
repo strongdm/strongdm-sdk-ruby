@@ -3756,6 +3756,7 @@ module SDM #:nodoc:
   # SecretStores are servers where resource secrets (passwords, keys) are stored.
   #
   # See:
+  # {ActiveDirectoryStore}
   # {AWSStore}
   # {AWSCertX509Store}
   # {AzureStore}

@@ -1780,6 +1780,46 @@ module SDM
       end
       items
     end
+    def self.convert_active_directory_store_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = ActiveDirectoryStore.new()
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.server_address = (plumbing.server_address)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_active_directory_store_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::ActiveDirectoryStore.new()
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.server_address = (porcelain.server_address)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_active_directory_store_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_active_directory_store_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_active_directory_store_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_active_directory_store_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_activity_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -9587,6 +9627,9 @@ module SDM
         return nil
       end
       plumbing = V1::SecretStore.new()
+      if porcelain.instance_of? ActiveDirectoryStore
+        plumbing.active_directory = convert_active_directory_store_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? AWSStore
         plumbing.aws = convert_aws_store_to_plumbing(porcelain)
       end
@@ -9647,6 +9690,9 @@ module SDM
     def self.convert_secret_store_to_porcelain(plumbing)
       if plumbing == nil
         return nil
+      end
+      if plumbing.active_directory != nil
+        return convert_active_directory_store_to_porcelain(plumbing.active_directory)
       end
       if plumbing.aws != nil
         return convert_aws_store_to_porcelain(plumbing.aws)
