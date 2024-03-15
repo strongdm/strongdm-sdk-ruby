@@ -10509,9 +10509,9 @@ module SDM
     attr_accessor :last_name
     # Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.
     attr_accessor :managed_by
-    # PermissionLevel is a read only field for the user's permission level e.g. admin, DBA, user.
+    # PermissionLevel is the user's permission level e.g. admin, DBA, user.
     attr_accessor :permission_level
-    # The User's suspended state.
+    # Suspended is a read only field for the User's suspended state.
     attr_accessor :suspended
     # Tags is a map of key, value pairs.
     attr_accessor :tags

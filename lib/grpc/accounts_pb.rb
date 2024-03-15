@@ -87,6 +87,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :permission_level, :string, 7
       optional :managed_by, :string, 8
       optional :external_id, :string, 9
+      optional :suspendedRO, :bool, 10
+      optional :permission_levelRW, :string, 11
     end
     add_message "v1.Service" do
       optional :id, :string, 1

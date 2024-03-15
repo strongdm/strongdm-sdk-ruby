@@ -971,7 +971,6 @@ module SDM
       end
       porcelain = AccessRequestListRequest.new()
       porcelain.filter = (plumbing.filter)
-      porcelain.meta = convert_list_request_metadata_to_porcelain(plumbing.meta)
       porcelain
     end
 
@@ -981,7 +980,6 @@ module SDM
       end
       plumbing = V1::AccessRequestListRequest.new()
       plumbing.filter = (porcelain.filter)
-      plumbing.meta = convert_list_request_metadata_to_plumbing(porcelain.meta)
       plumbing
     end
     def self.convert_repeated_access_request_list_request_to_plumbing(porcelains)
@@ -1006,8 +1004,6 @@ module SDM
         return nil
       end
       porcelain = AccessRequestListResponse.new()
-      porcelain.access_requests = convert_repeated_access_request_to_porcelain(plumbing.access_requests)
-      porcelain.meta = convert_list_response_metadata_to_porcelain(plumbing.meta)
       porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
       porcelain
     end
@@ -1017,8 +1013,6 @@ module SDM
         return nil
       end
       plumbing = V1::AccessRequestListResponse.new()
-      plumbing.access_requests += convert_repeated_access_request_to_plumbing(porcelain.access_requests)
-      plumbing.meta = convert_list_response_metadata_to_plumbing(porcelain.meta)
       plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
       plumbing
     end
@@ -2482,7 +2476,6 @@ module SDM
       end
       porcelain = ApprovalWorkflowApproverCreateResponse.new()
       porcelain.approval_workflow_approver = convert_approval_workflow_approver_to_porcelain(plumbing.approval_workflow_approver)
-      porcelain.meta = convert_create_response_metadata_to_porcelain(plumbing.meta)
       porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
       porcelain
     end
@@ -2493,7 +2486,6 @@ module SDM
       end
       plumbing = V1::ApprovalWorkflowApproverCreateResponse.new()
       plumbing.approval_workflow_approver = convert_approval_workflow_approver_to_plumbing(porcelain.approval_workflow_approver)
-      plumbing.meta = convert_create_response_metadata_to_plumbing(porcelain.meta)
       plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
       plumbing
     end
@@ -2520,7 +2512,6 @@ module SDM
       end
       porcelain = ApprovalWorkflowApproverDeleteResponse.new()
       porcelain.id = (plumbing.id)
-      porcelain.meta = convert_delete_response_metadata_to_porcelain(plumbing.meta)
       porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
       porcelain
     end
@@ -2531,7 +2522,6 @@ module SDM
       end
       plumbing = V1::ApprovalWorkflowApproverDeleteResponse.new()
       plumbing.id = (porcelain.id)
-      plumbing.meta = convert_delete_response_metadata_to_plumbing(porcelain.meta)
       plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
       plumbing
     end
@@ -2635,8 +2625,6 @@ module SDM
         return nil
       end
       porcelain = ApprovalWorkflowApproverListResponse.new()
-      porcelain.approval_workflow_approvers = convert_repeated_approval_workflow_approver_to_porcelain(plumbing.approval_workflow_approvers)
-      porcelain.meta = convert_list_response_metadata_to_porcelain(plumbing.meta)
       porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
       porcelain
     end
@@ -2646,8 +2634,6 @@ module SDM
         return nil
       end
       plumbing = V1::ApprovalWorkflowApproverListResponse.new()
-      plumbing.approval_workflow_approvers += convert_repeated_approval_workflow_approver_to_plumbing(porcelain.approval_workflow_approvers)
-      plumbing.meta = convert_list_response_metadata_to_plumbing(porcelain.meta)
       plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
       plumbing
     end
@@ -2674,7 +2660,6 @@ module SDM
       end
       porcelain = ApprovalWorkflowCreateResponse.new()
       porcelain.approval_workflow = convert_approval_workflow_to_porcelain(plumbing.approval_workflow)
-      porcelain.meta = convert_create_response_metadata_to_porcelain(plumbing.meta)
       porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
       porcelain
     end
@@ -2685,7 +2670,6 @@ module SDM
       end
       plumbing = V1::ApprovalWorkflowCreateResponse.new()
       plumbing.approval_workflow = convert_approval_workflow_to_plumbing(porcelain.approval_workflow)
-      plumbing.meta = convert_create_response_metadata_to_plumbing(porcelain.meta)
       plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
       plumbing
     end
@@ -2712,7 +2696,6 @@ module SDM
       end
       porcelain = ApprovalWorkflowDeleteResponse.new()
       porcelain.id = (plumbing.id)
-      porcelain.meta = convert_delete_response_metadata_to_porcelain(plumbing.meta)
       porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
       porcelain
     end
@@ -2723,7 +2706,6 @@ module SDM
       end
       plumbing = V1::ApprovalWorkflowDeleteResponse.new()
       plumbing.id = (porcelain.id)
-      plumbing.meta = convert_delete_response_metadata_to_plumbing(porcelain.meta)
       plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
       plumbing
     end
@@ -2827,8 +2809,6 @@ module SDM
         return nil
       end
       porcelain = ApprovalWorkflowListResponse.new()
-      porcelain.approval_workflows = convert_repeated_approval_workflow_to_porcelain(plumbing.approval_workflows)
-      porcelain.meta = convert_list_response_metadata_to_porcelain(plumbing.meta)
       porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
       porcelain
     end
@@ -2838,8 +2818,6 @@ module SDM
         return nil
       end
       plumbing = V1::ApprovalWorkflowListResponse.new()
-      plumbing.approval_workflows += convert_repeated_approval_workflow_to_plumbing(porcelain.approval_workflows)
-      plumbing.meta = convert_list_response_metadata_to_plumbing(porcelain.meta)
       plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
       plumbing
     end
@@ -2902,7 +2880,6 @@ module SDM
       end
       porcelain = ApprovalWorkflowStepCreateResponse.new()
       porcelain.approval_workflow_step = convert_approval_workflow_step_to_porcelain(plumbing.approval_workflow_step)
-      porcelain.meta = convert_create_response_metadata_to_porcelain(plumbing.meta)
       porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
       porcelain
     end
@@ -2913,7 +2890,6 @@ module SDM
       end
       plumbing = V1::ApprovalWorkflowStepCreateResponse.new()
       plumbing.approval_workflow_step = convert_approval_workflow_step_to_plumbing(porcelain.approval_workflow_step)
-      plumbing.meta = convert_create_response_metadata_to_plumbing(porcelain.meta)
       plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
       plumbing
     end
@@ -2940,7 +2916,6 @@ module SDM
       end
       porcelain = ApprovalWorkflowStepDeleteResponse.new()
       porcelain.id = (plumbing.id)
-      porcelain.meta = convert_delete_response_metadata_to_porcelain(plumbing.meta)
       porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
       porcelain
     end
@@ -2951,7 +2926,6 @@ module SDM
       end
       plumbing = V1::ApprovalWorkflowStepDeleteResponse.new()
       plumbing.id = (porcelain.id)
-      plumbing.meta = convert_delete_response_metadata_to_plumbing(porcelain.meta)
       plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
       plumbing
     end
@@ -3055,8 +3029,6 @@ module SDM
         return nil
       end
       porcelain = ApprovalWorkflowStepListResponse.new()
-      porcelain.approval_workflow_steps = convert_repeated_approval_workflow_step_to_porcelain(plumbing.approval_workflow_steps)
-      porcelain.meta = convert_list_response_metadata_to_porcelain(plumbing.meta)
       porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
       porcelain
     end
@@ -3066,8 +3038,6 @@ module SDM
         return nil
       end
       plumbing = V1::ApprovalWorkflowStepListResponse.new()
-      plumbing.approval_workflow_steps += convert_repeated_approval_workflow_step_to_plumbing(porcelain.approval_workflow_steps)
-      plumbing.meta = convert_list_response_metadata_to_plumbing(porcelain.meta)
       plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
       plumbing
     end
@@ -3094,7 +3064,6 @@ module SDM
       end
       porcelain = ApprovalWorkflowUpdateResponse.new()
       porcelain.approval_workflow = convert_approval_workflow_to_porcelain(plumbing.approval_workflow)
-      porcelain.meta = convert_update_response_metadata_to_porcelain(plumbing.meta)
       porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
       porcelain
     end
@@ -3105,7 +3074,6 @@ module SDM
       end
       plumbing = V1::ApprovalWorkflowUpdateResponse.new()
       plumbing.approval_workflow = convert_approval_workflow_to_plumbing(porcelain.approval_workflow)
-      plumbing.meta = convert_update_response_metadata_to_plumbing(porcelain.meta)
       plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
       plumbing
     end
@@ -9508,7 +9476,6 @@ module SDM
       end
       porcelain = ResourceHealthcheckRequest.new()
       porcelain.id = (plumbing.id)
-      porcelain.meta = convert_update_request_metadata_to_porcelain(plumbing.meta)
       porcelain
     end
 
@@ -9518,7 +9485,6 @@ module SDM
       end
       plumbing = V1::ResourceHealthcheckRequest.new()
       plumbing.id = (porcelain.id)
-      plumbing.meta = convert_update_request_metadata_to_plumbing(porcelain.meta)
       plumbing
     end
     def self.convert_repeated_resource_healthcheck_request_to_plumbing(porcelains)
@@ -10670,9 +10636,7 @@ module SDM
         return nil
       end
       porcelain = SecretStoreHealthListResponse.new()
-      porcelain.meta = convert_list_response_metadata_to_porcelain(plumbing.meta)
       porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
-      porcelain.secret_store_healths = convert_repeated_secret_store_health_to_porcelain(plumbing.secret_store_healths)
       porcelain
     end
 
@@ -10681,9 +10645,7 @@ module SDM
         return nil
       end
       plumbing = V1::SecretStoreHealthListResponse.new()
-      plumbing.meta = convert_list_response_metadata_to_plumbing(porcelain.meta)
       plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
-      plumbing.secret_store_healths += convert_repeated_secret_store_health_to_plumbing(porcelain.secret_store_healths)
       plumbing
     end
     def self.convert_repeated_secret_store_health_list_response_to_plumbing(porcelains)
@@ -10708,7 +10670,6 @@ module SDM
         return nil
       end
       porcelain = SecretStoreHealthcheckResponse.new()
-      porcelain.meta = convert_create_response_metadata_to_porcelain(plumbing.meta)
       porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
       porcelain
     end
@@ -10718,7 +10679,6 @@ module SDM
         return nil
       end
       plumbing = V1::SecretStoreHealthcheckResponse.new()
-      plumbing.meta = convert_create_response_metadata_to_plumbing(porcelain.meta)
       plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
       plumbing
     end
@@ -11348,8 +11308,8 @@ module SDM
       porcelain.id = (plumbing.id)
       porcelain.last_name = (plumbing.last_name)
       porcelain.managed_by = (plumbing.managed_by)
-      porcelain.permission_level = (plumbing.permission_level)
-      porcelain.suspended = (plumbing.suspended)
+      porcelain.permission_level = (plumbing.permission_levelRW)
+      porcelain.suspended = (plumbing.suspendedRO)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain
     end
@@ -11365,8 +11325,8 @@ module SDM
       plumbing.id = (porcelain.id)
       plumbing.last_name = (porcelain.last_name)
       plumbing.managed_by = (porcelain.managed_by)
-      plumbing.permission_level = (porcelain.permission_level)
-      plumbing.suspended = (porcelain.suspended)
+      plumbing.permission_levelRW = (porcelain.permission_level)
+      plumbing.suspendedRO = (porcelain.suspended)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing
     end
@@ -11978,7 +11938,6 @@ module SDM
         return nil
       end
       porcelain = WorkflowApproversCreateRequest.new()
-      porcelain.meta = convert_create_request_metadata_to_porcelain(plumbing.meta)
       porcelain.workflow_approver = convert_workflow_approver_to_porcelain(plumbing.workflow_approver)
       porcelain
     end
@@ -11988,7 +11947,6 @@ module SDM
         return nil
       end
       plumbing = V1::WorkflowApproversCreateRequest.new()
-      plumbing.meta = convert_create_request_metadata_to_plumbing(porcelain.meta)
       plumbing.workflow_approver = convert_workflow_approver_to_plumbing(porcelain.workflow_approver)
       plumbing
     end
@@ -12014,7 +11972,6 @@ module SDM
         return nil
       end
       porcelain = WorkflowApproversCreateResponse.new()
-      porcelain.meta = convert_create_response_metadata_to_porcelain(plumbing.meta)
       porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
       porcelain.workflow_approver = convert_workflow_approver_to_porcelain(plumbing.workflow_approver)
       porcelain
@@ -12025,7 +11982,6 @@ module SDM
         return nil
       end
       plumbing = V1::WorkflowApproversCreateResponse.new()
-      plumbing.meta = convert_create_response_metadata_to_plumbing(porcelain.meta)
       plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
       plumbing.workflow_approver = convert_workflow_approver_to_plumbing(porcelain.workflow_approver)
       plumbing
@@ -12053,7 +12009,6 @@ module SDM
       end
       porcelain = WorkflowApproversDeleteRequest.new()
       porcelain.id = (plumbing.id)
-      porcelain.meta = convert_delete_request_metadata_to_porcelain(plumbing.meta)
       porcelain
     end
 
@@ -12063,7 +12018,6 @@ module SDM
       end
       plumbing = V1::WorkflowApproversDeleteRequest.new()
       plumbing.id = (porcelain.id)
-      plumbing.meta = convert_delete_request_metadata_to_plumbing(porcelain.meta)
       plumbing
     end
     def self.convert_repeated_workflow_approvers_delete_request_to_plumbing(porcelains)
@@ -12088,7 +12042,6 @@ module SDM
         return nil
       end
       porcelain = WorkflowApproversDeleteResponse.new()
-      porcelain.meta = convert_delete_response_metadata_to_porcelain(plumbing.meta)
       porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
       porcelain
     end
@@ -12098,7 +12051,6 @@ module SDM
         return nil
       end
       plumbing = V1::WorkflowApproversDeleteResponse.new()
-      plumbing.meta = convert_delete_response_metadata_to_plumbing(porcelain.meta)
       plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
       plumbing
     end
@@ -12125,7 +12077,6 @@ module SDM
       end
       porcelain = WorkflowApproversListRequest.new()
       porcelain.filter = (plumbing.filter)
-      porcelain.meta = convert_list_request_metadata_to_porcelain(plumbing.meta)
       porcelain
     end
 
@@ -12135,7 +12086,6 @@ module SDM
       end
       plumbing = V1::WorkflowApproversListRequest.new()
       plumbing.filter = (porcelain.filter)
-      plumbing.meta = convert_list_request_metadata_to_plumbing(porcelain.meta)
       plumbing
     end
     def self.convert_repeated_workflow_approvers_list_request_to_plumbing(porcelains)
@@ -12160,9 +12110,7 @@ module SDM
         return nil
       end
       porcelain = WorkflowApproversListResponse.new()
-      porcelain.meta = convert_list_response_metadata_to_porcelain(plumbing.meta)
       porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
-      porcelain.workflow_approvers = convert_repeated_workflow_approver_to_porcelain(plumbing.workflow_approvers)
       porcelain
     end
 
@@ -12171,9 +12119,7 @@ module SDM
         return nil
       end
       plumbing = V1::WorkflowApproversListResponse.new()
-      plumbing.meta = convert_list_response_metadata_to_plumbing(porcelain.meta)
       plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
-      plumbing.workflow_approvers += convert_repeated_workflow_approver_to_plumbing(porcelain.workflow_approvers)
       plumbing
     end
     def self.convert_repeated_workflow_approvers_list_response_to_plumbing(porcelains)
@@ -12275,7 +12221,6 @@ module SDM
       end
       porcelain = WorkflowAssignmentsListRequest.new()
       porcelain.filter = (plumbing.filter)
-      porcelain.meta = convert_list_request_metadata_to_porcelain(plumbing.meta)
       porcelain
     end
 
@@ -12285,7 +12230,6 @@ module SDM
       end
       plumbing = V1::WorkflowAssignmentsListRequest.new()
       plumbing.filter = (porcelain.filter)
-      plumbing.meta = convert_list_request_metadata_to_plumbing(porcelain.meta)
       plumbing
     end
     def self.convert_repeated_workflow_assignments_list_request_to_plumbing(porcelains)
@@ -12310,9 +12254,7 @@ module SDM
         return nil
       end
       porcelain = WorkflowAssignmentsListResponse.new()
-      porcelain.meta = convert_list_response_metadata_to_porcelain(plumbing.meta)
       porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
-      porcelain.workflow_assignments = convert_repeated_workflow_assignment_to_porcelain(plumbing.workflow_assignments)
       porcelain
     end
 
@@ -12321,9 +12263,7 @@ module SDM
         return nil
       end
       plumbing = V1::WorkflowAssignmentsListResponse.new()
-      plumbing.meta = convert_list_response_metadata_to_plumbing(porcelain.meta)
       plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
-      plumbing.workflow_assignments += convert_repeated_workflow_assignment_to_plumbing(porcelain.workflow_assignments)
       plumbing
     end
     def self.convert_repeated_workflow_assignments_list_response_to_plumbing(porcelains)
@@ -12348,7 +12288,6 @@ module SDM
         return nil
       end
       porcelain = WorkflowCreateResponse.new()
-      porcelain.meta = convert_create_response_metadata_to_porcelain(plumbing.meta)
       porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
       porcelain.workflow = convert_workflow_to_porcelain(plumbing.workflow)
       porcelain
@@ -12359,7 +12298,6 @@ module SDM
         return nil
       end
       plumbing = V1::WorkflowCreateResponse.new()
-      plumbing.meta = convert_create_response_metadata_to_plumbing(porcelain.meta)
       plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
       plumbing.workflow = convert_workflow_to_plumbing(porcelain.workflow)
       plumbing
@@ -12387,7 +12325,6 @@ module SDM
       end
       porcelain = WorkflowDeleteResponse.new()
       porcelain.id = (plumbing.id)
-      porcelain.meta = convert_delete_response_metadata_to_porcelain(plumbing.meta)
       porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
       porcelain
     end
@@ -12398,7 +12335,6 @@ module SDM
       end
       plumbing = V1::WorkflowDeleteResponse.new()
       plumbing.id = (porcelain.id)
-      plumbing.meta = convert_delete_response_metadata_to_plumbing(porcelain.meta)
       plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
       plumbing
     end
@@ -12502,9 +12438,7 @@ module SDM
         return nil
       end
       porcelain = WorkflowListResponse.new()
-      porcelain.meta = convert_list_response_metadata_to_porcelain(plumbing.meta)
       porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
-      porcelain.workflows = convert_repeated_workflow_to_porcelain(plumbing.workflows)
       porcelain
     end
 
@@ -12513,9 +12447,7 @@ module SDM
         return nil
       end
       plumbing = V1::WorkflowListResponse.new()
-      plumbing.meta = convert_list_response_metadata_to_plumbing(porcelain.meta)
       plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
-      plumbing.workflows += convert_repeated_workflow_to_plumbing(porcelain.workflows)
       plumbing
     end
     def self.convert_repeated_workflow_list_response_to_plumbing(porcelains)
@@ -12656,7 +12588,6 @@ module SDM
         return nil
       end
       porcelain = WorkflowRolesCreateRequest.new()
-      porcelain.meta = convert_create_request_metadata_to_porcelain(plumbing.meta)
       porcelain.workflow_role = convert_workflow_role_to_porcelain(plumbing.workflow_role)
       porcelain
     end
@@ -12666,7 +12597,6 @@ module SDM
         return nil
       end
       plumbing = V1::WorkflowRolesCreateRequest.new()
-      plumbing.meta = convert_create_request_metadata_to_plumbing(porcelain.meta)
       plumbing.workflow_role = convert_workflow_role_to_plumbing(porcelain.workflow_role)
       plumbing
     end
@@ -12692,7 +12622,6 @@ module SDM
         return nil
       end
       porcelain = WorkflowRolesCreateResponse.new()
-      porcelain.meta = convert_create_response_metadata_to_porcelain(plumbing.meta)
       porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
       porcelain.workflow_role = convert_workflow_role_to_porcelain(plumbing.workflow_role)
       porcelain
@@ -12703,7 +12632,6 @@ module SDM
         return nil
       end
       plumbing = V1::WorkflowRolesCreateResponse.new()
-      plumbing.meta = convert_create_response_metadata_to_plumbing(porcelain.meta)
       plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
       plumbing.workflow_role = convert_workflow_role_to_plumbing(porcelain.workflow_role)
       plumbing
@@ -12731,7 +12659,6 @@ module SDM
       end
       porcelain = WorkflowRolesDeleteRequest.new()
       porcelain.id = (plumbing.id)
-      porcelain.meta = convert_delete_request_metadata_to_porcelain(plumbing.meta)
       porcelain
     end
 
@@ -12741,7 +12668,6 @@ module SDM
       end
       plumbing = V1::WorkflowRolesDeleteRequest.new()
       plumbing.id = (porcelain.id)
-      plumbing.meta = convert_delete_request_metadata_to_plumbing(porcelain.meta)
       plumbing
     end
     def self.convert_repeated_workflow_roles_delete_request_to_plumbing(porcelains)
@@ -12766,7 +12692,6 @@ module SDM
         return nil
       end
       porcelain = WorkflowRolesDeleteResponse.new()
-      porcelain.meta = convert_delete_response_metadata_to_porcelain(plumbing.meta)
       porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
       porcelain
     end
@@ -12776,7 +12701,6 @@ module SDM
         return nil
       end
       plumbing = V1::WorkflowRolesDeleteResponse.new()
-      plumbing.meta = convert_delete_response_metadata_to_plumbing(porcelain.meta)
       plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
       plumbing
     end
@@ -12803,7 +12727,6 @@ module SDM
       end
       porcelain = WorkflowRolesListRequest.new()
       porcelain.filter = (plumbing.filter)
-      porcelain.meta = convert_list_request_metadata_to_porcelain(plumbing.meta)
       porcelain
     end
 
@@ -12813,7 +12736,6 @@ module SDM
       end
       plumbing = V1::WorkflowRolesListRequest.new()
       plumbing.filter = (porcelain.filter)
-      plumbing.meta = convert_list_request_metadata_to_plumbing(porcelain.meta)
       plumbing
     end
     def self.convert_repeated_workflow_roles_list_request_to_plumbing(porcelains)
@@ -12838,9 +12760,7 @@ module SDM
         return nil
       end
       porcelain = WorkflowRolesListResponse.new()
-      porcelain.meta = convert_list_response_metadata_to_porcelain(plumbing.meta)
       porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
-      porcelain.workflow_role = convert_repeated_workflow_role_to_porcelain(plumbing.workflow_role)
       porcelain
     end
 
@@ -12849,9 +12769,7 @@ module SDM
         return nil
       end
       plumbing = V1::WorkflowRolesListResponse.new()
-      plumbing.meta = convert_list_response_metadata_to_plumbing(porcelain.meta)
       plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
-      plumbing.workflow_role += convert_repeated_workflow_role_to_plumbing(porcelain.workflow_role)
       plumbing
     end
     def self.convert_repeated_workflow_roles_list_response_to_plumbing(porcelains)
@@ -12876,7 +12794,6 @@ module SDM
         return nil
       end
       porcelain = WorkflowUpdateResponse.new()
-      porcelain.meta = convert_update_response_metadata_to_porcelain(plumbing.meta)
       porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
       porcelain.workflow = convert_workflow_to_porcelain(plumbing.workflow)
       porcelain
@@ -12887,7 +12804,6 @@ module SDM
         return nil
       end
       plumbing = V1::WorkflowUpdateResponse.new()
-      plumbing.meta = convert_update_response_metadata_to_plumbing(porcelain.meta)
       plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
       plumbing.workflow = convert_workflow_to_plumbing(porcelain.workflow)
       plumbing
