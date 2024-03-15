@@ -4878,6 +4878,7 @@ module SDM
       porcelain.caid = (plumbing.caID)
       porcelain.capoolid = (plumbing.caPoolID)
       porcelain.id = (plumbing.id)
+      porcelain.issuedcertttlminutes = (plumbing.issuedCertTTLMinutes)
       porcelain.location = (plumbing.location)
       porcelain.name = (plumbing.name)
       porcelain.projectid = (plumbing.projectID)
@@ -4893,6 +4894,7 @@ module SDM
       plumbing.caID = (porcelain.caid)
       plumbing.caPoolID = (porcelain.capoolid)
       plumbing.id = (porcelain.id)
+      plumbing.issuedCertTTLMinutes = (porcelain.issuedcertttlminutes)
       plumbing.location = (porcelain.location)
       plumbing.name = (porcelain.name)
       plumbing.projectID = (porcelain.projectid)
@@ -11353,6 +11355,7 @@ module SDM
       end
       porcelain = VaultAppRoleCertSSHStore.new()
       porcelain.id = (plumbing.id)
+      porcelain.issuedcertttlminutes = (plumbing.issuedCertTTLMinutes)
       porcelain.name = (plumbing.name)
       porcelain.namespace = (plumbing.namespace)
       porcelain.server_address = (plumbing.server_address)
@@ -11368,6 +11371,7 @@ module SDM
       end
       plumbing = V1::VaultAppRoleCertSSHStore.new()
       plumbing.id = (porcelain.id)
+      plumbing.issuedCertTTLMinutes = (porcelain.issuedcertttlminutes)
       plumbing.name = (porcelain.name)
       plumbing.namespace = (porcelain.namespace)
       plumbing.server_address = (porcelain.server_address)
@@ -11399,6 +11403,7 @@ module SDM
       end
       porcelain = VaultAppRoleCertX509Store.new()
       porcelain.id = (plumbing.id)
+      porcelain.issuedcertttlminutes = (plumbing.issuedCertTTLMinutes)
       porcelain.name = (plumbing.name)
       porcelain.namespace = (plumbing.namespace)
       porcelain.pki_mount_point = (plumbing.pki_mount_point)
@@ -11414,6 +11419,7 @@ module SDM
       end
       plumbing = V1::VaultAppRoleCertX509Store.new()
       plumbing.id = (porcelain.id)
+      plumbing.issuedCertTTLMinutes = (porcelain.issuedcertttlminutes)
       plumbing.name = (porcelain.name)
       plumbing.namespace = (porcelain.namespace)
       plumbing.pki_mount_point = (porcelain.pki_mount_point)
@@ -11490,6 +11496,7 @@ module SDM
       porcelain.client_cert_path = (plumbing.client_cert_path)
       porcelain.client_key_path = (plumbing.client_key_path)
       porcelain.id = (plumbing.id)
+      porcelain.issuedcertttlminutes = (plumbing.issuedCertTTLMinutes)
       porcelain.name = (plumbing.name)
       porcelain.namespace = (plumbing.namespace)
       porcelain.server_address = (plumbing.server_address)
@@ -11508,6 +11515,7 @@ module SDM
       plumbing.client_cert_path = (porcelain.client_cert_path)
       plumbing.client_key_path = (porcelain.client_key_path)
       plumbing.id = (porcelain.id)
+      plumbing.issuedCertTTLMinutes = (porcelain.issuedcertttlminutes)
       plumbing.name = (porcelain.name)
       plumbing.namespace = (porcelain.namespace)
       plumbing.server_address = (porcelain.server_address)
@@ -11542,6 +11550,7 @@ module SDM
       porcelain.client_cert_path = (plumbing.client_cert_path)
       porcelain.client_key_path = (plumbing.client_key_path)
       porcelain.id = (plumbing.id)
+      porcelain.issuedcertttlminutes = (plumbing.issuedCertTTLMinutes)
       porcelain.name = (plumbing.name)
       porcelain.namespace = (plumbing.namespace)
       porcelain.pki_mount_point = (plumbing.pki_mount_point)
@@ -11560,6 +11569,7 @@ module SDM
       plumbing.client_cert_path = (porcelain.client_cert_path)
       plumbing.client_key_path = (porcelain.client_key_path)
       plumbing.id = (porcelain.id)
+      plumbing.issuedCertTTLMinutes = (porcelain.issuedcertttlminutes)
       plumbing.name = (porcelain.name)
       plumbing.namespace = (porcelain.namespace)
       plumbing.pki_mount_point = (porcelain.pki_mount_point)
@@ -11639,6 +11649,7 @@ module SDM
       end
       porcelain = VaultTokenCertSSHStore.new()
       porcelain.id = (plumbing.id)
+      porcelain.issuedcertttlminutes = (plumbing.issuedCertTTLMinutes)
       porcelain.name = (plumbing.name)
       porcelain.namespace = (plumbing.namespace)
       porcelain.server_address = (plumbing.server_address)
@@ -11654,6 +11665,7 @@ module SDM
       end
       plumbing = V1::VaultTokenCertSSHStore.new()
       plumbing.id = (porcelain.id)
+      plumbing.issuedCertTTLMinutes = (porcelain.issuedcertttlminutes)
       plumbing.name = (porcelain.name)
       plumbing.namespace = (porcelain.namespace)
       plumbing.server_address = (porcelain.server_address)
@@ -11685,6 +11697,7 @@ module SDM
       end
       porcelain = VaultTokenCertX509Store.new()
       porcelain.id = (plumbing.id)
+      porcelain.issuedcertttlminutes = (plumbing.issuedCertTTLMinutes)
       porcelain.name = (plumbing.name)
       porcelain.namespace = (plumbing.namespace)
       porcelain.pki_mount_point = (plumbing.pki_mount_point)
@@ -11700,6 +11713,7 @@ module SDM
       end
       plumbing = V1::VaultTokenCertX509Store.new()
       plumbing.id = (porcelain.id)
+      plumbing.issuedCertTTLMinutes = (porcelain.issuedcertttlminutes)
       plumbing.name = (porcelain.name)
       plumbing.namespace = (porcelain.namespace)
       plumbing.pki_mount_point = (porcelain.pki_mount_point)

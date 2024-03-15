@@ -56,7 +56,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :name, :string, 2
       optional :caArn, :string, 5
       optional :certificateTemplateArn, :string, 7
-      optional :issuedCertTTLMinutes, :string, 8
+      optional :issuedCertTTLMinutes, :int32, 8
       optional :region, :string, 3
       optional :signingAlgo, :string, 6
       optional :tags, :message, 4, "v1.Tags"
@@ -109,6 +109,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :name, :string, 2
       optional :caID, :string, 6
       optional :caPoolID, :string, 5
+      optional :issuedCertTTLMinutes, :int32, 7
       optional :location, :string, 4
       optional :projectID, :string, 3
       optional :tags, :message, 32771, "v1.Tags"
@@ -123,6 +124,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.VaultAppRoleCertSSHStore" do
       optional :id, :string, 1
       optional :name, :string, 2
+      optional :issuedCertTTLMinutes, :int32, 9
       optional :namespace, :string, 5
       optional :server_address, :string, 3
       optional :signing_role, :string, 7
@@ -132,6 +134,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.VaultAppRoleCertX509Store" do
       optional :id, :string, 1
       optional :name, :string, 2
+      optional :issuedCertTTLMinutes, :int32, 9
       optional :namespace, :string, 5
       optional :pki_mount_point, :string, 6
       optional :server_address, :string, 3
@@ -154,6 +157,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :CA_cert_path, :string, 4
       optional :client_cert_path, :string, 5
       optional :client_key_path, :string, 6
+      optional :issuedCertTTLMinutes, :int32, 11
       optional :namespace, :string, 8
       optional :server_address, :string, 3
       optional :signing_role, :string, 10
@@ -166,6 +170,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :CA_cert_path, :string, 4
       optional :client_cert_path, :string, 5
       optional :client_key_path, :string, 6
+      optional :issuedCertTTLMinutes, :int32, 11
       optional :namespace, :string, 8
       optional :pki_mount_point, :string, 9
       optional :server_address, :string, 3
@@ -182,6 +187,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.VaultTokenCertSSHStore" do
       optional :id, :string, 1
       optional :name, :string, 2
+      optional :issuedCertTTLMinutes, :int32, 9
       optional :namespace, :string, 5
       optional :server_address, :string, 3
       optional :signing_role, :string, 7
@@ -191,6 +197,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.VaultTokenCertX509Store" do
       optional :id, :string, 1
       optional :name, :string, 2
+      optional :issuedCertTTLMinutes, :int32, 8
       optional :namespace, :string, 5
       optional :pki_mount_point, :string, 6
       optional :server_address, :string, 3

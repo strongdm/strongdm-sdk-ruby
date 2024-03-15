@@ -458,7 +458,6 @@ module SDM
     end
   end
 
-  # AWSCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class AWSCertX509Store
     # The ARN of the CA in AWS Private CA
     attr_accessor :caarn
@@ -466,7 +465,7 @@ module SDM
     attr_accessor :certificatetemplatearn
     # Unique identifier of the SecretStore.
     attr_accessor :id
-    # The lifetime of certificates issued by this CA represented in minutes e.g. 600 (for 10 hours). Defaults to 8 hours if not provided.
+    # The lifetime of certificates issued by this CA represented in minutes.
     attr_accessor :issuedcertttlminutes
     # Unique human-readable name of the SecretStore.
     attr_accessor :name
@@ -490,7 +489,7 @@ module SDM
       @caarn = caarn == nil ? "" : caarn
       @certificatetemplatearn = certificatetemplatearn == nil ? "" : certificatetemplatearn
       @id = id == nil ? "" : id
-      @issuedcertttlminutes = issuedcertttlminutes == nil ? "" : issuedcertttlminutes
+      @issuedcertttlminutes = issuedcertttlminutes == nil ? 0 : issuedcertttlminutes
       @name = name == nil ? "" : name
       @region = region == nil ? "" : region
       @signingalgo = signingalgo == nil ? "" : signingalgo
@@ -1506,7 +1505,6 @@ module SDM
     end
   end
 
-  # ActiveDirectoryStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class ActiveDirectoryStore
     # Unique identifier of the SecretStore.
     attr_accessor :id
@@ -4648,7 +4646,6 @@ module SDM
     end
   end
 
-  # GCPCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class GCPCertX509Store
     # The ID of the target CA
     attr_accessor :caid
@@ -4656,6 +4653,8 @@ module SDM
     attr_accessor :capoolid
     # Unique identifier of the SecretStore.
     attr_accessor :id
+    # The lifetime of certificates issued by this CA represented in minutes.
+    attr_accessor :issuedcertttlminutes
     # The Region for the CA in GCP format e.g. us-west1
     attr_accessor :location
     # Unique human-readable name of the SecretStore.
@@ -4669,6 +4668,7 @@ module SDM
       caid: nil,
       capoolid: nil,
       id: nil,
+      issuedcertttlminutes: nil,
       location: nil,
       name: nil,
       projectid: nil,
@@ -4677,6 +4677,7 @@ module SDM
       @caid = caid == nil ? "" : caid
       @capoolid = capoolid == nil ? "" : capoolid
       @id = id == nil ? "" : id
+      @issuedcertttlminutes = issuedcertttlminutes == nil ? 0 : issuedcertttlminutes
       @location = location == nil ? "" : location
       @name = name == nil ? "" : name
       @projectid = projectid == nil ? "" : projectid
@@ -10547,10 +10548,11 @@ module SDM
     end
   end
 
-  # VaultAppRoleCertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class VaultAppRoleCertSSHStore
     # Unique identifier of the SecretStore.
     attr_accessor :id
+    # The lifetime of certificates issued by this CA represented in minutes.
+    attr_accessor :issuedcertttlminutes
     # Unique human-readable name of the SecretStore.
     attr_accessor :name
     # The namespace to make requests within
@@ -10566,6 +10568,7 @@ module SDM
 
     def initialize(
       id: nil,
+      issuedcertttlminutes: nil,
       name: nil,
       namespace: nil,
       server_address: nil,
@@ -10574,6 +10577,7 @@ module SDM
       tags: nil
     )
       @id = id == nil ? "" : id
+      @issuedcertttlminutes = issuedcertttlminutes == nil ? 0 : issuedcertttlminutes
       @name = name == nil ? "" : name
       @namespace = namespace == nil ? "" : namespace
       @server_address = server_address == nil ? "" : server_address
@@ -10591,10 +10595,11 @@ module SDM
     end
   end
 
-  # VaultAppRoleCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class VaultAppRoleCertX509Store
     # Unique identifier of the SecretStore.
     attr_accessor :id
+    # The lifetime of certificates issued by this CA in minutes. Recommended value is 5.
+    attr_accessor :issuedcertttlminutes
     # Unique human-readable name of the SecretStore.
     attr_accessor :name
     # The namespace to make requests within
@@ -10610,6 +10615,7 @@ module SDM
 
     def initialize(
       id: nil,
+      issuedcertttlminutes: nil,
       name: nil,
       namespace: nil,
       pki_mount_point: nil,
@@ -10618,6 +10624,7 @@ module SDM
       tags: nil
     )
       @id = id == nil ? "" : id
+      @issuedcertttlminutes = issuedcertttlminutes == nil ? 0 : issuedcertttlminutes
       @name = name == nil ? "" : name
       @namespace = namespace == nil ? "" : namespace
       @pki_mount_point = pki_mount_point == nil ? "" : pki_mount_point
@@ -10670,7 +10677,6 @@ module SDM
     end
   end
 
-  # VaultTLSCertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class VaultTLSCertSSHStore
     # A path to a CA file accessible by a Node
     attr_accessor :ca_cert_path
@@ -10680,6 +10686,8 @@ module SDM
     attr_accessor :client_key_path
     # Unique identifier of the SecretStore.
     attr_accessor :id
+    # The lifetime of certificates issued by this CA represented in minutes.
+    attr_accessor :issuedcertttlminutes
     # Unique human-readable name of the SecretStore.
     attr_accessor :name
     # The namespace to make requests within
@@ -10698,6 +10706,7 @@ module SDM
       client_cert_path: nil,
       client_key_path: nil,
       id: nil,
+      issuedcertttlminutes: nil,
       name: nil,
       namespace: nil,
       server_address: nil,
@@ -10709,6 +10718,7 @@ module SDM
       @client_cert_path = client_cert_path == nil ? "" : client_cert_path
       @client_key_path = client_key_path == nil ? "" : client_key_path
       @id = id == nil ? "" : id
+      @issuedcertttlminutes = issuedcertttlminutes == nil ? 0 : issuedcertttlminutes
       @name = name == nil ? "" : name
       @namespace = namespace == nil ? "" : namespace
       @server_address = server_address == nil ? "" : server_address
@@ -10726,7 +10736,6 @@ module SDM
     end
   end
 
-  # VaultTLSCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class VaultTLSCertX509Store
     # A path to a CA file accessible by a Node
     attr_accessor :ca_cert_path
@@ -10736,6 +10745,8 @@ module SDM
     attr_accessor :client_key_path
     # Unique identifier of the SecretStore.
     attr_accessor :id
+    # The lifetime of certificates issued by this CA represented in minutes.
+    attr_accessor :issuedcertttlminutes
     # Unique human-readable name of the SecretStore.
     attr_accessor :name
     # The namespace to make requests within
@@ -10754,6 +10765,7 @@ module SDM
       client_cert_path: nil,
       client_key_path: nil,
       id: nil,
+      issuedcertttlminutes: nil,
       name: nil,
       namespace: nil,
       pki_mount_point: nil,
@@ -10765,6 +10777,7 @@ module SDM
       @client_cert_path = client_cert_path == nil ? "" : client_cert_path
       @client_key_path = client_key_path == nil ? "" : client_key_path
       @id = id == nil ? "" : id
+      @issuedcertttlminutes = issuedcertttlminutes == nil ? 0 : issuedcertttlminutes
       @name = name == nil ? "" : name
       @namespace = namespace == nil ? "" : namespace
       @pki_mount_point = pki_mount_point == nil ? "" : pki_mount_point
@@ -10829,10 +10842,11 @@ module SDM
     end
   end
 
-  # VaultTokenCertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class VaultTokenCertSSHStore
     # Unique identifier of the SecretStore.
     attr_accessor :id
+    # The lifetime of certificates issued by this CA in minutes. Recommended value is 5.
+    attr_accessor :issuedcertttlminutes
     # Unique human-readable name of the SecretStore.
     attr_accessor :name
     # The namespace to make requests within
@@ -10848,6 +10862,7 @@ module SDM
 
     def initialize(
       id: nil,
+      issuedcertttlminutes: nil,
       name: nil,
       namespace: nil,
       server_address: nil,
@@ -10856,6 +10871,7 @@ module SDM
       tags: nil
     )
       @id = id == nil ? "" : id
+      @issuedcertttlminutes = issuedcertttlminutes == nil ? 0 : issuedcertttlminutes
       @name = name == nil ? "" : name
       @namespace = namespace == nil ? "" : namespace
       @server_address = server_address == nil ? "" : server_address
@@ -10873,10 +10889,11 @@ module SDM
     end
   end
 
-  # VaultTokenCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class VaultTokenCertX509Store
     # Unique identifier of the SecretStore.
     attr_accessor :id
+    # The lifetime of certificates issued by this CA represented in minutes.
+    attr_accessor :issuedcertttlminutes
     # Unique human-readable name of the SecretStore.
     attr_accessor :name
     # The namespace to make requests within
@@ -10892,6 +10909,7 @@ module SDM
 
     def initialize(
       id: nil,
+      issuedcertttlminutes: nil,
       name: nil,
       namespace: nil,
       pki_mount_point: nil,
@@ -10900,6 +10918,7 @@ module SDM
       tags: nil
     )
       @id = id == nil ? "" : id
+      @issuedcertttlminutes = issuedcertttlminutes == nil ? 0 : issuedcertttlminutes
       @name = name == nil ? "" : name
       @namespace = namespace == nil ? "" : namespace
       @pki_mount_point = pki_mount_point == nil ? "" : pki_mount_point
