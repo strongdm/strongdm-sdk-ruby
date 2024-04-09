@@ -902,9 +902,11 @@ module SDM #:nodoc:
   # Accounts are users that have access to strongDM. There are two types of accounts:
   # 1. **Users:** humans who are authenticated through username and password or SSO.
   # 2. **Service Accounts:** machines that are authenticated using a service token.
+  # 3. **Tokens** are access keys with permissions that can be used for authentication.
   #
   # See:
   # {Service}
+  # {Token}
   # {User}
   class Accounts
     extend Gem::Deprecate
@@ -942,9 +944,11 @@ module SDM #:nodoc:
       end
 
       resp = AccountCreateResponse.new()
+      resp.access_key = (plumbing_response.access_key)
       resp.account = Plumbing::convert_account_to_porcelain(plumbing_response.account)
       resp.meta = Plumbing::convert_create_response_metadata_to_porcelain(plumbing_response.meta)
       resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.secret_key = (plumbing_response.secret_key)
       resp.token = (plumbing_response.token)
       resp
     end

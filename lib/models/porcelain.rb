@@ -1081,25 +1081,33 @@ module SDM
 
   # AccountCreateResponse reports how the Accounts were created in the system.
   class AccountCreateResponse
+    # ID part of the API key.
+    attr_accessor :access_key
     # The created Account.
     attr_accessor :account
     # Reserved for future use.
     attr_accessor :meta
     # Rate limit information.
     attr_accessor :rate_limit
+    # Secret part of the API key.
+    attr_accessor :secret_key
     # The auth token generated for the Account. The Account will use this token to
     # authenticate with the strongDM API.
     attr_accessor :token
 
     def initialize(
+      access_key: nil,
       account: nil,
       meta: nil,
       rate_limit: nil,
+      secret_key: nil,
       token: nil
     )
+      @access_key = access_key == nil ? "" : access_key
       @account = account == nil ? nil : account
       @meta = meta == nil ? nil : meta
       @rate_limit = rate_limit == nil ? nil : rate_limit
+      @secret_key = secret_key == nil ? "" : secret_key
       @token = token == nil ? "" : token
     end
 
@@ -10398,6 +10406,59 @@ module SDM
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
       @username = username == nil ? "" : username
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # A Token is an account providing tokenized access for automation or integration use.
+  # Tokens include admin tokens, API keys, and SCIM tokens.
+  class Token
+    # Corresponds to the type of token, e.g. api or admin-token.
+    attr_accessor :account_type
+    # The timestamp when the Token will expire.
+    attr_accessor :deadline
+    # Duration from token creation to expiration.
+    attr_accessor :duration
+    # Unique identifier of the Token.
+    attr_accessor :id
+    # Unique human-readable name of the Token.
+    attr_accessor :name
+    # Permissions assigned to the token, e.g. role:create.
+    attr_accessor :permissions
+    # The timestamp when the Token was last rekeyed.
+    attr_accessor :rekeyed
+    # Reserved for future use.  Always false for tokens.
+    attr_accessor :suspended
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      account_type: nil,
+      deadline: nil,
+      duration: nil,
+      id: nil,
+      name: nil,
+      permissions: nil,
+      rekeyed: nil,
+      suspended: nil,
+      tags: nil
+    )
+      @account_type = account_type == nil ? "" : account_type
+      @deadline = deadline == nil ? nil : deadline
+      @duration = duration == nil ? nil : duration
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @permissions = permissions == nil ? [] : permissions
+      @rekeyed = rekeyed == nil ? nil : rekeyed
+      @suspended = suspended == nil ? false : suspended
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
     def to_json(options = {})

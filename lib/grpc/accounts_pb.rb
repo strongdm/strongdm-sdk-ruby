@@ -17,6 +17,7 @@
 
 require "google/protobuf"
 
+require "google/protobuf/duration_pb"
 require "google/protobuf/timestamp_pb"
 require "options_pb"
 require "spec_pb"
@@ -33,6 +34,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :account, :message, 2, "v1.Account"
       optional :token, :string, 3
       optional :rate_limit, :message, 4, "v1.RateLimitMetadata"
+      optional :access_key, :string, 5
+      optional :secret_key, :string, 6
     end
     add_message "v1.AccountGetRequest" do
       optional :meta, :message, 1, "v1.GetRequestMetadata"
@@ -103,6 +106,9 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 4, "v1.Tags"
       optional :rekeyed, :message, 5, "google.protobuf.Timestamp"
       optional :deadline, :message, 6, "google.protobuf.Timestamp"
+      optional :account_type, :string, 7
+      repeated :permissions, :string, 8
+      optional :duration, :message, 9, "google.protobuf.Duration"
     end
   end
 end

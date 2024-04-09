@@ -1041,6 +1041,9 @@ module SDM
       if porcelain.instance_of? Service
         plumbing.service = convert_service_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? Token
+        plumbing.token = convert_token_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? User
         plumbing.user = convert_user_to_plumbing(porcelain)
       end
@@ -1053,6 +1056,9 @@ module SDM
       end
       if plumbing.service != nil
         return convert_service_to_porcelain(plumbing.service)
+      end
+      if plumbing.token != nil
+        return convert_token_to_porcelain(plumbing.token)
       end
       if plumbing.user != nil
         return convert_user_to_porcelain(plumbing.user)
@@ -1271,9 +1277,11 @@ module SDM
         return nil
       end
       porcelain = AccountCreateResponse.new()
+      porcelain.access_key = (plumbing.access_key)
       porcelain.account = convert_account_to_porcelain(plumbing.account)
       porcelain.meta = convert_create_response_metadata_to_porcelain(plumbing.meta)
       porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain.secret_key = (plumbing.secret_key)
       porcelain.token = (plumbing.token)
       porcelain
     end
@@ -1283,9 +1291,11 @@ module SDM
         return nil
       end
       plumbing = V1::AccountCreateResponse.new()
+      plumbing.access_key = (porcelain.access_key)
       plumbing.account = convert_account_to_plumbing(porcelain.account)
       plumbing.meta = convert_create_response_metadata_to_plumbing(porcelain.meta)
       plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing.secret_key = (porcelain.secret_key)
       plumbing.token = (porcelain.token)
       plumbing
     end
@@ -11203,6 +11213,56 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_teradata_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_token_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = Token.new()
+      porcelain.account_type = (plumbing.account_type)
+      porcelain.deadline = convert_timestamp_to_porcelain(plumbing.deadline)
+      porcelain.duration = convert_duration_to_porcelain(plumbing.duration)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.permissions = (plumbing.permissions)
+      porcelain.rekeyed = convert_timestamp_to_porcelain(plumbing.rekeyed)
+      porcelain.suspended = (plumbing.suspended)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_token_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::Token.new()
+      plumbing.account_type = (porcelain.account_type)
+      plumbing.deadline = convert_timestamp_to_plumbing(porcelain.deadline)
+      plumbing.duration = convert_duration_to_plumbing(porcelain.duration)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.permissions += (porcelain.permissions)
+      plumbing.rekeyed = convert_timestamp_to_plumbing(porcelain.rekeyed)
+      plumbing.suspended = (porcelain.suspended)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_token_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_token_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_token_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_token_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
