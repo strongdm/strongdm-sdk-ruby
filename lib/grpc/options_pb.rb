@@ -44,6 +44,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       repeated :targets, :string, 1941306
       optional :terraform_docs, :message, 1941304, "v1.TerraformDocs"
       optional :custom, :message, 1941305, "v1.CustomOptions"
+      optional :terraform_datasource_only, :bool, 1941307
     end
     add_message "v1.OneofOptions" do
       repeated :common_fields, :string, 1941381

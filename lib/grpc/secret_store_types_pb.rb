@@ -34,6 +34,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :delinea, :message, 2900, "v1.DelineaStore"
         optional :gcp, :message, 201, "v1.GCPStore"
         optional :gcp_cert_x_509, :message, 202, "v1.GCPCertX509Store"
+        optional :keyfactor_x_509, :message, 200, "v1.KeyfactorX509Store"
         optional :vault_app_role, :message, 4, "v1.VaultAppRoleStore"
         optional :vault_app_role_cert_ssh, :message, 94, "v1.VaultAppRoleCertSSHStore"
         optional :vault_app_role_cert_x_509, :message, 95, "v1.VaultAppRoleCertX509Store"
@@ -112,6 +113,21 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :issuedCertTTLMinutes, :int32, 7
       optional :location, :string, 4
       optional :projectID, :string, 3
+      optional :tags, :message, 32771, "v1.Tags"
+    end
+    add_message "v1.KeyfactorX509Store" do
+      optional :id, :string, 1
+      optional :name, :string, 2
+      optional :ca_file_path, :string, 6
+      optional :certificate_file_path, :string, 4
+      optional :default_certificate_authority_name, :string, 10
+      optional :default_certificate_profile_name, :string, 8
+      optional :default_end_entity_profile_name, :string, 9
+      optional :enrollment_code_env_var, :string, 12
+      optional :enrollment_username_env_var, :string, 11
+      optional :key_file_path, :string, 5
+      optional :key_password_env_var, :string, 7
+      optional :server_address, :string, 3
       optional :tags, :message, 32771, "v1.Tags"
     end
     add_message "v1.VaultAppRoleStore" do
@@ -219,6 +235,7 @@ module V1
   DelineaStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DelineaStore").msgclass
   GCPStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GCPStore").msgclass
   GCPCertX509Store = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GCPCertX509Store").msgclass
+  KeyfactorX509Store = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.KeyfactorX509Store").msgclass
   VaultAppRoleStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.VaultAppRoleStore").msgclass
   VaultAppRoleCertSSHStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.VaultAppRoleCertSSHStore").msgclass
   VaultAppRoleCertX509Store = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.VaultAppRoleCertX509Store").msgclass

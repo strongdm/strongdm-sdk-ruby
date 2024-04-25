@@ -5416,6 +5416,64 @@ module SDM
       end
       items
     end
+    def self.convert_keyfactor_x_509_store_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = KeyfactorX509Store.new()
+      porcelain.ca_file_path = (plumbing.ca_file_path)
+      porcelain.certificate_file_path = (plumbing.certificate_file_path)
+      porcelain.default_certificate_authority_name = (plumbing.default_certificate_authority_name)
+      porcelain.default_certificate_profile_name = (plumbing.default_certificate_profile_name)
+      porcelain.default_end_entity_profile_name = (plumbing.default_end_entity_profile_name)
+      porcelain.enrollment_code_env_var = (plumbing.enrollment_code_env_var)
+      porcelain.enrollment_username_env_var = (plumbing.enrollment_username_env_var)
+      porcelain.id = (plumbing.id)
+      porcelain.key_file_path = (plumbing.key_file_path)
+      porcelain.key_password_env_var = (plumbing.key_password_env_var)
+      porcelain.name = (plumbing.name)
+      porcelain.server_address = (plumbing.server_address)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_keyfactor_x_509_store_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::KeyfactorX509Store.new()
+      plumbing.ca_file_path = (porcelain.ca_file_path)
+      plumbing.certificate_file_path = (porcelain.certificate_file_path)
+      plumbing.default_certificate_authority_name = (porcelain.default_certificate_authority_name)
+      plumbing.default_certificate_profile_name = (porcelain.default_certificate_profile_name)
+      plumbing.default_end_entity_profile_name = (porcelain.default_end_entity_profile_name)
+      plumbing.enrollment_code_env_var = (porcelain.enrollment_code_env_var)
+      plumbing.enrollment_username_env_var = (porcelain.enrollment_username_env_var)
+      plumbing.id = (porcelain.id)
+      plumbing.key_file_path = (porcelain.key_file_path)
+      plumbing.key_password_env_var = (porcelain.key_password_env_var)
+      plumbing.name = (porcelain.name)
+      plumbing.server_address = (porcelain.server_address)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_keyfactor_x_509_store_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_keyfactor_x_509_store_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_keyfactor_x_509_store_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_keyfactor_x_509_store_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_kubernetes_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -10373,6 +10431,9 @@ module SDM
       if porcelain.instance_of? GCPCertX509Store
         plumbing.gcp_cert_x_509 = convert_gcp_cert_x_509_store_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? KeyfactorX509Store
+        plumbing.keyfactor_x_509 = convert_keyfactor_x_509_store_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? VaultAppRoleStore
         plumbing.vault_app_role = convert_vault_app_role_store_to_plumbing(porcelain)
       end
@@ -10436,6 +10497,9 @@ module SDM
       end
       if plumbing.gcp_cert_x_509 != nil
         return convert_gcp_cert_x_509_store_to_porcelain(plumbing.gcp_cert_x_509)
+      end
+      if plumbing.keyfactor_x_509 != nil
+        return convert_keyfactor_x_509_store_to_porcelain(plumbing.keyfactor_x_509)
       end
       if plumbing.vault_app_role != nil
         return convert_vault_app_role_store_to_porcelain(plumbing.vault_app_role)
