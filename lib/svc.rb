@@ -4508,6 +4508,7 @@ module SDM #:nodoc:
   # {DelineaStore}
   # {GCPStore}
   # {GCPCertX509Store}
+  # {KeyfactorSSHStore}
   # {KeyfactorX509Store}
   # {VaultAppRoleStore}
   # {VaultAppRoleCertSSHStore}

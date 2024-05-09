@@ -93,6 +93,7 @@ module SDM
     NONE = ""
     DUO = "duo"
     TOTP = "totp"
+    OKTA = "okta"
   end
 
   # Activity Entities, all entity types that can be part of an activity.

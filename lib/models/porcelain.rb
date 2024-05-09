@@ -5253,6 +5253,75 @@ module SDM
     end
   end
 
+  class KeyfactorSSHStore
+    # Path to the root CA that signed the certificate passed to the client for HTTPS connection.
+    # This is not required if the CA is trusted by the host operating system. This should be a PEM
+    # formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.
+    attr_accessor :ca_file_path
+    # Path to client certificate in PEM format. This certificate must contain a client certificate that
+    # is recognized by the EJBCA instance represented by Hostname. This PEM file may also contain the private
+    # key associated with the certificate, but KeyFile can also be set to configure the private key.
+    attr_accessor :certificate_file_path
+    # Name of EJBCA certificate authority that will enroll CSR.
+    attr_accessor :default_certificate_authority_name
+    # Certificate profile name that EJBCA will enroll the CSR with.
+    attr_accessor :default_certificate_profile_name
+    # End entity profile that EJBCA will enroll the CSR with.
+    attr_accessor :default_end_entity_profile_name
+    # code used by EJBCA during enrollment. May be left blank if no code is required.
+    attr_accessor :enrollment_code_env_var
+    # username that used by the EJBCA during enrollment. This can be left out.
+    # If so, the username must be auto-generated on the Keyfactor side.
+    attr_accessor :enrollment_username_env_var
+    # Unique identifier of the SecretStore.
+    attr_accessor :id
+    # Path to private key in PEM format. This file should contain the private key associated with the
+    # client certificate configured in CertificateFile.
+    attr_accessor :key_file_path
+    # Unique human-readable name of the SecretStore.
+    attr_accessor :name
+    # the host of the Key Factor CA
+    attr_accessor :server_address
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      ca_file_path: nil,
+      certificate_file_path: nil,
+      default_certificate_authority_name: nil,
+      default_certificate_profile_name: nil,
+      default_end_entity_profile_name: nil,
+      enrollment_code_env_var: nil,
+      enrollment_username_env_var: nil,
+      id: nil,
+      key_file_path: nil,
+      name: nil,
+      server_address: nil,
+      tags: nil
+    )
+      @ca_file_path = ca_file_path == nil ? "" : ca_file_path
+      @certificate_file_path = certificate_file_path == nil ? "" : certificate_file_path
+      @default_certificate_authority_name = default_certificate_authority_name == nil ? "" : default_certificate_authority_name
+      @default_certificate_profile_name = default_certificate_profile_name == nil ? "" : default_certificate_profile_name
+      @default_end_entity_profile_name = default_end_entity_profile_name == nil ? "" : default_end_entity_profile_name
+      @enrollment_code_env_var = enrollment_code_env_var == nil ? "" : enrollment_code_env_var
+      @enrollment_username_env_var = enrollment_username_env_var == nil ? "" : enrollment_username_env_var
+      @id = id == nil ? "" : id
+      @key_file_path = key_file_path == nil ? "" : key_file_path
+      @name = name == nil ? "" : name
+      @server_address = server_address == nil ? "" : server_address
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class KeyfactorX509Store
     # Path to the root CA that signed the certificate passed to the client for HTTPS connection.
     # This is not required if the CA is trusted by the host operating system. This should be a PEM
@@ -5278,8 +5347,6 @@ module SDM
     # Path to private key in PEM format. This file should contain the private key associated with the
     # client certificate configured in CertificateFile.
     attr_accessor :key_file_path
-    # optional environment variable housing the password that is used to decrypt the key file.
-    attr_accessor :key_password_env_var
     # Unique human-readable name of the SecretStore.
     attr_accessor :name
     # the host of the Key Factor CA
@@ -5297,7 +5364,6 @@ module SDM
       enrollment_username_env_var: nil,
       id: nil,
       key_file_path: nil,
-      key_password_env_var: nil,
       name: nil,
       server_address: nil,
       tags: nil
@@ -5311,7 +5377,6 @@ module SDM
       @enrollment_username_env_var = enrollment_username_env_var == nil ? "" : enrollment_username_env_var
       @id = id == nil ? "" : id
       @key_file_path = key_file_path == nil ? "" : key_file_path
-      @key_password_env_var = key_password_env_var == nil ? "" : key_password_env_var
       @name = name == nil ? "" : name
       @server_address = server_address == nil ? "" : server_address
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
