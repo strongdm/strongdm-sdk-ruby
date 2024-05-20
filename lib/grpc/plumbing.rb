@@ -10500,6 +10500,12 @@ module SDM
       if porcelain.instance_of? VaultAppRoleCertX509Store
         plumbing.vault_app_role_cert_x_509 = convert_vault_app_role_cert_x_509_store_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? VaultAWSEC2Store
+        plumbing.vault_awsec_2 = convert_vault_awsec_2_store_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? VaultAWSIAMStore
+        plumbing.vault_awsiam = convert_vault_awsiam_store_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? VaultTLSStore
         plumbing.vault_tls = convert_vault_tls_store_to_plumbing(porcelain)
       end
@@ -10569,6 +10575,12 @@ module SDM
       end
       if plumbing.vault_app_role_cert_x_509 != nil
         return convert_vault_app_role_cert_x_509_store_to_porcelain(plumbing.vault_app_role_cert_x_509)
+      end
+      if plumbing.vault_awsec_2 != nil
+        return convert_vault_awsec_2_store_to_porcelain(plumbing.vault_awsec_2)
+      end
+      if plumbing.vault_awsiam != nil
+        return convert_vault_awsiam_store_to_porcelain(plumbing.vault_awsiam)
       end
       if plumbing.vault_tls != nil
         return convert_vault_tls_store_to_porcelain(plumbing.vault_tls)
@@ -11529,6 +11541,90 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_user_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_vault_awsec_2_store_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = VaultAWSEC2Store.new()
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.namespace = (plumbing.namespace)
+      porcelain.server_address = (plumbing.server_address)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_vault_awsec_2_store_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::VaultAWSEC2Store.new()
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.namespace = (porcelain.namespace)
+      plumbing.server_address = (porcelain.server_address)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_vault_awsec_2_store_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_vault_awsec_2_store_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_vault_awsec_2_store_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_vault_awsec_2_store_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_vault_awsiam_store_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = VaultAWSIAMStore.new()
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.namespace = (plumbing.namespace)
+      porcelain.server_address = (plumbing.server_address)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_vault_awsiam_store_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::VaultAWSIAMStore.new()
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.namespace = (porcelain.namespace)
+      plumbing.server_address = (porcelain.server_address)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_vault_awsiam_store_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_vault_awsiam_store_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_vault_awsiam_store_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_vault_awsiam_store_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items

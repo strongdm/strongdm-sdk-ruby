@@ -10747,6 +10747,78 @@ module SDM
     end
   end
 
+  # VaultAWSEC2Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class VaultAWSEC2Store
+    # Unique identifier of the SecretStore.
+    attr_accessor :id
+    # Unique human-readable name of the SecretStore.
+    attr_accessor :name
+    # The namespace to make requests within
+    attr_accessor :namespace
+    # The URL of the Vault to target
+    attr_accessor :server_address
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      id: nil,
+      name: nil,
+      namespace: nil,
+      server_address: nil,
+      tags: nil
+    )
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @namespace = namespace == nil ? "" : namespace
+      @server_address = server_address == nil ? "" : server_address
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # VaultAWSIAMStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class VaultAWSIAMStore
+    # Unique identifier of the SecretStore.
+    attr_accessor :id
+    # Unique human-readable name of the SecretStore.
+    attr_accessor :name
+    # The namespace to make requests within
+    attr_accessor :namespace
+    # The URL of the Vault to target
+    attr_accessor :server_address
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      id: nil,
+      name: nil,
+      namespace: nil,
+      server_address: nil,
+      tags: nil
+    )
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @namespace = namespace == nil ? "" : namespace
+      @server_address = server_address == nil ? "" : server_address
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class VaultAppRoleCertSSHStore
     # Unique identifier of the SecretStore.
     attr_accessor :id

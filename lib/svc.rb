@@ -4513,6 +4513,8 @@ module SDM #:nodoc:
   # {VaultAppRoleStore}
   # {VaultAppRoleCertSSHStore}
   # {VaultAppRoleCertX509Store}
+  # {VaultAWSEC2Store}
+  # {VaultAWSIAMStore}
   # {VaultTLSStore}
   # {VaultTLSCertSSHStore}
   # {VaultTLSCertX509Store}
