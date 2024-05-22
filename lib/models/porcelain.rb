@@ -35,16 +35,16 @@ module SDM
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
+    # The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+    attr_accessor :identity_alias_healthcheck_username
+    # The ID of the identity set to use for identity connections.
+    attr_accessor :identity_set_id
     # Unique human-readable name of the Resource.
     attr_accessor :name
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-    # The ID of the remote identity group to use for remote identity connections.
-    attr_accessor :remote_identity_group_id
-    # The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-    attr_accessor :remote_identity_healthcheck_username
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -62,11 +62,11 @@ module SDM
       healthy: nil,
       hostname: nil,
       id: nil,
+      identity_alias_healthcheck_username: nil,
+      identity_set_id: nil,
       name: nil,
       port: nil,
       port_override: nil,
-      remote_identity_group_id: nil,
-      remote_identity_healthcheck_username: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil
@@ -80,11 +80,11 @@ module SDM
       @healthy = healthy == nil ? false : healthy
       @hostname = hostname == nil ? "" : hostname
       @id = id == nil ? "" : id
+      @identity_alias_healthcheck_username = identity_alias_healthcheck_username == nil ? "" : identity_alias_healthcheck_username
+      @identity_set_id = identity_set_id == nil ? "" : identity_set_id
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
-      @remote_identity_group_id = remote_identity_group_id == nil ? "" : remote_identity_group_id
-      @remote_identity_healthcheck_username = remote_identity_healthcheck_username == nil ? "" : remote_identity_healthcheck_username
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -183,16 +183,16 @@ module SDM
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
+    # The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+    attr_accessor :identity_alias_healthcheck_username
+    # The ID of the identity set to use for identity connections.
+    attr_accessor :identity_set_id
     # Unique human-readable name of the Resource.
     attr_accessor :name
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-    # The ID of the remote identity group to use for remote identity connections.
-    attr_accessor :remote_identity_group_id
-    # The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-    attr_accessor :remote_identity_healthcheck_username
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -209,11 +209,11 @@ module SDM
       healthy: nil,
       hostname: nil,
       id: nil,
+      identity_alias_healthcheck_username: nil,
+      identity_set_id: nil,
       name: nil,
       port: nil,
       port_override: nil,
-      remote_identity_group_id: nil,
-      remote_identity_healthcheck_username: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -225,11 +225,11 @@ module SDM
       @healthy = healthy == nil ? false : healthy
       @hostname = hostname == nil ? "" : hostname
       @id = id == nil ? "" : id
+      @identity_alias_healthcheck_username = identity_alias_healthcheck_username == nil ? "" : identity_alias_healthcheck_username
+      @identity_set_id = identity_set_id == nil ? "" : identity_set_id
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
-      @remote_identity_group_id = remote_identity_group_id == nil ? "" : remote_identity_group_id
-      @remote_identity_healthcheck_username = remote_identity_healthcheck_username == nil ? "" : remote_identity_healthcheck_username
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -516,16 +516,16 @@ module SDM
     attr_accessor :healthy
     # Unique identifier of the Resource.
     attr_accessor :id
+    # The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+    attr_accessor :identity_alias_healthcheck_username
+    # The ID of the identity set to use for identity connections.
+    attr_accessor :identity_set_id
     # Unique human-readable name of the Resource.
     attr_accessor :name
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # The AWS region to connect to.
     attr_accessor :region
-    # The ID of the remote identity group to use for remote identity connections.
-    attr_accessor :remote_identity_group_id
-    # The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-    attr_accessor :remote_identity_healthcheck_username
     # The role to assume after logging in.
     attr_accessor :role_arn
     # The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -545,11 +545,11 @@ module SDM
       enable_env_variables: nil,
       healthy: nil,
       id: nil,
+      identity_alias_healthcheck_username: nil,
+      identity_set_id: nil,
       name: nil,
       port_override: nil,
       region: nil,
-      remote_identity_group_id: nil,
-      remote_identity_healthcheck_username: nil,
       role_arn: nil,
       role_external_id: nil,
       secret_store_id: nil,
@@ -562,11 +562,11 @@ module SDM
       @enable_env_variables = enable_env_variables == nil ? false : enable_env_variables
       @healthy = healthy == nil ? false : healthy
       @id = id == nil ? "" : id
+      @identity_alias_healthcheck_username = identity_alias_healthcheck_username == nil ? "" : identity_alias_healthcheck_username
+      @identity_set_id = identity_set_id == nil ? "" : identity_set_id
       @name = name == nil ? "" : name
       @port_override = port_override == nil ? 0 : port_override
       @region = region == nil ? "" : region
-      @remote_identity_group_id = remote_identity_group_id == nil ? "" : remote_identity_group_id
-      @remote_identity_healthcheck_username = remote_identity_healthcheck_username == nil ? "" : remote_identity_healthcheck_username
       @role_arn = role_arn == nil ? "" : role_arn
       @role_external_id = role_external_id == nil ? "" : role_external_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
@@ -595,16 +595,16 @@ module SDM
     attr_accessor :healthy
     # Unique identifier of the Resource.
     attr_accessor :id
+    # The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+    attr_accessor :identity_alias_healthcheck_username
+    # The ID of the identity set to use for identity connections.
+    attr_accessor :identity_set_id
     # Unique human-readable name of the Resource.
     attr_accessor :name
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # The AWS region to connect to.
     attr_accessor :region
-    # The ID of the remote identity group to use for remote identity connections.
-    attr_accessor :remote_identity_group_id
-    # The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-    attr_accessor :remote_identity_healthcheck_username
     # The role to assume after logging in.
     attr_accessor :role_arn
     # The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -626,11 +626,11 @@ module SDM
       egress_filter: nil,
       healthy: nil,
       id: nil,
+      identity_alias_healthcheck_username: nil,
+      identity_set_id: nil,
       name: nil,
       port_override: nil,
       region: nil,
-      remote_identity_group_id: nil,
-      remote_identity_healthcheck_username: nil,
       role_arn: nil,
       role_external_id: nil,
       secret_access_key: nil,
@@ -644,11 +644,11 @@ module SDM
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
       @id = id == nil ? "" : id
+      @identity_alias_healthcheck_username = identity_alias_healthcheck_username == nil ? "" : identity_alias_healthcheck_username
+      @identity_set_id = identity_set_id == nil ? "" : identity_set_id
       @name = name == nil ? "" : name
       @port_override = port_override == nil ? 0 : port_override
       @region = region == nil ? "" : region
-      @remote_identity_group_id = remote_identity_group_id == nil ? "" : remote_identity_group_id
-      @remote_identity_healthcheck_username = remote_identity_healthcheck_username == nil ? "" : remote_identity_healthcheck_username
       @role_arn = role_arn == nil ? "" : role_arn
       @role_external_id = role_external_id == nil ? "" : role_external_id
       @secret_access_key = secret_access_key == nil ? "" : secret_access_key
@@ -1716,16 +1716,16 @@ module SDM
     attr_accessor :healthy
     # Unique identifier of the Resource.
     attr_accessor :id
+    # The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+    attr_accessor :identity_alias_healthcheck_username
+    # The ID of the identity set to use for identity connections.
+    attr_accessor :identity_set_id
     # Unique human-readable name of the Resource.
     attr_accessor :name
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # The AWS region to connect to e.g. us-east-1.
     attr_accessor :region
-    # The ID of the remote identity group to use for remote identity connections.
-    attr_accessor :remote_identity_group_id
-    # The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-    attr_accessor :remote_identity_healthcheck_username
     # The role to assume after logging in.
     attr_accessor :role_arn
     # The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -1749,11 +1749,11 @@ module SDM
       healthcheck_namespace: nil,
       healthy: nil,
       id: nil,
+      identity_alias_healthcheck_username: nil,
+      identity_set_id: nil,
       name: nil,
       port_override: nil,
       region: nil,
-      remote_identity_group_id: nil,
-      remote_identity_healthcheck_username: nil,
       role_arn: nil,
       role_external_id: nil,
       secret_access_key: nil,
@@ -1770,11 +1770,11 @@ module SDM
       @healthcheck_namespace = healthcheck_namespace == nil ? "" : healthcheck_namespace
       @healthy = healthy == nil ? false : healthy
       @id = id == nil ? "" : id
+      @identity_alias_healthcheck_username = identity_alias_healthcheck_username == nil ? "" : identity_alias_healthcheck_username
+      @identity_set_id = identity_set_id == nil ? "" : identity_set_id
       @name = name == nil ? "" : name
       @port_override = port_override == nil ? 0 : port_override
       @region = region == nil ? "" : region
-      @remote_identity_group_id = remote_identity_group_id == nil ? "" : remote_identity_group_id
-      @remote_identity_healthcheck_username = remote_identity_healthcheck_username == nil ? "" : remote_identity_healthcheck_username
       @role_arn = role_arn == nil ? "" : role_arn
       @role_external_id = role_external_id == nil ? "" : role_external_id
       @secret_access_key = secret_access_key == nil ? "" : secret_access_key
@@ -1809,16 +1809,16 @@ module SDM
     attr_accessor :healthy
     # Unique identifier of the Resource.
     attr_accessor :id
+    # The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+    attr_accessor :identity_alias_healthcheck_username
+    # The ID of the identity set to use for identity connections.
+    attr_accessor :identity_set_id
     # Unique human-readable name of the Resource.
     attr_accessor :name
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
     # The AWS region to connect to e.g. us-east-1.
     attr_accessor :region
-    # The ID of the remote identity group to use for remote identity connections.
-    attr_accessor :remote_identity_group_id
-    # The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-    attr_accessor :remote_identity_healthcheck_username
     # The role to assume after logging in.
     attr_accessor :role_arn
     # The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -1839,11 +1839,11 @@ module SDM
       healthcheck_namespace: nil,
       healthy: nil,
       id: nil,
+      identity_alias_healthcheck_username: nil,
+      identity_set_id: nil,
       name: nil,
       port_override: nil,
       region: nil,
-      remote_identity_group_id: nil,
-      remote_identity_healthcheck_username: nil,
       role_arn: nil,
       role_external_id: nil,
       secret_store_id: nil,
@@ -1858,11 +1858,11 @@ module SDM
       @healthcheck_namespace = healthcheck_namespace == nil ? "" : healthcheck_namespace
       @healthy = healthy == nil ? false : healthy
       @id = id == nil ? "" : id
+      @identity_alias_healthcheck_username = identity_alias_healthcheck_username == nil ? "" : identity_alias_healthcheck_username
+      @identity_set_id = identity_set_id == nil ? "" : identity_set_id
       @name = name == nil ? "" : name
       @port_override = port_override == nil ? 0 : port_override
       @region = region == nil ? "" : region
-      @remote_identity_group_id = remote_identity_group_id == nil ? "" : remote_identity_group_id
-      @remote_identity_healthcheck_username = remote_identity_healthcheck_username == nil ? "" : remote_identity_healthcheck_username
       @role_arn = role_arn == nil ? "" : role_arn
       @role_external_id = role_external_id == nil ? "" : role_external_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
@@ -1902,10 +1902,6 @@ module SDM
     attr_accessor :port_override
     # The AWS region to connect to e.g. us-east-1.
     attr_accessor :region
-    # The ID of the remote identity group to use for remote identity connections.
-    attr_accessor :remote_identity_group_id
-    # The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-    attr_accessor :remote_identity_healthcheck_username
     # The role to assume after logging in.
     attr_accessor :role_arn
     # The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -1929,8 +1925,6 @@ module SDM
       name: nil,
       port_override: nil,
       region: nil,
-      remote_identity_group_id: nil,
-      remote_identity_healthcheck_username: nil,
       role_arn: nil,
       role_external_id: nil,
       secret_store_id: nil,
@@ -1948,8 +1942,6 @@ module SDM
       @name = name == nil ? "" : name
       @port_override = port_override == nil ? 0 : port_override
       @region = region == nil ? "" : region
-      @remote_identity_group_id = remote_identity_group_id == nil ? "" : remote_identity_group_id
-      @remote_identity_healthcheck_username = remote_identity_healthcheck_username == nil ? "" : remote_identity_healthcheck_username
       @role_arn = role_arn == nil ? "" : role_arn
       @role_external_id = role_external_id == nil ? "" : role_external_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
@@ -4838,14 +4830,14 @@ module SDM
     attr_accessor :healthy
     # Unique identifier of the Resource.
     attr_accessor :id
+    # The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+    attr_accessor :identity_alias_healthcheck_username
+    # The ID of the identity set to use for identity connections.
+    attr_accessor :identity_set_id
     # Unique human-readable name of the Resource.
     attr_accessor :name
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-    # The ID of the remote identity group to use for remote identity connections.
-    attr_accessor :remote_identity_group_id
-    # The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-    attr_accessor :remote_identity_healthcheck_username
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # The service account key to authenticate with.
@@ -4863,10 +4855,10 @@ module SDM
       healthcheck_namespace: nil,
       healthy: nil,
       id: nil,
+      identity_alias_healthcheck_username: nil,
+      identity_set_id: nil,
       name: nil,
       port_override: nil,
-      remote_identity_group_id: nil,
-      remote_identity_healthcheck_username: nil,
       secret_store_id: nil,
       service_account_key: nil,
       subdomain: nil,
@@ -4879,10 +4871,10 @@ module SDM
       @healthcheck_namespace = healthcheck_namespace == nil ? "" : healthcheck_namespace
       @healthy = healthy == nil ? false : healthy
       @id = id == nil ? "" : id
+      @identity_alias_healthcheck_username = identity_alias_healthcheck_username == nil ? "" : identity_alias_healthcheck_username
+      @identity_set_id = identity_set_id == nil ? "" : identity_set_id
       @name = name == nil ? "" : name
       @port_override = port_override == nil ? 0 : port_override
-      @remote_identity_group_id = remote_identity_group_id == nil ? "" : remote_identity_group_id
-      @remote_identity_healthcheck_username = remote_identity_healthcheck_username == nil ? "" : remote_identity_healthcheck_username
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @service_account_key = service_account_key == nil ? "" : service_account_key
       @subdomain = subdomain == nil ? "" : subdomain
@@ -5253,6 +5245,270 @@ module SDM
     end
   end
 
+  # IdentityAliases define the username to be used for a specific account
+  # when connecting to a remote resource using that identity set.
+  class IdentityAlias
+    # The account for this identity alias.
+    attr_accessor :account_id
+    # Unique identifier of the IdentityAlias.
+    attr_accessor :id
+    # The identity set.
+    attr_accessor :identity_set_id
+    # The username to be used as the identity alias for this account.
+    attr_accessor :username
+
+    def initialize(
+      account_id: nil,
+      id: nil,
+      identity_set_id: nil,
+      username: nil
+    )
+      @account_id = account_id == nil ? "" : account_id
+      @id = id == nil ? "" : id
+      @identity_set_id = identity_set_id == nil ? "" : identity_set_id
+      @username = username == nil ? "" : username
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # IdentityAliasCreateResponse reports how the IdentityAliases were created in the system.
+  class IdentityAliasCreateResponse
+    # The created IdentityAlias.
+    attr_accessor :identity_alias
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      identity_alias: nil,
+      meta: nil,
+      rate_limit: nil
+    )
+      @identity_alias = identity_alias == nil ? nil : identity_alias
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # IdentityAliasDeleteResponse returns information about a IdentityAlias that was deleted.
+  class IdentityAliasDeleteResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      meta: nil,
+      rate_limit: nil
+    )
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # IdentityAliasGetResponse returns a requested IdentityAlias.
+  class IdentityAliasGetResponse
+    # The requested IdentityAlias.
+    attr_accessor :identity_alias
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      identity_alias: nil,
+      meta: nil,
+      rate_limit: nil
+    )
+      @identity_alias = identity_alias == nil ? nil : identity_alias
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # IdentityAliasHistory records the state of a IdentityAlias at a given point in time,
+  # where every change (create, update and delete) to a IdentityAlias produces an
+  # IdentityAliasHistory record.
+  class IdentityAliasHistory
+    # The unique identifier of the Activity that produced this change to the IdentityAlias.
+    # May be empty for some system-initiated updates.
+    attr_accessor :activity_id
+    # If this IdentityAlias was deleted, the time it was deleted.
+    attr_accessor :deleted_at
+    # The complete IdentityAlias state at this time.
+    attr_accessor :identity_alias
+    # The time at which the IdentityAlias state was recorded.
+    attr_accessor :timestamp
+
+    def initialize(
+      activity_id: nil,
+      deleted_at: nil,
+      identity_alias: nil,
+      timestamp: nil
+    )
+      @activity_id = activity_id == nil ? "" : activity_id
+      @deleted_at = deleted_at == nil ? nil : deleted_at
+      @identity_alias = identity_alias == nil ? nil : identity_alias
+      @timestamp = timestamp == nil ? nil : timestamp
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # IdentityAliasUpdateResponse returns the fields of a IdentityAlias after it has been updated by
+  # a IdentityAliasUpdateRequest.
+  class IdentityAliasUpdateResponse
+    # The updated IdentityAlias.
+    attr_accessor :identity_alias
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      identity_alias: nil,
+      meta: nil,
+      rate_limit: nil
+    )
+      @identity_alias = identity_alias == nil ? nil : identity_alias
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # A IdentitySet defines a group of identity aliases.
+  class IdentitySet
+    # Unique identifier of the IdentitySet.
+    attr_accessor :id
+    # Unique human-readable name of the IdentitySet.
+    attr_accessor :name
+
+    def initialize(
+      id: nil,
+      name: nil
+    )
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # IdentitySetGetResponse returns a requested IdentitySet.
+  class IdentitySetGetResponse
+    # The requested IdentitySet.
+    attr_accessor :identity_set
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      identity_set: nil,
+      meta: nil,
+      rate_limit: nil
+    )
+      @identity_set = identity_set == nil ? nil : identity_set
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # IdentitySetHistory records the state of a IdentitySet at a given point in time,
+  # where every change (create, update and delete) to a IdentitySet produces an
+  # IdentitySetHistory record.
+  class IdentitySetHistory
+    # The unique identifier of the Activity that produced this change to the IdentitySet.
+    # May be empty for some system-initiated updates.
+    attr_accessor :activity_id
+    # If this IdentitySet was deleted, the time it was deleted.
+    attr_accessor :deleted_at
+    # The complete IdentitySet state at this time.
+    attr_accessor :identity_set
+    # The time at which the IdentitySet state was recorded.
+    attr_accessor :timestamp
+
+    def initialize(
+      activity_id: nil,
+      deleted_at: nil,
+      identity_set: nil,
+      timestamp: nil
+    )
+      @activity_id = activity_id == nil ? "" : activity_id
+      @deleted_at = deleted_at == nil ? nil : deleted_at
+      @identity_set = identity_set == nil ? nil : identity_set
+      @timestamp = timestamp == nil ? nil : timestamp
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class KeyfactorSSHStore
     # Path to the root CA that signed the certificate passed to the client for HTTPS connection.
     # This is not required if the CA is trusted by the host operating system. This should be a PEM
@@ -5410,16 +5666,16 @@ module SDM
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
+    # The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+    attr_accessor :identity_alias_healthcheck_username
+    # The ID of the identity set to use for identity connections.
+    attr_accessor :identity_set_id
     # Unique human-readable name of the Resource.
     attr_accessor :name
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-    # The ID of the remote identity group to use for remote identity connections.
-    attr_accessor :remote_identity_group_id
-    # The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-    attr_accessor :remote_identity_healthcheck_username
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -5437,11 +5693,11 @@ module SDM
       healthy: nil,
       hostname: nil,
       id: nil,
+      identity_alias_healthcheck_username: nil,
+      identity_set_id: nil,
       name: nil,
       port: nil,
       port_override: nil,
-      remote_identity_group_id: nil,
-      remote_identity_healthcheck_username: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil
@@ -5455,11 +5711,11 @@ module SDM
       @healthy = healthy == nil ? false : healthy
       @hostname = hostname == nil ? "" : hostname
       @id = id == nil ? "" : id
+      @identity_alias_healthcheck_username = identity_alias_healthcheck_username == nil ? "" : identity_alias_healthcheck_username
+      @identity_set_id = identity_set_id == nil ? "" : identity_set_id
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
-      @remote_identity_group_id = remote_identity_group_id == nil ? "" : remote_identity_group_id
-      @remote_identity_healthcheck_username = remote_identity_healthcheck_username == nil ? "" : remote_identity_healthcheck_username
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -5558,16 +5814,16 @@ module SDM
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
+    # The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+    attr_accessor :identity_alias_healthcheck_username
+    # The ID of the identity set to use for identity connections.
+    attr_accessor :identity_set_id
     # Unique human-readable name of the Resource.
     attr_accessor :name
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-    # The ID of the remote identity group to use for remote identity connections.
-    attr_accessor :remote_identity_group_id
-    # The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-    attr_accessor :remote_identity_healthcheck_username
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -5584,11 +5840,11 @@ module SDM
       healthy: nil,
       hostname: nil,
       id: nil,
+      identity_alias_healthcheck_username: nil,
+      identity_set_id: nil,
       name: nil,
       port: nil,
       port_override: nil,
-      remote_identity_group_id: nil,
-      remote_identity_healthcheck_username: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -5600,11 +5856,11 @@ module SDM
       @healthy = healthy == nil ? false : healthy
       @hostname = hostname == nil ? "" : hostname
       @id = id == nil ? "" : id
+      @identity_alias_healthcheck_username = identity_alias_healthcheck_username == nil ? "" : identity_alias_healthcheck_username
+      @identity_set_id = identity_set_id == nil ? "" : identity_set_id
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
-      @remote_identity_group_id = remote_identity_group_id == nil ? "" : remote_identity_group_id
-      @remote_identity_healthcheck_username = remote_identity_healthcheck_username == nil ? "" : remote_identity_healthcheck_username
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -8039,16 +8295,16 @@ module SDM
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
+    # The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+    attr_accessor :identity_alias_healthcheck_username
+    # The ID of the identity set to use for identity connections.
+    attr_accessor :identity_set_id
     # Unique human-readable name of the Resource.
     attr_accessor :name
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-    # The ID of the remote identity group to use for remote identity connections.
-    attr_accessor :remote_identity_group_id
-    # The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-    attr_accessor :remote_identity_healthcheck_username
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -8064,11 +8320,11 @@ module SDM
       healthy: nil,
       hostname: nil,
       id: nil,
+      identity_alias_healthcheck_username: nil,
+      identity_set_id: nil,
       name: nil,
       port: nil,
       port_override: nil,
-      remote_identity_group_id: nil,
-      remote_identity_healthcheck_username: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -8079,11 +8335,11 @@ module SDM
       @healthy = healthy == nil ? false : healthy
       @hostname = hostname == nil ? "" : hostname
       @id = id == nil ? "" : id
+      @identity_alias_healthcheck_username = identity_alias_healthcheck_username == nil ? "" : identity_alias_healthcheck_username
+      @identity_set_id = identity_set_id == nil ? "" : identity_set_id
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
-      @remote_identity_group_id = remote_identity_group_id == nil ? "" : remote_identity_group_id
-      @remote_identity_healthcheck_username = remote_identity_healthcheck_username == nil ? "" : remote_identity_healthcheck_username
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -9712,6 +9968,10 @@ module SDM
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
+    # The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+    attr_accessor :identity_alias_healthcheck_username
+    # The ID of the identity set to use for identity connections.
+    attr_accessor :identity_set_id
     # The key type to use e.g. rsa-2048 or ed25519
     attr_accessor :key_type
     # Unique human-readable name of the Resource.
@@ -9722,10 +9982,6 @@ module SDM
     attr_accessor :port_forwarding
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-    # The ID of the remote identity group to use for remote identity connections.
-    attr_accessor :remote_identity_group_id
-    # The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-    attr_accessor :remote_identity_healthcheck_username
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -9742,13 +9998,13 @@ module SDM
       healthy: nil,
       hostname: nil,
       id: nil,
+      identity_alias_healthcheck_username: nil,
+      identity_set_id: nil,
       key_type: nil,
       name: nil,
       port: nil,
       port_forwarding: nil,
       port_override: nil,
-      remote_identity_group_id: nil,
-      remote_identity_healthcheck_username: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -9760,13 +10016,13 @@ module SDM
       @healthy = healthy == nil ? false : healthy
       @hostname = hostname == nil ? "" : hostname
       @id = id == nil ? "" : id
+      @identity_alias_healthcheck_username = identity_alias_healthcheck_username == nil ? "" : identity_alias_healthcheck_username
+      @identity_set_id = identity_set_id == nil ? "" : identity_set_id
       @key_type = key_type == nil ? "" : key_type
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
       @port_forwarding = port_forwarding == nil ? false : port_forwarding
       @port_override = port_override == nil ? 0 : port_override
-      @remote_identity_group_id = remote_identity_group_id == nil ? "" : remote_identity_group_id
-      @remote_identity_healthcheck_username = remote_identity_healthcheck_username == nil ? "" : remote_identity_healthcheck_username
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags

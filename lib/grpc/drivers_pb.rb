@@ -124,10 +124,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :client_key, :string, 7
       optional :healthcheck_namespace, :string, 9
       optional :hostname, :string, 1
+      optional :identity_alias_healthcheck_username, :string, 11
+      optional :identity_set_id, :string, 10
       optional :port, :int32, 2
       optional :port_override, :int32, 12
-      optional :remote_identity_group_id, :string, 10
-      optional :remote_identity_healthcheck_username, :string, 11
     end
     add_message "v1.AKSBasicAuth" do
       optional :id, :string, 32768
@@ -156,10 +156,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :subdomain, :string, 32775
       optional :healthcheck_namespace, :string, 4
       optional :hostname, :string, 1
+      optional :identity_alias_healthcheck_username, :string, 6
+      optional :identity_set_id, :string, 5
       optional :port, :int32, 2
       optional :port_override, :int32, 7
-      optional :remote_identity_group_id, :string, 5
-      optional :remote_identity_healthcheck_username, :string, 6
       optional :token, :string, 3
     end
     add_message "v1.AKSServiceAccountUserImpersonation" do
@@ -219,10 +219,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
       optional :enable_env_variables, :bool, 1
+      optional :identity_alias_healthcheck_username, :string, 9
+      optional :identity_set_id, :string, 8
       optional :port_override, :int32, 7
       optional :region, :string, 2
-      optional :remote_identity_group_id, :string, 8
-      optional :remote_identity_healthcheck_username, :string, 9
       optional :role_arn, :string, 3
       optional :role_external_id, :string, 4
       optional :session_expiry, :int32, 5
@@ -237,10 +237,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
       optional :access_key, :string, 1
+      optional :identity_alias_healthcheck_username, :string, 10
+      optional :identity_set_id, :string, 9
       optional :port_override, :int32, 8
       optional :region, :string, 3
-      optional :remote_identity_group_id, :string, 9
-      optional :remote_identity_healthcheck_username, :string, 10
       optional :role_arn, :string, 4
       optional :role_external_id, :string, 5
       optional :secret_access_key, :string, 2
@@ -261,10 +261,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :cluster_name, :string, 7
       optional :endpoint, :string, 1
       optional :healthcheck_namespace, :string, 9
+      optional :identity_alias_healthcheck_username, :string, 12
+      optional :identity_set_id, :string, 11
       optional :port_override, :int32, 15
       optional :region, :string, 6
-      optional :remote_identity_group_id, :string, 11
-      optional :remote_identity_healthcheck_username, :string, 12
       optional :role_arn, :string, 8
       optional :role_external_id, :string, 10
       optional :secret_access_key, :string, 3
@@ -282,10 +282,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :cluster_name, :string, 5
       optional :endpoint, :string, 1
       optional :healthcheck_namespace, :string, 8
+      optional :identity_alias_healthcheck_username, :string, 10
+      optional :identity_set_id, :string, 9
       optional :port_override, :int32, 15
       optional :region, :string, 4
-      optional :remote_identity_group_id, :string, 9
-      optional :remote_identity_healthcheck_username, :string, 10
       optional :role_arn, :string, 6
       optional :role_external_id, :string, 7
     end
@@ -304,8 +304,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :healthcheck_namespace, :string, 8
       optional :port_override, :int32, 15
       optional :region, :string, 4
-      optional :remote_identity_group_id, :string, 9
-      optional :remote_identity_healthcheck_username, :string, 10
       optional :role_arn, :string, 6
       optional :role_external_id, :string, 7
     end
@@ -750,9 +748,9 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :certificate_authority, :string, 2
       optional :endpoint, :string, 1
       optional :healthcheck_namespace, :string, 6
+      optional :identity_alias_healthcheck_username, :string, 8
+      optional :identity_set_id, :string, 7
       optional :port_override, :int32, 14
-      optional :remote_identity_group_id, :string, 7
-      optional :remote_identity_healthcheck_username, :string, 8
       optional :service_account_key, :string, 4
     end
     add_message "v1.GoogleGKEUserImpersonation" do
@@ -849,10 +847,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :client_key, :string, 7
       optional :healthcheck_namespace, :string, 9
       optional :hostname, :string, 1
+      optional :identity_alias_healthcheck_username, :string, 11
+      optional :identity_set_id, :string, 10
       optional :port, :int32, 2
       optional :port_override, :int32, 12
-      optional :remote_identity_group_id, :string, 10
-      optional :remote_identity_healthcheck_username, :string, 11
     end
     add_message "v1.KubernetesBasicAuth" do
       optional :id, :string, 32768
@@ -881,10 +879,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :subdomain, :string, 32775
       optional :healthcheck_namespace, :string, 4
       optional :hostname, :string, 1
+      optional :identity_alias_healthcheck_username, :string, 6
+      optional :identity_set_id, :string, 5
       optional :port, :int32, 2
       optional :port_override, :int32, 7
-      optional :remote_identity_group_id, :string, 5
-      optional :remote_identity_healthcheck_username, :string, 6
       optional :token, :string, 3
     end
     add_message "v1.KubernetesServiceAccountUserImpersonation" do
@@ -1227,10 +1225,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :bind_interface, :string, 32774
       optional :subdomain, :string, 32775
       optional :hostname, :string, 1
+      optional :identity_alias_healthcheck_username, :string, 6
+      optional :identity_set_id, :string, 5
       optional :port, :int32, 4
       optional :port_override, :int32, 3
-      optional :remote_identity_group_id, :string, 5
-      optional :remote_identity_healthcheck_username, :string, 6
       optional :username, :string, 2
     end
     add_message "v1.RDSPostgresIAM" do
@@ -1403,12 +1401,12 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :subdomain, :string, 32775
       optional :allow_deprecated_key_exchanges, :bool, 5
       optional :hostname, :string, 1
+      optional :identity_alias_healthcheck_username, :string, 8
+      optional :identity_set_id, :string, 7
       optional :key_type, :string, 9
       optional :port, :int32, 3
       optional :port_forwarding, :bool, 4
       optional :port_override, :int32, 6
-      optional :remote_identity_group_id, :string, 7
-      optional :remote_identity_healthcheck_username, :string, 8
       optional :username, :string, 2
     end
     add_message "v1.SSHCustomerKey" do

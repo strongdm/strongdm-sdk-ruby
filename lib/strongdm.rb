@@ -29,7 +29,7 @@ module SDM #:nodoc:
     DEFAULT_BASE_RETRY_DELAY = 0.0030 # 30 ms
     DEFAULT_MAX_RETRY_DELAY = 300 # 300 seconds
     API_VERSION = "2024-03-28"
-    USER_AGENT = "strongdm-sdk-ruby/8.4.0"
+    USER_AGENT = "strongdm-sdk-ruby/9.0.0"
     private_constant :DEFAULT_MAX_RETRIES, :DEFAULT_BASE_RETRY_DELAY, :DEFAULT_MAX_RETRY_DELAY, :API_VERSION, :USER_AGENT
 
     # Creates a new strongDM API client.
@@ -75,6 +75,10 @@ module SDM #:nodoc:
       @approval_workflows = ApprovalWorkflows.new(@channel, self)
       @approval_workflows_history = ApprovalWorkflowsHistory.new(@channel, self)
       @control_panel = ControlPanel.new(@channel, self)
+      @identity_aliases = IdentityAliases.new(@channel, self)
+      @identity_aliases_history = IdentityAliasesHistory.new(@channel, self)
+      @identity_sets = IdentitySets.new(@channel, self)
+      @identity_sets_history = IdentitySetsHistory.new(@channel, self)
       @nodes = Nodes.new(@channel, self)
       @nodes_history = NodesHistory.new(@channel, self)
       @organization_history = OrganizationHistory.new(@channel, self)
@@ -283,6 +287,24 @@ module SDM #:nodoc:
     #
     # See {ControlPanel}.
     attr_reader :control_panel
+    # IdentityAliases assign an alias to an account within an IdentitySet.
+    # The alias is used as the username when connecting to a identity supported resource.
+    #
+    # See {IdentityAliases}.
+    attr_reader :identity_aliases
+    # IdentityAliasesHistory records all changes to the state of a IdentityAlias.
+    #
+    # See {IdentityAliasesHistory}.
+    attr_reader :identity_aliases_history
+    # A IdentitySet is a named grouping of Identity Aliases for Accounts.
+    # An Account's relationship to a IdentitySet is defined via IdentityAlias objects.
+    #
+    # See {IdentitySets}.
+    attr_reader :identity_sets
+    # IdentitySetsHistory records all changes to the state of a IdentitySet.
+    #
+    # See {IdentitySetsHistory}.
+    attr_reader :identity_sets_history
     # Nodes make up the strongDM network, and allow your users to connect securely to your resources. There are two types of nodes:
     # - **Gateways** are the entry points into network. They listen for connection from the strongDM client, and provide access to databases and servers.
     # - **Relays** are used to extend the strongDM network into segmented subnets. They provide access to databases and servers but do not listen for incoming connections.
@@ -445,6 +467,10 @@ module SDM #:nodoc:
       @approval_workflows = ApprovalWorkflows.new(@channel, self)
       @approval_workflows_history = ApprovalWorkflowsHistory.new(@channel, self)
       @control_panel = ControlPanel.new(@channel, self)
+      @identity_aliases = IdentityAliases.new(@channel, self)
+      @identity_aliases_history = IdentityAliasesHistory.new(@channel, self)
+      @identity_sets = IdentitySets.new(@channel, self)
+      @identity_sets_history = IdentitySetsHistory.new(@channel, self)
       @nodes = Nodes.new(@channel, self)
       @nodes_history = NodesHistory.new(@channel, self)
       @organization_history = OrganizationHistory.new(@channel, self)
@@ -490,6 +516,8 @@ module SDM #:nodoc:
       @approval_workflow_approvers = SnapshotApprovalWorkflowApprovers.new(client.approval_workflow_approvers)
       @approval_workflow_steps = SnapshotApprovalWorkflowSteps.new(client.approval_workflow_steps)
       @approval_workflows = SnapshotApprovalWorkflows.new(client.approval_workflows)
+      @identity_aliases = SnapshotIdentityAliases.new(client.identity_aliases)
+      @identity_sets = SnapshotIdentitySets.new(client.identity_sets)
       @nodes = SnapshotNodes.new(client.nodes)
       @remote_identities = SnapshotRemoteIdentities.new(client.remote_identities)
       @remote_identity_groups = SnapshotRemoteIdentityGroups.new(client.remote_identity_groups)
@@ -545,6 +573,16 @@ module SDM #:nodoc:
     #
     # See {SnapshotApprovalWorkflows}.
     attr_reader :approval_workflows
+    # IdentityAliases assign an alias to an account within an IdentitySet.
+    # The alias is used as the username when connecting to a identity supported resource.
+    #
+    # See {SnapshotIdentityAliases}.
+    attr_reader :identity_aliases
+    # A IdentitySet is a named grouping of Identity Aliases for Accounts.
+    # An Account's relationship to a IdentitySet is defined via IdentityAlias objects.
+    #
+    # See {SnapshotIdentitySets}.
+    attr_reader :identity_sets
     # Nodes make up the strongDM network, and allow your users to connect securely to your resources. There are two types of nodes:
     # - **Gateways** are the entry points into network. They listen for connection from the strongDM client, and provide access to databases and servers.
     # - **Relays** are used to extend the strongDM network into segmented subnets. They provide access to databases and servers but do not listen for incoming connections.
