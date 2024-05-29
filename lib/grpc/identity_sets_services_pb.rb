@@ -29,26 +29,14 @@ module V1
       self.unmarshal_class_method = :decode
       self.service_name = "v1.IdentitySets"
 
-      # // Create registers a new IdentitySet.
-      # rpc Create(IdentitySetCreateRequest) returns (IdentitySetCreateResponse) {
-      #     option (v1.method_options).method = "post";
-      #     option (v1.method_options).url = "/v1/identity-sets";
-      # }
-      #
+      # Create registers a new IdentitySet.
+      rpc :Create, ::V1::IdentitySetCreateRequest, ::V1::IdentitySetCreateResponse
       # Get reads one IdentitySet by ID.
       rpc :Get, ::V1::IdentitySetGetRequest, ::V1::IdentitySetGetResponse
-      # // Update replaces all the fields of a IdentitySet by ID.
-      # rpc Update(IdentitySetUpdateRequest) returns (IdentitySetUpdateResponse) {
-      #     option (v1.method_options).method = "put";
-      #     option (v1.method_options).url = "/v1/identity-sets/{id}";
-      # }
-      #
-      # // Delete removes a IdentitySet by ID.
-      # rpc Delete(IdentitySetDeleteRequest) returns (IdentitySetDeleteResponse) {
-      #     option (v1.method_options).method = "delete";
-      #     option (v1.method_options).url = "/v1/identity-sets/{id}";
-      # }
-      #
+      # Update replaces all the fields of a IdentitySet by ID.
+      rpc :Update, ::V1::IdentitySetUpdateRequest, ::V1::IdentitySetUpdateResponse
+      # Delete removes a IdentitySet by ID.
+      rpc :Delete, ::V1::IdentitySetDeleteRequest, ::V1::IdentitySetDeleteResponse
       # List gets a list of IdentitySets matching a given set of criteria.
       rpc :List, ::V1::IdentitySetListRequest, ::V1::IdentitySetListResponse
     end

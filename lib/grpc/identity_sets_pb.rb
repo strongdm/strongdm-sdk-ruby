@@ -22,6 +22,15 @@ require "spec_pb"
 
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("identity_sets.proto", :syntax => :proto3) do
+    add_message "v1.IdentitySetCreateRequest" do
+      optional :meta, :message, 1, "v1.CreateRequestMetadata"
+      optional :identity_set, :message, 2, "v1.IdentitySet"
+    end
+    add_message "v1.IdentitySetCreateResponse" do
+      optional :meta, :message, 1, "v1.CreateResponseMetadata"
+      optional :identity_set, :message, 2, "v1.IdentitySet"
+      optional :rate_limit, :message, 3, "v1.RateLimitMetadata"
+    end
     add_message "v1.IdentitySetGetRequest" do
       optional :meta, :message, 1, "v1.GetRequestMetadata"
       optional :id, :string, 2
@@ -30,6 +39,24 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :meta, :message, 1, "v1.GetResponseMetadata"
       optional :identity_set, :message, 2, "v1.IdentitySet"
       optional :rate_limit, :message, 3, "v1.RateLimitMetadata"
+    end
+    add_message "v1.IdentitySetUpdateRequest" do
+      optional :meta, :message, 1, "v1.UpdateRequestMetadata"
+      optional :id, :string, 2
+      optional :identity_set, :message, 3, "v1.IdentitySet"
+    end
+    add_message "v1.IdentitySetUpdateResponse" do
+      optional :meta, :message, 1, "v1.UpdateResponseMetadata"
+      optional :identity_set, :message, 2, "v1.IdentitySet"
+      optional :rate_limit, :message, 3, "v1.RateLimitMetadata"
+    end
+    add_message "v1.IdentitySetDeleteRequest" do
+      optional :meta, :message, 1, "v1.DeleteRequestMetadata"
+      optional :id, :string, 2
+    end
+    add_message "v1.IdentitySetDeleteResponse" do
+      optional :meta, :message, 1, "v1.DeleteResponseMetadata"
+      optional :rate_limit, :message, 2, "v1.RateLimitMetadata"
     end
     add_message "v1.IdentitySetListRequest" do
       optional :meta, :message, 1, "v1.ListRequestMetadata"
@@ -48,8 +75,14 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
 end
 
 module V1
+  IdentitySetCreateRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.IdentitySetCreateRequest").msgclass
+  IdentitySetCreateResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.IdentitySetCreateResponse").msgclass
   IdentitySetGetRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.IdentitySetGetRequest").msgclass
   IdentitySetGetResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.IdentitySetGetResponse").msgclass
+  IdentitySetUpdateRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.IdentitySetUpdateRequest").msgclass
+  IdentitySetUpdateResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.IdentitySetUpdateResponse").msgclass
+  IdentitySetDeleteRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.IdentitySetDeleteRequest").msgclass
+  IdentitySetDeleteResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.IdentitySetDeleteResponse").msgclass
   IdentitySetListRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.IdentitySetListRequest").msgclass
   IdentitySetListResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.IdentitySetListResponse").msgclass
   IdentitySet = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.IdentitySet").msgclass

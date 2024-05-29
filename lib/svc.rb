@@ -2391,6 +2391,36 @@ module SDM #:nodoc:
       @parent = parent
     end
 
+    # Create registers a new IdentitySet.
+    def create(
+      identity_set,
+      deadline: nil
+    )
+      req = V1::IdentitySetCreateRequest.new()
+
+      req.identity_set = Plumbing::convert_identity_set_to_plumbing(identity_set)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.create(req, metadata: @parent.get_metadata("IdentitySets.Create", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = IdentitySetCreateResponse.new()
+      resp.identity_set = Plumbing::convert_identity_set_to_porcelain(plumbing_response.identity_set)
+      resp.meta = Plumbing::convert_create_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
     # Get reads one IdentitySet by ID.
     def get(
       id,
@@ -2421,6 +2451,65 @@ module SDM #:nodoc:
       resp = IdentitySetGetResponse.new()
       resp.identity_set = Plumbing::convert_identity_set_to_porcelain(plumbing_response.identity_set)
       resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Update replaces all the fields of a IdentitySet by ID.
+    def update(
+      identity_set,
+      deadline: nil
+    )
+      req = V1::IdentitySetUpdateRequest.new()
+
+      req.identity_set = Plumbing::convert_identity_set_to_plumbing(identity_set)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.update(req, metadata: @parent.get_metadata("IdentitySets.Update", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = IdentitySetUpdateResponse.new()
+      resp.identity_set = Plumbing::convert_identity_set_to_porcelain(plumbing_response.identity_set)
+      resp.meta = Plumbing::convert_update_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Delete removes a IdentitySet by ID.
+    def delete(
+      id,
+      deadline: nil
+    )
+      req = V1::IdentitySetDeleteRequest.new()
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("IdentitySets.Delete", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = IdentitySetDeleteResponse.new()
+      resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
       resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
       resp
     end

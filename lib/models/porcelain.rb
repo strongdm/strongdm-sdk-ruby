@@ -5446,6 +5446,59 @@ module SDM
     end
   end
 
+  # IdentitySetCreateResponse reports how the IdentitySets were created in the system. It can
+  # communicate partial successes or failures.
+  class IdentitySetCreateResponse
+    # The created IdentitySet.
+    attr_accessor :identity_set
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      identity_set: nil,
+      meta: nil,
+      rate_limit: nil
+    )
+      @identity_set = identity_set == nil ? nil : identity_set
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # IdentitySetDeleteResponse returns information about a IdentitySet that was deleted.
+  class IdentitySetDeleteResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      meta: nil,
+      rate_limit: nil
+    )
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   # IdentitySetGetResponse returns a requested IdentitySet.
   class IdentitySetGetResponse
     # The requested IdentitySet.
@@ -5498,6 +5551,35 @@ module SDM
       @deleted_at = deleted_at == nil ? nil : deleted_at
       @identity_set = identity_set == nil ? nil : identity_set
       @timestamp = timestamp == nil ? nil : timestamp
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # IdentitySetUpdateResponse returns the fields of a IdentitySet after it has been updated by
+  # a IdentitySetUpdateRequest.
+  class IdentitySetUpdateResponse
+    # The updated IdentitySet.
+    attr_accessor :identity_set
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      identity_set: nil,
+      meta: nil,
+      rate_limit: nil
+    )
+      @identity_set = identity_set == nil ? nil : identity_set
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
     end
 
     def to_json(options = {})
