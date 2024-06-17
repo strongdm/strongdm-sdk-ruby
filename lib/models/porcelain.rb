@@ -8127,6 +8127,8 @@ module SDM
     attr_accessor :encrypted
     # Unique identifier of the Query.
     attr_accessor :id
+    # The username of the IdentityAlias used to access the Resource.
+    attr_accessor :identity_alias_username
     # The captured content of the Query.
     # For queries against SSH, Kubernetes, and RDP resources, this contains a JSON representation of the QueryCapture.
     attr_accessor :query_body
@@ -8173,6 +8175,7 @@ module SDM
       egress_node_id: nil,
       encrypted: nil,
       id: nil,
+      identity_alias_username: nil,
       query_body: nil,
       query_category: nil,
       query_hash: nil,
@@ -8199,6 +8202,7 @@ module SDM
       @egress_node_id = egress_node_id == nil ? "" : egress_node_id
       @encrypted = encrypted == nil ? false : encrypted
       @id = id == nil ? "" : id
+      @identity_alias_username = identity_alias_username == nil ? "" : identity_alias_username
       @query_body = query_body == nil ? "" : query_body
       @query_category = query_category == nil ? "" : query_category
       @query_hash = query_hash == nil ? "" : query_hash
