@@ -122,6 +122,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :certificate_authority, :string, 3
       optional :client_certificate, :string, 5
       optional :client_key, :string, 7
+      optional :discovery_enabled, :bool, 17
+      optional :discovery_username, :string, 18
       optional :healthcheck_namespace, :string, 9
       optional :hostname, :string, 1
       optional :identity_alias_healthcheck_username, :string, 11
@@ -154,6 +156,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
       optional :subdomain, :string, 32775
+      optional :discovery_enabled, :bool, 11
+      optional :discovery_username, :string, 12
       optional :healthcheck_namespace, :string, 4
       optional :hostname, :string, 1
       optional :identity_alias_healthcheck_username, :string, 6
@@ -259,6 +263,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :access_key, :string, 2
       optional :certificate_authority, :string, 4
       optional :cluster_name, :string, 7
+      optional :discovery_enabled, :bool, 16
+      optional :discovery_username, :string, 17
       optional :endpoint, :string, 1
       optional :healthcheck_namespace, :string, 9
       optional :identity_alias_healthcheck_username, :string, 12
@@ -280,6 +286,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :subdomain, :string, 32775
       optional :certificate_authority, :string, 2
       optional :cluster_name, :string, 5
+      optional :discovery_enabled, :bool, 16
+      optional :discovery_username, :string, 17
       optional :endpoint, :string, 1
       optional :healthcheck_namespace, :string, 8
       optional :identity_alias_healthcheck_username, :string, 10
@@ -746,6 +754,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :bind_interface, :string, 32774
       optional :subdomain, :string, 32775
       optional :certificate_authority, :string, 2
+      optional :discovery_enabled, :bool, 15
+      optional :discovery_username, :string, 16
       optional :endpoint, :string, 1
       optional :healthcheck_namespace, :string, 6
       optional :identity_alias_healthcheck_username, :string, 8
@@ -845,6 +855,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :certificate_authority, :string, 3
       optional :client_certificate, :string, 5
       optional :client_key, :string, 7
+      optional :discovery_enabled, :bool, 17
+      optional :discovery_username, :string, 18
       optional :healthcheck_namespace, :string, 9
       optional :hostname, :string, 1
       optional :identity_alias_healthcheck_username, :string, 11
@@ -877,6 +889,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
       optional :subdomain, :string, 32775
+      optional :discovery_enabled, :bool, 11
+      optional :discovery_username, :string, 12
       optional :healthcheck_namespace, :string, 4
       optional :hostname, :string, 1
       optional :identity_alias_healthcheck_username, :string, 6

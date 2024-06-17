@@ -25,6 +25,11 @@ module SDM
     attr_accessor :client_certificate
     # The key to authenticate TLS connections with.
     attr_accessor :client_key
+    # If true, configures discovery of a cluster to be run from a node.
+    attr_accessor :discovery_enabled
+    # If a cluster is configured for user impersonation, this is the user to impersonate when
+    # running discovery.
+    attr_accessor :discovery_username
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # The path used to check the health of your connection.  Defaults to `default`.
@@ -57,6 +62,8 @@ module SDM
       certificate_authority: nil,
       client_certificate: nil,
       client_key: nil,
+      discovery_enabled: nil,
+      discovery_username: nil,
       egress_filter: nil,
       healthcheck_namespace: nil,
       healthy: nil,
@@ -75,6 +82,8 @@ module SDM
       @certificate_authority = certificate_authority == nil ? "" : certificate_authority
       @client_certificate = client_certificate == nil ? "" : client_certificate
       @client_key = client_key == nil ? "" : client_key
+      @discovery_enabled = discovery_enabled == nil ? false : discovery_enabled
+      @discovery_username = discovery_username == nil ? "" : discovery_username
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthcheck_namespace = healthcheck_namespace == nil ? "" : healthcheck_namespace
       @healthy = healthy == nil ? false : healthy
@@ -173,6 +182,11 @@ module SDM
   class AKSServiceAccount
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
+    # If true, configures discovery of a cluster to be run from a node.
+    attr_accessor :discovery_enabled
+    # If a cluster is configured for user impersonation, this is the user to impersonate when
+    # running discovery.
+    attr_accessor :discovery_username
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # The path used to check the health of your connection.  Defaults to `default`.
@@ -204,6 +218,8 @@ module SDM
 
     def initialize(
       bind_interface: nil,
+      discovery_enabled: nil,
+      discovery_username: nil,
       egress_filter: nil,
       healthcheck_namespace: nil,
       healthy: nil,
@@ -220,6 +236,8 @@ module SDM
       token: nil
     )
       @bind_interface = bind_interface == nil ? "" : bind_interface
+      @discovery_enabled = discovery_enabled == nil ? false : discovery_enabled
+      @discovery_username = discovery_username == nil ? "" : discovery_username
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthcheck_namespace = healthcheck_namespace == nil ? "" : healthcheck_namespace
       @healthy = healthy == nil ? false : healthy
@@ -1706,6 +1724,11 @@ module SDM
     attr_accessor :certificate_authority
     # The name of the cluster to connect to.
     attr_accessor :cluster_name
+    # If true, configures discovery of a cluster to be run from a node.
+    attr_accessor :discovery_enabled
+    # If a cluster is configured for user impersonation, this is the user to impersonate when
+    # running discovery.
+    attr_accessor :discovery_username
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # The endpoint to dial.
@@ -1744,6 +1767,8 @@ module SDM
       bind_interface: nil,
       certificate_authority: nil,
       cluster_name: nil,
+      discovery_enabled: nil,
+      discovery_username: nil,
       egress_filter: nil,
       endpoint: nil,
       healthcheck_namespace: nil,
@@ -1765,6 +1790,8 @@ module SDM
       @bind_interface = bind_interface == nil ? "" : bind_interface
       @certificate_authority = certificate_authority == nil ? "" : certificate_authority
       @cluster_name = cluster_name == nil ? "" : cluster_name
+      @discovery_enabled = discovery_enabled == nil ? false : discovery_enabled
+      @discovery_username = discovery_username == nil ? "" : discovery_username
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @endpoint = endpoint == nil ? "" : endpoint
       @healthcheck_namespace = healthcheck_namespace == nil ? "" : healthcheck_namespace
@@ -1799,6 +1826,11 @@ module SDM
     attr_accessor :certificate_authority
     # The name of the cluster to connect to.
     attr_accessor :cluster_name
+    # If true, configures discovery of a cluster to be run from a node.
+    attr_accessor :discovery_enabled
+    # If a cluster is configured for user impersonation, this is the user to impersonate when
+    # running discovery.
+    attr_accessor :discovery_username
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # The endpoint to dial.
@@ -1834,6 +1866,8 @@ module SDM
       bind_interface: nil,
       certificate_authority: nil,
       cluster_name: nil,
+      discovery_enabled: nil,
+      discovery_username: nil,
       egress_filter: nil,
       endpoint: nil,
       healthcheck_namespace: nil,
@@ -1853,6 +1887,8 @@ module SDM
       @bind_interface = bind_interface == nil ? "" : bind_interface
       @certificate_authority = certificate_authority == nil ? "" : certificate_authority
       @cluster_name = cluster_name == nil ? "" : cluster_name
+      @discovery_enabled = discovery_enabled == nil ? false : discovery_enabled
+      @discovery_username = discovery_username == nil ? "" : discovery_username
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @endpoint = endpoint == nil ? "" : endpoint
       @healthcheck_namespace = healthcheck_namespace == nil ? "" : healthcheck_namespace
@@ -4820,6 +4856,11 @@ module SDM
     attr_accessor :bind_interface
     # The CA to authenticate TLS connections with.
     attr_accessor :certificate_authority
+    # If true, configures discovery of a cluster to be run from a node.
+    attr_accessor :discovery_enabled
+    # If a cluster is configured for user impersonation, this is the user to impersonate when
+    # running discovery.
+    attr_accessor :discovery_username
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # The endpoint to dial.
@@ -4850,6 +4891,8 @@ module SDM
     def initialize(
       bind_interface: nil,
       certificate_authority: nil,
+      discovery_enabled: nil,
+      discovery_username: nil,
       egress_filter: nil,
       endpoint: nil,
       healthcheck_namespace: nil,
@@ -4866,6 +4909,8 @@ module SDM
     )
       @bind_interface = bind_interface == nil ? "" : bind_interface
       @certificate_authority = certificate_authority == nil ? "" : certificate_authority
+      @discovery_enabled = discovery_enabled == nil ? false : discovery_enabled
+      @discovery_username = discovery_username == nil ? "" : discovery_username
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @endpoint = endpoint == nil ? "" : endpoint
       @healthcheck_namespace = healthcheck_namespace == nil ? "" : healthcheck_namespace
@@ -5738,6 +5783,11 @@ module SDM
     attr_accessor :client_certificate
     # The key to authenticate TLS connections with.
     attr_accessor :client_key
+    # If true, configures discovery of a cluster to be run from a node.
+    attr_accessor :discovery_enabled
+    # If a cluster is configured for user impersonation, this is the user to impersonate when
+    # running discovery.
+    attr_accessor :discovery_username
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # The path used to check the health of your connection.  Defaults to `default`.
@@ -5770,6 +5820,8 @@ module SDM
       certificate_authority: nil,
       client_certificate: nil,
       client_key: nil,
+      discovery_enabled: nil,
+      discovery_username: nil,
       egress_filter: nil,
       healthcheck_namespace: nil,
       healthy: nil,
@@ -5788,6 +5840,8 @@ module SDM
       @certificate_authority = certificate_authority == nil ? "" : certificate_authority
       @client_certificate = client_certificate == nil ? "" : client_certificate
       @client_key = client_key == nil ? "" : client_key
+      @discovery_enabled = discovery_enabled == nil ? false : discovery_enabled
+      @discovery_username = discovery_username == nil ? "" : discovery_username
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthcheck_namespace = healthcheck_namespace == nil ? "" : healthcheck_namespace
       @healthy = healthy == nil ? false : healthy
@@ -5886,6 +5940,11 @@ module SDM
   class KubernetesServiceAccount
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
+    # If true, configures discovery of a cluster to be run from a node.
+    attr_accessor :discovery_enabled
+    # If a cluster is configured for user impersonation, this is the user to impersonate when
+    # running discovery.
+    attr_accessor :discovery_username
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # The path used to check the health of your connection.  Defaults to `default`.
@@ -5917,6 +5976,8 @@ module SDM
 
     def initialize(
       bind_interface: nil,
+      discovery_enabled: nil,
+      discovery_username: nil,
       egress_filter: nil,
       healthcheck_namespace: nil,
       healthy: nil,
@@ -5933,6 +5994,8 @@ module SDM
       token: nil
     )
       @bind_interface = bind_interface == nil ? "" : bind_interface
+      @discovery_enabled = discovery_enabled == nil ? false : discovery_enabled
+      @discovery_username = discovery_username == nil ? "" : discovery_username
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthcheck_namespace = healthcheck_namespace == nil ? "" : healthcheck_namespace
       @healthy = healthy == nil ? false : healthy
