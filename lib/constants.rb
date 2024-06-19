@@ -447,8 +447,8 @@ module SDM
     SSH_PORT_FORWARD = "ssh-portForward"
   end
 
-  # Providers responsible for device posture enforcement
-  module DevicePostureProvider
+  # Providers responsible for device trust enforcement
+  module DeviceTrustProvider
     NONE = ""
     SENTINEL_ONE = "sentinelone"
     CROWD_STRIKE = "crowdstrike"

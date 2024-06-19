@@ -1383,8 +1383,7 @@ module SDM
     # The most recent time at which the permission was granted. If a permission was
     # granted, revoked, and granted again, this will reflect the later time.
     attr_accessor :granted_at
-    # The value of this permission, split into vertical and action e.g.
-    # 'secretstore:List', 'role:update'
+    # The value of this permission, split into vertical and action, one of the Permission constants.
     attr_accessor :permission
     # The scope of this permission. A global scope means this action can be taken
     # on any entity; otherwise the action can only be taken on or in the scope of
@@ -1585,7 +1584,7 @@ module SDM
     # The User Agent present when this request was executed. Generally a client type and version
     # like strongdm-cli/55.66.77
     attr_accessor :user_agent
-    # The kind of activity which has taken place.
+    # The kind of activity which has taken place, one of the ActivityVerb constants.
     attr_accessor :verb
 
     def initialize(
@@ -1661,7 +1660,7 @@ module SDM
     attr_accessor :id
     # A display name representing the affected entity.
     attr_accessor :name
-    # The type of entity affected, one of the Activity Entities constants.
+    # The type of entity affected, one of the ActivityEntityType constants.
     attr_accessor :type
 
     def initialize(
@@ -7435,23 +7434,27 @@ module SDM
   end
 
   class Organization
-    # The Organization's authentication provider.
+    # The Organization's authentication provider, one of the AuthProvider constants.
     attr_accessor :auth_provider
     # The time at which the Organization was created.
     attr_accessor :created_at
+    # Indicates if the Organization has device trust enabled.
+    attr_accessor :device_trust_enabled
+    # The Organization's device trust provider, one of the DeviceTrustProvider constants.
+    attr_accessor :device_trust_provider
     # The Organization's idle timeout, if enabled.
     attr_accessor :idle_timeout
     # Indicates if the Organization has idle timeouts enabled.
     attr_accessor :idle_timeout_enabled
-    # The Organization's type.
+    # The Organization's type, one of the OrgKind constants.
     attr_accessor :kind
-    # The Organization's local log encryption encoder.
+    # The Organization's local log encryption encoder, one of the LogLocalEncoder constants.
     attr_accessor :log_local_encoder
-    # The Organization's local log format.
+    # The Organization's local log format, one of the LogLocalFormat constants.
     attr_accessor :log_local_format
-    # The Organization's local log storage.
+    # The Organization's local log storage, one of the LogLocalStorage constants.
     attr_accessor :log_local_storage
-    # The Organization's remote log encryption encoder.
+    # The Organization's remote log encryption encoder, one of the LogRemoteEncoder constants.
     attr_accessor :log_remote_encoder
     # The Organization's socket path for Socket local log storage.
     attr_accessor :log_socket_path
@@ -7459,7 +7462,7 @@ module SDM
     attr_accessor :log_tcp_address
     # Indicates if the Organization has multi-factor authentication enabled.
     attr_accessor :mfa_enabled
-    # The Organization's multi-factor authentication provider, if enabled.
+    # The Organization's multi-factor authentication provider, one of the MFAProvider constants.
     attr_accessor :mfa_provider
     # The Organization's name.
     attr_accessor :name
@@ -7467,7 +7470,7 @@ module SDM
     attr_accessor :require_secret_store
     # The Organization's URL for SAML metadata.
     attr_accessor :saml_metadata_url
-    # The Organization's SCIM provider.
+    # The Organization's SCIM provider, one of the SCIMProvider constants.
     attr_accessor :scim_provider
     # The Organization's label for sensitive resources.
     attr_accessor :sensitive_label
@@ -7487,6 +7490,8 @@ module SDM
     def initialize(
       auth_provider: nil,
       created_at: nil,
+      device_trust_enabled: nil,
+      device_trust_provider: nil,
       idle_timeout: nil,
       idle_timeout_enabled: nil,
       kind: nil,
@@ -7512,6 +7517,8 @@ module SDM
     )
       @auth_provider = auth_provider == nil ? "" : auth_provider
       @created_at = created_at == nil ? nil : created_at
+      @device_trust_enabled = device_trust_enabled == nil ? false : device_trust_enabled
+      @device_trust_provider = device_trust_provider == nil ? "" : device_trust_provider
       @idle_timeout = idle_timeout == nil ? nil : idle_timeout
       @idle_timeout_enabled = idle_timeout_enabled == nil ? false : idle_timeout_enabled
       @kind = kind == nil ? "" : kind
@@ -8314,7 +8321,7 @@ module SDM
     attr_accessor :request_method
     # The HTTP request URI of a Kubernetes operation.
     attr_accessor :request_uri
-    # The CaptureType of this query capture.
+    # The CaptureType of this query capture, one of the CaptureType constants.
     attr_accessor :type
     # The width of the terminal or window for SSH, Kubernetes, and RDP interactive sessions.
     attr_accessor :width
@@ -8922,9 +8929,7 @@ module SDM
     attr_accessor :maintenance_windows
     # Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
     attr_accessor :name
-    # The current state of the relay. One of: "new", "verifying_restart",
-    # "awaiting_restart", "restarting", "started", "stopped", "dead",
-    # "unknown".
+    # The current state of the relay, one of the NodeState constants.
     attr_accessor :state
     # Tags is a map of key, value pairs.
     attr_accessor :tags
