@@ -6888,7 +6888,6 @@ module SDM
     end
   end
 
-  # MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class MongoShardedCluster
     # The authentication database to use.
     attr_accessor :auth_database
@@ -10252,6 +10251,82 @@ module SDM
       @port_forwarding = port_forwarding == nil ? false : port_forwarding
       @port_override = port_override == nil ? 0 : port_override
       @private_key = private_key == nil ? "" : private_key
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @subdomain = subdomain == nil ? "" : subdomain
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class SSHPassword
+    # Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
+    attr_accessor :allow_deprecated_key_exchanges
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    attr_accessor :bind_interface
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # The host to dial to initiate a connection from the egress node to this resource.
+    attr_accessor :hostname
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # The password to authenticate with.
+    attr_accessor :password
+    # The port to dial to initiate a connection from the egress node to this resource.
+    attr_accessor :port
+    # Whether port forwarding is allowed through this server.
+    attr_accessor :port_forwarding
+    # The local port used by clients to connect to this resource.
+    attr_accessor :port_override
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    attr_accessor :subdomain
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+    # The username to authenticate with.
+    attr_accessor :username
+
+    def initialize(
+      allow_deprecated_key_exchanges: nil,
+      bind_interface: nil,
+      egress_filter: nil,
+      healthy: nil,
+      hostname: nil,
+      id: nil,
+      name: nil,
+      password: nil,
+      port: nil,
+      port_forwarding: nil,
+      port_override: nil,
+      secret_store_id: nil,
+      subdomain: nil,
+      tags: nil,
+      username: nil
+    )
+      @allow_deprecated_key_exchanges = allow_deprecated_key_exchanges == nil ? false : allow_deprecated_key_exchanges
+      @bind_interface = bind_interface == nil ? "" : bind_interface
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_forwarding = port_forwarding == nil ? false : port_forwarding
+      @port_override = port_override == nil ? 0 : port_override
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags

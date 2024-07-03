@@ -64,7 +64,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :saml_metadata_url, :string, 23
       optional :kind, :string, 24
       optional :id, :string, 25
-      optional :loopback_subnet, :string, 26
+      optional :loopback_range, :string, 26
       optional :device_trust_enabled, :bool, 27
       optional :device_trust_provider, :string, 28
     end

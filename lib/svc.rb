@@ -4205,6 +4205,7 @@ module SDM #:nodoc:
   # {SSH}
   # {SSHCert}
   # {SSHCustomerKey}
+  # {SSHPassword}
   # {Sybase}
   # {SybaseIQ}
   # {Teradata}

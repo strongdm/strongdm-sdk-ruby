@@ -101,6 +101,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :ssh, :message, 1900, "v1.SSH"
         optional :ssh_cert, :message, 1901, "v1.SSHCert"
         optional :ssh_customer_key, :message, 1902, "v1.SSHCustomerKey"
+        optional :ssh_password, :message, 1904, "v1.SSHPassword"
         optional :single_store, :message, 1105, "v1.SingleStore"
         optional :snowflake, :message, 1700, "v1.Snowflake"
         optional :snowsight, :message, 1701, "v1.Snowsight"
@@ -1440,6 +1441,23 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :private_key, :string, 4
       optional :username, :string, 2
     end
+    add_message "v1.SSHPassword" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :subdomain, :string, 32775
+      optional :allow_deprecated_key_exchanges, :bool, 6
+      optional :hostname, :string, 1
+      optional :password, :string, 4
+      optional :port, :int32, 3
+      optional :port_forwarding, :bool, 5
+      optional :port_override, :int32, 7
+      optional :username, :string, 2
+    end
     add_message "v1.SingleStore" do
       optional :id, :string, 32768
       optional :name, :string, 32769
@@ -1630,6 +1648,7 @@ module V1
   SSH = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SSH").msgclass
   SSHCert = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SSHCert").msgclass
   SSHCustomerKey = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SSHCustomerKey").msgclass
+  SSHPassword = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SSHPassword").msgclass
   SingleStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SingleStore").msgclass
   Snowflake = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Snowflake").msgclass
   Snowsight = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Snowsight").msgclass
