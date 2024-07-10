@@ -7459,6 +7459,8 @@ module SDM
     attr_accessor :log_socket_path
     # The Organization's TCP address for TCP or Syslog local log storage.
     attr_accessor :log_tcp_address
+    # The Organization's loopback range.
+    attr_accessor :loopback_range
     # Indicates if the Organization has multi-factor authentication enabled.
     attr_accessor :mfa_enabled
     # The Organization's multi-factor authentication provider, one of the MFAProvider constants.
@@ -7500,6 +7502,7 @@ module SDM
       log_remote_encoder: nil,
       log_socket_path: nil,
       log_tcp_address: nil,
+      loopback_range: nil,
       mfa_enabled: nil,
       mfa_provider: nil,
       name: nil,
@@ -7527,6 +7530,7 @@ module SDM
       @log_remote_encoder = log_remote_encoder == nil ? "" : log_remote_encoder
       @log_socket_path = log_socket_path == nil ? "" : log_socket_path
       @log_tcp_address = log_tcp_address == nil ? "" : log_tcp_address
+      @loopback_range = loopback_range == nil ? "" : loopback_range
       @mfa_enabled = mfa_enabled == nil ? false : mfa_enabled
       @mfa_provider = mfa_provider == nil ? "" : mfa_provider
       @name = name == nil ? "" : name
