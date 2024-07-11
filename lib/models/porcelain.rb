@@ -6663,8 +6663,6 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
-    # The name of the mongo replicaset.
-    attr_accessor :replica_set
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -6687,7 +6685,6 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
-      replica_set: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -6704,7 +6701,6 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
-      @replica_set = replica_set == nil ? "" : replica_set
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags

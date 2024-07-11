@@ -1055,7 +1055,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :password, :string, 5
       optional :port, :int32, 6
       optional :port_override, :int32, 3
-      optional :replica_set, :string, 7
       optional :tls_required, :bool, 8
       optional :username, :string, 4
     end
