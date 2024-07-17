@@ -6566,7 +6566,6 @@ module SDM
     end
   end
 
-  # MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class MongoHost
     # The authentication database to use.
     attr_accessor :auth_database
@@ -6642,6 +6641,7 @@ module SDM
     end
   end
 
+  # MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class MongoLegacyHost
     # The authentication database to use.
     attr_accessor :auth_database
@@ -6717,6 +6717,7 @@ module SDM
     end
   end
 
+  # MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class MongoLegacyReplicaset
     # The authentication database to use.
     attr_accessor :auth_database
@@ -6800,7 +6801,6 @@ module SDM
     end
   end
 
-  # MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class MongoReplicaSet
     # The authentication database to use.
     attr_accessor :auth_database
