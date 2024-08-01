@@ -29,7 +29,7 @@ module SDM #:nodoc:
     DEFAULT_BASE_RETRY_DELAY = 0.0030 # 30 ms
     DEFAULT_MAX_RETRY_DELAY = 300 # 300 seconds
     API_VERSION = "2024-03-28"
-    USER_AGENT = "strongdm-sdk-ruby/11.1.0"
+    USER_AGENT = "strongdm-sdk-ruby/11.3.0"
     private_constant :DEFAULT_MAX_RETRIES, :DEFAULT_BASE_RETRY_DELAY, :DEFAULT_MAX_RETRY_DELAY, :API_VERSION, :USER_AGENT
 
     # Creates a new strongDM API client.
@@ -86,6 +86,8 @@ module SDM #:nodoc:
       @peering_group_peers = PeeringGroupPeers.new(@channel, self)
       @peering_group_resources = PeeringGroupResources.new(@channel, self)
       @peering_groups = PeeringGroups.new(@channel, self)
+      @policies = Policies.new(@channel, self)
+      @policies_history = PoliciesHistory.new(@channel, self)
       @queries = Queries.new(@channel, self)
       @remote_identities = RemoteIdentities.new(@channel, self)
       @remote_identities_history = RemoteIdentitiesHistory.new(@channel, self)
@@ -335,6 +337,15 @@ module SDM #:nodoc:
     #
     # See {PeeringGroups}.
     attr_reader :peering_groups
+    # Policies are the collection of one or more statements that enforce fine-grained access
+    # control for the users of an organization.
+    #
+    # See {Policies}.
+    attr_reader :policies
+    # PoliciesHistory records all changes to the state of a Policy.
+    #
+    # See {PoliciesHistory}.
+    attr_reader :policies_history
     # A Query is a record of a single client request to a resource, such as a SQL query.
     # Long-running SSH, RDP, or Kubernetes interactive sessions also count as queries.
     # The Queries service is read-only.
@@ -478,6 +489,8 @@ module SDM #:nodoc:
       @peering_group_peers = PeeringGroupPeers.new(@channel, self)
       @peering_group_resources = PeeringGroupResources.new(@channel, self)
       @peering_groups = PeeringGroups.new(@channel, self)
+      @policies = Policies.new(@channel, self)
+      @policies_history = PoliciesHistory.new(@channel, self)
       @queries = Queries.new(@channel, self)
       @remote_identities = RemoteIdentities.new(@channel, self)
       @remote_identities_history = RemoteIdentitiesHistory.new(@channel, self)
@@ -519,6 +532,7 @@ module SDM #:nodoc:
       @identity_aliases = SnapshotIdentityAliases.new(client.identity_aliases)
       @identity_sets = SnapshotIdentitySets.new(client.identity_sets)
       @nodes = SnapshotNodes.new(client.nodes)
+      @policies = SnapshotPolicies.new(client.policies)
       @remote_identities = SnapshotRemoteIdentities.new(client.remote_identities)
       @remote_identity_groups = SnapshotRemoteIdentityGroups.new(client.remote_identity_groups)
       @resources = SnapshotResources.new(client.resources)
@@ -589,6 +603,11 @@ module SDM #:nodoc:
     #
     # See {SnapshotNodes}.
     attr_reader :nodes
+    # Policies are the collection of one or more statements that enforce fine-grained access
+    # control for the users of an organization.
+    #
+    # See {SnapshotPolicies}.
+    attr_reader :policies
     # RemoteIdentities assign a resource directly to an account, giving the account the permission to connect to that resource.
     #
     # See {SnapshotRemoteIdentities}.

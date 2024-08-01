@@ -120,6 +120,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
       optional :subdomain, :string, 32775
+      optional :allow_resource_role_bypass, :bool, 19
       optional :certificate_authority, :string, 3
       optional :client_certificate, :string, 5
       optional :client_key, :string, 7
@@ -157,6 +158,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
       optional :subdomain, :string, 32775
+      optional :allow_resource_role_bypass, :bool, 13
       optional :discovery_enabled, :bool, 11
       optional :discovery_username, :string, 12
       optional :healthcheck_namespace, :string, 4
@@ -262,6 +264,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :bind_interface, :string, 32774
       optional :subdomain, :string, 32775
       optional :access_key, :string, 2
+      optional :allow_resource_role_bypass, :bool, 18
       optional :certificate_authority, :string, 4
       optional :cluster_name, :string, 7
       optional :discovery_enabled, :bool, 16
@@ -285,6 +288,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
       optional :subdomain, :string, 32775
+      optional :allow_resource_role_bypass, :bool, 18
       optional :certificate_authority, :string, 2
       optional :cluster_name, :string, 5
       optional :discovery_enabled, :bool, 16
@@ -754,6 +758,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
       optional :subdomain, :string, 32775
+      optional :allow_resource_role_bypass, :bool, 17
       optional :certificate_authority, :string, 2
       optional :discovery_enabled, :bool, 15
       optional :discovery_username, :string, 16
@@ -853,6 +858,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
       optional :subdomain, :string, 32775
+      optional :allow_resource_role_bypass, :bool, 19
       optional :certificate_authority, :string, 3
       optional :client_certificate, :string, 5
       optional :client_key, :string, 7
@@ -890,6 +896,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
       optional :subdomain, :string, 32775
+      optional :allow_resource_role_bypass, :bool, 13
       optional :discovery_enabled, :bool, 11
       optional :discovery_username, :string, 12
       optional :healthcheck_namespace, :string, 4

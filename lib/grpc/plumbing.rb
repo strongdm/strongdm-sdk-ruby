@@ -53,6 +53,8 @@ require_relative "./peering_group_nodes_pb"
 require_relative "./peering_group_peers_pb"
 require_relative "./peering_group_resources_pb"
 require_relative "./peering_groups_pb"
+require_relative "./policies_pb"
+require_relative "./policies_history_pb"
 require_relative "./queries_pb"
 require_relative "./remote_identities_pb"
 require_relative "./remote_identities_history_pb"
@@ -174,6 +176,7 @@ module SDM
         return nil
       end
       porcelain = AKS.new()
+      porcelain.allow_resource_role_bypass = (plumbing.allow_resource_role_bypass)
       porcelain.bind_interface = (plumbing.bind_interface)
       porcelain.certificate_authority = (plumbing.certificate_authority)
       porcelain.client_certificate = (plumbing.client_certificate)
@@ -201,6 +204,7 @@ module SDM
         return nil
       end
       plumbing = V1::AKS.new()
+      plumbing.allow_resource_role_bypass = (porcelain.allow_resource_role_bypass)
       plumbing.bind_interface = (porcelain.bind_interface)
       plumbing.certificate_authority = (porcelain.certificate_authority)
       plumbing.client_certificate = (porcelain.client_certificate)
@@ -304,6 +308,7 @@ module SDM
         return nil
       end
       porcelain = AKSServiceAccount.new()
+      porcelain.allow_resource_role_bypass = (plumbing.allow_resource_role_bypass)
       porcelain.bind_interface = (plumbing.bind_interface)
       porcelain.discovery_enabled = (plumbing.discovery_enabled)
       porcelain.discovery_username = (plumbing.discovery_username)
@@ -329,6 +334,7 @@ module SDM
         return nil
       end
       plumbing = V1::AKSServiceAccount.new()
+      plumbing.allow_resource_role_bypass = (porcelain.allow_resource_role_bypass)
       plumbing.bind_interface = (porcelain.bind_interface)
       plumbing.discovery_enabled = (porcelain.discovery_enabled)
       plumbing.discovery_username = (porcelain.discovery_username)
@@ -2018,6 +2024,7 @@ module SDM
       end
       porcelain = AmazonEKS.new()
       porcelain.access_key = (plumbing.access_key)
+      porcelain.allow_resource_role_bypass = (plumbing.allow_resource_role_bypass)
       porcelain.bind_interface = (plumbing.bind_interface)
       porcelain.certificate_authority = (plumbing.certificate_authority)
       porcelain.cluster_name = (plumbing.cluster_name)
@@ -2048,6 +2055,7 @@ module SDM
       end
       plumbing = V1::AmazonEKS.new()
       plumbing.access_key = (porcelain.access_key)
+      plumbing.allow_resource_role_bypass = (porcelain.allow_resource_role_bypass)
       plumbing.bind_interface = (porcelain.bind_interface)
       plumbing.certificate_authority = (porcelain.certificate_authority)
       plumbing.cluster_name = (porcelain.cluster_name)
@@ -2093,6 +2101,7 @@ module SDM
         return nil
       end
       porcelain = AmazonEKSInstanceProfile.new()
+      porcelain.allow_resource_role_bypass = (plumbing.allow_resource_role_bypass)
       porcelain.bind_interface = (plumbing.bind_interface)
       porcelain.certificate_authority = (plumbing.certificate_authority)
       porcelain.cluster_name = (plumbing.cluster_name)
@@ -2121,6 +2130,7 @@ module SDM
         return nil
       end
       plumbing = V1::AmazonEKSInstanceProfile.new()
+      plumbing.allow_resource_role_bypass = (porcelain.allow_resource_role_bypass)
       plumbing.bind_interface = (porcelain.bind_interface)
       plumbing.certificate_authority = (porcelain.certificate_authority)
       plumbing.cluster_name = (porcelain.cluster_name)
@@ -5075,6 +5085,7 @@ module SDM
         return nil
       end
       porcelain = GoogleGKE.new()
+      porcelain.allow_resource_role_bypass = (plumbing.allow_resource_role_bypass)
       porcelain.bind_interface = (plumbing.bind_interface)
       porcelain.certificate_authority = (plumbing.certificate_authority)
       porcelain.discovery_enabled = (plumbing.discovery_enabled)
@@ -5100,6 +5111,7 @@ module SDM
         return nil
       end
       plumbing = V1::GoogleGKE.new()
+      plumbing.allow_resource_role_bypass = (porcelain.allow_resource_role_bypass)
       plumbing.bind_interface = (porcelain.bind_interface)
       plumbing.certificate_authority = (porcelain.certificate_authority)
       plumbing.discovery_enabled = (porcelain.discovery_enabled)
@@ -6009,6 +6021,7 @@ module SDM
         return nil
       end
       porcelain = Kubernetes.new()
+      porcelain.allow_resource_role_bypass = (plumbing.allow_resource_role_bypass)
       porcelain.bind_interface = (plumbing.bind_interface)
       porcelain.certificate_authority = (plumbing.certificate_authority)
       porcelain.client_certificate = (plumbing.client_certificate)
@@ -6036,6 +6049,7 @@ module SDM
         return nil
       end
       plumbing = V1::Kubernetes.new()
+      plumbing.allow_resource_role_bypass = (porcelain.allow_resource_role_bypass)
       plumbing.bind_interface = (porcelain.bind_interface)
       plumbing.certificate_authority = (porcelain.certificate_authority)
       plumbing.client_certificate = (porcelain.client_certificate)
@@ -6139,6 +6153,7 @@ module SDM
         return nil
       end
       porcelain = KubernetesServiceAccount.new()
+      porcelain.allow_resource_role_bypass = (plumbing.allow_resource_role_bypass)
       porcelain.bind_interface = (plumbing.bind_interface)
       porcelain.discovery_enabled = (plumbing.discovery_enabled)
       porcelain.discovery_username = (plumbing.discovery_username)
@@ -6164,6 +6179,7 @@ module SDM
         return nil
       end
       plumbing = V1::KubernetesServiceAccount.new()
+      plumbing.allow_resource_role_bypass = (porcelain.allow_resource_role_bypass)
       plumbing.bind_interface = (porcelain.bind_interface)
       plumbing.discovery_enabled = (porcelain.discovery_enabled)
       plumbing.discovery_username = (porcelain.discovery_username)
@@ -8193,6 +8209,264 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_peering_group_resource_get_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_policy_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = Policy.new()
+      porcelain.description = (plumbing.description)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.policy = (plumbing.policy)
+      porcelain
+    end
+
+    def self.convert_policy_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::Policy.new()
+      plumbing.description = (porcelain.description)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.policy = (porcelain.policy)
+      plumbing
+    end
+    def self.convert_repeated_policy_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_policy_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_policy_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_policy_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_policy_create_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = PolicyCreateResponse.new()
+      porcelain.policy = convert_policy_to_porcelain(plumbing.policy)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_policy_create_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::PolicyCreateResponse.new()
+      plumbing.policy = convert_policy_to_plumbing(porcelain.policy)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_policy_create_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_policy_create_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_policy_create_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_policy_create_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_policy_delete_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = PolicyDeleteResponse.new()
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_policy_delete_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::PolicyDeleteResponse.new()
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_policy_delete_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_policy_delete_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_policy_delete_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_policy_delete_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_policy_get_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = PolicyGetResponse.new()
+      porcelain.meta = convert_get_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.policy = convert_policy_to_porcelain(plumbing.policy)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_policy_get_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::PolicyGetResponse.new()
+      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.policy = convert_policy_to_plumbing(porcelain.policy)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_policy_get_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_policy_get_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_policy_get_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_policy_get_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_policy_history_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = PolicyHistory.new()
+      porcelain.activity_id = (plumbing.activity_id)
+      porcelain.deleted_at = convert_timestamp_to_porcelain(plumbing.deleted_at)
+      porcelain.policy = convert_policy_to_porcelain(plumbing.policy)
+      porcelain.timestamp = convert_timestamp_to_porcelain(plumbing.timestamp)
+      porcelain
+    end
+
+    def self.convert_policy_history_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::PolicyHistory.new()
+      plumbing.activity_id = (porcelain.activity_id)
+      plumbing.deleted_at = convert_timestamp_to_plumbing(porcelain.deleted_at)
+      plumbing.policy = convert_policy_to_plumbing(porcelain.policy)
+      plumbing.timestamp = convert_timestamp_to_plumbing(porcelain.timestamp)
+      plumbing
+    end
+    def self.convert_repeated_policy_history_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_policy_history_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_policy_history_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_policy_history_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_policy_list_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = PolicyListResponse.new()
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_policy_list_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::PolicyListResponse.new()
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_policy_list_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_policy_list_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_policy_list_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_policy_list_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_policy_update_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = PolicyUpdateResponse.new()
+      porcelain.policy = convert_policy_to_porcelain(plumbing.policy)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_policy_update_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::PolicyUpdateResponse.new()
+      plumbing.policy = convert_policy_to_plumbing(porcelain.policy)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_policy_update_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_policy_update_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_policy_update_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_policy_update_response_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items

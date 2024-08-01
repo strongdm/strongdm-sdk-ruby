@@ -17,6 +17,9 @@
 
 module SDM
   class AKS
+    # If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set)
+    # when a resource role is not provided.
+    attr_accessor :allow_resource_role_bypass
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # The CA to authenticate TLS connections with.
@@ -58,6 +61,7 @@ module SDM
     attr_accessor :tags
 
     def initialize(
+      allow_resource_role_bypass: nil,
       bind_interface: nil,
       certificate_authority: nil,
       client_certificate: nil,
@@ -78,6 +82,7 @@ module SDM
       subdomain: nil,
       tags: nil
     )
+      @allow_resource_role_bypass = allow_resource_role_bypass == nil ? false : allow_resource_role_bypass
       @bind_interface = bind_interface == nil ? "" : bind_interface
       @certificate_authority = certificate_authority == nil ? "" : certificate_authority
       @client_certificate = client_certificate == nil ? "" : client_certificate
@@ -180,6 +185,9 @@ module SDM
   end
 
   class AKSServiceAccount
+    # If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set)
+    # when a resource role is not provided.
+    attr_accessor :allow_resource_role_bypass
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # If true, configures discovery of a cluster to be run from a node.
@@ -217,6 +225,7 @@ module SDM
     attr_accessor :token
 
     def initialize(
+      allow_resource_role_bypass: nil,
       bind_interface: nil,
       discovery_enabled: nil,
       discovery_username: nil,
@@ -235,6 +244,7 @@ module SDM
       tags: nil,
       token: nil
     )
+      @allow_resource_role_bypass = allow_resource_role_bypass == nil ? false : allow_resource_role_bypass
       @bind_interface = bind_interface == nil ? "" : bind_interface
       @discovery_enabled = discovery_enabled == nil ? false : discovery_enabled
       @discovery_username = discovery_username == nil ? "" : discovery_username
@@ -1717,6 +1727,9 @@ module SDM
   class AmazonEKS
     # The Access Key ID to use to authenticate.
     attr_accessor :access_key
+    # If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set)
+    # when a resource role is not provided.
+    attr_accessor :allow_resource_role_bypass
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # The CA to authenticate TLS connections with.
@@ -1763,6 +1776,7 @@ module SDM
 
     def initialize(
       access_key: nil,
+      allow_resource_role_bypass: nil,
       bind_interface: nil,
       certificate_authority: nil,
       cluster_name: nil,
@@ -1786,6 +1800,7 @@ module SDM
       tags: nil
     )
       @access_key = access_key == nil ? "" : access_key
+      @allow_resource_role_bypass = allow_resource_role_bypass == nil ? false : allow_resource_role_bypass
       @bind_interface = bind_interface == nil ? "" : bind_interface
       @certificate_authority = certificate_authority == nil ? "" : certificate_authority
       @cluster_name = cluster_name == nil ? "" : cluster_name
@@ -1819,6 +1834,9 @@ module SDM
   end
 
   class AmazonEKSInstanceProfile
+    # If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set)
+    # when a resource role is not provided.
+    attr_accessor :allow_resource_role_bypass
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # The CA to authenticate TLS connections with.
@@ -1862,6 +1880,7 @@ module SDM
     attr_accessor :tags
 
     def initialize(
+      allow_resource_role_bypass: nil,
       bind_interface: nil,
       certificate_authority: nil,
       cluster_name: nil,
@@ -1883,6 +1902,7 @@ module SDM
       subdomain: nil,
       tags: nil
     )
+      @allow_resource_role_bypass = allow_resource_role_bypass == nil ? false : allow_resource_role_bypass
       @bind_interface = bind_interface == nil ? "" : bind_interface
       @certificate_authority = certificate_authority == nil ? "" : certificate_authority
       @cluster_name = cluster_name == nil ? "" : cluster_name
@@ -4851,6 +4871,9 @@ module SDM
   end
 
   class GoogleGKE
+    # If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set)
+    # when a resource role is not provided.
+    attr_accessor :allow_resource_role_bypass
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # The CA to authenticate TLS connections with.
@@ -4888,6 +4911,7 @@ module SDM
     attr_accessor :tags
 
     def initialize(
+      allow_resource_role_bypass: nil,
       bind_interface: nil,
       certificate_authority: nil,
       discovery_enabled: nil,
@@ -4906,6 +4930,7 @@ module SDM
       subdomain: nil,
       tags: nil
     )
+      @allow_resource_role_bypass = allow_resource_role_bypass == nil ? false : allow_resource_role_bypass
       @bind_interface = bind_interface == nil ? "" : bind_interface
       @certificate_authority = certificate_authority == nil ? "" : certificate_authority
       @discovery_enabled = discovery_enabled == nil ? false : discovery_enabled
@@ -5774,6 +5799,9 @@ module SDM
   end
 
   class Kubernetes
+    # If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set)
+    # when a resource role is not provided.
+    attr_accessor :allow_resource_role_bypass
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # The CA to authenticate TLS connections with.
@@ -5815,6 +5843,7 @@ module SDM
     attr_accessor :tags
 
     def initialize(
+      allow_resource_role_bypass: nil,
       bind_interface: nil,
       certificate_authority: nil,
       client_certificate: nil,
@@ -5835,6 +5864,7 @@ module SDM
       subdomain: nil,
       tags: nil
     )
+      @allow_resource_role_bypass = allow_resource_role_bypass == nil ? false : allow_resource_role_bypass
       @bind_interface = bind_interface == nil ? "" : bind_interface
       @certificate_authority = certificate_authority == nil ? "" : certificate_authority
       @client_certificate = client_certificate == nil ? "" : client_certificate
@@ -5937,6 +5967,9 @@ module SDM
   end
 
   class KubernetesServiceAccount
+    # If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set)
+    # when a resource role is not provided.
+    attr_accessor :allow_resource_role_bypass
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
     # If true, configures discovery of a cluster to be run from a node.
@@ -5974,6 +6007,7 @@ module SDM
     attr_accessor :token
 
     def initialize(
+      allow_resource_role_bypass: nil,
       bind_interface: nil,
       discovery_enabled: nil,
       discovery_username: nil,
@@ -5992,6 +6026,7 @@ module SDM
       tags: nil,
       token: nil
     )
+      @allow_resource_role_bypass = allow_resource_role_bypass == nil ? false : allow_resource_role_bypass
       @bind_interface = bind_interface == nil ? "" : bind_interface
       @discovery_enabled = discovery_enabled == nil ? false : discovery_enabled
       @discovery_username = discovery_username == nil ? "" : discovery_username
@@ -7998,6 +8033,192 @@ module SDM
     )
       @meta = meta == nil ? nil : meta
       @peering_group_resource = peering_group_resource == nil ? nil : peering_group_resource
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # Policy is a collection of one or more statements that enforce fine-grained access control
+  # for the users of an organization.
+  class Policy
+    # Optional description of the Policy.
+    attr_accessor :description
+    # Unique identifier of the Policy.
+    attr_accessor :id
+    # Unique human-readable name of the Policy.
+    attr_accessor :name
+    # The content of the Policy, in Cedar policy language.
+    attr_accessor :policy
+
+    def initialize(
+      description: nil,
+      id: nil,
+      name: nil,
+      policy: nil
+    )
+      @description = description == nil ? "" : description
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @policy = policy == nil ? "" : policy
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # PolicyCreateResponse reports how the Policy was created in the system.
+  class PolicyCreateResponse
+    # The created Policy.
+    attr_accessor :policy
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      policy: nil,
+      rate_limit: nil
+    )
+      @policy = policy == nil ? nil : policy
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # PolicyDeleteResponse returns information about a Policy that was deleted.
+  class PolicyDeleteResponse
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      rate_limit: nil
+    )
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # PolicyGetResponse returns a requested Policy.
+  class PolicyGetResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # The requested Policy.
+    attr_accessor :policy
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      meta: nil,
+      policy: nil,
+      rate_limit: nil
+    )
+      @meta = meta == nil ? nil : meta
+      @policy = policy == nil ? nil : policy
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # PolicyHistory records the state of a Policy at a given point in time,
+  # where every change (create, update and delete) to a Policy produces a
+  # PolicyHistory record.
+  class PolicyHistory
+    # The unique identifier of the Activity that produced this change to the Policy.
+    # May be empty for some system-initiated updates.
+    attr_accessor :activity_id
+    # If this Policy was deleted, the time it was deleted.
+    attr_accessor :deleted_at
+    # The complete Policy state at this time.
+    attr_accessor :policy
+    # The time at which the Policy state was recorded.
+    attr_accessor :timestamp
+
+    def initialize(
+      activity_id: nil,
+      deleted_at: nil,
+      policy: nil,
+      timestamp: nil
+    )
+      @activity_id = activity_id == nil ? "" : activity_id
+      @deleted_at = deleted_at == nil ? nil : deleted_at
+      @policy = policy == nil ? nil : policy
+      @timestamp = timestamp == nil ? nil : timestamp
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # PolicyListResponse returns a list of Policy records that meet
+  # the criteria of a PolicyListRequest.
+  class PolicyListResponse
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      rate_limit: nil
+    )
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # PolicyUpdateResponse returns the fields of a Policy after it has been updated by
+  # a PolicyUpdateRequest.
+  class PolicyUpdateResponse
+    # The updated Policy.
+    attr_accessor :policy
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      policy: nil,
+      rate_limit: nil
+    )
+      @policy = policy == nil ? nil : policy
       @rate_limit = rate_limit == nil ? nil : rate_limit
     end
 
