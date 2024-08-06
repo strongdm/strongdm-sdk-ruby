@@ -113,6 +113,7 @@ module SDM
     end
   end
 
+  # AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class AKSBasicAuth
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
@@ -5895,6 +5896,7 @@ module SDM
     end
   end
 
+  # KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class KubernetesBasicAuth
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
