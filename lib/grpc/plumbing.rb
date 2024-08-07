@@ -8605,6 +8605,7 @@ module SDM
       porcelain.account_id = (plumbing.account_id)
       porcelain.account_last_name = (plumbing.account_last_name)
       porcelain.account_tags = convert_tags_to_porcelain(plumbing.account_tags)
+      porcelain.authzjson = (plumbing.authzJson)
       porcelain.capture = convert_query_capture_to_porcelain(plumbing.capture)
       porcelain.client_ip = (plumbing.client_ip)
       porcelain.completed_at = convert_timestamp_to_porcelain(plumbing.completed_at)
@@ -8625,6 +8626,7 @@ module SDM
       porcelain.resource_tags = convert_tags_to_porcelain(plumbing.resource_tags)
       porcelain.resource_type = (plumbing.resource_type)
       porcelain.source_ip = (plumbing.source_ip)
+      porcelain.target = (plumbing.target)
       porcelain.timestamp = convert_timestamp_to_porcelain(plumbing.timestamp)
       porcelain
     end
@@ -8639,6 +8641,7 @@ module SDM
       plumbing.account_id = (porcelain.account_id)
       plumbing.account_last_name = (porcelain.account_last_name)
       plumbing.account_tags = convert_tags_to_plumbing(porcelain.account_tags)
+      plumbing.authzJson = (porcelain.authzjson)
       plumbing.capture = convert_query_capture_to_plumbing(porcelain.capture)
       plumbing.client_ip = (porcelain.client_ip)
       plumbing.completed_at = convert_timestamp_to_plumbing(porcelain.completed_at)
@@ -8659,6 +8662,7 @@ module SDM
       plumbing.resource_tags = convert_tags_to_plumbing(porcelain.resource_tags)
       plumbing.resource_type = (porcelain.resource_type)
       plumbing.source_ip = (porcelain.source_ip)
+      plumbing.target = (porcelain.target)
       plumbing.timestamp = convert_timestamp_to_plumbing(porcelain.timestamp)
       plumbing
     end

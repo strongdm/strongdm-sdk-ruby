@@ -8403,6 +8403,8 @@ module SDM
     # The tags of the account accessed, at the time the query was executed. If the account
     # tags are later changed, that change will not be reflected via this field.
     attr_accessor :account_tags
+    # Authorization metadata associated with this query.
+    attr_accessor :authzjson
     # For queries against SSH, Kubernetes, and RDP resources, this contains additional information
     # about the captured query.
     attr_accessor :capture
@@ -8451,6 +8453,8 @@ module SDM
     attr_accessor :resource_type
     # The IP address the Query was performed from, as detected at the ingress gateway.
     attr_accessor :source_ip
+    # The target destination of the query, in host:port format.
+    attr_accessor :target
     # The time at which the Query was started.
     attr_accessor :timestamp
 
@@ -8460,6 +8464,7 @@ module SDM
       account_id: nil,
       account_last_name: nil,
       account_tags: nil,
+      authzjson: nil,
       capture: nil,
       client_ip: nil,
       completed_at: nil,
@@ -8480,6 +8485,7 @@ module SDM
       resource_tags: nil,
       resource_type: nil,
       source_ip: nil,
+      target: nil,
       timestamp: nil
     )
       @account_email = account_email == nil ? "" : account_email
@@ -8487,6 +8493,7 @@ module SDM
       @account_id = account_id == nil ? "" : account_id
       @account_last_name = account_last_name == nil ? "" : account_last_name
       @account_tags = account_tags == nil ? SDM::_porcelain_zero_value_tags() : account_tags
+      @authzjson = authzjson == nil ? "" : authzjson
       @capture = capture == nil ? nil : capture
       @client_ip = client_ip == nil ? "" : client_ip
       @completed_at = completed_at == nil ? nil : completed_at
@@ -8507,6 +8514,7 @@ module SDM
       @resource_tags = resource_tags == nil ? SDM::_porcelain_zero_value_tags() : resource_tags
       @resource_type = resource_type == nil ? "" : resource_type
       @source_ip = source_ip == nil ? "" : source_ip
+      @target = target == nil ? "" : target
       @timestamp = timestamp == nil ? nil : timestamp
     end
 
