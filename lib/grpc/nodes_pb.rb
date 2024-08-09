@@ -74,6 +74,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       oneof :node do
         optional :relay, :message, 1, "v1.Relay"
         optional :gateway, :message, 2, "v1.Gateway"
+        optional :gateway_cluster, :message, 3, "v1.GatewayCluster"
       end
     end
     add_message "v1.Relay" do
@@ -104,6 +105,14 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       repeated :maintenance_windows, :message, 13, "v1.NodeMaintenanceWindow"
       optional :discovery_config, :message, 14, "v1.NodeDiscoveryConfig"
     end
+    add_message "v1.GatewayCluster" do
+      optional :id, :string, 1
+      optional :name, :string, 2
+      optional :address, :string, 3
+      optional :tags, :message, 4, "v1.Tags"
+      repeated :maintenance_windows, :message, 5, "v1.NodeMaintenanceWindow"
+      optional :discovery_config, :message, 6, "v1.NodeDiscoveryConfig"
+    end
     add_message "v1.NodeMaintenanceWindow" do
       optional :cron_schedule, :string, 1
       optional :require_idleness, :bool, 2
@@ -133,6 +142,7 @@ module V1
   Node = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Node").msgclass
   Relay = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Relay").msgclass
   Gateway = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Gateway").msgclass
+  GatewayCluster = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GatewayCluster").msgclass
   NodeMaintenanceWindow = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.NodeMaintenanceWindow").msgclass
   NodeDiscoveryConfig = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.NodeDiscoveryConfig").msgclass
   NodeDiscoveryTypeConfig = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.NodeDiscoveryTypeConfig").msgclass
