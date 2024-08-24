@@ -731,6 +731,8 @@ module SDM
   class AccessRequest
     # The account that initiated the request.
     attr_accessor :account_id
+    # Duration of the access request.
+    attr_accessor :duration
     # The account grant created, if it exists.
     attr_accessor :grant_id
     # The access request id.
@@ -753,6 +755,7 @@ module SDM
 
     def initialize(
       account_id: nil,
+      duration: nil,
       grant_id: nil,
       id: nil,
       reason: nil,
@@ -764,6 +767,7 @@ module SDM
       workflow_id: nil
     )
       @account_id = account_id == nil ? "" : account_id
+      @duration = duration == nil ? 0 : duration
       @grant_id = grant_id == nil ? "" : grant_id
       @id = id == nil ? "" : id
       @reason = reason == nil ? "" : reason

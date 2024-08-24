@@ -44,6 +44,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :status, :string, 8
       optional :status_at, :message, 9, "google.protobuf.Timestamp"
       optional :grant_id, :string, 10
+      optional :duration, :int64, 11
+      optional :requester_name, :string, 12
     end
     add_message "v1.AccessRequestEvent" do
       optional :id, :string, 1

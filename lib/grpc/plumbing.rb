@@ -775,6 +775,7 @@ module SDM
       end
       porcelain = AccessRequest.new()
       porcelain.account_id = (plumbing.account_id)
+      porcelain.duration = (plumbing.duration)
       porcelain.grant_id = (plumbing.grant_id)
       porcelain.id = (plumbing.id)
       porcelain.reason = (plumbing.reason)
@@ -793,6 +794,7 @@ module SDM
       end
       plumbing = V1::AccessRequest.new()
       plumbing.account_id = (porcelain.account_id)
+      plumbing.duration = (porcelain.duration)
       plumbing.grant_id = (porcelain.grant_id)
       plumbing.id = (porcelain.id)
       plumbing.reason = (porcelain.reason)
