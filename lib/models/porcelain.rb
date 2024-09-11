@@ -11582,6 +11582,9 @@ module SDM
     attr_accessor :last_name
     # Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.
     attr_accessor :managed_by
+    # Password is a write-only field that can be used to set the user's password.
+    # Currently only supported for update.
+    attr_accessor :password
     # PermissionLevel is the user's permission level e.g. admin, DBA, user.
     attr_accessor :permission_level
     # Suspended is a read only field for the User's suspended state.
@@ -11596,6 +11599,7 @@ module SDM
       id: nil,
       last_name: nil,
       managed_by: nil,
+      password: nil,
       permission_level: nil,
       suspended: nil,
       tags: nil
@@ -11606,6 +11610,7 @@ module SDM
       @id = id == nil ? "" : id
       @last_name = last_name == nil ? "" : last_name
       @managed_by = managed_by == nil ? "" : managed_by
+      @password = password == nil ? "" : password
       @permission_level = permission_level == nil ? "" : permission_level
       @suspended = suspended == nil ? false : suspended
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags

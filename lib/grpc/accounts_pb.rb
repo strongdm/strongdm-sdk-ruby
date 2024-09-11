@@ -92,6 +92,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :external_id, :string, 9
       optional :suspendedRO, :bool, 10
       optional :permission_levelRW, :string, 11
+      optional :password, :string, 12
     end
     add_message "v1.Service" do
       optional :id, :string, 1
