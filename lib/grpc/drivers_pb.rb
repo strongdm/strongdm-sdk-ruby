@@ -52,6 +52,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :citus, :message, 1305, "v1.Citus"
         optional :clustrix, :message, 1102, "v1.Clustrix"
         optional :cockroach, :message, 1303, "v1.Cockroach"
+        optional :couchbase_database, :message, 3201, "v1.CouchbaseDatabase"
+        optional :couchbase_web_ui, :message, 3200, "v1.CouchbaseWebUI"
         optional :db_2_i, :message, 2400, "v1.DB2I"
         optional :db_2_luw, :message, 2200, "v1.DB2LUW"
         optional :document_db_host, :message, 1052, "v1.DocumentDBHost"
@@ -119,6 +121,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :allow_resource_role_bypass, :bool, 19
       optional :certificate_authority, :string, 3
@@ -141,6 +144,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :healthcheck_namespace, :string, 5
       optional :hostname, :string, 1
@@ -157,6 +161,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :allow_resource_role_bypass, :bool, 13
       optional :discovery_enabled, :bool, 11
@@ -177,6 +182,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :healthcheck_namespace, :string, 4
       optional :hostname, :string, 1
@@ -192,6 +198,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :certificate_authority, :string, 3
       optional :client_certificate, :string, 5
@@ -209,6 +216,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :access_key, :string, 1
       optional :healthcheck_region, :string, 4
@@ -225,6 +233,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :enable_env_variables, :bool, 1
       optional :identity_alias_healthcheck_username, :string, 9
       optional :identity_set_id, :string, 8
@@ -243,6 +252,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :access_key, :string, 1
       optional :identity_alias_healthcheck_username, :string, 10
       optional :identity_set_id, :string, 9
@@ -262,6 +272,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :access_key, :string, 2
       optional :allow_resource_role_bypass, :bool, 18
@@ -287,6 +298,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :allow_resource_role_bypass, :bool, 18
       optional :certificate_authority, :string, 2
@@ -310,6 +322,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :certificate_authority, :string, 2
       optional :cluster_name, :string, 5
@@ -328,6 +341,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :access_key, :string, 2
       optional :certificate_authority, :string, 4
@@ -348,6 +362,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :access_key, :string, 4
       optional :endpoint, :string, 3
@@ -365,6 +380,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :hostname, :string, 1
       optional :password, :string, 5
@@ -381,6 +397,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :access_key, :string, 1
       optional :output, :string, 3
@@ -398,6 +415,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :database, :string, 4
       optional :hostname, :string, 1
@@ -416,6 +434,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :database, :string, 4
       optional :hostname, :string, 1
@@ -433,6 +452,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :database, :string, 4
       optional :hostname, :string, 1
@@ -451,6 +471,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :app_id, :string, 1
       optional :password, :string, 3
@@ -465,6 +486,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :app_id, :string, 1
       optional :client_certificate, :string, 3
@@ -479,6 +501,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :database, :string, 4
       optional :hostname, :string, 1
@@ -497,6 +520,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :database, :string, 4
       optional :hostname, :string, 1
@@ -514,6 +538,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :database, :string, 4
       optional :hostname, :string, 1
@@ -532,6 +557,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :endpoint, :string, 4
       optional :port_override, :int32, 3
@@ -547,6 +573,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :hostname, :string, 1
       optional :password, :string, 3
@@ -563,6 +590,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :database, :string, 4
       optional :hostname, :string, 1
@@ -580,6 +608,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :database, :string, 4
       optional :hostname, :string, 1
@@ -598,6 +627,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :database, :string, 4
       optional :hostname, :string, 1
@@ -605,6 +635,39 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :password, :string, 3
       optional :port, :int32, 6
       optional :port_override, :int32, 5
+      optional :username, :string, 2
+    end
+    add_message "v1.CouchbaseDatabase" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
+      optional :subdomain, :string, 32775
+      optional :hostname, :string, 8
+      optional :n1ql_port, :int32, 4
+      optional :password, :string, 2
+      optional :port, :int32, 9
+      optional :port_override, :int32, 3
+      optional :tls_required, :bool, 7
+      optional :username, :string, 1
+    end
+    add_message "v1.CouchbaseWebUI" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
+      optional :password, :string, 3
+      optional :port_override, :int32, 5
+      optional :subdomain, :string, 4
+      optional :url, :string, 1
       optional :username, :string, 2
     end
     add_message "v1.DB2I" do
@@ -615,6 +678,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :hostname, :string, 1
       optional :password, :string, 3
@@ -631,6 +695,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :database, :string, 4
       optional :hostname, :string, 1
@@ -647,6 +712,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :auth_database, :string, 2
       optional :hostname, :string, 1
@@ -663,6 +729,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :auth_database, :string, 2
       optional :connect_to_replica, :bool, 7
@@ -680,6 +747,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :hostname, :string, 1
       optional :password, :string, 4
@@ -695,6 +763,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :access_key, :string, 1
       optional :endpoint, :string, 4
@@ -712,6 +781,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :hostname, :string, 1
       optional :password, :string, 3
@@ -728,6 +798,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :hostname, :string, 1
       optional :password, :string, 3
@@ -744,6 +815,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :keyfile, :string, 1
       optional :port_override, :int32, 11
@@ -757,6 +829,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :allow_resource_role_bypass, :bool, 17
       optional :certificate_authority, :string, 2
@@ -777,6 +850,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :certificate_authority, :string, 2
       optional :endpoint, :string, 1
@@ -792,6 +866,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :database, :string, 4
       optional :hostname, :string, 1
@@ -809,6 +884,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :auth_header, :string, 3
       optional :default_path, :string, 5
       optional :headers_blacklist, :string, 4
@@ -825,6 +901,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :default_path, :string, 6
       optional :headers_blacklist, :string, 5
       optional :healthcheck_path, :string, 2
@@ -842,6 +919,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :default_path, :string, 4
       optional :headers_blacklist, :string, 3
       optional :healthcheck_path, :string, 2
@@ -857,6 +935,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :allow_resource_role_bypass, :bool, 19
       optional :certificate_authority, :string, 3
@@ -879,6 +958,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :healthcheck_namespace, :string, 5
       optional :hostname, :string, 1
@@ -895,6 +975,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :allow_resource_role_bypass, :bool, 13
       optional :discovery_enabled, :bool, 11
@@ -915,6 +996,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :healthcheck_namespace, :string, 4
       optional :hostname, :string, 1
@@ -930,6 +1012,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :certificate_authority, :string, 3
       optional :client_certificate, :string, 5
@@ -947,6 +1030,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :certificate_authority, :string, 7
       optional :client_certificate, :string, 9
@@ -969,6 +1053,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :certificate_authority, :string, 8
       optional :client_certificate, :string, 10
@@ -990,6 +1075,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :database, :string, 4
       optional :hostname, :string, 1
@@ -1008,6 +1094,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :hostname, :string, 1
       optional :port, :int32, 3
@@ -1021,6 +1108,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :database, :string, 4
       optional :hostname, :string, 1
@@ -1039,6 +1127,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :auth_database, :string, 2
       optional :hostname, :string, 1
@@ -1056,6 +1145,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :auth_database, :string, 2
       optional :hostname, :string, 1
@@ -1073,6 +1163,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :auth_database, :string, 2
       optional :connect_to_replica, :bool, 8
@@ -1092,6 +1183,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :auth_database, :string, 2
       optional :connect_to_replica, :bool, 8
@@ -1111,6 +1203,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :auth_database, :string, 2
       optional :hostname, :string, 1
@@ -1127,6 +1220,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :database, :string, 4
       optional :hostname, :string, 1
@@ -1145,6 +1239,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :endpoint, :string, 1
       optional :port, :int32, 3
@@ -1158,6 +1253,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :access_key, :string, 4
       optional :endpoint, :string, 1
@@ -1176,6 +1272,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :database, :string, 4
       optional :hostname, :string, 1
@@ -1193,6 +1290,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :database, :string, 4
       optional :hostname, :string, 1
@@ -1210,6 +1308,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :database, :string, 3
       optional :hostname, :string, 1
@@ -1227,6 +1326,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :downgrade_nla_connections, :bool, 6
       optional :hostname, :string, 1
@@ -1244,6 +1344,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :hostname, :string, 1
       optional :identity_alias_healthcheck_username, :string, 6
@@ -1260,6 +1361,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :database, :string, 4
       optional :hostname, :string, 1
@@ -1278,6 +1380,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :hostname, :string, 1
       optional :password, :string, 5
@@ -1294,6 +1397,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :hostname, :string, 1
       optional :port, :int32, 3
@@ -1307,6 +1411,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :hostname, :string, 1
       optional :password, :string, 3
@@ -1323,6 +1428,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :database, :string, 4
       optional :hostname, :string, 1
@@ -1340,6 +1446,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :allow_deprecated_encryption, :bool, 9
       optional :database, :string, 4
@@ -1359,6 +1466,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :allow_deprecated_encryption, :bool, 10
       optional :client_id, :string, 2
@@ -1379,6 +1487,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :allow_deprecated_encryption, :bool, 12
       optional :database, :string, 4
@@ -1401,6 +1510,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :allow_deprecated_key_exchanges, :bool, 6
       optional :hostname, :string, 1
@@ -1419,6 +1529,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :allow_deprecated_key_exchanges, :bool, 5
       optional :hostname, :string, 1
@@ -1438,6 +1549,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :allow_deprecated_key_exchanges, :bool, 6
       optional :hostname, :string, 1
@@ -1455,6 +1567,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :allow_deprecated_key_exchanges, :bool, 6
       optional :hostname, :string, 1
@@ -1472,6 +1585,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :database, :string, 4
       optional :hostname, :string, 1
@@ -1490,6 +1604,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :database, :string, 4
       optional :hostname, :string, 1
@@ -1506,6 +1621,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :healthcheck_username, :string, 11
       optional :port_override, :int32, 3
       optional :samlMetadata, :string, 1
@@ -1519,6 +1635,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :hostname, :string, 1
       optional :password, :string, 5
@@ -1534,6 +1651,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :hostname, :string, 1
       optional :password, :string, 5
@@ -1549,6 +1667,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :hostname, :string, 1
       optional :password, :string, 3
@@ -1564,6 +1683,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_store_id, :string, 32772
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
+      optional :gateway_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :database, :string, 3
       optional :hostname, :string, 1
@@ -1605,6 +1725,8 @@ module V1
   Citus = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Citus").msgclass
   Clustrix = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Clustrix").msgclass
   Cockroach = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Cockroach").msgclass
+  CouchbaseDatabase = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.CouchbaseDatabase").msgclass
+  CouchbaseWebUI = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.CouchbaseWebUI").msgclass
   DB2I = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DB2I").msgclass
   DB2LUW = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DB2LUW").msgclass
   DocumentDBHost = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DocumentDBHost").msgclass

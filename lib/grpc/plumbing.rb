@@ -67,9 +67,9 @@ require_relative "./role_resources_pb"
 require_relative "./role_resources_history_pb"
 require_relative "./roles_pb"
 require_relative "./roles_history_pb"
-require_relative "./secret_store_healths_pb"
 require_relative "./secret_store_types_pb"
 require_relative "./secret_stores_pb"
+require_relative "./secret_store_healths_pb"
 require_relative "./secret_stores_history_pb"
 require_relative "./workflow_approvers_pb"
 require_relative "./workflow_approvers_history_pb"
@@ -4146,6 +4146,124 @@ module SDM
       end
       items
     end
+    def self.convert_couchbase_database_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = CouchbaseDatabase.new()
+      porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.id = (plumbing.id)
+      porcelain.n1ql_port = (plumbing.n1ql_port)
+      porcelain.name = (plumbing.name)
+      porcelain.password = (plumbing.password)
+      porcelain.port = (plumbing.port)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.subdomain = (plumbing.subdomain)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.tls_required = (plumbing.tls_required)
+      porcelain.username = (plumbing.username)
+      porcelain
+    end
+
+    def self.convert_couchbase_database_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::CouchbaseDatabase.new()
+      plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.n1ql_port = (porcelain.n1ql_port)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.subdomain = (porcelain.subdomain)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.tls_required = (porcelain.tls_required)
+      plumbing.username = (porcelain.username)
+      plumbing
+    end
+    def self.convert_repeated_couchbase_database_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_couchbase_database_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_couchbase_database_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_couchbase_database_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_couchbase_web_ui_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = CouchbaseWebUI.new()
+      porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.password = (plumbing.password)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.subdomain = (plumbing.subdomain)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.url = (plumbing.url)
+      porcelain.username = (plumbing.username)
+      porcelain
+    end
+
+    def self.convert_couchbase_web_ui_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::CouchbaseWebUI.new()
+      plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.subdomain = (porcelain.subdomain)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.url = (porcelain.url)
+      plumbing.username = (porcelain.username)
+      plumbing
+    end
+    def self.convert_repeated_couchbase_web_ui_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_couchbase_web_ui_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_couchbase_web_ui_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_couchbase_web_ui_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_create_response_metadata_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -5046,6 +5164,38 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_gateway_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_generic_response_metadata_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = GenericResponseMetadata.new()
+      porcelain
+    end
+
+    def self.convert_generic_response_metadata_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::GenericResponseMetadata.new()
+      plumbing
+    end
+    def self.convert_repeated_generic_response_metadata_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_generic_response_metadata_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_generic_response_metadata_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_generic_response_metadata_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -9806,6 +9956,12 @@ module SDM
       if porcelain.instance_of? Cockroach
         plumbing.cockroach = convert_cockroach_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? CouchbaseDatabase
+        plumbing.couchbase_database = convert_couchbase_database_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? CouchbaseWebUI
+        plumbing.couchbase_web_ui = convert_couchbase_web_ui_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? DB2I
         plumbing.db_2_i = convert_db_2_i_to_plumbing(porcelain)
       end
@@ -10067,6 +10223,12 @@ module SDM
       end
       if plumbing.cockroach != nil
         return convert_cockroach_to_porcelain(plumbing.cockroach)
+      end
+      if plumbing.couchbase_database != nil
+        return convert_couchbase_database_to_porcelain(plumbing.couchbase_database)
+      end
+      if plumbing.couchbase_web_ui != nil
+        return convert_couchbase_web_ui_to_porcelain(plumbing.couchbase_web_ui)
       end
       if plumbing.db_2_i != nil
         return convert_db_2_i_to_porcelain(plumbing.db_2_i)

@@ -106,6 +106,7 @@ module SDM
     ORGANIZATION = "organization"
     INSTALLATION = "installation"
     SECRET_STORE = "secretstore"
+    SECRET_ENGINE = "secretengine"
     REMOTE_IDENTITY_GROUP = "remote_identity_group"
     REMOTE_IDENTITY = "remote_identity"
     IDENTITY_SET = "identity_set"
@@ -115,6 +116,7 @@ module SDM
     APPROVAL_FLOW = "approval_flow"
     APPROVAL_FLOW_STEP = "approval_flow_step"
     APPROVAL_FLOW_APPROVER = "approval_flow_approver"
+    MANAGED_SECRET = "managed_secret"
     NODE = "node"
     PEERING_GROUP = "peering_group"
     PEERING_GROUP_NODE = "peering_group_node"
@@ -245,6 +247,9 @@ module SDM
     SECRET_STORE_ADDED = "secret store added"
     SECRET_STORE_UPDATED = "secret store updated"
     SECRET_STORE_DELETED = "secret store deleted"
+    SECRET_ENGINE_ADDED = "secret engine added"
+    SECRET_ENGINE_UPDATED = "secret engine updated"
+    SECRET_ENGINE_DELETED = "secret engine deleted"
     REMOTE_IDENTITY_GROUP_CREATED = "remote identity group created"
     REMOTE_IDENTITY_GROUP_UPDATED = "remote identity group updated"
     REMOTE_IDENTITY_GROUP_DELETED = "remote identity group deleted"
@@ -314,6 +319,10 @@ module SDM
     USER_INTEGRATION_DEAUTHORIZED = "user deauthorized integration"
     SERVICE_NOW_TOKEN_ADDED = "ServiceNow token created"
     SERVICE_NOW_TOKEN_DELETED = "ServiceNow token deleted"
+    MANAGED_SECRET_CREATED = "managed secret created"
+    MANAGED_SECRET_UPDATED = "managed secret updated"
+    MANAGED_SECRET_EXPIRATION_TIME_UPDATED = "managed secret expiration time updated"
+    MANAGED_SECRET_DELETED = "managed secret deleted"
   end
 
   # Permissions, all permissions that may be granted to an account.
@@ -328,6 +337,11 @@ module SDM
     DATASOURCE_UPDATE = "datasource:update"
     RESOURCE_LOCK_DELETE = "resourcelock:delete"
     RESOURCE_LOCK_LIST = "resourcelock:list"
+    SECRET_ENGINE_CREATE = "secretengine:create"
+    SECRET_ENGINE_LIST = "secretengine:list"
+    SECRET_ENGINE_DELETE = "secretengine:delete"
+    SECRET_ENGINE_UPDATE = "secretengine:update"
+    SECRET_ENGINE_STATUS = "secretengine:status"
     SECRET_STORE_CREATE = "secretstore:create"
     SECRET_STORE_LIST = "secretstore:list"
     SECRET_STORE_DELETE = "secretstore:delete"
@@ -371,6 +385,7 @@ module SDM
     ORG_AUDIT_ORG = "audit:organization"
     ORG_AUDIT_REMOTE_IDENTITIES = "audit:remoteidentities"
     ORG_AUDIT_REMOTE_IDENTITY_GROUPS = "audit:remoteidentitygroups"
+    ORG_AUDIT_SECRET_ENGINES = "audit:secretengines"
     ORG_AUDIT_SECRET_STORES = "audit:secretstores"
     ORG_AUDIT_WORKFLOWS = "audit:workflows"
     ORG_AUDIT_APPROVAL_FLOWS = "audit:approvalflows"
@@ -403,6 +418,11 @@ module SDM
     BILLING_READ = "billing:read"
     CREDENTIAL_READ = "credential:read"
     CREDENTIAL_WRITE = "credential:write"
+    MANAGED_SECRET_CREATE = "managedsecret:create"
+    MANAGED_SECRET_LIST = "managedsecret:list"
+    MANAGED_SECRET_DELETE = "managedsecret:delete"
+    MANAGED_SECRET_UPDATE = "managedsecret:update"
+    MANAGED_SECRET_READ = "managedsecret:read"
   end
 
   # Query Categories, all the categories of resource against which queries are logged.

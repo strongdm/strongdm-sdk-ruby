@@ -29,7 +29,7 @@ module SDM #:nodoc:
     DEFAULT_BASE_RETRY_DELAY = 0.0030 # 30 ms
     DEFAULT_MAX_RETRY_DELAY = 300 # 300 seconds
     API_VERSION = "2024-03-28"
-    USER_AGENT = "strongdm-sdk-ruby/11.8.0"
+    USER_AGENT = "strongdm-sdk-ruby/11.9.0"
     private_constant :DEFAULT_MAX_RETRIES, :DEFAULT_BASE_RETRY_DELAY, :DEFAULT_MAX_RETRY_DELAY, :API_VERSION, :USER_AGENT
 
     # Creates a new strongDM API client.
@@ -100,8 +100,8 @@ module SDM #:nodoc:
       @role_resources_history = RoleResourcesHistory.new(@channel, self)
       @roles = Roles.new(@channel, self)
       @roles_history = RolesHistory.new(@channel, self)
-      @secret_store_healths = SecretStoreHealths.new(@channel, self)
       @secret_stores = SecretStores.new(@channel, self)
+      @secret_store_healths = SecretStoreHealths.new(@channel, self)
       @secret_stores_history = SecretStoresHistory.new(@channel, self)
       @workflow_approvers = WorkflowApprovers.new(@channel, self)
       @workflow_approvers_history = WorkflowApproversHistory.new(@channel, self)
@@ -402,14 +402,14 @@ module SDM #:nodoc:
     #
     # See {RolesHistory}.
     attr_reader :roles_history
-    # SecretStoreHealths exposes health states for secret stores.
-    #
-    # See {SecretStoreHealths}.
-    attr_reader :secret_store_healths
     # SecretStores are servers where resource secrets (passwords, keys) are stored.
     #
     # See {SecretStores}.
     attr_reader :secret_stores
+    # SecretStoreHealths exposes health states for secret stores.
+    #
+    # See {SecretStoreHealths}.
+    attr_reader :secret_store_healths
     # SecretStoresHistory records all changes to the state of a SecretStore.
     #
     # See {SecretStoresHistory}.
@@ -503,8 +503,8 @@ module SDM #:nodoc:
       @role_resources_history = RoleResourcesHistory.new(@channel, self)
       @roles = Roles.new(@channel, self)
       @roles_history = RolesHistory.new(@channel, self)
-      @secret_store_healths = SecretStoreHealths.new(@channel, self)
       @secret_stores = SecretStores.new(@channel, self)
+      @secret_store_healths = SecretStoreHealths.new(@channel, self)
       @secret_stores_history = SecretStoresHistory.new(@channel, self)
       @workflow_approvers = WorkflowApprovers.new(@channel, self)
       @workflow_approvers_history = WorkflowApproversHistory.new(@channel, self)

@@ -4418,6 +4418,8 @@ module SDM #:nodoc:
   # {Citus}
   # {Clustrix}
   # {Cockroach}
+  # {CouchbaseDatabase}
+  # {CouchbaseWebUI}
   # {DB2I}
   # {DB2LUW}
   # {DocumentDBHost}
@@ -5212,91 +5214,6 @@ module SDM #:nodoc:
     end
   end
 
-  # SecretStoreHealths exposes health states for secret stores.
-  #
-  # See {SecretStoreHealth}.
-  class SecretStoreHealths
-    extend Gem::Deprecate
-
-    def initialize(channel, parent)
-      begin
-        @stub = V1::SecretStoreHealths::Stub.new(nil, nil, channel_override: channel)
-      rescue => exception
-        raise Plumbing::convert_error_to_porcelain(exception)
-      end
-      @parent = parent
-    end
-
-    # List reports the health status of node to secret store pairs.
-    def list(
-      filter,
-      *args,
-      deadline: nil
-    )
-      req = V1::SecretStoreHealthListRequest.new()
-      req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
-        req.meta.limit = @parent.page_limit
-      end
-      if not @parent.snapshot_time.nil?
-        req.meta.snapshot_at = @parent.snapshot_time
-      end
-
-      req.filter = Plumbing::quote_filter_args(filter, *args)
-      resp = Enumerator::Generator.new { |g|
-        tries = 0
-        loop do
-          begin
-            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("SecretStoreHealths.List", req), deadline: deadline)
-          rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
-              next
-            end
-            raise Plumbing::convert_error_to_porcelain(exception)
-          end
-          tries = 0
-          plumbing_response.secret_store_healths.each do |plumbing_item|
-            g.yield Plumbing::convert_secret_store_health_to_porcelain(plumbing_item)
-          end
-          break if plumbing_response.meta.next_cursor == ""
-          req.meta.cursor = plumbing_response.meta.next_cursor
-        end
-      }
-      resp
-    end
-
-    # Healthcheck triggers a remote healthcheck request for a secret store. It may take minutes
-    # to propagate across a large network of Nodes. The call will return immediately, and the
-    # updated health of the Secret Store can be retrieved via List.
-    def healthcheck(
-      secret_store_id,
-      deadline: nil
-    )
-      req = V1::SecretStoreHealthcheckRequest.new()
-
-      req.secret_store_id = (secret_store_id)
-      tries = 0
-      plumbing_response = nil
-      loop do
-        begin
-          plumbing_response = @stub.healthcheck(req, metadata: @parent.get_metadata("SecretStoreHealths.Healthcheck", req), deadline: deadline)
-        rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
-            next
-          end
-          raise Plumbing::convert_error_to_porcelain(exception)
-        end
-        break
-      end
-
-      resp = SecretStoreHealthcheckResponse.new()
-      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
-      resp
-    end
-  end
-
   # SecretStores are servers where resource secrets (passwords, keys) are stored.
   #
   # See:
@@ -5528,6 +5445,91 @@ module SDM #:nodoc:
                             *args,
                             deadline: deadline,
              )
+    end
+  end
+
+  # SecretStoreHealths exposes health states for secret stores.
+  #
+  # See {SecretStoreHealth}.
+  class SecretStoreHealths
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::SecretStoreHealths::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # List reports the health status of node to secret store pairs.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::SecretStoreHealthListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("SecretStoreHealths.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.secret_store_healths.each do |plumbing_item|
+            g.yield Plumbing::convert_secret_store_health_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+
+    # Healthcheck triggers a remote healthcheck request for a secret store. It may take minutes
+    # to propagate across a large network of Nodes. The call will return immediately, and the
+    # updated health of the Secret Store can be retrieved via List.
+    def healthcheck(
+      secret_store_id,
+      deadline: nil
+    )
+      req = V1::SecretStoreHealthcheckRequest.new()
+
+      req.secret_store_id = (secret_store_id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.healthcheck(req, metadata: @parent.get_metadata("SecretStoreHealths.Healthcheck", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = SecretStoreHealthcheckResponse.new()
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
     end
   end
 
