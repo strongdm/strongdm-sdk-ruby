@@ -7631,6 +7631,8 @@ module SDM
     attr_accessor :device_trust_enabled
     # The Organization's device trust provider, one of the DeviceTrustProvider constants.
     attr_accessor :device_trust_provider
+    # Indicates if the Organization enforces a single session per user for the CLI and AdminUI.
+    attr_accessor :enforce_single_session
     # The Organization's idle timeout, if enabled.
     attr_accessor :idle_timeout
     # Indicates if the Organization has idle timeouts enabled.
@@ -7683,6 +7685,7 @@ module SDM
       created_at: nil,
       device_trust_enabled: nil,
       device_trust_provider: nil,
+      enforce_single_session: nil,
       idle_timeout: nil,
       idle_timeout_enabled: nil,
       kind: nil,
@@ -7711,6 +7714,7 @@ module SDM
       @created_at = created_at == nil ? nil : created_at
       @device_trust_enabled = device_trust_enabled == nil ? false : device_trust_enabled
       @device_trust_provider = device_trust_provider == nil ? "" : device_trust_provider
+      @enforce_single_session = enforce_single_session == nil ? false : enforce_single_session
       @idle_timeout = idle_timeout == nil ? nil : idle_timeout
       @idle_timeout_enabled = idle_timeout_enabled == nil ? false : idle_timeout_enabled
       @kind = kind == nil ? "" : kind

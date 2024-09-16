@@ -67,6 +67,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :loopback_range, :string, 26
       optional :device_trust_enabled, :bool, 27
       optional :device_trust_provider, :string, 28
+      optional :enforce_single_session, :bool, 29
     end
   end
 end
