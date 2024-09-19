@@ -2649,6 +2649,7 @@ module SDM #:nodoc:
   #
   # See:
   # {Gateway}
+  # {ProxyCluster}
   # {Relay}
   class Nodes
     extend Gem::Deprecate
@@ -3824,6 +3825,191 @@ module SDM #:nodoc:
         end
       }
       resp
+    end
+  end
+
+  # Proxy Cluster Keys are authentication keys for all proxies within a cluster.
+  # The proxies within a cluster share the same key. One cluster can have
+  # multiple keys in order to facilitate key rotation.
+  #
+  # See {ProxyClusterKey}.
+  class ProxyClusterKeys
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::ProxyClusterKeys::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # Create registers a new ProxyClusterKey.
+    def create(
+      proxy_cluster_key,
+      deadline: nil
+    )
+      req = V1::ProxyClusterKeyCreateRequest.new()
+
+      req.proxy_cluster_key = Plumbing::convert_proxy_cluster_key_to_plumbing(proxy_cluster_key)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.create(req, metadata: @parent.get_metadata("ProxyClusterKeys.Create", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = ProxyClusterKeyCreateResponse.new()
+      resp.meta = Plumbing::convert_create_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.proxy_cluster_key = Plumbing::convert_proxy_cluster_key_to_porcelain(plumbing_response.proxy_cluster_key)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.secret_key = (plumbing_response.secret_key)
+      resp
+    end
+
+    # Get reads one ProxyClusterKey by ID.
+    def get(
+      id,
+      deadline: nil
+    )
+      req = V1::ProxyClusterKeyGetRequest.new()
+      if not @parent.snapshot_time.nil?
+        req.meta = V1::GetRequestMetadata.new()
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.get(req, metadata: @parent.get_metadata("ProxyClusterKeys.Get", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = ProxyClusterKeyGetResponse.new()
+      resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.proxy_cluster_key = Plumbing::convert_proxy_cluster_key_to_porcelain(plumbing_response.proxy_cluster_key)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Delete removes a ProxyClusterKey by ID.
+    def delete(
+      id,
+      deadline: nil
+    )
+      req = V1::ProxyClusterKeyDeleteRequest.new()
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("ProxyClusterKeys.Delete", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = ProxyClusterKeyDeleteResponse.new()
+      resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # List gets a list of ProxyClusterKeys matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::ProxyClusterKeyListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("ProxyClusterKeys.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.proxy_cluster_keys.each do |plumbing_item|
+            g.yield Plumbing::convert_proxy_cluster_key_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # SnapshotProxyClusterKeys exposes the read only methods of the ProxyClusterKeys
+  # service for historical queries.
+  class SnapshotProxyClusterKeys
+    extend Gem::Deprecate
+
+    def initialize(proxy_cluster_keys)
+      @proxy_cluster_keys = proxy_cluster_keys
+    end
+
+    # Get reads one ProxyClusterKey by ID.
+    def get(
+      id,
+      deadline: nil
+    )
+      return @proxy_cluster_keys.get(
+               id,
+               deadline: deadline,
+             )
+    end
+
+    # List gets a list of ProxyClusterKeys matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      return @proxy_cluster_keys.list(
+               filter,
+                            *args,
+                            deadline: deadline,
+             )
     end
   end
 

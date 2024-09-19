@@ -8544,6 +8544,175 @@ module SDM
     end
   end
 
+  # ProxyCluster represents a cluster of StrongDM proxies.
+  class ProxyCluster
+    # The public hostname/port tuple at which the proxy cluster will be
+    # accessible to clients.
+    attr_accessor :address
+    # Unique identifier of the Proxy Cluster.
+    attr_accessor :id
+    # Maintenance Windows define when this node is allowed to restart. If a node
+    # is requested to restart, it will check each window to determine if any of
+    # them permit it to restart, and if any do, it will. This check is repeated
+    # per window until the restart is successfully completed.
+    #
+    # If not set here, may be set on the command line or via an environment variable
+    # on the process itself; any server setting will take precedence over local
+    # settings. This setting is ineffective for nodes below version 38.44.0.
+    #
+    # If this setting is not applied via this remote configuration or via local
+    # configuration, the default setting is used: always allow restarts if serving
+    # no connections, and allow a restart even if serving connections between 7-8 UTC, any day.
+    attr_accessor :maintenance_windows
+    # Unique human-readable name of the proxy cluster. Names must
+    # include only letters, numbers, and hyphens (no spaces, underscores, or
+    # other special characters). Generated if not provided on create.
+    attr_accessor :name
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      address: nil,
+      id: nil,
+      maintenance_windows: nil,
+      name: nil,
+      tags: nil
+    )
+      @address = address == nil ? "" : address
+      @id = id == nil ? "" : id
+      @maintenance_windows = maintenance_windows == nil ? [] : maintenance_windows
+      @name = name == nil ? "" : name
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # Proxy Cluster Keys are authentication keys for all proxies within a cluster.
+  # The proxies within a cluster share the same key. One cluster can have
+  # multiple keys in order to facilitate key rotation.
+  class ProxyClusterKey
+    # The timestamp when this key was created.
+    attr_accessor :created_at
+    # Unique identifier of the Relay.
+    attr_accessor :id
+    # The timestamp when this key was last used, if at all.
+    attr_accessor :last_used_at
+    # The ID of the proxy cluster which this key authenticates to.
+    attr_accessor :proxy_cluster_id
+
+    def initialize(
+      created_at: nil,
+      id: nil,
+      last_used_at: nil,
+      proxy_cluster_id: nil
+    )
+      @created_at = created_at == nil ? nil : created_at
+      @id = id == nil ? "" : id
+      @last_used_at = last_used_at == nil ? nil : last_used_at
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ProxyClusterKeyCreateResponse reports how the ProxyClusterKeys were created in the system.
+  class ProxyClusterKeyCreateResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # The created ProxyClusterKey.
+    attr_accessor :proxy_cluster_key
+    # Rate limit information.
+    attr_accessor :rate_limit
+    # The secret key component of this key. It must be saved upon creation
+    # because it will not be available for retrieval later.
+    attr_accessor :secret_key
+
+    def initialize(
+      meta: nil,
+      proxy_cluster_key: nil,
+      rate_limit: nil,
+      secret_key: nil
+    )
+      @meta = meta == nil ? nil : meta
+      @proxy_cluster_key = proxy_cluster_key == nil ? nil : proxy_cluster_key
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+      @secret_key = secret_key == nil ? "" : secret_key
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ProxyClusterKeyDeleteResponse returns information about a ProxyClusterKey that was deleted.
+  class ProxyClusterKeyDeleteResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      meta: nil,
+      rate_limit: nil
+    )
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ProxyClusterKeyGetResponse returns a requested ProxyClusterKey.
+  class ProxyClusterKeyGetResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # The requested ProxyClusterKey.
+    attr_accessor :proxy_cluster_key
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      meta: nil,
+      proxy_cluster_key: nil,
+      rate_limit: nil
+    )
+      @meta = meta == nil ? nil : meta
+      @proxy_cluster_key = proxy_cluster_key == nil ? nil : proxy_cluster_key
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   # A Query is a record of a single client request to a resource, such as a SQL query.
   # Longer-running queries including long-running SSH commands and SSH, RDP, or Kubernetes
   # interactive sessions will return two Query records with the same identifier, one record

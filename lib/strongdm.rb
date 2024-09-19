@@ -29,7 +29,7 @@ module SDM #:nodoc:
     DEFAULT_BASE_RETRY_DELAY = 0.0030 # 30 ms
     DEFAULT_MAX_RETRY_DELAY = 300 # 300 seconds
     API_VERSION = "2024-03-28"
-    USER_AGENT = "strongdm-sdk-ruby/11.10.1"
+    USER_AGENT = "strongdm-sdk-ruby/11.11.0"
     private_constant :DEFAULT_MAX_RETRIES, :DEFAULT_BASE_RETRY_DELAY, :DEFAULT_MAX_RETRY_DELAY, :API_VERSION, :USER_AGENT
 
     # Creates a new strongDM API client.
@@ -88,6 +88,7 @@ module SDM #:nodoc:
       @peering_groups = PeeringGroups.new(@channel, self)
       @policies = Policies.new(@channel, self)
       @policies_history = PoliciesHistory.new(@channel, self)
+      @proxy_cluster_keys = ProxyClusterKeys.new(@channel, self)
       @queries = Queries.new(@channel, self)
       @remote_identities = RemoteIdentities.new(@channel, self)
       @remote_identities_history = RemoteIdentitiesHistory.new(@channel, self)
@@ -346,6 +347,12 @@ module SDM #:nodoc:
     #
     # See {PoliciesHistory}.
     attr_reader :policies_history
+    # Proxy Cluster Keys are authentication keys for all proxies within a cluster.
+    # The proxies within a cluster share the same key. One cluster can have
+    # multiple keys in order to facilitate key rotation.
+    #
+    # See {ProxyClusterKeys}.
+    attr_reader :proxy_cluster_keys
     # A Query is a record of a single client request to a resource, such as a SQL query.
     # Long-running SSH, RDP, or Kubernetes interactive sessions also count as queries.
     # The Queries service is read-only.
@@ -491,6 +498,7 @@ module SDM #:nodoc:
       @peering_groups = PeeringGroups.new(@channel, self)
       @policies = Policies.new(@channel, self)
       @policies_history = PoliciesHistory.new(@channel, self)
+      @proxy_cluster_keys = ProxyClusterKeys.new(@channel, self)
       @queries = Queries.new(@channel, self)
       @remote_identities = RemoteIdentities.new(@channel, self)
       @remote_identities_history = RemoteIdentitiesHistory.new(@channel, self)
@@ -533,6 +541,7 @@ module SDM #:nodoc:
       @identity_sets = SnapshotIdentitySets.new(client.identity_sets)
       @nodes = SnapshotNodes.new(client.nodes)
       @policies = SnapshotPolicies.new(client.policies)
+      @proxy_cluster_keys = SnapshotProxyClusterKeys.new(client.proxy_cluster_keys)
       @remote_identities = SnapshotRemoteIdentities.new(client.remote_identities)
       @remote_identity_groups = SnapshotRemoteIdentityGroups.new(client.remote_identity_groups)
       @resources = SnapshotResources.new(client.resources)
@@ -608,6 +617,12 @@ module SDM #:nodoc:
     #
     # See {SnapshotPolicies}.
     attr_reader :policies
+    # Proxy Cluster Keys are authentication keys for all proxies within a cluster.
+    # The proxies within a cluster share the same key. One cluster can have
+    # multiple keys in order to facilitate key rotation.
+    #
+    # See {SnapshotProxyClusterKeys}.
+    attr_reader :proxy_cluster_keys
     # RemoteIdentities assign a resource directly to an account, giving the account the permission to connect to that resource.
     #
     # See {SnapshotRemoteIdentities}.

@@ -55,6 +55,7 @@ require_relative "./peering_group_resources_pb"
 require_relative "./peering_groups_pb"
 require_relative "./policies_pb"
 require_relative "./policies_history_pb"
+require_relative "./proxy_cluster_keys_pb"
 require_relative "./queries_pb"
 require_relative "./remote_identities_pb"
 require_relative "./remote_identities_history_pb"
@@ -7318,6 +7319,9 @@ module SDM
       if porcelain.instance_of? Gateway
         plumbing.gateway = convert_gateway_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? ProxyCluster
+        plumbing.proxy_cluster = convert_proxy_cluster_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? Relay
         plumbing.relay = convert_relay_to_plumbing(porcelain)
       end
@@ -7330,6 +7334,9 @@ module SDM
       end
       if plumbing.gateway != nil
         return convert_gateway_to_porcelain(plumbing.gateway)
+      end
+      if plumbing.proxy_cluster != nil
+        return convert_proxy_cluster_to_porcelain(plumbing.proxy_cluster)
       end
       if plumbing.relay != nil
         return convert_relay_to_porcelain(plumbing.relay)
@@ -8745,6 +8752,202 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_presto_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_proxy_cluster_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = ProxyCluster.new()
+      porcelain.address = (plumbing.address)
+      porcelain.id = (plumbing.id)
+      porcelain.maintenance_windows = convert_repeated_node_maintenance_window_to_porcelain(plumbing.maintenance_windows)
+      porcelain.name = (plumbing.name)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_proxy_cluster_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::ProxyCluster.new()
+      plumbing.address = (porcelain.address)
+      plumbing.id = (porcelain.id)
+      plumbing.maintenance_windows += convert_repeated_node_maintenance_window_to_plumbing(porcelain.maintenance_windows)
+      plumbing.name = (porcelain.name)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_proxy_cluster_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_proxy_cluster_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_proxy_cluster_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_proxy_cluster_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_proxy_cluster_key_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = ProxyClusterKey.new()
+      porcelain.created_at = convert_timestamp_to_porcelain(plumbing.created_at)
+      porcelain.id = (plumbing.id)
+      porcelain.last_used_at = convert_timestamp_to_porcelain(plumbing.last_used_at)
+      porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
+      porcelain
+    end
+
+    def self.convert_proxy_cluster_key_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::ProxyClusterKey.new()
+      plumbing.created_at = convert_timestamp_to_plumbing(porcelain.created_at)
+      plumbing.id = (porcelain.id)
+      plumbing.last_used_at = convert_timestamp_to_plumbing(porcelain.last_used_at)
+      plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
+      plumbing
+    end
+    def self.convert_repeated_proxy_cluster_key_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_proxy_cluster_key_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_proxy_cluster_key_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_proxy_cluster_key_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_proxy_cluster_key_create_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = ProxyClusterKeyCreateResponse.new()
+      porcelain.meta = convert_create_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.proxy_cluster_key = convert_proxy_cluster_key_to_porcelain(plumbing.proxy_cluster_key)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain.secret_key = (plumbing.secret_key)
+      porcelain
+    end
+
+    def self.convert_proxy_cluster_key_create_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::ProxyClusterKeyCreateResponse.new()
+      plumbing.meta = convert_create_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.proxy_cluster_key = convert_proxy_cluster_key_to_plumbing(porcelain.proxy_cluster_key)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing.secret_key = (porcelain.secret_key)
+      plumbing
+    end
+    def self.convert_repeated_proxy_cluster_key_create_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_proxy_cluster_key_create_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_proxy_cluster_key_create_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_proxy_cluster_key_create_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_proxy_cluster_key_delete_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = ProxyClusterKeyDeleteResponse.new()
+      porcelain.meta = convert_delete_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_proxy_cluster_key_delete_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::ProxyClusterKeyDeleteResponse.new()
+      plumbing.meta = convert_delete_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_proxy_cluster_key_delete_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_proxy_cluster_key_delete_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_proxy_cluster_key_delete_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_proxy_cluster_key_delete_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_proxy_cluster_key_get_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = ProxyClusterKeyGetResponse.new()
+      porcelain.meta = convert_get_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.proxy_cluster_key = convert_proxy_cluster_key_to_porcelain(plumbing.proxy_cluster_key)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_proxy_cluster_key_get_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::ProxyClusterKeyGetResponse.new()
+      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.proxy_cluster_key = convert_proxy_cluster_key_to_plumbing(porcelain.proxy_cluster_key)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_proxy_cluster_key_get_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_proxy_cluster_key_get_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_proxy_cluster_key_get_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_proxy_cluster_key_get_response_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
