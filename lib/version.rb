@@ -13,5 +13,5 @@
 # limitations under the License.
 #
 module SDM
-  VERSION = "11.11.0"
+  VERSION = "11.11.2"
 end
