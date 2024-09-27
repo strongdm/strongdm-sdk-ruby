@@ -53,6 +53,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -78,6 +80,7 @@ module SDM
       name: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil
@@ -99,6 +102,7 @@ module SDM
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -135,6 +139,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -155,6 +161,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -170,6 +177,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -216,6 +224,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -240,6 +250,7 @@ module SDM
       name: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -259,6 +270,7 @@ module SDM
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -293,6 +305,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -312,6 +326,7 @@ module SDM
       name: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -326,6 +341,7 @@ module SDM
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -366,6 +382,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -386,6 +404,7 @@ module SDM
       name: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil
@@ -402,6 +421,7 @@ module SDM
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -433,6 +453,8 @@ module SDM
     attr_accessor :name
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # The role to assume after logging in.
     attr_accessor :role_arn
     # The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -455,6 +477,7 @@ module SDM
       id: nil,
       name: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       role_arn: nil,
       role_external_id: nil,
       secret_access_key: nil,
@@ -470,6 +493,7 @@ module SDM
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @role_arn = role_arn == nil ? "" : role_arn
       @role_external_id = role_external_id == nil ? "" : role_external_id
       @secret_access_key = secret_access_key == nil ? "" : secret_access_key
@@ -553,6 +577,8 @@ module SDM
     attr_accessor :name
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # The AWS region to connect to.
     attr_accessor :region
     # The role to assume after logging in.
@@ -578,6 +604,7 @@ module SDM
       identity_set_id: nil,
       name: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       region: nil,
       role_arn: nil,
       role_external_id: nil,
@@ -595,6 +622,7 @@ module SDM
       @identity_set_id = identity_set_id == nil ? "" : identity_set_id
       @name = name == nil ? "" : name
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @region = region == nil ? "" : region
       @role_arn = role_arn == nil ? "" : role_arn
       @role_external_id = role_external_id == nil ? "" : role_external_id
@@ -632,6 +660,8 @@ module SDM
     attr_accessor :name
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # The AWS region to connect to.
     attr_accessor :region
     # The role to assume after logging in.
@@ -659,6 +689,7 @@ module SDM
       identity_set_id: nil,
       name: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       region: nil,
       role_arn: nil,
       role_external_id: nil,
@@ -677,6 +708,7 @@ module SDM
       @identity_set_id = identity_set_id == nil ? "" : identity_set_id
       @name = name == nil ? "" : name
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @region = region == nil ? "" : region
       @role_arn = role_arn == nil ? "" : role_arn
       @role_external_id = role_external_id == nil ? "" : role_external_id
@@ -1764,6 +1796,8 @@ module SDM
     attr_accessor :name
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # The AWS region to connect to e.g. us-east-1.
     attr_accessor :region
     # The role to assume after logging in.
@@ -1796,6 +1830,7 @@ module SDM
       identity_set_id: nil,
       name: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       region: nil,
       role_arn: nil,
       role_external_id: nil,
@@ -1820,6 +1855,7 @@ module SDM
       @identity_set_id = identity_set_id == nil ? "" : identity_set_id
       @name = name == nil ? "" : name
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @region = region == nil ? "" : region
       @role_arn = role_arn == nil ? "" : role_arn
       @role_external_id = role_external_id == nil ? "" : role_external_id
@@ -1871,6 +1907,8 @@ module SDM
     attr_accessor :name
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # The AWS region to connect to e.g. us-east-1.
     attr_accessor :region
     # The role to assume after logging in.
@@ -1900,6 +1938,7 @@ module SDM
       identity_set_id: nil,
       name: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       region: nil,
       role_arn: nil,
       role_external_id: nil,
@@ -1922,6 +1961,7 @@ module SDM
       @identity_set_id = identity_set_id == nil ? "" : identity_set_id
       @name = name == nil ? "" : name
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @region = region == nil ? "" : region
       @role_arn = role_arn == nil ? "" : role_arn
       @role_external_id = role_external_id == nil ? "" : role_external_id
@@ -1960,6 +2000,8 @@ module SDM
     attr_accessor :name
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # The AWS region to connect to e.g. us-east-1.
     attr_accessor :region
     # The role to assume after logging in.
@@ -1984,6 +2026,7 @@ module SDM
       id: nil,
       name: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       region: nil,
       role_arn: nil,
       role_external_id: nil,
@@ -2001,6 +2044,7 @@ module SDM
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @region = region == nil ? "" : region
       @role_arn = role_arn == nil ? "" : role_arn
       @role_external_id = role_external_id == nil ? "" : role_external_id
@@ -2041,6 +2085,8 @@ module SDM
     attr_accessor :name
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # The AWS region to connect to e.g. us-east-1.
     attr_accessor :region
     # The role to assume after logging in.
@@ -2068,6 +2114,7 @@ module SDM
       id: nil,
       name: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       region: nil,
       role_arn: nil,
       role_external_id: nil,
@@ -2087,6 +2134,7 @@ module SDM
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @region = region == nil ? "" : region
       @role_arn = role_arn == nil ? "" : role_arn
       @role_external_id = role_external_id == nil ? "" : role_external_id
@@ -2122,6 +2170,8 @@ module SDM
     attr_accessor :name
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # The AWS region to connect to e.g. us-east-1.
     attr_accessor :region
     # The role to assume after logging in.
@@ -2146,6 +2196,7 @@ module SDM
       id: nil,
       name: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       region: nil,
       role_arn: nil,
       role_external_id: nil,
@@ -2162,6 +2213,7 @@ module SDM
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @region = region == nil ? "" : region
       @role_arn = role_arn == nil ? "" : role_arn
       @role_external_id = role_external_id == nil ? "" : role_external_id
@@ -2199,6 +2251,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -2220,6 +2274,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -2235,6 +2290,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -2782,6 +2838,8 @@ module SDM
     attr_accessor :output
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # The AWS region to connect to e.g. us-east-1.
     attr_accessor :region
     # The role to assume after logging in.
@@ -2806,6 +2864,7 @@ module SDM
       name: nil,
       output: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       region: nil,
       role_arn: nil,
       role_external_id: nil,
@@ -2822,6 +2881,7 @@ module SDM
       @name = name == nil ? "" : name
       @output = output == nil ? "" : output
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @region = region == nil ? "" : region
       @role_arn = role_arn == nil ? "" : role_arn
       @role_external_id = role_external_id == nil ? "" : role_external_id
@@ -2861,6 +2921,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
     attr_accessor :require_native_auth
     # ID of the secret store containing credentials for this resource, if any.
@@ -2885,6 +2947,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       require_native_auth: nil,
       secret_store_id: nil,
       subdomain: nil,
@@ -2902,6 +2965,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @require_native_auth = require_native_auth == nil ? false : require_native_auth
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
@@ -2942,6 +3006,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -2963,6 +3029,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -2979,6 +3046,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -3015,6 +3083,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # The AWS region to connect to.
     attr_accessor :region
     # If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
@@ -3039,6 +3109,7 @@ module SDM
       override_database: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       region: nil,
       role_assumption_arn: nil,
       secret_store_id: nil,
@@ -3056,6 +3127,7 @@ module SDM
       @override_database = override_database == nil ? false : override_database
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @region = region == nil ? "" : region
       @role_assumption_arn = role_assumption_arn == nil ? "" : role_assumption_arn
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
@@ -3090,6 +3162,8 @@ module SDM
     attr_accessor :password
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -3108,6 +3182,7 @@ module SDM
       name: nil,
       password: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -3121,6 +3196,7 @@ module SDM
       @name = name == nil ? "" : name
       @password = password == nil ? "" : password
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -3153,6 +3229,8 @@ module SDM
     attr_accessor :name
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -3171,6 +3249,7 @@ module SDM
       id: nil,
       name: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -3184,6 +3263,7 @@ module SDM
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -3220,6 +3300,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
     attr_accessor :require_native_auth
     # ID of the secret store containing credentials for this resource, if any.
@@ -3244,6 +3326,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       require_native_auth: nil,
       secret_store_id: nil,
       subdomain: nil,
@@ -3261,6 +3344,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @require_native_auth = require_native_auth == nil ? false : require_native_auth
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
@@ -3301,6 +3385,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -3322,6 +3408,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -3338,6 +3425,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -3376,6 +3464,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -3399,6 +3489,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -3416,6 +3507,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -3482,6 +3574,8 @@ module SDM
     attr_accessor :private_key
     # The project to connect to.
     attr_accessor :project
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -3501,6 +3595,7 @@ module SDM
       port_override: nil,
       private_key: nil,
       project: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -3515,6 +3610,7 @@ module SDM
       @port_override = port_override == nil ? 0 : port_override
       @private_key = private_key == nil ? "" : private_key
       @project = project == nil ? "" : project
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -3549,6 +3645,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -3570,6 +3668,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -3585,6 +3684,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -3624,6 +3724,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -3645,6 +3747,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -3661,6 +3764,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -3697,6 +3801,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
     attr_accessor :require_native_auth
     # ID of the secret store containing credentials for this resource, if any.
@@ -3721,6 +3827,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       require_native_auth: nil,
       secret_store_id: nil,
       subdomain: nil,
@@ -3738,6 +3845,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @require_native_auth = require_native_auth == nil ? false : require_native_auth
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
@@ -3778,6 +3886,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -3799,6 +3909,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -3815,6 +3926,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -3939,6 +4051,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -3961,6 +4075,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -3977,6 +4092,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -4008,6 +4124,8 @@ module SDM
     attr_accessor :password
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -4027,6 +4145,7 @@ module SDM
       name: nil,
       password: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -4040,6 +4159,7 @@ module SDM
       @name = name == nil ? "" : name
       @password = password == nil ? "" : password
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -4183,6 +4303,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -4204,6 +4326,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -4219,6 +4342,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -4256,6 +4380,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -4276,6 +4402,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -4291,6 +4418,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -4376,6 +4504,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -4396,6 +4526,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -4411,6 +4542,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -4447,6 +4579,8 @@ module SDM
     attr_accessor :password
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # The name of the mongo replicaset.
     attr_accessor :replica_set
     # ID of the secret store containing credentials for this resource, if any.
@@ -4469,6 +4603,7 @@ module SDM
       name: nil,
       password: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       replica_set: nil,
       secret_store_id: nil,
       subdomain: nil,
@@ -4485,6 +4620,7 @@ module SDM
       @name = name == nil ? "" : name
       @password = password == nil ? "" : password
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @replica_set = replica_set == nil ? "" : replica_set
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
@@ -4520,6 +4656,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -4539,6 +4677,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -4553,6 +4692,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -4585,6 +4725,8 @@ module SDM
     attr_accessor :name
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # The region to authenticate requests against e.g. us-east-1
     attr_accessor :region
     # The role to assume after logging in.
@@ -4609,6 +4751,7 @@ module SDM
       id: nil,
       name: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       region: nil,
       role_arn: nil,
       role_external_id: nil,
@@ -4625,6 +4768,7 @@ module SDM
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @region = region == nil ? "" : region
       @role_arn = role_arn == nil ? "" : role_arn
       @role_external_id = role_external_id == nil ? "" : role_external_id
@@ -4662,6 +4806,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -4683,6 +4829,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -4698,6 +4845,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -4733,6 +4881,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -4754,6 +4904,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -4769,6 +4920,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -4800,6 +4952,8 @@ module SDM
     attr_accessor :name
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # Space separated scopes that this login should assume into when authenticating.
     attr_accessor :scopes
     # ID of the secret store containing credentials for this resource, if any.
@@ -4817,6 +4971,7 @@ module SDM
       keyfile: nil,
       name: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       scopes: nil,
       secret_store_id: nil,
       subdomain: nil,
@@ -4829,6 +4984,7 @@ module SDM
       @keyfile = keyfile == nil ? "" : keyfile
       @name = name == nil ? "" : name
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @scopes = scopes == nil ? "" : scopes
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
@@ -5059,6 +5215,8 @@ module SDM
     attr_accessor :name
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # The service account key to authenticate with.
@@ -5083,6 +5241,7 @@ module SDM
       identity_set_id: nil,
       name: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       service_account_key: nil,
       subdomain: nil,
@@ -5102,6 +5261,7 @@ module SDM
       @identity_set_id = identity_set_id == nil ? "" : identity_set_id
       @name = name == nil ? "" : name
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @service_account_key = service_account_key == nil ? "" : service_account_key
       @subdomain = subdomain == nil ? "" : subdomain
@@ -5136,6 +5296,8 @@ module SDM
     attr_accessor :name
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # The service account key to authenticate with.
@@ -5155,6 +5317,7 @@ module SDM
       id: nil,
       name: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       service_account_key: nil,
       subdomain: nil,
@@ -5169,6 +5332,7 @@ module SDM
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @service_account_key = service_account_key == nil ? "" : service_account_key
       @subdomain = subdomain == nil ? "" : subdomain
@@ -5207,6 +5371,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -5228,6 +5394,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -5244,6 +5411,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -5280,6 +5448,8 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -5300,6 +5470,7 @@ module SDM
       host_override: nil,
       id: nil,
       name: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -5315,6 +5486,7 @@ module SDM
       @host_override = host_override == nil ? "" : host_override
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -5351,6 +5523,8 @@ module SDM
     attr_accessor :name
     # The password to authenticate with.
     attr_accessor :password
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -5373,6 +5547,7 @@ module SDM
       id: nil,
       name: nil,
       password: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -5389,6 +5564,7 @@ module SDM
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
       @password = password == nil ? "" : password
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -5424,6 +5600,8 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -5443,6 +5621,7 @@ module SDM
       host_override: nil,
       id: nil,
       name: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -5457,6 +5636,7 @@ module SDM
       @host_override = host_override == nil ? "" : host_override
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -5993,6 +6173,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -6018,6 +6200,7 @@ module SDM
       name: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil
@@ -6039,6 +6222,7 @@ module SDM
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -6075,6 +6259,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -6095,6 +6281,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -6110,6 +6297,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -6156,6 +6344,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -6180,6 +6370,7 @@ module SDM
       name: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -6199,6 +6390,7 @@ module SDM
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -6233,6 +6425,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -6252,6 +6446,7 @@ module SDM
       name: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -6266,6 +6461,7 @@ module SDM
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -6306,6 +6502,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -6326,6 +6524,7 @@ module SDM
       name: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil
@@ -6342,6 +6541,7 @@ module SDM
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -6384,6 +6584,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
     attr_accessor :require_native_auth
     # ID of the secret store containing credentials for this resource, if any.
@@ -6413,6 +6615,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       require_native_auth: nil,
       secret_store_id: nil,
       server_name: nil,
@@ -6434,6 +6637,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @require_native_auth = require_native_auth == nil ? false : require_native_auth
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @server_name = server_name == nil ? "" : server_name
@@ -6481,6 +6685,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Server name for TLS verification (unverified by StrongDM if empty)
@@ -6507,6 +6713,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       server_name: nil,
       subdomain: nil,
@@ -6527,6 +6734,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @server_name = server_name == nil ? "" : server_name
       @subdomain = subdomain == nil ? "" : subdomain
@@ -6564,6 +6772,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
     attr_accessor :require_native_auth
     # ID of the secret store containing credentials for this resource, if any.
@@ -6588,6 +6798,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       require_native_auth: nil,
       secret_store_id: nil,
       subdomain: nil,
@@ -6605,6 +6816,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @require_native_auth = require_native_auth == nil ? false : require_native_auth
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
@@ -6639,6 +6851,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -6655,6 +6869,7 @@ module SDM
       name: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil
@@ -6667,6 +6882,7 @@ module SDM
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -6702,6 +6918,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
     attr_accessor :require_native_auth
     # ID of the secret store containing credentials for this resource, if any.
@@ -6726,6 +6944,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       require_native_auth: nil,
       secret_store_id: nil,
       subdomain: nil,
@@ -6743,6 +6962,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @require_native_auth = require_native_auth == nil ? false : require_native_auth
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
@@ -6781,6 +7001,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -6803,6 +7025,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -6819,6 +7042,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -6857,6 +7081,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -6879,6 +7105,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -6895,6 +7122,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -6935,6 +7163,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # The name of the mongo replicaset.
     attr_accessor :replica_set
     # ID of the secret store containing credentials for this resource, if any.
@@ -6960,6 +7190,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       replica_set: nil,
       secret_store_id: nil,
       subdomain: nil,
@@ -6978,6 +7209,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @replica_set = replica_set == nil ? "" : replica_set
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
@@ -7018,6 +7250,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # The name of the mongo replicaset.
     attr_accessor :replica_set
     # ID of the secret store containing credentials for this resource, if any.
@@ -7043,6 +7277,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       replica_set: nil,
       secret_store_id: nil,
       subdomain: nil,
@@ -7061,6 +7296,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @replica_set = replica_set == nil ? "" : replica_set
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
@@ -7097,6 +7333,8 @@ module SDM
     attr_accessor :password
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -7118,6 +7356,7 @@ module SDM
       name: nil,
       password: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -7133,6 +7372,7 @@ module SDM
       @name = name == nil ? "" : name
       @password = password == nil ? "" : password
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -7170,6 +7410,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
     attr_accessor :require_native_auth
     # ID of the secret store containing credentials for this resource, if any.
@@ -7194,6 +7436,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       require_native_auth: nil,
       secret_store_id: nil,
       subdomain: nil,
@@ -7211,6 +7454,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @require_native_auth = require_native_auth == nil ? false : require_native_auth
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
@@ -7245,6 +7489,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -7261,6 +7507,7 @@ module SDM
       name: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil
@@ -7273,6 +7520,7 @@ module SDM
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -7306,6 +7554,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # The AWS region to connect to.
     attr_accessor :region
     # The role to assume after logging in.
@@ -7331,6 +7581,7 @@ module SDM
       name: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       region: nil,
       role_arn: nil,
       role_external_id: nil,
@@ -7348,6 +7599,7 @@ module SDM
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @region = region == nil ? "" : region
       @role_arn = role_arn == nil ? "" : role_arn
       @role_external_id = role_external_id == nil ? "" : role_external_id
@@ -7568,6 +7820,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -7590,6 +7844,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -7606,6 +7861,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -8417,6 +8673,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -8438,6 +8696,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -8454,6 +8713,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -8490,6 +8750,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -8512,6 +8774,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -8528,6 +8791,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -8948,6 +9212,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -8969,6 +9235,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -8985,6 +9252,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -9021,6 +9289,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -9041,6 +9311,7 @@ module SDM
       name: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -9056,6 +9327,7 @@ module SDM
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -9092,6 +9364,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # The AWS region to connect to.
     attr_accessor :region
     # If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
@@ -9116,6 +9390,7 @@ module SDM
       override_database: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       region: nil,
       role_assumption_arn: nil,
       secret_store_id: nil,
@@ -9133,6 +9408,7 @@ module SDM
       @override_database = override_database == nil ? false : override_database
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @region = region == nil ? "" : region
       @role_assumption_arn = role_assumption_arn == nil ? "" : role_assumption_arn
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
@@ -9169,6 +9445,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -9190,6 +9468,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -9205,6 +9484,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -9273,6 +9553,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -9289,6 +9571,7 @@ module SDM
       name: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil
@@ -9301,6 +9584,7 @@ module SDM
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -9334,6 +9618,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -9355,6 +9641,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -9370,6 +9657,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -9409,6 +9697,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -9430,6 +9720,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -9446,6 +9737,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -10348,6 +10640,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # The Schema to use to direct initial requests.
     attr_accessor :schema
     # ID of the secret store containing credentials for this resource, if any.
@@ -10372,6 +10666,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       schema: nil,
       secret_store_id: nil,
       subdomain: nil,
@@ -10390,6 +10685,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @schema = schema == nil ? "" : schema
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
@@ -10432,6 +10728,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # The Schema to use to direct initial requests.
     attr_accessor :schema
     # The Azure AD client secret (application password) with which to authenticate.
@@ -10458,6 +10756,7 @@ module SDM
       override_database: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       schema: nil,
       secret: nil,
       secret_store_id: nil,
@@ -10477,6 +10776,7 @@ module SDM
       @override_database = override_database == nil ? false : override_database
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @schema = schema == nil ? "" : schema
       @secret = secret == nil ? "" : secret
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
@@ -10522,6 +10822,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # The Active Directory domain (realm) to which the configured username belongs.
     attr_accessor :realm
     # The Schema to use to direct initial requests.
@@ -10551,6 +10853,7 @@ module SDM
       override_database: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       realm: nil,
       schema: nil,
       secret_store_id: nil,
@@ -10572,6 +10875,7 @@ module SDM
       @override_database = override_database == nil ? false : override_database
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @realm = realm == nil ? "" : realm
       @schema = schema == nil ? "" : schema
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
@@ -10613,6 +10917,8 @@ module SDM
     attr_accessor :port_forwarding
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # The public key to append to a server's authorized keys. This will be generated after resource creation.
     attr_accessor :public_key
     # ID of the secret store containing credentials for this resource, if any.
@@ -10636,6 +10942,7 @@ module SDM
       port: nil,
       port_forwarding: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       public_key: nil,
       secret_store_id: nil,
       subdomain: nil,
@@ -10653,6 +10960,7 @@ module SDM
       @port = port == nil ? 0 : port
       @port_forwarding = port_forwarding == nil ? false : port_forwarding
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @public_key = public_key == nil ? "" : public_key
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
@@ -10696,6 +11004,8 @@ module SDM
     attr_accessor :port_forwarding
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -10719,6 +11029,7 @@ module SDM
       port: nil,
       port_forwarding: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -10737,6 +11048,7 @@ module SDM
       @port = port == nil ? 0 : port
       @port_forwarding = port_forwarding == nil ? false : port_forwarding
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -10775,6 +11087,8 @@ module SDM
     attr_accessor :port_override
     # The private key used to authenticate with the server.
     attr_accessor :private_key
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -10796,6 +11110,7 @@ module SDM
       port_forwarding: nil,
       port_override: nil,
       private_key: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -10812,6 +11127,7 @@ module SDM
       @port_forwarding = port_forwarding == nil ? false : port_forwarding
       @port_override = port_override == nil ? 0 : port_override
       @private_key = private_key == nil ? "" : private_key
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -10851,6 +11167,8 @@ module SDM
     attr_accessor :port_forwarding
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -10872,6 +11190,7 @@ module SDM
       port: nil,
       port_forwarding: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -10888,6 +11207,7 @@ module SDM
       @port = port == nil ? 0 : port
       @port_forwarding = port_forwarding == nil ? false : port_forwarding
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -11189,6 +11509,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
     attr_accessor :require_native_auth
     # ID of the secret store containing credentials for this resource, if any.
@@ -11213,6 +11535,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       require_native_auth: nil,
       secret_store_id: nil,
       subdomain: nil,
@@ -11230,6 +11553,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @require_native_auth = require_native_auth == nil ? false : require_native_auth
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
@@ -11266,6 +11590,8 @@ module SDM
     attr_accessor :password
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # The schema to provide on authentication.
     attr_accessor :schema
     # ID of the secret store containing credentials for this resource, if any.
@@ -11287,6 +11613,7 @@ module SDM
       name: nil,
       password: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       schema: nil,
       secret_store_id: nil,
       subdomain: nil,
@@ -11302,6 +11629,7 @@ module SDM
       @name = name == nil ? "" : name
       @password = password == nil ? "" : password
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @schema = schema == nil ? "" : schema
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
@@ -11333,6 +11661,8 @@ module SDM
     attr_accessor :name
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # The Metadata for your snowflake IDP integration
     attr_accessor :samlmetadata
     # ID of the secret store containing credentials for this resource, if any.
@@ -11350,6 +11680,7 @@ module SDM
       id: nil,
       name: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       samlmetadata: nil,
       secret_store_id: nil,
       subdomain: nil,
@@ -11362,6 +11693,7 @@ module SDM
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @samlmetadata = samlmetadata == nil ? "" : samlmetadata
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
@@ -11396,6 +11728,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -11415,6 +11749,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -11429,6 +11764,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -11463,6 +11799,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -11482,6 +11820,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -11496,6 +11835,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -11553,6 +11893,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -11572,6 +11914,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -11586,6 +11929,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -11676,6 +12020,8 @@ module SDM
     attr_accessor :port
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -11696,6 +12042,7 @@ module SDM
       password: nil,
       port: nil,
       port_override: nil,
+      proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -11711,6 +12058,7 @@ module SDM
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
