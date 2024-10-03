@@ -514,4 +514,10 @@ module SDM
     MICROSOFT_DEFENDER = "microsoftdefender"
     DUO = "duo"
   end
+
+  # APIHost defines the API host for various control planes.
+  module APIHost
+    US = "api.strongdm.com:443"
+    UK = "api.uk.strongdm.com:443"
+  end
 end
