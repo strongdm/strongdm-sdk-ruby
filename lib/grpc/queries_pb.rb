@@ -80,6 +80,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :request_method, :string, 11
       optional :request_uri, :string, 12
       optional :request_body, :bytes, 13
+      optional :impersonation_user, :string, 14
+      repeated :impersonation_groups, :string, 15
     end
   end
 end

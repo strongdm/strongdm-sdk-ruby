@@ -9137,6 +9137,10 @@ module SDM
     attr_accessor :file_size
     # The height of the terminal or window for SSH, Kubernetes, and RDP interactive sessions.
     attr_accessor :height
+    # The impersonation groups of a Kubernetes operation.
+    attr_accessor :impersonation_groups
+    # The impersonation user of a Kubernetes operation.
+    attr_accessor :impersonation_user
     # The target pod of a Kubernetes operation.
     attr_accessor :pod
     # The HTTP request body of a Kubernetes operation.
@@ -9158,6 +9162,8 @@ module SDM
       file_name: nil,
       file_size: nil,
       height: nil,
+      impersonation_groups: nil,
+      impersonation_user: nil,
       pod: nil,
       request_body: nil,
       request_method: nil,
@@ -9172,6 +9178,8 @@ module SDM
       @file_name = file_name == nil ? "" : file_name
       @file_size = file_size == nil ? 0 : file_size
       @height = height == nil ? 0 : height
+      @impersonation_groups = impersonation_groups == nil ? [] : impersonation_groups
+      @impersonation_user = impersonation_user == nil ? "" : impersonation_user
       @pod = pod == nil ? "" : pod
       @request_body = request_body == nil ? "" : request_body
       @request_method = request_method == nil ? "" : request_method
