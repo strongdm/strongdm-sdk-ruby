@@ -11151,7 +11151,6 @@ module SDM
     end
   end
 
-  # SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class SSHPassword
     # Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
     attr_accessor :allow_deprecated_key_exchanges
