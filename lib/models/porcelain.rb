@@ -5652,6 +5652,75 @@ module SDM
     end
   end
 
+  # Healthcheck defines the status of the link between a node and a resource
+  class Healthcheck
+    # The error if unhealthy
+    attr_accessor :error_msg
+    # Whether the healthcheck succeeded.
+    attr_accessor :healthy
+    # Unique identifier of the healthcheck.
+    attr_accessor :id
+    # Unique identifier of the healthcheck node.
+    attr_accessor :node_id
+    # The name of the node.
+    attr_accessor :node_name
+    # Unique identifier of the healthcheck resource.
+    attr_accessor :resource_id
+    # The name of the resource.
+    attr_accessor :resource_name
+    # The time at which the healthcheck state was recorded.
+    attr_accessor :timestamp
+
+    def initialize(
+      error_msg: nil,
+      healthy: nil,
+      id: nil,
+      node_id: nil,
+      node_name: nil,
+      resource_id: nil,
+      resource_name: nil,
+      timestamp: nil
+    )
+      @error_msg = error_msg == nil ? "" : error_msg
+      @healthy = healthy == nil ? false : healthy
+      @id = id == nil ? "" : id
+      @node_id = node_id == nil ? "" : node_id
+      @node_name = node_name == nil ? "" : node_name
+      @resource_id = resource_id == nil ? "" : resource_id
+      @resource_name = resource_name == nil ? "" : resource_name
+      @timestamp = timestamp == nil ? nil : timestamp
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # HealthcheckListResponse returns a list of Healthchecks that meet the criteria of a
+  # HealthcheckListRequest.
+  class HealthcheckListResponse
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      rate_limit: nil
+    )
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   # IdentityAliases define the username to be used for a specific account
   # when connecting to a remote resource using that identity set.
   class IdentityAlias

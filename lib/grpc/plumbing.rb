@@ -42,6 +42,7 @@ require_relative "./approval_workflows_pb"
 require_relative "./approval_workflows_history_pb"
 require_relative "./control_panel_pb"
 require_relative "./drivers_pb"
+require_relative "./health_checks_pb"
 require_relative "./identity_aliases_pb"
 require_relative "./identity_aliases_history_pb"
 require_relative "./identity_sets_pb"
@@ -5687,6 +5688,88 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_http_no_auth_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_healthcheck_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = Healthcheck.new()
+      porcelain.error_msg = (plumbing.error_msg)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.id = (plumbing.id)
+      porcelain.node_id = (plumbing.node_id)
+      porcelain.node_name = (plumbing.node_name)
+      porcelain.resource_id = (plumbing.resource_id)
+      porcelain.resource_name = (plumbing.resource_name)
+      porcelain.timestamp = convert_timestamp_to_porcelain(plumbing.timestamp)
+      porcelain
+    end
+
+    def self.convert_healthcheck_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::Healthcheck.new()
+      plumbing.error_msg = (porcelain.error_msg)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.id = (porcelain.id)
+      plumbing.node_id = (porcelain.node_id)
+      plumbing.node_name = (porcelain.node_name)
+      plumbing.resource_id = (porcelain.resource_id)
+      plumbing.resource_name = (porcelain.resource_name)
+      plumbing.timestamp = convert_timestamp_to_plumbing(porcelain.timestamp)
+      plumbing
+    end
+    def self.convert_repeated_healthcheck_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_healthcheck_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_healthcheck_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_healthcheck_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_healthcheck_list_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = HealthcheckListResponse.new()
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_healthcheck_list_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::HealthcheckListResponse.new()
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_healthcheck_list_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_healthcheck_list_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_healthcheck_list_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_healthcheck_list_response_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items

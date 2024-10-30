@@ -2107,6 +2107,62 @@ module SDM #:nodoc:
     end
   end
 
+  # HealthChecks lists the last healthcheck between each node and resource.
+  # Note the unconventional capitalization here is to prevent having a collision with GRPC
+  #
+  # See {Healthcheck}.
+  class HealthChecks
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::HealthChecks::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # List gets a list of Healthchecks matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::HealthcheckListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("HealthChecks.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.healthchecks.each do |plumbing_item|
+            g.yield Plumbing::convert_healthcheck_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
   # IdentityAliases assign an alias to an account within an IdentitySet.
   # The alias is used as the username when connecting to a identity supported resource.
   #
