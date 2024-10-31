@@ -747,6 +747,66 @@ module SDM
       end
       items
     end
+    def self.convert_aws_instance_profile_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AWSInstanceProfile.new()
+      porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.enable_env_variables = (plumbing.enable_env_variables)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
+      porcelain.region = (plumbing.region)
+      porcelain.role_arn = (plumbing.role_arn)
+      porcelain.role_external_id = (plumbing.role_external_id)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.subdomain = (plumbing.subdomain)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_aws_instance_profile_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AWSInstanceProfile.new()
+      plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.enable_env_variables = (porcelain.enable_env_variables)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
+      plumbing.region = (porcelain.region)
+      plumbing.role_arn = (porcelain.role_arn)
+      plumbing.role_external_id = (porcelain.role_external_id)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.subdomain = (porcelain.subdomain)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_aws_instance_profile_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_aws_instance_profile_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_aws_instance_profile_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_aws_instance_profile_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_aws_store_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -10364,6 +10424,9 @@ module SDM
       if porcelain.instance_of? AWSConsoleStaticKeyPair
         plumbing.aws_console_static_key_pair = convert_aws_console_static_key_pair_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? AWSInstanceProfile
+        plumbing.aws_instance_profile = convert_aws_instance_profile_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? Azure
         plumbing.azure = convert_azure_to_plumbing(porcelain)
       end
@@ -10631,6 +10694,9 @@ module SDM
       end
       if plumbing.aws_console_static_key_pair != nil
         return convert_aws_console_static_key_pair_to_porcelain(plumbing.aws_console_static_key_pair)
+      end
+      if plumbing.aws_instance_profile != nil
+        return convert_aws_instance_profile_to_porcelain(plumbing.aws_instance_profile)
       end
       if plumbing.azure != nil
         return convert_azure_to_porcelain(plumbing.azure)

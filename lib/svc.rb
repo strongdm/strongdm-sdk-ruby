@@ -4650,6 +4650,7 @@ module SDM #:nodoc:
   # {AWS}
   # {AWSConsole}
   # {AWSConsoleStaticKeyPair}
+  # {AWSInstanceProfile}
   # {Azure}
   # {AzureCertificate}
   # {AzureMysql}
