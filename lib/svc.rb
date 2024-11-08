@@ -4672,6 +4672,8 @@ module SDM #:nodoc:
   # {Elastic}
   # {ElasticacheRedis}
   # {GCP}
+  # {GCPConsole}
+  # {GCPWIF}
   # {GoogleGKE}
   # {GoogleGKEUserImpersonation}
   # {Greenplum}

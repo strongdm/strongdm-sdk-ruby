@@ -64,6 +64,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :elastic, :message, 601, "v1.Elastic"
         optional :elasticache_redis, :message, 1601, "v1.ElasticacheRedis"
         optional :gcp, :message, 2700, "v1.GCP"
+        optional :gcp_console, :message, 3300, "v1.GCPConsole"
+        optional :gcpwif, :message, 2701, "v1.GCPWIF"
         optional :google_gke, :message, 803, "v1.GoogleGKE"
         optional :google_gke_user_impersonation, :message, 816, "v1.GoogleGKEUserImpersonation"
         optional :greenplum, :message, 1302, "v1.Greenplum"
@@ -837,6 +839,41 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :keyfile, :string, 1
       optional :port_override, :int32, 11
       optional :scopes, :string, 2
+    end
+    add_message "v1.GCPConsole" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :proxy_cluster_id, :string, 32776
+      optional :identity_alias_healthcheck_username, :string, 5
+      optional :identity_set_id, :string, 4
+      optional :port_override, :int32, 7
+      optional :session_expiry, :int32, 3
+      optional :subdomain, :string, 6
+      optional :workforce_pool_id, :string, 1
+      optional :workforce_provider_id, :string, 2
+    end
+    add_message "v1.GCPWIF" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :proxy_cluster_id, :string, 32776
+      optional :subdomain, :string, 32775
+      optional :identity_alias_healthcheck_username, :string, 5
+      optional :identity_set_id, :string, 4
+      optional :port_override, :int32, 6
+      optional :scopes, :string, 7
+      optional :session_expiry, :int32, 3
+      optional :workforce_pool_id, :string, 1
+      optional :workforce_provider_id, :string, 2
     end
     add_message "v1.GoogleGKE" do
       optional :id, :string, 32768
@@ -1754,6 +1791,8 @@ module V1
   Elastic = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Elastic").msgclass
   ElasticacheRedis = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ElasticacheRedis").msgclass
   GCP = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GCP").msgclass
+  GCPConsole = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GCPConsole").msgclass
+  GCPWIF = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GCPWIF").msgclass
   GoogleGKE = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GoogleGKE").msgclass
   GoogleGKEUserImpersonation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GoogleGKEUserImpersonation").msgclass
   Greenplum = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Greenplum").msgclass

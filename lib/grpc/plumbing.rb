@@ -5214,6 +5214,68 @@ module SDM
       end
       items
     end
+    def self.convert_gcp_console_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = GCPConsole.new()
+      porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.id = (plumbing.id)
+      porcelain.identity_alias_healthcheck_username = (plumbing.identity_alias_healthcheck_username)
+      porcelain.identity_set_id = (plumbing.identity_set_id)
+      porcelain.name = (plumbing.name)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.session_expiry = (plumbing.session_expiry)
+      porcelain.subdomain = (plumbing.subdomain)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.workforce_pool_id = (plumbing.workforce_pool_id)
+      porcelain.workforce_provider_id = (plumbing.workforce_provider_id)
+      porcelain
+    end
+
+    def self.convert_gcp_console_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::GCPConsole.new()
+      plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.id = (porcelain.id)
+      plumbing.identity_alias_healthcheck_username = (porcelain.identity_alias_healthcheck_username)
+      plumbing.identity_set_id = (porcelain.identity_set_id)
+      plumbing.name = (porcelain.name)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.session_expiry = (porcelain.session_expiry)
+      plumbing.subdomain = (porcelain.subdomain)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.workforce_pool_id = (porcelain.workforce_pool_id)
+      plumbing.workforce_provider_id = (porcelain.workforce_provider_id)
+      plumbing
+    end
+    def self.convert_repeated_gcp_console_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_gcp_console_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_gcp_console_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_gcp_console_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_gcp_store_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -5250,6 +5312,70 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_gcp_store_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_gcpwif_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = GCPWIF.new()
+      porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.id = (plumbing.id)
+      porcelain.identity_alias_healthcheck_username = (plumbing.identity_alias_healthcheck_username)
+      porcelain.identity_set_id = (plumbing.identity_set_id)
+      porcelain.name = (plumbing.name)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
+      porcelain.scopes = (plumbing.scopes)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.session_expiry = (plumbing.session_expiry)
+      porcelain.subdomain = (plumbing.subdomain)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.workforce_pool_id = (plumbing.workforce_pool_id)
+      porcelain.workforce_provider_id = (plumbing.workforce_provider_id)
+      porcelain
+    end
+
+    def self.convert_gcpwif_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::GCPWIF.new()
+      plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.id = (porcelain.id)
+      plumbing.identity_alias_healthcheck_username = (porcelain.identity_alias_healthcheck_username)
+      plumbing.identity_set_id = (porcelain.identity_set_id)
+      plumbing.name = (porcelain.name)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
+      plumbing.scopes = (porcelain.scopes)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.session_expiry = (porcelain.session_expiry)
+      plumbing.subdomain = (porcelain.subdomain)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.workforce_pool_id = (porcelain.workforce_pool_id)
+      plumbing.workforce_provider_id = (porcelain.workforce_provider_id)
+      plumbing
+    end
+    def self.convert_repeated_gcpwif_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_gcpwif_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_gcpwif_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_gcpwif_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -10490,6 +10616,12 @@ module SDM
       if porcelain.instance_of? GCP
         plumbing.gcp = convert_gcp_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? GCPConsole
+        plumbing.gcp_console = convert_gcp_console_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? GCPWIF
+        plumbing.gcpwif = convert_gcpwif_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? GoogleGKE
         plumbing.google_gke = convert_google_gke_to_plumbing(porcelain)
       end
@@ -10760,6 +10892,12 @@ module SDM
       end
       if plumbing.gcp != nil
         return convert_gcp_to_porcelain(plumbing.gcp)
+      end
+      if plumbing.gcp_console != nil
+        return convert_gcp_console_to_porcelain(plumbing.gcp_console)
+      end
+      if plumbing.gcpwif != nil
+        return convert_gcpwif_to_porcelain(plumbing.gcpwif)
       end
       if plumbing.google_gke != nil
         return convert_google_gke_to_porcelain(plumbing.google_gke)

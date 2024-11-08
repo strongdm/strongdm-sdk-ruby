@@ -5118,6 +5118,82 @@ module SDM
     end
   end
 
+  # GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class GCPConsole
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    attr_accessor :bind_interface
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+    attr_accessor :identity_alias_healthcheck_username
+    # The ID of the identity set to use for identity connections.
+    attr_accessor :identity_set_id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # The local port used by clients to connect to this resource.
+    attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+    # The length of time in seconds console sessions will live before needing to reauthenticate.
+    attr_accessor :session_expiry
+    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    attr_accessor :subdomain
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+    # The ID of the Workforce Identity Pool in GCP to use for federated authentication.
+    attr_accessor :workforce_pool_id
+    # The ID of the Workforce Identity Provider in GCP to use for federated authentication.
+    attr_accessor :workforce_provider_id
+
+    def initialize(
+      bind_interface: nil,
+      egress_filter: nil,
+      healthy: nil,
+      id: nil,
+      identity_alias_healthcheck_username: nil,
+      identity_set_id: nil,
+      name: nil,
+      port_override: nil,
+      proxy_cluster_id: nil,
+      secret_store_id: nil,
+      session_expiry: nil,
+      subdomain: nil,
+      tags: nil,
+      workforce_pool_id: nil,
+      workforce_provider_id: nil
+    )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @id = id == nil ? "" : id
+      @identity_alias_healthcheck_username = identity_alias_healthcheck_username == nil ? "" : identity_alias_healthcheck_username
+      @identity_set_id = identity_set_id == nil ? "" : identity_set_id
+      @name = name == nil ? "" : name
+      @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @session_expiry = session_expiry == nil ? 0 : session_expiry
+      @subdomain = subdomain == nil ? "" : subdomain
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @workforce_pool_id = workforce_pool_id == nil ? "" : workforce_pool_id
+      @workforce_provider_id = workforce_provider_id == nil ? "" : workforce_provider_id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class GCPStore
     # Unique identifier of the SecretStore.
     attr_accessor :id
@@ -5138,6 +5214,86 @@ module SDM
       @name = name == nil ? "" : name
       @projectid = projectid == nil ? "" : projectid
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class GCPWIF
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    attr_accessor :bind_interface
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+    attr_accessor :identity_alias_healthcheck_username
+    # The ID of the identity set to use for identity connections.
+    attr_accessor :identity_set_id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # The local port used by clients to connect to this resource.
+    attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
+    # Space separated scopes that this login should assume into when authenticating.
+    attr_accessor :scopes
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+    # The length of time in seconds console sessions will live before needing to reauthenticate.
+    attr_accessor :session_expiry
+    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    attr_accessor :subdomain
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+    # The ID of the Workforce Identity Pool in GCP to use for federated authentication.
+    attr_accessor :workforce_pool_id
+    # The ID of the Workforce Identity Provider in GCP to use for federated authentication.
+    attr_accessor :workforce_provider_id
+
+    def initialize(
+      bind_interface: nil,
+      egress_filter: nil,
+      healthy: nil,
+      id: nil,
+      identity_alias_healthcheck_username: nil,
+      identity_set_id: nil,
+      name: nil,
+      port_override: nil,
+      proxy_cluster_id: nil,
+      scopes: nil,
+      secret_store_id: nil,
+      session_expiry: nil,
+      subdomain: nil,
+      tags: nil,
+      workforce_pool_id: nil,
+      workforce_provider_id: nil
+    )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @id = id == nil ? "" : id
+      @identity_alias_healthcheck_username = identity_alias_healthcheck_username == nil ? "" : identity_alias_healthcheck_username
+      @identity_set_id = identity_set_id == nil ? "" : identity_set_id
+      @name = name == nil ? "" : name
+      @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
+      @scopes = scopes == nil ? "" : scopes
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @session_expiry = session_expiry == nil ? 0 : session_expiry
+      @subdomain = subdomain == nil ? "" : subdomain
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @workforce_pool_id = workforce_pool_id == nil ? "" : workforce_pool_id
+      @workforce_provider_id = workforce_provider_id == nil ? "" : workforce_provider_id
     end
 
     def to_json(options = {})
