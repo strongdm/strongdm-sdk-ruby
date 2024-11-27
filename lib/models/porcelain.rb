@@ -835,6 +835,7 @@ module SDM
     # The account that initiated the request.
     attr_accessor :account_id
     # Duration of the access request.
+    # Deprecated: use requested/result duration instead
     attr_accessor :duration
     # The account grant created, if it exists.
     attr_accessor :grant_id
@@ -842,8 +843,12 @@ module SDM
     attr_accessor :id
     # The reason the access was requested.
     attr_accessor :reason
+    # The duration that access was requested for, if any.
+    attr_accessor :requestedduration
     # The resource id.
     attr_accessor :resource_id
+    # The duration that results from an approved request.
+    attr_accessor :resultduration
     # The timestamp when the requested access will be granted.
     # If this field is not specified it will default to the current time.
     attr_accessor :start_from
@@ -862,7 +867,9 @@ module SDM
       grant_id: nil,
       id: nil,
       reason: nil,
+      requestedduration: nil,
       resource_id: nil,
+      resultduration: nil,
       start_from: nil,
       status: nil,
       status_at: nil,
@@ -874,7 +881,9 @@ module SDM
       @grant_id = grant_id == nil ? "" : grant_id
       @id = id == nil ? "" : id
       @reason = reason == nil ? "" : reason
+      @requestedduration = requestedduration == nil ? nil : requestedduration
       @resource_id = resource_id == nil ? "" : resource_id
+      @resultduration = resultduration == nil ? nil : resultduration
       @start_from = start_from == nil ? nil : start_from
       @status = status == nil ? "" : status
       @status_at = status_at == nil ? nil : status_at
@@ -5243,6 +5252,8 @@ module SDM
     attr_accessor :name
     # The local port used by clients to connect to this resource.
     attr_accessor :port_override
+    # When specified, all project scoped requests will use this Project ID, overriding the project ID specified by clients
+    attr_accessor :project_id
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
     # Space separated scopes that this login should assume into when authenticating.
@@ -5269,6 +5280,7 @@ module SDM
       identity_set_id: nil,
       name: nil,
       port_override: nil,
+      project_id: nil,
       proxy_cluster_id: nil,
       scopes: nil,
       secret_store_id: nil,
@@ -5286,6 +5298,7 @@ module SDM
       @identity_set_id = identity_set_id == nil ? "" : identity_set_id
       @name = name == nil ? "" : name
       @port_override = port_override == nil ? 0 : port_override
+      @project_id = project_id == nil ? "" : project_id
       @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @scopes = scopes == nil ? "" : scopes
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id

@@ -17,6 +17,7 @@
 
 require "google/protobuf"
 
+require "google/protobuf/duration_pb"
 require "google/protobuf/timestamp_pb"
 require "options_pb"
 require "spec_pb"
@@ -45,6 +46,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :status_at, :message, 9, "google.protobuf.Timestamp"
       optional :grant_id, :string, 10
       optional :duration, :int64, 11
+      optional :requestedDuration, :message, 13, "google.protobuf.Duration"
+      optional :resultDuration, :message, 14, "google.protobuf.Duration"
       optional :requester_name, :string, 12
     end
     add_message "v1.AccessRequestEvent" do
@@ -69,6 +72,12 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :start_from, :message, 3, "google.protobuf.Timestamp"
       optional :duration, :string, 4
     end
+    add_message "v1.RequestAccessRequestConfig" do
+      repeated :resource_ids, :string, 1
+      optional :reason, :string, 2
+      optional :start_from, :message, 3, "google.protobuf.Timestamp"
+      optional :duration, :string, 4
+    end
   end
 end
 
@@ -79,4 +88,5 @@ module V1
   AccessRequestEvent = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AccessRequestEvent").msgclass
   RequestableResource = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RequestableResource").msgclass
   AccessRequestConfig = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AccessRequestConfig").msgclass
+  RequestAccessRequestConfig = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RequestAccessRequestConfig").msgclass
 end

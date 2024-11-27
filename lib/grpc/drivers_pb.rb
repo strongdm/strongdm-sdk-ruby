@@ -870,6 +870,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :identity_alias_healthcheck_username, :string, 5
       optional :identity_set_id, :string, 4
       optional :port_override, :int32, 6
+      optional :project_id, :string, 13
       optional :scopes, :string, 7
       optional :session_expiry, :int32, 3
       optional :workforce_pool_id, :string, 1
