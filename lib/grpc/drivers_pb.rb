@@ -1404,6 +1404,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :hostname, :string, 1
       optional :identity_alias_healthcheck_username, :string, 6
       optional :identity_set_id, :string, 5
+      optional :lock_required, :bool, 11
       optional :port, :int32, 4
       optional :port_override, :int32, 3
       optional :username, :string, 2

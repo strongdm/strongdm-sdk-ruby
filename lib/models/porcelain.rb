@@ -9600,6 +9600,8 @@ module SDM
     attr_accessor :identity_alias_healthcheck_username
     # The ID of the identity set to use for identity connections.
     attr_accessor :identity_set_id
+    # When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+    attr_accessor :lock_required
     # Unique human-readable name of the Resource.
     attr_accessor :name
     # The port to dial to initiate a connection from the egress node to this resource.
@@ -9625,6 +9627,7 @@ module SDM
       id: nil,
       identity_alias_healthcheck_username: nil,
       identity_set_id: nil,
+      lock_required: nil,
       name: nil,
       port: nil,
       port_override: nil,
@@ -9641,6 +9644,7 @@ module SDM
       @id = id == nil ? "" : id
       @identity_alias_healthcheck_username = identity_alias_healthcheck_username == nil ? "" : identity_alias_healthcheck_username
       @identity_set_id = identity_set_id == nil ? "" : identity_set_id
+      @lock_required = lock_required == nil ? false : lock_required
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
