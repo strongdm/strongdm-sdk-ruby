@@ -10412,13 +10412,17 @@ module SDM
     # The list of events of the ReplayChunk. If the Query is encrypted, this field is always empty
     # and the events can be obtained by decrypting the data using the QueryKey returned with the Query.
     attr_accessor :events
+    # If the data is encrypted, this contains the encrypted symmetric key
+    attr_accessor :symmetric_key
 
     def initialize(
       data: nil,
-      events: nil
+      events: nil,
+      symmetric_key: nil
     )
       @data = data == nil ? "" : data
       @events = events == nil ? [] : events
+      @symmetric_key = symmetric_key == nil ? "" : symmetric_key
     end
 
     def to_json(options = {})

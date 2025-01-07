@@ -10388,6 +10388,7 @@ module SDM
       porcelain = ReplayChunk.new()
       porcelain.data = (plumbing.data)
       porcelain.events = convert_repeated_replay_chunk_event_to_porcelain(plumbing.events)
+      porcelain.symmetric_key = (plumbing.symmetric_key)
       porcelain
     end
 
@@ -10398,6 +10399,7 @@ module SDM
       plumbing = V1::ReplayChunk.new()
       plumbing.data = (porcelain.data)
       plumbing.events += convert_repeated_replay_chunk_event_to_plumbing(porcelain.events)
+      plumbing.symmetric_key = (porcelain.symmetric_key)
       plumbing
     end
     def self.convert_repeated_replay_chunk_to_plumbing(porcelains)

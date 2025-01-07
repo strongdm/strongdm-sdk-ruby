@@ -35,6 +35,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.ReplayChunk" do
       optional :data, :bytes, 1
       repeated :events, :message, 2, "v1.ReplayChunkEvent"
+      optional :symmetric_key, :string, 3
     end
     add_message "v1.ReplayChunkEvent" do
       optional :data, :bytes, 1
