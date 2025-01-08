@@ -13748,6 +13748,8 @@ module SDM
         return nil
       end
       porcelain = Workflow.new()
+      porcelain.access_request_fixed_duration = convert_duration_to_porcelain(plumbing.access_request_fixed_duration)
+      porcelain.access_request_max_duration = convert_duration_to_porcelain(plumbing.access_request_max_duration)
       porcelain.access_rules = convert_access_rules_to_porcelain(plumbing.access_rules)
       porcelain.approval_flow_id = (plumbing.approval_flow_id)
       porcelain.auto_grant = (plumbing.auto_grant)
@@ -13764,6 +13766,8 @@ module SDM
         return nil
       end
       plumbing = V1::Workflow.new()
+      plumbing.access_request_fixed_duration = convert_duration_to_plumbing(porcelain.access_request_fixed_duration)
+      plumbing.access_request_max_duration = convert_duration_to_plumbing(porcelain.access_request_max_duration)
       plumbing.access_rules = convert_access_rules_to_plumbing(porcelain.access_rules)
       plumbing.approval_flow_id = (porcelain.approval_flow_id)
       plumbing.auto_grant = (porcelain.auto_grant)

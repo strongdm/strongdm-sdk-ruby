@@ -12969,6 +12969,12 @@ module SDM
   # the users that can request that access, and the mechanism for approving those requests which can either
   # but automatic approval or a set of users authorized to approve the requests.
   class Workflow
+    # Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty.
+    # If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+    attr_accessor :access_request_fixed_duration
+    # Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty.
+    # If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+    attr_accessor :access_request_max_duration
     # AccessRules is a list of access rules defining the resources this Workflow provides access to.
     attr_accessor :access_rules
     # Optional approval flow ID identifies an approval flow that linked to the workflow
@@ -12991,6 +12997,8 @@ module SDM
     attr_accessor :weight
 
     def initialize(
+      access_request_fixed_duration: nil,
+      access_request_max_duration: nil,
       access_rules: nil,
       approval_flow_id: nil,
       auto_grant: nil,
@@ -13000,6 +13008,8 @@ module SDM
       name: nil,
       weight: nil
     )
+      @access_request_fixed_duration = access_request_fixed_duration == nil ? nil : access_request_fixed_duration
+      @access_request_max_duration = access_request_max_duration == nil ? nil : access_request_max_duration
       @access_rules = access_rules == nil ? SDM::_porcelain_zero_value_access_rules() : access_rules
       @approval_flow_id = approval_flow_id == nil ? "" : approval_flow_id
       @auto_grant = auto_grant == nil ? false : auto_grant

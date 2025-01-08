@@ -17,6 +17,7 @@
 
 require "google/protobuf"
 
+require "google/protobuf/duration_pb"
 require "options_pb"
 require "spec_pb"
 
@@ -75,6 +76,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :auto_grant, :bool, 5
       optional :enabled, :bool, 6
       optional :requires_reason, :bool, 7
+      optional :access_request_max_duration, :message, 10, "google.protobuf.Duration"
+      optional :access_request_fixed_duration, :message, 11, "google.protobuf.Duration"
       optional :access_rules, :string, 8
       optional :approval_flow_id, :string, 9
     end
