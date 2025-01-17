@@ -52,6 +52,9 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :big_query, :message, 200, "v1.BigQuery"
         optional :cassandra, :message, 300, "v1.Cassandra"
         optional :citus, :message, 1305, "v1.Citus"
+        optional :click_house_http, :message, 5, "v1.ClickHouseHTTP"
+        optional :click_house_my_sql, :message, 1108, "v1.ClickHouseMySQL"
+        optional :click_house_tcp, :message, 6, "v1.ClickHouseTCP"
         optional :clustrix, :message, 1102, "v1.Clustrix"
         optional :cockroach, :message, 1303, "v1.Cockroach"
         optional :couchbase_database, :message, 3201, "v1.CouchbaseDatabase"
@@ -62,6 +65,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :document_db_replica_set, :message, 1053, "v1.DocumentDBReplicaSet"
         optional :druid, :message, 400, "v1.Druid"
         optional :dynamo_db, :message, 500, "v1.DynamoDB"
+        optional :dynamo_dbiam, :message, 501, "v1.DynamoDBIAM"
         optional :elastic, :message, 601, "v1.Elastic"
         optional :elasticache_redis, :message, 1601, "v1.ElasticacheRedis"
         optional :gcp, :message, 2700, "v1.GCP"
@@ -638,6 +642,57 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port_override, :int32, 5
       optional :username, :string, 2
     end
+    add_message "v1.ClickHouseHTTP" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :proxy_cluster_id, :string, 32776
+      optional :database, :string, 5
+      optional :password, :string, 3
+      optional :port_override, :int32, 4
+      optional :url, :string, 1
+      optional :username, :string, 2
+    end
+    add_message "v1.ClickHouseMySQL" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :proxy_cluster_id, :string, 32776
+      optional :subdomain, :string, 32775
+      optional :database, :string, 4
+      optional :hostname, :string, 1
+      optional :password, :string, 3
+      optional :port, :int32, 6
+      optional :port_override, :int32, 5
+      optional :require_native_auth, :bool, 7
+      optional :username, :string, 2
+    end
+    add_message "v1.ClickHouseTCP" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :proxy_cluster_id, :string, 32776
+      optional :subdomain, :string, 32775
+      optional :database, :string, 7
+      optional :hostname, :string, 1
+      optional :password, :string, 3
+      optional :port, :int32, 5
+      optional :port_override, :int32, 4
+      optional :tls_required, :bool, 6
+      optional :username, :string, 2
+    end
     add_message "v1.Clustrix" do
       optional :id, :string, 32768
       optional :name, :string, 32769
@@ -810,6 +865,22 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :role_arn, :string, 6
       optional :role_external_id, :string, 7
       optional :secret_access_key, :string, 2
+    end
+    add_message "v1.DynamoDBIAM" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :proxy_cluster_id, :string, 32776
+      optional :subdomain, :string, 32775
+      optional :endpoint, :string, 2
+      optional :port_override, :int32, 3
+      optional :region, :string, 1
+      optional :role_arn, :string, 4
+      optional :role_external_id, :string, 5
     end
     add_message "v1.Elastic" do
       optional :id, :string, 32768
@@ -1800,6 +1871,9 @@ module V1
   BigQuery = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.BigQuery").msgclass
   Cassandra = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Cassandra").msgclass
   Citus = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Citus").msgclass
+  ClickHouseHTTP = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ClickHouseHTTP").msgclass
+  ClickHouseMySQL = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ClickHouseMySQL").msgclass
+  ClickHouseTCP = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ClickHouseTCP").msgclass
   Clustrix = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Clustrix").msgclass
   Cockroach = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Cockroach").msgclass
   CouchbaseDatabase = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.CouchbaseDatabase").msgclass
@@ -1810,6 +1884,7 @@ module V1
   DocumentDBReplicaSet = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DocumentDBReplicaSet").msgclass
   Druid = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Druid").msgclass
   DynamoDB = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DynamoDB").msgclass
+  DynamoDBIAM = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DynamoDBIAM").msgclass
   Elastic = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Elastic").msgclass
   ElasticacheRedis = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ElasticacheRedis").msgclass
   GCP = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GCP").msgclass

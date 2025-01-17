@@ -4660,6 +4660,9 @@ module SDM #:nodoc:
   # {BigQuery}
   # {Cassandra}
   # {Citus}
+  # {ClickHouseHTTP}
+  # {ClickHouseMySQL}
+  # {ClickHouseTCP}
   # {Clustrix}
   # {Cockroach}
   # {CouchbaseDatabase}
@@ -4670,6 +4673,7 @@ module SDM #:nodoc:
   # {DocumentDBReplicaSet}
   # {Druid}
   # {DynamoDB}
+  # {DynamoDBIAM}
   # {Elastic}
   # {ElasticacheRedis}
   # {GCP}

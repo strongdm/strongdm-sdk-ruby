@@ -4088,6 +4088,192 @@ module SDM
       end
       items
     end
+    def self.convert_click_house_http_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = ClickHouseHTTP.new()
+      porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.database = (plumbing.database)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.password = (plumbing.password)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.url = (plumbing.url)
+      porcelain.username = (plumbing.username)
+      porcelain
+    end
+
+    def self.convert_click_house_http_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::ClickHouseHTTP.new()
+      plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.database = (porcelain.database)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.url = (porcelain.url)
+      plumbing.username = (porcelain.username)
+      plumbing
+    end
+    def self.convert_repeated_click_house_http_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_click_house_http_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_click_house_http_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_click_house_http_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_click_house_my_sql_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = ClickHouseMySQL.new()
+      porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.database = (plumbing.database)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.password = (plumbing.password)
+      porcelain.port = (plumbing.port)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
+      porcelain.require_native_auth = (plumbing.require_native_auth)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.subdomain = (plumbing.subdomain)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.username = (plumbing.username)
+      porcelain
+    end
+
+    def self.convert_click_house_my_sql_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::ClickHouseMySQL.new()
+      plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.database = (porcelain.database)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
+      plumbing.require_native_auth = (porcelain.require_native_auth)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.subdomain = (porcelain.subdomain)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
+      plumbing
+    end
+    def self.convert_repeated_click_house_my_sql_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_click_house_my_sql_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_click_house_my_sql_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_click_house_my_sql_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_click_house_tcp_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = ClickHouseTCP.new()
+      porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.database = (plumbing.database)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.password = (plumbing.password)
+      porcelain.port = (plumbing.port)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.subdomain = (plumbing.subdomain)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.tls_required = (plumbing.tls_required)
+      porcelain.username = (plumbing.username)
+      porcelain
+    end
+
+    def self.convert_click_house_tcp_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::ClickHouseTCP.new()
+      plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.database = (porcelain.database)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.subdomain = (porcelain.subdomain)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.tls_required = (porcelain.tls_required)
+      plumbing.username = (porcelain.username)
+      plumbing
+    end
+    def self.convert_repeated_click_house_tcp_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_click_house_tcp_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_click_house_tcp_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_click_house_tcp_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_clustrix_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -5050,6 +5236,66 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_dynamo_db_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_dynamo_dbiam_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = DynamoDBIAM.new()
+      porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.endpoint = (plumbing.endpoint)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
+      porcelain.region = (plumbing.region)
+      porcelain.role_arn = (plumbing.role_arn)
+      porcelain.role_external_id = (plumbing.role_external_id)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.subdomain = (plumbing.subdomain)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_dynamo_dbiam_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::DynamoDBIAM.new()
+      plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.endpoint = (porcelain.endpoint)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
+      plumbing.region = (porcelain.region)
+      plumbing.role_arn = (porcelain.role_arn)
+      plumbing.role_external_id = (porcelain.role_external_id)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.subdomain = (porcelain.subdomain)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_dynamo_dbiam_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_dynamo_dbiam_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_dynamo_dbiam_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_dynamo_dbiam_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -10654,6 +10900,15 @@ module SDM
       if porcelain.instance_of? Citus
         plumbing.citus = convert_citus_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? ClickHouseHTTP
+        plumbing.click_house_http = convert_click_house_http_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? ClickHouseMySQL
+        plumbing.click_house_my_sql = convert_click_house_my_sql_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? ClickHouseTCP
+        plumbing.click_house_tcp = convert_click_house_tcp_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? Clustrix
         plumbing.clustrix = convert_clustrix_to_plumbing(porcelain)
       end
@@ -10683,6 +10938,9 @@ module SDM
       end
       if porcelain.instance_of? DynamoDB
         plumbing.dynamo_db = convert_dynamo_db_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? DynamoDBIAM
+        plumbing.dynamo_dbiam = convert_dynamo_dbiam_to_plumbing(porcelain)
       end
       if porcelain.instance_of? Elastic
         plumbing.elastic = convert_elastic_to_plumbing(porcelain)
@@ -10934,6 +11192,15 @@ module SDM
       if plumbing.citus != nil
         return convert_citus_to_porcelain(plumbing.citus)
       end
+      if plumbing.click_house_http != nil
+        return convert_click_house_http_to_porcelain(plumbing.click_house_http)
+      end
+      if plumbing.click_house_my_sql != nil
+        return convert_click_house_my_sql_to_porcelain(plumbing.click_house_my_sql)
+      end
+      if plumbing.click_house_tcp != nil
+        return convert_click_house_tcp_to_porcelain(plumbing.click_house_tcp)
+      end
       if plumbing.clustrix != nil
         return convert_clustrix_to_porcelain(plumbing.clustrix)
       end
@@ -10963,6 +11230,9 @@ module SDM
       end
       if plumbing.dynamo_db != nil
         return convert_dynamo_db_to_porcelain(plumbing.dynamo_db)
+      end
+      if plumbing.dynamo_dbiam != nil
+        return convert_dynamo_dbiam_to_porcelain(plumbing.dynamo_dbiam)
       end
       if plumbing.elastic != nil
         return convert_elastic_to_porcelain(plumbing.elastic)
