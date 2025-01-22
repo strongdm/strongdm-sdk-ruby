@@ -4670,6 +4670,7 @@ module SDM #:nodoc:
   # {DB2I}
   # {DB2LUW}
   # {DocumentDBHost}
+  # {DocumentDBHostIAM}
   # {DocumentDBReplicaSet}
   # {Druid}
   # {DynamoDB}
