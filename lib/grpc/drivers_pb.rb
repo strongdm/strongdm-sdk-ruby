@@ -40,6 +40,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :amazon_es, :message, 600, "v1.AmazonES"
         optional :amazon_mqamqp_091, :message, 2501, "v1.AmazonMQAMQP091"
         optional :athena, :message, 100, "v1.Athena"
+        optional :athena_iam, :message, 3400, "v1.AthenaIAM"
         optional :aurora_mysql, :message, 1101, "v1.AuroraMysql"
         optional :aurora_mysql_iam, :message, 1109, "v1.AuroraMysqlIAM"
         optional :aurora_postgres, :message, 1301, "v1.AuroraPostgres"
@@ -431,6 +432,22 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :role_arn, :string, 6
       optional :role_external_id, :string, 7
       optional :secret_access_key, :string, 2
+    end
+    add_message "v1.AthenaIAM" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :proxy_cluster_id, :string, 32776
+      optional :subdomain, :string, 32775
+      optional :output, :string, 1
+      optional :port_override, :int32, 2
+      optional :region, :string, 3
+      optional :role_arn, :string, 4
+      optional :role_external_id, :string, 5
     end
     add_message "v1.AuroraMysql" do
       optional :id, :string, 32768
@@ -1875,6 +1892,7 @@ module V1
   AmazonES = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AmazonES").msgclass
   AmazonMQAMQP091 = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AmazonMQAMQP091").msgclass
   Athena = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Athena").msgclass
+  AthenaIAM = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AthenaIAM").msgclass
   AuroraMysql = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuroraMysql").msgclass
   AuroraMysqlIAM = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuroraMysqlIAM").msgclass
   AuroraPostgres = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuroraPostgres").msgclass

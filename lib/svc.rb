@@ -4644,6 +4644,7 @@ module SDM #:nodoc:
   # {AmazonES}
   # {AmazonMQAMQP091}
   # {Athena}
+  # {AthenaIAM}
   # {AuroraMysql}
   # {AuroraMysqlIAM}
   # {AuroraPostgres}
