@@ -9964,6 +9964,8 @@ module SDM
     attr_accessor :impersonation_user
     # The target pod of a Kubernetes operation.
     attr_accessor :pod
+    # The additional impersonation groups, as granted by privilege levels, of a Kubernetes operation.
+    attr_accessor :privilege_groups
     # The HTTP request body of a Kubernetes operation.
     attr_accessor :request_body
     # The HTTP request method of a Kubernetes operation.
@@ -9986,6 +9988,7 @@ module SDM
       impersonation_groups: nil,
       impersonation_user: nil,
       pod: nil,
+      privilege_groups: nil,
       request_body: nil,
       request_method: nil,
       request_uri: nil,
@@ -10002,6 +10005,7 @@ module SDM
       @impersonation_groups = impersonation_groups == nil ? [] : impersonation_groups
       @impersonation_user = impersonation_user == nil ? "" : impersonation_user
       @pod = pod == nil ? "" : pod
+      @privilege_groups = privilege_groups == nil ? [] : privilege_groups
       @request_body = request_body == nil ? "" : request_body
       @request_method = request_method == nil ? "" : request_method
       @request_uri = request_uri == nil ? "" : request_uri

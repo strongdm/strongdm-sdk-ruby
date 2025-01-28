@@ -82,6 +82,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :request_body, :bytes, 13
       optional :impersonation_user, :string, 14
       repeated :impersonation_groups, :string, 15
+      repeated :privilege_groups, :string, 16
     end
   end
 end

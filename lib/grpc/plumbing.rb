@@ -24,6 +24,7 @@ require_relative "./tags_pb"
 require_relative "./access_requests_pb"
 require_relative "./access_request_events_history_pb"
 require_relative "./access_requests_history_pb"
+require_relative "./drivers_pb"
 require_relative "./account_attachments_pb"
 require_relative "./account_attachments_history_pb"
 require_relative "./account_grants_pb"
@@ -41,7 +42,6 @@ require_relative "./approval_workflow_steps_history_pb"
 require_relative "./approval_workflows_pb"
 require_relative "./approval_workflows_history_pb"
 require_relative "./control_panel_pb"
-require_relative "./drivers_pb"
 require_relative "./health_checks_pb"
 require_relative "./identity_aliases_pb"
 require_relative "./identity_aliases_history_pb"
@@ -9890,6 +9890,7 @@ module SDM
       porcelain.impersonation_groups = (plumbing.impersonation_groups)
       porcelain.impersonation_user = (plumbing.impersonation_user)
       porcelain.pod = (plumbing.pod)
+      porcelain.privilege_groups = (plumbing.privilege_groups)
       porcelain.request_body = (plumbing.request_body)
       porcelain.request_method = (plumbing.request_method)
       porcelain.request_uri = (plumbing.request_uri)
@@ -9913,6 +9914,7 @@ module SDM
       plumbing.impersonation_groups += (porcelain.impersonation_groups)
       plumbing.impersonation_user = (porcelain.impersonation_user)
       plumbing.pod = (porcelain.pod)
+      plumbing.privilege_groups += (porcelain.privilege_groups)
       plumbing.request_body = (porcelain.request_body)
       plumbing.request_method = (porcelain.request_method)
       plumbing.request_uri = (porcelain.request_uri)

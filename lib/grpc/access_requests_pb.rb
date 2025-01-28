@@ -56,6 +56,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :actor_id, :string, 3
       optional :type, :string, 4
       optional :metadata, :string, 5
+      optional :time, :message, 6, "google.protobuf.Timestamp"
     end
     add_message "v1.RequestableResource" do
       optional :id, :string, 1
