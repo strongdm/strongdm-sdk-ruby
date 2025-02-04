@@ -40,19 +40,23 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :rate_limit, :message, 1, "v1.RateLimitMetadata"
     end
     add_message "v1.CreateRequestMetadata" do
+      optional :fulfillments, :message, 1, "v1.FulfillmentsMetadata"
     end
     add_message "v1.CreateResponseMetadata" do
     end
     add_message "v1.GetRequestMetadata" do
       optional :snapshot_at, :message, 1, "google.protobuf.Timestamp"
+      optional :fulfillments, :message, 2, "v1.FulfillmentsMetadata"
     end
     add_message "v1.GetResponseMetadata" do
     end
     add_message "v1.UpdateRequestMetadata" do
+      optional :fulfillments, :message, 1, "v1.FulfillmentsMetadata"
     end
     add_message "v1.UpdateResponseMetadata" do
     end
     add_message "v1.DeleteRequestMetadata" do
+      optional :fulfillments, :message, 1, "v1.FulfillmentsMetadata"
     end
     add_message "v1.DeleteResponseMetadata" do
     end
@@ -62,6 +66,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :limit, :int32, 3
       optional :order_by, :string, 4
       optional :snapshot_at, :message, 5, "google.protobuf.Timestamp"
+      optional :fulfillments, :message, 6, "v1.FulfillmentsMetadata"
     end
     add_message "v1.ListResponseMetadata" do
       optional :next_cursor, :string, 1
@@ -74,8 +79,23 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :bucket, :string, 4
     end
     add_message "v1.GenericRequestMetadata" do
+      optional :fulfillments, :message, 1, "v1.FulfillmentsMetadata"
     end
     add_message "v1.GenericResponseMetadata" do
+    end
+    add_message "v1.RequirementsMetadata" do
+      repeated :requirements, :message, 1, "v1.Requirement"
+    end
+    add_message "v1.FulfillmentsMetadata" do
+      repeated :fulfillments, :message, 1, "v1.Fulfillment"
+    end
+    add_message "v1.Requirement" do
+      optional :type, :string, 1
+      optional :value, :string, 2
+    end
+    add_message "v1.Fulfillment" do
+      optional :requirement, :message, 1, "v1.Requirement"
+      optional :value, :string, 2
     end
   end
 end
@@ -101,4 +121,8 @@ module V1
   RateLimitMetadata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RateLimitMetadata").msgclass
   GenericRequestMetadata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GenericRequestMetadata").msgclass
   GenericResponseMetadata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GenericResponseMetadata").msgclass
+  RequirementsMetadata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RequirementsMetadata").msgclass
+  FulfillmentsMetadata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.FulfillmentsMetadata").msgclass
+  Requirement = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Requirement").msgclass
+  Fulfillment = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Fulfillment").msgclass
 end

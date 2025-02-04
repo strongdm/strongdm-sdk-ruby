@@ -66,6 +66,14 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :authentication, :string, 5
       optional :tags, :message, 6, "v1.Tags"
       optional :access, :string, 7
+      optional :privileges, :message, 8, "v1.PrivilegesMessage"
+      optional :privileges_requirement_status, :string, 9
+    end
+    add_message "v1.PrivilegesMessage" do
+      optional :kubernetes, :message, 1, "v1.KubernetesPrivileges"
+    end
+    add_message "v1.KubernetesPrivileges" do
+      repeated :groups, :string, 1
     end
     add_message "v1.AccessRequestConfig" do
       optional :resource_id, :string, 1
@@ -89,6 +97,8 @@ module V1
   AccessRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AccessRequest").msgclass
   AccessRequestEvent = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AccessRequestEvent").msgclass
   RequestableResource = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RequestableResource").msgclass
+  PrivilegesMessage = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.PrivilegesMessage").msgclass
+  KubernetesPrivileges = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.KubernetesPrivileges").msgclass
   AccessRequestConfig = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AccessRequestConfig").msgclass
   RequestAccessRequestConfig = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RequestAccessRequestConfig").msgclass
 end

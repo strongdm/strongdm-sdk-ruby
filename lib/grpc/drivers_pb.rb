@@ -38,6 +38,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :amazon_eks_instance_profile_user_impersonation, :message, 813, "v1.AmazonEKSInstanceProfileUserImpersonation"
         optional :amazon_eks_user_impersonation, :message, 818, "v1.AmazonEKSUserImpersonation"
         optional :amazon_es, :message, 600, "v1.AmazonES"
+        optional :amazon_esiam, :message, 602, "v1.AmazonESIAM"
         optional :amazon_mqamqp_091, :message, 2501, "v1.AmazonMQAMQP091"
         optional :athena, :message, 100, "v1.Athena"
         optional :athena_iam, :message, 3400, "v1.AthenaIAM"
@@ -397,6 +398,23 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :role_arn, :string, 6
       optional :role_external_id, :string, 7
       optional :secret_access_key, :string, 2
+    end
+    add_message "v1.AmazonESIAM" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :proxy_cluster_id, :string, 32776
+      optional :subdomain, :string, 32775
+      optional :endpoint, :string, 1
+      optional :port_override, :int32, 3
+      optional :region, :string, 2
+      optional :role_arn, :string, 5
+      optional :role_external_id, :string, 6
+      optional :tlsRequired, :bool, 4
     end
     add_message "v1.AmazonMQAMQP091" do
       optional :id, :string, 32768
@@ -1890,6 +1908,7 @@ module V1
   AmazonEKSInstanceProfileUserImpersonation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AmazonEKSInstanceProfileUserImpersonation").msgclass
   AmazonEKSUserImpersonation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AmazonEKSUserImpersonation").msgclass
   AmazonES = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AmazonES").msgclass
+  AmazonESIAM = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AmazonESIAM").msgclass
   AmazonMQAMQP091 = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AmazonMQAMQP091").msgclass
   Athena = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Athena").msgclass
   AthenaIAM = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AthenaIAM").msgclass

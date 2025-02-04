@@ -4642,6 +4642,7 @@ module SDM #:nodoc:
   # {AmazonEKSInstanceProfileUserImpersonation}
   # {AmazonEKSUserImpersonation}
   # {AmazonES}
+  # {AmazonESIAM}
   # {AmazonMQAMQP091}
   # {Athena}
   # {AthenaIAM}
