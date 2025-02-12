@@ -1319,6 +1319,8 @@ module SDM
 
   # AccountGrants connect a resource directly to an account, giving the account the permission to connect to that resource.
   class AccountGrant
+    # The access rule associated with this AccountGrant.
+    attr_accessor :access_rule
     # The account ID of this AccountGrant.
     attr_accessor :account_id
     # Unique identifier of the AccountGrant.
@@ -1331,12 +1333,14 @@ module SDM
     attr_accessor :valid_until
 
     def initialize(
+      access_rule: nil,
       account_id: nil,
       id: nil,
       resource_id: nil,
       start_from: nil,
       valid_until: nil
     )
+      @access_rule = access_rule == nil ? SDM::_porcelain_zero_value_access_rule() : access_rule
       @account_id = account_id == nil ? "" : account_id
       @id = id == nil ? "" : id
       @resource_id = resource_id == nil ? "" : resource_id
@@ -14320,5 +14324,9 @@ module SDM
   # @private
   def self._porcelain_zero_value_access_rules()
     []
+  end
+  # @private
+  def self._porcelain_zero_value_access_rule()
+    {}
   end
 end

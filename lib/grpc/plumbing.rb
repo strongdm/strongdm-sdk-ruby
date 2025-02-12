@@ -173,6 +173,23 @@ module SDM
       end
       JSON.dump(access_rules)
     end
+
+    def self.convert_access_rule_to_porcelain(access_rule_json)
+      if access_rule_json == nil
+        return nil
+      end
+      if access_rule_json == ""
+        return nil
+      end
+      JSON.parse(access_rule_json)
+    end
+
+    def self.convert_access_rule_to_plumbing(access_rule)
+      if access_rule == nil
+        return nil
+      end
+      JSON.dump(access_rule)
+    end
     def self.convert_aks_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -1497,6 +1514,7 @@ module SDM
         return nil
       end
       porcelain = AccountGrant.new()
+      porcelain.access_rule = convert_access_rule_to_porcelain(plumbing.access_rule)
       porcelain.account_id = (plumbing.account_id)
       porcelain.id = (plumbing.id)
       porcelain.resource_id = (plumbing.resource_id)
@@ -1510,6 +1528,7 @@ module SDM
         return nil
       end
       plumbing = V1::AccountGrant.new()
+      plumbing.access_rule = convert_access_rule_to_plumbing(porcelain.access_rule)
       plumbing.account_id = (porcelain.account_id)
       plumbing.id = (porcelain.id)
       plumbing.resource_id = (porcelain.resource_id)
