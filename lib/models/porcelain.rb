@@ -7213,6 +7213,74 @@ module SDM
     end
   end
 
+  class KubernetesPodIdentity
+    # If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set)
+    # when a resource role is not provided.
+    attr_accessor :allow_resource_role_bypass
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    attr_accessor :bind_interface
+    # The CA to authenticate TLS connections with.
+    attr_accessor :certificate_authority
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
+    # The path used to check the health of your connection.  Defaults to `default`.
+    attr_accessor :healthcheck_namespace
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # The local port used by clients to connect to this resource.
+    attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    attr_accessor :subdomain
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      allow_resource_role_bypass: nil,
+      bind_interface: nil,
+      certificate_authority: nil,
+      egress_filter: nil,
+      healthcheck_namespace: nil,
+      healthy: nil,
+      id: nil,
+      name: nil,
+      port_override: nil,
+      proxy_cluster_id: nil,
+      secret_store_id: nil,
+      subdomain: nil,
+      tags: nil
+    )
+      @allow_resource_role_bypass = allow_resource_role_bypass == nil ? false : allow_resource_role_bypass
+      @bind_interface = bind_interface == nil ? "" : bind_interface
+      @certificate_authority = certificate_authority == nil ? "" : certificate_authority
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthcheck_namespace = healthcheck_namespace == nil ? "" : healthcheck_namespace
+      @healthy = healthy == nil ? false : healthy
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @subdomain = subdomain == nil ? "" : subdomain
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class KubernetesServiceAccount
     # If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set)
     # when a resource role is not provided.

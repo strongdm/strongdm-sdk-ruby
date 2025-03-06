@@ -82,6 +82,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :http_no_auth, :message, 701, "v1.HTTPNoAuth"
         optional :kubernetes, :message, 800, "v1.Kubernetes"
         optional :kubernetes_basic_auth, :message, 801, "v1.KubernetesBasicAuth"
+        optional :kubernetes_pod_identity, :message, 819, "v1.KubernetesPodIdentity"
         optional :kubernetes_service_account, :message, 804, "v1.KubernetesServiceAccount"
         optional :kubernetes_service_account_user_impersonation, :message, 808, "v1.KubernetesServiceAccountUserImpersonation"
         optional :kubernetes_user_impersonation, :message, 812, "v1.KubernetesUserImpersonation"
@@ -1163,6 +1164,21 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port_override, :int32, 6
       optional :username, :string, 3
     end
+    add_message "v1.KubernetesPodIdentity" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :proxy_cluster_id, :string, 32776
+      optional :subdomain, :string, 32775
+      optional :allow_resource_role_bypass, :bool, 15
+      optional :certificate_authority, :string, 4
+      optional :healthcheck_namespace, :string, 6
+      optional :port_override, :int32, 9
+    end
     add_message "v1.KubernetesServiceAccount" do
       optional :id, :string, 32768
       optional :name, :string, 32769
@@ -1952,6 +1968,7 @@ module V1
   HTTPNoAuth = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.HTTPNoAuth").msgclass
   Kubernetes = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Kubernetes").msgclass
   KubernetesBasicAuth = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.KubernetesBasicAuth").msgclass
+  KubernetesPodIdentity = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.KubernetesPodIdentity").msgclass
   KubernetesServiceAccount = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.KubernetesServiceAccount").msgclass
   KubernetesServiceAccountUserImpersonation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.KubernetesServiceAccountUserImpersonation").msgclass
   KubernetesUserImpersonation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.KubernetesUserImpersonation").msgclass

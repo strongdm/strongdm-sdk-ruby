@@ -4690,6 +4690,7 @@ module SDM #:nodoc:
   # {HTTPNoAuth}
   # {Kubernetes}
   # {KubernetesBasicAuth}
+  # {KubernetesPodIdentity}
   # {KubernetesServiceAccount}
   # {KubernetesServiceAccountUserImpersonation}
   # {KubernetesUserImpersonation}

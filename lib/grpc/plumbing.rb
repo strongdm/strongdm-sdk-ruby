@@ -7179,6 +7179,64 @@ module SDM
       end
       items
     end
+    def self.convert_kubernetes_pod_identity_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = KubernetesPodIdentity.new()
+      porcelain.allow_resource_role_bypass = (plumbing.allow_resource_role_bypass)
+      porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.certificate_authority = (plumbing.certificate_authority)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.healthcheck_namespace = (plumbing.healthcheck_namespace)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.subdomain = (plumbing.subdomain)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_kubernetes_pod_identity_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::KubernetesPodIdentity.new()
+      plumbing.allow_resource_role_bypass = (porcelain.allow_resource_role_bypass)
+      plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.certificate_authority = (porcelain.certificate_authority)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthcheck_namespace = (porcelain.healthcheck_namespace)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.subdomain = (porcelain.subdomain)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_kubernetes_pod_identity_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_kubernetes_pod_identity_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_kubernetes_pod_identity_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_kubernetes_pod_identity_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_kubernetes_service_account_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -11191,6 +11249,9 @@ module SDM
       if porcelain.instance_of? KubernetesBasicAuth
         plumbing.kubernetes_basic_auth = convert_kubernetes_basic_auth_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? KubernetesPodIdentity
+        plumbing.kubernetes_pod_identity = convert_kubernetes_pod_identity_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? KubernetesServiceAccount
         plumbing.kubernetes_service_account = convert_kubernetes_service_account_to_plumbing(porcelain)
       end
@@ -11491,6 +11552,9 @@ module SDM
       end
       if plumbing.kubernetes_basic_auth != nil
         return convert_kubernetes_basic_auth_to_porcelain(plumbing.kubernetes_basic_auth)
+      end
+      if plumbing.kubernetes_pod_identity != nil
+        return convert_kubernetes_pod_identity_to_porcelain(plumbing.kubernetes_pod_identity)
       end
       if plumbing.kubernetes_service_account != nil
         return convert_kubernetes_service_account_to_porcelain(plumbing.kubernetes_service_account)
