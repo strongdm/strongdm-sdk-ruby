@@ -109,6 +109,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :raw_tcp, :message, 2600, "v1.RawTCP"
         optional :redis, :message, 1600, "v1.Redis"
         optional :redshift, :message, 1304, "v1.Redshift"
+        optional :redshift_iam, :message, 1312, "v1.RedshiftIAM"
+        optional :redshift_serverless_iam, :message, 1311, "v1.RedshiftServerlessIAM"
         optional :sql_server, :message, 1800, "v1.SQLServer"
         optional :sql_server_azure_ad, :message, 1805, "v1.SQLServerAzureAD"
         optional :sql_server_kerberos_ad, :message, 1810, "v1.SQLServerKerberosAD"
@@ -1651,6 +1653,44 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port_override, :int32, 5
       optional :username, :string, 2
     end
+    add_message "v1.RedshiftIAM" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :proxy_cluster_id, :string, 32776
+      optional :subdomain, :string, 32775
+      optional :cluster_id, :string, 3
+      optional :database, :string, 4
+      optional :hostname, :string, 1
+      optional :override_database, :bool, 7
+      optional :port, :int32, 6
+      optional :port_override, :int32, 5
+      optional :region, :string, 2
+      optional :role_assumption_arn, :string, 11
+    end
+    add_message "v1.RedshiftServerlessIAM" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :proxy_cluster_id, :string, 32776
+      optional :subdomain, :string, 32775
+      optional :database, :string, 4
+      optional :hostname, :string, 1
+      optional :override_database, :bool, 7
+      optional :port, :int32, 6
+      optional :port_override, :int32, 5
+      optional :region, :string, 2
+      optional :role_assumption_arn, :string, 11
+      optional :workgroup, :string, 3
+    end
     add_message "v1.SQLServer" do
       optional :id, :string, 32768
       optional :name, :string, 32769
@@ -1995,6 +2035,8 @@ module V1
   RawTCP = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RawTCP").msgclass
   Redis = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Redis").msgclass
   Redshift = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Redshift").msgclass
+  RedshiftIAM = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RedshiftIAM").msgclass
+  RedshiftServerlessIAM = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RedshiftServerlessIAM").msgclass
   SQLServer = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SQLServer").msgclass
   SQLServerAzureAD = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SQLServerAzureAD").msgclass
   SQLServerKerberosAD = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SQLServerKerberosAD").msgclass

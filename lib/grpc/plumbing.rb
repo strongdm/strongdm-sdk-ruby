@@ -10556,6 +10556,138 @@ module SDM
       end
       items
     end
+    def self.convert_redshift_iam_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = RedshiftIAM.new()
+      porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.cluster_id = (plumbing.cluster_id)
+      porcelain.database = (plumbing.database)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.override_database = (plumbing.override_database)
+      porcelain.port = (plumbing.port)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
+      porcelain.region = (plumbing.region)
+      porcelain.role_assumption_arn = (plumbing.role_assumption_arn)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.subdomain = (plumbing.subdomain)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_redshift_iam_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::RedshiftIAM.new()
+      plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.cluster_id = (porcelain.cluster_id)
+      plumbing.database = (porcelain.database)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.override_database = (porcelain.override_database)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
+      plumbing.region = (porcelain.region)
+      plumbing.role_assumption_arn = (porcelain.role_assumption_arn)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.subdomain = (porcelain.subdomain)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_redshift_iam_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_redshift_iam_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_redshift_iam_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_redshift_iam_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_redshift_serverless_iam_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = RedshiftServerlessIAM.new()
+      porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.database = (plumbing.database)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.override_database = (plumbing.override_database)
+      porcelain.port = (plumbing.port)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
+      porcelain.region = (plumbing.region)
+      porcelain.role_assumption_arn = (plumbing.role_assumption_arn)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.subdomain = (plumbing.subdomain)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.workgroup = (plumbing.workgroup)
+      porcelain
+    end
+
+    def self.convert_redshift_serverless_iam_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::RedshiftServerlessIAM.new()
+      plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.database = (porcelain.database)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.override_database = (porcelain.override_database)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
+      plumbing.region = (porcelain.region)
+      plumbing.role_assumption_arn = (porcelain.role_assumption_arn)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.subdomain = (porcelain.subdomain)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.workgroup = (porcelain.workgroup)
+      plumbing
+    end
+    def self.convert_repeated_redshift_serverless_iam_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_redshift_serverless_iam_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_redshift_serverless_iam_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_redshift_serverless_iam_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_relay_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -11330,6 +11462,12 @@ module SDM
       if porcelain.instance_of? Redshift
         plumbing.redshift = convert_redshift_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? RedshiftIAM
+        plumbing.redshift_iam = convert_redshift_iam_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? RedshiftServerlessIAM
+        plumbing.redshift_serverless_iam = convert_redshift_serverless_iam_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? SingleStore
         plumbing.single_store = convert_single_store_to_plumbing(porcelain)
       end
@@ -11633,6 +11771,12 @@ module SDM
       end
       if plumbing.redshift != nil
         return convert_redshift_to_porcelain(plumbing.redshift)
+      end
+      if plumbing.redshift_iam != nil
+        return convert_redshift_iam_to_porcelain(plumbing.redshift_iam)
+      end
+      if plumbing.redshift_serverless_iam != nil
+        return convert_redshift_serverless_iam_to_porcelain(plumbing.redshift_serverless_iam)
       end
       if plumbing.single_store != nil
         return convert_single_store_to_porcelain(plumbing.single_store)

@@ -4717,6 +4717,8 @@ module SDM #:nodoc:
   # {RDSPostgresIAM}
   # {Redis}
   # {Redshift}
+  # {RedshiftIAM}
+  # {RedshiftServerlessIAM}
   # {SingleStore}
   # {Snowflake}
   # {Snowsight}
