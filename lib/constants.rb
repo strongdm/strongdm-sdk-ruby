@@ -21,6 +21,7 @@ module SDM
     ROOT_ADMIN = "root-admin"
     ADMIN = "admin"
     DATABASE_ADMIN = "database-admin"
+    DATABASE_OPERATOR = "database-operator"
     TEAM_LEADER = "multi-team-leader"
     USER = "user"
     AUDITOR = "auditor"
