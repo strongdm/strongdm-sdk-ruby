@@ -7229,6 +7229,10 @@ module SDM
     attr_accessor :healthy
     # Unique identifier of the Resource.
     attr_accessor :id
+    # The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+    attr_accessor :identity_alias_healthcheck_username
+    # The ID of the identity set to use for identity connections.
+    attr_accessor :identity_set_id
     # Unique human-readable name of the Resource.
     attr_accessor :name
     # The local port used by clients to connect to this resource.
@@ -7250,6 +7254,8 @@ module SDM
       healthcheck_namespace: nil,
       healthy: nil,
       id: nil,
+      identity_alias_healthcheck_username: nil,
+      identity_set_id: nil,
       name: nil,
       port_override: nil,
       proxy_cluster_id: nil,
@@ -7264,6 +7270,8 @@ module SDM
       @healthcheck_namespace = healthcheck_namespace == nil ? "" : healthcheck_namespace
       @healthy = healthy == nil ? false : healthy
       @id = id == nil ? "" : id
+      @identity_alias_healthcheck_username = identity_alias_healthcheck_username == nil ? "" : identity_alias_healthcheck_username
+      @identity_set_id = identity_set_id == nil ? "" : identity_set_id
       @name = name == nil ? "" : name
       @port_override = port_override == nil ? 0 : port_override
       @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id

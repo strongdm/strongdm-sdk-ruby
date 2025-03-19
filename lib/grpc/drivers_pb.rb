@@ -1179,6 +1179,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :allow_resource_role_bypass, :bool, 15
       optional :certificate_authority, :string, 4
       optional :healthcheck_namespace, :string, 6
+      optional :identity_alias_healthcheck_username, :string, 8
+      optional :identity_set_id, :string, 7
       optional :port_override, :int32, 9
     end
     add_message "v1.KubernetesServiceAccount" do
