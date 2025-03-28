@@ -4733,6 +4733,7 @@ module SDM #:nodoc:
   # {SybaseIQ}
   # {Teradata}
   # {Trino}
+  # {Vertica}
   class Resources
     extend Gem::Deprecate
 

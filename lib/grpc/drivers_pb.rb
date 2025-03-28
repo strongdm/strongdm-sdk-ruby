@@ -125,6 +125,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :sybase_iq, :message, 2001, "v1.SybaseIQ"
         optional :teradata, :message, 2100, "v1.Teradata"
         optional :trino, :message, 1401, "v1.Trino"
+        optional :vertica, :message, 4500, "v1.Vertica"
       end
     end
     add_message "v1.AKS" do
@@ -1947,6 +1948,23 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port_override, :int32, 4
       optional :username, :string, 6
     end
+    add_message "v1.Vertica" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :proxy_cluster_id, :string, 32776
+      optional :subdomain, :string, 32775
+      optional :database, :string, 4
+      optional :hostname, :string, 1
+      optional :password, :string, 3
+      optional :port, :int32, 6
+      optional :port_override, :int32, 5
+      optional :username, :string, 2
+    end
   end
 end
 
@@ -2053,4 +2071,5 @@ module V1
   SybaseIQ = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SybaseIQ").msgclass
   Teradata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Teradata").msgclass
   Trino = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Trino").msgclass
+  Vertica = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Vertica").msgclass
 end
