@@ -4716,6 +4716,7 @@ module SDM #:nodoc:
   # {RDPCert}
   # {RDSPostgresIAM}
   # {Redis}
+  # {RedisCluster}
   # {Redshift}
   # {RedshiftIAM}
   # {RedshiftServerlessIAM}

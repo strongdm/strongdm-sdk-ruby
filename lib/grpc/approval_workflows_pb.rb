@@ -19,6 +19,7 @@ require "google/protobuf"
 
 require "options_pb"
 require "spec_pb"
+require "google/protobuf/duration_pb"
 
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("approval_workflows.proto", :syntax => :proto3) do
@@ -72,6 +73,16 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :name, :string, 2
       optional :approval_mode, :string, 3
       optional :description, :string, 4
+      repeated :approval_workflow_steps, :message, 5, "v1.ApprovalFlowStep"
+    end
+    add_message "v1.ApprovalFlowStep" do
+      optional :quantifier, :string, 1
+      optional :skip_after, :message, 2, "google.protobuf.Duration"
+      repeated :approvers, :message, 3, "v1.ApprovalFlowApprover"
+    end
+    add_message "v1.ApprovalFlowApprover" do
+      optional :account_id, :string, 1
+      optional :role_id, :string, 2
     end
   end
 end
@@ -88,4 +99,6 @@ module V1
   ApprovalWorkflowListRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ApprovalWorkflowListRequest").msgclass
   ApprovalWorkflowListResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ApprovalWorkflowListResponse").msgclass
   ApprovalWorkflow = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ApprovalWorkflow").msgclass
+  ApprovalFlowStep = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ApprovalFlowStep").msgclass
+  ApprovalFlowApprover = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ApprovalFlowApprover").msgclass
 end

@@ -2316,7 +2316,6 @@ module SDM
     end
   end
 
-  # AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class AmazonESIAM
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
@@ -2802,7 +2801,7 @@ module SDM
 
   # ApprovalWorkflowStep links an approval workflow step to an ApprovalWorkflow
   class ApprovalWorkflowStep
-    # The approval flow id specified the approval workfflow that this step belongs to
+    # The approval flow id specified the approval workflow that this step belongs to
     attr_accessor :approval_flow_id
     # Unique identifier of the ApprovalWorkflowStep.
     attr_accessor :id
@@ -10599,6 +10598,82 @@ module SDM
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
     # The host to dial to initiate a connection from the egress node to this resource.
+    attr_accessor :hostname
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # The password to authenticate with.
+    attr_accessor :password
+    # The port to dial to initiate a connection from the egress node to this resource.
+    attr_accessor :port
+    # The local port used by clients to connect to this resource.
+    attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    attr_accessor :subdomain
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+    # If set, TLS must be used to connect to this resource.
+    attr_accessor :tls_required
+    # The username to authenticate with.
+    attr_accessor :username
+
+    def initialize(
+      bind_interface: nil,
+      egress_filter: nil,
+      healthy: nil,
+      hostname: nil,
+      id: nil,
+      name: nil,
+      password: nil,
+      port: nil,
+      port_override: nil,
+      proxy_cluster_id: nil,
+      secret_store_id: nil,
+      subdomain: nil,
+      tags: nil,
+      tls_required: nil,
+      username: nil
+    )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @subdomain = subdomain == nil ? "" : subdomain
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tls_required = tls_required == nil ? false : tls_required
+      @username = username == nil ? "" : username
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # RedisCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class RedisCluster
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    attr_accessor :bind_interface
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # Hostname must contain the hostname/port pairs of all instances in the replica set separated by commas.
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id

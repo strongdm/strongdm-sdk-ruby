@@ -108,6 +108,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :rabbit_mqamqp_091, :message, 2500, "v1.RabbitMQAMQP091"
         optional :raw_tcp, :message, 2600, "v1.RawTCP"
         optional :redis, :message, 1600, "v1.Redis"
+        optional :redis_cluster, :message, 1602, "v1.RedisCluster"
         optional :redshift, :message, 1304, "v1.Redshift"
         optional :redshift_iam, :message, 1312, "v1.RedshiftIAM"
         optional :redshift_serverless_iam, :message, 1311, "v1.RedshiftServerlessIAM"
@@ -1638,6 +1639,23 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tls_required, :bool, 6
       optional :username, :string, 5
     end
+    add_message "v1.RedisCluster" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :proxy_cluster_id, :string, 32776
+      optional :subdomain, :string, 32775
+      optional :hostname, :string, 1
+      optional :password, :string, 5
+      optional :port, :int32, 2
+      optional :port_override, :int32, 3
+      optional :tls_required, :bool, 6
+      optional :username, :string, 4
+    end
     add_message "v1.Redshift" do
       optional :id, :string, 32768
       optional :name, :string, 32769
@@ -2054,6 +2072,7 @@ module V1
   RabbitMQAMQP091 = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RabbitMQAMQP091").msgclass
   RawTCP = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RawTCP").msgclass
   Redis = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Redis").msgclass
+  RedisCluster = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RedisCluster").msgclass
   Redshift = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Redshift").msgclass
   RedshiftIAM = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RedshiftIAM").msgclass
   RedshiftServerlessIAM = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RedshiftServerlessIAM").msgclass
