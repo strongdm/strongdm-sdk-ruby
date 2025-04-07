@@ -12316,6 +12316,10 @@ module SDM
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
+    # The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+    attr_accessor :identity_alias_healthcheck_username
+    # The ID of the identity set to use for identity connections.
+    attr_accessor :identity_set_id
     # Unique human-readable name of the Resource.
     attr_accessor :name
     # The port to dial to initiate a connection from the egress node to this resource.
@@ -12344,6 +12348,8 @@ module SDM
       healthy: nil,
       hostname: nil,
       id: nil,
+      identity_alias_healthcheck_username: nil,
+      identity_set_id: nil,
       name: nil,
       port: nil,
       port_forwarding: nil,
@@ -12361,6 +12367,8 @@ module SDM
       @healthy = healthy == nil ? false : healthy
       @hostname = hostname == nil ? "" : hostname
       @id = id == nil ? "" : id
+      @identity_alias_healthcheck_username = identity_alias_healthcheck_username == nil ? "" : identity_alias_healthcheck_username
+      @identity_set_id = identity_set_id == nil ? "" : identity_set_id
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
       @port_forwarding = port_forwarding == nil ? false : port_forwarding

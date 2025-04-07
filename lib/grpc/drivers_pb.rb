@@ -1827,6 +1827,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :subdomain, :string, 32775
       optional :allow_deprecated_key_exchanges, :bool, 6
       optional :hostname, :string, 1
+      optional :identity_alias_healthcheck_username, :string, 11
+      optional :identity_set_id, :string, 10
       optional :port, :int32, 3
       optional :port_forwarding, :bool, 5
       optional :port_override, :int32, 7
