@@ -1661,6 +1661,111 @@ module SDM
     end
   end
 
+  # ActiveDirectoryEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class ActiveDirectoryEngine
+    # The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
+    attr_accessor :after_read_ttl
+    # Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com
+    attr_accessor :binddn
+    # Password to use along with binddn when performing user search.
+    attr_accessor :bindpass
+    # CA certificate to use when verifying LDAP server certificate, must be x509 PEM encoded.
+    attr_accessor :certificate
+    # Timeout, in seconds, when attempting to connect to the LDAP server before trying the next URL in the configuration.
+    attr_accessor :connection_timeout
+    # If set to true this will prevent password change timestamp validation in Active Directory when validating credentials
+    attr_accessor :do_not_validate_timestamps
+    # Unique identifier of the Secret Engine.
+    attr_accessor :id
+    # If true, skips LDAP server SSL certificate verification - insecure, use with caution!
+    attr_accessor :insecure_tls
+    # An interval of public/private key rotation for secret engine in days
+    attr_accessor :key_rotation_interval_days
+    # The maximum retry duration in case of automatic failure.
+    # On failed ttl rotation attempt it will be retried in an increasing intervals until it reaches max_backoff_duration
+    attr_accessor :max_backoff_duration
+    # Unique human-readable name of the Secret Engine.
+    attr_accessor :name
+    # Policy for password creation
+    attr_accessor :policy
+    # Public key linked with a secret engine
+    attr_accessor :public_key
+    # Timeout, in seconds, for the connection when making requests against the server before returning back an error.
+    attr_accessor :request_timeout
+    # Backing secret store identifier
+    attr_accessor :secret_store_id
+    # Backing Secret Store root path where managed secrets are going to be stored
+    attr_accessor :secret_store_root_path
+    # If true, issues a StartTLS command after establishing an unencrypted connection.
+    attr_accessor :start_tls
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+    # The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
+    attr_accessor :ttl
+    # The domain (userPrincipalDomain) used to construct a UPN string for authentication.
+    attr_accessor :upndomain
+    # The LDAP server to connect to.
+    attr_accessor :url
+    # Base DN under which to perform user search. Example: ou=Users,dc=example,dc=com
+    attr_accessor :userdn
+
+    def initialize(
+      after_read_ttl: nil,
+      binddn: nil,
+      bindpass: nil,
+      certificate: nil,
+      connection_timeout: nil,
+      do_not_validate_timestamps: nil,
+      id: nil,
+      insecure_tls: nil,
+      key_rotation_interval_days: nil,
+      max_backoff_duration: nil,
+      name: nil,
+      policy: nil,
+      public_key: nil,
+      request_timeout: nil,
+      secret_store_id: nil,
+      secret_store_root_path: nil,
+      start_tls: nil,
+      tags: nil,
+      ttl: nil,
+      upndomain: nil,
+      url: nil,
+      userdn: nil
+    )
+      @after_read_ttl = after_read_ttl == nil ? nil : after_read_ttl
+      @binddn = binddn == nil ? "" : binddn
+      @bindpass = bindpass == nil ? "" : bindpass
+      @certificate = certificate == nil ? "" : certificate
+      @connection_timeout = connection_timeout == nil ? 0 : connection_timeout
+      @do_not_validate_timestamps = do_not_validate_timestamps == nil ? false : do_not_validate_timestamps
+      @id = id == nil ? "" : id
+      @insecure_tls = insecure_tls == nil ? false : insecure_tls
+      @key_rotation_interval_days = key_rotation_interval_days == nil ? 0 : key_rotation_interval_days
+      @max_backoff_duration = max_backoff_duration == nil ? nil : max_backoff_duration
+      @name = name == nil ? "" : name
+      @policy = policy == nil ? nil : policy
+      @public_key = public_key == nil ? "" : public_key
+      @request_timeout = request_timeout == nil ? 0 : request_timeout
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @secret_store_root_path = secret_store_root_path == nil ? "" : secret_store_root_path
+      @start_tls = start_tls == nil ? false : start_tls
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @ttl = ttl == nil ? nil : ttl
+      @upndomain = upndomain == nil ? "" : upndomain
+      @url = url == nil ? "" : url
+      @userdn = userdn == nil ? "" : userdn
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class ActiveDirectoryStore
     # Unique identifier of the SecretStore.
     attr_accessor :id
@@ -5985,6 +6090,44 @@ module SDM
     end
   end
 
+  class GenerateKeysRequest
+    # required
+    attr_accessor :secret_engine_id
+
+    def initialize(
+      secret_engine_id: nil
+    )
+      @secret_engine_id = secret_engine_id == nil ? "" : secret_engine_id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  class GenerateKeysResponse
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      rate_limit: nil
+    )
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   # GenericResponseMetadata contains common headers for generic request
   # responses.
   class GenericResponseMetadata
@@ -6551,6 +6694,72 @@ module SDM
     end
   end
 
+  class HealthcheckRequest
+    # required
+    attr_accessor :secret_engine_id
+
+    def initialize(
+      secret_engine_id: nil
+    )
+      @secret_engine_id = secret_engine_id == nil ? "" : secret_engine_id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  class HealthcheckResponse
+    # Rate limit information.
+    attr_accessor :rate_limit
+    # Array of statuses of all nodes serving a secret engine
+    attr_accessor :status
+
+    def initialize(
+      rate_limit: nil,
+      status: nil
+    )
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+      @status = status == nil ? [] : status
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # HealthcheckStatus contains status of a node health
+  class HealthcheckStatus
+    # ID of node
+    attr_accessor :node_id
+    # Status of node's health
+    attr_accessor :status
+
+    def initialize(
+      node_id: nil,
+      status: nil
+    )
+      @node_id = node_id == nil ? "" : node_id
+      @status = status == nil ? "" : status
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   # IdentityAliases define the username to be used for a specific account
   # when connecting to a remote resource using that identity set.
   class IdentityAlias
@@ -6886,6 +7095,50 @@ module SDM
       @identity_set = identity_set == nil ? nil : identity_set
       @meta = meta == nil ? nil : meta
       @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # KeyValueEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class KeyValueEngine
+    # Unique identifier of the Secret Engine.
+    attr_accessor :id
+    # An interval of public/private key rotation for secret engine in days
+    attr_accessor :key_rotation_interval_days
+    # Unique human-readable name of the Secret Engine.
+    attr_accessor :name
+    # Public key linked with a secret engine
+    attr_accessor :public_key
+    # Backing secret store identifier
+    attr_accessor :secret_store_id
+    # Backing Secret Store root path where managed secrets are going to be stored
+    attr_accessor :secret_store_root_path
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      id: nil,
+      key_rotation_interval_days: nil,
+      name: nil,
+      public_key: nil,
+      secret_store_id: nil,
+      secret_store_root_path: nil,
+      tags: nil
+    )
+      @id = id == nil ? "" : id
+      @key_rotation_interval_days = key_rotation_interval_days == nil ? 0 : key_rotation_interval_days
+      @name = name == nil ? "" : name
+      @public_key = public_key == nil ? "" : public_key
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @secret_store_root_path = secret_store_root_path == nil ? "" : secret_store_root_path
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
     def to_json(options = {})
@@ -7715,6 +7968,604 @@ module SDM
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
       @username = username == nil ? "" : username
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ManagedSecret contains details about managed secret
+  class ManagedSecret
+    # public part of the secret value
+    attr_accessor :config
+    # Timestamp of when secret is going to be rotated
+    attr_accessor :expires_at
+    # Unique identifier of the Managed Secret.
+    attr_accessor :id
+    # Timestamp of when secret was last rotated
+    attr_accessor :last_rotated_at
+    # Unique human-readable name of the Managed Secret.
+    attr_accessor :name
+    # Password and rotation policy for the secret
+    attr_accessor :policy
+    # An ID of a Secret Engine linked with the Managed Secret.
+    attr_accessor :secret_engine_id
+    # Path in a secret store.
+    attr_accessor :secret_store_path
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+    # Sensitive value of the secret.
+    attr_accessor :value
+
+    def initialize(
+      config: nil,
+      expires_at: nil,
+      id: nil,
+      last_rotated_at: nil,
+      name: nil,
+      policy: nil,
+      secret_engine_id: nil,
+      secret_store_path: nil,
+      tags: nil,
+      value: nil
+    )
+      @config = config == nil ? "" : config
+      @expires_at = expires_at == nil ? nil : expires_at
+      @id = id == nil ? "" : id
+      @last_rotated_at = last_rotated_at == nil ? nil : last_rotated_at
+      @name = name == nil ? "" : name
+      @policy = policy == nil ? nil : policy
+      @secret_engine_id = secret_engine_id == nil ? "" : secret_engine_id
+      @secret_store_path = secret_store_path == nil ? "" : secret_store_path
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @value = value == nil ? "" : value
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ManagedSecretCreateRequest specifies a Managed Secret to create.
+  class ManagedSecretCreateRequest
+    # Parameters to define the new Managed Secret.
+    attr_accessor :managed_secret
+
+    def initialize(
+      managed_secret: nil
+    )
+      @managed_secret = managed_secret == nil ? nil : managed_secret
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ManagedSecretCreateResponse contains information about a Managed Secret after
+  # successful creation.
+  class ManagedSecretCreateResponse
+    # The requested Managed Secret.
+    attr_accessor :managed_secret
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      managed_secret: nil,
+      meta: nil,
+      rate_limit: nil
+    )
+      @managed_secret = managed_secret == nil ? nil : managed_secret
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ManagedSecretDeleteRequest specified the ID of a Managed Secret to be
+  # deleted.
+  class ManagedSecretDeleteRequest
+    # The unique identifier of the Managed Secret to delete.
+    attr_accessor :id
+
+    def initialize(
+      id: nil
+    )
+      @id = id == nil ? "" : id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ManagedSecretDeleteResponse contains information about a Managed Secret after
+  # it was deleted.
+  class ManagedSecretDeleteResponse
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      rate_limit: nil
+    )
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ManagedSecretGetRequest specifies which Managed Secret to retrieve
+  class ManagedSecretGetRequest
+    # The unique identifier of the Managed Secret to retrieve.
+    attr_accessor :id
+
+    def initialize(
+      id: nil
+    )
+      @id = id == nil ? "" : id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ManagedSecretGetResponse contains information about requested Managed Secret
+  class ManagedSecretGetResponse
+    # The requested Managed Secret.
+    attr_accessor :managed_secret
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      managed_secret: nil,
+      meta: nil,
+      rate_limit: nil
+    )
+      @managed_secret = managed_secret == nil ? nil : managed_secret
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ManagedSecretListRequest specifies criteria for retrieving a list of Managed
+  # Secrets.
+  class ManagedSecretListRequest
+    # A human-readable filter query string.
+    attr_accessor :filter
+
+    def initialize(
+      filter: nil
+    )
+      @filter = filter == nil ? "" : filter
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ManagedSecretListResponse contains a list of requested Managed Secrets
+  class ManagedSecretListResponse
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      rate_limit: nil
+    )
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ManagedSecretLog contains details about action performed against a managed
+  # secret
+  class ManagedSecretLog
+    # An ID of the account the action was performed by.
+    attr_accessor :account_id
+    # The action performed by the account against the managed secret.
+    attr_accessor :action
+    # Timestamp of when action was performed.
+    attr_accessor :created_at
+    # Any debug logs associated with the action.
+    attr_accessor :debug
+    # Unique identifier of the Managed Secret Log.
+    attr_accessor :id
+    # An ID of the Managed Secret the action was performed against.
+    attr_accessor :managed_secret_id
+    # An ID of the Secret Engine linked with the Managed Secret.
+    attr_accessor :secret_engine_id
+
+    def initialize(
+      account_id: nil,
+      action: nil,
+      created_at: nil,
+      debug: nil,
+      id: nil,
+      managed_secret_id: nil,
+      secret_engine_id: nil
+    )
+      @account_id = account_id == nil ? "" : account_id
+      @action = action == nil ? "" : action
+      @created_at = created_at == nil ? nil : created_at
+      @debug = debug == nil ? "" : debug
+      @id = id == nil ? "" : id
+      @managed_secret_id = managed_secret_id == nil ? "" : managed_secret_id
+      @secret_engine_id = secret_engine_id == nil ? "" : secret_engine_id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ManagedSecretLogsRequest specifies criteria for retrieving a log of Managed
+  # Secrets actions.
+  class ManagedSecretLogsRequest
+    # A human-readable filter query string.
+    attr_accessor :filter
+
+    def initialize(
+      filter: nil
+    )
+      @filter = filter == nil ? "" : filter
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ManagedSecretLogsResponse contains a list of requested Managed Secrets
+  class ManagedSecretLogsResponse
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      rate_limit: nil
+    )
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  class ManagedSecretPasswordPolicy
+    # If set to true allows for consecutive characters to repeat itself
+    attr_accessor :allow_repeat
+    # Characters to exclude when generating password
+    attr_accessor :exclude_characters
+    # If set to true do not include upper case letters when generating password
+    attr_accessor :exclude_upper_case
+    # Password length
+    attr_accessor :length
+    # Numbers of digits to use when generating password
+    attr_accessor :num_digits
+    # Number of symbols to use when generating password
+    attr_accessor :num_symbols
+
+    def initialize(
+      allow_repeat: nil,
+      exclude_characters: nil,
+      exclude_upper_case: nil,
+      length: nil,
+      num_digits: nil,
+      num_symbols: nil
+    )
+      @allow_repeat = allow_repeat == nil ? false : allow_repeat
+      @exclude_characters = exclude_characters == nil ? "" : exclude_characters
+      @exclude_upper_case = exclude_upper_case == nil ? false : exclude_upper_case
+      @length = length == nil ? 0 : length
+      @num_digits = num_digits == nil ? 0 : num_digits
+      @num_symbols = num_symbols == nil ? 0 : num_symbols
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ManagedSecretPolicy contains password and rotation policy for managed secret
+  class ManagedSecretPolicy
+    # Password policy for a managed secret
+    attr_accessor :password_policy
+    # Rotation policy for a managed secret
+    attr_accessor :rotation_policy
+
+    def initialize(
+      password_policy: nil,
+      rotation_policy: nil
+    )
+      @password_policy = password_policy == nil ? nil : password_policy
+      @rotation_policy = rotation_policy == nil ? nil : rotation_policy
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ManagedSecretRetrieveRequest specifies which Managed Secret to retrieve
+  class ManagedSecretRetrieveRequest
+    # The unique identifier of the Managed Secret to retrieve.
+    attr_accessor :id
+    # Public key to encrypt a sensitive value with
+    attr_accessor :public_key
+
+    def initialize(
+      id: nil,
+      public_key: nil
+    )
+      @id = id == nil ? "" : id
+      @public_key = public_key == nil ? "" : public_key
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ManagedSecretRetrieveResponse contains information about requested Managed
+  # Secret
+  class ManagedSecretRetrieveResponse
+    # The requested Managed Secret.
+    attr_accessor :managed_secret
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      managed_secret: nil,
+      meta: nil,
+      rate_limit: nil
+    )
+      @managed_secret = managed_secret == nil ? nil : managed_secret
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ManagedSecretRotateRequest specifies Managed Secret to rotate
+  class ManagedSecretRotateRequest
+    # The unique identifier of the Managed Secret to rotate.
+    attr_accessor :id
+
+    def initialize(
+      id: nil
+    )
+      @id = id == nil ? "" : id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ManagedSecretRotateResponse contains information about Secret Engine after
+  # successful rotation.
+  class ManagedSecretRotateResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      meta: nil,
+      rate_limit: nil
+    )
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  class ManagedSecretRotationPolicy
+    def initialize()
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ManagedSecretUpdateRequest specifies Managed Secret to update
+  class ManagedSecretUpdateRequest
+    # Managed Secret to update
+    attr_accessor :managed_secret
+
+    def initialize(
+      managed_secret: nil
+    )
+      @managed_secret = managed_secret == nil ? nil : managed_secret
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ManagedSecretUpdateResponse contains information about Secret Engine after
+  # successful update.
+  class ManagedSecretUpdateResponse
+    # The requested Managed Secret.
+    attr_accessor :managed_secret
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      managed_secret: nil,
+      meta: nil,
+      rate_limit: nil
+    )
+      @managed_secret = managed_secret == nil ? nil : managed_secret
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ManagedSecretValidateRequest specifies which Managed Secret to validate
+  class ManagedSecretValidateRequest
+    # The unique identifier of the Managed Secret to validate.
+    attr_accessor :id
+
+    def initialize(
+      id: nil
+    )
+      @id = id == nil ? "" : id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ManagedSecretValidateResponse contains validity of requested Managed
+  # Secret
+  class ManagedSecretValidateResponse
+    # Information about why secret is invalid
+    attr_accessor :invalid_info
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+    # Whether the secret is valid
+    attr_accessor :valid
+
+    def initialize(
+      invalid_info: nil,
+      meta: nil,
+      rate_limit: nil,
+      valid: nil
+    )
+      @invalid_info = invalid_info == nil ? "" : invalid_info
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+      @valid = valid == nil ? false : valid
     end
 
     def to_json(options = {})
@@ -12458,6 +13309,331 @@ module SDM
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
       @username = username == nil ? "" : username
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # SecretEngineCreateRequest specifies a Secret Engine to create.
+  class SecretEngineCreateRequest
+    # Parameters to define the new Secret Engine.
+    attr_accessor :secret_engine
+
+    def initialize(
+      secret_engine: nil
+    )
+      @secret_engine = secret_engine == nil ? nil : secret_engine
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # SecretEngineCreateResponse contains information about a Secret Engine after successful creation.
+  class SecretEngineCreateResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+    # The requested Secret Engine.
+    attr_accessor :secret_engine
+
+    def initialize(
+      meta: nil,
+      rate_limit: nil,
+      secret_engine: nil
+    )
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+      @secret_engine = secret_engine == nil ? nil : secret_engine
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # SecretEngineDeleteRequest specified the ID of a Secret Engine to be deleted.
+  class SecretEngineDeleteRequest
+    # The unique identifier of the Secret Engine to delete.
+    attr_accessor :id
+
+    def initialize(
+      id: nil
+    )
+      @id = id == nil ? "" : id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # SecretEngineDeleteResponse contains information about a Secret Engine after it was deleted.
+  class SecretEngineDeleteResponse
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      rate_limit: nil
+    )
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # SecretEngineGetRequest specifies which Secret Engine to retrieve
+  class SecretEngineGetRequest
+    # The unique identifier of the Secret Engine to retrieve.
+    attr_accessor :id
+
+    def initialize(
+      id: nil
+    )
+      @id = id == nil ? "" : id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # SecretEngineGetResponse contains information about requested Secret Engine
+  class SecretEngineGetResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+    # The requested Secret Engine.
+    attr_accessor :secret_engine
+
+    def initialize(
+      meta: nil,
+      rate_limit: nil,
+      secret_engine: nil
+    )
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+      @secret_engine = secret_engine == nil ? nil : secret_engine
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # SecretEngineListRequest specifies criteria for retrieving a list of Secret Engines
+  class SecretEngineListRequest
+    # A human-readable filter query string.
+    attr_accessor :filter
+
+    def initialize(
+      filter: nil
+    )
+      @filter = filter == nil ? "" : filter
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # SecretEngineListResponse contains a list of requested Secret Engine
+  class SecretEngineListResponse
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      rate_limit: nil
+    )
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  class SecretEnginePasswordPolicy
+    # If set to true allows for consecutive characters to repeat itself
+    attr_accessor :allow_repeat
+    # Characters to exclude when generating password
+    attr_accessor :exclude_characters
+    # If set to true do not include upper case letters when generating password
+    attr_accessor :exclude_upper_case
+    # Password length.
+    attr_accessor :length
+    # Numbers of digits to use when generating password
+    attr_accessor :num_digits
+    # Number of symbols to use when generating password
+    attr_accessor :num_symbols
+
+    def initialize(
+      allow_repeat: nil,
+      exclude_characters: nil,
+      exclude_upper_case: nil,
+      length: nil,
+      num_digits: nil,
+      num_symbols: nil
+    )
+      @allow_repeat = allow_repeat == nil ? false : allow_repeat
+      @exclude_characters = exclude_characters == nil ? "" : exclude_characters
+      @exclude_upper_case = exclude_upper_case == nil ? false : exclude_upper_case
+      @length = length == nil ? 0 : length
+      @num_digits = num_digits == nil ? 0 : num_digits
+      @num_symbols = num_symbols == nil ? 0 : num_symbols
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  class SecretEnginePolicy
+    # Policy for password
+    attr_accessor :password_policy
+
+    def initialize(
+      password_policy: nil
+    )
+      @password_policy = password_policy == nil ? nil : password_policy
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  class SecretEngineRotateRequest
+    # The unique identifier of the Secret Engine to rotate credentials for.
+    attr_accessor :id
+    # Optional password policy to use when generating a password
+    # If not provided it will use secret engine's password_policy
+    attr_accessor :password_policy
+
+    def initialize(
+      id: nil,
+      password_policy: nil
+    )
+      @id = id == nil ? "" : id
+      @password_policy = password_policy == nil ? nil : password_policy
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  class SecretEngineRotateResponse
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      rate_limit: nil
+    )
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # SecretEngineUpdateRequest specifies secret engine to update
+  class SecretEngineUpdateRequest
+    # Secret engine to update
+    attr_accessor :secret_engine
+
+    def initialize(
+      secret_engine: nil
+    )
+      @secret_engine = secret_engine == nil ? nil : secret_engine
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # SecretEngineUpdateResponse contains information about Secret Engine after successful update.
+  class SecretEngineUpdateResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+    # The requested Secret Engine.
+    attr_accessor :secret_engine
+
+    def initialize(
+      meta: nil,
+      rate_limit: nil,
+      secret_engine: nil
+    )
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+      @secret_engine = secret_engine == nil ? nil : secret_engine
     end
 
     def to_json(options = {})

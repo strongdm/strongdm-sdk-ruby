@@ -2699,6 +2699,357 @@ module SDM #:nodoc:
     end
   end
 
+  # ManagedSecret is a private vertical for creating, reading, updating,
+  # deleting, listing and rotating the managed secrets in the secrets engines as
+  # an authenticated user.
+  #
+  # See {ManagedSecret}.
+  class ManagedSecrets
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::ManagedSecrets::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # List returns Managed Secrets from a Secret Engine.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::ManagedSecretListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("ManagedSecrets.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.managed_secrets.each do |plumbing_item|
+            g.yield Plumbing::convert_managed_secret_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+
+    # List returns Managed Secrets for an Actor from a Secret Engine.
+    def list_by_actor(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::ManagedSecretListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list_by_actor(req, metadata: @parent.get_metadata("ManagedSecrets.ListByActor", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.managed_secrets.each do |plumbing_item|
+            g.yield Plumbing::convert_managed_secret_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+
+    # Create creates a Managed Secret
+    def create(
+      managed_secret,
+      deadline: nil
+    )
+      req = V1::ManagedSecretCreateRequest.new()
+
+      req.managed_secret = Plumbing::convert_managed_secret_to_plumbing(managed_secret)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.create(req, metadata: @parent.get_metadata("ManagedSecrets.Create", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = ManagedSecretCreateResponse.new()
+      resp.managed_secret = Plumbing::convert_managed_secret_to_porcelain(plumbing_response.managed_secret)
+      resp.meta = Plumbing::convert_create_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Update updates a Managed Secret
+    def update(
+      managed_secret,
+      deadline: nil
+    )
+      req = V1::ManagedSecretUpdateRequest.new()
+
+      req.managed_secret = Plumbing::convert_managed_secret_to_plumbing(managed_secret)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.update(req, metadata: @parent.get_metadata("ManagedSecrets.Update", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = ManagedSecretUpdateResponse.new()
+      resp.managed_secret = Plumbing::convert_managed_secret_to_porcelain(plumbing_response.managed_secret)
+      resp.meta = Plumbing::convert_update_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Rotate forces rotation of Managed Secret
+    def rotate(
+      id,
+      deadline: nil
+    )
+      req = V1::ManagedSecretRotateRequest.new()
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.rotate(req, metadata: @parent.get_metadata("ManagedSecrets.Rotate", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = ManagedSecretRotateResponse.new()
+      resp.meta = Plumbing::convert_generic_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Delete deletes a Managed Secret
+    def delete(
+      id,
+      deadline: nil
+    )
+      req = V1::ManagedSecretDeleteRequest.new()
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("ManagedSecrets.Delete", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = ManagedSecretDeleteResponse.new()
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Get gets details of a Managed Secret without sensitive data
+    def get(
+      id,
+      deadline: nil
+    )
+      req = V1::ManagedSecretGetRequest.new()
+      if not @parent.snapshot_time.nil?
+        req.meta = V1::GetRequestMetadata.new()
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.get(req, metadata: @parent.get_metadata("ManagedSecrets.Get", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = ManagedSecretGetResponse.new()
+      resp.managed_secret = Plumbing::convert_managed_secret_to_porcelain(plumbing_response.managed_secret)
+      resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Retrieve returns Managed Secret with sensitive data
+    def retrieve(
+      id,
+      public_key,
+      deadline: nil
+    )
+      req = V1::ManagedSecretRetrieveRequest.new()
+
+      req.id = (id)
+      req.public_key = (public_key)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.retrieve(req, metadata: @parent.get_metadata("ManagedSecrets.Retrieve", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = ManagedSecretRetrieveResponse.new()
+      resp.managed_secret = Plumbing::convert_managed_secret_to_porcelain(plumbing_response.managed_secret)
+      resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Validate returns the result of testing the stored credential against the
+    # secret engine.
+    def validate(
+      id,
+      deadline: nil
+    )
+      req = V1::ManagedSecretValidateRequest.new()
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.validate(req, metadata: @parent.get_metadata("ManagedSecrets.Validate", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = ManagedSecretValidateResponse.new()
+      resp.invalid_info = (plumbing_response.invalid_info)
+      resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.valid = (plumbing_response.valid)
+      resp
+    end
+
+    # Logs returns the audit records for the managed secret. This may be replaced
+    # in the future.
+    def logs(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::ManagedSecretLogsRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.logs(req, metadata: @parent.get_metadata("ManagedSecrets.Logs", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.managed_secret_logs.each do |plumbing_item|
+            g.yield Plumbing::convert_managed_secret_log_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
   # Nodes make up the strongDM network, and allow your users to connect securely to your resources. There are two types of nodes:
   # - **Gateways** are the entry points into network. They listen for connection from the strongDM client, and provide access to databases and servers.
   # - **Relays** are used to extend the strongDM network into segmented subnets. They provide access to databases and servers but do not listen for incoming connections.
@@ -5703,6 +6054,311 @@ module SDM #:nodoc:
                             *args,
                             deadline: deadline,
              )
+    end
+  end
+
+  #
+  # See:
+  # {ActiveDirectoryEngine}
+  # {KeyValueEngine}
+  class SecretEngines
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::SecretEngines::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # List returns a list of Secret Engines
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::SecretEngineListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("SecretEngines.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.secret_engines.each do |plumbing_item|
+            g.yield Plumbing::convert_secret_engine_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+
+    # Get returns a secret engine details
+    def get(
+      id,
+      deadline: nil
+    )
+      req = V1::SecretEngineGetRequest.new()
+      if not @parent.snapshot_time.nil?
+        req.meta = V1::GetRequestMetadata.new()
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.get(req, metadata: @parent.get_metadata("SecretEngines.Get", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = SecretEngineGetResponse.new()
+      resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.secret_engine = Plumbing::convert_secret_engine_to_porcelain(plumbing_response.secret_engine)
+      resp
+    end
+
+    # Create creates a secret engine
+    def create(
+      secret_engine,
+      deadline: nil
+    )
+      req = V1::SecretEngineCreateRequest.new()
+
+      req.secret_engine = Plumbing::convert_secret_engine_to_plumbing(secret_engine)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.create(req, metadata: @parent.get_metadata("SecretEngines.Create", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = SecretEngineCreateResponse.new()
+      resp.meta = Plumbing::convert_create_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.secret_engine = Plumbing::convert_secret_engine_to_porcelain(plumbing_response.secret_engine)
+      resp
+    end
+
+    # Update updates a secret engine
+    def update(
+      secret_engine,
+      deadline: nil
+    )
+      req = V1::SecretEngineUpdateRequest.new()
+
+      req.secret_engine = Plumbing::convert_secret_engine_to_plumbing(secret_engine)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.update(req, metadata: @parent.get_metadata("SecretEngines.Update", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = SecretEngineUpdateResponse.new()
+      resp.meta = Plumbing::convert_update_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.secret_engine = Plumbing::convert_secret_engine_to_porcelain(plumbing_response.secret_engine)
+      resp
+    end
+
+    # Delete deletes a secret engine
+    def delete(
+      id,
+      deadline: nil
+    )
+      req = V1::SecretEngineDeleteRequest.new()
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("SecretEngines.Delete", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = SecretEngineDeleteResponse.new()
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # ListSecretStores returns a list of Secret Stores that can be used as a backing store
+    # for Secret Engine
+    def list_secret_stores(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::SecretStoreListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      if @parent.page_limit > 0
+        req.meta.limit = @parent.page_limit
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list_secret_stores(req, metadata: @parent.get_metadata("SecretEngines.ListSecretStores", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception))
+              tries + +@parent.jitterSleep(tries)
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.secret_stores.each do |plumbing_item|
+            g.yield Plumbing::convert_secret_store_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+
+    # GenerateKeys generates a private key, stores it in a secret store and stores a public key in a secret engine
+    def generate_keys(
+      secret_engine_id,
+      deadline: nil
+    )
+      req = V1::GenerateKeysRequest.new()
+
+      req.secret_engine_id = (secret_engine_id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.generate_keys(req, metadata: @parent.get_metadata("SecretEngines.GenerateKeys", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = GenerateKeysResponse.new()
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Healthcheck triggers a healthcheck for all nodes serving a secret engine
+    def healthcheck(
+      secret_engine_id,
+      deadline: nil
+    )
+      req = V1::HealthcheckRequest.new()
+
+      req.secret_engine_id = (secret_engine_id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.healthcheck(req, metadata: @parent.get_metadata("SecretEngines.Healthcheck", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = HealthcheckResponse.new()
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.status = Plumbing::convert_repeated_healthcheck_status_to_porcelain(plumbing_response.status)
+      resp
+    end
+
+    # Rotate rotates secret engine's credentials
+    def rotate(
+      id,
+      password_policy,
+      deadline: nil
+    )
+      req = V1::SecretEngineRotateRequest.new()
+
+      req.id = (id)
+      req.password_policy = Plumbing::convert_secret_engine_password_policy_to_plumbing(password_policy)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.rotate(req, metadata: @parent.get_metadata("SecretEngines.Rotate", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception))
+            tries + +@parent.jitterSleep(tries)
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = SecretEngineRotateResponse.new()
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
     end
   end
 

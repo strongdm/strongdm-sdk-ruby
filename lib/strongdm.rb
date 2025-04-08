@@ -29,7 +29,7 @@ module SDM #:nodoc:
     DEFAULT_BASE_RETRY_DELAY = 0.0030 # 30 ms
     DEFAULT_MAX_RETRY_DELAY = 300 # 300 seconds
     API_VERSION = "2024-03-28"
-    USER_AGENT = "strongdm-sdk-ruby/13.11.0"
+    USER_AGENT = "strongdm-sdk-ruby/13.12.0"
     private_constant :DEFAULT_MAX_RETRIES, :DEFAULT_BASE_RETRY_DELAY, :DEFAULT_MAX_RETRY_DELAY, :API_VERSION, :USER_AGENT
 
     # Creates a new strongDM API client.
@@ -80,6 +80,7 @@ module SDM #:nodoc:
       @identity_aliases_history = IdentityAliasesHistory.new(@channel, self)
       @identity_sets = IdentitySets.new(@channel, self)
       @identity_sets_history = IdentitySetsHistory.new(@channel, self)
+      @managed_secrets = ManagedSecrets.new(@channel, self)
       @nodes = Nodes.new(@channel, self)
       @nodes_history = NodesHistory.new(@channel, self)
       @organization_history = OrganizationHistory.new(@channel, self)
@@ -103,6 +104,7 @@ module SDM #:nodoc:
       @roles = Roles.new(@channel, self)
       @roles_history = RolesHistory.new(@channel, self)
       @secret_stores = SecretStores.new(@channel, self)
+      @secret_engines = SecretEngines.new(@channel, self)
       @secret_store_healths = SecretStoreHealths.new(@channel, self)
       @secret_stores_history = SecretStoresHistory.new(@channel, self)
       @workflow_approvers = WorkflowApprovers.new(@channel, self)
@@ -314,6 +316,12 @@ module SDM #:nodoc:
     #
     # See {IdentitySetsHistory}.
     attr_reader :identity_sets_history
+    # ManagedSecret is a private vertical for creating, reading, updating,
+    # deleting, listing and rotating the managed secrets in the secrets engines as
+    # an authenticated user.
+    #
+    # See {ManagedSecrets}.
+    attr_reader :managed_secrets
     # Nodes make up the strongDM network, and allow your users to connect securely to your resources. There are two types of nodes:
     # - **Gateways** are the entry points into network. They listen for connection from the strongDM client, and provide access to databases and servers.
     # - **Relays** are used to extend the strongDM network into segmented subnets. They provide access to databases and servers but do not listen for incoming connections.
@@ -419,6 +427,10 @@ module SDM #:nodoc:
     #
     # See {SecretStores}.
     attr_reader :secret_stores
+
+    #
+    # See {SecretEngines}.
+    attr_reader :secret_engines
     # SecretStoreHealths exposes health states for secret stores.
     #
     # See {SecretStoreHealths}.
@@ -496,6 +508,7 @@ module SDM #:nodoc:
       @identity_aliases_history = IdentityAliasesHistory.new(@channel, self)
       @identity_sets = IdentitySets.new(@channel, self)
       @identity_sets_history = IdentitySetsHistory.new(@channel, self)
+      @managed_secrets = ManagedSecrets.new(@channel, self)
       @nodes = Nodes.new(@channel, self)
       @nodes_history = NodesHistory.new(@channel, self)
       @organization_history = OrganizationHistory.new(@channel, self)
@@ -519,6 +532,7 @@ module SDM #:nodoc:
       @roles = Roles.new(@channel, self)
       @roles_history = RolesHistory.new(@channel, self)
       @secret_stores = SecretStores.new(@channel, self)
+      @secret_engines = SecretEngines.new(@channel, self)
       @secret_store_healths = SecretStoreHealths.new(@channel, self)
       @secret_stores_history = SecretStoresHistory.new(@channel, self)
       @workflow_approvers = WorkflowApprovers.new(@channel, self)
