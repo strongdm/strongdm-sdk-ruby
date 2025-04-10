@@ -2571,11 +2571,65 @@ module SDM
     end
   end
 
+  # An approver for an approval workflow step. Specifies either an account_id or an role_id (not both)
+  class ApprovalFlowApprover
+    # The approver account id.
+    attr_accessor :account_id
+    # The approver role id
+    attr_accessor :role_id
+
+    def initialize(
+      account_id: nil,
+      role_id: nil
+    )
+      @account_id = account_id == nil ? "" : account_id
+      @role_id = role_id == nil ? "" : role_id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # An approval step for an approval workflow. Specifies approvers and conditions for approval to be granted.
+  class ApprovalFlowStep
+    # The approvers for this approval step
+    attr_accessor :approvers
+    # Whether "any" or "all" approvers must approve for this approval step to pass. Optional, defaults to "any".
+    attr_accessor :quantifier
+    # Duration after which this approval step will be skipped if no approval is given. Optional, if not provided an approver must approve before the step passes.
+    attr_accessor :skip_after
+
+    def initialize(
+      approvers: nil,
+      quantifier: nil,
+      skip_after: nil
+    )
+      @approvers = approvers == nil ? [] : approvers
+      @quantifier = quantifier == nil ? "" : quantifier
+      @skip_after = skip_after == nil ? nil : skip_after
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   # ApprovalWorkflows are the mechanism by which requests for access can be viewed by authorized
   # approvers and be approved or denied.
   class ApprovalWorkflow
     # Approval mode of the ApprovalWorkflow
     attr_accessor :approval_mode
+    # The approval steps of this approval workflow
+    attr_accessor :approval_workflow_steps
     # Optional description of the ApprovalWorkflow.
     attr_accessor :description
     # Unique identifier of the ApprovalWorkflow.
@@ -2585,11 +2639,13 @@ module SDM
 
     def initialize(
       approval_mode: nil,
+      approval_workflow_steps: nil,
       description: nil,
       id: nil,
       name: nil
     )
       @approval_mode = approval_mode == nil ? "" : approval_mode
+      @approval_workflow_steps = approval_workflow_steps == nil ? [] : approval_workflow_steps
       @description = description == nil ? "" : description
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
@@ -2910,13 +2966,25 @@ module SDM
     attr_accessor :approval_flow_id
     # Unique identifier of the ApprovalWorkflowStep.
     attr_accessor :id
+    # Whether "any" or "all" approvers must approve for this approval step to pass. Read only field for history commands.
+    attr_accessor :quantifier
+    # Duration after which this approval step will be skipped if no approval is given. Read only field for history commands.
+    attr_accessor :skip_after
+    # The position of the approval step in a sequence of approval steps for an approval workflow. Read only field for history commands.
+    attr_accessor :step_order
 
     def initialize(
       approval_flow_id: nil,
-      id: nil
+      id: nil,
+      quantifier: nil,
+      skip_after: nil,
+      step_order: nil
     )
       @approval_flow_id = approval_flow_id == nil ? "" : approval_flow_id
       @id = id == nil ? "" : id
+      @quantifier = quantifier == nil ? "" : quantifier
+      @skip_after = skip_after == nil ? nil : skip_after
+      @step_order = step_order == nil ? 0 : step_order
     end
 
     def to_json(options = {})

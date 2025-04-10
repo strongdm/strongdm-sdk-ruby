@@ -28,13 +28,13 @@ module V1
       self.unmarshal_class_method = :decode
       self.service_name = "v1.ApprovalWorkflowSteps"
 
-      # Create creates a new approval workflow step.
+      # Deprecated: Create creates a new approval workflow step.
       rpc :Create, ::V1::ApprovalWorkflowStepCreateRequest, ::V1::ApprovalWorkflowStepCreateResponse
-      # Get reads one approval workflow step by ID.
+      # Deprecated: Get reads one approval workflow step by ID.
       rpc :Get, ::V1::ApprovalWorkflowStepGetRequest, ::V1::ApprovalWorkflowStepGetResponse
-      # Delete deletes an existing approval workflow step.
+      # Deprecated: Delete deletes an existing approval workflow step.
       rpc :Delete, ::V1::ApprovalWorkflowStepDeleteRequest, ::V1::ApprovalWorkflowStepDeleteResponse
-      # Lists existing approval workflow steps.
+      # Deprecated: Lists existing approval workflow steps.
       rpc :List, ::V1::ApprovalWorkflowStepListRequest, ::V1::ApprovalWorkflowStepListResponse
     end
 

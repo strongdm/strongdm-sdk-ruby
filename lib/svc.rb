@@ -1284,7 +1284,7 @@ module SDM #:nodoc:
       @parent = parent
     end
 
-    # Create creates a new approval workflow approver.
+    # Deprecated: Create creates a new approval workflow approver.
     def create(
       approval_workflow_approver,
       deadline: nil
@@ -1313,7 +1313,7 @@ module SDM #:nodoc:
       resp
     end
 
-    # Get reads one approval workflow approver by ID.
+    # Deprecated: Get reads one approval workflow approver by ID.
     def get(
       id,
       deadline: nil
@@ -1347,7 +1347,7 @@ module SDM #:nodoc:
       resp
     end
 
-    # Delete deletes an existing approval workflow approver.
+    # Deprecated: Delete deletes an existing approval workflow approver.
     def delete(
       id,
       deadline: nil
@@ -1376,7 +1376,7 @@ module SDM #:nodoc:
       resp
     end
 
-    # Lists existing approval workflow approvers.
+    # Deprecated: Lists existing approval workflow approvers.
     def list(
       filter,
       *args,
@@ -1425,7 +1425,7 @@ module SDM #:nodoc:
       @approval_workflow_approvers = approval_workflow_approvers
     end
 
-    # Get reads one approval workflow approver by ID.
+    # Deprecated: Get reads one approval workflow approver by ID.
     def get(
       id,
       deadline: nil
@@ -1436,7 +1436,7 @@ module SDM #:nodoc:
              )
     end
 
-    # Lists existing approval workflow approvers.
+    # Deprecated: Lists existing approval workflow approvers.
     def list(
       filter,
       *args,
@@ -1520,7 +1520,7 @@ module SDM #:nodoc:
       @parent = parent
     end
 
-    # Create creates a new approval workflow step.
+    # Deprecated: Create creates a new approval workflow step.
     def create(
       approval_workflow_step,
       deadline: nil
@@ -1549,7 +1549,7 @@ module SDM #:nodoc:
       resp
     end
 
-    # Get reads one approval workflow step by ID.
+    # Deprecated: Get reads one approval workflow step by ID.
     def get(
       id,
       deadline: nil
@@ -1583,7 +1583,7 @@ module SDM #:nodoc:
       resp
     end
 
-    # Delete deletes an existing approval workflow step.
+    # Deprecated: Delete deletes an existing approval workflow step.
     def delete(
       id,
       deadline: nil
@@ -1612,7 +1612,7 @@ module SDM #:nodoc:
       resp
     end
 
-    # Lists existing approval workflow steps.
+    # Deprecated: Lists existing approval workflow steps.
     def list(
       filter,
       *args,
@@ -1661,7 +1661,7 @@ module SDM #:nodoc:
       @approval_workflow_steps = approval_workflow_steps
     end
 
-    # Get reads one approval workflow step by ID.
+    # Deprecated: Get reads one approval workflow step by ID.
     def get(
       id,
       deadline: nil
@@ -1672,7 +1672,7 @@ module SDM #:nodoc:
              )
     end
 
-    # Lists existing approval workflow steps.
+    # Deprecated: Lists existing approval workflow steps.
     def list(
       filter,
       *args,

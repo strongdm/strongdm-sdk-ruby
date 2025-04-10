@@ -2681,12 +2681,87 @@ module SDM
       end
       items
     end
+    def self.convert_approval_flow_approver_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = ApprovalFlowApprover.new()
+      porcelain.account_id = (plumbing.account_id)
+      porcelain.role_id = (plumbing.role_id)
+      porcelain
+    end
+
+    def self.convert_approval_flow_approver_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::ApprovalFlowApprover.new()
+      plumbing.account_id = (porcelain.account_id)
+      plumbing.role_id = (porcelain.role_id)
+      plumbing
+    end
+    def self.convert_repeated_approval_flow_approver_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_approval_flow_approver_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_approval_flow_approver_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_approval_flow_approver_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_approval_flow_step_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = ApprovalFlowStep.new()
+      porcelain.approvers = convert_repeated_approval_flow_approver_to_porcelain(plumbing.approvers)
+      porcelain.quantifier = (plumbing.quantifier)
+      porcelain.skip_after = convert_duration_to_porcelain(plumbing.skip_after)
+      porcelain
+    end
+
+    def self.convert_approval_flow_step_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::ApprovalFlowStep.new()
+      plumbing.approvers += convert_repeated_approval_flow_approver_to_plumbing(porcelain.approvers)
+      plumbing.quantifier = (porcelain.quantifier)
+      plumbing.skip_after = convert_duration_to_plumbing(porcelain.skip_after)
+      plumbing
+    end
+    def self.convert_repeated_approval_flow_step_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_approval_flow_step_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_approval_flow_step_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_approval_flow_step_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_approval_workflow_to_porcelain(plumbing)
       if plumbing == nil
         return nil
       end
       porcelain = ApprovalWorkflow.new()
       porcelain.approval_mode = (plumbing.approval_mode)
+      porcelain.approval_workflow_steps = convert_repeated_approval_flow_step_to_porcelain(plumbing.approval_workflow_steps)
       porcelain.description = (plumbing.description)
       porcelain.id = (plumbing.id)
       porcelain.name = (plumbing.name)
@@ -2699,6 +2774,7 @@ module SDM
       end
       plumbing = V1::ApprovalWorkflow.new()
       plumbing.approval_mode = (porcelain.approval_mode)
+      plumbing.approval_workflow_steps += convert_repeated_approval_flow_step_to_plumbing(porcelain.approval_workflow_steps)
       plumbing.description = (porcelain.description)
       plumbing.id = (porcelain.id)
       plumbing.name = (porcelain.name)
@@ -3138,6 +3214,9 @@ module SDM
       porcelain = ApprovalWorkflowStep.new()
       porcelain.approval_flow_id = (plumbing.approval_flow_id)
       porcelain.id = (plumbing.id)
+      porcelain.quantifier = (plumbing.quantifier)
+      porcelain.skip_after = convert_duration_to_porcelain(plumbing.skip_after)
+      porcelain.step_order = (plumbing.step_order)
       porcelain
     end
 
@@ -3148,6 +3227,9 @@ module SDM
       plumbing = V1::ApprovalWorkflowStep.new()
       plumbing.approval_flow_id = (porcelain.approval_flow_id)
       plumbing.id = (porcelain.id)
+      plumbing.quantifier = (porcelain.quantifier)
+      plumbing.skip_after = convert_duration_to_plumbing(porcelain.skip_after)
+      plumbing.step_order = (porcelain.step_order)
       plumbing
     end
     def self.convert_repeated_approval_workflow_step_to_plumbing(porcelains)

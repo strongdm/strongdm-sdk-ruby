@@ -19,6 +19,7 @@ require "google/protobuf"
 
 require "options_pb"
 require "spec_pb"
+require "google/protobuf/duration_pb"
 
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("approval_workflow_steps.proto", :syntax => :proto3) do
@@ -61,6 +62,9 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.ApprovalWorkflowStep" do
       optional :id, :string, 1
       optional :approval_flow_id, :string, 2
+      optional :quantifier, :string, 3
+      optional :skip_after, :message, 4, "google.protobuf.Duration"
+      optional :step_order, :int32, 5
     end
   end
 end
