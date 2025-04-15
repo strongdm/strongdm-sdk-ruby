@@ -28,8 +28,8 @@ module SDM #:nodoc:
     DEFAULT_MAX_RETRIES = 3
     DEFAULT_BASE_RETRY_DELAY = 0.0030 # 30 ms
     DEFAULT_MAX_RETRY_DELAY = 300 # 300 seconds
-    API_VERSION = "2024-03-28"
-    USER_AGENT = "strongdm-sdk-ruby/14.0.0"
+    API_VERSION = "2025-04-14"
+    USER_AGENT = "strongdm-sdk-ruby/14.2.0"
     private_constant :DEFAULT_MAX_RETRIES, :DEFAULT_BASE_RETRY_DELAY, :DEFAULT_MAX_RETRY_DELAY, :API_VERSION, :USER_AGENT
 
     # Creates a new strongDM API client.
