@@ -11738,7 +11738,6 @@ module SDM
     end
   end
 
-  # RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class RedshiftIAM
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
@@ -11822,7 +11821,6 @@ module SDM
     end
   end
 
-  # RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class RedshiftServerlessIAM
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
