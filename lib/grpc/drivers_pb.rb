@@ -100,6 +100,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :neptune, :message, 2250, "v1.Neptune"
         optional :neptune_iam, :message, 2201, "v1.NeptuneIAM"
         optional :oracle, :message, 1200, "v1.Oracle"
+        optional :oracle_nne, :message, 1201, "v1.OracleNNE"
         optional :postgres, :message, 1300, "v1.Postgres"
         optional :presto, :message, 1400, "v1.Presto"
         optional :rdp, :message, 1500, "v1.RDP"
@@ -1500,6 +1501,23 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tls_required, :bool, 7
       optional :username, :string, 2
     end
+    add_message "v1.OracleNNE" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :proxy_cluster_id, :string, 32776
+      optional :subdomain, :string, 32775
+      optional :database, :string, 4
+      optional :hostname, :string, 1
+      optional :password, :string, 3
+      optional :port, :int32, 5
+      optional :port_override, :int32, 6
+      optional :username, :string, 2
+    end
     add_message "v1.Postgres" do
       optional :id, :string, 32768
       optional :name, :string, 32769
@@ -2066,6 +2084,7 @@ module V1
   Neptune = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Neptune").msgclass
   NeptuneIAM = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.NeptuneIAM").msgclass
   Oracle = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Oracle").msgclass
+  OracleNNE = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.OracleNNE").msgclass
   Postgres = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Postgres").msgclass
   Presto = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Presto").msgclass
   RDP = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RDP").msgclass

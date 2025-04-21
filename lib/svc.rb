@@ -5059,6 +5059,7 @@ module SDM #:nodoc:
   # {Neptune}
   # {NeptuneIAM}
   # {Oracle}
+  # {OracleNNE}
   # {Postgres}
   # {Presto}
   # {RabbitMQAMQP091}
