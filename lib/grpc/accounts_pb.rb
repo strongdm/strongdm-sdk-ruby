@@ -95,6 +95,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :password, :string, 12
       optional :SCIM, :string, 13
       optional :manager_id, :string, 14
+      optional :resolved_manager_id, :string, 15
     end
     add_message "v1.Service" do
       optional :id, :string, 1

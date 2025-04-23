@@ -5025,6 +5025,7 @@ module SDM #:nodoc:
   # {DocumentDBHost}
   # {DocumentDBHostIAM}
   # {DocumentDBReplicaSet}
+  # {DocumentDBReplicaSetIAM}
   # {Druid}
   # {DynamoDB}
   # {DynamoDBIAM}

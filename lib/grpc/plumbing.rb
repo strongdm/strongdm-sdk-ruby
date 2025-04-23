@@ -5477,6 +5477,64 @@ module SDM
       end
       items
     end
+    def self.convert_document_db_replica_set_iam_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = DocumentDBReplicaSetIAM.new()
+      porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.connect_to_replica = (plumbing.connect_to_replica)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
+      porcelain.region = (plumbing.region)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.subdomain = (plumbing.subdomain)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_document_db_replica_set_iam_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::DocumentDBReplicaSetIAM.new()
+      plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.connect_to_replica = (porcelain.connect_to_replica)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
+      plumbing.region = (porcelain.region)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.subdomain = (porcelain.subdomain)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_document_db_replica_set_iam_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_document_db_replica_set_iam_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_document_db_replica_set_iam_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_document_db_replica_set_iam_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_druid_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -12691,6 +12749,9 @@ module SDM
       if porcelain.instance_of? DocumentDBReplicaSet
         plumbing.document_db_replica_set = convert_document_db_replica_set_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? DocumentDBReplicaSetIAM
+        plumbing.document_db_replica_set_iam = convert_document_db_replica_set_iam_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? Druid
         plumbing.druid = convert_druid_to_plumbing(porcelain)
       end
@@ -13009,6 +13070,9 @@ module SDM
       end
       if plumbing.document_db_replica_set != nil
         return convert_document_db_replica_set_to_porcelain(plumbing.document_db_replica_set)
+      end
+      if plumbing.document_db_replica_set_iam != nil
+        return convert_document_db_replica_set_iam_to_porcelain(plumbing.document_db_replica_set_iam)
       end
       if plumbing.druid != nil
         return convert_druid_to_porcelain(plumbing.druid)

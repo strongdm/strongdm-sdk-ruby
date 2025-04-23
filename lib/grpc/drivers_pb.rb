@@ -66,6 +66,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :document_db_host, :message, 1052, "v1.DocumentDBHost"
         optional :document_db_host_iam, :message, 1055, "v1.DocumentDBHostIAM"
         optional :document_db_replica_set, :message, 1053, "v1.DocumentDBReplicaSet"
+        optional :document_db_replica_set_iam, :message, 1056, "v1.DocumentDBReplicaSetIAM"
         optional :druid, :message, 400, "v1.Druid"
         optional :dynamo_db, :message, 500, "v1.DynamoDB"
         optional :dynamo_dbiam, :message, 501, "v1.DynamoDBIAM"
@@ -888,6 +889,21 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port_override, :int32, 3
       optional :replica_set, :string, 6
       optional :username, :string, 4
+    end
+    add_message "v1.DocumentDBReplicaSetIAM" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :proxy_cluster_id, :string, 32776
+      optional :subdomain, :string, 32775
+      optional :connect_to_replica, :bool, 3
+      optional :hostname, :string, 1
+      optional :port_override, :int32, 2
+      optional :region, :string, 5
     end
     add_message "v1.Druid" do
       optional :id, :string, 32768
@@ -2050,6 +2066,7 @@ module V1
   DocumentDBHost = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DocumentDBHost").msgclass
   DocumentDBHostIAM = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DocumentDBHostIAM").msgclass
   DocumentDBReplicaSet = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DocumentDBReplicaSet").msgclass
+  DocumentDBReplicaSetIAM = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DocumentDBReplicaSetIAM").msgclass
   Druid = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Druid").msgclass
   DynamoDB = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DynamoDB").msgclass
   DynamoDBIAM = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DynamoDBIAM").msgclass

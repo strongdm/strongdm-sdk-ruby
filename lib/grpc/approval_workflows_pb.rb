@@ -83,6 +83,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.ApprovalFlowApprover" do
       optional :account_id, :string, 1
       optional :role_id, :string, 2
+      optional :reference, :string, 3
     end
   end
 end
