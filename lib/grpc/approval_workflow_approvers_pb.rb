@@ -64,6 +64,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :approval_step_id, :string, 3
       optional :account_id, :string, 4
       optional :role_id, :string, 5
+      optional :reference, :string, 6
     end
   end
 end

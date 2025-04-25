@@ -517,4 +517,11 @@ module SDM
     UK = "app.uk.strongdm.com:443"
     EU = "app.eu.strongdm.com:443"
   end
+
+  # ApproverReference defines the type for approver references.
+  module ApproverReference
+    NONE = ""
+    MANAGER_OF_REQUESTER = "manager-of-requester"
+    MANAGER_OF_MANAGER_OF_REQUESTER = "manager-of-manager-of-requester"
+  end
 end

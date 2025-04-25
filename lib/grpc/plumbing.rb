@@ -2687,6 +2687,7 @@ module SDM
       end
       porcelain = ApprovalFlowApprover.new()
       porcelain.account_id = (plumbing.account_id)
+      porcelain.reference = (plumbing.reference)
       porcelain.role_id = (plumbing.role_id)
       porcelain
     end
@@ -2697,6 +2698,7 @@ module SDM
       end
       plumbing = V1::ApprovalFlowApprover.new()
       plumbing.account_id = (porcelain.account_id)
+      plumbing.reference = (porcelain.reference)
       plumbing.role_id = (porcelain.role_id)
       plumbing
     end
@@ -2806,6 +2808,7 @@ module SDM
       porcelain.approval_flow_id = (plumbing.approval_flow_id)
       porcelain.approval_step_id = (plumbing.approval_step_id)
       porcelain.id = (plumbing.id)
+      porcelain.reference = (plumbing.reference)
       porcelain.role_id = (plumbing.role_id)
       porcelain
     end
@@ -2819,6 +2822,7 @@ module SDM
       plumbing.approval_flow_id = (porcelain.approval_flow_id)
       plumbing.approval_step_id = (porcelain.approval_step_id)
       plumbing.id = (porcelain.id)
+      plumbing.reference = (porcelain.reference)
       plumbing.role_id = (porcelain.role_id)
       plumbing
     end

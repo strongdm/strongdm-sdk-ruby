@@ -2571,18 +2571,23 @@ module SDM
     end
   end
 
-  # An approver for an approval workflow step. Specifies either an account_id or an role_id (not both)
+  # An approver for an approval workflow step. Each approver can specify exactly one of: account_id, role_id, or reference
   class ApprovalFlowApprover
     # The approver account id.
     attr_accessor :account_id
+    # A reference to an approver. Must be one of ApproverReference constants.
+    # If set, the account_id and role_id must be empty.
+    attr_accessor :reference
     # The approver role id
     attr_accessor :role_id
 
     def initialize(
       account_id: nil,
+      reference: nil,
       role_id: nil
     )
       @account_id = account_id == nil ? "" : account_id
+      @reference = reference == nil ? "" : reference
       @role_id = role_id == nil ? "" : role_id
     end
 
@@ -2670,6 +2675,10 @@ module SDM
     attr_accessor :approval_step_id
     # Unique identifier of the ApprovalWorkflowApprover.
     attr_accessor :id
+    # A reference to an approver. Will be one of ApproverReference constants.
+    # This field is only populated when reading historical Approval Workflow Approvers data through the Approval Workflows History API.
+    # For the deprecated Approval Workflow Approvers API no value is returned for this field and it is non-settable.
+    attr_accessor :reference
     # The approver role id
     attr_accessor :role_id
 
@@ -2678,12 +2687,14 @@ module SDM
       approval_flow_id: nil,
       approval_step_id: nil,
       id: nil,
+      reference: nil,
       role_id: nil
     )
       @account_id = account_id == nil ? "" : account_id
       @approval_flow_id = approval_flow_id == nil ? "" : approval_flow_id
       @approval_step_id = approval_step_id == nil ? "" : approval_step_id
       @id = id == nil ? "" : id
+      @reference = reference == nil ? "" : reference
       @role_id = role_id == nil ? "" : role_id
     end
 
