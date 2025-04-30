@@ -33,6 +33,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :aws_console, :message, 3000, "v1.AWSConsole"
         optional :aws_console_static_key_pair, :message, 3001, "v1.AWSConsoleStaticKeyPair"
         optional :aws_instance_profile, :message, 2301, "v1.AWSInstanceProfile"
+        optional :aerospike, :message, 4600, "v1.Aerospike"
         optional :amazon_eks, :message, 802, "v1.AmazonEKS"
         optional :amazon_eks_instance_profile, :message, 809, "v1.AmazonEKSInstanceProfile"
         optional :amazon_eks_instance_profile_user_impersonation, :message, 813, "v1.AmazonEKSInstanceProfileUserImpersonation"
@@ -297,6 +298,22 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :region, :string, 2
       optional :role_arn, :string, 3
       optional :role_external_id, :string, 4
+    end
+    add_message "v1.Aerospike" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :proxy_cluster_id, :string, 32776
+      optional :subdomain, :string, 32775
+      optional :hostname, :string, 1
+      optional :password, :string, 3
+      optional :port, :int32, 6
+      optional :port_override, :int32, 5
+      optional :username, :string, 2
     end
     add_message "v1.AmazonEKS" do
       optional :id, :string, 32768
@@ -2033,6 +2050,7 @@ module V1
   AWSConsole = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AWSConsole").msgclass
   AWSConsoleStaticKeyPair = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AWSConsoleStaticKeyPair").msgclass
   AWSInstanceProfile = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AWSInstanceProfile").msgclass
+  Aerospike = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Aerospike").msgclass
   AmazonEKS = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AmazonEKS").msgclass
   AmazonEKSInstanceProfile = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AmazonEKSInstanceProfile").msgclass
   AmazonEKSInstanceProfileUserImpersonation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AmazonEKSInstanceProfileUserImpersonation").msgclass

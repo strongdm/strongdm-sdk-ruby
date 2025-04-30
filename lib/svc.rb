@@ -4983,6 +4983,7 @@ module SDM #:nodoc:
   # delegates access to.
   #
   # See:
+  # {Aerospike}
   # {AKS}
   # {AKSBasicAuth}
   # {AKSServiceAccount}

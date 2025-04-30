@@ -2201,6 +2201,66 @@ module SDM
       end
       items
     end
+    def self.convert_aerospike_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = Aerospike.new()
+      porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.password = (plumbing.password)
+      porcelain.port = (plumbing.port)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.subdomain = (plumbing.subdomain)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.username = (plumbing.username)
+      porcelain
+    end
+
+    def self.convert_aerospike_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::Aerospike.new()
+      plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.subdomain = (porcelain.subdomain)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
+      plumbing
+    end
+    def self.convert_repeated_aerospike_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_aerospike_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_aerospike_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_aerospike_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_amazon_eks_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -12627,6 +12687,9 @@ module SDM
         return nil
       end
       plumbing = V1::Resource.new()
+      if porcelain.instance_of? Aerospike
+        plumbing.aerospike = convert_aerospike_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? AKS
         plumbing.aks = convert_aks_to_plumbing(porcelain)
       end
@@ -12948,6 +13011,9 @@ module SDM
     def self.convert_resource_to_porcelain(plumbing)
       if plumbing == nil
         return nil
+      end
+      if plumbing.aerospike != nil
+        return convert_aerospike_to_porcelain(plumbing.aerospike)
       end
       if plumbing.aks != nil
         return convert_aks_to_porcelain(plumbing.aks)

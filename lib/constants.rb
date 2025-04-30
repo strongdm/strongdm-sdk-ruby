@@ -96,6 +96,7 @@ module SDM
     DUO = "duo"
     TOTP = "totp"
     OKTA = "okta"
+    RSA = "rsa"
   end
 
   # Activity Entities, all entity types that can be part of an activity.
