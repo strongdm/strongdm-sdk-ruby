@@ -2012,7 +2012,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :bind_interface, :string, 32774
       optional :proxy_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
-      optional :database, :string, 3
       optional :hostname, :string, 1
       optional :password, :string, 2
       optional :port, :int32, 5

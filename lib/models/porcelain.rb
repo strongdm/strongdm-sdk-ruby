@@ -14716,8 +14716,6 @@ module SDM
   class Trino
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
-    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-    attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
@@ -14747,7 +14745,6 @@ module SDM
 
     def initialize(
       bind_interface: nil,
-      database: nil,
       egress_filter: nil,
       healthy: nil,
       hostname: nil,
@@ -14763,7 +14760,6 @@ module SDM
       username: nil
     )
       @bind_interface = bind_interface == nil ? "" : bind_interface
-      @database = database == nil ? "" : database
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
       @hostname = hostname == nil ? "" : hostname

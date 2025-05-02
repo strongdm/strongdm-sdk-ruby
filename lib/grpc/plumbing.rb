@@ -15911,7 +15911,6 @@ module SDM
       end
       porcelain = Trino.new()
       porcelain.bind_interface = (plumbing.bind_interface)
-      porcelain.database = (plumbing.database)
       porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.healthy = (plumbing.healthy)
       porcelain.hostname = (plumbing.hostname)
@@ -15934,7 +15933,6 @@ module SDM
       end
       plumbing = V1::Trino.new()
       plumbing.bind_interface = (porcelain.bind_interface)
-      plumbing.database = (porcelain.database)
       plumbing.egress_filter = (porcelain.egress_filter)
       plumbing.healthy = (porcelain.healthy)
       plumbing.hostname = (porcelain.hostname)
