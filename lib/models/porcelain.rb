@@ -14801,6 +14801,8 @@ module SDM
   # A User can connect to resources they are granted directly, or granted
   # via roles.
   class User
+    # SCIM contains the raw SCIM metadata for the user. This is a read-only field.
+    attr_accessor :scim
     # The User's email address. Must be unique.
     attr_accessor :email
     # External ID is an alternative unique ID this user is represented by within an external service.
@@ -14813,36 +14815,48 @@ module SDM
     attr_accessor :last_name
     # Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.
     attr_accessor :managed_by
+    # Manager ID is the ID of the user's manager. This field is empty when the user has no manager.
+    attr_accessor :manager_id
     # Password is a write-only field that can be used to set the user's password.
     # Currently only supported for update.
     attr_accessor :password
     # PermissionLevel is the user's permission level e.g. admin, DBA, user.
     attr_accessor :permission_level
+    # Resolved Manager ID is the ID of the user's manager derived from the manager_id,
+    # if present, or from the SCIM metadata.
+    # This is a read-only field that's only populated for get and list.
+    attr_accessor :resolved_manager_id
     # Suspended is a read only field for the User's suspended state.
     attr_accessor :suspended
     # Tags is a map of key, value pairs.
     attr_accessor :tags
 
     def initialize(
+      scim: nil,
       email: nil,
       external_id: nil,
       first_name: nil,
       id: nil,
       last_name: nil,
       managed_by: nil,
+      manager_id: nil,
       password: nil,
       permission_level: nil,
+      resolved_manager_id: nil,
       suspended: nil,
       tags: nil
     )
+      @scim = scim == nil ? "" : scim
       @email = email == nil ? "" : email
       @external_id = external_id == nil ? "" : external_id
       @first_name = first_name == nil ? "" : first_name
       @id = id == nil ? "" : id
       @last_name = last_name == nil ? "" : last_name
       @managed_by = managed_by == nil ? "" : managed_by
+      @manager_id = manager_id == nil ? "" : manager_id
       @password = password == nil ? "" : password
       @permission_level = permission_level == nil ? "" : permission_level
+      @resolved_manager_id = resolved_manager_id == nil ? "" : resolved_manager_id
       @suspended = suspended == nil ? false : suspended
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
