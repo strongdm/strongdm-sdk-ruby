@@ -313,6 +313,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :password, :string, 3
       optional :port, :int32, 6
       optional :port_override, :int32, 5
+      optional :use_services_alternate, :bool, 10
       optional :username, :string, 2
     end
     add_message "v1.AmazonEKS" do

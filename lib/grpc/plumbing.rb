@@ -2219,6 +2219,7 @@ module SDM
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.use_services_alternate = (plumbing.use_services_alternate)
       porcelain.username = (plumbing.username)
       porcelain
     end
@@ -2241,6 +2242,7 @@ module SDM
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.use_services_alternate = (porcelain.use_services_alternate)
       plumbing.username = (porcelain.username)
       plumbing
     end
