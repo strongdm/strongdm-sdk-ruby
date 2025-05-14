@@ -14873,7 +14873,6 @@ module SDM
     end
   end
 
-  # VaultAWSEC2Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class VaultAWSEC2Store
     # Unique identifier of the SecretStore.
     attr_accessor :id
@@ -14909,7 +14908,6 @@ module SDM
     end
   end
 
-  # VaultAWSIAMStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class VaultAWSIAMStore
     # Unique identifier of the SecretStore.
     attr_accessor :id
