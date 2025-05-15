@@ -1950,82 +1950,6 @@ module SDM
     end
   end
 
-  # Aerospike is currently unstable, and its API may change, or it may be removed, without a major version bump.
-  class Aerospike
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
-    attr_accessor :bind_interface
-    # A filter applied to the routing logic to pin datasource to nodes.
-    attr_accessor :egress_filter
-    # True if the datasource is reachable and the credentials are valid.
-    attr_accessor :healthy
-    # The host to dial to initiate a connection from the egress node to this resource.
-    attr_accessor :hostname
-    # Unique identifier of the Resource.
-    attr_accessor :id
-    # Unique human-readable name of the Resource.
-    attr_accessor :name
-    # The password to authenticate with.
-    attr_accessor :password
-    # The port to dial to initiate a connection from the egress node to this resource.
-    attr_accessor :port
-    # The local port used by clients to connect to this resource.
-    attr_accessor :port_override
-    # ID of the proxy cluster for this resource, if any.
-    attr_accessor :proxy_cluster_id
-    # ID of the secret store containing credentials for this resource, if any.
-    attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
-    attr_accessor :subdomain
-    # Tags is a map of key, value pairs.
-    attr_accessor :tags
-    # If true, uses UseServicesAlternates directive for Aerospike connection
-    attr_accessor :use_services_alternate
-    # The username to authenticate with.
-    attr_accessor :username
-
-    def initialize(
-      bind_interface: nil,
-      egress_filter: nil,
-      healthy: nil,
-      hostname: nil,
-      id: nil,
-      name: nil,
-      password: nil,
-      port: nil,
-      port_override: nil,
-      proxy_cluster_id: nil,
-      secret_store_id: nil,
-      subdomain: nil,
-      tags: nil,
-      use_services_alternate: nil,
-      username: nil
-    )
-      @bind_interface = bind_interface == nil ? "" : bind_interface
-      @egress_filter = egress_filter == nil ? "" : egress_filter
-      @healthy = healthy == nil ? false : healthy
-      @hostname = hostname == nil ? "" : hostname
-      @id = id == nil ? "" : id
-      @name = name == nil ? "" : name
-      @password = password == nil ? "" : password
-      @port = port == nil ? 0 : port
-      @port_override = port_override == nil ? 0 : port_override
-      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
-      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
-      @subdomain = subdomain == nil ? "" : subdomain
-      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
-      @use_services_alternate = use_services_alternate == nil ? false : use_services_alternate
-      @username = username == nil ? "" : username
-    end
-
-    def to_json(options = {})
-      hash = {}
-      self.instance_variables.each do |var|
-        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
-      end
-      hash.to_json
-    end
-  end
-
   class AmazonEKS
     # The Access Key ID to use to authenticate.
     attr_accessor :access_key
@@ -2647,23 +2571,18 @@ module SDM
     end
   end
 
-  # An approver for an approval workflow step. Each approver can specify exactly one of: account_id, role_id, or reference
+  # An approver for an approval workflow step. Specifies either an account_id or an role_id (not both)
   class ApprovalFlowApprover
     # The approver account id.
     attr_accessor :account_id
-    # A reference to an approver. Must be one of ApproverReference constants.
-    # If set, the account_id and role_id must be empty.
-    attr_accessor :reference
     # The approver role id
     attr_accessor :role_id
 
     def initialize(
       account_id: nil,
-      reference: nil,
       role_id: nil
     )
       @account_id = account_id == nil ? "" : account_id
-      @reference = reference == nil ? "" : reference
       @role_id = role_id == nil ? "" : role_id
     end
 
@@ -2751,10 +2670,6 @@ module SDM
     attr_accessor :approval_step_id
     # Unique identifier of the ApprovalWorkflowApprover.
     attr_accessor :id
-    # A reference to an approver. Will be one of ApproverReference constants.
-    # This field is only populated when reading historical Approval Workflow Approvers data through the Approval Workflows History API.
-    # For the deprecated Approval Workflow Approvers API no value is returned for this field and it is non-settable.
-    attr_accessor :reference
     # The approver role id
     attr_accessor :role_id
 
@@ -2763,14 +2678,12 @@ module SDM
       approval_flow_id: nil,
       approval_step_id: nil,
       id: nil,
-      reference: nil,
       role_id: nil
     )
       @account_id = account_id == nil ? "" : account_id
       @approval_flow_id = approval_flow_id == nil ? "" : approval_flow_id
       @approval_step_id = approval_step_id == nil ? "" : approval_step_id
       @id = id == nil ? "" : id
-      @reference = reference == nil ? "" : reference
       @role_id = role_id == nil ? "" : role_id
     end
 
@@ -5487,74 +5400,6 @@ module SDM
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
       @username = username == nil ? "" : username
-    end
-
-    def to_json(options = {})
-      hash = {}
-      self.instance_variables.each do |var|
-        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
-      end
-      hash.to_json
-    end
-  end
-
-  # DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-  class DocumentDBReplicaSetIAM
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
-    attr_accessor :bind_interface
-    # Set to connect to a replica instead of the primary node.
-    attr_accessor :connect_to_replica
-    # A filter applied to the routing logic to pin datasource to nodes.
-    attr_accessor :egress_filter
-    # True if the datasource is reachable and the credentials are valid.
-    attr_accessor :healthy
-    # Hostname must contain the hostname/port pairs of all instances in the replica set separated by commas.
-    attr_accessor :hostname
-    # Unique identifier of the Resource.
-    attr_accessor :id
-    # Unique human-readable name of the Resource.
-    attr_accessor :name
-    # The local port used by clients to connect to this resource.
-    attr_accessor :port_override
-    # ID of the proxy cluster for this resource, if any.
-    attr_accessor :proxy_cluster_id
-    # The region of the document db cluster
-    attr_accessor :region
-    # ID of the secret store containing credentials for this resource, if any.
-    attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
-    attr_accessor :subdomain
-    # Tags is a map of key, value pairs.
-    attr_accessor :tags
-
-    def initialize(
-      bind_interface: nil,
-      connect_to_replica: nil,
-      egress_filter: nil,
-      healthy: nil,
-      hostname: nil,
-      id: nil,
-      name: nil,
-      port_override: nil,
-      proxy_cluster_id: nil,
-      region: nil,
-      secret_store_id: nil,
-      subdomain: nil,
-      tags: nil
-    )
-      @bind_interface = bind_interface == nil ? "" : bind_interface
-      @connect_to_replica = connect_to_replica == nil ? false : connect_to_replica
-      @egress_filter = egress_filter == nil ? "" : egress_filter
-      @healthy = healthy == nil ? false : healthy
-      @hostname = hostname == nil ? "" : hostname
-      @id = id == nil ? "" : id
-      @name = name == nil ? "" : name
-      @port_override = port_override == nil ? 0 : port_override
-      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
-      @region = region == nil ? "" : region
-      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
-      @subdomain = subdomain == nil ? "" : subdomain
-      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
     def to_json(options = {})
@@ -9915,81 +9760,6 @@ module SDM
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
       @tls_required = tls_required == nil ? false : tls_required
-      @username = username == nil ? "" : username
-    end
-
-    def to_json(options = {})
-      hash = {}
-      self.instance_variables.each do |var|
-        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
-      end
-      hash.to_json
-    end
-  end
-
-  class OracleNNE
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
-    attr_accessor :bind_interface
-    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-    attr_accessor :database
-    # A filter applied to the routing logic to pin datasource to nodes.
-    attr_accessor :egress_filter
-    # True if the datasource is reachable and the credentials are valid.
-    attr_accessor :healthy
-    # The host to dial to initiate a connection from the egress node to this resource.
-    attr_accessor :hostname
-    # Unique identifier of the Resource.
-    attr_accessor :id
-    # Unique human-readable name of the Resource.
-    attr_accessor :name
-    # The password to authenticate with.
-    attr_accessor :password
-    # The port to dial to initiate a connection from the egress node to this resource.
-    attr_accessor :port
-    # The local port used by clients to connect to this resource.
-    attr_accessor :port_override
-    # ID of the proxy cluster for this resource, if any.
-    attr_accessor :proxy_cluster_id
-    # ID of the secret store containing credentials for this resource, if any.
-    attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
-    attr_accessor :subdomain
-    # Tags is a map of key, value pairs.
-    attr_accessor :tags
-    # The username to authenticate with.
-    attr_accessor :username
-
-    def initialize(
-      bind_interface: nil,
-      database: nil,
-      egress_filter: nil,
-      healthy: nil,
-      hostname: nil,
-      id: nil,
-      name: nil,
-      password: nil,
-      port: nil,
-      port_override: nil,
-      proxy_cluster_id: nil,
-      secret_store_id: nil,
-      subdomain: nil,
-      tags: nil,
-      username: nil
-    )
-      @bind_interface = bind_interface == nil ? "" : bind_interface
-      @database = database == nil ? "" : database
-      @egress_filter = egress_filter == nil ? "" : egress_filter
-      @healthy = healthy == nil ? false : healthy
-      @hostname = hostname == nil ? "" : hostname
-      @id = id == nil ? "" : id
-      @name = name == nil ? "" : name
-      @password = password == nil ? "" : password
-      @port = port == nil ? 0 : port
-      @port_override = port_override == nil ? 0 : port_override
-      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
-      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
-      @subdomain = subdomain == nil ? "" : subdomain
-      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
       @username = username == nil ? "" : username
     end
 
@@ -14719,6 +14489,8 @@ module SDM
   class Trino
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
+    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
@@ -14748,6 +14520,7 @@ module SDM
 
     def initialize(
       bind_interface: nil,
+      database: nil,
       egress_filter: nil,
       healthy: nil,
       hostname: nil,
@@ -14763,6 +14536,7 @@ module SDM
       username: nil
     )
       @bind_interface = bind_interface == nil ? "" : bind_interface
+      @database = database == nil ? "" : database
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
       @hostname = hostname == nil ? "" : hostname
@@ -14804,8 +14578,6 @@ module SDM
   # A User can connect to resources they are granted directly, or granted
   # via roles.
   class User
-    # SCIM contains the raw SCIM metadata for the user. This is a read-only field.
-    attr_accessor :scim
     # The User's email address. Must be unique.
     attr_accessor :email
     # External ID is an alternative unique ID this user is represented by within an external service.
@@ -14818,48 +14590,36 @@ module SDM
     attr_accessor :last_name
     # Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.
     attr_accessor :managed_by
-    # Manager ID is the ID of the user's manager. This field is empty when the user has no manager.
-    attr_accessor :manager_id
     # Password is a write-only field that can be used to set the user's password.
     # Currently only supported for update.
     attr_accessor :password
     # PermissionLevel is the user's permission level e.g. admin, DBA, user.
     attr_accessor :permission_level
-    # Resolved Manager ID is the ID of the user's manager derived from the manager_id,
-    # if present, or from the SCIM metadata.
-    # This is a read-only field that's only populated for get and list.
-    attr_accessor :resolved_manager_id
     # Suspended is a read only field for the User's suspended state.
     attr_accessor :suspended
     # Tags is a map of key, value pairs.
     attr_accessor :tags
 
     def initialize(
-      scim: nil,
       email: nil,
       external_id: nil,
       first_name: nil,
       id: nil,
       last_name: nil,
       managed_by: nil,
-      manager_id: nil,
       password: nil,
       permission_level: nil,
-      resolved_manager_id: nil,
       suspended: nil,
       tags: nil
     )
-      @scim = scim == nil ? "" : scim
       @email = email == nil ? "" : email
       @external_id = external_id == nil ? "" : external_id
       @first_name = first_name == nil ? "" : first_name
       @id = id == nil ? "" : id
       @last_name = last_name == nil ? "" : last_name
       @managed_by = managed_by == nil ? "" : managed_by
-      @manager_id = manager_id == nil ? "" : manager_id
       @password = password == nil ? "" : password
       @permission_level = permission_level == nil ? "" : permission_level
-      @resolved_manager_id = resolved_manager_id == nil ? "" : resolved_manager_id
       @suspended = suspended == nil ? false : suspended
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
@@ -14873,6 +14633,7 @@ module SDM
     end
   end
 
+  # VaultAWSEC2Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class VaultAWSEC2Store
     # Unique identifier of the SecretStore.
     attr_accessor :id
@@ -14908,6 +14669,7 @@ module SDM
     end
   end
 
+  # VaultAWSIAMStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class VaultAWSIAMStore
     # Unique identifier of the SecretStore.
     attr_accessor :id
@@ -15366,6 +15128,7 @@ module SDM
     end
   end
 
+  # Vertica is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class Vertica
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface

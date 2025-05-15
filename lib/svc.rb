@@ -4983,7 +4983,6 @@ module SDM #:nodoc:
   # delegates access to.
   #
   # See:
-  # {Aerospike}
   # {AKS}
   # {AKSBasicAuth}
   # {AKSServiceAccount}
@@ -5026,7 +5025,6 @@ module SDM #:nodoc:
   # {DocumentDBHost}
   # {DocumentDBHostIAM}
   # {DocumentDBReplicaSet}
-  # {DocumentDBReplicaSetIAM}
   # {Druid}
   # {DynamoDB}
   # {DynamoDBIAM}
@@ -5061,7 +5059,6 @@ module SDM #:nodoc:
   # {Neptune}
   # {NeptuneIAM}
   # {Oracle}
-  # {OracleNNE}
   # {Postgres}
   # {Presto}
   # {RabbitMQAMQP091}

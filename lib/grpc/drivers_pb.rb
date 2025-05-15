@@ -33,7 +33,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :aws_console, :message, 3000, "v1.AWSConsole"
         optional :aws_console_static_key_pair, :message, 3001, "v1.AWSConsoleStaticKeyPair"
         optional :aws_instance_profile, :message, 2301, "v1.AWSInstanceProfile"
-        optional :aerospike, :message, 4600, "v1.Aerospike"
         optional :amazon_eks, :message, 802, "v1.AmazonEKS"
         optional :amazon_eks_instance_profile, :message, 809, "v1.AmazonEKSInstanceProfile"
         optional :amazon_eks_instance_profile_user_impersonation, :message, 813, "v1.AmazonEKSInstanceProfileUserImpersonation"
@@ -67,7 +66,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :document_db_host, :message, 1052, "v1.DocumentDBHost"
         optional :document_db_host_iam, :message, 1055, "v1.DocumentDBHostIAM"
         optional :document_db_replica_set, :message, 1053, "v1.DocumentDBReplicaSet"
-        optional :document_db_replica_set_iam, :message, 1056, "v1.DocumentDBReplicaSetIAM"
         optional :druid, :message, 400, "v1.Druid"
         optional :dynamo_db, :message, 500, "v1.DynamoDB"
         optional :dynamo_dbiam, :message, 501, "v1.DynamoDBIAM"
@@ -102,7 +100,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :neptune, :message, 2250, "v1.Neptune"
         optional :neptune_iam, :message, 2201, "v1.NeptuneIAM"
         optional :oracle, :message, 1200, "v1.Oracle"
-        optional :oracle_nne, :message, 1201, "v1.OracleNNE"
         optional :postgres, :message, 1300, "v1.Postgres"
         optional :presto, :message, 1400, "v1.Presto"
         optional :rdp, :message, 1500, "v1.RDP"
@@ -298,23 +295,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :region, :string, 2
       optional :role_arn, :string, 3
       optional :role_external_id, :string, 4
-    end
-    add_message "v1.Aerospike" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :bind_interface, :string, 32774
-      optional :proxy_cluster_id, :string, 32776
-      optional :subdomain, :string, 32775
-      optional :hostname, :string, 1
-      optional :password, :string, 3
-      optional :port, :int32, 6
-      optional :port_override, :int32, 5
-      optional :use_services_alternate, :bool, 10
-      optional :username, :string, 2
     end
     add_message "v1.AmazonEKS" do
       optional :id, :string, 32768
@@ -907,21 +887,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port_override, :int32, 3
       optional :replica_set, :string, 6
       optional :username, :string, 4
-    end
-    add_message "v1.DocumentDBReplicaSetIAM" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :bind_interface, :string, 32774
-      optional :proxy_cluster_id, :string, 32776
-      optional :subdomain, :string, 32775
-      optional :connect_to_replica, :bool, 3
-      optional :hostname, :string, 1
-      optional :port_override, :int32, 2
-      optional :region, :string, 5
     end
     add_message "v1.Druid" do
       optional :id, :string, 32768
@@ -1535,23 +1500,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tls_required, :bool, 7
       optional :username, :string, 2
     end
-    add_message "v1.OracleNNE" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :bind_interface, :string, 32774
-      optional :proxy_cluster_id, :string, 32776
-      optional :subdomain, :string, 32775
-      optional :database, :string, 4
-      optional :hostname, :string, 1
-      optional :password, :string, 3
-      optional :port, :int32, 5
-      optional :port_override, :int32, 6
-      optional :username, :string, 2
-    end
     add_message "v1.Postgres" do
       optional :id, :string, 32768
       optional :name, :string, 32769
@@ -2013,6 +1961,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :bind_interface, :string, 32774
       optional :proxy_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
+      optional :database, :string, 3
       optional :hostname, :string, 1
       optional :password, :string, 2
       optional :port, :int32, 5
@@ -2050,7 +1999,6 @@ module V1
   AWSConsole = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AWSConsole").msgclass
   AWSConsoleStaticKeyPair = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AWSConsoleStaticKeyPair").msgclass
   AWSInstanceProfile = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AWSInstanceProfile").msgclass
-  Aerospike = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Aerospike").msgclass
   AmazonEKS = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AmazonEKS").msgclass
   AmazonEKSInstanceProfile = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AmazonEKSInstanceProfile").msgclass
   AmazonEKSInstanceProfileUserImpersonation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AmazonEKSInstanceProfileUserImpersonation").msgclass
@@ -2084,7 +2032,6 @@ module V1
   DocumentDBHost = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DocumentDBHost").msgclass
   DocumentDBHostIAM = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DocumentDBHostIAM").msgclass
   DocumentDBReplicaSet = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DocumentDBReplicaSet").msgclass
-  DocumentDBReplicaSetIAM = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DocumentDBReplicaSetIAM").msgclass
   Druid = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Druid").msgclass
   DynamoDB = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DynamoDB").msgclass
   DynamoDBIAM = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DynamoDBIAM").msgclass
@@ -2119,7 +2066,6 @@ module V1
   Neptune = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Neptune").msgclass
   NeptuneIAM = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.NeptuneIAM").msgclass
   Oracle = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Oracle").msgclass
-  OracleNNE = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.OracleNNE").msgclass
   Postgres = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Postgres").msgclass
   Presto = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Presto").msgclass
   RDP = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RDP").msgclass

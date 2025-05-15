@@ -2201,68 +2201,6 @@ module SDM
       end
       items
     end
-    def self.convert_aerospike_to_porcelain(plumbing)
-      if plumbing == nil
-        return nil
-      end
-      porcelain = Aerospike.new()
-      porcelain.bind_interface = (plumbing.bind_interface)
-      porcelain.egress_filter = (plumbing.egress_filter)
-      porcelain.healthy = (plumbing.healthy)
-      porcelain.hostname = (plumbing.hostname)
-      porcelain.id = (plumbing.id)
-      porcelain.name = (plumbing.name)
-      porcelain.password = (plumbing.password)
-      porcelain.port = (plumbing.port)
-      porcelain.port_override = (plumbing.port_override)
-      porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
-      porcelain.secret_store_id = (plumbing.secret_store_id)
-      porcelain.subdomain = (plumbing.subdomain)
-      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
-      porcelain.use_services_alternate = (plumbing.use_services_alternate)
-      porcelain.username = (plumbing.username)
-      porcelain
-    end
-
-    def self.convert_aerospike_to_plumbing(porcelain)
-      if porcelain == nil
-        return nil
-      end
-      plumbing = V1::Aerospike.new()
-      plumbing.bind_interface = (porcelain.bind_interface)
-      plumbing.egress_filter = (porcelain.egress_filter)
-      plumbing.healthy = (porcelain.healthy)
-      plumbing.hostname = (porcelain.hostname)
-      plumbing.id = (porcelain.id)
-      plumbing.name = (porcelain.name)
-      plumbing.password = (porcelain.password)
-      plumbing.port = (porcelain.port)
-      plumbing.port_override = (porcelain.port_override)
-      plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
-      plumbing.secret_store_id = (porcelain.secret_store_id)
-      plumbing.subdomain = (porcelain.subdomain)
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
-      plumbing.use_services_alternate = (porcelain.use_services_alternate)
-      plumbing.username = (porcelain.username)
-      plumbing
-    end
-    def self.convert_repeated_aerospike_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = convert_aerospike_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.convert_repeated_aerospike_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = convert_aerospike_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
     def self.convert_amazon_eks_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -2749,7 +2687,6 @@ module SDM
       end
       porcelain = ApprovalFlowApprover.new()
       porcelain.account_id = (plumbing.account_id)
-      porcelain.reference = (plumbing.reference)
       porcelain.role_id = (plumbing.role_id)
       porcelain
     end
@@ -2760,7 +2697,6 @@ module SDM
       end
       plumbing = V1::ApprovalFlowApprover.new()
       plumbing.account_id = (porcelain.account_id)
-      plumbing.reference = (porcelain.reference)
       plumbing.role_id = (porcelain.role_id)
       plumbing
     end
@@ -2870,7 +2806,6 @@ module SDM
       porcelain.approval_flow_id = (plumbing.approval_flow_id)
       porcelain.approval_step_id = (plumbing.approval_step_id)
       porcelain.id = (plumbing.id)
-      porcelain.reference = (plumbing.reference)
       porcelain.role_id = (plumbing.role_id)
       porcelain
     end
@@ -2884,7 +2819,6 @@ module SDM
       plumbing.approval_flow_id = (porcelain.approval_flow_id)
       plumbing.approval_step_id = (porcelain.approval_step_id)
       plumbing.id = (porcelain.id)
-      plumbing.reference = (porcelain.reference)
       plumbing.role_id = (porcelain.role_id)
       plumbing
     end
@@ -5539,64 +5473,6 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_document_db_replica_set_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
-    def self.convert_document_db_replica_set_iam_to_porcelain(plumbing)
-      if plumbing == nil
-        return nil
-      end
-      porcelain = DocumentDBReplicaSetIAM.new()
-      porcelain.bind_interface = (plumbing.bind_interface)
-      porcelain.connect_to_replica = (plumbing.connect_to_replica)
-      porcelain.egress_filter = (plumbing.egress_filter)
-      porcelain.healthy = (plumbing.healthy)
-      porcelain.hostname = (plumbing.hostname)
-      porcelain.id = (plumbing.id)
-      porcelain.name = (plumbing.name)
-      porcelain.port_override = (plumbing.port_override)
-      porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
-      porcelain.region = (plumbing.region)
-      porcelain.secret_store_id = (plumbing.secret_store_id)
-      porcelain.subdomain = (plumbing.subdomain)
-      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
-      porcelain
-    end
-
-    def self.convert_document_db_replica_set_iam_to_plumbing(porcelain)
-      if porcelain == nil
-        return nil
-      end
-      plumbing = V1::DocumentDBReplicaSetIAM.new()
-      plumbing.bind_interface = (porcelain.bind_interface)
-      plumbing.connect_to_replica = (porcelain.connect_to_replica)
-      plumbing.egress_filter = (porcelain.egress_filter)
-      plumbing.healthy = (porcelain.healthy)
-      plumbing.hostname = (porcelain.hostname)
-      plumbing.id = (porcelain.id)
-      plumbing.name = (porcelain.name)
-      plumbing.port_override = (porcelain.port_override)
-      plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
-      plumbing.region = (porcelain.region)
-      plumbing.secret_store_id = (porcelain.secret_store_id)
-      plumbing.subdomain = (porcelain.subdomain)
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
-      plumbing
-    end
-    def self.convert_repeated_document_db_replica_set_iam_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = convert_document_db_replica_set_iam_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.convert_repeated_document_db_replica_set_iam_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = convert_document_db_replica_set_iam_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -9978,68 +9854,6 @@ module SDM
       end
       items
     end
-    def self.convert_oracle_nne_to_porcelain(plumbing)
-      if plumbing == nil
-        return nil
-      end
-      porcelain = OracleNNE.new()
-      porcelain.bind_interface = (plumbing.bind_interface)
-      porcelain.database = (plumbing.database)
-      porcelain.egress_filter = (plumbing.egress_filter)
-      porcelain.healthy = (plumbing.healthy)
-      porcelain.hostname = (plumbing.hostname)
-      porcelain.id = (plumbing.id)
-      porcelain.name = (plumbing.name)
-      porcelain.password = (plumbing.password)
-      porcelain.port = (plumbing.port)
-      porcelain.port_override = (plumbing.port_override)
-      porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
-      porcelain.secret_store_id = (plumbing.secret_store_id)
-      porcelain.subdomain = (plumbing.subdomain)
-      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
-      porcelain.username = (plumbing.username)
-      porcelain
-    end
-
-    def self.convert_oracle_nne_to_plumbing(porcelain)
-      if porcelain == nil
-        return nil
-      end
-      plumbing = V1::OracleNNE.new()
-      plumbing.bind_interface = (porcelain.bind_interface)
-      plumbing.database = (porcelain.database)
-      plumbing.egress_filter = (porcelain.egress_filter)
-      plumbing.healthy = (porcelain.healthy)
-      plumbing.hostname = (porcelain.hostname)
-      plumbing.id = (porcelain.id)
-      plumbing.name = (porcelain.name)
-      plumbing.password = (porcelain.password)
-      plumbing.port = (porcelain.port)
-      plumbing.port_override = (porcelain.port_override)
-      plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
-      plumbing.secret_store_id = (porcelain.secret_store_id)
-      plumbing.subdomain = (porcelain.subdomain)
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
-      plumbing.username = (porcelain.username)
-      plumbing
-    end
-    def self.convert_repeated_oracle_nne_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = convert_oracle_nne_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.convert_repeated_oracle_nne_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = convert_oracle_nne_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
     def self.convert_organization_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -12689,9 +12503,6 @@ module SDM
         return nil
       end
       plumbing = V1::Resource.new()
-      if porcelain.instance_of? Aerospike
-        plumbing.aerospike = convert_aerospike_to_plumbing(porcelain)
-      end
       if porcelain.instance_of? AKS
         plumbing.aks = convert_aks_to_plumbing(porcelain)
       end
@@ -12818,9 +12629,6 @@ module SDM
       if porcelain.instance_of? DocumentDBReplicaSet
         plumbing.document_db_replica_set = convert_document_db_replica_set_to_plumbing(porcelain)
       end
-      if porcelain.instance_of? DocumentDBReplicaSetIAM
-        plumbing.document_db_replica_set_iam = convert_document_db_replica_set_iam_to_plumbing(porcelain)
-      end
       if porcelain.instance_of? Druid
         plumbing.druid = convert_druid_to_plumbing(porcelain)
       end
@@ -12923,9 +12731,6 @@ module SDM
       if porcelain.instance_of? Oracle
         plumbing.oracle = convert_oracle_to_plumbing(porcelain)
       end
-      if porcelain.instance_of? OracleNNE
-        plumbing.oracle_nne = convert_oracle_nne_to_plumbing(porcelain)
-      end
       if porcelain.instance_of? Postgres
         plumbing.postgres = convert_postgres_to_plumbing(porcelain)
       end
@@ -13013,9 +12818,6 @@ module SDM
     def self.convert_resource_to_porcelain(plumbing)
       if plumbing == nil
         return nil
-      end
-      if plumbing.aerospike != nil
-        return convert_aerospike_to_porcelain(plumbing.aerospike)
       end
       if plumbing.aks != nil
         return convert_aks_to_porcelain(plumbing.aks)
@@ -13143,9 +12945,6 @@ module SDM
       if plumbing.document_db_replica_set != nil
         return convert_document_db_replica_set_to_porcelain(plumbing.document_db_replica_set)
       end
-      if plumbing.document_db_replica_set_iam != nil
-        return convert_document_db_replica_set_iam_to_porcelain(plumbing.document_db_replica_set_iam)
-      end
       if plumbing.druid != nil
         return convert_druid_to_porcelain(plumbing.druid)
       end
@@ -13247,9 +13046,6 @@ module SDM
       end
       if plumbing.oracle != nil
         return convert_oracle_to_porcelain(plumbing.oracle)
-      end
-      if plumbing.oracle_nne != nil
-        return convert_oracle_nne_to_porcelain(plumbing.oracle_nne)
       end
       if plumbing.postgres != nil
         return convert_postgres_to_porcelain(plumbing.postgres)
@@ -15913,6 +15709,7 @@ module SDM
       end
       porcelain = Trino.new()
       porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.database = (plumbing.database)
       porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.healthy = (plumbing.healthy)
       porcelain.hostname = (plumbing.hostname)
@@ -15935,6 +15732,7 @@ module SDM
       end
       plumbing = V1::Trino.new()
       plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.database = (porcelain.database)
       plumbing.egress_filter = (porcelain.egress_filter)
       plumbing.healthy = (porcelain.healthy)
       plumbing.hostname = (porcelain.hostname)
@@ -16004,17 +15802,14 @@ module SDM
         return nil
       end
       porcelain = User.new()
-      porcelain.scim = (plumbing.SCIM)
       porcelain.email = (plumbing.email)
       porcelain.external_id = (plumbing.external_id)
       porcelain.first_name = (plumbing.first_name)
       porcelain.id = (plumbing.id)
       porcelain.last_name = (plumbing.last_name)
       porcelain.managed_by = (plumbing.managed_by)
-      porcelain.manager_id = (plumbing.manager_id)
       porcelain.password = (plumbing.password)
       porcelain.permission_level = (plumbing.permission_levelRW)
-      porcelain.resolved_manager_id = (plumbing.resolved_manager_id)
       porcelain.suspended = (plumbing.suspendedRO)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain
@@ -16025,17 +15820,14 @@ module SDM
         return nil
       end
       plumbing = V1::User.new()
-      plumbing.SCIM = (porcelain.scim)
       plumbing.email = (porcelain.email)
       plumbing.external_id = (porcelain.external_id)
       plumbing.first_name = (porcelain.first_name)
       plumbing.id = (porcelain.id)
       plumbing.last_name = (porcelain.last_name)
       plumbing.managed_by = (porcelain.managed_by)
-      plumbing.manager_id = (porcelain.manager_id)
       plumbing.password = (porcelain.password)
       plumbing.permission_levelRW = (porcelain.permission_level)
-      plumbing.resolved_manager_id = (porcelain.resolved_manager_id)
       plumbing.suspendedRO = (porcelain.suspended)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing

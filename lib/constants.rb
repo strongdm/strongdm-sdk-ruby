@@ -96,7 +96,6 @@ module SDM
     DUO = "duo"
     TOTP = "totp"
     OKTA = "okta"
-    RSA = "rsa"
   end
 
   # Activity Entities, all entity types that can be part of an activity.
@@ -517,12 +516,5 @@ module SDM
     US = "app.strongdm.com:443"
     UK = "app.uk.strongdm.com:443"
     EU = "app.eu.strongdm.com:443"
-  end
-
-  # ApproverReference defines the type for approver references.
-  module ApproverReference
-    NONE = ""
-    MANAGER_OF_REQUESTER = "manager-of-requester"
-    MANAGER_OF_MANAGER_OF_REQUESTER = "manager-of-manager-of-requester"
   end
 end
