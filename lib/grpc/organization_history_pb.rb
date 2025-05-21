@@ -68,6 +68,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :device_trust_enabled, :bool, 27
       optional :device_trust_provider, :string, 28
       optional :enforce_single_session, :bool, 29
+      optional :discard_replays, :bool, 30
+      optional :public_key_pem, :string, 31
     end
   end
 end

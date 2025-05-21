@@ -10011,6 +10011,8 @@ module SDM
     attr_accessor :device_trust_enabled
     # The Organization's device trust provider, one of the DeviceTrustProvider constants.
     attr_accessor :device_trust_provider
+    # Indicates if the Organization should drop replay data for SSH, RDP, and K8s logs.
+    attr_accessor :discard_replays
     # Indicates if the Organization enforces a single session per user for the CLI and AdminUI.
     attr_accessor :enforce_single_session
     # The Organization's idle timeout, if enabled.
@@ -10039,6 +10041,8 @@ module SDM
     attr_accessor :mfa_provider
     # The Organization's name.
     attr_accessor :name
+    # The Organization's public key PEM for encrypting remote logs.
+    attr_accessor :public_key_pem
     # Indicates if the Organization requires secret stores.
     attr_accessor :require_secret_store
     # The Organization's URL for SAML metadata.
@@ -10065,6 +10069,7 @@ module SDM
       created_at: nil,
       device_trust_enabled: nil,
       device_trust_provider: nil,
+      discard_replays: nil,
       enforce_single_session: nil,
       idle_timeout: nil,
       idle_timeout_enabled: nil,
@@ -10079,6 +10084,7 @@ module SDM
       mfa_enabled: nil,
       mfa_provider: nil,
       name: nil,
+      public_key_pem: nil,
       require_secret_store: nil,
       saml_metadata_url: nil,
       scim_provider: nil,
@@ -10094,6 +10100,7 @@ module SDM
       @created_at = created_at == nil ? nil : created_at
       @device_trust_enabled = device_trust_enabled == nil ? false : device_trust_enabled
       @device_trust_provider = device_trust_provider == nil ? "" : device_trust_provider
+      @discard_replays = discard_replays == nil ? false : discard_replays
       @enforce_single_session = enforce_single_session == nil ? false : enforce_single_session
       @idle_timeout = idle_timeout == nil ? nil : idle_timeout
       @idle_timeout_enabled = idle_timeout_enabled == nil ? false : idle_timeout_enabled
@@ -10108,6 +10115,7 @@ module SDM
       @mfa_enabled = mfa_enabled == nil ? false : mfa_enabled
       @mfa_provider = mfa_provider == nil ? "" : mfa_provider
       @name = name == nil ? "" : name
+      @public_key_pem = public_key_pem == nil ? "" : public_key_pem
       @require_secret_store = require_secret_store == nil ? false : require_secret_store
       @saml_metadata_url = saml_metadata_url == nil ? "" : saml_metadata_url
       @scim_provider = scim_provider == nil ? "" : scim_provider
@@ -14743,6 +14751,8 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # If set, TLS must be used to connect to this resource.
+    attr_accessor :tls_required
     # The username to authenticate with.
     attr_accessor :username
 
@@ -14760,6 +14770,7 @@ module SDM
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
+      tls_required: nil,
       username: nil
     )
       @bind_interface = bind_interface == nil ? "" : bind_interface
@@ -14775,6 +14786,7 @@ module SDM
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tls_required = tls_required == nil ? false : tls_required
       @username = username == nil ? "" : username
     end
 
