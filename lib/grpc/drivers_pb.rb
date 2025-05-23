@@ -1215,6 +1215,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :subdomain, :string, 32775
       optional :allow_resource_role_bypass, :bool, 15
       optional :certificate_authority, :string, 4
+      optional :discovery_enabled, :bool, 13
+      optional :discovery_username, :string, 14
       optional :healthcheck_namespace, :string, 6
       optional :identity_alias_healthcheck_username, :string, 8
       optional :identity_set_id, :string, 7

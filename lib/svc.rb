@@ -20,6 +20,7 @@ lib_dir = File.join(this_dir, "grpc")
 $LOAD_PATH.unshift(lib_dir) unless $LOAD_PATH.include?(lib_dir)
 require "grpc"
 require "enumerator"
+require "time"
 Dir[File.join(__dir__, "grpc", "*.rb")].each { |file| require file }
 Dir[File.join(__dir__, "models", "*.rb")].each { |file| require file }
 
@@ -47,7 +48,7 @@ module SDM #:nodoc:
     )
       req = V1::AccessRequestListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -61,8 +62,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("AccessRequests.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -125,7 +126,7 @@ module SDM #:nodoc:
     )
       req = V1::AccessRequestEventHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -139,8 +140,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("AccessRequestEventsHistory.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -180,7 +181,7 @@ module SDM #:nodoc:
     )
       req = V1::AccessRequestHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -194,8 +195,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("AccessRequestsHistory.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -241,8 +242,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.create(req, metadata: @parent.get_metadata("AccountAttachments.Create", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -275,8 +276,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.get(req, metadata: @parent.get_metadata("AccountAttachments.Get", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -305,8 +306,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("AccountAttachments.Delete", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -328,7 +329,7 @@ module SDM #:nodoc:
     )
       req = V1::AccountAttachmentListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -342,8 +343,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("AccountAttachments.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -417,7 +418,7 @@ module SDM #:nodoc:
     )
       req = V1::AccountAttachmentHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -431,8 +432,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("AccountAttachmentsHistory.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -478,8 +479,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.create(req, metadata: @parent.get_metadata("AccountGrants.Create", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -512,8 +513,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.get(req, metadata: @parent.get_metadata("AccountGrants.Get", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -542,8 +543,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("AccountGrants.Delete", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -565,7 +566,7 @@ module SDM #:nodoc:
     )
       req = V1::AccountGrantListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -579,8 +580,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("AccountGrants.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -654,7 +655,7 @@ module SDM #:nodoc:
     )
       req = V1::AccountGrantHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -668,8 +669,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("AccountGrantsHistory.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -710,7 +711,7 @@ module SDM #:nodoc:
     )
       req = V1::AccountPermissionListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -724,8 +725,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("AccountPermissions.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -789,7 +790,7 @@ module SDM #:nodoc:
     )
       req = V1::AccountResourceListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -803,8 +804,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("AccountResources.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -867,7 +868,7 @@ module SDM #:nodoc:
     )
       req = V1::AccountResourceHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -881,8 +882,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("AccountResourcesHistory.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -934,8 +935,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.create(req, metadata: @parent.get_metadata("Accounts.Create", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -971,8 +972,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.get(req, metadata: @parent.get_metadata("Accounts.Get", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -1001,8 +1002,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.update(req, metadata: @parent.get_metadata("Accounts.Update", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -1031,8 +1032,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("Accounts.Delete", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -1054,7 +1055,7 @@ module SDM #:nodoc:
     )
       req = V1::AccountListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -1068,8 +1069,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("Accounts.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -1143,7 +1144,7 @@ module SDM #:nodoc:
     )
       req = V1::AccountHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -1157,8 +1158,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("AccountsHistory.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -1210,8 +1211,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.get(req, metadata: @parent.get_metadata("Activities.Get", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -1237,7 +1238,7 @@ module SDM #:nodoc:
     )
       req = V1::ActivityListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -1251,8 +1252,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("Activities.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -1298,8 +1299,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.create(req, metadata: @parent.get_metadata("ApprovalWorkflowApprovers.Create", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -1331,8 +1332,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.get(req, metadata: @parent.get_metadata("ApprovalWorkflowApprovers.Get", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -1361,8 +1362,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("ApprovalWorkflowApprovers.Delete", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -1384,7 +1385,7 @@ module SDM #:nodoc:
     )
       req = V1::ApprovalWorkflowApproverListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -1398,8 +1399,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("ApprovalWorkflowApprovers.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -1473,7 +1474,7 @@ module SDM #:nodoc:
     )
       req = V1::ApprovalWorkflowApproverHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -1487,8 +1488,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("ApprovalWorkflowApproversHistory.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -1534,8 +1535,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.create(req, metadata: @parent.get_metadata("ApprovalWorkflowSteps.Create", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -1567,8 +1568,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.get(req, metadata: @parent.get_metadata("ApprovalWorkflowSteps.Get", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -1597,8 +1598,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("ApprovalWorkflowSteps.Delete", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -1620,7 +1621,7 @@ module SDM #:nodoc:
     )
       req = V1::ApprovalWorkflowStepListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -1634,8 +1635,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("ApprovalWorkflowSteps.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -1709,7 +1710,7 @@ module SDM #:nodoc:
     )
       req = V1::ApprovalWorkflowStepHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -1723,8 +1724,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("ApprovalWorkflowStepsHistory.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -1771,8 +1772,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.create(req, metadata: @parent.get_metadata("ApprovalWorkflows.Create", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -1804,8 +1805,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.get(req, metadata: @parent.get_metadata("ApprovalWorkflows.Get", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -1834,8 +1835,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("ApprovalWorkflows.Delete", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -1863,8 +1864,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.update(req, metadata: @parent.get_metadata("ApprovalWorkflows.Update", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -1886,7 +1887,7 @@ module SDM #:nodoc:
     )
       req = V1::ApprovalWorkflowListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -1900,8 +1901,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("ApprovalWorkflows.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -1975,7 +1976,7 @@ module SDM #:nodoc:
     )
       req = V1::ApprovalWorkflowHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -1989,8 +1990,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("ApprovalWorkflowsHistory.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -2032,8 +2033,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.get_sshca_public_key(req, metadata: @parent.get_metadata("ControlPanel.GetSSHCAPublicKey", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -2060,8 +2061,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.get_rdpca_public_key(req, metadata: @parent.get_metadata("ControlPanel.GetRDPCAPublicKey", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -2090,8 +2091,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.verify_jwt(req, metadata: @parent.get_metadata("ControlPanel.VerifyJWT", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -2131,7 +2132,7 @@ module SDM #:nodoc:
     )
       req = V1::HealthcheckListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -2145,8 +2146,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("HealthChecks.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -2193,8 +2194,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.create(req, metadata: @parent.get_metadata("IdentityAliases.Create", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -2227,8 +2228,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.get(req, metadata: @parent.get_metadata("IdentityAliases.Get", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -2257,8 +2258,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.update(req, metadata: @parent.get_metadata("IdentityAliases.Update", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -2287,8 +2288,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("IdentityAliases.Delete", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -2310,7 +2311,7 @@ module SDM #:nodoc:
     )
       req = V1::IdentityAliasListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -2324,8 +2325,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("IdentityAliases.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -2399,7 +2400,7 @@ module SDM #:nodoc:
     )
       req = V1::IdentityAliasHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -2413,8 +2414,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("IdentityAliasesHistory.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -2461,8 +2462,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.create(req, metadata: @parent.get_metadata("IdentitySets.Create", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -2495,8 +2496,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.get(req, metadata: @parent.get_metadata("IdentitySets.Get", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -2525,8 +2526,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.update(req, metadata: @parent.get_metadata("IdentitySets.Update", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -2555,8 +2556,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("IdentitySets.Delete", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -2578,7 +2579,7 @@ module SDM #:nodoc:
     )
       req = V1::IdentitySetListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -2592,8 +2593,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("IdentitySets.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -2667,7 +2668,7 @@ module SDM #:nodoc:
     )
       req = V1::IdentitySetHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -2681,8 +2682,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("IdentitySetsHistory.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -2724,7 +2725,7 @@ module SDM #:nodoc:
     )
       req = V1::ManagedSecretListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -2738,8 +2739,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("ManagedSecrets.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -2763,7 +2764,7 @@ module SDM #:nodoc:
     )
       req = V1::ManagedSecretListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -2777,8 +2778,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list_by_actor(req, metadata: @parent.get_metadata("ManagedSecrets.ListByActor", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -2808,8 +2809,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.create(req, metadata: @parent.get_metadata("ManagedSecrets.Create", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -2838,8 +2839,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.update(req, metadata: @parent.get_metadata("ManagedSecrets.Update", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -2868,8 +2869,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.rotate(req, metadata: @parent.get_metadata("ManagedSecrets.Rotate", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -2897,8 +2898,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("ManagedSecrets.Delete", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -2929,8 +2930,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.get(req, metadata: @parent.get_metadata("ManagedSecrets.Get", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -2961,8 +2962,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.retrieve(req, metadata: @parent.get_metadata("ManagedSecrets.Retrieve", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -2992,8 +2993,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.validate(req, metadata: @parent.get_metadata("ManagedSecrets.Validate", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -3018,7 +3019,7 @@ module SDM #:nodoc:
     )
       req = V1::ManagedSecretLogsRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -3032,8 +3033,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.logs(req, metadata: @parent.get_metadata("ManagedSecrets.Logs", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -3084,8 +3085,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.create(req, metadata: @parent.get_metadata("Nodes.Create", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -3119,8 +3120,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.get(req, metadata: @parent.get_metadata("Nodes.Get", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -3149,8 +3150,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.update(req, metadata: @parent.get_metadata("Nodes.Update", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -3179,8 +3180,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("Nodes.Delete", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -3202,7 +3203,7 @@ module SDM #:nodoc:
     )
       req = V1::NodeListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -3216,8 +3217,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("Nodes.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -3291,7 +3292,7 @@ module SDM #:nodoc:
     )
       req = V1::NodeHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -3305,8 +3306,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("NodesHistory.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -3346,7 +3347,7 @@ module SDM #:nodoc:
     )
       req = V1::OrganizationHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -3360,8 +3361,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("OrganizationHistory.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -3407,8 +3408,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.create(req, metadata: @parent.get_metadata("PeeringGroupNodes.Create", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -3437,8 +3438,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("PeeringGroupNodes.Delete", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -3470,8 +3471,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.get(req, metadata: @parent.get_metadata("PeeringGroupNodes.Get", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -3494,7 +3495,7 @@ module SDM #:nodoc:
     )
       req = V1::PeeringGroupNodeListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -3508,8 +3509,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("PeeringGroupNodes.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -3555,8 +3556,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.create(req, metadata: @parent.get_metadata("PeeringGroupPeers.Create", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -3585,8 +3586,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("PeeringGroupPeers.Delete", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -3618,8 +3619,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.get(req, metadata: @parent.get_metadata("PeeringGroupPeers.Get", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -3642,7 +3643,7 @@ module SDM #:nodoc:
     )
       req = V1::PeeringGroupPeerListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -3656,8 +3657,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("PeeringGroupPeers.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -3703,8 +3704,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.create(req, metadata: @parent.get_metadata("PeeringGroupResources.Create", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -3733,8 +3734,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("PeeringGroupResources.Delete", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -3766,8 +3767,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.get(req, metadata: @parent.get_metadata("PeeringGroupResources.Get", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -3790,7 +3791,7 @@ module SDM #:nodoc:
     )
       req = V1::PeeringGroupResourceListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -3804,8 +3805,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("PeeringGroupResources.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -3851,8 +3852,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.create(req, metadata: @parent.get_metadata("PeeringGroups.Create", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -3881,8 +3882,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("PeeringGroups.Delete", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -3914,8 +3915,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.get(req, metadata: @parent.get_metadata("PeeringGroups.Get", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -3938,7 +3939,7 @@ module SDM #:nodoc:
     )
       req = V1::PeeringGroupListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -3952,8 +3953,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("PeeringGroups.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -4000,8 +4001,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.create(req, metadata: @parent.get_metadata("Policies.Create", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -4029,8 +4030,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("Policies.Delete", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -4057,8 +4058,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.update(req, metadata: @parent.get_metadata("Policies.Update", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -4090,8 +4091,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.get(req, metadata: @parent.get_metadata("Policies.Get", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -4114,7 +4115,7 @@ module SDM #:nodoc:
     )
       req = V1::PolicyListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -4128,8 +4129,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("Policies.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -4203,7 +4204,7 @@ module SDM #:nodoc:
     )
       req = V1::PoliciesHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -4217,8 +4218,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("PoliciesHistory.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -4266,8 +4267,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.create(req, metadata: @parent.get_metadata("ProxyClusterKeys.Create", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -4301,8 +4302,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.get(req, metadata: @parent.get_metadata("ProxyClusterKeys.Get", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -4331,8 +4332,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("ProxyClusterKeys.Delete", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -4354,7 +4355,7 @@ module SDM #:nodoc:
     )
       req = V1::ProxyClusterKeyListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -4368,8 +4369,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("ProxyClusterKeys.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -4445,7 +4446,7 @@ module SDM #:nodoc:
     )
       req = V1::QueryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -4459,8 +4460,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("Queries.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -4506,8 +4507,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.create(req, metadata: @parent.get_metadata("RemoteIdentities.Create", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -4540,8 +4541,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.get(req, metadata: @parent.get_metadata("RemoteIdentities.Get", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -4570,8 +4571,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.update(req, metadata: @parent.get_metadata("RemoteIdentities.Update", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -4600,8 +4601,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("RemoteIdentities.Delete", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -4623,7 +4624,7 @@ module SDM #:nodoc:
     )
       req = V1::RemoteIdentityListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -4637,8 +4638,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("RemoteIdentities.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -4712,7 +4713,7 @@ module SDM #:nodoc:
     )
       req = V1::RemoteIdentityHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -4726,8 +4727,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("RemoteIdentitiesHistory.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -4778,8 +4779,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.get(req, metadata: @parent.get_metadata("RemoteIdentityGroups.Get", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -4802,7 +4803,7 @@ module SDM #:nodoc:
     )
       req = V1::RemoteIdentityGroupListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -4816,8 +4817,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("RemoteIdentityGroups.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -4891,7 +4892,7 @@ module SDM #:nodoc:
     )
       req = V1::RemoteIdentityGroupHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -4905,8 +4906,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("RemoteIdentityGroupsHistory.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -4947,7 +4948,7 @@ module SDM #:nodoc:
     )
       req = V1::ReplayListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -4961,8 +4962,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("Replays.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -5109,7 +5110,7 @@ module SDM #:nodoc:
     )
       req = V1::EnumerateTagsRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -5123,8 +5124,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.enumerate_tags(req, metadata: @parent.get_metadata("Resources.EnumerateTags", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -5154,8 +5155,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.create(req, metadata: @parent.get_metadata("Resources.Create", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -5188,8 +5189,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.get(req, metadata: @parent.get_metadata("Resources.Get", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -5218,8 +5219,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.update(req, metadata: @parent.get_metadata("Resources.Update", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -5248,8 +5249,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("Resources.Delete", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -5271,7 +5272,7 @@ module SDM #:nodoc:
     )
       req = V1::ResourceListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -5285,8 +5286,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("Resources.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -5318,8 +5319,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.healthcheck(req, metadata: @parent.get_metadata("Resources.Healthcheck", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -5391,7 +5392,7 @@ module SDM #:nodoc:
     )
       req = V1::ResourceHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -5405,8 +5406,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("ResourcesHistory.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -5447,7 +5448,7 @@ module SDM #:nodoc:
     )
       req = V1::RoleResourceListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -5461,8 +5462,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("RoleResources.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -5525,7 +5526,7 @@ module SDM #:nodoc:
     )
       req = V1::RoleResourceHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -5539,8 +5540,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("RoleResourcesHistory.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -5588,8 +5589,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.create(req, metadata: @parent.get_metadata("Roles.Create", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -5622,8 +5623,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.get(req, metadata: @parent.get_metadata("Roles.Get", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -5652,8 +5653,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.update(req, metadata: @parent.get_metadata("Roles.Update", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -5682,8 +5683,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("Roles.Delete", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -5705,7 +5706,7 @@ module SDM #:nodoc:
     )
       req = V1::RoleListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -5719,8 +5720,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("Roles.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -5794,7 +5795,7 @@ module SDM #:nodoc:
     )
       req = V1::RoleHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -5808,8 +5809,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("RolesHistory.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -5877,8 +5878,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.create(req, metadata: @parent.get_metadata("SecretStores.Create", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -5911,8 +5912,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.get(req, metadata: @parent.get_metadata("SecretStores.Get", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -5941,8 +5942,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.update(req, metadata: @parent.get_metadata("SecretStores.Update", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -5971,8 +5972,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("SecretStores.Delete", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -5994,7 +5995,7 @@ module SDM #:nodoc:
     )
       req = V1::SecretStoreListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -6008,8 +6009,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("SecretStores.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -6084,7 +6085,7 @@ module SDM #:nodoc:
     )
       req = V1::SecretEngineListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -6098,8 +6099,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("SecretEngines.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -6133,8 +6134,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.get(req, metadata: @parent.get_metadata("SecretEngines.Get", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -6163,8 +6164,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.create(req, metadata: @parent.get_metadata("SecretEngines.Create", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -6193,8 +6194,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.update(req, metadata: @parent.get_metadata("SecretEngines.Update", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -6223,8 +6224,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("SecretEngines.Delete", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -6246,7 +6247,7 @@ module SDM #:nodoc:
     )
       req = V1::SecretStoreListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -6260,8 +6261,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list_secret_stores(req, metadata: @parent.get_metadata("SecretEngines.ListSecretStores", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -6291,8 +6292,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.generate_keys(req, metadata: @parent.get_metadata("SecretEngines.GenerateKeys", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -6319,8 +6320,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.healthcheck(req, metadata: @parent.get_metadata("SecretEngines.Healthcheck", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -6350,8 +6351,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.rotate(req, metadata: @parent.get_metadata("SecretEngines.Rotate", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -6388,7 +6389,7 @@ module SDM #:nodoc:
     )
       req = V1::SecretStoreHealthListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -6402,8 +6403,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("SecretStoreHealths.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -6435,8 +6436,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.healthcheck(req, metadata: @parent.get_metadata("SecretStoreHealths.Healthcheck", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -6473,7 +6474,7 @@ module SDM #:nodoc:
     )
       req = V1::SecretStoreHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -6487,8 +6488,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("SecretStoresHistory.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -6534,8 +6535,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.create(req, metadata: @parent.get_metadata("WorkflowApprovers.Create", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -6567,8 +6568,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.get(req, metadata: @parent.get_metadata("WorkflowApprovers.Get", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -6597,8 +6598,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("WorkflowApprovers.Delete", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -6619,7 +6620,7 @@ module SDM #:nodoc:
     )
       req = V1::WorkflowApproversListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -6633,8 +6634,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("WorkflowApprovers.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -6708,7 +6709,7 @@ module SDM #:nodoc:
     )
       req = V1::WorkflowApproversHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -6722,8 +6723,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("WorkflowApproversHistory.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -6764,7 +6765,7 @@ module SDM #:nodoc:
     )
       req = V1::WorkflowAssignmentsListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -6778,8 +6779,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("WorkflowAssignments.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -6842,7 +6843,7 @@ module SDM #:nodoc:
     )
       req = V1::WorkflowAssignmentsHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -6856,8 +6857,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("WorkflowAssignmentsHistory.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -6904,8 +6905,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.create(req, metadata: @parent.get_metadata("WorkflowRoles.Create", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -6937,8 +6938,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.get(req, metadata: @parent.get_metadata("WorkflowRoles.Get", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -6967,8 +6968,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("WorkflowRoles.Delete", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -6989,7 +6990,7 @@ module SDM #:nodoc:
     )
       req = V1::WorkflowRolesListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -7003,8 +7004,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("WorkflowRoles.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -7078,7 +7079,7 @@ module SDM #:nodoc:
     )
       req = V1::WorkflowRolesHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -7092,8 +7093,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("WorkflowRolesHistory.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -7141,8 +7142,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.create(req, metadata: @parent.get_metadata("Workflows.Create", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -7174,8 +7175,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.get(req, metadata: @parent.get_metadata("Workflows.Get", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -7204,8 +7205,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("Workflows.Delete", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -7233,8 +7234,8 @@ module SDM #:nodoc:
         begin
           plumbing_response = @stub.update(req, metadata: @parent.get_metadata("Workflows.Update", req), deadline: deadline)
         rescue => exception
-          if (@parent.shouldRetry(tries, exception))
-            tries + +@parent.jitterSleep(tries)
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
             next
           end
           raise Plumbing::convert_error_to_porcelain(exception)
@@ -7256,7 +7257,7 @@ module SDM #:nodoc:
     )
       req = V1::WorkflowListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -7270,8 +7271,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("Workflows.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)
@@ -7345,7 +7346,7 @@ module SDM #:nodoc:
     )
       req = V1::WorkflowHistoryListRequest.new()
       req.meta = V1::ListRequestMetadata.new()
-      if @parent.page_limit > 0
+      if not @parent.page_limit.nil?
         req.meta.limit = @parent.page_limit
       end
       if not @parent.snapshot_time.nil?
@@ -7359,8 +7360,8 @@ module SDM #:nodoc:
           begin
             plumbing_response = @stub.list(req, metadata: @parent.get_metadata("WorkflowsHistory.List", req), deadline: deadline)
           rescue => exception
-            if (@parent.shouldRetry(tries, exception))
-              tries + +@parent.jitterSleep(tries)
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
               next
             end
             raise Plumbing::convert_error_to_porcelain(exception)

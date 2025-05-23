@@ -7696,6 +7696,11 @@ module SDM
     attr_accessor :bind_interface
     # The CA to authenticate TLS connections with.
     attr_accessor :certificate_authority
+    # If true, configures discovery of a cluster to be run from a node.
+    attr_accessor :discovery_enabled
+    # If a cluster is configured for user impersonation, this is the user to impersonate when
+    # running discovery.
+    attr_accessor :discovery_username
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # The path used to check the health of your connection.  Defaults to `default`.
@@ -7725,6 +7730,8 @@ module SDM
       allow_resource_role_bypass: nil,
       bind_interface: nil,
       certificate_authority: nil,
+      discovery_enabled: nil,
+      discovery_username: nil,
       egress_filter: nil,
       healthcheck_namespace: nil,
       healthy: nil,
@@ -7741,6 +7748,8 @@ module SDM
       @allow_resource_role_bypass = allow_resource_role_bypass == nil ? false : allow_resource_role_bypass
       @bind_interface = bind_interface == nil ? "" : bind_interface
       @certificate_authority = certificate_authority == nil ? "" : certificate_authority
+      @discovery_enabled = discovery_enabled == nil ? false : discovery_enabled
+      @discovery_username = discovery_username == nil ? "" : discovery_username
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthcheck_namespace = healthcheck_namespace == nil ? "" : healthcheck_namespace
       @healthy = healthy == nil ? false : healthy
@@ -11149,6 +11158,8 @@ module SDM
     attr_accessor :id
     # The username of the IdentityAlias used to access the Resource.
     attr_accessor :identity_alias_username
+    # Driver specific metadata associated with this query.
+    attr_accessor :metadata_json
     # The captured content of the Query.
     # For queries against SSH, Kubernetes, and RDP resources, this contains a JSON representation of the QueryCapture.
     attr_accessor :query_body
@@ -11199,6 +11210,7 @@ module SDM
       encrypted: nil,
       id: nil,
       identity_alias_username: nil,
+      metadata_json: nil,
       query_body: nil,
       query_category: nil,
       query_hash: nil,
@@ -11228,6 +11240,7 @@ module SDM
       @encrypted = encrypted == nil ? false : encrypted
       @id = id == nil ? "" : id
       @identity_alias_username = identity_alias_username == nil ? "" : identity_alias_username
+      @metadata_json = metadata_json == nil ? "" : metadata_json
       @query_body = query_body == nil ? "" : query_body
       @query_category = query_category == nil ? "" : query_category
       @query_hash = query_hash == nil ? "" : query_hash

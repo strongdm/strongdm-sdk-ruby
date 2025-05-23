@@ -25,25 +25,27 @@ module SDM #:nodoc:
 
   # Client bundles all the services together and initializes them.
   class Client
-    DEFAULT_MAX_RETRIES = 3
-    DEFAULT_BASE_RETRY_DELAY = 0.0030 # 30 ms
-    DEFAULT_MAX_RETRY_DELAY = 300 # 300 seconds
+    DEFAULT_BASE_RETRY_DELAY = 1 # 1 second
+    DEFAULT_MAX_RETRY_DELAY = 120 # 120 seconds
+    DEFAULT_RETRY_FACTOR = 1.6
+    DEFAULT_RETRY_JITTER = 0.2
     API_VERSION = "2025-04-14"
-    USER_AGENT = "strongdm-sdk-ruby/14.17.0"
-    private_constant :DEFAULT_MAX_RETRIES, :DEFAULT_BASE_RETRY_DELAY, :DEFAULT_MAX_RETRY_DELAY, :API_VERSION, :USER_AGENT
+    USER_AGENT = "strongdm-sdk-ruby/14.20.0"
+    private_constant :DEFAULT_BASE_RETRY_DELAY, :DEFAULT_MAX_RETRY_DELAY, :DEFAULT_RETRY_FACTOR, :DEFAULT_RETRY_JITTER, :API_VERSION, :USER_AGENT
 
     # Creates a new strongDM API client.
-    def initialize(api_access_key, api_secret_key, host: "app.strongdm.com:443", insecure: false, retry_rate_limit_errors: true, page_limit: 50)
+    def initialize(api_access_key, api_secret_key, host: "app.strongdm.com:443", insecure: false, retry_rate_limit_errors: true, page_limit: 0)
       raise TypeError, "client access key must be a string" unless api_access_key.kind_of?(String)
       raise TypeError, "client secret key must be a string" unless api_secret_key.kind_of?(String)
       raise TypeError, "client host must be a string" unless host.kind_of?(String)
       @api_access_key = api_access_key.strip
       @api_secret_key = Base64.strict_decode64(api_secret_key.strip)
-      @max_retries = DEFAULT_MAX_RETRIES
       @base_retry_delay = DEFAULT_BASE_RETRY_DELAY
       @max_retry_delay = DEFAULT_MAX_RETRY_DELAY
+      @retry_factor = DEFAULT_RETRY_FACTOR
+      @retry_jitter = DEFAULT_RETRY_JITTER
       @page_limit = page_limit
-      @expose_rate_limit_errors = (not retry_rate_limit_errors)
+      @retry_rate_limit_errors = retry_rate_limit_errors
       @snapshot_time = nil
       begin
         if insecure
@@ -153,18 +155,44 @@ module SDM #:nodoc:
     end
 
     # @private
-    def jitterSleep(iter)
-      dur_max = @base_retry_delay * 2 ** iter
-      if (dur_max > @max_retry_delay)
-        dur_max = @max_retry_delay
+    def exponentialBackoff(retries, deadline = nil)
+      if retries == 0
+        return applyDeadline(@base_retry_delay, deadline)
       end
-      dur = rand() * dur_max
-      sleep(dur)
+      backoff, max = @base_retry_delay, @max_retry_delay
+      while backoff < max and retries > 0
+        backoff *= @retry_factor
+        retries -= 1
+      end
+      if backoff > max
+        backoff = max
+      end
+      # Randomize backoff delays so that if a cluster of requests start at
+      # the same time, they won't operate in lockstep.
+      backoff *= 1 + @retry_jitter * (rand() * 2 - 1)
+      if backoff < 0
+        return 0
+      end
+
+      return applyDeadline(backoff, deadline)
     end
 
     # @private
-    def shouldRetry(iter, err)
-      if (iter >= @max_retries - 1)
+    def applyDeadline(backoff, deadline)
+      if deadline.nil?
+        return backoff
+      end
+      remaining = deadline - Time.now
+      if remaining < 0
+        return 0
+      end
+      return [backoff, remaining].min
+    end
+
+    # @private
+    def shouldRetry(retries, err, deadline = nil)
+      # Check if we've passed the deadline
+      if !deadline.nil? && Time.now >= deadline
         return false
       end
       # The grpc library unfortunately does not raise a more specific error class.
@@ -172,20 +200,12 @@ module SDM #:nodoc:
         return false
       end
       if not err.is_a? GRPC::BadStatus
+        return false
+      end
+      if @retry_rate_limit_errors and err.code() == 8
         return true
       end
-      porcelainErr = Plumbing::convert_error_to_porcelain(err)
-      if (not @expose_rate_limit_errors) and (porcelainErr.is_a? RateLimitError)
-        sleep_for = porcelainErr.rate_limit.reset_at - Time.now
-        # If timezones or clock drift causes this calculation to fail,
-        # wait at most one minute.
-        if sleep_for < 0 or sleep_for > 60
-          sleep_for = 60
-        end
-        sleep(sleep_for)
-        return true
-      end
-      return (err.code() == 13 or err.code() == 14)
+      return (retries <= 3) && ((err.code() == 13) || (err.code() == 14))
     end
 
     # Constructs a read-only client that will provide historical data from the provided timestamp.
@@ -196,7 +216,11 @@ module SDM #:nodoc:
       return SnapshotClient.new(client)
     end
 
-    attr_reader :max_retries
+    # @deprecated
+    def max_retries
+      3
+    end
+
     attr_reader :base_retry_delay
     attr_reader :max_retry_delay
     attr_accessor :page_limit

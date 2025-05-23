@@ -65,6 +65,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :authzJson, :string, 28
       optional :client_ip, :string, 29
       optional :identity_alias_username, :string, 30
+      optional :metadata_json, :string, 31
     end
     add_message "v1.QueryCapture" do
       optional :width, :int32, 1
