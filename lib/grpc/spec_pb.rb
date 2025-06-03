@@ -89,9 +89,14 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.FulfillmentsMetadata" do
       repeated :fulfillments, :message, 1, "v1.Fulfillment"
     end
+    add_message "v1.MFA" do
+      optional :provider, :string, 1
+      repeated :methods_enabled, :string, 2
+    end
     add_message "v1.Requirement" do
       optional :type, :string, 1
       optional :value, :string, 2
+      optional :MFA, :message, 3, "v1.MFA"
     end
     add_message "v1.Fulfillment" do
       optional :requirement, :message, 1, "v1.Requirement"
@@ -123,6 +128,7 @@ module V1
   GenericResponseMetadata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GenericResponseMetadata").msgclass
   RequirementsMetadata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RequirementsMetadata").msgclass
   FulfillmentsMetadata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.FulfillmentsMetadata").msgclass
+  MFA = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MFA").msgclass
   Requirement = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Requirement").msgclass
   Fulfillment = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Fulfillment").msgclass
 end

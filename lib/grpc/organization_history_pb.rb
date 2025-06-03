@@ -70,6 +70,27 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :enforce_single_session, :bool, 29
       optional :discard_replays, :bool, 30
       optional :public_key_pem, :string, 31
+      optional :log_config, :message, 32, "v1.LogConfig"
+    end
+    add_message "v1.LogConfig" do
+      optional :local_storage, :string, 1
+      optional :local_encoder, :string, 2
+      optional :local_format, :string, 3
+      optional :local_tcp_address, :string, 4
+      optional :local_socket_path, :string, 5
+      optional :public_key, :string, 6
+      optional :categories, :message, 7, "v1.LogCategoryConfigMap"
+    end
+    add_message "v1.LogCategoryConfigMap" do
+      repeated :entries, :message, 1, "v1.LogCategoryConfigMap.Entry"
+    end
+    add_message "v1.LogCategoryConfigMap.Entry" do
+      optional :name, :string, 1
+      optional :config, :message, 2, "v1.LogCategoryConfig"
+    end
+    add_message "v1.LogCategoryConfig" do
+      optional :remote_encoder, :string, 1
+      optional :remote_discard_replays, :bool, 2
     end
   end
 end
@@ -79,4 +100,8 @@ module V1
   OrganizationHistoryListResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.OrganizationHistoryListResponse").msgclass
   OrganizationHistoryRecord = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.OrganizationHistoryRecord").msgclass
   Organization = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Organization").msgclass
+  LogConfig = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.LogConfig").msgclass
+  LogCategoryConfigMap = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.LogCategoryConfigMap").msgclass
+  LogCategoryConfigMap::Entry = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.LogCategoryConfigMap.Entry").msgclass
+  LogCategoryConfig = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.LogCategoryConfig").msgclass
 end
