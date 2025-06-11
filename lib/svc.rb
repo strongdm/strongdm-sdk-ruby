@@ -5009,6 +5009,7 @@ module SDM #:nodoc:
   # {AWSInstanceProfile}
   # {Azure}
   # {AzureCertificate}
+  # {AzureConsole}
   # {AzureMysql}
   # {AzurePostgres}
   # {AzurePostgresManagedIdentity}
