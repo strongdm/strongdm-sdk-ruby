@@ -1143,6 +1143,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :headers_blacklist, :string, 4
       optional :healthcheck_path, :string, 2
       optional :host_override, :string, 7
+      optional :port_override, :int32, 12
       optional :subdomain, :string, 6
       optional :url, :string, 1
     end
@@ -1160,6 +1161,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :healthcheck_path, :string, 2
       optional :host_override, :string, 8
       optional :password, :string, 4
+      optional :port_override, :int32, 12
       optional :subdomain, :string, 7
       optional :url, :string, 1
       optional :username, :string, 3
@@ -1177,6 +1179,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :headers_blacklist, :string, 3
       optional :healthcheck_path, :string, 2
       optional :host_override, :string, 6
+      optional :port_override, :int32, 12
       optional :subdomain, :string, 5
       optional :url, :string, 1
     end

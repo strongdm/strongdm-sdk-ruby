@@ -6716,6 +6716,8 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
+    # The local port used by clients to connect to this resource.
+    attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
@@ -6738,6 +6740,7 @@ module SDM
       host_override: nil,
       id: nil,
       name: nil,
+      port_override: nil,
       proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
@@ -6754,6 +6757,7 @@ module SDM
       @host_override = host_override == nil ? "" : host_override
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
+      @port_override = port_override == nil ? 0 : port_override
       @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
@@ -6791,6 +6795,8 @@ module SDM
     attr_accessor :name
     # The password to authenticate with.
     attr_accessor :password
+    # The local port used by clients to connect to this resource.
+    attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
@@ -6815,6 +6821,7 @@ module SDM
       id: nil,
       name: nil,
       password: nil,
+      port_override: nil,
       proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
@@ -6832,6 +6839,7 @@ module SDM
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
       @password = password == nil ? "" : password
+      @port_override = port_override == nil ? 0 : port_override
       @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
@@ -6868,6 +6876,8 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
+    # The local port used by clients to connect to this resource.
+    attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
@@ -6889,6 +6899,7 @@ module SDM
       host_override: nil,
       id: nil,
       name: nil,
+      port_override: nil,
       proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
@@ -6904,6 +6915,7 @@ module SDM
       @host_override = host_override == nil ? "" : host_override
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
+      @port_override = port_override == nil ? 0 : port_override
       @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
