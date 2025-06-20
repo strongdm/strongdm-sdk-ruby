@@ -5254,6 +5254,8 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # If set, TLS must be used to connect to this resource.
+    attr_accessor :tls_required
     # The username to authenticate with.
     attr_accessor :username
 
@@ -5272,6 +5274,7 @@ module SDM
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
+      tls_required: nil,
       username: nil
     )
       @bind_interface = bind_interface == nil ? "" : bind_interface
@@ -5288,6 +5291,7 @@ module SDM
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tls_required = tls_required == nil ? false : tls_required
       @username = username == nil ? "" : username
     end
 
