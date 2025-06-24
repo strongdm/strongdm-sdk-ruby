@@ -30,7 +30,7 @@ module SDM #:nodoc:
     DEFAULT_RETRY_FACTOR = 1.6
     DEFAULT_RETRY_JITTER = 0.2
     API_VERSION = "2025-04-14"
-    USER_AGENT = "strongdm-sdk-ruby/14.25.0"
+    USER_AGENT = "strongdm-sdk-ruby/15.0.0"
     private_constant :DEFAULT_BASE_RETRY_DELAY, :DEFAULT_MAX_RETRY_DELAY, :DEFAULT_RETRY_FACTOR, :DEFAULT_RETRY_JITTER, :API_VERSION, :USER_AGENT
 
     # Creates a new strongDM API client.
@@ -111,8 +111,6 @@ module SDM #:nodoc:
       @secret_stores_history = SecretStoresHistory.new(@channel, self)
       @workflow_approvers = WorkflowApprovers.new(@channel, self)
       @workflow_approvers_history = WorkflowApproversHistory.new(@channel, self)
-      @workflow_assignments = WorkflowAssignments.new(@channel, self)
-      @workflow_assignments_history = WorkflowAssignmentsHistory.new(@channel, self)
       @workflow_roles = WorkflowRoles.new(@channel, self)
       @workflow_roles_history = WorkflowRolesHistory.new(@channel, self)
       @workflows = Workflows.new(@channel, self)
@@ -471,15 +469,6 @@ module SDM #:nodoc:
     #
     # See {WorkflowApproversHistory}.
     attr_reader :workflow_approvers_history
-    # WorkflowAssignments links a Resource to a Workflow. The assigned resources are those that a user can request
-    # access to via the workflow.
-    #
-    # See {WorkflowAssignments}.
-    attr_reader :workflow_assignments
-    # WorkflowAssignmentsHistory provides records of all changes to the state of a WorkflowAssignment.
-    #
-    # See {WorkflowAssignmentsHistory}.
-    attr_reader :workflow_assignments_history
     # WorkflowRole links a role to a workflow. The linked roles indicate which roles a user must be a part of
     # to request access to a resource via the workflow.
     #
@@ -561,8 +550,6 @@ module SDM #:nodoc:
       @secret_stores_history = SecretStoresHistory.new(@channel, self)
       @workflow_approvers = WorkflowApprovers.new(@channel, self)
       @workflow_approvers_history = WorkflowApproversHistory.new(@channel, self)
-      @workflow_assignments = WorkflowAssignments.new(@channel, self)
-      @workflow_assignments_history = WorkflowAssignmentsHistory.new(@channel, self)
       @workflow_roles = WorkflowRoles.new(@channel, self)
       @workflow_roles_history = WorkflowRolesHistory.new(@channel, self)
       @workflows = Workflows.new(@channel, self)
@@ -594,7 +581,6 @@ module SDM #:nodoc:
       @roles = SnapshotRoles.new(client.roles)
       @secret_stores = SnapshotSecretStores.new(client.secret_stores)
       @workflow_approvers = SnapshotWorkflowApprovers.new(client.workflow_approvers)
-      @workflow_assignments = SnapshotWorkflowAssignments.new(client.workflow_assignments)
       @workflow_roles = SnapshotWorkflowRoles.new(client.workflow_roles)
       @workflows = SnapshotWorkflows.new(client.workflows)
     end
@@ -701,11 +687,6 @@ module SDM #:nodoc:
     #
     # See {SnapshotWorkflowApprovers}.
     attr_reader :workflow_approvers
-    # WorkflowAssignments links a Resource to a Workflow. The assigned resources are those that a user can request
-    # access to via the workflow.
-    #
-    # See {SnapshotWorkflowAssignments}.
-    attr_reader :workflow_assignments
     # WorkflowRole links a role to a workflow. The linked roles indicate which roles a user must be a part of
     # to request access to a resource via the workflow.
     #
