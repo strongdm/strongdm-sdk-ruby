@@ -8103,6 +8103,72 @@ module SDM
     end
   end
 
+  class LogCategoryConfig
+    # Indicates if the Organization should exclude replay data from remote logging for the log category.
+    attr_accessor :remote_discard_replays
+    # The Organization's remote log encryption encoder, one of the LogRemoteEncoder constants.
+    attr_accessor :remote_encoder
+
+    def initialize(
+      remote_discard_replays: nil,
+      remote_encoder: nil
+    )
+      @remote_discard_replays = remote_discard_replays == nil ? false : remote_discard_replays
+      @remote_encoder = remote_encoder == nil ? "" : remote_encoder
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  class LogConfig
+    # The Organization's log category configuration settings.
+    attr_accessor :categories
+    # The Organization's local log encryption encoder, one of the LogLocalEncoder constants.
+    attr_accessor :local_encoder
+    # The Organization's local log format, one of the LogLocalFormat constants.
+    attr_accessor :local_format
+    # The Organization's local log socket path.
+    attr_accessor :local_socket_path
+    # The Organization's local log storage, one of the LogLocalStorage constants.
+    attr_accessor :local_storage
+    # The Organization's local log TCP address.
+    attr_accessor :local_tcp_address
+    # The Organization's public key in PEM format for encrypting logs.
+    attr_accessor :public_key
+
+    def initialize(
+      categories: nil,
+      local_encoder: nil,
+      local_format: nil,
+      local_socket_path: nil,
+      local_storage: nil,
+      local_tcp_address: nil,
+      public_key: nil
+    )
+      @categories = categories == nil ? SDM::_porcelain_zero_value_log_category_config_map() : categories
+      @local_encoder = local_encoder == nil ? "" : local_encoder
+      @local_format = local_format == nil ? "" : local_format
+      @local_socket_path = local_socket_path == nil ? "" : local_socket_path
+      @local_storage = local_storage == nil ? "" : local_storage
+      @local_tcp_address = local_tcp_address == nil ? "" : local_tcp_address
+      @public_key = public_key == nil ? "" : public_key
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   # MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class MTLSMysql
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -10108,6 +10174,7 @@ module SDM
     # The Organization's device trust provider, one of the DeviceTrustProvider constants.
     attr_accessor :device_trust_provider
     # Indicates if the Organization should drop replay data for SSH, RDP, and K8s logs.
+    # Deprecated: use categories specific log_config.categories[].remote_discard_replays instead
     attr_accessor :discard_replays
     # Indicates if the Organization enforces a single session per user for the CLI and AdminUI.
     attr_accessor :enforce_single_session
@@ -10117,17 +10184,25 @@ module SDM
     attr_accessor :idle_timeout_enabled
     # The Organization's type, one of the OrgKind constants.
     attr_accessor :kind
+    # The Organization's logging settings
+    attr_accessor :log_config
     # The Organization's local log encryption encoder, one of the LogLocalEncoder constants.
+    # Deprecated: use log_config.local_encoder instead
     attr_accessor :log_local_encoder
     # The Organization's local log format, one of the LogLocalFormat constants.
+    # Deprecated: use log_config.local_format instead
     attr_accessor :log_local_format
     # The Organization's local log storage, one of the LogLocalStorage constants.
+    # Deprecated: use log_config.local_storage instead
     attr_accessor :log_local_storage
     # The Organization's remote log encryption encoder, one of the LogRemoteEncoder constants.
+    # Deprecated: use categories specific log_config.categories[].remote_encoder instead
     attr_accessor :log_remote_encoder
     # The Organization's socket path for Socket local log storage.
+    # Deprecated: use log_config.local_socket_path instead
     attr_accessor :log_socket_path
     # The Organization's TCP address for TCP or Syslog local log storage.
+    # Deprecated: use log_config.local_tcp_address instead
     attr_accessor :log_tcp_address
     # The Organization's loopback range.
     attr_accessor :loopback_range
@@ -10138,6 +10213,7 @@ module SDM
     # The Organization's name.
     attr_accessor :name
     # The Organization's public key PEM for encrypting remote logs.
+    # Deprecated: use log_config.public_key instead
     attr_accessor :public_key_pem
     # Indicates if the Organization requires secret stores.
     attr_accessor :require_secret_store
@@ -10170,6 +10246,7 @@ module SDM
       idle_timeout: nil,
       idle_timeout_enabled: nil,
       kind: nil,
+      log_config: nil,
       log_local_encoder: nil,
       log_local_format: nil,
       log_local_storage: nil,
@@ -10201,6 +10278,7 @@ module SDM
       @idle_timeout = idle_timeout == nil ? nil : idle_timeout
       @idle_timeout_enabled = idle_timeout_enabled == nil ? false : idle_timeout_enabled
       @kind = kind == nil ? "" : kind
+      @log_config = log_config == nil ? nil : log_config
       @log_local_encoder = log_local_encoder == nil ? "" : log_local_encoder
       @log_local_format = log_local_format == nil ? "" : log_local_format
       @log_local_storage = log_local_storage == nil ? "" : log_local_storage
@@ -16222,6 +16300,10 @@ module SDM
   end
   # @private
   def self._porcelain_zero_value_access_rule()
+    {}
+  end
+  # @private
+  def self._porcelain_zero_value_log_category_config_map()
     {}
   end
 end

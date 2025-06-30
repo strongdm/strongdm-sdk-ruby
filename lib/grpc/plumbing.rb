@@ -159,6 +159,31 @@ module SDM
       tags
     end
 
+    def self.convert_log_category_config_map_to_porcelain(cfg_map)
+      if cfg_map == nil
+        return nil
+      end
+      res = {}
+      cfg_map.entries.each do |entry|
+        res[entry.name] = convert_log_category_config_to_porcelain(entry.config)
+      end
+      res
+    end
+
+    def self.convert_log_category_config_map_to_plumbing(cfg_map)
+      if cfg_map == nil
+        return nil
+      end
+      res = V1::LogCategoryConfigMap.new
+      cfg_map.each do |name, config|
+        entry = V1::LogCategoryConfigMap::Entry.new
+        entry.name = name
+        entry.config = convert_log_category_config_to_plumbing(config)
+        res.entries << entry
+      end
+      res
+    end
+
     def self.convert_access_rules_to_porcelain(access_rules_json)
       if access_rules_json == nil
         return nil
@@ -8011,6 +8036,88 @@ module SDM
       end
       items
     end
+    def self.convert_log_category_config_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = LogCategoryConfig.new()
+      porcelain.remote_discard_replays = (plumbing.remote_discard_replays)
+      porcelain.remote_encoder = (plumbing.remote_encoder)
+      porcelain
+    end
+
+    def self.convert_log_category_config_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::LogCategoryConfig.new()
+      plumbing.remote_discard_replays = (porcelain.remote_discard_replays)
+      plumbing.remote_encoder = (porcelain.remote_encoder)
+      plumbing
+    end
+    def self.convert_repeated_log_category_config_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_log_category_config_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_log_category_config_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_log_category_config_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_log_config_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = LogConfig.new()
+      porcelain.categories = convert_log_category_config_map_to_porcelain(plumbing.categories)
+      porcelain.local_encoder = (plumbing.local_encoder)
+      porcelain.local_format = (plumbing.local_format)
+      porcelain.local_socket_path = (plumbing.local_socket_path)
+      porcelain.local_storage = (plumbing.local_storage)
+      porcelain.local_tcp_address = (plumbing.local_tcp_address)
+      porcelain.public_key = (plumbing.public_key)
+      porcelain
+    end
+
+    def self.convert_log_config_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::LogConfig.new()
+      plumbing.categories = convert_log_category_config_map_to_plumbing(porcelain.categories)
+      plumbing.local_encoder = (porcelain.local_encoder)
+      plumbing.local_format = (porcelain.local_format)
+      plumbing.local_socket_path = (porcelain.local_socket_path)
+      plumbing.local_storage = (porcelain.local_storage)
+      plumbing.local_tcp_address = (porcelain.local_tcp_address)
+      plumbing.public_key = (porcelain.public_key)
+      plumbing
+    end
+    def self.convert_repeated_log_config_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_log_config_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_log_config_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_log_config_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_mtls_mysql_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -10124,6 +10231,7 @@ module SDM
       porcelain.idle_timeout = convert_duration_to_porcelain(plumbing.idle_timeout)
       porcelain.idle_timeout_enabled = (plumbing.idle_timeout_enabled)
       porcelain.kind = (plumbing.kind)
+      porcelain.log_config = convert_log_config_to_porcelain(plumbing.log_config)
       porcelain.log_local_encoder = (plumbing.log_local_encoder)
       porcelain.log_local_format = (plumbing.log_local_format)
       porcelain.log_local_storage = (plumbing.log_local_storage)
@@ -10162,6 +10270,7 @@ module SDM
       plumbing.idle_timeout = convert_duration_to_plumbing(porcelain.idle_timeout)
       plumbing.idle_timeout_enabled = (porcelain.idle_timeout_enabled)
       plumbing.kind = (porcelain.kind)
+      plumbing.log_config = convert_log_config_to_plumbing(porcelain.log_config)
       plumbing.log_local_encoder = (porcelain.log_local_encoder)
       plumbing.log_local_format = (porcelain.log_local_format)
       plumbing.log_local_storage = (porcelain.log_local_storage)
