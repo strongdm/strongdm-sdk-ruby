@@ -29,6 +29,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :aks_service_account, :message, 807, "v1.AKSServiceAccount"
         optional :aks_service_account_user_impersonation, :message, 810, "v1.AKSServiceAccountUserImpersonation"
         optional :aks_user_impersonation, :message, 814, "v1.AKSUserImpersonation"
+        optional :amqp, :message, 2502, "v1.AMQP"
         optional :aws, :message, 2300, "v1.AWS"
         optional :aws_console, :message, 3000, "v1.AWSConsole"
         optional :aws_console_static_key_pair, :message, 3001, "v1.AWSConsoleStaticKeyPair"
@@ -51,6 +52,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :azure_certificate, :message, 2801, "v1.AzureCertificate"
         optional :azure_console, :message, 2803, "v1.AzureConsole"
         optional :azure_mysql, :message, 1107, "v1.AzureMysql"
+        optional :azure_mysql_managed_identity, :message, 1110, "v1.AzureMysqlManagedIdentity"
         optional :azure_postgres, :message, 1307, "v1.AzurePostgres"
         optional :azure_postgres_managed_identity, :message, 1308, "v1.AzurePostgresManagedIdentity"
         optional :big_query, :message, 200, "v1.BigQuery"
@@ -227,6 +229,23 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :hostname, :string, 1
       optional :port, :int32, 2
       optional :port_override, :int32, 10
+    end
+    add_message "v1.AMQP" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :proxy_cluster_id, :string, 32776
+      optional :subdomain, :string, 32775
+      optional :hostname, :string, 1
+      optional :password, :string, 5
+      optional :port, :int32, 3
+      optional :port_override, :int32, 2
+      optional :tls_required, :bool, 8
+      optional :username, :string, 4
     end
     add_message "v1.AWS" do
       optional :id, :string, 32768
@@ -630,6 +649,24 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port_override, :int32, 5
       optional :require_native_auth, :bool, 7
       optional :use_azure_single_server_usernames, :bool, 9
+      optional :username, :string, 2
+    end
+    add_message "v1.AzureMysqlManagedIdentity" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :proxy_cluster_id, :string, 32776
+      optional :subdomain, :string, 32775
+      optional :database, :string, 4
+      optional :hostname, :string, 1
+      optional :password, :string, 3
+      optional :port, :int32, 6
+      optional :port_override, :int32, 5
+      optional :use_azure_single_server_usernames, :bool, 8
       optional :username, :string, 2
     end
     add_message "v1.AzurePostgres" do
@@ -2071,6 +2108,7 @@ module V1
   AKSServiceAccount = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AKSServiceAccount").msgclass
   AKSServiceAccountUserImpersonation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AKSServiceAccountUserImpersonation").msgclass
   AKSUserImpersonation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AKSUserImpersonation").msgclass
+  AMQP = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AMQP").msgclass
   AWS = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AWS").msgclass
   AWSConsole = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AWSConsole").msgclass
   AWSConsoleStaticKeyPair = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AWSConsoleStaticKeyPair").msgclass
@@ -2093,6 +2131,7 @@ module V1
   AzureCertificate = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AzureCertificate").msgclass
   AzureConsole = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AzureConsole").msgclass
   AzureMysql = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AzureMysql").msgclass
+  AzureMysqlManagedIdentity = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AzureMysqlManagedIdentity").msgclass
   AzurePostgres = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AzurePostgres").msgclass
   AzurePostgresManagedIdentity = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AzurePostgresManagedIdentity").msgclass
   BigQuery = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.BigQuery").msgclass

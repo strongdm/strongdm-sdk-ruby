@@ -42,6 +42,7 @@ require_relative "./approval_workflow_steps_history_pb"
 require_relative "./approval_workflows_pb"
 require_relative "./approval_workflows_history_pb"
 require_relative "./control_panel_pb"
+require_relative "./roles_pb"
 require_relative "./health_checks_pb"
 require_relative "./identity_aliases_pb"
 require_relative "./identity_aliases_history_pb"
@@ -68,7 +69,6 @@ require_relative "./resources_pb"
 require_relative "./resources_history_pb"
 require_relative "./role_resources_pb"
 require_relative "./role_resources_history_pb"
-require_relative "./roles_pb"
 require_relative "./roles_history_pb"
 require_relative "./secret_engine_policy_pb"
 require_relative "./secret_engine_types_pb"
@@ -543,6 +543,68 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_aks_user_impersonation_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_amqp_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AMQP.new()
+      porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.password = (plumbing.password)
+      porcelain.port = (plumbing.port)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.subdomain = (plumbing.subdomain)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.tls_required = (plumbing.tls_required)
+      porcelain.username = (plumbing.username)
+      porcelain
+    end
+
+    def self.convert_amqp_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AMQP.new()
+      plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.subdomain = (porcelain.subdomain)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.tls_required = (porcelain.tls_required)
+      plumbing.username = (porcelain.username)
+      plumbing
+    end
+    def self.convert_repeated_amqp_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_amqp_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_amqp_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_amqp_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -4180,6 +4242,70 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_azure_mysql_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_azure_mysql_managed_identity_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AzureMysqlManagedIdentity.new()
+      porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.database = (plumbing.database)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.password = (plumbing.password)
+      porcelain.port = (plumbing.port)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.subdomain = (plumbing.subdomain)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.use_azure_single_server_usernames = (plumbing.use_azure_single_server_usernames)
+      porcelain.username = (plumbing.username)
+      porcelain
+    end
+
+    def self.convert_azure_mysql_managed_identity_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AzureMysqlManagedIdentity.new()
+      plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.database = (porcelain.database)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.subdomain = (porcelain.subdomain)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.use_azure_single_server_usernames = (porcelain.use_azure_single_server_usernames)
+      plumbing.username = (porcelain.username)
+      plumbing
+    end
+    def self.convert_repeated_azure_mysql_managed_identity_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_azure_mysql_managed_identity_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_azure_mysql_managed_identity_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_azure_mysql_managed_identity_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -12913,6 +13039,9 @@ module SDM
       if porcelain.instance_of? AmazonMQAMQP091
         plumbing.amazon_mqamqp_091 = convert_amazon_mqamqp_091_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? AMQP
+        plumbing.amqp = convert_amqp_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? Athena
         plumbing.athena = convert_athena_to_plumbing(porcelain)
       end
@@ -12954,6 +13083,9 @@ module SDM
       end
       if porcelain.instance_of? AzureMysql
         plumbing.azure_mysql = convert_azure_mysql_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? AzureMysqlManagedIdentity
+        plumbing.azure_mysql_managed_identity = convert_azure_mysql_managed_identity_to_plumbing(porcelain)
       end
       if porcelain.instance_of? AzurePostgres
         plumbing.azure_postgres = convert_azure_postgres_to_plumbing(porcelain)
@@ -13241,6 +13373,9 @@ module SDM
       if plumbing.amazon_mqamqp_091 != nil
         return convert_amazon_mqamqp_091_to_porcelain(plumbing.amazon_mqamqp_091)
       end
+      if plumbing.amqp != nil
+        return convert_amqp_to_porcelain(plumbing.amqp)
+      end
       if plumbing.athena != nil
         return convert_athena_to_porcelain(plumbing.athena)
       end
@@ -13282,6 +13417,9 @@ module SDM
       end
       if plumbing.azure_mysql != nil
         return convert_azure_mysql_to_porcelain(plumbing.azure_mysql)
+      end
+      if plumbing.azure_mysql_managed_identity != nil
+        return convert_azure_mysql_managed_identity_to_porcelain(plumbing.azure_mysql_managed_identity)
       end
       if plumbing.azure_postgres != nil
         return convert_azure_postgres_to_porcelain(plumbing.azure_postgres)

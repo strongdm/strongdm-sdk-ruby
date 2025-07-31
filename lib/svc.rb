@@ -2108,6 +2108,220 @@ module SDM #:nodoc:
     end
   end
 
+  # A Role has a list of access rules which determine which Resources the members
+  # of the Role have access to. An Account can be a member of multiple Roles via
+  # AccountAttachments.
+  #
+  # See {Role}.
+  class Roles
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::Roles::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # Create registers a new Role.
+    def create(
+      role,
+      deadline: nil
+    )
+      req = V1::RoleCreateRequest.new()
+
+      req.role = Plumbing::convert_role_to_plumbing(role)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.create(req, metadata: @parent.get_metadata("Roles.Create", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = RoleCreateResponse.new()
+      resp.meta = Plumbing::convert_create_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.role = Plumbing::convert_role_to_porcelain(plumbing_response.role)
+      resp
+    end
+
+    # Get reads one Role by ID.
+    def get(
+      id,
+      deadline: nil
+    )
+      req = V1::RoleGetRequest.new()
+      if not @parent.snapshot_time.nil?
+        req.meta = V1::GetRequestMetadata.new()
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.get(req, metadata: @parent.get_metadata("Roles.Get", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = RoleGetResponse.new()
+      resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.role = Plumbing::convert_role_to_porcelain(plumbing_response.role)
+      resp
+    end
+
+    # Update replaces all the fields of a Role by ID.
+    def update(
+      role,
+      deadline: nil
+    )
+      req = V1::RoleUpdateRequest.new()
+
+      req.role = Plumbing::convert_role_to_plumbing(role)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.update(req, metadata: @parent.get_metadata("Roles.Update", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = RoleUpdateResponse.new()
+      resp.meta = Plumbing::convert_update_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.role = Plumbing::convert_role_to_porcelain(plumbing_response.role)
+      resp
+    end
+
+    # Delete removes a Role by ID.
+    def delete(
+      id,
+      deadline: nil
+    )
+      req = V1::RoleDeleteRequest.new()
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("Roles.Delete", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = RoleDeleteResponse.new()
+      resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # List gets a list of Roles matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::RoleListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      if not @parent.page_limit.nil?
+        req.meta.limit = @parent.page_limit
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("Roles.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.roles.each do |plumbing_item|
+            g.yield Plumbing::convert_role_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # SnapshotRoles exposes the read only methods of the Roles
+  # service for historical queries.
+  class SnapshotRoles
+    extend Gem::Deprecate
+
+    def initialize(roles)
+      @roles = roles
+    end
+
+    # Get reads one Role by ID.
+    def get(
+      id,
+      deadline: nil
+    )
+      return @roles.get(
+               id,
+               deadline: deadline,
+             )
+    end
+
+    # List gets a list of Roles matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      return @roles.list(
+               filter,
+                            *args,
+                            deadline: deadline,
+             )
+    end
+  end
+
   # HealthChecks lists the last healthcheck between each node and resource.
   # Note the unconventional capitalization here is to prevent having a collision with GRPC
   #
@@ -4997,6 +5211,7 @@ module SDM #:nodoc:
   # {AmazonES}
   # {AmazonESIAM}
   # {AmazonMQAMQP091}
+  # {AMQP}
   # {Athena}
   # {AthenaIAM}
   # {AuroraMysql}
@@ -5011,6 +5226,7 @@ module SDM #:nodoc:
   # {AzureCertificate}
   # {AzureConsole}
   # {AzureMysql}
+  # {AzureMysqlManagedIdentity}
   # {AzurePostgres}
   # {AzurePostgresManagedIdentity}
   # {BigQuery}
@@ -5556,220 +5772,6 @@ module SDM #:nodoc:
         end
       }
       resp
-    end
-  end
-
-  # A Role has a list of access rules which determine which Resources the members
-  # of the Role have access to. An Account can be a member of multiple Roles via
-  # AccountAttachments.
-  #
-  # See {Role}.
-  class Roles
-    extend Gem::Deprecate
-
-    def initialize(channel, parent)
-      begin
-        @stub = V1::Roles::Stub.new(nil, nil, channel_override: channel)
-      rescue => exception
-        raise Plumbing::convert_error_to_porcelain(exception)
-      end
-      @parent = parent
-    end
-
-    # Create registers a new Role.
-    def create(
-      role,
-      deadline: nil
-    )
-      req = V1::RoleCreateRequest.new()
-
-      req.role = Plumbing::convert_role_to_plumbing(role)
-      tries = 0
-      plumbing_response = nil
-      loop do
-        begin
-          plumbing_response = @stub.create(req, metadata: @parent.get_metadata("Roles.Create", req), deadline: deadline)
-        rescue => exception
-          if (@parent.shouldRetry(tries, exception, deadline))
-            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
-            next
-          end
-          raise Plumbing::convert_error_to_porcelain(exception)
-        end
-        break
-      end
-
-      resp = RoleCreateResponse.new()
-      resp.meta = Plumbing::convert_create_response_metadata_to_porcelain(plumbing_response.meta)
-      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
-      resp.role = Plumbing::convert_role_to_porcelain(plumbing_response.role)
-      resp
-    end
-
-    # Get reads one Role by ID.
-    def get(
-      id,
-      deadline: nil
-    )
-      req = V1::RoleGetRequest.new()
-      if not @parent.snapshot_time.nil?
-        req.meta = V1::GetRequestMetadata.new()
-        req.meta.snapshot_at = @parent.snapshot_time
-      end
-
-      req.id = (id)
-      tries = 0
-      plumbing_response = nil
-      loop do
-        begin
-          plumbing_response = @stub.get(req, metadata: @parent.get_metadata("Roles.Get", req), deadline: deadline)
-        rescue => exception
-          if (@parent.shouldRetry(tries, exception, deadline))
-            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
-            next
-          end
-          raise Plumbing::convert_error_to_porcelain(exception)
-        end
-        break
-      end
-
-      resp = RoleGetResponse.new()
-      resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
-      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
-      resp.role = Plumbing::convert_role_to_porcelain(plumbing_response.role)
-      resp
-    end
-
-    # Update replaces all the fields of a Role by ID.
-    def update(
-      role,
-      deadline: nil
-    )
-      req = V1::RoleUpdateRequest.new()
-
-      req.role = Plumbing::convert_role_to_plumbing(role)
-      tries = 0
-      plumbing_response = nil
-      loop do
-        begin
-          plumbing_response = @stub.update(req, metadata: @parent.get_metadata("Roles.Update", req), deadline: deadline)
-        rescue => exception
-          if (@parent.shouldRetry(tries, exception, deadline))
-            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
-            next
-          end
-          raise Plumbing::convert_error_to_porcelain(exception)
-        end
-        break
-      end
-
-      resp = RoleUpdateResponse.new()
-      resp.meta = Plumbing::convert_update_response_metadata_to_porcelain(plumbing_response.meta)
-      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
-      resp.role = Plumbing::convert_role_to_porcelain(plumbing_response.role)
-      resp
-    end
-
-    # Delete removes a Role by ID.
-    def delete(
-      id,
-      deadline: nil
-    )
-      req = V1::RoleDeleteRequest.new()
-
-      req.id = (id)
-      tries = 0
-      plumbing_response = nil
-      loop do
-        begin
-          plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("Roles.Delete", req), deadline: deadline)
-        rescue => exception
-          if (@parent.shouldRetry(tries, exception, deadline))
-            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
-            next
-          end
-          raise Plumbing::convert_error_to_porcelain(exception)
-        end
-        break
-      end
-
-      resp = RoleDeleteResponse.new()
-      resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
-      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
-      resp
-    end
-
-    # List gets a list of Roles matching a given set of criteria.
-    def list(
-      filter,
-      *args,
-      deadline: nil
-    )
-      req = V1::RoleListRequest.new()
-      req.meta = V1::ListRequestMetadata.new()
-      if not @parent.page_limit.nil?
-        req.meta.limit = @parent.page_limit
-      end
-      if not @parent.snapshot_time.nil?
-        req.meta.snapshot_at = @parent.snapshot_time
-      end
-
-      req.filter = Plumbing::quote_filter_args(filter, *args)
-      resp = Enumerator::Generator.new { |g|
-        tries = 0
-        loop do
-          begin
-            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("Roles.List", req), deadline: deadline)
-          rescue => exception
-            if (@parent.shouldRetry(tries, exception, deadline))
-              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
-              next
-            end
-            raise Plumbing::convert_error_to_porcelain(exception)
-          end
-          tries = 0
-          plumbing_response.roles.each do |plumbing_item|
-            g.yield Plumbing::convert_role_to_porcelain(plumbing_item)
-          end
-          break if plumbing_response.meta.next_cursor == ""
-          req.meta.cursor = plumbing_response.meta.next_cursor
-        end
-      }
-      resp
-    end
-  end
-
-  # SnapshotRoles exposes the read only methods of the Roles
-  # service for historical queries.
-  class SnapshotRoles
-    extend Gem::Deprecate
-
-    def initialize(roles)
-      @roles = roles
-    end
-
-    # Get reads one Role by ID.
-    def get(
-      id,
-      deadline: nil
-    )
-      return @roles.get(
-               id,
-               deadline: deadline,
-             )
-    end
-
-    # List gets a list of Roles matching a given set of criteria.
-    def list(
-      filter,
-      *args,
-      deadline: nil
-    )
-      return @roles.list(
-               filter,
-                            *args,
-                            deadline: deadline,
-             )
     end
   end
 

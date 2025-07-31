@@ -30,7 +30,7 @@ module SDM #:nodoc:
     DEFAULT_RETRY_FACTOR = 1.6
     DEFAULT_RETRY_JITTER = 0.2
     API_VERSION = "2025-04-14"
-    USER_AGENT = "strongdm-sdk-ruby/15.2.0"
+    USER_AGENT = "strongdm-sdk-ruby/15.4.0"
     private_constant :DEFAULT_BASE_RETRY_DELAY, :DEFAULT_MAX_RETRY_DELAY, :DEFAULT_RETRY_FACTOR, :DEFAULT_RETRY_JITTER, :API_VERSION, :USER_AGENT
 
     # Creates a new strongDM API client.
@@ -77,6 +77,7 @@ module SDM #:nodoc:
       @approval_workflows = ApprovalWorkflows.new(@channel, self)
       @approval_workflows_history = ApprovalWorkflowsHistory.new(@channel, self)
       @control_panel = ControlPanel.new(@channel, self)
+      @roles = Roles.new(@channel, self)
       @health_checks = HealthChecks.new(@channel, self)
       @identity_aliases = IdentityAliases.new(@channel, self)
       @identity_aliases_history = IdentityAliasesHistory.new(@channel, self)
@@ -103,7 +104,6 @@ module SDM #:nodoc:
       @resources_history = ResourcesHistory.new(@channel, self)
       @role_resources = RoleResources.new(@channel, self)
       @role_resources_history = RoleResourcesHistory.new(@channel, self)
-      @roles = Roles.new(@channel, self)
       @roles_history = RolesHistory.new(@channel, self)
       @secret_stores = SecretStores.new(@channel, self)
       @secret_engines = SecretEngines.new(@channel, self)
@@ -315,6 +315,12 @@ module SDM #:nodoc:
     #
     # See {ControlPanel}.
     attr_reader :control_panel
+    # A Role has a list of access rules which determine which Resources the members
+    # of the Role have access to. An Account can be a member of multiple Roles via
+    # AccountAttachments.
+    #
+    # See {Roles}.
+    attr_reader :roles
     # HealthChecks lists the last healthcheck between each node and resource.
     # Note the unconventional capitalization here is to prevent having a collision with GRPC
     #
@@ -435,12 +441,6 @@ module SDM #:nodoc:
     #
     # See {RoleResourcesHistory}.
     attr_reader :role_resources_history
-    # A Role has a list of access rules which determine which Resources the members
-    # of the Role have access to. An Account can be a member of multiple Roles via
-    # AccountAttachments.
-    #
-    # See {Roles}.
-    attr_reader :roles
     # RolesHistory records all changes to the state of a Role.
     #
     # See {RolesHistory}.
@@ -516,6 +516,7 @@ module SDM #:nodoc:
       @approval_workflows = ApprovalWorkflows.new(@channel, self)
       @approval_workflows_history = ApprovalWorkflowsHistory.new(@channel, self)
       @control_panel = ControlPanel.new(@channel, self)
+      @roles = Roles.new(@channel, self)
       @health_checks = HealthChecks.new(@channel, self)
       @identity_aliases = IdentityAliases.new(@channel, self)
       @identity_aliases_history = IdentityAliasesHistory.new(@channel, self)
@@ -542,7 +543,6 @@ module SDM #:nodoc:
       @resources_history = ResourcesHistory.new(@channel, self)
       @role_resources = RoleResources.new(@channel, self)
       @role_resources_history = RoleResourcesHistory.new(@channel, self)
-      @roles = Roles.new(@channel, self)
       @roles_history = RolesHistory.new(@channel, self)
       @secret_stores = SecretStores.new(@channel, self)
       @secret_engines = SecretEngines.new(@channel, self)
@@ -569,6 +569,7 @@ module SDM #:nodoc:
       @approval_workflow_approvers = SnapshotApprovalWorkflowApprovers.new(client.approval_workflow_approvers)
       @approval_workflow_steps = SnapshotApprovalWorkflowSteps.new(client.approval_workflow_steps)
       @approval_workflows = SnapshotApprovalWorkflows.new(client.approval_workflows)
+      @roles = SnapshotRoles.new(client.roles)
       @identity_aliases = SnapshotIdentityAliases.new(client.identity_aliases)
       @identity_sets = SnapshotIdentitySets.new(client.identity_sets)
       @nodes = SnapshotNodes.new(client.nodes)
@@ -578,7 +579,6 @@ module SDM #:nodoc:
       @remote_identity_groups = SnapshotRemoteIdentityGroups.new(client.remote_identity_groups)
       @resources = SnapshotResources.new(client.resources)
       @role_resources = SnapshotRoleResources.new(client.role_resources)
-      @roles = SnapshotRoles.new(client.roles)
       @secret_stores = SnapshotSecretStores.new(client.secret_stores)
       @workflow_approvers = SnapshotWorkflowApprovers.new(client.workflow_approvers)
       @workflow_roles = SnapshotWorkflowRoles.new(client.workflow_roles)
@@ -627,6 +627,12 @@ module SDM #:nodoc:
     #
     # See {SnapshotApprovalWorkflows}.
     attr_reader :approval_workflows
+    # A Role has a list of access rules which determine which Resources the members
+    # of the Role have access to. An Account can be a member of multiple Roles via
+    # AccountAttachments.
+    #
+    # See {SnapshotRoles}.
+    attr_reader :roles
     # IdentityAliases assign an alias to an account within an IdentitySet.
     # The alias is used as the username when connecting to a identity supported resource.
     #
@@ -673,12 +679,6 @@ module SDM #:nodoc:
     #
     # See {SnapshotRoleResources}.
     attr_reader :role_resources
-    # A Role has a list of access rules which determine which Resources the members
-    # of the Role have access to. An Account can be a member of multiple Roles via
-    # AccountAttachments.
-    #
-    # See {SnapshotRoles}.
-    attr_reader :roles
     # SecretStores are servers where resource secrets (passwords, keys) are stored.
     #
     # See {SnapshotSecretStores}.

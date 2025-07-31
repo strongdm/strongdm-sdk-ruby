@@ -286,6 +286,7 @@ module SDM
     end
   end
 
+  # AKSServiceAccountUserImpersonation is deprecated, see docs for more info.
   class AKSServiceAccountUserImpersonation
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
@@ -357,6 +358,7 @@ module SDM
     end
   end
 
+  # AKSUserImpersonation is deprecated, see docs for more info.
   class AKSUserImpersonation
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
@@ -425,6 +427,82 @@ module SDM
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class AMQP
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    attr_accessor :bind_interface
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # The host to dial to initiate a connection from the egress node to this resource.
+    attr_accessor :hostname
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # The password to authenticate with.
+    attr_accessor :password
+    # The port to dial to initiate a connection from the egress node to this resource.
+    attr_accessor :port
+    # The local port used by clients to connect to this resource.
+    attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    attr_accessor :subdomain
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+    # If set, TLS must be used to connect to this resource.
+    attr_accessor :tls_required
+    # The username to authenticate with.
+    attr_accessor :username
+
+    def initialize(
+      bind_interface: nil,
+      egress_filter: nil,
+      healthy: nil,
+      hostname: nil,
+      id: nil,
+      name: nil,
+      password: nil,
+      port: nil,
+      port_override: nil,
+      proxy_cluster_id: nil,
+      secret_store_id: nil,
+      subdomain: nil,
+      tags: nil,
+      tls_required: nil,
+      username: nil
+    )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @subdomain = subdomain == nil ? "" : subdomain
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tls_required = tls_required == nil ? false : tls_required
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -2243,6 +2321,7 @@ module SDM
     end
   end
 
+  # AmazonEKSInstanceProfileUserImpersonation is deprecated, see docs for more info.
   class AmazonEKSInstanceProfileUserImpersonation
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
@@ -2326,6 +2405,7 @@ module SDM
     end
   end
 
+  # AmazonEKSUserImpersonation is deprecated, see docs for more info.
   class AmazonEKSUserImpersonation
     # The Access Key ID to use to authenticate.
     attr_accessor :access_key
@@ -2741,6 +2821,7 @@ module SDM
   end
 
   # ApprovalWorkflowApprover links an approval workflow approver to an ApprovalWorkflowStep
+  # ApprovalWorkflowApprover is deprecated, see docs for more info.
   class ApprovalWorkflowApprover
     # The approver account id.
     attr_accessor :account_id
@@ -3047,6 +3128,7 @@ module SDM
   end
 
   # ApprovalWorkflowStep links an approval workflow step to an ApprovalWorkflow
+  # ApprovalWorkflowStep is deprecated, see docs for more info.
   class ApprovalWorkflowStep
     # The approval flow id specified the approval workflow that this step belongs to
     attr_accessor :approval_flow_id
@@ -3986,6 +4068,86 @@ module SDM
       @port_override = port_override == nil ? 0 : port_override
       @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @require_native_auth = require_native_auth == nil ? false : require_native_auth
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @subdomain = subdomain == nil ? "" : subdomain
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @use_azure_single_server_usernames = use_azure_single_server_usernames == nil ? false : use_azure_single_server_usernames
+      @username = username == nil ? "" : username
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class AzureMysqlManagedIdentity
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    attr_accessor :bind_interface
+    # The database for healthchecks. Does not affect client requests.
+    attr_accessor :database
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # The host to dial to initiate a connection from the egress node to this resource.
+    attr_accessor :hostname
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # The password to authenticate with.
+    attr_accessor :password
+    # The port to dial to initiate a connection from the egress node to this resource.
+    attr_accessor :port
+    # The local port used by clients to connect to this resource.
+    attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    attr_accessor :subdomain
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+    # If true, appends the hostname to the username when hitting a database.azure.com address
+    attr_accessor :use_azure_single_server_usernames
+    # The username to authenticate with.
+    attr_accessor :username
+
+    def initialize(
+      bind_interface: nil,
+      database: nil,
+      egress_filter: nil,
+      healthy: nil,
+      hostname: nil,
+      id: nil,
+      name: nil,
+      password: nil,
+      port: nil,
+      port_override: nil,
+      proxy_cluster_id: nil,
+      secret_store_id: nil,
+      subdomain: nil,
+      tags: nil,
+      use_azure_single_server_usernames: nil,
+      username: nil
+    )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
+      @database = database == nil ? "" : database
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -6548,6 +6710,7 @@ module SDM
     end
   end
 
+  # GoogleGKEUserImpersonation is deprecated, see docs for more info.
   class GoogleGKEUserImpersonation
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
@@ -7953,6 +8116,7 @@ module SDM
     end
   end
 
+  # KubernetesServiceAccountUserImpersonation is deprecated, see docs for more info.
   class KubernetesServiceAccountUserImpersonation
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
@@ -8024,6 +8188,7 @@ module SDM
     end
   end
 
+  # KubernetesUserImpersonation is deprecated, see docs for more info.
   class KubernetesUserImpersonation
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
@@ -15699,6 +15864,7 @@ module SDM
   end
 
   # WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.
+  # WorkflowApprover is deprecated, see docs for more info.
   class WorkflowApprover
     # The approver account id.
     attr_accessor :account_id

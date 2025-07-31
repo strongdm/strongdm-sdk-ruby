@@ -65,6 +65,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :account_id, :string, 4
       optional :role_id, :string, 5
       optional :reference, :string, 6
+      optional :group_id, :string, 7
     end
   end
 end
