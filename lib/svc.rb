@@ -3126,6 +3126,34 @@ module SDM #:nodoc:
       resp
     end
 
+    # ForceDelete deletes a Managed Secret regardless of errors on external system
+    def force_delete(
+      id,
+      deadline: nil
+    )
+      req = V1::ManagedSecretDeleteRequest.new()
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.force_delete(req, metadata: @parent.get_metadata("ManagedSecrets.ForceDelete", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = ManagedSecretDeleteResponse.new()
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
     # Get gets details of a Managed Secret without sensitive data
     def get(
       id,

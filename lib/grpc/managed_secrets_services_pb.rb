@@ -42,6 +42,8 @@ module V1
       rpc :Rotate, ::V1::ManagedSecretRotateRequest, ::V1::ManagedSecretRotateResponse
       # Delete deletes a Managed Secret
       rpc :Delete, ::V1::ManagedSecretDeleteRequest, ::V1::ManagedSecretDeleteResponse
+      # ForceDelete deletes a Managed Secret regardless of errors on external system
+      rpc :ForceDelete, ::V1::ManagedSecretDeleteRequest, ::V1::ManagedSecretDeleteResponse
       # Get gets details of a Managed Secret without sensitive data
       rpc :Get, ::V1::ManagedSecretGetRequest, ::V1::ManagedSecretGetResponse
       # Retrieve returns Managed Secret with sensitive data
