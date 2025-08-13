@@ -3929,78 +3929,6 @@ module SDM
     end
   end
 
-  # AzureConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-  class AzureConsole
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
-    attr_accessor :bind_interface
-    # The connector ID to authenticate through.
-    attr_accessor :connector_id
-    # A filter applied to the routing logic to pin datasource to nodes.
-    attr_accessor :egress_filter
-    # True if the datasource is reachable and the credentials are valid.
-    attr_accessor :healthy
-    # Unique identifier of the Resource.
-    attr_accessor :id
-    # The ID of the identity set to use for identity connections.
-    attr_accessor :identity_set_id
-    # The management group ID to authenticate scope Privileges to.
-    attr_accessor :management_group_id
-    # Unique human-readable name of the Resource.
-    attr_accessor :name
-    # The privilege levels specify which Groups are managed externally
-    attr_accessor :privilege_levels
-    # ID of the proxy cluster for this resource, if any.
-    attr_accessor :proxy_cluster_id
-    # ID of the secret store containing credentials for this resource, if any.
-    attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
-    attr_accessor :subdomain
-    # The subscription ID to authenticate scope Privileges to.
-    attr_accessor :subscription_id
-    # Tags is a map of key, value pairs.
-    attr_accessor :tags
-
-    def initialize(
-      bind_interface: nil,
-      connector_id: nil,
-      egress_filter: nil,
-      healthy: nil,
-      id: nil,
-      identity_set_id: nil,
-      management_group_id: nil,
-      name: nil,
-      privilege_levels: nil,
-      proxy_cluster_id: nil,
-      secret_store_id: nil,
-      subdomain: nil,
-      subscription_id: nil,
-      tags: nil
-    )
-      @bind_interface = bind_interface == nil ? "" : bind_interface
-      @connector_id = connector_id == nil ? "" : connector_id
-      @egress_filter = egress_filter == nil ? "" : egress_filter
-      @healthy = healthy == nil ? false : healthy
-      @id = id == nil ? "" : id
-      @identity_set_id = identity_set_id == nil ? "" : identity_set_id
-      @management_group_id = management_group_id == nil ? "" : management_group_id
-      @name = name == nil ? "" : name
-      @privilege_levels = privilege_levels == nil ? "" : privilege_levels
-      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
-      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
-      @subdomain = subdomain == nil ? "" : subdomain
-      @subscription_id = subscription_id == nil ? "" : subscription_id
-      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
-    end
-
-    def to_json(options = {})
-      hash = {}
-      self.instance_variables.each do |var|
-        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
-      end
-      hash.to_json
-    end
-  end
-
   class AzureMysql
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
     attr_accessor :bind_interface
@@ -6163,6 +6091,90 @@ module SDM
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
       @tls_required = tls_required == nil ? false : tls_required
       @username = username == nil ? "" : username
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class EntraID
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    attr_accessor :bind_interface
+    # If true, configures discovery of the tenant to be run from a node.
+    attr_accessor :discovery_enabled
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
+    # comma separated list of group names to filter by. Supports wildcards (*)
+    attr_accessor :group_names
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # The ID of the identity set to use for identity connections.
+    attr_accessor :identity_set_id
+    # The management group ID to authenticate scope Privileges to.
+    attr_accessor :management_group_id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # The privilege levels specify which Groups are managed externally
+    attr_accessor :privilege_levels
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
+    # filters discovered groups to the specified Resource Group
+    attr_accessor :resource_group_id
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    attr_accessor :subdomain
+    # The subscription ID to authenticate scope Privileges to.
+    attr_accessor :subscription_id
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+    # The connector ID to authenticate through.
+    attr_accessor :tenant_id
+
+    def initialize(
+      bind_interface: nil,
+      discovery_enabled: nil,
+      egress_filter: nil,
+      group_names: nil,
+      healthy: nil,
+      id: nil,
+      identity_set_id: nil,
+      management_group_id: nil,
+      name: nil,
+      privilege_levels: nil,
+      proxy_cluster_id: nil,
+      resource_group_id: nil,
+      secret_store_id: nil,
+      subdomain: nil,
+      subscription_id: nil,
+      tags: nil,
+      tenant_id: nil
+    )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
+      @discovery_enabled = discovery_enabled == nil ? false : discovery_enabled
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @group_names = group_names == nil ? "" : group_names
+      @healthy = healthy == nil ? false : healthy
+      @id = id == nil ? "" : id
+      @identity_set_id = identity_set_id == nil ? "" : identity_set_id
+      @management_group_id = management_group_id == nil ? "" : management_group_id
+      @name = name == nil ? "" : name
+      @privilege_levels = privilege_levels == nil ? "" : privilege_levels
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
+      @resource_group_id = resource_group_id == nil ? "" : resource_group_id
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @subdomain = subdomain == nil ? "" : subdomain
+      @subscription_id = subscription_id == nil ? "" : subscription_id
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tenant_id = tenant_id == nil ? "" : tenant_id
     end
 
     def to_json(options = {})
@@ -11782,6 +11794,9 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
+    # The SID needed in leased credentials to generate a valid certificate.
+    # Using extraplain3 here as 1 and 2 are used in cert generation and internal driver config
+    attr_accessor :sid
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
@@ -11803,6 +11818,7 @@ module SDM
       port_override: nil,
       proxy_cluster_id: nil,
       secret_store_id: nil,
+      sid: nil,
       subdomain: nil,
       tags: nil,
       username: nil
@@ -11820,6 +11836,7 @@ module SDM
       @port_override = port_override == nil ? 0 : port_override
       @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @sid = sid == nil ? "" : sid
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
       @username = username == nil ? "" : username

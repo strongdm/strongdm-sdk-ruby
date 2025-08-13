@@ -5252,7 +5252,6 @@ module SDM #:nodoc:
   # {AWSInstanceProfile}
   # {Azure}
   # {AzureCertificate}
-  # {AzureConsole}
   # {AzureMysql}
   # {AzureMysqlManagedIdentity}
   # {AzurePostgres}
@@ -5278,6 +5277,7 @@ module SDM #:nodoc:
   # {DynamoDBIAM}
   # {Elastic}
   # {ElasticacheRedis}
+  # {EntraID}
   # {GCP}
   # {GCPConsole}
   # {GCPWIF}

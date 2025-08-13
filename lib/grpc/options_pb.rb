@@ -64,6 +64,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :custom, :message, 1941305, "v1.CustomOptions"
       map :read_only_override, :string, :bool, 1941312
       optional :condition, :string, 1941323
+      repeated :conditions, :string, 1941325
       optional :expect_file, :bool, 1941324
     end
     add_message "v1.CustomOptions" do

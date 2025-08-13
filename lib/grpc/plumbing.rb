@@ -4120,66 +4120,6 @@ module SDM
       end
       items
     end
-    def self.convert_azure_console_to_porcelain(plumbing)
-      if plumbing == nil
-        return nil
-      end
-      porcelain = AzureConsole.new()
-      porcelain.bind_interface = (plumbing.bind_interface)
-      porcelain.connector_id = (plumbing.connector_id)
-      porcelain.egress_filter = (plumbing.egress_filter)
-      porcelain.healthy = (plumbing.healthy)
-      porcelain.id = (plumbing.id)
-      porcelain.identity_set_id = (plumbing.identity_set_id)
-      porcelain.management_group_id = (plumbing.management_group_id)
-      porcelain.name = (plumbing.name)
-      porcelain.privilege_levels = (plumbing.privilege_levels)
-      porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
-      porcelain.secret_store_id = (plumbing.secret_store_id)
-      porcelain.subdomain = (plumbing.subdomain)
-      porcelain.subscription_id = (plumbing.subscription_id)
-      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
-      porcelain
-    end
-
-    def self.convert_azure_console_to_plumbing(porcelain)
-      if porcelain == nil
-        return nil
-      end
-      plumbing = V1::AzureConsole.new()
-      plumbing.bind_interface = (porcelain.bind_interface)
-      plumbing.connector_id = (porcelain.connector_id)
-      plumbing.egress_filter = (porcelain.egress_filter)
-      plumbing.healthy = (porcelain.healthy)
-      plumbing.id = (porcelain.id)
-      plumbing.identity_set_id = (porcelain.identity_set_id)
-      plumbing.management_group_id = (porcelain.management_group_id)
-      plumbing.name = (porcelain.name)
-      plumbing.privilege_levels = (porcelain.privilege_levels)
-      plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
-      plumbing.secret_store_id = (porcelain.secret_store_id)
-      plumbing.subdomain = (porcelain.subdomain)
-      plumbing.subscription_id = (porcelain.subscription_id)
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
-      plumbing
-    end
-    def self.convert_repeated_azure_console_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = convert_azure_console_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.convert_repeated_azure_console_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = convert_azure_console_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
     def self.convert_azure_mysql_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -6116,6 +6056,72 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_elasticache_redis_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_entra_id_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = EntraID.new()
+      porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.discovery_enabled = (plumbing.discovery_enabled)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.group_names = (plumbing.group_names)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.id = (plumbing.id)
+      porcelain.identity_set_id = (plumbing.identity_set_id)
+      porcelain.management_group_id = (plumbing.management_group_id)
+      porcelain.name = (plumbing.name)
+      porcelain.privilege_levels = (plumbing.privilege_levels)
+      porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
+      porcelain.resource_group_id = (plumbing.resource_group_id)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.subdomain = (plumbing.subdomain)
+      porcelain.subscription_id = (plumbing.subscription_id)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.tenant_id = (plumbing.tenant_id)
+      porcelain
+    end
+
+    def self.convert_entra_id_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::EntraID.new()
+      plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.discovery_enabled = (porcelain.discovery_enabled)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.group_names = (porcelain.group_names)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.id = (porcelain.id)
+      plumbing.identity_set_id = (porcelain.identity_set_id)
+      plumbing.management_group_id = (porcelain.management_group_id)
+      plumbing.name = (porcelain.name)
+      plumbing.privilege_levels = (porcelain.privilege_levels)
+      plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
+      plumbing.resource_group_id = (porcelain.resource_group_id)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.subdomain = (porcelain.subdomain)
+      plumbing.subscription_id = (porcelain.subscription_id)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.tenant_id = (porcelain.tenant_id)
+      plumbing
+    end
+    def self.convert_repeated_entra_id_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_entra_id_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_entra_id_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_entra_id_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -11891,6 +11897,7 @@ module SDM
       porcelain.port_override = (plumbing.port_override)
       porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
       porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.sid = (plumbing.sid)
       porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain.username = (plumbing.username)
@@ -11915,6 +11922,7 @@ module SDM
       plumbing.port_override = (porcelain.port_override)
       plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
       plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.sid = (porcelain.sid)
       plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing.username = (porcelain.username)
@@ -13078,9 +13086,6 @@ module SDM
       if porcelain.instance_of? AzureCertificate
         plumbing.azure_certificate = convert_azure_certificate_to_plumbing(porcelain)
       end
-      if porcelain.instance_of? AzureConsole
-        plumbing.azure_console = convert_azure_console_to_plumbing(porcelain)
-      end
       if porcelain.instance_of? AzureMysql
         plumbing.azure_mysql = convert_azure_mysql_to_plumbing(porcelain)
       end
@@ -13155,6 +13160,9 @@ module SDM
       end
       if porcelain.instance_of? ElasticacheRedis
         plumbing.elasticache_redis = convert_elasticache_redis_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? EntraID
+        plumbing.entra_id = convert_entra_id_to_plumbing(porcelain)
       end
       if porcelain.instance_of? GCP
         plumbing.gcp = convert_gcp_to_plumbing(porcelain)
@@ -13412,9 +13420,6 @@ module SDM
       if plumbing.azure_certificate != nil
         return convert_azure_certificate_to_porcelain(plumbing.azure_certificate)
       end
-      if plumbing.azure_console != nil
-        return convert_azure_console_to_porcelain(plumbing.azure_console)
-      end
       if plumbing.azure_mysql != nil
         return convert_azure_mysql_to_porcelain(plumbing.azure_mysql)
       end
@@ -13489,6 +13494,9 @@ module SDM
       end
       if plumbing.elasticache_redis != nil
         return convert_elasticache_redis_to_porcelain(plumbing.elasticache_redis)
+      end
+      if plumbing.entra_id != nil
+        return convert_entra_id_to_porcelain(plumbing.entra_id)
       end
       if plumbing.gcp != nil
         return convert_gcp_to_porcelain(plumbing.gcp)
