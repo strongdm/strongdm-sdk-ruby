@@ -20,7 +20,7 @@ module SDM
     # If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set)
     # when a resource role is not provided.
     attr_accessor :allow_resource_role_bypass
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The CA to authenticate TLS connections with.
     attr_accessor :certificate_authority
@@ -51,7 +51,7 @@ module SDM
     attr_accessor :name
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -119,7 +119,7 @@ module SDM
 
   # AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class AKSBasicAuth
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -137,7 +137,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -197,7 +197,7 @@ module SDM
     # If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set)
     # when a resource role is not provided.
     attr_accessor :allow_resource_role_bypass
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # If true, configures discovery of a cluster to be run from a node.
     attr_accessor :discovery_enabled
@@ -222,7 +222,7 @@ module SDM
     attr_accessor :name
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -288,7 +288,7 @@ module SDM
 
   # AKSServiceAccountUserImpersonation is deprecated, see docs for more info.
   class AKSServiceAccountUserImpersonation
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -304,7 +304,7 @@ module SDM
     attr_accessor :name
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -360,7 +360,7 @@ module SDM
 
   # AKSUserImpersonation is deprecated, see docs for more info.
   class AKSUserImpersonation
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The CA to authenticate TLS connections with.
     attr_accessor :certificate_authority
@@ -382,7 +382,7 @@ module SDM
     attr_accessor :name
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -440,7 +440,7 @@ module SDM
 
   # AMQP is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class AMQP
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -456,7 +456,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -517,7 +517,7 @@ module SDM
   class AWS
     # The Access Key ID to use to authenticate.
     attr_accessor :access_key
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -529,7 +529,7 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -637,7 +637,7 @@ module SDM
   end
 
   class AWSConsole
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -653,7 +653,7 @@ module SDM
     attr_accessor :identity_set_id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -722,7 +722,7 @@ module SDM
   class AWSConsoleStaticKeyPair
     # The Access Key ID to authenticate with.
     attr_accessor :access_key
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -736,7 +736,7 @@ module SDM
     attr_accessor :identity_set_id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -807,7 +807,7 @@ module SDM
   end
 
   class AWSInstanceProfile
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -819,7 +819,7 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -2029,7 +2029,7 @@ module SDM
   end
 
   class Aerospike
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -2045,7 +2045,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -2109,7 +2109,7 @@ module SDM
     # If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set)
     # when a resource role is not provided.
     attr_accessor :allow_resource_role_bypass
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The CA to authenticate TLS connections with.
     attr_accessor :certificate_authority
@@ -2136,7 +2136,7 @@ module SDM
     attr_accessor :identity_set_id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -2220,7 +2220,7 @@ module SDM
     # If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set)
     # when a resource role is not provided.
     attr_accessor :allow_resource_role_bypass
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The CA to authenticate TLS connections with.
     attr_accessor :certificate_authority
@@ -2247,7 +2247,7 @@ module SDM
     attr_accessor :identity_set_id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -2323,7 +2323,7 @@ module SDM
 
   # AmazonEKSInstanceProfileUserImpersonation is deprecated, see docs for more info.
   class AmazonEKSInstanceProfileUserImpersonation
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The CA to authenticate TLS connections with.
     attr_accessor :certificate_authority
@@ -2341,7 +2341,7 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -2409,7 +2409,7 @@ module SDM
   class AmazonEKSUserImpersonation
     # The Access Key ID to use to authenticate.
     attr_accessor :access_key
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The CA to authenticate TLS connections with.
     attr_accessor :certificate_authority
@@ -2427,7 +2427,7 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -2500,7 +2500,7 @@ module SDM
   class AmazonES
     # The Access Key ID to use to authenticate.
     attr_accessor :access_key
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -2512,7 +2512,7 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -2577,7 +2577,7 @@ module SDM
   end
 
   class AmazonESIAM
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -2589,7 +2589,7 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -2652,7 +2652,7 @@ module SDM
   end
 
   class AmazonMQAMQP091
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -2668,7 +2668,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -3324,7 +3324,7 @@ module SDM
   class Athena
     # The Access Key ID to use to authenticate.
     attr_accessor :access_key
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -3336,7 +3336,7 @@ module SDM
     attr_accessor :name
     # The AWS S3 output location.
     attr_accessor :output
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -3401,7 +3401,7 @@ module SDM
   end
 
   class AthenaIAM
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -3413,7 +3413,7 @@ module SDM
     attr_accessor :name
     # The AWS S3 output location.
     attr_accessor :output
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -3472,7 +3472,7 @@ module SDM
   end
 
   class AuroraMysql
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The database for healthchecks. Does not affect client requests
     attr_accessor :database
@@ -3490,7 +3490,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -3555,7 +3555,7 @@ module SDM
   end
 
   class AuroraMysqlIAM
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The database for healthchecks. Does not affect client requests
     attr_accessor :database
@@ -3571,7 +3571,7 @@ module SDM
     attr_accessor :name
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -3634,7 +3634,7 @@ module SDM
   end
 
   class AuroraPostgres
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
@@ -3654,7 +3654,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -3713,7 +3713,7 @@ module SDM
   end
 
   class AuroraPostgresIAM
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
@@ -3731,7 +3731,7 @@ module SDM
     attr_accessor :override_database
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -3798,7 +3798,7 @@ module SDM
   class Azure
     # The application ID to authenticate with.
     attr_accessor :app_id
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -3810,7 +3810,7 @@ module SDM
     attr_accessor :name
     # The password to authenticate with.
     attr_accessor :password
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -3865,7 +3865,7 @@ module SDM
   class AzureCertificate
     # The application ID to authenticate with.
     attr_accessor :app_id
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The service Principal certificate file, both private and public key included.
     attr_accessor :client_certificate
@@ -3877,7 +3877,7 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -3930,7 +3930,7 @@ module SDM
   end
 
   class AzureMysql
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The database for healthchecks. Does not affect client requests.
     attr_accessor :database
@@ -3948,7 +3948,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -4014,7 +4014,7 @@ module SDM
 
   # AzureMysqlManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class AzureMysqlManagedIdentity
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The database for healthchecks. Does not affect client requests.
     attr_accessor :database
@@ -4032,7 +4032,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -4093,7 +4093,7 @@ module SDM
   end
 
   class AzurePostgres
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
@@ -4113,7 +4113,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -4172,7 +4172,7 @@ module SDM
   end
 
   class AzurePostgresManagedIdentity
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
@@ -4192,7 +4192,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -4286,7 +4286,7 @@ module SDM
   end
 
   class BigQuery
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -4298,7 +4298,7 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # The JSON Private key to authenticate with.
     attr_accessor :private_key
@@ -4357,7 +4357,7 @@ module SDM
   end
 
   class Cassandra
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -4373,7 +4373,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -4432,7 +4432,7 @@ module SDM
   end
 
   class Citus
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
@@ -4452,7 +4452,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -4511,7 +4511,7 @@ module SDM
   end
 
   class ClickHouseHTTP
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
@@ -4525,7 +4525,7 @@ module SDM
     attr_accessor :name
     # The password to authenticate with.
     attr_accessor :password
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -4578,7 +4578,7 @@ module SDM
   end
 
   class ClickHouseMySQL
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The database for healthchecks. Does not affect client requests.
     attr_accessor :database
@@ -4596,7 +4596,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -4657,7 +4657,7 @@ module SDM
   end
 
   class ClickHouseTCP
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
@@ -4675,7 +4675,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -4736,7 +4736,7 @@ module SDM
   end
 
   class Clustrix
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The database for healthchecks. Does not affect client requests.
     attr_accessor :database
@@ -4754,7 +4754,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -4819,7 +4819,7 @@ module SDM
   end
 
   class Cockroach
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
@@ -4839,7 +4839,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -4986,7 +4986,7 @@ module SDM
   end
 
   class CouchbaseDatabase
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -5004,7 +5004,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -5065,7 +5065,7 @@ module SDM
   end
 
   class CouchbaseWebUI
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -5077,7 +5077,7 @@ module SDM
     attr_accessor :name
     # The password to authenticate with.
     attr_accessor :password
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -5240,7 +5240,7 @@ module SDM
   end
 
   class DB2I
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -5256,7 +5256,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -5315,7 +5315,7 @@ module SDM
   end
 
   class DB2LUW
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
@@ -5333,7 +5333,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -5445,7 +5445,7 @@ module SDM
   class DocumentDBHost
     # The authentication database to use.
     attr_accessor :auth_database
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -5461,7 +5461,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -5518,7 +5518,7 @@ module SDM
   end
 
   class DocumentDBHostIAM
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -5532,7 +5532,7 @@ module SDM
     attr_accessor :name
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -5587,7 +5587,7 @@ module SDM
   class DocumentDBReplicaSet
     # The authentication database to use.
     attr_accessor :auth_database
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # Set to connect to a replica instead of the primary node.
     attr_accessor :connect_to_replica
@@ -5603,7 +5603,7 @@ module SDM
     attr_accessor :name
     # The password to authenticate with.
     attr_accessor :password
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -5665,7 +5665,7 @@ module SDM
 
   # DocumentDBReplicaSetIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class DocumentDBReplicaSetIAM
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # Set to connect to a replica instead of the primary node.
     attr_accessor :connect_to_replica
@@ -5679,7 +5679,7 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -5732,7 +5732,7 @@ module SDM
   end
 
   class Druid
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -5748,7 +5748,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -5805,7 +5805,7 @@ module SDM
   class DynamoDB
     # The Access Key ID to use to authenticate.
     attr_accessor :access_key
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -5817,7 +5817,7 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -5882,7 +5882,7 @@ module SDM
   end
 
   class DynamoDBIAM
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -5894,7 +5894,7 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -5953,7 +5953,7 @@ module SDM
   end
 
   class Elastic
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -5969,7 +5969,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -6028,7 +6028,7 @@ module SDM
   end
 
   class ElasticacheRedis
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -6044,7 +6044,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -6104,7 +6104,7 @@ module SDM
 
   # EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class EntraID
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # If true, configures discovery of the tenant to be run from a node.
     attr_accessor :discovery_enabled
@@ -6187,7 +6187,7 @@ module SDM
   end
 
   class GCP
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -6199,7 +6199,7 @@ module SDM
     attr_accessor :keyfile
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -6297,7 +6297,7 @@ module SDM
   end
 
   class GCPConsole
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -6311,7 +6311,7 @@ module SDM
     attr_accessor :identity_set_id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -6403,7 +6403,7 @@ module SDM
   end
 
   class GCPWIF
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -6417,7 +6417,7 @@ module SDM
     attr_accessor :identity_set_id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # When specified, all project scoped requests will use this Project ID, overriding the project ID specified by clients
     attr_accessor :project_id
@@ -6633,7 +6633,7 @@ module SDM
     # If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set)
     # when a resource role is not provided.
     attr_accessor :allow_resource_role_bypass
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The CA to authenticate TLS connections with.
     attr_accessor :certificate_authority
@@ -6658,7 +6658,7 @@ module SDM
     attr_accessor :identity_set_id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -6724,7 +6724,7 @@ module SDM
 
   # GoogleGKEUserImpersonation is deprecated, see docs for more info.
   class GoogleGKEUserImpersonation
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The CA to authenticate TLS connections with.
     attr_accessor :certificate_authority
@@ -6740,7 +6740,7 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -6795,7 +6795,7 @@ module SDM
   end
 
   class Greenplum
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
@@ -6815,7 +6815,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -6876,7 +6876,7 @@ module SDM
   class HTTPAuth
     # The content to set as the authorization header.
     attr_accessor :auth_header
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # Automatically redirect to this path upon connecting.
     attr_accessor :default_path
@@ -6894,7 +6894,7 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -6953,7 +6953,7 @@ module SDM
   end
 
   class HTTPBasicAuth
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # Automatically redirect to this path upon connecting.
     attr_accessor :default_path
@@ -6973,7 +6973,7 @@ module SDM
     attr_accessor :name
     # The password to authenticate with.
     attr_accessor :password
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -7036,7 +7036,7 @@ module SDM
   end
 
   class HTTPNoAuth
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # Automatically redirect to this path upon connecting.
     attr_accessor :default_path
@@ -7054,7 +7054,7 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -7777,7 +7777,7 @@ module SDM
     # If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set)
     # when a resource role is not provided.
     attr_accessor :allow_resource_role_bypass
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The CA to authenticate TLS connections with.
     attr_accessor :certificate_authority
@@ -7808,7 +7808,7 @@ module SDM
     attr_accessor :name
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -7876,7 +7876,7 @@ module SDM
 
   # KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class KubernetesBasicAuth
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -7894,7 +7894,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -7954,7 +7954,7 @@ module SDM
     # If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set)
     # when a resource role is not provided.
     attr_accessor :allow_resource_role_bypass
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The CA to authenticate TLS connections with.
     attr_accessor :certificate_authority
@@ -7977,7 +7977,7 @@ module SDM
     attr_accessor :identity_set_id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -8039,7 +8039,7 @@ module SDM
     # If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set)
     # when a resource role is not provided.
     attr_accessor :allow_resource_role_bypass
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # If true, configures discovery of a cluster to be run from a node.
     attr_accessor :discovery_enabled
@@ -8064,7 +8064,7 @@ module SDM
     attr_accessor :name
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -8130,7 +8130,7 @@ module SDM
 
   # KubernetesServiceAccountUserImpersonation is deprecated, see docs for more info.
   class KubernetesServiceAccountUserImpersonation
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -8146,7 +8146,7 @@ module SDM
     attr_accessor :name
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -8202,7 +8202,7 @@ module SDM
 
   # KubernetesUserImpersonation is deprecated, see docs for more info.
   class KubernetesUserImpersonation
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The CA to authenticate TLS connections with.
     attr_accessor :certificate_authority
@@ -8224,7 +8224,7 @@ module SDM
     attr_accessor :name
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -8348,7 +8348,7 @@ module SDM
 
   # MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class MTLSMysql
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The CA to authenticate TLS connections with.
     attr_accessor :certificate_authority
@@ -8372,7 +8372,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -8447,7 +8447,7 @@ module SDM
   end
 
   class MTLSPostgres
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The CA to authenticate TLS connections with.
     attr_accessor :certificate_authority
@@ -8473,7 +8473,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -9140,7 +9140,7 @@ module SDM
   end
 
   class Maria
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The database for healthchecks. Does not affect client requests.
     attr_accessor :database
@@ -9158,7 +9158,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -9223,7 +9223,7 @@ module SDM
   end
 
   class Memcached
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -9237,7 +9237,7 @@ module SDM
     attr_accessor :name
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -9286,7 +9286,7 @@ module SDM
   end
 
   class Memsql
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The database for healthchecks. Does not affect client requests.
     attr_accessor :database
@@ -9304,7 +9304,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -9371,7 +9371,7 @@ module SDM
   class MongoHost
     # The authentication database to use.
     attr_accessor :auth_database
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -9387,7 +9387,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -9451,7 +9451,7 @@ module SDM
   class MongoLegacyHost
     # The authentication database to use.
     attr_accessor :auth_database
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -9467,7 +9467,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -9531,7 +9531,7 @@ module SDM
   class MongoLegacyReplicaset
     # The authentication database to use.
     attr_accessor :auth_database
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # Set to connect to a replica instead of the primary node.
     attr_accessor :connect_to_replica
@@ -9549,7 +9549,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -9618,7 +9618,7 @@ module SDM
   class MongoReplicaSet
     # The authentication database to use.
     attr_accessor :auth_database
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # Set to connect to a replica instead of the primary node.
     attr_accessor :connect_to_replica
@@ -9636,7 +9636,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -9705,7 +9705,7 @@ module SDM
   class MongoShardedCluster
     # The authentication database to use.
     attr_accessor :auth_database
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -9719,7 +9719,7 @@ module SDM
     attr_accessor :name
     # The password to authenticate with.
     attr_accessor :password
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -9778,7 +9778,7 @@ module SDM
   end
 
   class Mysql
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The database for healthchecks. Does not affect client requests.
     attr_accessor :database
@@ -9796,7 +9796,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -9861,7 +9861,7 @@ module SDM
   end
 
   class Neptune
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -9875,7 +9875,7 @@ module SDM
     attr_accessor :name
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -9926,7 +9926,7 @@ module SDM
   class NeptuneIAM
     # The Access Key ID to use to authenticate.
     attr_accessor :access_key
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -9940,7 +9940,7 @@ module SDM
     attr_accessor :name
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -10188,7 +10188,7 @@ module SDM
   end
 
   class Oracle
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
@@ -10206,7 +10206,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -10267,7 +10267,7 @@ module SDM
   end
 
   class OracleNNE
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
@@ -10285,7 +10285,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -11134,7 +11134,7 @@ module SDM
   end
 
   class Postgres
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
@@ -11154,7 +11154,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -11213,7 +11213,7 @@ module SDM
   end
 
   class Presto
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
@@ -11231,7 +11231,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -11689,7 +11689,7 @@ module SDM
   end
 
   class RDP
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # When set, network level authentication will not be used. May resolve unexpected authentication errors to older servers. When set, healthchecks cannot detect if a provided username / password pair is correct.
     attr_accessor :downgrade_nla_connections
@@ -11709,7 +11709,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -11768,7 +11768,7 @@ module SDM
   end
 
   class RDPCert
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -11788,14 +11788,13 @@ module SDM
     attr_accessor :name
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # The SID needed in leased credentials to generate a valid certificate.
-    # Using extraplain3 here as 1 and 2 are used in cert generation and internal driver config
+    # Windows Security Identifier (SID) of the configured Username, required for strong certificate mapping in full enforcement mode.
     attr_accessor :sid
     # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
     attr_accessor :subdomain
@@ -11852,7 +11851,7 @@ module SDM
   end
 
   class RDSPostgresIAM
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
@@ -11870,7 +11869,7 @@ module SDM
     attr_accessor :override_database
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -11935,7 +11934,7 @@ module SDM
   end
 
   class RabbitMQAMQP091
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -11951,7 +11950,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -12045,7 +12044,7 @@ module SDM
   end
 
   class RawTCP
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -12059,7 +12058,7 @@ module SDM
     attr_accessor :name
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -12108,7 +12107,7 @@ module SDM
   end
 
   class Redis
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -12124,7 +12123,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -12183,7 +12182,7 @@ module SDM
   end
 
   class RedisCluster
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -12199,7 +12198,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -12258,7 +12257,7 @@ module SDM
   end
 
   class Redshift
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
@@ -12278,7 +12277,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -12337,7 +12336,7 @@ module SDM
   end
 
   class RedshiftIAM
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # Cluster Identified of Redshift cluster
     attr_accessor :cluster_id
@@ -12357,7 +12356,7 @@ module SDM
     attr_accessor :override_database
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -12420,7 +12419,7 @@ module SDM
   end
 
   class RedshiftServerlessIAM
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
@@ -12438,7 +12437,7 @@ module SDM
     attr_accessor :override_database
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -13371,7 +13370,7 @@ module SDM
     # Whether to allow deprecated encryption protocols to be used for this resource. For example,
     # TLS 1.0.
     attr_accessor :allow_deprecated_encryption
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The database for healthchecks, and used for clients if Override Default Database is true.
     attr_accessor :database
@@ -13391,7 +13390,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -13459,7 +13458,7 @@ module SDM
     # Whether to allow deprecated encryption protocols to be used for this resource. For example,
     # TLS 1.0.
     attr_accessor :allow_deprecated_encryption
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The Azure AD application (client) ID with which to authenticate.
     attr_accessor :client_id
@@ -13479,7 +13478,7 @@ module SDM
     attr_accessor :override_database
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -13551,7 +13550,7 @@ module SDM
     # Whether to allow deprecated encryption protocols to be used for this resource. For example,
     # TLS 1.0.
     attr_accessor :allow_deprecated_encryption
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The database for healthchecks, and used for clients if Override Default Database is true.
     attr_accessor :database
@@ -13573,7 +13572,7 @@ module SDM
     attr_accessor :override_database
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -13650,7 +13649,7 @@ module SDM
   class SSH
     # Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
     attr_accessor :allow_deprecated_key_exchanges
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -13668,7 +13667,7 @@ module SDM
     attr_accessor :port
     # Whether port forwarding is allowed through this server.
     attr_accessor :port_forwarding
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -13733,7 +13732,7 @@ module SDM
   class SSHCert
     # Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
     attr_accessor :allow_deprecated_key_exchanges
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -13755,7 +13754,7 @@ module SDM
     attr_accessor :port
     # Whether port forwarding is allowed through this server.
     attr_accessor :port_forwarding
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -13820,7 +13819,7 @@ module SDM
   class SSHCustomerKey
     # Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
     attr_accessor :allow_deprecated_key_exchanges
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -13840,7 +13839,7 @@ module SDM
     attr_accessor :port
     # Whether port forwarding is allowed through this server.
     attr_accessor :port_forwarding
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # The private key used to authenticate with the server.
     attr_accessor :private_key
@@ -13907,7 +13906,7 @@ module SDM
   class SSHPassword
     # Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
     attr_accessor :allow_deprecated_key_exchanges
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -13925,7 +13924,7 @@ module SDM
     attr_accessor :port
     # Whether port forwarding is allowed through this server.
     attr_accessor :port_forwarding
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -14574,7 +14573,7 @@ module SDM
   end
 
   class SingleStore
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The database for healthchecks. Does not affect client requests.
     attr_accessor :database
@@ -14592,7 +14591,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -14657,7 +14656,7 @@ module SDM
   end
 
   class Snowflake
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
@@ -14673,7 +14672,7 @@ module SDM
     attr_accessor :name
     # Deprecated: https://www.snowflake.com/en/blog/blocking-single-factor-password-authentification/
     attr_accessor :password
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # RSA Private Key for authentication
     attr_accessor :private_key
@@ -14736,7 +14735,7 @@ module SDM
   end
 
   class Snowsight
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -14748,7 +14747,7 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -14799,7 +14798,7 @@ module SDM
   end
 
   class Sybase
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -14815,7 +14814,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -14870,7 +14869,7 @@ module SDM
   end
 
   class SybaseIQ
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -14886,7 +14885,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -14964,7 +14963,7 @@ module SDM
   end
 
   class Teradata
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -14980,7 +14979,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -15088,7 +15087,7 @@ module SDM
   end
 
   class Trino
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -15104,7 +15103,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
@@ -15742,7 +15741,7 @@ module SDM
   end
 
   class Vertica
-    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
     attr_accessor :database
@@ -15760,7 +15759,7 @@ module SDM
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
-    # The local port used by clients to connect to this resource.
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id

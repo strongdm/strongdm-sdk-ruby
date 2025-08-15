@@ -549,4 +549,12 @@ module SDM
     MANAGER_OF_REQUESTER = "manager-of-requester"
     MANAGER_OF_MANAGER_OF_REQUESTER = "manager-of-manager-of-requester"
   end
+
+  # ResourceIPAllocationMode defines how to allocate IP addresses on resource create and update.
+  module ResourceIPAllocationMode
+    UNSET = ""
+    DEFAULT = "default"
+    LOOPBACK = "loopback"
+    VNM = "vnm"
+  end
 end
