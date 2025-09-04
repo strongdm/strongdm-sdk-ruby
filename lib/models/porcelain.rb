@@ -57,7 +57,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -143,7 +143,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -228,7 +228,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -310,7 +310,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -388,7 +388,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -462,7 +462,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -541,7 +541,7 @@ module SDM
     attr_accessor :secret_access_key
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -831,7 +831,7 @@ module SDM
     attr_accessor :role_external_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -2051,7 +2051,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -2150,7 +2150,7 @@ module SDM
     attr_accessor :secret_access_key
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -2259,7 +2259,7 @@ module SDM
     attr_accessor :role_external_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -2353,7 +2353,7 @@ module SDM
     attr_accessor :role_external_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -2441,7 +2441,7 @@ module SDM
     attr_accessor :secret_access_key
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -2526,7 +2526,7 @@ module SDM
     attr_accessor :secret_access_key
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -2601,7 +2601,7 @@ module SDM
     attr_accessor :role_external_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -2674,7 +2674,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -3350,7 +3350,7 @@ module SDM
     attr_accessor :secret_access_key
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -3425,7 +3425,7 @@ module SDM
     attr_accessor :role_external_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -3498,7 +3498,7 @@ module SDM
     attr_accessor :require_native_auth
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -3581,7 +3581,7 @@ module SDM
     attr_accessor :role_assumption_arn
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -3660,7 +3660,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -3741,7 +3741,7 @@ module SDM
     attr_accessor :role_assumption_arn
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -3816,7 +3816,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -3883,7 +3883,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -3956,7 +3956,7 @@ module SDM
     attr_accessor :require_native_auth
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -4037,7 +4037,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -4118,7 +4118,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -4197,7 +4197,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -4307,7 +4307,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -4378,7 +4378,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -4457,7 +4457,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -4603,7 +4603,7 @@ module SDM
     attr_accessor :require_native_auth
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -4680,7 +4680,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -4761,7 +4761,7 @@ module SDM
     attr_accessor :require_native_auth
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -4844,7 +4844,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -5009,7 +5009,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -5261,7 +5261,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -5338,7 +5338,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -5466,7 +5466,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -5539,7 +5539,7 @@ module SDM
     attr_accessor :region
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -5610,7 +5610,7 @@ module SDM
     attr_accessor :replica_set
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -5686,7 +5686,7 @@ module SDM
     attr_accessor :region
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -5753,7 +5753,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -5830,7 +5830,7 @@ module SDM
     attr_accessor :secret_access_key
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -5905,7 +5905,7 @@ module SDM
     attr_accessor :role_external_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -5974,7 +5974,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -6049,7 +6049,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -6101,7 +6101,6 @@ module SDM
     end
   end
 
-  # EntraID is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class EntraID
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
@@ -6129,7 +6128,7 @@ module SDM
     attr_accessor :resource_group_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # The subscription ID to authenticate scope Privileges to.
     attr_accessor :subscription_id
@@ -6206,7 +6205,7 @@ module SDM
     attr_accessor :scopes
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -6428,7 +6427,7 @@ module SDM
     attr_accessor :secret_store_id
     # The length of time in seconds console sessions will live before needing to reauthenticate.
     attr_accessor :session_expiry
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -6665,7 +6664,7 @@ module SDM
     attr_accessor :secret_store_id
     # The service account key to authenticate with.
     attr_accessor :service_account_key
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -6747,7 +6746,7 @@ module SDM
     attr_accessor :secret_store_id
     # The service account key to authenticate with.
     attr_accessor :service_account_key
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -6820,7 +6819,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -7813,7 +7812,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -7899,7 +7898,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -7982,7 +7981,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -8069,7 +8068,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -8151,7 +8150,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -8229,7 +8228,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -8381,7 +8380,7 @@ module SDM
     attr_accessor :secret_store_id
     # Server name for TLS verification (unverified by StrongDM if empty)
     attr_accessor :server_name
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -8480,7 +8479,7 @@ module SDM
     attr_accessor :secret_store_id
     # Server name for TLS verification (unverified by StrongDM if empty)
     attr_accessor :server_name
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -9165,7 +9164,7 @@ module SDM
     attr_accessor :require_native_auth
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -9242,7 +9241,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -9311,7 +9310,7 @@ module SDM
     attr_accessor :require_native_auth
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -9392,7 +9391,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -9472,7 +9471,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -9556,7 +9555,7 @@ module SDM
     attr_accessor :replica_set
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -9643,7 +9642,7 @@ module SDM
     attr_accessor :replica_set
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -9724,7 +9723,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -9803,7 +9802,7 @@ module SDM
     attr_accessor :require_native_auth
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -9880,7 +9879,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -9953,7 +9952,7 @@ module SDM
     attr_accessor :secret_access_key
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -10211,7 +10210,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -10290,7 +10289,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -11159,7 +11158,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -11236,7 +11235,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -11714,7 +11713,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -11795,7 +11794,7 @@ module SDM
     attr_accessor :secret_store_id
     # Windows Security Identifier (SID) of the configured Username, required for strong certificate mapping in full enforcement mode.
     attr_accessor :sid
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -11878,7 +11877,7 @@ module SDM
     attr_accessor :role_assumption_arn
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -11955,7 +11954,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -12063,7 +12062,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -12128,7 +12127,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -12203,7 +12202,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -12282,7 +12281,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -12365,7 +12364,7 @@ module SDM
     attr_accessor :role_assumption_arn
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -12446,7 +12445,7 @@ module SDM
     attr_accessor :role_assumption_arn
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -13397,7 +13396,7 @@ module SDM
     attr_accessor :schema
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -13487,7 +13486,7 @@ module SDM
     attr_accessor :secret
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -13583,7 +13582,7 @@ module SDM
     attr_accessor :secret_store_id
     # The Service Principal Name of the Microsoft SQL Server instance in Active Directory.
     attr_accessor :server_spn
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -13674,7 +13673,7 @@ module SDM
     attr_accessor :public_key
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -13759,7 +13758,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -13846,7 +13845,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -13929,7 +13928,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -14598,7 +14597,7 @@ module SDM
     attr_accessor :require_native_auth
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -14681,7 +14680,7 @@ module SDM
     attr_accessor :schema
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -14819,7 +14818,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -14890,7 +14889,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -14984,7 +14983,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -15108,7 +15107,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
@@ -15764,7 +15763,7 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
