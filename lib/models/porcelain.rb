@@ -14735,6 +14735,8 @@ module SDM
   class Snowsight
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
+    # If true, select the ACS with isDefault=true
+    attr_accessor :connecttodefault
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # The StrongDM user email to use for healthchecks.
@@ -14760,6 +14762,7 @@ module SDM
 
     def initialize(
       bind_interface: nil,
+      connecttodefault: nil,
       egress_filter: nil,
       healthcheck_username: nil,
       healthy: nil,
@@ -14773,6 +14776,7 @@ module SDM
       tags: nil
     )
       @bind_interface = bind_interface == nil ? "" : bind_interface
+      @connecttodefault = connecttodefault == nil ? false : connecttodefault
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthcheck_username = healthcheck_username == nil ? "" : healthcheck_username
       @healthy = healthy == nil ? false : healthy

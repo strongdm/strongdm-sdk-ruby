@@ -2015,6 +2015,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
       optional :proxy_cluster_id, :string, 32776
+      optional :connectToDefault, :bool, 13
       optional :healthcheck_username, :string, 11
       optional :port_override, :int32, 3
       optional :samlMetadata, :string, 1
