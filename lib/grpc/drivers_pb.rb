@@ -1679,6 +1679,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :bind_interface, :string, 32774
       optional :proxy_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
+      optional :dc_hostnames, :string, 13
       optional :hostname, :string, 1
       optional :identity_alias_healthcheck_username, :string, 6
       optional :identity_set_id, :string, 5

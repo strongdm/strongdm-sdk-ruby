@@ -11885,6 +11885,7 @@ module SDM
       end
       porcelain = RDPCert.new()
       porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.dc_hostnames = (plumbing.dc_hostnames)
       porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.healthy = (plumbing.healthy)
       porcelain.hostname = (plumbing.hostname)
@@ -11910,6 +11911,7 @@ module SDM
       end
       plumbing = V1::RDPCert.new()
       plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.dc_hostnames = (porcelain.dc_hostnames)
       plumbing.egress_filter = (porcelain.egress_filter)
       plumbing.healthy = (porcelain.healthy)
       plumbing.hostname = (porcelain.hostname)

@@ -11768,6 +11768,8 @@ module SDM
   class RDPCert
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
+    # Comma-separated list of Active Directory Domain Controller hostnames for LDAPS SID resolution. Utilized for strong certificate mapping in full enforcement mode when the identity alias does not specify a SID.
+    attr_accessor :dc_hostnames
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
@@ -11803,6 +11805,7 @@ module SDM
 
     def initialize(
       bind_interface: nil,
+      dc_hostnames: nil,
       egress_filter: nil,
       healthy: nil,
       hostname: nil,
@@ -11821,6 +11824,7 @@ module SDM
       username: nil
     )
       @bind_interface = bind_interface == nil ? "" : bind_interface
+      @dc_hostnames = dc_hostnames == nil ? "" : dc_hostnames
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
       @hostname = hostname == nil ? "" : hostname
