@@ -10188,7 +10188,7 @@ module SDM
   class Oracle
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
-    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    # Oracle service name to connect to
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -10267,7 +10267,7 @@ module SDM
   class OracleNNE
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
-    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    # Oracle service name to connect to
     attr_accessor :database
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -10293,6 +10293,8 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # If set, TLS must be used to connect to this resource.
+    attr_accessor :tls_required
     # The username to authenticate with.
     attr_accessor :username
 
@@ -10311,6 +10313,7 @@ module SDM
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
+      tls_required: nil,
       username: nil
     )
       @bind_interface = bind_interface == nil ? "" : bind_interface
@@ -10327,6 +10330,7 @@ module SDM
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tls_required = tls_required == nil ? false : tls_required
       @username = username == nil ? "" : username
     end
 

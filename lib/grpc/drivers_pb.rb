@@ -1613,6 +1613,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :password, :string, 3
       optional :port, :int32, 5
       optional :port_override, :int32, 6
+      optional :tls_required, :bool, 7
       optional :username, :string, 2
     end
     add_message "v1.Postgres" do
