@@ -1121,6 +1121,242 @@ module SDM #:nodoc:
     end
   end
 
+  # An AccountGroup links an account and a group.
+  #
+  # See {AccountGroup}.
+  class AccountsGroups
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::AccountsGroups::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # Create create a new AccountGroup.
+    def create(
+      account_group,
+      deadline: nil
+    )
+      req = V1::AccountGroupCreateRequest.new()
+
+      req.account_group = Plumbing::convert_account_group_to_plumbing(account_group)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.create(req, metadata: @parent.get_metadata("AccountsGroups.Create", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = AccountGroupCreateResponse.new()
+      resp.account_group = Plumbing::convert_account_group_to_porcelain(plumbing_response.account_group)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Get reads one AccountGroup by ID.
+    def get(
+      id,
+      deadline: nil
+    )
+      req = V1::AccountGroupGetRequest.new()
+      if not @parent.snapshot_time.nil?
+        req.meta = V1::GetRequestMetadata.new()
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.get(req, metadata: @parent.get_metadata("AccountsGroups.Get", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = AccountGroupGetResponse.new()
+      resp.account_group = Plumbing::convert_account_group_to_porcelain(plumbing_response.account_group)
+      resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Delete removes an AccountGroup by ID.
+    def delete(
+      id,
+      deadline: nil
+    )
+      req = V1::AccountGroupDeleteRequest.new()
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("AccountsGroups.Delete", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = AccountGroupDeleteResponse.new()
+      resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # List gets a list of AccountGroups matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::AccountGroupListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      if not @parent.page_limit.nil?
+        req.meta.limit = @parent.page_limit
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("AccountsGroups.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.account_groups.each do |plumbing_item|
+            g.yield Plumbing::convert_account_group_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # SnapshotAccountsGroups exposes the read only methods of the AccountsGroups
+  # service for historical queries.
+  class SnapshotAccountsGroups
+    extend Gem::Deprecate
+
+    def initialize(accounts_groups)
+      @accounts_groups = accounts_groups
+    end
+
+    # Get reads one AccountGroup by ID.
+    def get(
+      id,
+      deadline: nil
+    )
+      return @accounts_groups.get(
+               id,
+               deadline: deadline,
+             )
+    end
+
+    # List gets a list of AccountGroups matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      return @accounts_groups.list(
+               filter,
+                            *args,
+                            deadline: deadline,
+             )
+    end
+  end
+
+  # AccountsGroupsHistory records all changes to the state of an AccountGroup.
+  #
+  # See {AccountGroupHistory}.
+  class AccountsGroupsHistory
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::AccountsGroupsHistory::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # List gets a list of AccountGroupHistory records matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::AccountGroupHistoryListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      if not @parent.page_limit.nil?
+        req.meta.limit = @parent.page_limit
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("AccountsGroupsHistory.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.history.each do |plumbing_item|
+            g.yield Plumbing::convert_account_group_history_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
   # AccountsHistory records all changes to the state of an Account.
   #
   # See {AccountHistory}.
@@ -2319,6 +2555,538 @@ module SDM #:nodoc:
                             *args,
                             deadline: deadline,
              )
+    end
+  end
+
+  # A Group is a set of principals.
+  #
+  # See {Group}.
+  class Groups
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::Groups::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # Create registers a new Group.
+    def create(
+      group,
+      deadline: nil
+    )
+      req = V1::GroupCreateRequest.new()
+
+      req.group = Plumbing::convert_group_to_plumbing(group)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.create(req, metadata: @parent.get_metadata("Groups.Create", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = GroupCreateResponse.new()
+      resp.group = Plumbing::convert_group_to_porcelain(plumbing_response.group)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    def create_from_roles(
+      role_ids,
+      commit,
+      deadline: nil
+    )
+      req = V1::GroupCreateFromRolesRequest.new()
+
+      req.role_ids += (role_ids)
+      req.commit = (commit)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.create_from_roles(req, metadata: @parent.get_metadata("Groups.CreateFromRoles", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = GroupCreateFromRolesResponse.new()
+      resp.group_from_role = Plumbing::convert_repeated_group_from_role_to_porcelain(plumbing_response.group_from_role)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Get reads one Group by ID.
+    def get(
+      id,
+      deadline: nil
+    )
+      req = V1::GroupGetRequest.new()
+      if not @parent.snapshot_time.nil?
+        req.meta = V1::GetRequestMetadata.new()
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.get(req, metadata: @parent.get_metadata("Groups.Get", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = GroupGetResponse.new()
+      resp.group = Plumbing::convert_group_to_porcelain(plumbing_response.group)
+      resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Update replaces all the fields of a Group by ID.
+    def update(
+      group,
+      deadline: nil
+    )
+      req = V1::GroupUpdateRequest.new()
+
+      req.group = Plumbing::convert_group_to_plumbing(group)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.update(req, metadata: @parent.get_metadata("Groups.Update", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = GroupUpdateResponse.new()
+      resp.group = Plumbing::convert_group_to_porcelain(plumbing_response.group)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Delete removes a Group by ID.
+    def delete(
+      id,
+      deadline: nil
+    )
+      req = V1::GroupDeleteRequest.new()
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("Groups.Delete", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = GroupDeleteResponse.new()
+      resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # List gets a list of Groups matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::GroupListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      if not @parent.page_limit.nil?
+        req.meta.limit = @parent.page_limit
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("Groups.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.groups.each do |plumbing_item|
+            g.yield Plumbing::convert_group_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # SnapshotGroups exposes the read only methods of the Groups
+  # service for historical queries.
+  class SnapshotGroups
+    extend Gem::Deprecate
+
+    def initialize(groups)
+      @groups = groups
+    end
+
+    # Get reads one Group by ID.
+    def get(
+      id,
+      deadline: nil
+    )
+      return @groups.get(
+               id,
+               deadline: deadline,
+             )
+    end
+
+    # List gets a list of Groups matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      return @groups.list(
+               filter,
+                            *args,
+                            deadline: deadline,
+             )
+    end
+  end
+
+  # GroupsHistory records all changes to the state of a Group.
+  #
+  # See {GroupHistory}.
+  class GroupsHistory
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::GroupsHistory::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # List gets a list of GroupHistory records matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::GroupHistoryListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      if not @parent.page_limit.nil?
+        req.meta.limit = @parent.page_limit
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("GroupsHistory.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.history.each do |plumbing_item|
+            g.yield Plumbing::convert_group_history_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # A GroupRole is an assignment of a Group to a Role.
+  #
+  # See {GroupRole}.
+  class GroupsRoles
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::GroupsRoles::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # Create registers a new GroupRole.
+    def create(
+      group_role,
+      deadline: nil
+    )
+      req = V1::GroupRoleCreateRequest.new()
+
+      req.group_role = Plumbing::convert_group_role_to_plumbing(group_role)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.create(req, metadata: @parent.get_metadata("GroupsRoles.Create", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = GroupRoleCreateResponse.new()
+      resp.group_role = Plumbing::convert_group_role_to_porcelain(plumbing_response.group_role)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Get reads one GroupRole by ID.
+    def get(
+      id,
+      deadline: nil
+    )
+      req = V1::GroupRoleGetRequest.new()
+      if not @parent.snapshot_time.nil?
+        req.meta = V1::GetRequestMetadata.new()
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.get(req, metadata: @parent.get_metadata("GroupsRoles.Get", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = GroupRoleGetResponse.new()
+      resp.group_role = Plumbing::convert_group_role_to_porcelain(plumbing_response.group_role)
+      resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Delete removes a GroupRole by ID.
+    def delete(
+      id,
+      deadline: nil
+    )
+      req = V1::GroupRoleDeleteRequest.new()
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("GroupsRoles.Delete", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = GroupRoleDeleteResponse.new()
+      resp.group_role = Plumbing::convert_group_role_to_porcelain(plumbing_response.group_role)
+      resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # List gets a list of GroupRoles matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::GroupRoleListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      if not @parent.page_limit.nil?
+        req.meta.limit = @parent.page_limit
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("GroupsRoles.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.groups_roles.each do |plumbing_item|
+            g.yield Plumbing::convert_group_role_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # SnapshotGroupsRoles exposes the read only methods of the GroupsRoles
+  # service for historical queries.
+  class SnapshotGroupsRoles
+    extend Gem::Deprecate
+
+    def initialize(groups_roles)
+      @groups_roles = groups_roles
+    end
+
+    # Get reads one GroupRole by ID.
+    def get(
+      id,
+      deadline: nil
+    )
+      return @groups_roles.get(
+               id,
+               deadline: deadline,
+             )
+    end
+
+    # List gets a list of GroupRoles matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      return @groups_roles.list(
+               filter,
+                            *args,
+                            deadline: deadline,
+             )
+    end
+  end
+
+  # GroupsRolesHistory records all changes to the state of a GroupRole.
+  #
+  # See {GroupRoleHistory}.
+  class GroupsRolesHistory
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::GroupsRolesHistory::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # List gets a list of GroupRoleHistory records matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::GroupRoleHistoryListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      if not @parent.page_limit.nil?
+        req.meta.limit = @parent.page_limit
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("GroupsRolesHistory.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.history.each do |plumbing_item|
+            g.yield Plumbing::convert_group_role_history_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
     end
   end
 
@@ -5294,6 +6062,7 @@ module SDM #:nodoc:
   # {KubernetesServiceAccountUserImpersonation}
   # {KubernetesUserImpersonation}
   # {Maria}
+  # {MCP}
   # {Memcached}
   # {Memsql}
   # {MongoHost}

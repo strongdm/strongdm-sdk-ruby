@@ -33,6 +33,8 @@ require_relative "./account_permissions_pb"
 require_relative "./account_resources_pb"
 require_relative "./account_resources_history_pb"
 require_relative "./accounts_pb"
+require_relative "./accounts_groups_pb"
+require_relative "./accounts_groups_history_pb"
 require_relative "./accounts_history_pb"
 require_relative "./activities_pb"
 require_relative "./approval_workflow_approvers_pb"
@@ -43,6 +45,10 @@ require_relative "./approval_workflows_pb"
 require_relative "./approval_workflows_history_pb"
 require_relative "./control_panel_pb"
 require_relative "./roles_pb"
+require_relative "./groups_pb"
+require_relative "./groups_history_pb"
+require_relative "./groups_roles_pb"
+require_relative "./groups_roles_history_pb"
 require_relative "./health_checks_pb"
 require_relative "./identity_aliases_pb"
 require_relative "./identity_aliases_history_pb"
@@ -1794,6 +1800,364 @@ module SDM
       end
       items
     end
+    def self.convert_account_group_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AccountGroup.new()
+      porcelain.account_id = (plumbing.account_id)
+      porcelain.group_id = (plumbing.group_id)
+      porcelain.id = (plumbing.id)
+      porcelain
+    end
+
+    def self.convert_account_group_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AccountGroup.new()
+      plumbing.account_id = (porcelain.account_id)
+      plumbing.group_id = (porcelain.group_id)
+      plumbing.id = (porcelain.id)
+      plumbing
+    end
+    def self.convert_repeated_account_group_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_account_group_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_account_group_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_account_group_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_account_group_create_request_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AccountGroupCreateRequest.new()
+      porcelain.account_group = convert_account_group_to_porcelain(plumbing.account_group)
+      porcelain
+    end
+
+    def self.convert_account_group_create_request_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AccountGroupCreateRequest.new()
+      plumbing.account_group = convert_account_group_to_plumbing(porcelain.account_group)
+      plumbing
+    end
+    def self.convert_repeated_account_group_create_request_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_account_group_create_request_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_account_group_create_request_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_account_group_create_request_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_account_group_create_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AccountGroupCreateResponse.new()
+      porcelain.account_group = convert_account_group_to_porcelain(plumbing.account_group)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_account_group_create_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AccountGroupCreateResponse.new()
+      plumbing.account_group = convert_account_group_to_plumbing(porcelain.account_group)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_account_group_create_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_account_group_create_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_account_group_create_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_account_group_create_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_account_group_delete_request_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AccountGroupDeleteRequest.new()
+      porcelain.id = (plumbing.id)
+      porcelain
+    end
+
+    def self.convert_account_group_delete_request_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AccountGroupDeleteRequest.new()
+      plumbing.id = (porcelain.id)
+      plumbing
+    end
+    def self.convert_repeated_account_group_delete_request_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_account_group_delete_request_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_account_group_delete_request_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_account_group_delete_request_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_account_group_delete_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AccountGroupDeleteResponse.new()
+      porcelain.meta = convert_delete_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_account_group_delete_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AccountGroupDeleteResponse.new()
+      plumbing.meta = convert_delete_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_account_group_delete_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_account_group_delete_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_account_group_delete_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_account_group_delete_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_account_group_get_request_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AccountGroupGetRequest.new()
+      porcelain.id = (plumbing.id)
+      porcelain
+    end
+
+    def self.convert_account_group_get_request_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AccountGroupGetRequest.new()
+      plumbing.id = (porcelain.id)
+      plumbing
+    end
+    def self.convert_repeated_account_group_get_request_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_account_group_get_request_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_account_group_get_request_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_account_group_get_request_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_account_group_get_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AccountGroupGetResponse.new()
+      porcelain.account_group = convert_account_group_to_porcelain(plumbing.account_group)
+      porcelain.meta = convert_get_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_account_group_get_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AccountGroupGetResponse.new()
+      plumbing.account_group = convert_account_group_to_plumbing(porcelain.account_group)
+      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_account_group_get_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_account_group_get_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_account_group_get_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_account_group_get_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_account_group_history_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AccountGroupHistory.new()
+      porcelain.account_group = convert_account_group_to_porcelain(plumbing.account_group)
+      porcelain.activity_id = (plumbing.activity_id)
+      porcelain.deleted_at = convert_timestamp_to_porcelain(plumbing.deleted_at)
+      porcelain.timestamp = convert_timestamp_to_porcelain(plumbing.timestamp)
+      porcelain
+    end
+
+    def self.convert_account_group_history_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AccountGroupHistory.new()
+      plumbing.account_group = convert_account_group_to_plumbing(porcelain.account_group)
+      plumbing.activity_id = (porcelain.activity_id)
+      plumbing.deleted_at = convert_timestamp_to_plumbing(porcelain.deleted_at)
+      plumbing.timestamp = convert_timestamp_to_plumbing(porcelain.timestamp)
+      plumbing
+    end
+    def self.convert_repeated_account_group_history_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_account_group_history_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_account_group_history_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_account_group_history_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_account_group_list_request_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AccountGroupListRequest.new()
+      porcelain.filter = (plumbing.filter)
+      porcelain
+    end
+
+    def self.convert_account_group_list_request_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AccountGroupListRequest.new()
+      plumbing.filter = (porcelain.filter)
+      plumbing
+    end
+    def self.convert_repeated_account_group_list_request_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_account_group_list_request_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_account_group_list_request_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_account_group_list_request_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_account_group_list_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AccountGroupListResponse.new()
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_account_group_list_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AccountGroupListResponse.new()
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_account_group_list_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_account_group_list_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_account_group_list_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_account_group_list_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_account_history_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -2834,6 +3198,7 @@ module SDM
       end
       porcelain = ApprovalFlowApprover.new()
       porcelain.account_id = (plumbing.account_id)
+      porcelain.group_id = (plumbing.group_id)
       porcelain.reference = (plumbing.reference)
       porcelain.role_id = (plumbing.role_id)
       porcelain
@@ -2845,6 +3210,7 @@ module SDM
       end
       plumbing = V1::ApprovalFlowApprover.new()
       plumbing.account_id = (porcelain.account_id)
+      plumbing.group_id = (porcelain.group_id)
       plumbing.reference = (porcelain.reference)
       plumbing.role_id = (porcelain.role_id)
       plumbing
@@ -6778,6 +7144,912 @@ module SDM
       end
       items
     end
+    def self.convert_group_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = Group.new()
+      porcelain.description = (plumbing.description)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.source = (plumbing.source)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_group_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::Group.new()
+      plumbing.description = (porcelain.description)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.source = (porcelain.source)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_group_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_group_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_group_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_group_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_group_create_from_roles_request_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = GroupCreateFromRolesRequest.new()
+      porcelain.commit = (plumbing.commit)
+      porcelain.role_ids = (plumbing.role_ids)
+      porcelain
+    end
+
+    def self.convert_group_create_from_roles_request_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::GroupCreateFromRolesRequest.new()
+      plumbing.commit = (porcelain.commit)
+      plumbing.role_ids += (porcelain.role_ids)
+      plumbing
+    end
+    def self.convert_repeated_group_create_from_roles_request_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_group_create_from_roles_request_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_group_create_from_roles_request_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_group_create_from_roles_request_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_group_create_from_roles_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = GroupCreateFromRolesResponse.new()
+      porcelain.group_from_role = convert_repeated_group_from_role_to_porcelain(plumbing.group_from_role)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_group_create_from_roles_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::GroupCreateFromRolesResponse.new()
+      plumbing.group_from_role += convert_repeated_group_from_role_to_plumbing(porcelain.group_from_role)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_group_create_from_roles_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_group_create_from_roles_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_group_create_from_roles_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_group_create_from_roles_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_group_create_request_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = GroupCreateRequest.new()
+      porcelain.group = convert_group_to_porcelain(plumbing.group)
+      porcelain
+    end
+
+    def self.convert_group_create_request_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::GroupCreateRequest.new()
+      plumbing.group = convert_group_to_plumbing(porcelain.group)
+      plumbing
+    end
+    def self.convert_repeated_group_create_request_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_group_create_request_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_group_create_request_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_group_create_request_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_group_create_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = GroupCreateResponse.new()
+      porcelain.group = convert_group_to_porcelain(plumbing.group)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_group_create_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::GroupCreateResponse.new()
+      plumbing.group = convert_group_to_plumbing(porcelain.group)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_group_create_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_group_create_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_group_create_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_group_create_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_group_delete_request_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = GroupDeleteRequest.new()
+      porcelain.id = (plumbing.id)
+      porcelain
+    end
+
+    def self.convert_group_delete_request_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::GroupDeleteRequest.new()
+      plumbing.id = (porcelain.id)
+      plumbing
+    end
+    def self.convert_repeated_group_delete_request_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_group_delete_request_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_group_delete_request_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_group_delete_request_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_group_delete_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = GroupDeleteResponse.new()
+      porcelain.meta = convert_delete_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_group_delete_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::GroupDeleteResponse.new()
+      plumbing.meta = convert_delete_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_group_delete_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_group_delete_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_group_delete_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_group_delete_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_group_from_role_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = GroupFromRole.new()
+      porcelain.accounts = convert_repeated_user_to_porcelain(plumbing.accounts)
+      porcelain.approval_flows = convert_repeated_approval_workflow_to_porcelain(plumbing.approval_flows)
+      porcelain.group = convert_group_to_porcelain(plumbing.group)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain.role = convert_role_to_porcelain(plumbing.role)
+      porcelain
+    end
+
+    def self.convert_group_from_role_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::GroupFromRole.new()
+      plumbing.accounts += convert_repeated_user_to_plumbing(porcelain.accounts)
+      plumbing.approval_flows += convert_repeated_approval_workflow_to_plumbing(porcelain.approval_flows)
+      plumbing.group = convert_group_to_plumbing(porcelain.group)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing.role = convert_role_to_plumbing(porcelain.role)
+      plumbing
+    end
+    def self.convert_repeated_group_from_role_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_group_from_role_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_group_from_role_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_group_from_role_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_group_get_request_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = GroupGetRequest.new()
+      porcelain.id = (plumbing.id)
+      porcelain
+    end
+
+    def self.convert_group_get_request_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::GroupGetRequest.new()
+      plumbing.id = (porcelain.id)
+      plumbing
+    end
+    def self.convert_repeated_group_get_request_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_group_get_request_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_group_get_request_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_group_get_request_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_group_get_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = GroupGetResponse.new()
+      porcelain.group = convert_group_to_porcelain(plumbing.group)
+      porcelain.meta = convert_get_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_group_get_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::GroupGetResponse.new()
+      plumbing.group = convert_group_to_plumbing(porcelain.group)
+      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_group_get_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_group_get_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_group_get_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_group_get_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_group_history_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = GroupHistory.new()
+      porcelain.activity_id = (plumbing.activity_id)
+      porcelain.deleted_at = convert_timestamp_to_porcelain(plumbing.deleted_at)
+      porcelain.group = convert_group_to_porcelain(plumbing.group)
+      porcelain.timestamp = convert_timestamp_to_porcelain(plumbing.timestamp)
+      porcelain
+    end
+
+    def self.convert_group_history_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::GroupHistory.new()
+      plumbing.activity_id = (porcelain.activity_id)
+      plumbing.deleted_at = convert_timestamp_to_plumbing(porcelain.deleted_at)
+      plumbing.group = convert_group_to_plumbing(porcelain.group)
+      plumbing.timestamp = convert_timestamp_to_plumbing(porcelain.timestamp)
+      plumbing
+    end
+    def self.convert_repeated_group_history_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_group_history_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_group_history_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_group_history_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_group_list_request_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = GroupListRequest.new()
+      porcelain.filter = (plumbing.filter)
+      porcelain
+    end
+
+    def self.convert_group_list_request_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::GroupListRequest.new()
+      plumbing.filter = (porcelain.filter)
+      plumbing
+    end
+    def self.convert_repeated_group_list_request_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_group_list_request_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_group_list_request_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_group_list_request_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_group_list_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = GroupListResponse.new()
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_group_list_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::GroupListResponse.new()
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_group_list_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_group_list_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_group_list_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_group_list_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_group_role_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = GroupRole.new()
+      porcelain.group_id = (plumbing.group_id)
+      porcelain.id = (plumbing.id)
+      porcelain.role_id = (plumbing.role_id)
+      porcelain
+    end
+
+    def self.convert_group_role_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::GroupRole.new()
+      plumbing.group_id = (porcelain.group_id)
+      plumbing.id = (porcelain.id)
+      plumbing.role_id = (porcelain.role_id)
+      plumbing
+    end
+    def self.convert_repeated_group_role_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_group_role_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_group_role_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_group_role_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_group_role_create_request_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = GroupRoleCreateRequest.new()
+      porcelain.group_role = convert_group_role_to_porcelain(plumbing.group_role)
+      porcelain
+    end
+
+    def self.convert_group_role_create_request_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::GroupRoleCreateRequest.new()
+      plumbing.group_role = convert_group_role_to_plumbing(porcelain.group_role)
+      plumbing
+    end
+    def self.convert_repeated_group_role_create_request_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_group_role_create_request_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_group_role_create_request_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_group_role_create_request_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_group_role_create_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = GroupRoleCreateResponse.new()
+      porcelain.group_role = convert_group_role_to_porcelain(plumbing.group_role)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_group_role_create_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::GroupRoleCreateResponse.new()
+      plumbing.group_role = convert_group_role_to_plumbing(porcelain.group_role)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_group_role_create_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_group_role_create_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_group_role_create_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_group_role_create_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_group_role_delete_request_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = GroupRoleDeleteRequest.new()
+      porcelain.id = (plumbing.id)
+      porcelain
+    end
+
+    def self.convert_group_role_delete_request_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::GroupRoleDeleteRequest.new()
+      plumbing.id = (porcelain.id)
+      plumbing
+    end
+    def self.convert_repeated_group_role_delete_request_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_group_role_delete_request_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_group_role_delete_request_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_group_role_delete_request_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_group_role_delete_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = GroupRoleDeleteResponse.new()
+      porcelain.group_role = convert_group_role_to_porcelain(plumbing.group_role)
+      porcelain.meta = convert_delete_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_group_role_delete_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::GroupRoleDeleteResponse.new()
+      plumbing.group_role = convert_group_role_to_plumbing(porcelain.group_role)
+      plumbing.meta = convert_delete_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_group_role_delete_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_group_role_delete_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_group_role_delete_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_group_role_delete_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_group_role_get_request_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = GroupRoleGetRequest.new()
+      porcelain.id = (plumbing.id)
+      porcelain
+    end
+
+    def self.convert_group_role_get_request_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::GroupRoleGetRequest.new()
+      plumbing.id = (porcelain.id)
+      plumbing
+    end
+    def self.convert_repeated_group_role_get_request_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_group_role_get_request_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_group_role_get_request_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_group_role_get_request_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_group_role_get_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = GroupRoleGetResponse.new()
+      porcelain.group_role = convert_group_role_to_porcelain(plumbing.group_role)
+      porcelain.meta = convert_get_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_group_role_get_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::GroupRoleGetResponse.new()
+      plumbing.group_role = convert_group_role_to_plumbing(porcelain.group_role)
+      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_group_role_get_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_group_role_get_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_group_role_get_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_group_role_get_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_group_role_history_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = GroupRoleHistory.new()
+      porcelain.activity_id = (plumbing.activity_id)
+      porcelain.deleted_at = convert_timestamp_to_porcelain(plumbing.deleted_at)
+      porcelain.group_role = convert_group_role_to_porcelain(plumbing.group_role)
+      porcelain.timestamp = convert_timestamp_to_porcelain(plumbing.timestamp)
+      porcelain
+    end
+
+    def self.convert_group_role_history_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::GroupRoleHistory.new()
+      plumbing.activity_id = (porcelain.activity_id)
+      plumbing.deleted_at = convert_timestamp_to_plumbing(porcelain.deleted_at)
+      plumbing.group_role = convert_group_role_to_plumbing(porcelain.group_role)
+      plumbing.timestamp = convert_timestamp_to_plumbing(porcelain.timestamp)
+      plumbing
+    end
+    def self.convert_repeated_group_role_history_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_group_role_history_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_group_role_history_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_group_role_history_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_group_role_list_request_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = GroupRoleListRequest.new()
+      porcelain.filter = (plumbing.filter)
+      porcelain
+    end
+
+    def self.convert_group_role_list_request_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::GroupRoleListRequest.new()
+      plumbing.filter = (porcelain.filter)
+      plumbing
+    end
+    def self.convert_repeated_group_role_list_request_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_group_role_list_request_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_group_role_list_request_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_group_role_list_request_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_group_role_list_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = GroupRoleListResponse.new()
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_group_role_list_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::GroupRoleListResponse.new()
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_group_role_list_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_group_role_list_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_group_role_list_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_group_role_list_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_group_update_request_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = GroupUpdateRequest.new()
+      porcelain.group = convert_group_to_porcelain(plumbing.group)
+      porcelain
+    end
+
+    def self.convert_group_update_request_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::GroupUpdateRequest.new()
+      plumbing.group = convert_group_to_plumbing(porcelain.group)
+      plumbing
+    end
+    def self.convert_repeated_group_update_request_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_group_update_request_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_group_update_request_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_group_update_request_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_group_update_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = GroupUpdateResponse.new()
+      porcelain.group = convert_group_to_porcelain(plumbing.group)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_group_update_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::GroupUpdateResponse.new()
+      plumbing.group = convert_group_to_plumbing(porcelain.group)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_group_update_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_group_update_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_group_update_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_group_update_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_http_auth_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -8246,6 +9518,66 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_log_config_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_mcp_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = MCP.new()
+      porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.password = (plumbing.password)
+      porcelain.port = (plumbing.port)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.subdomain = (plumbing.subdomain)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.username = (plumbing.username)
+      porcelain
+    end
+
+    def self.convert_mcp_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::MCP.new()
+      plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.subdomain = (porcelain.subdomain)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
+      plumbing
+    end
+    def self.convert_repeated_mcp_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_mcp_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_mcp_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_mcp_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -13216,6 +14548,9 @@ module SDM
       if porcelain.instance_of? Maria
         plumbing.maria = convert_maria_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? MCP
+        plumbing.mcp = convert_mcp_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? Memcached
         plumbing.memcached = convert_memcached_to_plumbing(porcelain)
       end
@@ -13549,6 +14884,9 @@ module SDM
       end
       if plumbing.maria != nil
         return convert_maria_to_porcelain(plumbing.maria)
+      end
+      if plumbing.mcp != nil
+        return convert_mcp_to_porcelain(plumbing.mcp)
       end
       if plumbing.memcached != nil
         return convert_memcached_to_porcelain(plumbing.memcached)

@@ -1550,6 +1550,246 @@ module SDM
     end
   end
 
+  # An AccountGroup is a link between an Account and a Group.
+  class AccountGroup
+    # Unique identifier of the Account.
+    attr_accessor :account_id
+    # Unique identifier of the Group.
+    attr_accessor :group_id
+    # Unique identifier of the AccountGroup.
+    attr_accessor :id
+
+    def initialize(
+      account_id: nil,
+      group_id: nil,
+      id: nil
+    )
+      @account_id = account_id == nil ? "" : account_id
+      @group_id = group_id == nil ? "" : group_id
+      @id = id == nil ? "" : id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # AccountGroupCreateRequest specifies an AccountGroup to create.
+  class AccountGroupCreateRequest
+    # Parameters to define the new AccountGroup.
+    attr_accessor :account_group
+
+    def initialize(
+      account_group: nil
+    )
+      @account_group = account_group == nil ? nil : account_group
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # AccountGroupCreateResponse reports the result of a create.
+  class AccountGroupCreateResponse
+    # The created AccountGroup.
+    attr_accessor :account_group
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      account_group: nil,
+      rate_limit: nil
+    )
+      @account_group = account_group == nil ? nil : account_group
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # GroupDeleteRequest identifies an AccountGroup by ID to delete.
+  class AccountGroupDeleteRequest
+    # The unique identifier of the group to delete.
+    attr_accessor :id
+
+    def initialize(
+      id: nil
+    )
+      @id = id == nil ? "" : id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # GroupDeleteResponse returns information about an AccountGroup that was deleted.
+  class AccountGroupDeleteResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      meta: nil,
+      rate_limit: nil
+    )
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # AccountGroupGetRequest specifies which AccountGroup to retrieve.
+  class AccountGroupGetRequest
+    # The unique identifier of the AccountGroup to retrieve.
+    attr_accessor :id
+
+    def initialize(
+      id: nil
+    )
+      @id = id == nil ? "" : id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # AccountGroupGetResponse returns a requested AccountGroup.
+  class AccountGroupGetResponse
+    # The requested AccountGroup.
+    attr_accessor :account_group
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      account_group: nil,
+      meta: nil,
+      rate_limit: nil
+    )
+      @account_group = account_group == nil ? nil : account_group
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # AccountGroupHistory records the state of an AccountGroup at a given point in time,
+  # where every change (create, update and delete) to an AccountGroup produces an
+  # AccountGroupHistory record.
+  class AccountGroupHistory
+    # The complete AccountGroup state at this time.
+    attr_accessor :account_group
+    # The unique identifier of the Activity that produced this change to the AccountGroup.
+    # May be empty for some system-initiated updates.
+    attr_accessor :activity_id
+    # If this AccountGroup was deleted, the time it was deleted.
+    attr_accessor :deleted_at
+    # The time at which the AccountGroup state was recorded.
+    attr_accessor :timestamp
+
+    def initialize(
+      account_group: nil,
+      activity_id: nil,
+      deleted_at: nil,
+      timestamp: nil
+    )
+      @account_group = account_group == nil ? nil : account_group
+      @activity_id = activity_id == nil ? "" : activity_id
+      @deleted_at = deleted_at == nil ? nil : deleted_at
+      @timestamp = timestamp == nil ? nil : timestamp
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # GroupListRequest specifies criteria for retrieving a list of groups.
+  class AccountGroupListRequest
+    # A human-readable filter query string.
+    attr_accessor :filter
+
+    def initialize(
+      filter: nil
+    )
+      @filter = filter == nil ? "" : filter
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # GroupListResponse returns a list of groups that meet the criteria of a
+  # GroupListRequest.
+  class AccountGroupListResponse
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      rate_limit: nil
+    )
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   # AccountHistory records the state of an Account at a given point in time,
   # where every change (create, update and delete) to an Account produces an
   # AccountHistory record.
@@ -2730,6 +2970,8 @@ module SDM
   class ApprovalFlowApprover
     # The approver account id.
     attr_accessor :account_id
+    # The approver group id
+    attr_accessor :group_id
     # A reference to an approver. Must be one of ApproverReference constants.
     # If set, the account_id and role_id must be empty.
     attr_accessor :reference
@@ -2738,10 +2980,12 @@ module SDM
 
     def initialize(
       account_id: nil,
+      group_id: nil,
       reference: nil,
       role_id: nil
     )
       @account_id = account_id == nil ? "" : account_id
+      @group_id = group_id == nil ? "" : group_id
       @reference = reference == nil ? "" : reference
       @role_id = role_id == nil ? "" : role_id
     end
@@ -6871,6 +7115,624 @@ module SDM
     end
   end
 
+  # A Group is a named set of principals.
+  class Group
+    # Description of the Group.
+    attr_accessor :description
+    # Unique identifier of the Group.
+    attr_accessor :id
+    # Unique human-readable name of the Group.
+    attr_accessor :name
+    # Source is a read only field for what service manages this group, e.g. StrongDM, Okta, Azure.
+    attr_accessor :source
+    # Tags is a map of key/value pairs that can be attached to a Group.
+    attr_accessor :tags
+
+    def initialize(
+      description: nil,
+      id: nil,
+      name: nil,
+      source: nil,
+      tags: nil
+    )
+      @description = description == nil ? "" : description
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @source = source == nil ? "" : source
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  class GroupCreateFromRolesRequest
+    # Commit
+    attr_accessor :commit
+    # The unique identifiers of the roles create groups from.
+    attr_accessor :role_ids
+
+    def initialize(
+      commit: nil,
+      role_ids: nil
+    )
+      @commit = commit == nil ? false : commit
+      @role_ids = role_ids == nil ? [] : role_ids
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  class GroupCreateFromRolesResponse
+    # The created Group.
+    attr_accessor :group_from_role
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      group_from_role: nil,
+      rate_limit: nil
+    )
+      @group_from_role = group_from_role == nil ? [] : group_from_role
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # GroupCreateRequest specifies a group to create.
+  class GroupCreateRequest
+    # Parameters to define the new Group.
+    attr_accessor :group
+
+    def initialize(
+      group: nil
+    )
+      @group = group == nil ? nil : group
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # GroupCreateResponse reports the result of a create.
+  class GroupCreateResponse
+    # The created Group.
+    attr_accessor :group
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      group: nil,
+      rate_limit: nil
+    )
+      @group = group == nil ? nil : group
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # groupDeleteRequest identifies a group by ID to delete.
+  class GroupDeleteRequest
+    # The unique identifier of the group to delete.
+    attr_accessor :id
+
+    def initialize(
+      id: nil
+    )
+      @id = id == nil ? "" : id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # groupDeleteResponse returns information about a group that was deleted.
+  class GroupDeleteResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      meta: nil,
+      rate_limit: nil
+    )
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  class GroupFromRole
+    # The migrated Accounts.
+    attr_accessor :accounts
+    # The affected approval flows.
+    attr_accessor :approval_flows
+    # The group created from the source role.
+    attr_accessor :group
+    # Rate limit information.
+    attr_accessor :rate_limit
+    # The source role.
+    attr_accessor :role
+
+    def initialize(
+      accounts: nil,
+      approval_flows: nil,
+      group: nil,
+      rate_limit: nil,
+      role: nil
+    )
+      @accounts = accounts == nil ? [] : accounts
+      @approval_flows = approval_flows == nil ? [] : approval_flows
+      @group = group == nil ? nil : group
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+      @role = role == nil ? nil : role
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # GroupGetRequest specifies which Group to retrieve.
+  class GroupGetRequest
+    # The unique identifier of the Group to retrieve.
+    attr_accessor :id
+
+    def initialize(
+      id: nil
+    )
+      @id = id == nil ? "" : id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # GroupGetResponse returns a requested Group.
+  class GroupGetResponse
+    # The requested Group.
+    attr_accessor :group
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      group: nil,
+      meta: nil,
+      rate_limit: nil
+    )
+      @group = group == nil ? nil : group
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # GroupHistory records the state of a Group at a given point in time,
+  # where every change (create, update and delete) to a Group produces a
+  # GroupHistory record.
+  class GroupHistory
+    # The unique identifier of the Activity that produced this change to the Group.
+    # May be empty for some system-initiated updates.
+    attr_accessor :activity_id
+    # If this Group was deleted, the time it was deleted.
+    attr_accessor :deleted_at
+    # The complete Group state at this time.
+    attr_accessor :group
+    # The time at which the Group state was recorded.
+    attr_accessor :timestamp
+
+    def initialize(
+      activity_id: nil,
+      deleted_at: nil,
+      group: nil,
+      timestamp: nil
+    )
+      @activity_id = activity_id == nil ? "" : activity_id
+      @deleted_at = deleted_at == nil ? nil : deleted_at
+      @group = group == nil ? nil : group
+      @timestamp = timestamp == nil ? nil : timestamp
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # groupListRequest specifies criteria for retrieving a list of groups.
+  class GroupListRequest
+    # A human-readable filter query string.
+    attr_accessor :filter
+
+    def initialize(
+      filter: nil
+    )
+      @filter = filter == nil ? "" : filter
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # groupListResponse returns a list of groups that meet the criteria of a
+  # groupListRequest.
+  class GroupListResponse
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      rate_limit: nil
+    )
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # A GroupRole assigns a Group to a Role.
+  class GroupRole
+    # The assigned Group ID.
+    attr_accessor :group_id
+    # Unique identifier of the GroupRole.
+    attr_accessor :id
+    # The assigned Role ID.
+    attr_accessor :role_id
+
+    def initialize(
+      group_id: nil,
+      id: nil,
+      role_id: nil
+    )
+      @group_id = group_id == nil ? "" : group_id
+      @id = id == nil ? "" : id
+      @role_id = role_id == nil ? "" : role_id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # GroupRoleCreateRequest specifies a group role to create.
+  class GroupRoleCreateRequest
+    # Parameters to define the new GroupRole.
+    attr_accessor :group_role
+
+    def initialize(
+      group_role: nil
+    )
+      @group_role = group_role == nil ? nil : group_role
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # GroupRoleCreateResponse reports the result of a create.
+  class GroupRoleCreateResponse
+    # The created GroupRole.
+    attr_accessor :group_role
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      group_role: nil,
+      rate_limit: nil
+    )
+      @group_role = group_role == nil ? nil : group_role
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # GroupRoleDeleteRequest identifies a group role by ID to delete.
+  class GroupRoleDeleteRequest
+    # The unique identifier of the group to delete.
+    attr_accessor :id
+
+    def initialize(
+      id: nil
+    )
+      @id = id == nil ? "" : id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # GroupRoleDeleteResponse returns information about a group that was deleted.
+  class GroupRoleDeleteResponse
+    # The deleted GroupRole.
+    attr_accessor :group_role
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      group_role: nil,
+      meta: nil,
+      rate_limit: nil
+    )
+      @group_role = group_role == nil ? nil : group_role
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # GroupRoleGetRequest specifies which GroupRole to retrieve.
+  class GroupRoleGetRequest
+    # The unique identifier of the GroupRole to retrieve.
+    attr_accessor :id
+
+    def initialize(
+      id: nil
+    )
+      @id = id == nil ? "" : id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # GroupRoleGetResponse returns a requested GroupRole.
+  class GroupRoleGetResponse
+    # The requested GroupRole.
+    attr_accessor :group_role
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      group_role: nil,
+      meta: nil,
+      rate_limit: nil
+    )
+      @group_role = group_role == nil ? nil : group_role
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # GroupRoleHistory records the state of a GroupRole at a given point in time,
+  # where every change (create, update and delete) to a GroupRole produces a
+  # GroupRoleHistory record.
+  class GroupRoleHistory
+    # The unique identifier of the Activity that produced this change to the GroupRole.
+    # May be empty for some system-initiated updates.
+    attr_accessor :activity_id
+    # If this GroupRole was deleted, the time it was deleted.
+    attr_accessor :deleted_at
+    # The complete GroupRole state at this time.
+    attr_accessor :group_role
+    # The time at which the GroupRole state was recorded.
+    attr_accessor :timestamp
+
+    def initialize(
+      activity_id: nil,
+      deleted_at: nil,
+      group_role: nil,
+      timestamp: nil
+    )
+      @activity_id = activity_id == nil ? "" : activity_id
+      @deleted_at = deleted_at == nil ? nil : deleted_at
+      @group_role = group_role == nil ? nil : group_role
+      @timestamp = timestamp == nil ? nil : timestamp
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # GroupRoleListRequest specifies criteria for retrieving a list of groups.
+  class GroupRoleListRequest
+    # A human-readable filter query string.
+    attr_accessor :filter
+
+    def initialize(
+      filter: nil
+    )
+      @filter = filter == nil ? "" : filter
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # GroupRoleListResponse returns a list of group roles that meet the criteria of a
+  # GroupRoleListRequest.
+  class GroupRoleListResponse
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      rate_limit: nil
+    )
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # GroupUpdateRequest updates a group.
+  class GroupUpdateRequest
+    # Parameters to overwrite the specified group.
+    attr_accessor :group
+
+    def initialize(
+      group: nil
+    )
+      @group = group == nil ? nil : group
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # groupUpdateResponse returns the fields of a group after it has been updated by
+  # a groupUpdateRequest.
+  class GroupUpdateResponse
+    # The updated group.
+    attr_accessor :group
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      group: nil,
+      rate_limit: nil
+    )
+      @group = group == nil ? nil : group
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class HTTPAuth
     # The content to set as the authorization header.
     attr_accessor :auth_header
@@ -8333,6 +9195,78 @@ module SDM
       @local_storage = local_storage == nil ? "" : local_storage
       @local_tcp_address = local_tcp_address == nil ? "" : local_tcp_address
       @public_key = public_key == nil ? "" : public_key
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # MCP is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class MCP
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    attr_accessor :bind_interface
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # The host to dial to initiate a connection from the egress node to this resource.
+    attr_accessor :hostname
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # The password to authenticate with.
+    attr_accessor :password
+    # The port to dial to initiate a connection from the egress node to this resource.
+    attr_accessor :port
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    attr_accessor :subdomain
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+    # The username to authenticate with.
+    attr_accessor :username
+
+    def initialize(
+      bind_interface: nil,
+      egress_filter: nil,
+      healthy: nil,
+      hostname: nil,
+      id: nil,
+      name: nil,
+      password: nil,
+      port: nil,
+      port_override: nil,
+      proxy_cluster_id: nil,
+      secret_store_id: nil,
+      subdomain: nil,
+      tags: nil,
+      username: nil
+    )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @subdomain = subdomain == nil ? "" : subdomain
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})

@@ -30,7 +30,7 @@ module SDM #:nodoc:
     DEFAULT_RETRY_FACTOR = 1.6
     DEFAULT_RETRY_JITTER = 0.2
     API_VERSION = "2025-04-14"
-    USER_AGENT = "strongdm-sdk-ruby/15.14.0"
+    USER_AGENT = "strongdm-sdk-ruby/15.15.0"
     private_constant :DEFAULT_BASE_RETRY_DELAY, :DEFAULT_MAX_RETRY_DELAY, :DEFAULT_RETRY_FACTOR, :DEFAULT_RETRY_JITTER, :API_VERSION, :USER_AGENT
 
     # Creates a new strongDM API client.
@@ -68,6 +68,8 @@ module SDM #:nodoc:
       @account_resources = AccountResources.new(@channel, self)
       @account_resources_history = AccountResourcesHistory.new(@channel, self)
       @accounts = Accounts.new(@channel, self)
+      @accounts_groups = AccountsGroups.new(@channel, self)
+      @accounts_groups_history = AccountsGroupsHistory.new(@channel, self)
       @accounts_history = AccountsHistory.new(@channel, self)
       @activities = Activities.new(@channel, self)
       @approval_workflow_approvers = ApprovalWorkflowApprovers.new(@channel, self)
@@ -78,6 +80,10 @@ module SDM #:nodoc:
       @approval_workflows_history = ApprovalWorkflowsHistory.new(@channel, self)
       @control_panel = ControlPanel.new(@channel, self)
       @roles = Roles.new(@channel, self)
+      @groups = Groups.new(@channel, self)
+      @groups_history = GroupsHistory.new(@channel, self)
+      @groups_roles = GroupsRoles.new(@channel, self)
+      @groups_roles_history = GroupsRolesHistory.new(@channel, self)
       @health_checks = HealthChecks.new(@channel, self)
       @identity_aliases = IdentityAliases.new(@channel, self)
       @identity_aliases_history = IdentityAliasesHistory.new(@channel, self)
@@ -276,6 +282,14 @@ module SDM #:nodoc:
     #
     # See {Accounts}.
     attr_reader :accounts
+    # An AccountGroup links an account and a group.
+    #
+    # See {AccountsGroups}.
+    attr_reader :accounts_groups
+    # AccountsGroupsHistory records all changes to the state of an AccountGroup.
+    #
+    # See {AccountsGroupsHistory}.
+    attr_reader :accounts_groups_history
     # AccountsHistory records all changes to the state of an Account.
     #
     # See {AccountsHistory}.
@@ -321,6 +335,22 @@ module SDM #:nodoc:
     #
     # See {Roles}.
     attr_reader :roles
+    # A Group is a set of principals.
+    #
+    # See {Groups}.
+    attr_reader :groups
+    # GroupsHistory records all changes to the state of a Group.
+    #
+    # See {GroupsHistory}.
+    attr_reader :groups_history
+    # A GroupRole is an assignment of a Group to a Role.
+    #
+    # See {GroupsRoles}.
+    attr_reader :groups_roles
+    # GroupsRolesHistory records all changes to the state of a GroupRole.
+    #
+    # See {GroupsRolesHistory}.
+    attr_reader :groups_roles_history
     # HealthChecks lists the last healthcheck between each node and resource.
     # Note the unconventional capitalization here is to prevent having a collision with GRPC
     #
@@ -507,6 +537,8 @@ module SDM #:nodoc:
       @account_resources = AccountResources.new(@channel, self)
       @account_resources_history = AccountResourcesHistory.new(@channel, self)
       @accounts = Accounts.new(@channel, self)
+      @accounts_groups = AccountsGroups.new(@channel, self)
+      @accounts_groups_history = AccountsGroupsHistory.new(@channel, self)
       @accounts_history = AccountsHistory.new(@channel, self)
       @activities = Activities.new(@channel, self)
       @approval_workflow_approvers = ApprovalWorkflowApprovers.new(@channel, self)
@@ -517,6 +549,10 @@ module SDM #:nodoc:
       @approval_workflows_history = ApprovalWorkflowsHistory.new(@channel, self)
       @control_panel = ControlPanel.new(@channel, self)
       @roles = Roles.new(@channel, self)
+      @groups = Groups.new(@channel, self)
+      @groups_history = GroupsHistory.new(@channel, self)
+      @groups_roles = GroupsRoles.new(@channel, self)
+      @groups_roles_history = GroupsRolesHistory.new(@channel, self)
       @health_checks = HealthChecks.new(@channel, self)
       @identity_aliases = IdentityAliases.new(@channel, self)
       @identity_aliases_history = IdentityAliasesHistory.new(@channel, self)
@@ -566,10 +602,13 @@ module SDM #:nodoc:
       @account_permissions = SnapshotAccountPermissions.new(client.account_permissions)
       @account_resources = SnapshotAccountResources.new(client.account_resources)
       @accounts = SnapshotAccounts.new(client.accounts)
+      @accounts_groups = SnapshotAccountsGroups.new(client.accounts_groups)
       @approval_workflow_approvers = SnapshotApprovalWorkflowApprovers.new(client.approval_workflow_approvers)
       @approval_workflow_steps = SnapshotApprovalWorkflowSteps.new(client.approval_workflow_steps)
       @approval_workflows = SnapshotApprovalWorkflows.new(client.approval_workflows)
       @roles = SnapshotRoles.new(client.roles)
+      @groups = SnapshotGroups.new(client.groups)
+      @groups_roles = SnapshotGroupsRoles.new(client.groups_roles)
       @identity_aliases = SnapshotIdentityAliases.new(client.identity_aliases)
       @identity_sets = SnapshotIdentitySets.new(client.identity_sets)
       @nodes = SnapshotNodes.new(client.nodes)
@@ -614,6 +653,10 @@ module SDM #:nodoc:
     #
     # See {SnapshotAccounts}.
     attr_reader :accounts
+    # An AccountGroup links an account and a group.
+    #
+    # See {SnapshotAccountsGroups}.
+    attr_reader :accounts_groups
     # ApprovalWorkflowApprovers link approval workflow approvers to an ApprovalWorkflowStep
     #
     # See {SnapshotApprovalWorkflowApprovers}.
@@ -633,6 +676,14 @@ module SDM #:nodoc:
     #
     # See {SnapshotRoles}.
     attr_reader :roles
+    # A Group is a set of principals.
+    #
+    # See {SnapshotGroups}.
+    attr_reader :groups
+    # A GroupRole is an assignment of a Group to a Role.
+    #
+    # See {SnapshotGroupsRoles}.
+    attr_reader :groups_roles
     # IdentityAliases assign an alias to an account within an IdentitySet.
     # The alias is used as the username when connecting to a identity supported resource.
     #
