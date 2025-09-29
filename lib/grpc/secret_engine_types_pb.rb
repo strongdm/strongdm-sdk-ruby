@@ -28,6 +28,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       oneof :secret_engine do
         optional :active_directory, :message, 332, "v1.ActiveDirectoryEngine"
         optional :key_value, :message, 331, "v1.KeyValueEngine"
+        optional :postgres, :message, 333, "v1.PostgresEngine"
       end
     end
     add_message "v1.ActiveDirectoryEngine" do
@@ -65,6 +66,20 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :public_key, :bytes, 8
       optional :key_rotation_interval_days, :int32, 9
     end
+    add_message "v1.PostgresEngine" do
+      optional :hostname, :string, 101
+      optional :password, :string, 103
+      optional :port, :uint32, 104
+      optional :username, :string, 102
+      optional :id, :string, 1
+      optional :name, :string, 2
+      optional :type, :string, 3
+      optional :secret_store_id, :string, 5
+      optional :secret_store_root_path, :string, 6
+      optional :tags, :message, 7, "v1.Tags"
+      optional :public_key, :bytes, 8
+      optional :key_rotation_interval_days, :int32, 9
+    end
   end
 end
 
@@ -72,4 +87,5 @@ module V1
   SecretEngine = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.SecretEngine").msgclass
   ActiveDirectoryEngine = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ActiveDirectoryEngine").msgclass
   KeyValueEngine = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.KeyValueEngine").msgclass
+  PostgresEngine = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.PostgresEngine").msgclass
 end

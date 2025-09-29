@@ -12735,6 +12735,60 @@ module SDM
       end
       items
     end
+    def self.convert_postgres_engine_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = PostgresEngine.new()
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.id = (plumbing.id)
+      porcelain.key_rotation_interval_days = (plumbing.key_rotation_interval_days)
+      porcelain.name = (plumbing.name)
+      porcelain.password = (plumbing.password)
+      porcelain.port = (plumbing.port)
+      porcelain.public_key = (plumbing.public_key)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.secret_store_root_path = (plumbing.secret_store_root_path)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.username = (plumbing.username)
+      porcelain
+    end
+
+    def self.convert_postgres_engine_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::PostgresEngine.new()
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.key_rotation_interval_days = (porcelain.key_rotation_interval_days)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port = (porcelain.port)
+      plumbing.public_key = (porcelain.public_key)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.secret_store_root_path = (porcelain.secret_store_root_path)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
+      plumbing
+    end
+    def self.convert_repeated_postgres_engine_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_postgres_engine_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_postgres_engine_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_postgres_engine_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_presto_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -16089,6 +16143,9 @@ module SDM
       if porcelain.instance_of? KeyValueEngine
         plumbing.key_value = convert_key_value_engine_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? PostgresEngine
+        plumbing.postgres = convert_postgres_engine_to_plumbing(porcelain)
+      end
       plumbing
     end
 
@@ -16101,6 +16158,9 @@ module SDM
       end
       if plumbing.key_value != nil
         return convert_key_value_engine_to_porcelain(plumbing.key_value)
+      end
+      if plumbing.postgres != nil
+        return convert_postgres_engine_to_porcelain(plumbing.postgres)
       end
       raise UnknownError.new("unknown polymorphic type, please upgrade your SDK")
     end
