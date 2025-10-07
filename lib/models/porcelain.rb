@@ -9232,8 +9232,6 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
-    # The username to authenticate with.
-    attr_accessor :username
 
     def initialize(
       bind_interface: nil,
@@ -9248,8 +9246,7 @@ module SDM
       proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
-      tags: nil,
-      username: nil
+      tags: nil
     )
       @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
@@ -9264,7 +9261,6 @@ module SDM
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
-      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
@@ -12148,6 +12144,10 @@ module SDM
 
   # PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class PostgresEngine
+    # The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
+    attr_accessor :after_read_ttl
+    # Database is the database to verify credential against.
+    attr_accessor :database
     # Hostname is the hostname or IP address of the Postgres server.
     attr_accessor :hostname
     # Unique identifier of the Secret Engine.
@@ -12158,6 +12158,8 @@ module SDM
     attr_accessor :name
     # Password is the password to connect to the Postgres server.
     attr_accessor :password
+    # Policy for password creation
+    attr_accessor :policy
     # Port is the port number of the Postgres server.
     attr_accessor :port
     # Public key linked with a secret engine
@@ -12168,32 +12170,46 @@ module SDM
     attr_accessor :secret_store_root_path
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # TLS enables TLS/SSL when connecting to the Postgres server.
+    attr_accessor :tls
+    # The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
+    attr_accessor :ttl
     # Username is the username to connect to the Postgres server.
     attr_accessor :username
 
     def initialize(
+      after_read_ttl: nil,
+      database: nil,
       hostname: nil,
       id: nil,
       key_rotation_interval_days: nil,
       name: nil,
       password: nil,
+      policy: nil,
       port: nil,
       public_key: nil,
       secret_store_id: nil,
       secret_store_root_path: nil,
       tags: nil,
+      tls: nil,
+      ttl: nil,
       username: nil
     )
+      @after_read_ttl = after_read_ttl == nil ? nil : after_read_ttl
+      @database = database == nil ? "" : database
       @hostname = hostname == nil ? "" : hostname
       @id = id == nil ? "" : id
       @key_rotation_interval_days = key_rotation_interval_days == nil ? 0 : key_rotation_interval_days
       @name = name == nil ? "" : name
       @password = password == nil ? "" : password
+      @policy = policy == nil ? nil : policy
       @port = port == nil ? 0 : port
       @public_key = public_key == nil ? "" : public_key
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @secret_store_root_path = secret_store_root_path == nil ? "" : secret_store_root_path
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tls = tls == nil ? false : tls
+      @ttl = ttl == nil ? nil : ttl
       @username = username == nil ? "" : username
     end
 

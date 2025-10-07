@@ -67,9 +67,14 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :key_rotation_interval_days, :int32, 9
     end
     add_message "v1.PostgresEngine" do
+      optional :after_read_ttl, :message, 105, "google.protobuf.Duration"
+      optional :database, :string, 108
       optional :hostname, :string, 101
       optional :password, :string, 103
+      optional :policy, :message, 107, "v1.SecretEnginePolicy"
       optional :port, :uint32, 104
+      optional :tls, :bool, 109
+      optional :ttl, :message, 106, "google.protobuf.Duration"
       optional :username, :string, 102
       optional :id, :string, 1
       optional :name, :string, 2

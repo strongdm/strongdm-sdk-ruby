@@ -9540,7 +9540,6 @@ module SDM
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
-      porcelain.username = (plumbing.username)
       porcelain
     end
 
@@ -9562,7 +9561,6 @@ module SDM
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
-      plumbing.username = (porcelain.username)
       plumbing
     end
     def self.convert_repeated_mcp_to_plumbing(porcelains)
@@ -12740,16 +12738,21 @@ module SDM
         return nil
       end
       porcelain = PostgresEngine.new()
+      porcelain.after_read_ttl = convert_duration_to_porcelain(plumbing.after_read_ttl)
+      porcelain.database = (plumbing.database)
       porcelain.hostname = (plumbing.hostname)
       porcelain.id = (plumbing.id)
       porcelain.key_rotation_interval_days = (plumbing.key_rotation_interval_days)
       porcelain.name = (plumbing.name)
       porcelain.password = (plumbing.password)
+      porcelain.policy = convert_secret_engine_policy_to_porcelain(plumbing.policy)
       porcelain.port = (plumbing.port)
       porcelain.public_key = (plumbing.public_key)
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.secret_store_root_path = (plumbing.secret_store_root_path)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.tls = (plumbing.tls)
+      porcelain.ttl = convert_duration_to_porcelain(plumbing.ttl)
       porcelain.username = (plumbing.username)
       porcelain
     end
@@ -12759,16 +12762,21 @@ module SDM
         return nil
       end
       plumbing = V1::PostgresEngine.new()
+      plumbing.after_read_ttl = convert_duration_to_plumbing(porcelain.after_read_ttl)
+      plumbing.database = (porcelain.database)
       plumbing.hostname = (porcelain.hostname)
       plumbing.id = (porcelain.id)
       plumbing.key_rotation_interval_days = (porcelain.key_rotation_interval_days)
       plumbing.name = (porcelain.name)
       plumbing.password = (porcelain.password)
+      plumbing.policy = convert_secret_engine_policy_to_plumbing(porcelain.policy)
       plumbing.port = (porcelain.port)
       plumbing.public_key = (porcelain.public_key)
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.secret_store_root_path = (porcelain.secret_store_root_path)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.tls = (porcelain.tls)
+      plumbing.ttl = convert_duration_to_plumbing(porcelain.ttl)
       plumbing.username = (porcelain.username)
       plumbing
     end

@@ -1353,7 +1353,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :password, :string, 2
       optional :port, :int32, 5
       optional :port_override, :int32, 4
-      optional :username, :string, 6
     end
     add_message "v1.MTLSMysql" do
       optional :id, :string, 32768
