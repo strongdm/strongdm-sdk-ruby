@@ -16742,8 +16742,20 @@ module SDM
       if porcelain.instance_of? VaultAWSEC2Store
         plumbing.vault_awsec_2 = convert_vault_awsec_2_store_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? VaultAWSEC2CertSSHStore
+        plumbing.vault_awsec_2_cert_ssh = convert_vault_awsec_2_cert_ssh_store_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? VaultAWSEC2CertX509Store
+        plumbing.vault_awsec_2_cert_x_509 = convert_vault_awsec_2_cert_x_509_store_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? VaultAWSIAMStore
         plumbing.vault_awsiam = convert_vault_awsiam_store_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? VaultAWSIAMCertSSHStore
+        plumbing.vault_awsiam_cert_ssh = convert_vault_awsiam_cert_ssh_store_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? VaultAWSIAMCertX509Store
+        plumbing.vault_awsiam_cert_x_509 = convert_vault_awsiam_cert_x_509_store_to_plumbing(porcelain)
       end
       if porcelain.instance_of? VaultTLSStore
         plumbing.vault_tls = convert_vault_tls_store_to_plumbing(porcelain)
@@ -16818,8 +16830,20 @@ module SDM
       if plumbing.vault_awsec_2 != nil
         return convert_vault_awsec_2_store_to_porcelain(plumbing.vault_awsec_2)
       end
+      if plumbing.vault_awsec_2_cert_ssh != nil
+        return convert_vault_awsec_2_cert_ssh_store_to_porcelain(plumbing.vault_awsec_2_cert_ssh)
+      end
+      if plumbing.vault_awsec_2_cert_x_509 != nil
+        return convert_vault_awsec_2_cert_x_509_store_to_porcelain(plumbing.vault_awsec_2_cert_x_509)
+      end
       if plumbing.vault_awsiam != nil
         return convert_vault_awsiam_store_to_porcelain(plumbing.vault_awsiam)
+      end
+      if plumbing.vault_awsiam_cert_ssh != nil
+        return convert_vault_awsiam_cert_ssh_store_to_porcelain(plumbing.vault_awsiam_cert_ssh)
+      end
+      if plumbing.vault_awsiam_cert_x_509 != nil
+        return convert_vault_awsiam_cert_x_509_store_to_porcelain(plumbing.vault_awsiam_cert_x_509)
       end
       if plumbing.vault_tls != nil
         return convert_vault_tls_store_to_porcelain(plumbing.vault_tls)
@@ -17810,6 +17834,102 @@ module SDM
       end
       items
     end
+    def self.convert_vault_awsec_2_cert_ssh_store_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = VaultAWSEC2CertSSHStore.new()
+      porcelain.id = (plumbing.id)
+      porcelain.issuedcertttlminutes = (plumbing.issuedCertTTLMinutes)
+      porcelain.name = (plumbing.name)
+      porcelain.namespace = (plumbing.namespace)
+      porcelain.server_address = (plumbing.server_address)
+      porcelain.signing_role = (plumbing.signing_role)
+      porcelain.ssh_mount_point = (plumbing.ssh_mount_point)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_vault_awsec_2_cert_ssh_store_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::VaultAWSEC2CertSSHStore.new()
+      plumbing.id = (porcelain.id)
+      plumbing.issuedCertTTLMinutes = (porcelain.issuedcertttlminutes)
+      plumbing.name = (porcelain.name)
+      plumbing.namespace = (porcelain.namespace)
+      plumbing.server_address = (porcelain.server_address)
+      plumbing.signing_role = (porcelain.signing_role)
+      plumbing.ssh_mount_point = (porcelain.ssh_mount_point)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_vault_awsec_2_cert_ssh_store_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_vault_awsec_2_cert_ssh_store_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_vault_awsec_2_cert_ssh_store_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_vault_awsec_2_cert_ssh_store_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_vault_awsec_2_cert_x_509_store_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = VaultAWSEC2CertX509Store.new()
+      porcelain.id = (plumbing.id)
+      porcelain.issuedcertttlminutes = (plumbing.issuedCertTTLMinutes)
+      porcelain.name = (plumbing.name)
+      porcelain.namespace = (plumbing.namespace)
+      porcelain.pki_mount_point = (plumbing.pki_mount_point)
+      porcelain.server_address = (plumbing.server_address)
+      porcelain.signing_role = (plumbing.signing_role)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_vault_awsec_2_cert_x_509_store_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::VaultAWSEC2CertX509Store.new()
+      plumbing.id = (porcelain.id)
+      plumbing.issuedCertTTLMinutes = (porcelain.issuedcertttlminutes)
+      plumbing.name = (porcelain.name)
+      plumbing.namespace = (porcelain.namespace)
+      plumbing.pki_mount_point = (porcelain.pki_mount_point)
+      plumbing.server_address = (porcelain.server_address)
+      plumbing.signing_role = (porcelain.signing_role)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_vault_awsec_2_cert_x_509_store_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_vault_awsec_2_cert_x_509_store_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_vault_awsec_2_cert_x_509_store_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_vault_awsec_2_cert_x_509_store_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_vault_awsec_2_store_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -17848,6 +17968,102 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_vault_awsec_2_store_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_vault_awsiam_cert_ssh_store_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = VaultAWSIAMCertSSHStore.new()
+      porcelain.id = (plumbing.id)
+      porcelain.issuedcertttlminutes = (plumbing.issuedCertTTLMinutes)
+      porcelain.name = (plumbing.name)
+      porcelain.namespace = (plumbing.namespace)
+      porcelain.server_address = (plumbing.server_address)
+      porcelain.signing_role = (plumbing.signing_role)
+      porcelain.ssh_mount_point = (plumbing.ssh_mount_point)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_vault_awsiam_cert_ssh_store_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::VaultAWSIAMCertSSHStore.new()
+      plumbing.id = (porcelain.id)
+      plumbing.issuedCertTTLMinutes = (porcelain.issuedcertttlminutes)
+      plumbing.name = (porcelain.name)
+      plumbing.namespace = (porcelain.namespace)
+      plumbing.server_address = (porcelain.server_address)
+      plumbing.signing_role = (porcelain.signing_role)
+      plumbing.ssh_mount_point = (porcelain.ssh_mount_point)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_vault_awsiam_cert_ssh_store_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_vault_awsiam_cert_ssh_store_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_vault_awsiam_cert_ssh_store_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_vault_awsiam_cert_ssh_store_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_vault_awsiam_cert_x_509_store_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = VaultAWSIAMCertX509Store.new()
+      porcelain.id = (plumbing.id)
+      porcelain.issuedcertttlminutes = (plumbing.issuedCertTTLMinutes)
+      porcelain.name = (plumbing.name)
+      porcelain.namespace = (plumbing.namespace)
+      porcelain.pki_mount_point = (plumbing.pki_mount_point)
+      porcelain.server_address = (plumbing.server_address)
+      porcelain.signing_role = (plumbing.signing_role)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_vault_awsiam_cert_x_509_store_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::VaultAWSIAMCertX509Store.new()
+      plumbing.id = (porcelain.id)
+      plumbing.issuedCertTTLMinutes = (porcelain.issuedcertttlminutes)
+      plumbing.name = (porcelain.name)
+      plumbing.namespace = (porcelain.namespace)
+      plumbing.pki_mount_point = (porcelain.pki_mount_point)
+      plumbing.server_address = (porcelain.server_address)
+      plumbing.signing_role = (porcelain.signing_role)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_vault_awsiam_cert_x_509_store_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_vault_awsiam_cert_x_509_store_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_vault_awsiam_cert_x_509_store_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_vault_awsiam_cert_x_509_store_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items

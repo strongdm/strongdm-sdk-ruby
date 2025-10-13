@@ -6646,7 +6646,11 @@ module SDM #:nodoc:
   # {VaultAppRoleCertSSHStore}
   # {VaultAppRoleCertX509Store}
   # {VaultAWSEC2Store}
+  # {VaultAWSEC2CertSSHStore}
+  # {VaultAWSEC2CertX509Store}
   # {VaultAWSIAMStore}
+  # {VaultAWSIAMCertSSHStore}
+  # {VaultAWSIAMCertX509Store}
   # {VaultTLSStore}
   # {VaultTLSCertSSHStore}
   # {VaultTLSCertX509Store}

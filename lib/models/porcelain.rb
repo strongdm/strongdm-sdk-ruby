@@ -16264,6 +16264,102 @@ module SDM
     end
   end
 
+  # VaultAWSEC2CertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class VaultAWSEC2CertSSHStore
+    # Unique identifier of the SecretStore.
+    attr_accessor :id
+    # The lifetime of certificates issued by this CA in minutes. Recommended value is 5.
+    attr_accessor :issuedcertttlminutes
+    # Unique human-readable name of the SecretStore.
+    attr_accessor :name
+    # The namespace to make requests within
+    attr_accessor :namespace
+    # The URL of the Vault to target
+    attr_accessor :server_address
+    # The signing role to be used for signing certificates
+    attr_accessor :signing_role
+    # The mount point of the SSH engine configured with the desired CA
+    attr_accessor :ssh_mount_point
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      id: nil,
+      issuedcertttlminutes: nil,
+      name: nil,
+      namespace: nil,
+      server_address: nil,
+      signing_role: nil,
+      ssh_mount_point: nil,
+      tags: nil
+    )
+      @id = id == nil ? "" : id
+      @issuedcertttlminutes = issuedcertttlminutes == nil ? 0 : issuedcertttlminutes
+      @name = name == nil ? "" : name
+      @namespace = namespace == nil ? "" : namespace
+      @server_address = server_address == nil ? "" : server_address
+      @signing_role = signing_role == nil ? "" : signing_role
+      @ssh_mount_point = ssh_mount_point == nil ? "" : ssh_mount_point
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # VaultAWSEC2CertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class VaultAWSEC2CertX509Store
+    # Unique identifier of the SecretStore.
+    attr_accessor :id
+    # The lifetime of certificates issued by this CA represented in minutes.
+    attr_accessor :issuedcertttlminutes
+    # Unique human-readable name of the SecretStore.
+    attr_accessor :name
+    # The namespace to make requests within
+    attr_accessor :namespace
+    # The mount point of the PKI engine configured with the desired CA
+    attr_accessor :pki_mount_point
+    # The URL of the Vault to target
+    attr_accessor :server_address
+    # The signing role to be used for signing certificates
+    attr_accessor :signing_role
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      id: nil,
+      issuedcertttlminutes: nil,
+      name: nil,
+      namespace: nil,
+      pki_mount_point: nil,
+      server_address: nil,
+      signing_role: nil,
+      tags: nil
+    )
+      @id = id == nil ? "" : id
+      @issuedcertttlminutes = issuedcertttlminutes == nil ? 0 : issuedcertttlminutes
+      @name = name == nil ? "" : name
+      @namespace = namespace == nil ? "" : namespace
+      @pki_mount_point = pki_mount_point == nil ? "" : pki_mount_point
+      @server_address = server_address == nil ? "" : server_address
+      @signing_role = signing_role == nil ? "" : signing_role
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class VaultAWSEC2Store
     # Unique identifier of the SecretStore.
     attr_accessor :id
@@ -16287,6 +16383,102 @@ module SDM
       @name = name == nil ? "" : name
       @namespace = namespace == nil ? "" : namespace
       @server_address = server_address == nil ? "" : server_address
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # VaultAWSIAMCertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class VaultAWSIAMCertSSHStore
+    # Unique identifier of the SecretStore.
+    attr_accessor :id
+    # The lifetime of certificates issued by this CA in minutes. Recommended value is 5.
+    attr_accessor :issuedcertttlminutes
+    # Unique human-readable name of the SecretStore.
+    attr_accessor :name
+    # The namespace to make requests within
+    attr_accessor :namespace
+    # The URL of the Vault to target
+    attr_accessor :server_address
+    # The signing role to be used for signing certificates
+    attr_accessor :signing_role
+    # The mount point of the SSH engine configured with the desired CA
+    attr_accessor :ssh_mount_point
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      id: nil,
+      issuedcertttlminutes: nil,
+      name: nil,
+      namespace: nil,
+      server_address: nil,
+      signing_role: nil,
+      ssh_mount_point: nil,
+      tags: nil
+    )
+      @id = id == nil ? "" : id
+      @issuedcertttlminutes = issuedcertttlminutes == nil ? 0 : issuedcertttlminutes
+      @name = name == nil ? "" : name
+      @namespace = namespace == nil ? "" : namespace
+      @server_address = server_address == nil ? "" : server_address
+      @signing_role = signing_role == nil ? "" : signing_role
+      @ssh_mount_point = ssh_mount_point == nil ? "" : ssh_mount_point
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # VaultAWSIAMCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class VaultAWSIAMCertX509Store
+    # Unique identifier of the SecretStore.
+    attr_accessor :id
+    # The lifetime of certificates issued by this CA represented in minutes.
+    attr_accessor :issuedcertttlminutes
+    # Unique human-readable name of the SecretStore.
+    attr_accessor :name
+    # The namespace to make requests within
+    attr_accessor :namespace
+    # The mount point of the PKI engine configured with the desired CA
+    attr_accessor :pki_mount_point
+    # The URL of the Vault to target
+    attr_accessor :server_address
+    # The signing role to be used for signing certificates
+    attr_accessor :signing_role
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      id: nil,
+      issuedcertttlminutes: nil,
+      name: nil,
+      namespace: nil,
+      pki_mount_point: nil,
+      server_address: nil,
+      signing_role: nil,
+      tags: nil
+    )
+      @id = id == nil ? "" : id
+      @issuedcertttlminutes = issuedcertttlminutes == nil ? 0 : issuedcertttlminutes
+      @name = name == nil ? "" : name
+      @namespace = namespace == nil ? "" : namespace
+      @pki_mount_point = pki_mount_point == nil ? "" : pki_mount_point
+      @server_address = server_address == nil ? "" : server_address
+      @signing_role = signing_role == nil ? "" : signing_role
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
