@@ -884,6 +884,10 @@ module SDM
     attr_accessor :name
     # The AWS region to target e.g. us-east-1
     attr_accessor :region
+    # The role to assume after logging in.
+    attr_accessor :role_arn
+    # The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+    attr_accessor :role_external_id
     # Tags is a map of key, value pairs.
     attr_accessor :tags
 
@@ -891,11 +895,15 @@ module SDM
       id: nil,
       name: nil,
       region: nil,
+      role_arn: nil,
+      role_external_id: nil,
       tags: nil
     )
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
       @region = region == nil ? "" : region
+      @role_arn = role_arn == nil ? "" : role_arn
+      @role_external_id = role_external_id == nil ? "" : role_external_id
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 
@@ -15802,6 +15810,34 @@ module SDM
       @samlmetadata = samlmetadata == nil ? "" : samlmetadata
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # StrongVaultStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class StrongVaultStore
+    # Unique identifier of the SecretStore.
+    attr_accessor :id
+    # Unique human-readable name of the SecretStore.
+    attr_accessor :name
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      id: nil,
+      name: nil,
+      tags: nil
+    )
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
 

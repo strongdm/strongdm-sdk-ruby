@@ -6642,6 +6642,7 @@ module SDM #:nodoc:
   # {GCPCertX509Store}
   # {KeyfactorSSHStore}
   # {KeyfactorX509Store}
+  # {StrongVaultStore}
   # {VaultAppRoleStore}
   # {VaultAppRoleCertSSHStore}
   # {VaultAppRoleCertX509Store}

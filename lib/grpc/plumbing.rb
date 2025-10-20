@@ -927,6 +927,8 @@ module SDM
       porcelain.id = (plumbing.id)
       porcelain.name = (plumbing.name)
       porcelain.region = (plumbing.region)
+      porcelain.role_arn = (plumbing.role_arn)
+      porcelain.role_external_id = (plumbing.role_external_id)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
       porcelain
     end
@@ -939,6 +941,8 @@ module SDM
       plumbing.id = (porcelain.id)
       plumbing.name = (porcelain.name)
       plumbing.region = (porcelain.region)
+      plumbing.role_arn = (porcelain.role_arn)
+      plumbing.role_external_id = (porcelain.role_external_id)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
       plumbing
     end
@@ -16730,6 +16734,9 @@ module SDM
       if porcelain.instance_of? KeyfactorX509Store
         plumbing.keyfactor_x_509 = convert_keyfactor_x_509_store_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? StrongVaultStore
+        plumbing.strong_vault = convert_strong_vault_store_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? VaultAppRoleStore
         plumbing.vault_app_role = convert_vault_app_role_store_to_plumbing(porcelain)
       end
@@ -16817,6 +16824,9 @@ module SDM
       end
       if plumbing.keyfactor_x_509 != nil
         return convert_keyfactor_x_509_store_to_porcelain(plumbing.keyfactor_x_509)
+      end
+      if plumbing.strong_vault != nil
+        return convert_strong_vault_store_to_porcelain(plumbing.strong_vault)
       end
       if plumbing.vault_app_role != nil
         return convert_vault_app_role_store_to_porcelain(plumbing.vault_app_role)
@@ -17412,6 +17422,44 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_snowsight_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_strong_vault_store_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = StrongVaultStore.new()
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_strong_vault_store_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::StrongVaultStore.new()
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_strong_vault_store_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_strong_vault_store_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_strong_vault_store_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_strong_vault_store_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items

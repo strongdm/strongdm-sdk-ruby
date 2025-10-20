@@ -36,6 +36,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :gcp_cert_x_509, :message, 202, "v1.GCPCertX509Store"
         optional :keyfactor_ssh, :message, 210, "v1.KeyfactorSSHStore"
         optional :keyfactor_x_509, :message, 200, "v1.KeyfactorX509Store"
+        optional :strong_vault, :message, 400, "v1.StrongVaultStore"
         optional :vault_awsec_2, :message, 97, "v1.VaultAWSEC2Store"
         optional :vault_awsec_2_cert_ssh, :message, 98, "v1.VaultAWSEC2CertSSHStore"
         optional :vault_awsec_2_cert_x_509, :message, 100, "v1.VaultAWSEC2CertX509Store"
@@ -57,6 +58,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 1
       optional :name, :string, 2
       optional :region, :string, 3
+      optional :role_arn, :string, 5
+      optional :role_external_id, :string, 6
       optional :tags, :message, 4, "v1.Tags"
     end
     add_message "v1.AWSCertX509Store" do
@@ -149,6 +152,11 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :key_file_path, :string, 5
       optional :server_address, :string, 3
       optional :tags, :message, 32771, "v1.Tags"
+    end
+    add_message "v1.StrongVaultStore" do
+      optional :id, :string, 1
+      optional :name, :string, 2
+      optional :tags, :message, 3, "v1.Tags"
     end
     add_message "v1.VaultAWSEC2Store" do
       optional :id, :string, 1
@@ -311,6 +319,7 @@ module V1
   GCPCertX509Store = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GCPCertX509Store").msgclass
   KeyfactorSSHStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.KeyfactorSSHStore").msgclass
   KeyfactorX509Store = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.KeyfactorX509Store").msgclass
+  StrongVaultStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.StrongVaultStore").msgclass
   VaultAWSEC2Store = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.VaultAWSEC2Store").msgclass
   VaultAWSEC2CertSSHStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.VaultAWSEC2CertSSHStore").msgclass
   VaultAWSEC2CertX509Store = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.VaultAWSEC2CertX509Store").msgclass
