@@ -75,6 +75,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :dynamo_dbiam, :message, 501, "v1.DynamoDBIAM"
         optional :elastic, :message, 601, "v1.Elastic"
         optional :elasticache_redis, :message, 1601, "v1.ElasticacheRedis"
+        optional :elasticache_redis_iam, :message, 1603, "v1.ElasticacheRedisIAM"
         optional :entra_id, :message, 2803, "v1.EntraID"
         optional :gcp, :message, 2700, "v1.GCP"
         optional :gcp_console, :message, 3300, "v1.GCPConsole"
@@ -1046,6 +1047,25 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port_override, :int32, 2
       optional :tls_required, :bool, 5
       optional :username, :string, 6
+    end
+    add_message "v1.ElasticacheRedisIAM" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :proxy_cluster_id, :string, 32776
+      optional :subdomain, :string, 32775
+      optional :hostname, :string, 1
+      optional :port, :int32, 5
+      optional :port_override, :int32, 2
+      optional :region, :string, 9
+      optional :role_assumption_arn, :string, 10
+      optional :role_external_id, :string, 11
+      optional :tls_required, :bool, 6
+      optional :username, :string, 3
     end
     add_message "v1.EntraID" do
       optional :id, :string, 32768
@@ -2177,6 +2197,7 @@ module V1
   DynamoDBIAM = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DynamoDBIAM").msgclass
   Elastic = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Elastic").msgclass
   ElasticacheRedis = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ElasticacheRedis").msgclass
+  ElasticacheRedisIAM = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ElasticacheRedisIAM").msgclass
   EntraID = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.EntraID").msgclass
   GCP = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GCP").msgclass
   GCPConsole = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GCPConsole").msgclass

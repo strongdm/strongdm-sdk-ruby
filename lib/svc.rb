@@ -6045,6 +6045,7 @@ module SDM #:nodoc:
   # {DynamoDBIAM}
   # {Elastic}
   # {ElasticacheRedis}
+  # {ElasticacheRedisIAM}
   # {EntraID}
   # {GCP}
   # {GCPConsole}
