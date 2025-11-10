@@ -36,6 +36,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :url, :string, 1941301
       optional :deprecation_date, :string, 1941302
       repeated :targets, :string, 1941401
+      optional :custom, :message, 1941305, "v1.CustomOptions"
     end
     add_message "v1.MessageOptions" do
       optional :porcelain, :bool, 1941301

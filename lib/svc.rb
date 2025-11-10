@@ -4061,9 +4061,11 @@ module SDM #:nodoc:
     end
   end
 
-  # Nodes make up the strongDM network, and allow your users to connect securely to your resources. There are two types of nodes:
-  # - **Gateways** are the entry points into network. They listen for connection from the strongDM client, and provide access to databases and servers.
-  # - **Relays** are used to extend the strongDM network into segmented subnets. They provide access to databases and servers but do not listen for incoming connections.
+  # Nodes make up the StrongDM network, and allow your users to connect securely to your resources.
+  # There are three types of nodes:
+  # 1. **Relay:** creates connectivity to your datasources, while maintaining the egress-only nature of your firewall
+  # 2. **Gateway:** a relay that also listens for connections from StrongDM clients
+  # 3. **Proxy Cluster:** a cluster of workers that together mediate access from clients to resources
   #
   # See:
   # {Gateway}
@@ -4241,6 +4243,42 @@ module SDM #:nodoc:
           req.meta.cursor = plumbing_response.meta.next_cursor
         end
       }
+      resp
+    end
+
+    # TCPProbe instructs a Node to connect to an address via TCP and report the
+    # result.
+    def tcp_probe(
+      node_id,
+      host,
+      port,
+      deadline: nil
+    )
+      req = V1::NodeTCPProbeRequest.new()
+
+      req.node_id = (node_id)
+      req.host = (host)
+      req.port = (port)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.tcp_probe(req, metadata: @parent.get_metadata("Nodes.TCPProbe", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = NodeTCPProbeResponse.new()
+      resp.error = (plumbing_response.error)
+      resp.meta = Plumbing::convert_create_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.succeeded = (plumbing_response.succeeded)
       resp
     end
   end

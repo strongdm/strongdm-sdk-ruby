@@ -20,9 +20,11 @@ require "nodes_pb"
 
 module V1
   module Nodes
-    # Nodes make up the strongDM network, and allow your users to connect securely to your resources. There are two types of nodes:
-    # - **Gateways** are the entry points into network. They listen for connection from the strongDM client, and provide access to databases and servers.
-    # - **Relays** are used to extend the strongDM network into segmented subnets. They provide access to databases and servers but do not listen for incoming connections.
+    # Nodes make up the StrongDM network, and allow your users to connect securely to your resources.
+    # There are three types of nodes:
+    # 1. **Relay:** creates connectivity to your datasources, while maintaining the egress-only nature of your firewall
+    # 2. **Gateway:** a relay that also listens for connections from StrongDM clients
+    # 3. **Proxy Cluster:** a cluster of workers that together mediate access from clients to resources
     class Service
       include ::GRPC::GenericService
 
@@ -40,6 +42,9 @@ module V1
       rpc :Delete, ::V1::NodeDeleteRequest, ::V1::NodeDeleteResponse
       # List gets a list of Nodes matching a given set of criteria.
       rpc :List, ::V1::NodeListRequest, ::V1::NodeListResponse
+      # TCPProbe instructs a Node to connect to an address via TCP and report the
+      # result.
+      rpc :TCPProbe, ::V1::NodeTCPProbeRequest, ::V1::NodeTCPProbeResponse
     end
 
     Stub = Service.rpc_stub_class

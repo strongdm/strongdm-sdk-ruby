@@ -1700,6 +1700,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :subdomain, :string, 32775
       optional :downgrade_nla_connections, :bool, 6
       optional :hostname, :string, 1
+      optional :identity_alias_healthcheck_username, :string, 12
+      optional :identity_set_id, :string, 11
       optional :lock_required, :bool, 10
       optional :password, :string, 3
       optional :port, :int32, 5

@@ -11585,6 +11585,46 @@ module SDM
       end
       items
     end
+    def self.convert_node_tcp_probe_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = NodeTCPProbeResponse.new()
+      porcelain.error = (plumbing.error)
+      porcelain.meta = convert_create_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain.succeeded = (plumbing.succeeded)
+      porcelain
+    end
+
+    def self.convert_node_tcp_probe_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::NodeTCPProbeResponse.new()
+      plumbing.error = (porcelain.error)
+      plumbing.meta = convert_create_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing.succeeded = (porcelain.succeeded)
+      plumbing
+    end
+    def self.convert_repeated_node_tcp_probe_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_node_tcp_probe_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_node_tcp_probe_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_node_tcp_probe_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_node_update_response_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -13292,6 +13332,8 @@ module SDM
       porcelain.healthy = (plumbing.healthy)
       porcelain.hostname = (plumbing.hostname)
       porcelain.id = (plumbing.id)
+      porcelain.identity_alias_healthcheck_username = (plumbing.identity_alias_healthcheck_username)
+      porcelain.identity_set_id = (plumbing.identity_set_id)
       porcelain.lock_required = (plumbing.lock_required)
       porcelain.name = (plumbing.name)
       porcelain.password = (plumbing.password)
@@ -13316,6 +13358,8 @@ module SDM
       plumbing.healthy = (porcelain.healthy)
       plumbing.hostname = (porcelain.hostname)
       plumbing.id = (porcelain.id)
+      plumbing.identity_alias_healthcheck_username = (porcelain.identity_alias_healthcheck_username)
+      plumbing.identity_set_id = (porcelain.identity_set_id)
       plumbing.lock_required = (porcelain.lock_required)
       plumbing.name = (porcelain.name)
       plumbing.password = (porcelain.password)

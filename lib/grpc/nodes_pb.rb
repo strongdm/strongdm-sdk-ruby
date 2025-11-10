@@ -70,6 +70,18 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       repeated :nodes, :message, 2, "v1.Node"
       optional :rate_limit, :message, 3, "v1.RateLimitMetadata"
     end
+    add_message "v1.NodeTCPProbeRequest" do
+      optional :meta, :message, 1, "v1.CreateRequestMetadata"
+      optional :node_id, :string, 2
+      optional :host, :string, 3
+      optional :port, :int32, 4
+    end
+    add_message "v1.NodeTCPProbeResponse" do
+      optional :meta, :message, 1, "v1.CreateResponseMetadata"
+      optional :succeeded, :bool, 2
+      optional :error, :string, 3
+      optional :rate_limit, :message, 4, "v1.RateLimitMetadata"
+    end
     add_message "v1.Node" do
       oneof :node do
         optional :relay, :message, 1, "v1.Relay"
@@ -139,6 +151,8 @@ module V1
   NodeDeleteResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.NodeDeleteResponse").msgclass
   NodeListRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.NodeListRequest").msgclass
   NodeListResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.NodeListResponse").msgclass
+  NodeTCPProbeRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.NodeTCPProbeRequest").msgclass
+  NodeTCPProbeResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.NodeTCPProbeResponse").msgclass
   Node = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Node").msgclass
   Relay = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Relay").msgclass
   Gateway = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Gateway").msgclass

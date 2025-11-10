@@ -30,7 +30,7 @@ module SDM #:nodoc:
     DEFAULT_RETRY_FACTOR = 1.6
     DEFAULT_RETRY_JITTER = 0.2
     API_VERSION = "2025-04-14"
-    USER_AGENT = "strongdm-sdk-ruby/15.27.0"
+    USER_AGENT = "strongdm-sdk-ruby/15.28.0"
     private_constant :DEFAULT_BASE_RETRY_DELAY, :DEFAULT_MAX_RETRY_DELAY, :DEFAULT_RETRY_FACTOR, :DEFAULT_RETRY_JITTER, :API_VERSION, :USER_AGENT
 
     # Creates a new strongDM API client.
@@ -380,9 +380,11 @@ module SDM #:nodoc:
     #
     # See {ManagedSecrets}.
     attr_reader :managed_secrets
-    # Nodes make up the strongDM network, and allow your users to connect securely to your resources. There are two types of nodes:
-    # - **Gateways** are the entry points into network. They listen for connection from the strongDM client, and provide access to databases and servers.
-    # - **Relays** are used to extend the strongDM network into segmented subnets. They provide access to databases and servers but do not listen for incoming connections.
+    # Nodes make up the StrongDM network, and allow your users to connect securely to your resources.
+    # There are three types of nodes:
+    # 1. **Relay:** creates connectivity to your datasources, while maintaining the egress-only nature of your firewall
+    # 2. **Gateway:** a relay that also listens for connections from StrongDM clients
+    # 3. **Proxy Cluster:** a cluster of workers that together mediate access from clients to resources
     #
     # See {Nodes}.
     attr_reader :nodes
@@ -694,9 +696,11 @@ module SDM #:nodoc:
     #
     # See {SnapshotIdentitySets}.
     attr_reader :identity_sets
-    # Nodes make up the strongDM network, and allow your users to connect securely to your resources. There are two types of nodes:
-    # - **Gateways** are the entry points into network. They listen for connection from the strongDM client, and provide access to databases and servers.
-    # - **Relays** are used to extend the strongDM network into segmented subnets. They provide access to databases and servers but do not listen for incoming connections.
+    # Nodes make up the StrongDM network, and allow your users to connect securely to your resources.
+    # There are three types of nodes:
+    # 1. **Relay:** creates connectivity to your datasources, while maintaining the egress-only nature of your firewall
+    # 2. **Gateway:** a relay that also listens for connections from StrongDM clients
+    # 3. **Proxy Cluster:** a cluster of workers that together mediate access from clients to resources
     #
     # See {SnapshotNodes}.
     attr_reader :nodes

@@ -11175,6 +11175,38 @@ module SDM
     end
   end
 
+  # NodeTCPProbeResponse reports the result of a TCP probe.
+  class NodeTCPProbeResponse
+    # The connection error reported by the node, or the empty string if the probe succeeded.
+    attr_accessor :error
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+    # True if the node was able to connect to the target address.
+    attr_accessor :succeeded
+
+    def initialize(
+      error: nil,
+      meta: nil,
+      rate_limit: nil,
+      succeeded: nil
+    )
+      @error = error == nil ? "" : error
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+      @succeeded = succeeded == nil ? false : succeeded
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   # NodeUpdateResponse returns the fields of a Node after it has been updated by
   # a NodeUpdateRequest.
   class NodeUpdateResponse
@@ -12802,6 +12834,10 @@ module SDM
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
+    # The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+    attr_accessor :identity_alias_healthcheck_username
+    # if provided use identity_set to map username to secret store path
+    attr_accessor :identity_set_id
     # When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
     attr_accessor :lock_required
     # Unique human-readable name of the Resource.
@@ -12830,6 +12866,8 @@ module SDM
       healthy: nil,
       hostname: nil,
       id: nil,
+      identity_alias_healthcheck_username: nil,
+      identity_set_id: nil,
       lock_required: nil,
       name: nil,
       password: nil,
@@ -12847,6 +12885,8 @@ module SDM
       @healthy = healthy == nil ? false : healthy
       @hostname = hostname == nil ? "" : hostname
       @id = id == nil ? "" : id
+      @identity_alias_healthcheck_username = identity_alias_healthcheck_username == nil ? "" : identity_alias_healthcheck_username
+      @identity_set_id = identity_set_id == nil ? "" : identity_set_id
       @lock_required = lock_required == nil ? false : lock_required
       @name = name == nil ? "" : name
       @password = password == nil ? "" : password
