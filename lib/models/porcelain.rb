@@ -16424,7 +16424,6 @@ module SDM
     end
   end
 
-  # VaultAWSEC2CertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class VaultAWSEC2CertSSHStore
     # Unique identifier of the SecretStore.
     attr_accessor :id
@@ -16472,7 +16471,6 @@ module SDM
     end
   end
 
-  # VaultAWSEC2CertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class VaultAWSEC2CertX509Store
     # Unique identifier of the SecretStore.
     attr_accessor :id
@@ -16555,7 +16553,6 @@ module SDM
     end
   end
 
-  # VaultAWSIAMCertSSHStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class VaultAWSIAMCertSSHStore
     # Unique identifier of the SecretStore.
     attr_accessor :id
@@ -16603,7 +16600,6 @@ module SDM
     end
   end
 
-  # VaultAWSIAMCertX509Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class VaultAWSIAMCertX509Store
     # Unique identifier of the SecretStore.
     attr_accessor :id
