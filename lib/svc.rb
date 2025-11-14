@@ -6909,6 +6909,7 @@ module SDM #:nodoc:
   # See:
   # {ActiveDirectoryEngine}
   # {KeyValueEngine}
+  # {MysqlEngine}
   # {PostgresEngine}
   class SecretEngines
     extend Gem::Deprecate

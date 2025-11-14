@@ -96,12 +96,14 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :SCIM, :string, 13
       optional :manager_id, :string, 14
       optional :resolved_manager_id, :string, 15
+      optional :created_at, :message, 16, "google.protobuf.Timestamp"
     end
     add_message "v1.Service" do
       optional :id, :string, 1
       optional :name, :string, 2
       optional :suspended, :bool, 3
       optional :tags, :message, 4, "v1.Tags"
+      optional :created_at, :message, 5, "google.protobuf.Timestamp"
     end
     add_message "v1.Token" do
       optional :id, :string, 1
@@ -113,6 +115,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :account_type, :string, 7
       repeated :permissions, :string, 8
       optional :duration, :message, 9, "google.protobuf.Duration"
+      optional :created_at, :message, 10, "google.protobuf.Timestamp"
     end
   end
 end

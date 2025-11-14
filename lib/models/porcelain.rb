@@ -10877,6 +10877,90 @@ module SDM
     end
   end
 
+  # MysqlEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class MysqlEngine
+    # The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
+    attr_accessor :after_read_ttl
+    # Database is the database to verify credential against.
+    attr_accessor :database
+    # Hostname is the hostname or IP address of the MySQL server.
+    attr_accessor :hostname
+    # Unique identifier of the Secret Engine.
+    attr_accessor :id
+    # An interval of public/private key rotation for secret engine in days
+    attr_accessor :key_rotation_interval_days
+    # Unique human-readable name of the Secret Engine.
+    attr_accessor :name
+    # Password is the password to connect to the MySQL server.
+    attr_accessor :password
+    # Policy for password creation
+    attr_accessor :policy
+    # Port is the port number of the MySQL server.
+    attr_accessor :port
+    # Public key linked with a secret engine
+    attr_accessor :public_key
+    # Backing secret store identifier
+    attr_accessor :secret_store_id
+    # Backing Secret Store root path where managed secrets are going to be stored
+    attr_accessor :secret_store_root_path
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+    # TLS enables TLS/SSL when connecting to the MySQL server.
+    attr_accessor :tls
+    # TLS disable certificate verification
+    attr_accessor :tls_skip_verify
+    # The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
+    attr_accessor :ttl
+    # Username is the username to connect to the MySQL server.
+    attr_accessor :username
+
+    def initialize(
+      after_read_ttl: nil,
+      database: nil,
+      hostname: nil,
+      id: nil,
+      key_rotation_interval_days: nil,
+      name: nil,
+      password: nil,
+      policy: nil,
+      port: nil,
+      public_key: nil,
+      secret_store_id: nil,
+      secret_store_root_path: nil,
+      tags: nil,
+      tls: nil,
+      tls_skip_verify: nil,
+      ttl: nil,
+      username: nil
+    )
+      @after_read_ttl = after_read_ttl == nil ? nil : after_read_ttl
+      @database = database == nil ? "" : database
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @key_rotation_interval_days = key_rotation_interval_days == nil ? 0 : key_rotation_interval_days
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @policy = policy == nil ? nil : policy
+      @port = port == nil ? 0 : port
+      @public_key = public_key == nil ? "" : public_key
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @secret_store_root_path = secret_store_root_path == nil ? "" : secret_store_root_path
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tls = tls == nil ? false : tls
+      @tls_skip_verify = tls_skip_verify == nil ? false : tls_skip_verify
+      @ttl = ttl == nil ? nil : ttl
+      @username = username == nil ? "" : username
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class Neptune
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
@@ -15687,6 +15771,8 @@ module SDM
   # A Service is a service account that can connect to resources they are granted
   # directly, or granted via roles. Services are typically automated jobs.
   class Service
+    # CreatedAt is the timestamp when the service was created
+    attr_accessor :created_at
     # Unique identifier of the Service.
     attr_accessor :id
     # Unique human-readable name of the Service.
@@ -15697,11 +15783,13 @@ module SDM
     attr_accessor :tags
 
     def initialize(
+      created_at: nil,
       id: nil,
       name: nil,
       suspended: nil,
       tags: nil
     )
+      @created_at = created_at == nil ? nil : created_at
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
       @suspended = suspended == nil ? false : suspended
@@ -16215,6 +16303,8 @@ module SDM
   class Token
     # Corresponds to the type of token, e.g. api or admin-token.
     attr_accessor :account_type
+    # CreatedAt is the timestamp when the token was created
+    attr_accessor :created_at
     # The timestamp when the Token will expire.
     attr_accessor :deadline
     # Duration from token creation to expiration.
@@ -16234,6 +16324,7 @@ module SDM
 
     def initialize(
       account_type: nil,
+      created_at: nil,
       deadline: nil,
       duration: nil,
       id: nil,
@@ -16244,6 +16335,7 @@ module SDM
       tags: nil
     )
       @account_type = account_type == nil ? "" : account_type
+      @created_at = created_at == nil ? nil : created_at
       @deadline = deadline == nil ? nil : deadline
       @duration = duration == nil ? nil : duration
       @id = id == nil ? "" : id
@@ -16357,6 +16449,8 @@ module SDM
   class User
     # SCIM contains the raw SCIM metadata for the user. This is a read-only field.
     attr_accessor :scim
+    # CreatedAt is the timestamp when the user was created
+    attr_accessor :created_at
     # The User's email address. Must be unique.
     attr_accessor :email
     # External ID is an alternative unique ID this user is represented by within an external service.
@@ -16387,6 +16481,7 @@ module SDM
 
     def initialize(
       scim: nil,
+      created_at: nil,
       email: nil,
       external_id: nil,
       first_name: nil,
@@ -16401,6 +16496,7 @@ module SDM
       tags: nil
     )
       @scim = scim == nil ? "" : scim
+      @created_at = created_at == nil ? nil : created_at
       @email = email == nil ? "" : email
       @external_id = external_id == nil ? "" : external_id
       @first_name = first_name == nil ? "" : first_name

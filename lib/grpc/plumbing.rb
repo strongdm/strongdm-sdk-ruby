@@ -11224,6 +11224,72 @@ module SDM
       end
       items
     end
+    def self.convert_mysql_engine_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = MysqlEngine.new()
+      porcelain.after_read_ttl = convert_duration_to_porcelain(plumbing.after_read_ttl)
+      porcelain.database = (plumbing.database)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.id = (plumbing.id)
+      porcelain.key_rotation_interval_days = (plumbing.key_rotation_interval_days)
+      porcelain.name = (plumbing.name)
+      porcelain.password = (plumbing.password)
+      porcelain.policy = convert_secret_engine_policy_to_porcelain(plumbing.policy)
+      porcelain.port = (plumbing.port)
+      porcelain.public_key = (plumbing.public_key)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.secret_store_root_path = (plumbing.secret_store_root_path)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.tls = (plumbing.tls)
+      porcelain.tls_skip_verify = (plumbing.tls_skip_verify)
+      porcelain.ttl = convert_duration_to_porcelain(plumbing.ttl)
+      porcelain.username = (plumbing.username)
+      porcelain
+    end
+
+    def self.convert_mysql_engine_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::MysqlEngine.new()
+      plumbing.after_read_ttl = convert_duration_to_plumbing(porcelain.after_read_ttl)
+      plumbing.database = (porcelain.database)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.key_rotation_interval_days = (porcelain.key_rotation_interval_days)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.policy = convert_secret_engine_policy_to_plumbing(porcelain.policy)
+      plumbing.port = (porcelain.port)
+      plumbing.public_key = (porcelain.public_key)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.secret_store_root_path = (porcelain.secret_store_root_path)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.tls = (porcelain.tls)
+      plumbing.tls_skip_verify = (porcelain.tls_skip_verify)
+      plumbing.ttl = convert_duration_to_plumbing(porcelain.ttl)
+      plumbing.username = (porcelain.username)
+      plumbing
+    end
+    def self.convert_repeated_mysql_engine_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_mysql_engine_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_mysql_engine_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_mysql_engine_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_neptune_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -16271,6 +16337,9 @@ module SDM
       if porcelain.instance_of? KeyValueEngine
         plumbing.key_value = convert_key_value_engine_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? MysqlEngine
+        plumbing.mysql = convert_mysql_engine_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? PostgresEngine
         plumbing.postgres = convert_postgres_engine_to_plumbing(porcelain)
       end
@@ -16286,6 +16355,9 @@ module SDM
       end
       if plumbing.key_value != nil
         return convert_key_value_engine_to_porcelain(plumbing.key_value)
+      end
+      if plumbing.mysql != nil
+        return convert_mysql_engine_to_porcelain(plumbing.mysql)
       end
       if plumbing.postgres != nil
         return convert_postgres_engine_to_porcelain(plumbing.postgres)
@@ -17319,6 +17391,7 @@ module SDM
         return nil
       end
       porcelain = Service.new()
+      porcelain.created_at = convert_timestamp_to_porcelain(plumbing.created_at)
       porcelain.id = (plumbing.id)
       porcelain.name = (plumbing.name)
       porcelain.suspended = (plumbing.suspended)
@@ -17331,6 +17404,7 @@ module SDM
         return nil
       end
       plumbing = V1::Service.new()
+      plumbing.created_at = convert_timestamp_to_plumbing(porcelain.created_at)
       plumbing.id = (porcelain.id)
       plumbing.name = (porcelain.name)
       plumbing.suspended = (porcelain.suspended)
@@ -17802,6 +17876,7 @@ module SDM
       end
       porcelain = Token.new()
       porcelain.account_type = (plumbing.account_type)
+      porcelain.created_at = convert_timestamp_to_porcelain(plumbing.created_at)
       porcelain.deadline = convert_timestamp_to_porcelain(plumbing.deadline)
       porcelain.duration = convert_duration_to_porcelain(plumbing.duration)
       porcelain.id = (plumbing.id)
@@ -17819,6 +17894,7 @@ module SDM
       end
       plumbing = V1::Token.new()
       plumbing.account_type = (porcelain.account_type)
+      plumbing.created_at = convert_timestamp_to_plumbing(porcelain.created_at)
       plumbing.deadline = convert_timestamp_to_plumbing(porcelain.deadline)
       plumbing.duration = convert_duration_to_plumbing(porcelain.duration)
       plumbing.id = (porcelain.id)
@@ -17946,6 +18022,7 @@ module SDM
       end
       porcelain = User.new()
       porcelain.scim = (plumbing.SCIM)
+      porcelain.created_at = convert_timestamp_to_porcelain(plumbing.created_at)
       porcelain.email = (plumbing.email)
       porcelain.external_id = (plumbing.external_id)
       porcelain.first_name = (plumbing.first_name)
@@ -17967,6 +18044,7 @@ module SDM
       end
       plumbing = V1::User.new()
       plumbing.SCIM = (porcelain.scim)
+      plumbing.created_at = convert_timestamp_to_plumbing(porcelain.created_at)
       plumbing.email = (porcelain.email)
       plumbing.external_id = (porcelain.external_id)
       plumbing.first_name = (porcelain.first_name)
