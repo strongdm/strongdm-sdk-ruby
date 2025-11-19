@@ -10877,7 +10877,6 @@ module SDM
     end
   end
 
-  # MysqlEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class MysqlEngine
     # The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
     attr_accessor :after_read_ttl
@@ -12349,7 +12348,6 @@ module SDM
     end
   end
 
-  # PostgresEngine is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class PostgresEngine
     # The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
     attr_accessor :after_read_ttl
@@ -16034,7 +16032,89 @@ module SDM
     end
   end
 
-  # StrongVaultStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class SqlserverEngine
+    # The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
+    attr_accessor :after_read_ttl
+    # Database is the database to verify credential against.
+    attr_accessor :database
+    # Hostname is the hostname or IP address of the SQL Server.
+    attr_accessor :hostname
+    # Unique identifier of the Secret Engine.
+    attr_accessor :id
+    # An interval of public/private key rotation for secret engine in days
+    attr_accessor :key_rotation_interval_days
+    # Unique human-readable name of the Secret Engine.
+    attr_accessor :name
+    # Password is the password to connect to the SQL Server server.
+    attr_accessor :password
+    # Policy for password creation
+    attr_accessor :policy
+    # Port is the port number of the SQL Server server.
+    attr_accessor :port
+    # Public key linked with a secret engine
+    attr_accessor :public_key
+    # Backing secret store identifier
+    attr_accessor :secret_store_id
+    # Backing Secret Store root path where managed secrets are going to be stored
+    attr_accessor :secret_store_root_path
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+    # TLS enables TLS/SSL when connecting to the SQL Server server.
+    attr_accessor :tls
+    # TLS disable certificate verification
+    attr_accessor :tls_skip_verify
+    # The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
+    attr_accessor :ttl
+    # Username is the username to connect to the SQL Server.
+    attr_accessor :username
+
+    def initialize(
+      after_read_ttl: nil,
+      database: nil,
+      hostname: nil,
+      id: nil,
+      key_rotation_interval_days: nil,
+      name: nil,
+      password: nil,
+      policy: nil,
+      port: nil,
+      public_key: nil,
+      secret_store_id: nil,
+      secret_store_root_path: nil,
+      tags: nil,
+      tls: nil,
+      tls_skip_verify: nil,
+      ttl: nil,
+      username: nil
+    )
+      @after_read_ttl = after_read_ttl == nil ? nil : after_read_ttl
+      @database = database == nil ? "" : database
+      @hostname = hostname == nil ? "" : hostname
+      @id = id == nil ? "" : id
+      @key_rotation_interval_days = key_rotation_interval_days == nil ? 0 : key_rotation_interval_days
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @policy = policy == nil ? nil : policy
+      @port = port == nil ? 0 : port
+      @public_key = public_key == nil ? "" : public_key
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @secret_store_root_path = secret_store_root_path == nil ? "" : secret_store_root_path
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tls = tls == nil ? false : tls
+      @tls_skip_verify = tls_skip_verify == nil ? false : tls_skip_verify
+      @ttl = ttl == nil ? nil : ttl
+      @username = username == nil ? "" : username
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class StrongVaultStore
     # Unique identifier of the SecretStore.
     attr_accessor :id

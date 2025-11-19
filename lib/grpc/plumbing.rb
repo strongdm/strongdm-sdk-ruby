@@ -16343,6 +16343,9 @@ module SDM
       if porcelain.instance_of? PostgresEngine
         plumbing.postgres = convert_postgres_engine_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? SqlserverEngine
+        plumbing.sqlserver = convert_sqlserver_engine_to_plumbing(porcelain)
+      end
       plumbing
     end
 
@@ -16361,6 +16364,9 @@ module SDM
       end
       if plumbing.postgres != nil
         return convert_postgres_engine_to_porcelain(plumbing.postgres)
+      end
+      if plumbing.sqlserver != nil
+        return convert_sqlserver_engine_to_porcelain(plumbing.sqlserver)
       end
       raise UnknownError.new("unknown polymorphic type, please upgrade your SDK")
     end
@@ -17612,6 +17618,72 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_snowsight_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_sqlserver_engine_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = SqlserverEngine.new()
+      porcelain.after_read_ttl = convert_duration_to_porcelain(plumbing.after_read_ttl)
+      porcelain.database = (plumbing.database)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.id = (plumbing.id)
+      porcelain.key_rotation_interval_days = (plumbing.key_rotation_interval_days)
+      porcelain.name = (plumbing.name)
+      porcelain.password = (plumbing.password)
+      porcelain.policy = convert_secret_engine_policy_to_porcelain(plumbing.policy)
+      porcelain.port = (plumbing.port)
+      porcelain.public_key = (plumbing.public_key)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.secret_store_root_path = (plumbing.secret_store_root_path)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.tls = (plumbing.tls)
+      porcelain.tls_skip_verify = (plumbing.tls_skip_verify)
+      porcelain.ttl = convert_duration_to_porcelain(plumbing.ttl)
+      porcelain.username = (plumbing.username)
+      porcelain
+    end
+
+    def self.convert_sqlserver_engine_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::SqlserverEngine.new()
+      plumbing.after_read_ttl = convert_duration_to_plumbing(porcelain.after_read_ttl)
+      plumbing.database = (porcelain.database)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.key_rotation_interval_days = (porcelain.key_rotation_interval_days)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.policy = convert_secret_engine_policy_to_plumbing(porcelain.policy)
+      plumbing.port = (porcelain.port)
+      plumbing.public_key = (porcelain.public_key)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.secret_store_root_path = (porcelain.secret_store_root_path)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.tls = (porcelain.tls)
+      plumbing.tls_skip_verify = (porcelain.tls_skip_verify)
+      plumbing.ttl = convert_duration_to_plumbing(porcelain.ttl)
+      plumbing.username = (porcelain.username)
+      plumbing
+    end
+    def self.convert_repeated_sqlserver_engine_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_sqlserver_engine_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_sqlserver_engine_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_sqlserver_engine_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
