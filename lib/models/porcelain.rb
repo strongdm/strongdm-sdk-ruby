@@ -12993,7 +12993,7 @@ module SDM
   class RDPCert
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
-    # Comma-separated list of Active Directory Domain Controller hostnames for LDAPS SID resolution. Utilized for strong certificate mapping in full enforcement mode when the identity alias does not specify a SID.
+    # Comma-separated list of Active Directory Domain Controller hostnames. Required in on-premises AD environments for Kerberos Network Level Authentication (NLA), and for LDAPS SID resolution for strong certificate mapping in full enforcement mode when the identity alias does not specify a SID. Unused for Entra ID.
     attr_accessor :dc_hostnames
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
@@ -13003,7 +13003,7 @@ module SDM
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
-    # The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+    # Username of the AD service account for health checks, and LDAPS SID resolution if necessary. Required for on-premises AD environments, unused for Entra ID.
     attr_accessor :identity_alias_healthcheck_username
     # The ID of the identity set to use for identity connections.
     attr_accessor :identity_set_id
@@ -13019,7 +13019,9 @@ module SDM
     attr_accessor :proxy_cluster_id
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
-    # Windows Security Identifier (SID) of the configured Username, required for strong certificate mapping in full enforcement mode.
+    # Fully-qualified DNS name of the target Windows server, including the AD domain. Must match the Service Principal Name (SPN) of the server in AD. Required in on-premises AD environments for Kerberos Network Level Authentication (NLA), unused for Entra ID.
+    attr_accessor :server_fqdn
+    # Windows Security Identifier (SID) of the configured Username, or AD service account if using LDAPS SID resolution. Required in on-premises AD environments for strong certificate mapping in full enforcement mode, unused for Entra ID.
     attr_accessor :sid
     # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
     attr_accessor :subdomain
@@ -13043,6 +13045,7 @@ module SDM
       port_override: nil,
       proxy_cluster_id: nil,
       secret_store_id: nil,
+      server_fqdn: nil,
       sid: nil,
       subdomain: nil,
       tags: nil,
@@ -13062,6 +13065,7 @@ module SDM
       @port_override = port_override == nil ? 0 : port_override
       @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @server_fqdn = server_fqdn == nil ? "" : server_fqdn
       @sid = sid == nil ? "" : sid
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags

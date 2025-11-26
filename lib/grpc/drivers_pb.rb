@@ -1725,6 +1725,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :lock_required, :bool, 11
       optional :port, :int32, 4
       optional :port_override, :int32, 3
+      optional :server_fqdn, :string, 7
       optional :sid, :string, 12
       optional :username, :string, 2
     end
