@@ -9310,7 +9310,7 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
-    # The password to authenticate with.
+    # OAuth App Client Secret
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
@@ -9324,6 +9324,8 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # OAuth App Client ID
+    attr_accessor :username
 
     def initialize(
       bind_interface: nil,
@@ -9338,7 +9340,8 @@ module SDM
       proxy_cluster_id: nil,
       secret_store_id: nil,
       subdomain: nil,
-      tags: nil
+      tags: nil,
+      username: nil
     )
       @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
@@ -9353,6 +9356,7 @@ module SDM
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @username = username == nil ? "" : username
     end
 
     def to_json(options = {})
