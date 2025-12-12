@@ -49,6 +49,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     end
     add_message "v1.OneofOptions" do
       repeated :common_fields, :string, 1941381
+      optional :filter_name, :string, 1941382
     end
     add_message "v1.FieldOptions" do
       optional :porcelain, :bool, 1941302

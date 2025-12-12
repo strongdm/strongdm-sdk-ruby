@@ -30,7 +30,7 @@ module SDM #:nodoc:
     DEFAULT_RETRY_FACTOR = 1.6
     DEFAULT_RETRY_JITTER = 0.2
     API_VERSION = "2025-04-14"
-    USER_AGENT = "strongdm-sdk-ruby/15.39.0"
+    USER_AGENT = "strongdm-sdk-ruby/15.40.0"
     private_constant :DEFAULT_BASE_RETRY_DELAY, :DEFAULT_MAX_RETRY_DELAY, :DEFAULT_RETRY_FACTOR, :DEFAULT_RETRY_JITTER, :API_VERSION, :USER_AGENT
 
     # Creates a new strongDM API client.
@@ -79,6 +79,7 @@ module SDM #:nodoc:
       @approval_workflows = ApprovalWorkflows.new(@channel, self)
       @approval_workflows_history = ApprovalWorkflowsHistory.new(@channel, self)
       @control_panel = ControlPanel.new(@channel, self)
+      @discovery_connectors = DiscoveryConnectors.new(@channel, self)
       @roles = Roles.new(@channel, self)
       @groups = Groups.new(@channel, self)
       @groups_history = GroupsHistory.new(@channel, self)
@@ -329,6 +330,11 @@ module SDM #:nodoc:
     #
     # See {ControlPanel}.
     attr_reader :control_panel
+    # A Discovery Connector is a configuration object for performing Resource
+    # Scans in remote systems such as AWS, GCP, Azure, and other systems.
+    #
+    # See {DiscoveryConnectors}.
+    attr_reader :discovery_connectors
     # A Role has a list of access rules which determine which Resources the members
     # of the Role have access to. An Account can be a member of multiple Roles via
     # AccountAttachments.
@@ -550,6 +556,7 @@ module SDM #:nodoc:
       @approval_workflows = ApprovalWorkflows.new(@channel, self)
       @approval_workflows_history = ApprovalWorkflowsHistory.new(@channel, self)
       @control_panel = ControlPanel.new(@channel, self)
+      @discovery_connectors = DiscoveryConnectors.new(@channel, self)
       @roles = Roles.new(@channel, self)
       @groups = Groups.new(@channel, self)
       @groups_history = GroupsHistory.new(@channel, self)
@@ -608,6 +615,7 @@ module SDM #:nodoc:
       @approval_workflow_approvers = SnapshotApprovalWorkflowApprovers.new(client.approval_workflow_approvers)
       @approval_workflow_steps = SnapshotApprovalWorkflowSteps.new(client.approval_workflow_steps)
       @approval_workflows = SnapshotApprovalWorkflows.new(client.approval_workflows)
+      @discovery_connectors = SnapshotDiscoveryConnectors.new(client.discovery_connectors)
       @roles = SnapshotRoles.new(client.roles)
       @groups = SnapshotGroups.new(client.groups)
       @groups_roles = SnapshotGroupsRoles.new(client.groups_roles)
@@ -672,6 +680,11 @@ module SDM #:nodoc:
     #
     # See {SnapshotApprovalWorkflows}.
     attr_reader :approval_workflows
+    # A Discovery Connector is a configuration object for performing Resource
+    # Scans in remote systems such as AWS, GCP, Azure, and other systems.
+    #
+    # See {SnapshotDiscoveryConnectors}.
+    attr_reader :discovery_connectors
     # A Role has a list of access rules which determine which Resources the members
     # of the Role have access to. An Account can be a member of multiple Roles via
     # AccountAttachments.

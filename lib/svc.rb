@@ -2344,6 +2344,220 @@ module SDM #:nodoc:
     end
   end
 
+  # A Discovery Connector is a configuration object for performing Resource
+  # Scans in remote systems such as AWS, GCP, Azure, and other systems.
+  #
+  # See:
+  # {AWSConnector}
+  # {AzureConnector}
+  # {GCPConnector}
+  class DiscoveryConnectors
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::DiscoveryConnectors::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # Create adds a new Connector.
+    def create(
+      connector,
+      deadline: nil
+    )
+      req = V1::ConnectorCreateRequest.new()
+
+      req.connector = Plumbing::convert_connector_to_plumbing(connector)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.create(req, metadata: @parent.get_metadata("DiscoveryConnectors.Create", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = ConnectorCreateResponse.new()
+      resp.connector = Plumbing::convert_connector_to_porcelain(plumbing_response.connector)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Get reads one Connector by ID
+    def get(
+      id,
+      deadline: nil
+    )
+      req = V1::ConnectorGetRequest.new()
+      if not @parent.snapshot_time.nil?
+        req.meta = V1::GetRequestMetadata.new()
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.get(req, metadata: @parent.get_metadata("DiscoveryConnectors.Get", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = ConnectorGetResponse.new()
+      resp.connector = Plumbing::convert_connector_to_porcelain(plumbing_response.connector)
+      resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Update replaces all the fields of a Connector by ID.
+    def update(
+      connector,
+      deadline: nil
+    )
+      req = V1::ConnectorUpdateRequest.new()
+
+      req.connector = Plumbing::convert_connector_to_plumbing(connector)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.update(req, metadata: @parent.get_metadata("DiscoveryConnectors.Update", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = ConnectorUpdateResponse.new()
+      resp.connector = Plumbing::convert_connector_to_porcelain(plumbing_response.connector)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # Delete removes a Connector by ID.
+    def delete(
+      id,
+      deadline: nil
+    )
+      req = V1::ConnectorDeleteRequest.new()
+
+      req.id = (id)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.delete(req, metadata: @parent.get_metadata("DiscoveryConnectors.Delete", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      resp = ConnectorDeleteResponse.new()
+      resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # List gets a list of Connectors matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::ConnectorListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      if not @parent.page_limit.nil?
+        req.meta.limit = @parent.page_limit
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("DiscoveryConnectors.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.connectors.each do |plumbing_item|
+            g.yield Plumbing::convert_connector_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # SnapshotDiscoveryConnectors exposes the read only methods of the DiscoveryConnectors
+  # service for historical queries.
+  class SnapshotDiscoveryConnectors
+    extend Gem::Deprecate
+
+    def initialize(discovery_connectors)
+      @discovery_connectors = discovery_connectors
+    end
+
+    # Get reads one Connector by ID
+    def get(
+      id,
+      deadline: nil
+    )
+      return @discovery_connectors.get(
+               id,
+               deadline: deadline,
+             )
+    end
+
+    # List gets a list of Connectors matching a given set of criteria.
+    def list(
+      filter,
+      *args,
+      deadline: nil
+    )
+      return @discovery_connectors.list(
+               filter,
+                            *args,
+                            deadline: deadline,
+             )
+    end
+  end
+
   # A Role has a list of access rules which determine which Resources the members
   # of the Role have access to. An Account can be a member of multiple Roles via
   # AccountAttachments.

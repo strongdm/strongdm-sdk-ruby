@@ -636,6 +636,59 @@ module SDM
     end
   end
 
+  class AWSConnector
+    # AccountIds is the list of AWS Accounts to scan
+    attr_accessor :account_ids
+    # Description of the Connector.
+    attr_accessor :description
+    # ExcludeTags filters out discovered resources that have the tag and value.
+    # We do allow duplicate tag names for ExcludeTags to support multiple excluded values for the tag.
+    attr_accessor :exclude_tags
+    # Unique identifier of the Connector.
+    attr_accessor :id
+    # IncludeTags only discovers cloud resources that have one of the included tags.
+    # We do not allow duplicate tag names for IncludeTags
+    attr_accessor :include_tags
+    # Unique human-readable name of the Connector.
+    attr_accessor :name
+    # RoleName is the Role we're assuming into for an account
+    attr_accessor :role_name
+    # ScanPeriod identifies which remote system this Connector discovers
+    attr_accessor :scan_period
+    # Services is a list of services this connector should scan.
+    attr_accessor :services
+
+    def initialize(
+      account_ids: nil,
+      description: nil,
+      exclude_tags: nil,
+      id: nil,
+      include_tags: nil,
+      name: nil,
+      role_name: nil,
+      scan_period: nil,
+      services: nil
+    )
+      @account_ids = account_ids == nil ? [] : account_ids
+      @description = description == nil ? "" : description
+      @exclude_tags = exclude_tags == nil ? [] : exclude_tags
+      @id = id == nil ? "" : id
+      @include_tags = include_tags == nil ? [] : include_tags
+      @name = name == nil ? "" : name
+      @role_name = role_name == nil ? "" : role_name
+      @scan_period = scan_period == nil ? "" : scan_period
+      @services = services == nil ? [] : services
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class AWSConsole
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
@@ -4180,6 +4233,63 @@ module SDM
     end
   end
 
+  class AzureConnector
+    # ClientId is the ID of the Application / Service Account we're acting as
+    attr_accessor :client_id
+    # Description of the Connector.
+    attr_accessor :description
+    # ExcludeTags filters out discovered resources that have the tag and value.
+    # We do allow duplicate tag names for ExcludeTags to support multiple excluded values for the tag.
+    attr_accessor :exclude_tags
+    # Unique identifier of the Connector.
+    attr_accessor :id
+    # IncludeTags only discovers cloud resources that have one of the included tags.
+    # We do not allow duplicate tag names for IncludeTags
+    attr_accessor :include_tags
+    # Unique human-readable name of the Connector.
+    attr_accessor :name
+    # ScanPeriod identifies which remote system this Connector discovers
+    attr_accessor :scan_period
+    # Services is a list of services this connector should scan.
+    attr_accessor :services
+    # SubscriptionIds are the targets of discovery.
+    attr_accessor :subscription_ids
+    # TenantId is the Azure Tenant we're discovering in
+    attr_accessor :tenant_id
+
+    def initialize(
+      client_id: nil,
+      description: nil,
+      exclude_tags: nil,
+      id: nil,
+      include_tags: nil,
+      name: nil,
+      scan_period: nil,
+      services: nil,
+      subscription_ids: nil,
+      tenant_id: nil
+    )
+      @client_id = client_id == nil ? "" : client_id
+      @description = description == nil ? "" : description
+      @exclude_tags = exclude_tags == nil ? [] : exclude_tags
+      @id = id == nil ? "" : id
+      @include_tags = include_tags == nil ? [] : include_tags
+      @name = name == nil ? "" : name
+      @scan_period = scan_period == nil ? "" : scan_period
+      @services = services == nil ? [] : services
+      @subscription_ids = subscription_ids == nil ? [] : subscription_ids
+      @tenant_id = tenant_id == nil ? "" : tenant_id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class AzureMysql
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
@@ -5136,6 +5246,228 @@ module SDM
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
       @username = username == nil ? "" : username
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ConnectorCreateRequest specifies a connector to create.
+  class ConnectorCreateRequest
+    # Parameters to define the new Connector.
+    attr_accessor :connector
+
+    def initialize(
+      connector: nil
+    )
+      @connector = connector == nil ? nil : connector
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ConnectorCreateResponse reports the result of a create.
+  class ConnectorCreateResponse
+    # The created Connector.
+    attr_accessor :connector
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      connector: nil,
+      rate_limit: nil
+    )
+      @connector = connector == nil ? nil : connector
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ConnectorDeleteRequest identifies a connector by ID to delete.
+  class ConnectorDeleteRequest
+    # The unique identifier of the connector to delete.
+    attr_accessor :id
+
+    def initialize(
+      id: nil
+    )
+      @id = id == nil ? "" : id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ConnectorDeleteResponse returns information about a connector that was deleted.
+  class ConnectorDeleteResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      meta: nil,
+      rate_limit: nil
+    )
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ConnectorGetRequest specifies which Connector to retrieve.
+  class ConnectorGetRequest
+    # The unique identifier of the Connector to retrieve.
+    attr_accessor :id
+
+    def initialize(
+      id: nil
+    )
+      @id = id == nil ? "" : id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ConnectorGetResponse returns a requested Connector.
+  class ConnectorGetResponse
+    # The requested Connector.
+    attr_accessor :connector
+    # Reserved for future use.
+    attr_accessor :meta
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      connector: nil,
+      meta: nil,
+      rate_limit: nil
+    )
+      @connector = connector == nil ? nil : connector
+      @meta = meta == nil ? nil : meta
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ConnectorListRequest specifies criteria for retrieving a list of connectors.
+  class ConnectorListRequest
+    # A human-readable filter query string.
+    attr_accessor :filter
+
+    def initialize(
+      filter: nil
+    )
+      @filter = filter == nil ? "" : filter
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ConnectorListResponse returns a list of connectors that meet the criteria of a
+  # ConnectorListRequest.
+  class ConnectorListResponse
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      rate_limit: nil
+    )
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ConnectorUpdateRequest updates a connector.
+  class ConnectorUpdateRequest
+    # Parameters to overwrite the specified connector.
+    attr_accessor :connector
+
+    def initialize(
+      connector: nil
+    )
+      @connector = connector == nil ? nil : connector
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # ConnectorUpdateResponse returns the fields of a connector after it has been updated by
+  # a connectorUpdateRequest.
+  class ConnectorUpdateResponse
+    # The updated connector.
+    attr_accessor :connector
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      connector: nil,
+      rate_limit: nil
+    )
+      @connector = connector == nil ? nil : connector
+      @rate_limit = rate_limit == nil ? nil : rate_limit
     end
 
     def to_json(options = {})
@@ -6618,6 +6950,67 @@ module SDM
       @name = name == nil ? "" : name
       @projectid = projectid == nil ? "" : projectid
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  class GCPConnector
+    # Description of the Connector.
+    attr_accessor :description
+    # ExcludeTags filters out discovered resources that have the tag and value.
+    # We do allow duplicate tag names for ExcludeTags to support multiple excluded values for the tag.
+    attr_accessor :exclude_tags
+    # Unique identifier of the Connector.
+    attr_accessor :id
+    # IncludeTags only discovers cloud resources that have one of the included tags.
+    # We do not allow duplicate tag names for IncludeTags
+    attr_accessor :include_tags
+    # Unique human-readable name of the Connector.
+    attr_accessor :name
+    # PoolId is the GCP Workload Pool Identifier used to authenticate our JWT
+    attr_accessor :pool_id
+    # ProjectIds is the list of GCP Projects the connector will scan
+    attr_accessor :project_ids
+    # ProjectNumber is the GCP Project the Workload Pool is defined in
+    attr_accessor :project_number
+    # ProviderId is the GCP Workload Provider Identifier used to authenticate our JWT
+    attr_accessor :provider_id
+    # ScanPeriod identifies which remote system this Connector discovers
+    attr_accessor :scan_period
+    # Services is a list of services this connector should scan.
+    attr_accessor :services
+
+    def initialize(
+      description: nil,
+      exclude_tags: nil,
+      id: nil,
+      include_tags: nil,
+      name: nil,
+      pool_id: nil,
+      project_ids: nil,
+      project_number: nil,
+      provider_id: nil,
+      scan_period: nil,
+      services: nil
+    )
+      @description = description == nil ? "" : description
+      @exclude_tags = exclude_tags == nil ? [] : exclude_tags
+      @id = id == nil ? "" : id
+      @include_tags = include_tags == nil ? [] : include_tags
+      @name = name == nil ? "" : name
+      @pool_id = pool_id == nil ? "" : pool_id
+      @project_ids = project_ids == nil ? [] : project_ids
+      @project_number = project_number == nil ? "" : project_number
+      @provider_id = provider_id == nil ? "" : provider_id
+      @scan_period = scan_period == nil ? "" : scan_period
+      @services = services == nil ? [] : services
     end
 
     def to_json(options = {})

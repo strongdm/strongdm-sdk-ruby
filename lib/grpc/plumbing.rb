@@ -44,6 +44,7 @@ require_relative "./approval_workflow_steps_history_pb"
 require_relative "./approval_workflows_pb"
 require_relative "./approval_workflows_history_pb"
 require_relative "./control_panel_pb"
+require_relative "./discovery_connectors_pb"
 require_relative "./roles_pb"
 require_relative "./groups_pb"
 require_relative "./groups_history_pb"
@@ -721,6 +722,56 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_aws_cert_x_509_store_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_aws_connector_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AWSConnector.new()
+      porcelain.account_ids = (plumbing.account_ids)
+      porcelain.description = (plumbing.description)
+      porcelain.exclude_tags = convert_repeated_tag_to_porcelain(plumbing.exclude_tags)
+      porcelain.id = (plumbing.id)
+      porcelain.include_tags = convert_repeated_tag_to_porcelain(plumbing.include_tags)
+      porcelain.name = (plumbing.name)
+      porcelain.role_name = (plumbing.role_name)
+      porcelain.scan_period = (plumbing.scan_period)
+      porcelain.services = (plumbing.services)
+      porcelain
+    end
+
+    def self.convert_aws_connector_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AWSConnector.new()
+      plumbing.account_ids += (porcelain.account_ids)
+      plumbing.description = (porcelain.description)
+      plumbing.exclude_tags += convert_repeated_tag_to_plumbing(porcelain.exclude_tags)
+      plumbing.id = (porcelain.id)
+      plumbing.include_tags += convert_repeated_tag_to_plumbing(porcelain.include_tags)
+      plumbing.name = (porcelain.name)
+      plumbing.role_name = (porcelain.role_name)
+      plumbing.scan_period = (porcelain.scan_period)
+      plumbing.services += (porcelain.services)
+      plumbing
+    end
+    def self.convert_repeated_aws_connector_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_aws_connector_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_aws_connector_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_aws_connector_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -4490,6 +4541,58 @@ module SDM
       end
       items
     end
+    def self.convert_azure_connector_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = AzureConnector.new()
+      porcelain.client_id = (plumbing.client_id)
+      porcelain.description = (plumbing.description)
+      porcelain.exclude_tags = convert_repeated_tag_to_porcelain(plumbing.exclude_tags)
+      porcelain.id = (plumbing.id)
+      porcelain.include_tags = convert_repeated_tag_to_porcelain(plumbing.include_tags)
+      porcelain.name = (plumbing.name)
+      porcelain.scan_period = (plumbing.scan_period)
+      porcelain.services = (plumbing.services)
+      porcelain.subscription_ids = (plumbing.subscription_ids)
+      porcelain.tenant_id = (plumbing.tenant_id)
+      porcelain
+    end
+
+    def self.convert_azure_connector_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::AzureConnector.new()
+      plumbing.client_id = (porcelain.client_id)
+      plumbing.description = (porcelain.description)
+      plumbing.exclude_tags += convert_repeated_tag_to_plumbing(porcelain.exclude_tags)
+      plumbing.id = (porcelain.id)
+      plumbing.include_tags += convert_repeated_tag_to_plumbing(porcelain.include_tags)
+      plumbing.name = (porcelain.name)
+      plumbing.scan_period = (porcelain.scan_period)
+      plumbing.services += (porcelain.services)
+      plumbing.subscription_ids += (porcelain.subscription_ids)
+      plumbing.tenant_id = (porcelain.tenant_id)
+      plumbing
+    end
+    def self.convert_repeated_azure_connector_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_azure_connector_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_azure_connector_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_azure_connector_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_azure_mysql_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -5288,6 +5391,405 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_cockroach_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_connector_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::Connector.new()
+      if porcelain.instance_of? AWSConnector
+        plumbing.aws = convert_aws_connector_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? AzureConnector
+        plumbing.azure = convert_azure_connector_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? GCPConnector
+        plumbing.gcp = convert_gcp_connector_to_plumbing(porcelain)
+      end
+      plumbing
+    end
+
+    def self.convert_connector_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      if plumbing.aws != nil
+        return convert_aws_connector_to_porcelain(plumbing.aws)
+      end
+      if plumbing.azure != nil
+        return convert_azure_connector_to_porcelain(plumbing.azure)
+      end
+      if plumbing.gcp != nil
+        return convert_gcp_connector_to_porcelain(plumbing.gcp)
+      end
+      raise UnknownError.new("unknown polymorphic type, please upgrade your SDK")
+    end
+    def self.convert_repeated_connector_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_connector_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_connector_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_connector_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_connector_create_request_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = ConnectorCreateRequest.new()
+      porcelain.connector = convert_connector_to_porcelain(plumbing.connector)
+      porcelain
+    end
+
+    def self.convert_connector_create_request_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::ConnectorCreateRequest.new()
+      plumbing.connector = convert_connector_to_plumbing(porcelain.connector)
+      plumbing
+    end
+    def self.convert_repeated_connector_create_request_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_connector_create_request_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_connector_create_request_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_connector_create_request_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_connector_create_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = ConnectorCreateResponse.new()
+      porcelain.connector = convert_connector_to_porcelain(plumbing.connector)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_connector_create_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::ConnectorCreateResponse.new()
+      plumbing.connector = convert_connector_to_plumbing(porcelain.connector)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_connector_create_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_connector_create_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_connector_create_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_connector_create_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_connector_delete_request_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = ConnectorDeleteRequest.new()
+      porcelain.id = (plumbing.id)
+      porcelain
+    end
+
+    def self.convert_connector_delete_request_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::ConnectorDeleteRequest.new()
+      plumbing.id = (porcelain.id)
+      plumbing
+    end
+    def self.convert_repeated_connector_delete_request_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_connector_delete_request_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_connector_delete_request_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_connector_delete_request_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_connector_delete_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = ConnectorDeleteResponse.new()
+      porcelain.meta = convert_delete_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_connector_delete_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::ConnectorDeleteResponse.new()
+      plumbing.meta = convert_delete_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_connector_delete_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_connector_delete_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_connector_delete_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_connector_delete_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_connector_get_request_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = ConnectorGetRequest.new()
+      porcelain.id = (plumbing.id)
+      porcelain
+    end
+
+    def self.convert_connector_get_request_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::ConnectorGetRequest.new()
+      plumbing.id = (porcelain.id)
+      plumbing
+    end
+    def self.convert_repeated_connector_get_request_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_connector_get_request_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_connector_get_request_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_connector_get_request_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_connector_get_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = ConnectorGetResponse.new()
+      porcelain.connector = convert_connector_to_porcelain(plumbing.connector)
+      porcelain.meta = convert_get_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_connector_get_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::ConnectorGetResponse.new()
+      plumbing.connector = convert_connector_to_plumbing(porcelain.connector)
+      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_connector_get_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_connector_get_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_connector_get_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_connector_get_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_connector_list_request_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = ConnectorListRequest.new()
+      porcelain.filter = (plumbing.filter)
+      porcelain
+    end
+
+    def self.convert_connector_list_request_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::ConnectorListRequest.new()
+      plumbing.filter = (porcelain.filter)
+      plumbing
+    end
+    def self.convert_repeated_connector_list_request_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_connector_list_request_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_connector_list_request_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_connector_list_request_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_connector_list_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = ConnectorListResponse.new()
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_connector_list_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::ConnectorListResponse.new()
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_connector_list_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_connector_list_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_connector_list_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_connector_list_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_connector_update_request_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = ConnectorUpdateRequest.new()
+      porcelain.connector = convert_connector_to_porcelain(plumbing.connector)
+      porcelain
+    end
+
+    def self.convert_connector_update_request_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::ConnectorUpdateRequest.new()
+      plumbing.connector = convert_connector_to_plumbing(porcelain.connector)
+      plumbing
+    end
+    def self.convert_repeated_connector_update_request_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_connector_update_request_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_connector_update_request_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_connector_update_request_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_connector_update_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = ConnectorUpdateResponse.new()
+      porcelain.connector = convert_connector_to_porcelain(plumbing.connector)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_connector_update_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::ConnectorUpdateResponse.new()
+      plumbing.connector = convert_connector_to_plumbing(porcelain.connector)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_connector_update_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_connector_update_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_connector_update_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_connector_update_response_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -6662,6 +7164,60 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_gcp_cert_x_509_store_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_gcp_connector_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = GCPConnector.new()
+      porcelain.description = (plumbing.description)
+      porcelain.exclude_tags = convert_repeated_tag_to_porcelain(plumbing.exclude_tags)
+      porcelain.id = (plumbing.id)
+      porcelain.include_tags = convert_repeated_tag_to_porcelain(plumbing.include_tags)
+      porcelain.name = (plumbing.name)
+      porcelain.pool_id = (plumbing.pool_id)
+      porcelain.project_ids = (plumbing.project_ids)
+      porcelain.project_number = (plumbing.project_number)
+      porcelain.provider_id = (plumbing.provider_id)
+      porcelain.scan_period = (plumbing.scan_period)
+      porcelain.services = (plumbing.services)
+      porcelain
+    end
+
+    def self.convert_gcp_connector_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::GCPConnector.new()
+      plumbing.description = (porcelain.description)
+      plumbing.exclude_tags += convert_repeated_tag_to_plumbing(porcelain.exclude_tags)
+      plumbing.id = (porcelain.id)
+      plumbing.include_tags += convert_repeated_tag_to_plumbing(porcelain.include_tags)
+      plumbing.name = (porcelain.name)
+      plumbing.pool_id = (porcelain.pool_id)
+      plumbing.project_ids += (porcelain.project_ids)
+      plumbing.project_number = (porcelain.project_number)
+      plumbing.provider_id = (porcelain.provider_id)
+      plumbing.scan_period = (porcelain.scan_period)
+      plumbing.services += (porcelain.services)
+      plumbing
+    end
+    def self.convert_repeated_gcp_connector_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_gcp_connector_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_gcp_connector_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_gcp_connector_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
