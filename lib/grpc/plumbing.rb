@@ -11731,6 +11731,62 @@ module SDM
       end
       items
     end
+    def self.convert_okta_groups_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = OktaGroups.new()
+      porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.domain = (plumbing.domain)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.id = (plumbing.id)
+      porcelain.identity_set_id = (plumbing.identity_set_id)
+      porcelain.name = (plumbing.name)
+      porcelain.privilege_levels = (plumbing.privilege_levels)
+      porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.subdomain = (plumbing.subdomain)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_okta_groups_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::OktaGroups.new()
+      plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.domain = (porcelain.domain)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.id = (porcelain.id)
+      plumbing.identity_set_id = (porcelain.identity_set_id)
+      plumbing.name = (porcelain.name)
+      plumbing.privilege_levels = (porcelain.privilege_levels)
+      plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.subdomain = (porcelain.subdomain)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_okta_groups_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_okta_groups_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_okta_groups_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_okta_groups_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_oracle_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -14836,6 +14892,9 @@ module SDM
       if porcelain.instance_of? NeptuneIAM
         plumbing.neptune_iam = convert_neptune_iam_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? OktaGroups
+        plumbing.okta_groups = convert_okta_groups_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? Oracle
         plumbing.oracle = convert_oracle_to_plumbing(porcelain)
       end
@@ -15175,6 +15234,9 @@ module SDM
       end
       if plumbing.neptune_iam != nil
         return convert_neptune_iam_to_porcelain(plumbing.neptune_iam)
+      end
+      if plumbing.okta_groups != nil
+        return convert_okta_groups_to_porcelain(plumbing.okta_groups)
       end
       if plumbing.oracle != nil
         return convert_oracle_to_porcelain(plumbing.oracle)

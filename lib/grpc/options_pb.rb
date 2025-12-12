@@ -68,6 +68,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       repeated :conditions, :string, 1941325
       optional :expect_file, :bool, 1941324
     end
+    add_message "v1.EnumOptions" do
+      repeated :targets, :string, 1941330
+      optional :custom, :message, 1941305, "v1.CustomOptions"
+    end
     add_message "v1.CustomOptions" do
       optional :converter, :string, 1941309
       map :porcelain_type_override, :string, :string, 1941310
@@ -91,6 +95,7 @@ module V1
   MessageOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MessageOptions").msgclass
   OneofOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.OneofOptions").msgclass
   FieldOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.FieldOptions").msgclass
+  EnumOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.EnumOptions").msgclass
   CustomOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.CustomOptions").msgclass
   TerraformDocs = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.TerraformDocs").msgclass
 end

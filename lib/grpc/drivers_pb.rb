@@ -106,6 +106,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :mysql, :message, 1100, "v1.Mysql"
         optional :neptune, :message, 2250, "v1.Neptune"
         optional :neptune_iam, :message, 2201, "v1.NeptuneIAM"
+        optional :okta_groups, :message, 3500, "v1.OktaGroups"
         optional :oracle, :message, 1200, "v1.Oracle"
         optional :oracle_nne, :message, 1201, "v1.OracleNNE"
         optional :postgres, :message, 1300, "v1.Postgres"
@@ -1617,6 +1618,20 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :role_external_id, :string, 8
       optional :secret_access_key, :string, 5
     end
+    add_message "v1.OktaGroups" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :proxy_cluster_id, :string, 32776
+      optional :subdomain, :string, 32775
+      optional :domain, :string, 1
+      optional :identity_set_id, :string, 3
+      optional :privilege_levels, :string, 2
+    end
     add_message "v1.Oracle" do
       optional :id, :string, 32768
       optional :name, :string, 32769
@@ -2232,6 +2247,7 @@ module V1
   Mysql = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Mysql").msgclass
   Neptune = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Neptune").msgclass
   NeptuneIAM = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.NeptuneIAM").msgclass
+  OktaGroups = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.OktaGroups").msgclass
   Oracle = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Oracle").msgclass
   OracleNNE = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.OracleNNE").msgclass
   Postgres = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Postgres").msgclass

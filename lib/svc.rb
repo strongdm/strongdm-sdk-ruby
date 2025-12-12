@@ -6114,6 +6114,7 @@ module SDM #:nodoc:
   # {Mysql}
   # {Neptune}
   # {NeptuneIAM}
+  # {OktaGroups}
   # {Oracle}
   # {OracleNNE}
   # {Postgres}
