@@ -15353,6 +15353,8 @@ module SDM
     attr_accessor :id
     # The key type to use e.g. rsa-2048 or ed25519
     attr_accessor :key_type
+    # When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+    attr_accessor :lock_required
     # Unique human-readable name of the Resource.
     attr_accessor :name
     # The port to dial to initiate a connection from the egress node to this resource.
@@ -15382,6 +15384,7 @@ module SDM
       hostname: nil,
       id: nil,
       key_type: nil,
+      lock_required: nil,
       name: nil,
       port: nil,
       port_forwarding: nil,
@@ -15400,6 +15403,7 @@ module SDM
       @hostname = hostname == nil ? "" : hostname
       @id = id == nil ? "" : id
       @key_type = key_type == nil ? "" : key_type
+      @lock_required = lock_required == nil ? false : lock_required
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
       @port_forwarding = port_forwarding == nil ? false : port_forwarding
@@ -15440,6 +15444,8 @@ module SDM
     attr_accessor :identity_set_id
     # The key type to use e.g. rsa-2048 or ed25519
     attr_accessor :key_type
+    # When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+    attr_accessor :lock_required
     # Unique human-readable name of the Resource.
     attr_accessor :name
     # The port to dial to initiate a connection from the egress node to this resource.
@@ -15469,6 +15475,7 @@ module SDM
       identity_alias_healthcheck_username: nil,
       identity_set_id: nil,
       key_type: nil,
+      lock_required: nil,
       name: nil,
       port: nil,
       port_forwarding: nil,
@@ -15488,6 +15495,7 @@ module SDM
       @identity_alias_healthcheck_username = identity_alias_healthcheck_username == nil ? "" : identity_alias_healthcheck_username
       @identity_set_id = identity_set_id == nil ? "" : identity_set_id
       @key_type = key_type == nil ? "" : key_type
+      @lock_required = lock_required == nil ? false : lock_required
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
       @port_forwarding = port_forwarding == nil ? false : port_forwarding
@@ -15525,6 +15533,8 @@ module SDM
     attr_accessor :identity_alias_healthcheck_username
     # The ID of the identity set to use for identity connections.
     attr_accessor :identity_set_id
+    # When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+    attr_accessor :lock_required
     # Unique human-readable name of the Resource.
     attr_accessor :name
     # The port to dial to initiate a connection from the egress node to this resource.
@@ -15555,6 +15565,7 @@ module SDM
       id: nil,
       identity_alias_healthcheck_username: nil,
       identity_set_id: nil,
+      lock_required: nil,
       name: nil,
       port: nil,
       port_forwarding: nil,
@@ -15574,6 +15585,7 @@ module SDM
       @id = id == nil ? "" : id
       @identity_alias_healthcheck_username = identity_alias_healthcheck_username == nil ? "" : identity_alias_healthcheck_username
       @identity_set_id = identity_set_id == nil ? "" : identity_set_id
+      @lock_required = lock_required == nil ? false : lock_required
       @name = name == nil ? "" : name
       @port = port == nil ? 0 : port
       @port_forwarding = port_forwarding == nil ? false : port_forwarding
@@ -15608,6 +15620,8 @@ module SDM
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
+    # When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+    attr_accessor :lock_required
     # Unique human-readable name of the Resource.
     attr_accessor :name
     # The password to authenticate with.
@@ -15636,6 +15650,7 @@ module SDM
       healthy: nil,
       hostname: nil,
       id: nil,
+      lock_required: nil,
       name: nil,
       password: nil,
       port: nil,
@@ -15653,6 +15668,7 @@ module SDM
       @healthy = healthy == nil ? false : healthy
       @hostname = hostname == nil ? "" : hostname
       @id = id == nil ? "" : id
+      @lock_required = lock_required == nil ? false : lock_required
       @name = name == nil ? "" : name
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port

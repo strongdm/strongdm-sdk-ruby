@@ -1962,6 +1962,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :allow_deprecated_key_exchanges, :bool, 6
       optional :hostname, :string, 1
       optional :key_type, :string, 8
+      optional :lock_required, :bool, 11
       optional :port, :int32, 3
       optional :port_forwarding, :bool, 5
       optional :port_override, :int32, 7
@@ -1983,6 +1984,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :identity_alias_healthcheck_username, :string, 8
       optional :identity_set_id, :string, 7
       optional :key_type, :string, 9
+      optional :lock_required, :bool, 13
       optional :port, :int32, 3
       optional :port_forwarding, :bool, 4
       optional :port_override, :int32, 6
@@ -2002,6 +2004,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :hostname, :string, 1
       optional :identity_alias_healthcheck_username, :string, 11
       optional :identity_set_id, :string, 10
+      optional :lock_required, :bool, 12
       optional :port, :int32, 3
       optional :port_forwarding, :bool, 5
       optional :port_override, :int32, 7
@@ -2020,6 +2023,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :subdomain, :string, 32775
       optional :allow_deprecated_key_exchanges, :bool, 6
       optional :hostname, :string, 1
+      optional :lock_required, :bool, 10
       optional :password, :string, 4
       optional :port, :int32, 3
       optional :port_forwarding, :bool, 5
