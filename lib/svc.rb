@@ -236,6 +236,8 @@ module SDM #:nodoc:
       req = V1::AccountAttachmentCreateRequest.new()
 
       req.account_attachment = Plumbing::convert_account_attachment_to_plumbing(account_attachment)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("AccountAttachments.Create", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -250,6 +252,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("AccountAttachments.Create", self, req, plumbing_response)
 
       resp = AccountAttachmentCreateResponse.new()
       resp.account_attachment = Plumbing::convert_account_attachment_to_porcelain(plumbing_response.account_attachment)
@@ -270,6 +275,8 @@ module SDM #:nodoc:
       end
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("AccountAttachments.Get", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -284,6 +291,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("AccountAttachments.Get", self, req, plumbing_response)
 
       resp = AccountAttachmentGetResponse.new()
       resp.account_attachment = Plumbing::convert_account_attachment_to_porcelain(plumbing_response.account_attachment)
@@ -300,6 +310,8 @@ module SDM #:nodoc:
       req = V1::AccountAttachmentDeleteRequest.new()
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("AccountAttachments.Delete", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -314,6 +326,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("AccountAttachments.Delete", self, req, plumbing_response)
 
       resp = AccountAttachmentDeleteResponse.new()
       resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
@@ -473,6 +488,8 @@ module SDM #:nodoc:
       req = V1::AccountGrantCreateRequest.new()
 
       req.account_grant = Plumbing::convert_account_grant_to_plumbing(account_grant)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("AccountGrants.Create", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -487,6 +504,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("AccountGrants.Create", self, req, plumbing_response)
 
       resp = AccountGrantCreateResponse.new()
       resp.account_grant = Plumbing::convert_account_grant_to_porcelain(plumbing_response.account_grant)
@@ -507,6 +527,8 @@ module SDM #:nodoc:
       end
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("AccountGrants.Get", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -521,6 +543,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("AccountGrants.Get", self, req, plumbing_response)
 
       resp = AccountGrantGetResponse.new()
       resp.account_grant = Plumbing::convert_account_grant_to_porcelain(plumbing_response.account_grant)
@@ -537,6 +562,8 @@ module SDM #:nodoc:
       req = V1::AccountGrantDeleteRequest.new()
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("AccountGrants.Delete", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -551,6 +578,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("AccountGrants.Delete", self, req, plumbing_response)
 
       resp = AccountGrantDeleteResponse.new()
       resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
@@ -929,6 +959,8 @@ module SDM #:nodoc:
       req = V1::AccountCreateRequest.new()
 
       req.account = Plumbing::convert_account_to_plumbing(account)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("Accounts.Create", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -943,6 +975,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("Accounts.Create", self, req, plumbing_response)
 
       resp = AccountCreateResponse.new()
       resp.access_key = (plumbing_response.access_key)
@@ -966,6 +1001,8 @@ module SDM #:nodoc:
       end
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("Accounts.Get", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -980,6 +1017,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("Accounts.Get", self, req, plumbing_response)
 
       resp = AccountGetResponse.new()
       resp.account = Plumbing::convert_account_to_porcelain(plumbing_response.account)
@@ -996,6 +1036,8 @@ module SDM #:nodoc:
       req = V1::AccountUpdateRequest.new()
 
       req.account = Plumbing::convert_account_to_plumbing(account)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("Accounts.Update", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -1010,6 +1052,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("Accounts.Update", self, req, plumbing_response)
 
       resp = AccountUpdateResponse.new()
       resp.account = Plumbing::convert_account_to_porcelain(plumbing_response.account)
@@ -1026,6 +1071,8 @@ module SDM #:nodoc:
       req = V1::AccountDeleteRequest.new()
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("Accounts.Delete", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -1040,6 +1087,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("Accounts.Delete", self, req, plumbing_response)
 
       resp = AccountDeleteResponse.new()
       resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
@@ -1144,6 +1194,8 @@ module SDM #:nodoc:
       req = V1::AccountGroupCreateRequest.new()
 
       req.account_group = Plumbing::convert_account_group_to_plumbing(account_group)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("AccountsGroups.Create", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -1158,6 +1210,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("AccountsGroups.Create", self, req, plumbing_response)
 
       resp = AccountGroupCreateResponse.new()
       resp.account_group = Plumbing::convert_account_group_to_porcelain(plumbing_response.account_group)
@@ -1177,6 +1232,8 @@ module SDM #:nodoc:
       end
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("AccountsGroups.Get", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -1191,6 +1248,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("AccountsGroups.Get", self, req, plumbing_response)
 
       resp = AccountGroupGetResponse.new()
       resp.account_group = Plumbing::convert_account_group_to_porcelain(plumbing_response.account_group)
@@ -1207,6 +1267,8 @@ module SDM #:nodoc:
       req = V1::AccountGroupDeleteRequest.new()
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("AccountsGroups.Delete", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -1221,6 +1283,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("AccountsGroups.Delete", self, req, plumbing_response)
 
       resp = AccountGroupDeleteResponse.new()
       resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
@@ -1441,6 +1506,8 @@ module SDM #:nodoc:
       end
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("Activities.Get", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -1455,6 +1522,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("Activities.Get", self, req, plumbing_response)
 
       resp = ActivityGetResponse.new()
       resp.activity = Plumbing::convert_activity_to_porcelain(plumbing_response.activity)
@@ -1529,6 +1599,8 @@ module SDM #:nodoc:
       req = V1::ApprovalWorkflowApproverCreateRequest.new()
 
       req.approval_workflow_approver = Plumbing::convert_approval_workflow_approver_to_plumbing(approval_workflow_approver)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("ApprovalWorkflowApprovers.Create", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -1543,6 +1615,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("ApprovalWorkflowApprovers.Create", self, req, plumbing_response)
 
       resp = ApprovalWorkflowApproverCreateResponse.new()
       resp.approval_workflow_approver = Plumbing::convert_approval_workflow_approver_to_porcelain(plumbing_response.approval_workflow_approver)
@@ -1562,6 +1637,8 @@ module SDM #:nodoc:
       end
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("ApprovalWorkflowApprovers.Get", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -1576,6 +1653,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("ApprovalWorkflowApprovers.Get", self, req, plumbing_response)
 
       resp = ApprovalWorkflowApproverGetResponse.new()
       resp.approval_workflow_approver = Plumbing::convert_approval_workflow_approver_to_porcelain(plumbing_response.approval_workflow_approver)
@@ -1592,6 +1672,8 @@ module SDM #:nodoc:
       req = V1::ApprovalWorkflowApproverDeleteRequest.new()
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("ApprovalWorkflowApprovers.Delete", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -1606,6 +1688,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("ApprovalWorkflowApprovers.Delete", self, req, plumbing_response)
 
       resp = ApprovalWorkflowApproverDeleteResponse.new()
       resp.id = (plumbing_response.id)
@@ -1765,6 +1850,8 @@ module SDM #:nodoc:
       req = V1::ApprovalWorkflowStepCreateRequest.new()
 
       req.approval_workflow_step = Plumbing::convert_approval_workflow_step_to_plumbing(approval_workflow_step)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("ApprovalWorkflowSteps.Create", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -1779,6 +1866,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("ApprovalWorkflowSteps.Create", self, req, plumbing_response)
 
       resp = ApprovalWorkflowStepCreateResponse.new()
       resp.approval_workflow_step = Plumbing::convert_approval_workflow_step_to_porcelain(plumbing_response.approval_workflow_step)
@@ -1798,6 +1888,8 @@ module SDM #:nodoc:
       end
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("ApprovalWorkflowSteps.Get", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -1812,6 +1904,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("ApprovalWorkflowSteps.Get", self, req, plumbing_response)
 
       resp = ApprovalWorkflowStepGetResponse.new()
       resp.approval_workflow_step = Plumbing::convert_approval_workflow_step_to_porcelain(plumbing_response.approval_workflow_step)
@@ -1828,6 +1923,8 @@ module SDM #:nodoc:
       req = V1::ApprovalWorkflowStepDeleteRequest.new()
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("ApprovalWorkflowSteps.Delete", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -1842,6 +1939,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("ApprovalWorkflowSteps.Delete", self, req, plumbing_response)
 
       resp = ApprovalWorkflowStepDeleteResponse.new()
       resp.id = (plumbing_response.id)
@@ -2002,6 +2102,8 @@ module SDM #:nodoc:
       req = V1::ApprovalWorkflowCreateRequest.new()
 
       req.approval_workflow = Plumbing::convert_approval_workflow_to_plumbing(approval_workflow)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("ApprovalWorkflows.Create", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -2016,6 +2118,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("ApprovalWorkflows.Create", self, req, plumbing_response)
 
       resp = ApprovalWorkflowCreateResponse.new()
       resp.approval_workflow = Plumbing::convert_approval_workflow_to_porcelain(plumbing_response.approval_workflow)
@@ -2035,6 +2140,8 @@ module SDM #:nodoc:
       end
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("ApprovalWorkflows.Get", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -2049,6 +2156,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("ApprovalWorkflows.Get", self, req, plumbing_response)
 
       resp = ApprovalWorkflowGetResponse.new()
       resp.approval_workflow = Plumbing::convert_approval_workflow_to_porcelain(plumbing_response.approval_workflow)
@@ -2065,6 +2175,8 @@ module SDM #:nodoc:
       req = V1::ApprovalWorkflowDeleteRequest.new()
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("ApprovalWorkflows.Delete", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -2080,6 +2192,9 @@ module SDM #:nodoc:
         break
       end
 
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("ApprovalWorkflows.Delete", self, req, plumbing_response)
+
       resp = ApprovalWorkflowDeleteResponse.new()
       resp.id = (plumbing_response.id)
       resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
@@ -2094,6 +2209,8 @@ module SDM #:nodoc:
       req = V1::ApprovalWorkflowUpdateRequest.new()
 
       req.approval_workflow = Plumbing::convert_approval_workflow_to_plumbing(approval_workflow)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("ApprovalWorkflows.Update", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -2108,6 +2225,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("ApprovalWorkflows.Update", self, req, plumbing_response)
 
       resp = ApprovalWorkflowUpdateResponse.new()
       resp.approval_workflow = Plumbing::convert_approval_workflow_to_porcelain(plumbing_response.approval_workflow)
@@ -2263,6 +2383,8 @@ module SDM #:nodoc:
     )
       req = V1::ControlPanelGetSSHCAPublicKeyRequest.new()
 
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("ControlPanel.GetSSHCAPublicKey", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -2278,6 +2400,9 @@ module SDM #:nodoc:
         break
       end
 
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("ControlPanel.GetSSHCAPublicKey", self, req, plumbing_response)
+
       resp = ControlPanelGetSSHCAPublicKeyResponse.new()
       resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
       resp.public_key = (plumbing_response.public_key)
@@ -2291,6 +2416,8 @@ module SDM #:nodoc:
     )
       req = V1::ControlPanelGetRDPCAPublicKeyRequest.new()
 
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("ControlPanel.GetRDPCAPublicKey", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -2305,6 +2432,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("ControlPanel.GetRDPCAPublicKey", self, req, plumbing_response)
 
       resp = ControlPanelGetRDPCAPublicKeyResponse.new()
       resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
@@ -2321,6 +2451,8 @@ module SDM #:nodoc:
       req = V1::ControlPanelVerifyJWTRequest.new()
 
       req.token = (token)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("ControlPanel.VerifyJWT", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -2335,6 +2467,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("ControlPanel.VerifyJWT", self, req, plumbing_response)
 
       resp = ControlPanelVerifyJWTResponse.new()
       resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
@@ -2371,6 +2506,8 @@ module SDM #:nodoc:
       req = V1::ConnectorCreateRequest.new()
 
       req.connector = Plumbing::convert_connector_to_plumbing(connector)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("DiscoveryConnectors.Create", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -2385,6 +2522,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("DiscoveryConnectors.Create", self, req, plumbing_response)
 
       resp = ConnectorCreateResponse.new()
       resp.connector = Plumbing::convert_connector_to_porcelain(plumbing_response.connector)
@@ -2404,6 +2544,8 @@ module SDM #:nodoc:
       end
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("DiscoveryConnectors.Get", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -2418,6 +2560,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("DiscoveryConnectors.Get", self, req, plumbing_response)
 
       resp = ConnectorGetResponse.new()
       resp.connector = Plumbing::convert_connector_to_porcelain(plumbing_response.connector)
@@ -2434,6 +2579,8 @@ module SDM #:nodoc:
       req = V1::ConnectorUpdateRequest.new()
 
       req.connector = Plumbing::convert_connector_to_plumbing(connector)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("DiscoveryConnectors.Update", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -2449,6 +2596,9 @@ module SDM #:nodoc:
         break
       end
 
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("DiscoveryConnectors.Update", self, req, plumbing_response)
+
       resp = ConnectorUpdateResponse.new()
       resp.connector = Plumbing::convert_connector_to_porcelain(plumbing_response.connector)
       resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
@@ -2463,6 +2613,8 @@ module SDM #:nodoc:
       req = V1::ConnectorDeleteRequest.new()
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("DiscoveryConnectors.Delete", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -2477,6 +2629,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("DiscoveryConnectors.Delete", self, req, plumbing_response)
 
       resp = ConnectorDeleteResponse.new()
       resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
@@ -2583,6 +2738,8 @@ module SDM #:nodoc:
       req = V1::RoleCreateRequest.new()
 
       req.role = Plumbing::convert_role_to_plumbing(role)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("Roles.Create", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -2597,6 +2754,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("Roles.Create", self, req, plumbing_response)
 
       resp = RoleCreateResponse.new()
       resp.meta = Plumbing::convert_create_response_metadata_to_porcelain(plumbing_response.meta)
@@ -2617,6 +2777,8 @@ module SDM #:nodoc:
       end
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("Roles.Get", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -2631,6 +2793,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("Roles.Get", self, req, plumbing_response)
 
       resp = RoleGetResponse.new()
       resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
@@ -2647,6 +2812,8 @@ module SDM #:nodoc:
       req = V1::RoleUpdateRequest.new()
 
       req.role = Plumbing::convert_role_to_plumbing(role)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("Roles.Update", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -2661,6 +2828,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("Roles.Update", self, req, plumbing_response)
 
       resp = RoleUpdateResponse.new()
       resp.meta = Plumbing::convert_update_response_metadata_to_porcelain(plumbing_response.meta)
@@ -2677,6 +2847,8 @@ module SDM #:nodoc:
       req = V1::RoleDeleteRequest.new()
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("Roles.Delete", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -2691,6 +2863,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("Roles.Delete", self, req, plumbing_response)
 
       resp = RoleDeleteResponse.new()
       resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
@@ -2795,6 +2970,8 @@ module SDM #:nodoc:
       req = V1::GroupCreateRequest.new()
 
       req.group = Plumbing::convert_group_to_plumbing(group)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("Groups.Create", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -2809,6 +2986,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("Groups.Create", self, req, plumbing_response)
 
       resp = GroupCreateResponse.new()
       resp.group = Plumbing::convert_group_to_porcelain(plumbing_response.group)
@@ -2825,6 +3005,8 @@ module SDM #:nodoc:
 
       req.role_ids += (role_ids)
       req.commit = (commit)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("Groups.CreateFromRoles", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -2839,6 +3021,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("Groups.CreateFromRoles", self, req, plumbing_response)
 
       resp = GroupCreateFromRolesResponse.new()
       resp.group_from_role = Plumbing::convert_repeated_group_from_role_to_porcelain(plumbing_response.group_from_role)
@@ -2858,6 +3043,8 @@ module SDM #:nodoc:
       end
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("Groups.Get", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -2872,6 +3059,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("Groups.Get", self, req, plumbing_response)
 
       resp = GroupGetResponse.new()
       resp.group = Plumbing::convert_group_to_porcelain(plumbing_response.group)
@@ -2888,6 +3078,8 @@ module SDM #:nodoc:
       req = V1::GroupUpdateRequest.new()
 
       req.group = Plumbing::convert_group_to_plumbing(group)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("Groups.Update", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -2903,6 +3095,9 @@ module SDM #:nodoc:
         break
       end
 
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("Groups.Update", self, req, plumbing_response)
+
       resp = GroupUpdateResponse.new()
       resp.group = Plumbing::convert_group_to_porcelain(plumbing_response.group)
       resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
@@ -2917,6 +3112,8 @@ module SDM #:nodoc:
       req = V1::GroupDeleteRequest.new()
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("Groups.Delete", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -2931,6 +3128,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("Groups.Delete", self, req, plumbing_response)
 
       resp = GroupDeleteResponse.new()
       resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
@@ -3090,6 +3290,8 @@ module SDM #:nodoc:
       req = V1::GroupRoleCreateRequest.new()
 
       req.group_role = Plumbing::convert_group_role_to_plumbing(group_role)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("GroupsRoles.Create", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -3104,6 +3306,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("GroupsRoles.Create", self, req, plumbing_response)
 
       resp = GroupRoleCreateResponse.new()
       resp.group_role = Plumbing::convert_group_role_to_porcelain(plumbing_response.group_role)
@@ -3123,6 +3328,8 @@ module SDM #:nodoc:
       end
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("GroupsRoles.Get", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -3137,6 +3344,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("GroupsRoles.Get", self, req, plumbing_response)
 
       resp = GroupRoleGetResponse.new()
       resp.group_role = Plumbing::convert_group_role_to_porcelain(plumbing_response.group_role)
@@ -3153,6 +3363,8 @@ module SDM #:nodoc:
       req = V1::GroupRoleDeleteRequest.new()
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("GroupsRoles.Delete", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -3167,6 +3379,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("GroupsRoles.Delete", self, req, plumbing_response)
 
       resp = GroupRoleDeleteResponse.new()
       resp.group_role = Plumbing::convert_group_role_to_porcelain(plumbing_response.group_role)
@@ -3384,6 +3599,8 @@ module SDM #:nodoc:
       req = V1::IdentityAliasCreateRequest.new()
 
       req.identity_alias = Plumbing::convert_identity_alias_to_plumbing(identity_alias)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("IdentityAliases.Create", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -3398,6 +3615,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("IdentityAliases.Create", self, req, plumbing_response)
 
       resp = IdentityAliasCreateResponse.new()
       resp.identity_alias = Plumbing::convert_identity_alias_to_porcelain(plumbing_response.identity_alias)
@@ -3418,6 +3638,8 @@ module SDM #:nodoc:
       end
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("IdentityAliases.Get", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -3432,6 +3654,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("IdentityAliases.Get", self, req, plumbing_response)
 
       resp = IdentityAliasGetResponse.new()
       resp.identity_alias = Plumbing::convert_identity_alias_to_porcelain(plumbing_response.identity_alias)
@@ -3448,6 +3673,8 @@ module SDM #:nodoc:
       req = V1::IdentityAliasUpdateRequest.new()
 
       req.identity_alias = Plumbing::convert_identity_alias_to_plumbing(identity_alias)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("IdentityAliases.Update", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -3462,6 +3689,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("IdentityAliases.Update", self, req, plumbing_response)
 
       resp = IdentityAliasUpdateResponse.new()
       resp.identity_alias = Plumbing::convert_identity_alias_to_porcelain(plumbing_response.identity_alias)
@@ -3478,6 +3708,8 @@ module SDM #:nodoc:
       req = V1::IdentityAliasDeleteRequest.new()
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("IdentityAliases.Delete", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -3492,6 +3724,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("IdentityAliases.Delete", self, req, plumbing_response)
 
       resp = IdentityAliasDeleteResponse.new()
       resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
@@ -3652,6 +3887,8 @@ module SDM #:nodoc:
       req = V1::IdentitySetCreateRequest.new()
 
       req.identity_set = Plumbing::convert_identity_set_to_plumbing(identity_set)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("IdentitySets.Create", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -3666,6 +3903,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("IdentitySets.Create", self, req, plumbing_response)
 
       resp = IdentitySetCreateResponse.new()
       resp.identity_set = Plumbing::convert_identity_set_to_porcelain(plumbing_response.identity_set)
@@ -3686,6 +3926,8 @@ module SDM #:nodoc:
       end
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("IdentitySets.Get", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -3700,6 +3942,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("IdentitySets.Get", self, req, plumbing_response)
 
       resp = IdentitySetGetResponse.new()
       resp.identity_set = Plumbing::convert_identity_set_to_porcelain(plumbing_response.identity_set)
@@ -3716,6 +3961,8 @@ module SDM #:nodoc:
       req = V1::IdentitySetUpdateRequest.new()
 
       req.identity_set = Plumbing::convert_identity_set_to_plumbing(identity_set)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("IdentitySets.Update", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -3730,6 +3977,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("IdentitySets.Update", self, req, plumbing_response)
 
       resp = IdentitySetUpdateResponse.new()
       resp.identity_set = Plumbing::convert_identity_set_to_porcelain(plumbing_response.identity_set)
@@ -3746,6 +3996,8 @@ module SDM #:nodoc:
       req = V1::IdentitySetDeleteRequest.new()
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("IdentitySets.Delete", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -3760,6 +4012,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("IdentitySets.Delete", self, req, plumbing_response)
 
       resp = IdentitySetDeleteResponse.new()
       resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
@@ -3999,6 +4254,8 @@ module SDM #:nodoc:
       req = V1::ManagedSecretCreateRequest.new()
 
       req.managed_secret = Plumbing::convert_managed_secret_to_plumbing(managed_secret)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("ManagedSecrets.Create", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -4013,6 +4270,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("ManagedSecrets.Create", self, req, plumbing_response)
 
       resp = ManagedSecretCreateResponse.new()
       resp.managed_secret = Plumbing::convert_managed_secret_to_porcelain(plumbing_response.managed_secret)
@@ -4029,6 +4289,8 @@ module SDM #:nodoc:
       req = V1::ManagedSecretUpdateRequest.new()
 
       req.managed_secret = Plumbing::convert_managed_secret_to_plumbing(managed_secret)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("ManagedSecrets.Update", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -4043,6 +4305,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("ManagedSecrets.Update", self, req, plumbing_response)
 
       resp = ManagedSecretUpdateResponse.new()
       resp.managed_secret = Plumbing::convert_managed_secret_to_porcelain(plumbing_response.managed_secret)
@@ -4059,6 +4324,8 @@ module SDM #:nodoc:
       req = V1::ManagedSecretRotateRequest.new()
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("ManagedSecrets.Rotate", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -4074,6 +4341,9 @@ module SDM #:nodoc:
         break
       end
 
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("ManagedSecrets.Rotate", self, req, plumbing_response)
+
       resp = ManagedSecretRotateResponse.new()
       resp.meta = Plumbing::convert_generic_response_metadata_to_porcelain(plumbing_response.meta)
       resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
@@ -4088,6 +4358,8 @@ module SDM #:nodoc:
       req = V1::ManagedSecretDeleteRequest.new()
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("ManagedSecrets.Delete", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -4103,6 +4375,9 @@ module SDM #:nodoc:
         break
       end
 
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("ManagedSecrets.Delete", self, req, plumbing_response)
+
       resp = ManagedSecretDeleteResponse.new()
       resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
       resp
@@ -4116,6 +4391,8 @@ module SDM #:nodoc:
       req = V1::ManagedSecretDeleteRequest.new()
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("ManagedSecrets.ForceDelete", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -4130,6 +4407,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("ManagedSecrets.ForceDelete", self, req, plumbing_response)
 
       resp = ManagedSecretDeleteResponse.new()
       resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
@@ -4148,6 +4428,8 @@ module SDM #:nodoc:
       end
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("ManagedSecrets.Get", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -4162,6 +4444,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("ManagedSecrets.Get", self, req, plumbing_response)
 
       resp = ManagedSecretGetResponse.new()
       resp.managed_secret = Plumbing::convert_managed_secret_to_porcelain(plumbing_response.managed_secret)
@@ -4180,6 +4465,8 @@ module SDM #:nodoc:
 
       req.id = (id)
       req.public_key = (public_key)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("ManagedSecrets.Retrieve", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -4194,6 +4481,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("ManagedSecrets.Retrieve", self, req, plumbing_response)
 
       resp = ManagedSecretRetrieveResponse.new()
       resp.managed_secret = Plumbing::convert_managed_secret_to_porcelain(plumbing_response.managed_secret)
@@ -4211,6 +4501,8 @@ module SDM #:nodoc:
       req = V1::ManagedSecretValidateRequest.new()
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("ManagedSecrets.Validate", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -4225,6 +4517,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("ManagedSecrets.Validate", self, req, plumbing_response)
 
       resp = ManagedSecretValidateResponse.new()
       resp.invalid_info = (plumbing_response.invalid_info)
@@ -4305,6 +4600,8 @@ module SDM #:nodoc:
       req = V1::NodeCreateRequest.new()
 
       req.node = Plumbing::convert_node_to_plumbing(node)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("Nodes.Create", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -4319,6 +4616,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("Nodes.Create", self, req, plumbing_response)
 
       resp = NodeCreateResponse.new()
       resp.meta = Plumbing::convert_create_response_metadata_to_porcelain(plumbing_response.meta)
@@ -4340,6 +4640,8 @@ module SDM #:nodoc:
       end
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("Nodes.Get", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -4354,6 +4656,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("Nodes.Get", self, req, plumbing_response)
 
       resp = NodeGetResponse.new()
       resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
@@ -4370,6 +4675,8 @@ module SDM #:nodoc:
       req = V1::NodeUpdateRequest.new()
 
       req.node = Plumbing::convert_node_to_plumbing(node)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("Nodes.Update", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -4384,6 +4691,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("Nodes.Update", self, req, plumbing_response)
 
       resp = NodeUpdateResponse.new()
       resp.meta = Plumbing::convert_update_response_metadata_to_porcelain(plumbing_response.meta)
@@ -4400,6 +4710,8 @@ module SDM #:nodoc:
       req = V1::NodeDeleteRequest.new()
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("Nodes.Delete", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -4414,6 +4726,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("Nodes.Delete", self, req, plumbing_response)
 
       resp = NodeDeleteResponse.new()
       resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
@@ -4473,6 +4788,8 @@ module SDM #:nodoc:
       req.node_id = (node_id)
       req.host = (host)
       req.port = (port)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("Nodes.TCPProbe", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -4487,6 +4804,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("Nodes.TCPProbe", self, req, plumbing_response)
 
       resp = NodeTCPProbeResponse.new()
       resp.error = (plumbing_response.error)
@@ -4664,6 +4984,8 @@ module SDM #:nodoc:
       req = V1::PeeringGroupNodeCreateRequest.new()
 
       req.peering_group_node = Plumbing::convert_peering_group_node_to_plumbing(peering_group_node)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("PeeringGroupNodes.Create", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -4678,6 +5000,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("PeeringGroupNodes.Create", self, req, plumbing_response)
 
       resp = PeeringGroupNodeCreateResponse.new()
       resp.meta = Plumbing::convert_create_response_metadata_to_porcelain(plumbing_response.meta)
@@ -4694,6 +5019,8 @@ module SDM #:nodoc:
       req = V1::PeeringGroupNodeDeleteRequest.new()
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("PeeringGroupNodes.Delete", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -4708,6 +5035,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("PeeringGroupNodes.Delete", self, req, plumbing_response)
 
       resp = PeeringGroupNodeDeleteResponse.new()
       resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
@@ -4727,6 +5057,8 @@ module SDM #:nodoc:
       end
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("PeeringGroupNodes.Get", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -4741,6 +5073,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("PeeringGroupNodes.Get", self, req, plumbing_response)
 
       resp = PeeringGroupNodeGetResponse.new()
       resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
@@ -4812,6 +5147,8 @@ module SDM #:nodoc:
       req = V1::PeeringGroupPeerCreateRequest.new()
 
       req.peering_group_peer = Plumbing::convert_peering_group_peer_to_plumbing(peering_group_peer)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("PeeringGroupPeers.Create", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -4826,6 +5163,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("PeeringGroupPeers.Create", self, req, plumbing_response)
 
       resp = PeeringGroupPeerCreateResponse.new()
       resp.meta = Plumbing::convert_create_response_metadata_to_porcelain(plumbing_response.meta)
@@ -4842,6 +5182,8 @@ module SDM #:nodoc:
       req = V1::PeeringGroupPeerDeleteRequest.new()
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("PeeringGroupPeers.Delete", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -4856,6 +5198,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("PeeringGroupPeers.Delete", self, req, plumbing_response)
 
       resp = PeeringGroupPeerDeleteResponse.new()
       resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
@@ -4875,6 +5220,8 @@ module SDM #:nodoc:
       end
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("PeeringGroupPeers.Get", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -4889,6 +5236,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("PeeringGroupPeers.Get", self, req, plumbing_response)
 
       resp = PeeringGroupPeerGetResponse.new()
       resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
@@ -4960,6 +5310,8 @@ module SDM #:nodoc:
       req = V1::PeeringGroupResourceCreateRequest.new()
 
       req.peering_group_resource = Plumbing::convert_peering_group_resource_to_plumbing(peering_group_resource)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("PeeringGroupResources.Create", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -4974,6 +5326,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("PeeringGroupResources.Create", self, req, plumbing_response)
 
       resp = PeeringGroupResourceCreateResponse.new()
       resp.meta = Plumbing::convert_create_response_metadata_to_porcelain(plumbing_response.meta)
@@ -4990,6 +5345,8 @@ module SDM #:nodoc:
       req = V1::PeeringGroupResourceDeleteRequest.new()
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("PeeringGroupResources.Delete", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -5004,6 +5361,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("PeeringGroupResources.Delete", self, req, plumbing_response)
 
       resp = PeeringGroupResourceDeleteResponse.new()
       resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
@@ -5023,6 +5383,8 @@ module SDM #:nodoc:
       end
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("PeeringGroupResources.Get", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -5037,6 +5399,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("PeeringGroupResources.Get", self, req, plumbing_response)
 
       resp = PeeringGroupResourceGetResponse.new()
       resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
@@ -5108,6 +5473,8 @@ module SDM #:nodoc:
       req = V1::PeeringGroupCreateRequest.new()
 
       req.peering_group = Plumbing::convert_peering_group_to_plumbing(peering_group)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("PeeringGroups.Create", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -5122,6 +5489,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("PeeringGroups.Create", self, req, plumbing_response)
 
       resp = PeeringGroupCreateResponse.new()
       resp.meta = Plumbing::convert_create_response_metadata_to_porcelain(plumbing_response.meta)
@@ -5138,6 +5508,8 @@ module SDM #:nodoc:
       req = V1::PeeringGroupDeleteRequest.new()
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("PeeringGroups.Delete", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -5152,6 +5524,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("PeeringGroups.Delete", self, req, plumbing_response)
 
       resp = PeeringGroupDeleteResponse.new()
       resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
@@ -5171,6 +5546,8 @@ module SDM #:nodoc:
       end
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("PeeringGroups.Get", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -5185,6 +5562,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("PeeringGroups.Get", self, req, plumbing_response)
 
       resp = PeeringGroupGetResponse.new()
       resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
@@ -5257,6 +5637,8 @@ module SDM #:nodoc:
       req = V1::PolicyCreateRequest.new()
 
       req.policy = Plumbing::convert_policy_to_plumbing(policy)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("Policies.Create", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -5272,6 +5654,9 @@ module SDM #:nodoc:
         break
       end
 
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("Policies.Create", self, req, plumbing_response)
+
       resp = PolicyCreateResponse.new()
       resp.policy = Plumbing::convert_policy_to_porcelain(plumbing_response.policy)
       resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
@@ -5286,6 +5671,8 @@ module SDM #:nodoc:
       req = V1::PolicyDeleteRequest.new()
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("Policies.Delete", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -5301,6 +5688,9 @@ module SDM #:nodoc:
         break
       end
 
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("Policies.Delete", self, req, plumbing_response)
+
       resp = PolicyDeleteResponse.new()
       resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
       resp
@@ -5314,6 +5704,8 @@ module SDM #:nodoc:
       req = V1::PolicyUpdateRequest.new()
 
       req.policy = Plumbing::convert_policy_to_plumbing(policy)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("Policies.Update", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -5328,6 +5720,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("Policies.Update", self, req, plumbing_response)
 
       resp = PolicyUpdateResponse.new()
       resp.policy = Plumbing::convert_policy_to_porcelain(plumbing_response.policy)
@@ -5347,6 +5742,8 @@ module SDM #:nodoc:
       end
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("Policies.Get", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -5361,6 +5758,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("Policies.Get", self, req, plumbing_response)
 
       resp = PolicyGetResponse.new()
       resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
@@ -5523,6 +5923,8 @@ module SDM #:nodoc:
       req = V1::ProxyClusterKeyCreateRequest.new()
 
       req.proxy_cluster_key = Plumbing::convert_proxy_cluster_key_to_plumbing(proxy_cluster_key)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("ProxyClusterKeys.Create", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -5537,6 +5939,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("ProxyClusterKeys.Create", self, req, plumbing_response)
 
       resp = ProxyClusterKeyCreateResponse.new()
       resp.meta = Plumbing::convert_create_response_metadata_to_porcelain(plumbing_response.meta)
@@ -5558,6 +5963,8 @@ module SDM #:nodoc:
       end
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("ProxyClusterKeys.Get", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -5572,6 +5979,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("ProxyClusterKeys.Get", self, req, plumbing_response)
 
       resp = ProxyClusterKeyGetResponse.new()
       resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
@@ -5588,6 +5998,8 @@ module SDM #:nodoc:
       req = V1::ProxyClusterKeyDeleteRequest.new()
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("ProxyClusterKeys.Delete", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -5602,6 +6014,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("ProxyClusterKeys.Delete", self, req, plumbing_response)
 
       resp = ProxyClusterKeyDeleteResponse.new()
       resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
@@ -5763,6 +6178,8 @@ module SDM #:nodoc:
       req = V1::RemoteIdentityCreateRequest.new()
 
       req.remote_identity = Plumbing::convert_remote_identity_to_plumbing(remote_identity)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("RemoteIdentities.Create", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -5777,6 +6194,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("RemoteIdentities.Create", self, req, plumbing_response)
 
       resp = RemoteIdentityCreateResponse.new()
       resp.meta = Plumbing::convert_create_response_metadata_to_porcelain(plumbing_response.meta)
@@ -5797,6 +6217,8 @@ module SDM #:nodoc:
       end
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("RemoteIdentities.Get", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -5811,6 +6233,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("RemoteIdentities.Get", self, req, plumbing_response)
 
       resp = RemoteIdentityGetResponse.new()
       resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
@@ -5827,6 +6252,8 @@ module SDM #:nodoc:
       req = V1::RemoteIdentityUpdateRequest.new()
 
       req.remote_identity = Plumbing::convert_remote_identity_to_plumbing(remote_identity)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("RemoteIdentities.Update", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -5841,6 +6268,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("RemoteIdentities.Update", self, req, plumbing_response)
 
       resp = RemoteIdentityUpdateResponse.new()
       resp.meta = Plumbing::convert_update_response_metadata_to_porcelain(plumbing_response.meta)
@@ -5857,6 +6287,8 @@ module SDM #:nodoc:
       req = V1::RemoteIdentityDeleteRequest.new()
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("RemoteIdentities.Delete", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -5871,6 +6303,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("RemoteIdentities.Delete", self, req, plumbing_response)
 
       resp = RemoteIdentityDeleteResponse.new()
       resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
@@ -6035,6 +6470,8 @@ module SDM #:nodoc:
       end
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("RemoteIdentityGroups.Get", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -6049,6 +6486,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("RemoteIdentityGroups.Get", self, req, plumbing_response)
 
       resp = RemoteIdentityGroupGetResponse.new()
       resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
@@ -6417,6 +6857,8 @@ module SDM #:nodoc:
       req = V1::ResourceCreateRequest.new()
 
       req.resource = Plumbing::convert_resource_to_plumbing(resource)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("Resources.Create", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -6431,6 +6873,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("Resources.Create", self, req, plumbing_response)
 
       resp = ResourceCreateResponse.new()
       resp.meta = Plumbing::convert_create_response_metadata_to_porcelain(plumbing_response.meta)
@@ -6451,6 +6896,8 @@ module SDM #:nodoc:
       end
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("Resources.Get", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -6465,6 +6912,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("Resources.Get", self, req, plumbing_response)
 
       resp = ResourceGetResponse.new()
       resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
@@ -6481,6 +6931,8 @@ module SDM #:nodoc:
       req = V1::ResourceUpdateRequest.new()
 
       req.resource = Plumbing::convert_resource_to_plumbing(resource)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("Resources.Update", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -6495,6 +6947,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("Resources.Update", self, req, plumbing_response)
 
       resp = ResourceUpdateResponse.new()
       resp.meta = Plumbing::convert_update_response_metadata_to_porcelain(plumbing_response.meta)
@@ -6511,6 +6966,8 @@ module SDM #:nodoc:
       req = V1::ResourceDeleteRequest.new()
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("Resources.Delete", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -6525,6 +6982,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("Resources.Delete", self, req, plumbing_response)
 
       resp = ResourceDeleteResponse.new()
       resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
@@ -6581,6 +7041,8 @@ module SDM #:nodoc:
       req = V1::ResourceHealthcheckRequest.new()
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("Resources.Healthcheck", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -6595,6 +7057,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("Resources.Healthcheck", self, req, plumbing_response)
 
       resp = ResourceHealthcheckResponse.new()
       resp.meta = Plumbing::convert_update_response_metadata_to_porcelain(plumbing_response.meta)
@@ -6931,6 +7396,8 @@ module SDM #:nodoc:
       req = V1::SecretStoreCreateRequest.new()
 
       req.secret_store = Plumbing::convert_secret_store_to_plumbing(secret_store)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("SecretStores.Create", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -6945,6 +7412,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("SecretStores.Create", self, req, plumbing_response)
 
       resp = SecretStoreCreateResponse.new()
       resp.meta = Plumbing::convert_create_response_metadata_to_porcelain(plumbing_response.meta)
@@ -6965,6 +7435,8 @@ module SDM #:nodoc:
       end
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("SecretStores.Get", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -6979,6 +7451,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("SecretStores.Get", self, req, plumbing_response)
 
       resp = SecretStoreGetResponse.new()
       resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
@@ -6995,6 +7470,8 @@ module SDM #:nodoc:
       req = V1::SecretStoreUpdateRequest.new()
 
       req.secret_store = Plumbing::convert_secret_store_to_plumbing(secret_store)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("SecretStores.Update", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -7009,6 +7486,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("SecretStores.Update", self, req, plumbing_response)
 
       resp = SecretStoreUpdateResponse.new()
       resp.meta = Plumbing::convert_update_response_metadata_to_porcelain(plumbing_response.meta)
@@ -7025,6 +7505,8 @@ module SDM #:nodoc:
       req = V1::SecretStoreDeleteRequest.new()
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("SecretStores.Delete", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -7039,6 +7521,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("SecretStores.Delete", self, req, plumbing_response)
 
       resp = SecretStoreDeleteResponse.new()
       resp.meta = Plumbing::convert_delete_response_metadata_to_porcelain(plumbing_response.meta)
@@ -7175,6 +7660,8 @@ module SDM #:nodoc:
           req.meta.cursor = plumbing_response.meta.next_cursor
         end
       }
+      # Wrap enumerator to cache secret engine public keys
+      resp = EnumeratorInterceptor.wrap_secret_engine_list(resp, @parent.instance_variable_get(:@encryption_interceptor))
       resp
     end
 
@@ -7190,6 +7677,8 @@ module SDM #:nodoc:
       end
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("SecretEngines.Get", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -7204,6 +7693,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("SecretEngines.Get", self, req, plumbing_response)
 
       resp = SecretEngineGetResponse.new()
       resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
@@ -7220,6 +7712,8 @@ module SDM #:nodoc:
       req = V1::SecretEngineCreateRequest.new()
 
       req.secret_engine = Plumbing::convert_secret_engine_to_plumbing(secret_engine)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("SecretEngines.Create", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -7234,6 +7728,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("SecretEngines.Create", self, req, plumbing_response)
 
       resp = SecretEngineCreateResponse.new()
       resp.meta = Plumbing::convert_create_response_metadata_to_porcelain(plumbing_response.meta)
@@ -7250,6 +7747,8 @@ module SDM #:nodoc:
       req = V1::SecretEngineUpdateRequest.new()
 
       req.secret_engine = Plumbing::convert_secret_engine_to_plumbing(secret_engine)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("SecretEngines.Update", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -7264,6 +7763,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("SecretEngines.Update", self, req, plumbing_response)
 
       resp = SecretEngineUpdateResponse.new()
       resp.meta = Plumbing::convert_update_response_metadata_to_porcelain(plumbing_response.meta)
@@ -7280,6 +7782,8 @@ module SDM #:nodoc:
       req = V1::SecretEngineDeleteRequest.new()
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("SecretEngines.Delete", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -7294,6 +7798,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("SecretEngines.Delete", self, req, plumbing_response)
 
       resp = SecretEngineDeleteResponse.new()
       resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
@@ -7348,6 +7855,8 @@ module SDM #:nodoc:
       req = V1::GenerateKeysRequest.new()
 
       req.secret_engine_id = (secret_engine_id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("SecretEngines.GenerateKeys", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -7363,6 +7872,9 @@ module SDM #:nodoc:
         break
       end
 
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("SecretEngines.GenerateKeys", self, req, plumbing_response)
+
       resp = GenerateKeysResponse.new()
       resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
       resp
@@ -7376,6 +7888,8 @@ module SDM #:nodoc:
       req = V1::HealthcheckRequest.new()
 
       req.secret_engine_id = (secret_engine_id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("SecretEngines.Healthcheck", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -7390,6 +7904,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("SecretEngines.Healthcheck", self, req, plumbing_response)
 
       resp = HealthcheckResponse.new()
       resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
@@ -7407,6 +7924,8 @@ module SDM #:nodoc:
 
       req.id = (id)
       req.password_policy = Plumbing::convert_secret_engine_password_policy_to_plumbing(password_policy)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("SecretEngines.Rotate", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -7421,6 +7940,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("SecretEngines.Rotate", self, req, plumbing_response)
 
       resp = SecretEngineRotateResponse.new()
       resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
@@ -7492,6 +8014,8 @@ module SDM #:nodoc:
       req = V1::SecretStoreHealthcheckRequest.new()
 
       req.secret_store_id = (secret_store_id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("SecretStoreHealths.Healthcheck", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -7506,6 +8030,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("SecretStoreHealths.Healthcheck", self, req, plumbing_response)
 
       resp = SecretStoreHealthcheckResponse.new()
       resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
@@ -7591,6 +8118,8 @@ module SDM #:nodoc:
       req = V1::WorkflowApproversCreateRequest.new()
 
       req.workflow_approver = Plumbing::convert_workflow_approver_to_plumbing(workflow_approver)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("WorkflowApprovers.Create", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -7605,6 +8134,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("WorkflowApprovers.Create", self, req, plumbing_response)
 
       resp = WorkflowApproversCreateResponse.new()
       resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
@@ -7624,6 +8156,8 @@ module SDM #:nodoc:
       end
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("WorkflowApprovers.Get", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -7638,6 +8172,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("WorkflowApprovers.Get", self, req, plumbing_response)
 
       resp = WorkflowApproverGetResponse.new()
       resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
@@ -7654,6 +8191,8 @@ module SDM #:nodoc:
       req = V1::WorkflowApproversDeleteRequest.new()
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("WorkflowApprovers.Delete", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -7668,6 +8207,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("WorkflowApprovers.Delete", self, req, plumbing_response)
 
       resp = WorkflowApproversDeleteResponse.new()
       resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
@@ -7827,6 +8369,8 @@ module SDM #:nodoc:
       req = V1::WorkflowRolesCreateRequest.new()
 
       req.workflow_role = Plumbing::convert_workflow_role_to_plumbing(workflow_role)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("WorkflowRoles.Create", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -7841,6 +8385,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("WorkflowRoles.Create", self, req, plumbing_response)
 
       resp = WorkflowRolesCreateResponse.new()
       resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
@@ -7860,6 +8407,8 @@ module SDM #:nodoc:
       end
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("WorkflowRoles.Get", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -7874,6 +8423,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("WorkflowRoles.Get", self, req, plumbing_response)
 
       resp = WorkflowRoleGetResponse.new()
       resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
@@ -7890,6 +8442,8 @@ module SDM #:nodoc:
       req = V1::WorkflowRolesDeleteRequest.new()
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("WorkflowRoles.Delete", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -7904,6 +8458,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("WorkflowRoles.Delete", self, req, plumbing_response)
 
       resp = WorkflowRolesDeleteResponse.new()
       resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
@@ -8064,6 +8621,8 @@ module SDM #:nodoc:
       req = V1::WorkflowCreateRequest.new()
 
       req.workflow = Plumbing::convert_workflow_to_plumbing(workflow)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("Workflows.Create", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -8078,6 +8637,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("Workflows.Create", self, req, plumbing_response)
 
       resp = WorkflowCreateResponse.new()
       resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
@@ -8097,6 +8659,8 @@ module SDM #:nodoc:
       end
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("Workflows.Get", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -8111,6 +8675,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("Workflows.Get", self, req, plumbing_response)
 
       resp = WorkflowGetResponse.new()
       resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
@@ -8127,6 +8694,8 @@ module SDM #:nodoc:
       req = V1::WorkflowDeleteRequest.new()
 
       req.id = (id)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("Workflows.Delete", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -8142,6 +8711,9 @@ module SDM #:nodoc:
         break
       end
 
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("Workflows.Delete", self, req, plumbing_response)
+
       resp = WorkflowDeleteResponse.new()
       resp.id = (plumbing_response.id)
       resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
@@ -8156,6 +8728,8 @@ module SDM #:nodoc:
       req = V1::WorkflowUpdateRequest.new()
 
       req.workflow = Plumbing::convert_workflow_to_plumbing(workflow)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("Workflows.Update", self, req)
       tries = 0
       plumbing_response = nil
       loop do
@@ -8170,6 +8744,9 @@ module SDM #:nodoc:
         end
         break
       end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("Workflows.Update", self, req, plumbing_response)
 
       resp = WorkflowUpdateResponse.new()
       resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
