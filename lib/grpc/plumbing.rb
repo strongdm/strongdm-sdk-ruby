@@ -7178,12 +7178,13 @@ module SDM
       porcelain.id = (plumbing.id)
       porcelain.include_tags = convert_repeated_tag_to_porcelain(plumbing.include_tags)
       porcelain.name = (plumbing.name)
-      porcelain.pool_id = (plumbing.pool_id)
       porcelain.project_ids = (plumbing.project_ids)
-      porcelain.project_number = (plumbing.project_number)
-      porcelain.provider_id = (plumbing.provider_id)
       porcelain.scan_period = (plumbing.scan_period)
       porcelain.services = (plumbing.services)
+      porcelain.workload_pool_id = (plumbing.workload_pool_id)
+      porcelain.workload_project_id = (plumbing.workload_project_id)
+      porcelain.workload_project_number = (plumbing.workload_project_number)
+      porcelain.workload_provider_id = (plumbing.workload_provider_id)
       porcelain
     end
 
@@ -7197,12 +7198,13 @@ module SDM
       plumbing.id = (porcelain.id)
       plumbing.include_tags += convert_repeated_tag_to_plumbing(porcelain.include_tags)
       plumbing.name = (porcelain.name)
-      plumbing.pool_id = (porcelain.pool_id)
       plumbing.project_ids += (porcelain.project_ids)
-      plumbing.project_number = (porcelain.project_number)
-      plumbing.provider_id = (porcelain.provider_id)
       plumbing.scan_period = (porcelain.scan_period)
       plumbing.services += (porcelain.services)
+      plumbing.workload_pool_id = (porcelain.workload_pool_id)
+      plumbing.workload_project_id = (porcelain.workload_project_id)
+      plumbing.workload_project_number = (porcelain.workload_project_number)
+      plumbing.workload_provider_id = (porcelain.workload_provider_id)
       plumbing
     end
     def self.convert_repeated_gcp_connector_to_plumbing(porcelains)

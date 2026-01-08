@@ -106,10 +106,11 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       repeated :services, :string, 5
       repeated :include_tags, :message, 6, "v1.Tag"
       repeated :exclude_tags, :message, 7, "v1.Tag"
-      optional :project_number, :string, 20
-      optional :provider_id, :string, 21
-      optional :pool_id, :string, 22
       repeated :project_ids, :string, 23
+      optional :workload_project_number, :string, 24
+      optional :workload_project_id, :string, 25
+      optional :workload_provider_id, :string, 26
+      optional :workload_pool_id, :string, 27
     end
   end
 end

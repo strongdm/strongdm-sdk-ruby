@@ -6974,18 +6974,20 @@ module SDM
     attr_accessor :include_tags
     # Unique human-readable name of the Connector.
     attr_accessor :name
-    # PoolId is the GCP Workload Pool Identifier used to authenticate our JWT
-    attr_accessor :pool_id
     # ProjectIds is the list of GCP Projects the connector will scan
     attr_accessor :project_ids
-    # ProjectNumber is the GCP Project the Workload Pool is defined in
-    attr_accessor :project_number
-    # ProviderId is the GCP Workload Provider Identifier used to authenticate our JWT
-    attr_accessor :provider_id
     # ScanPeriod identifies which remote system this Connector discovers
     attr_accessor :scan_period
     # Services is a list of services this connector should scan.
     attr_accessor :services
+    # WorkloadPoolId is the GCP Workload Pool Identifier used to authenticate our JWT
+    attr_accessor :workload_pool_id
+    # WorkloadProjectId is the GCP Project ID where the Workload Pool is defined
+    attr_accessor :workload_project_id
+    # WorkloadProjectNumber is the GCP Project Number where the Workload Pool is defined
+    attr_accessor :workload_project_number
+    # WorkloadProviderId is the GCP Workload Provider Identifier used to authenticate our JWT
+    attr_accessor :workload_provider_id
 
     def initialize(
       description: nil,
@@ -6993,24 +6995,26 @@ module SDM
       id: nil,
       include_tags: nil,
       name: nil,
-      pool_id: nil,
       project_ids: nil,
-      project_number: nil,
-      provider_id: nil,
       scan_period: nil,
-      services: nil
+      services: nil,
+      workload_pool_id: nil,
+      workload_project_id: nil,
+      workload_project_number: nil,
+      workload_provider_id: nil
     )
       @description = description == nil ? "" : description
       @exclude_tags = exclude_tags == nil ? [] : exclude_tags
       @id = id == nil ? "" : id
       @include_tags = include_tags == nil ? [] : include_tags
       @name = name == nil ? "" : name
-      @pool_id = pool_id == nil ? "" : pool_id
       @project_ids = project_ids == nil ? [] : project_ids
-      @project_number = project_number == nil ? "" : project_number
-      @provider_id = provider_id == nil ? "" : provider_id
       @scan_period = scan_period == nil ? "" : scan_period
       @services = services == nil ? [] : services
+      @workload_pool_id = workload_pool_id == nil ? "" : workload_pool_id
+      @workload_project_id = workload_project_id == nil ? "" : workload_project_id
+      @workload_project_number = workload_project_number == nil ? "" : workload_project_number
+      @workload_provider_id = workload_provider_id == nil ? "" : workload_provider_id
     end
 
     def to_json(options = {})
