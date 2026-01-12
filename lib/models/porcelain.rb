@@ -9707,6 +9707,10 @@ module SDM
     attr_accessor :id
     # Unique human-readable name of the Resource.
     attr_accessor :name
+    # The OAuth 2.0 authorization endpoint URL.
+    attr_accessor :oauth_auth_endpoint
+    # The OAuth 2.0 token endpoint URL.
+    attr_accessor :oauth_token_endpoint
     # OAuth App Client Secret
     attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
@@ -9731,6 +9735,8 @@ module SDM
       hostname: nil,
       id: nil,
       name: nil,
+      oauth_auth_endpoint: nil,
+      oauth_token_endpoint: nil,
       password: nil,
       port: nil,
       port_override: nil,
@@ -9746,6 +9752,8 @@ module SDM
       @hostname = hostname == nil ? "" : hostname
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
+      @oauth_auth_endpoint = oauth_auth_endpoint == nil ? "" : oauth_auth_endpoint
+      @oauth_token_endpoint = oauth_token_endpoint == nil ? "" : oauth_token_endpoint
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override

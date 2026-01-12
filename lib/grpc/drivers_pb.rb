@@ -1371,6 +1371,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :proxy_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :hostname, :string, 1
+      optional :oauth_auth_endpoint, :string, 8
+      optional :oauth_token_endpoint, :string, 9
       optional :password, :string, 2
       optional :port, :int32, 5
       optional :port_override, :int32, 4
