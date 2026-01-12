@@ -10888,7 +10888,6 @@ module SDM
       end
       porcelain = ManagedSecretRetrieveRequest.new()
       porcelain.id = (plumbing.id)
-      porcelain.public_key = (plumbing.public_key)
       porcelain
     end
 
@@ -10898,7 +10897,6 @@ module SDM
       end
       plumbing = V1::ManagedSecretRetrieveRequest.new()
       plumbing.id = (porcelain.id)
-      plumbing.public_key = (porcelain.public_key)
       plumbing
     end
     def self.convert_repeated_managed_secret_retrieve_request_to_plumbing(porcelains)

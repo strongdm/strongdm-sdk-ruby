@@ -10348,15 +10348,11 @@ module SDM
   class ManagedSecretRetrieveRequest
     # The unique identifier of the Managed Secret to retrieve.
     attr_accessor :id
-    # Public key to encrypt a sensitive value with
-    attr_accessor :public_key
 
     def initialize(
-      id: nil,
-      public_key: nil
+      id: nil
     )
       @id = id == nil ? "" : id
-      @public_key = public_key == nil ? "" : public_key
     end
 
     def to_json(options = {})

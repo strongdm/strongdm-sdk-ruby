@@ -4458,13 +4458,11 @@ module SDM #:nodoc:
     # Retrieve returns Managed Secret with sensitive data
     def retrieve(
       id,
-      public_key,
       deadline: nil
     )
       req = V1::ManagedSecretRetrieveRequest.new()
 
       req.id = (id)
-      req.public_key = (public_key)
       # Execute before interceptor hooks
       req = @parent.interceptor.execute_before("ManagedSecrets.Retrieve", self, req)
       tries = 0
