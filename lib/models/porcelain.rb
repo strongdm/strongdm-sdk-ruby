@@ -6189,8 +6189,6 @@ module SDM
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
-    # The name of the mongo replicaset.
-    attr_accessor :replica_set
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
@@ -6212,7 +6210,6 @@ module SDM
       password: nil,
       port_override: nil,
       proxy_cluster_id: nil,
-      replica_set: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -6229,7 +6226,6 @@ module SDM
       @password = password == nil ? "" : password
       @port_override = port_override == nil ? 0 : port_override
       @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
-      @replica_set = replica_set == nil ? "" : replica_set
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -7511,6 +7507,89 @@ module SDM
       @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @service_account_key = service_account_key == nil ? "" : service_account_key
+      @subdomain = subdomain == nil ? "" : subdomain
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # GoogleSpanner is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class GoogleSpanner
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    attr_accessor :bind_interface
+    # The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+    attr_accessor :database
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
+    # The endpoint to dial e.g. spanner.googleapis.com
+    attr_accessor :endpoint
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # The Spanner instance ID within the GCP project.
+    attr_accessor :instance
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # The port to dial to initiate a connection from the egress node to this resource.
+    attr_accessor :port
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    attr_accessor :port_override
+    # The GCP project ID containing the Spanner database.
+    attr_accessor :project
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+    # Optional service account email to impersonate. When set, the relay's
+    # Application Default Credentials will impersonate this service account
+    # to access Spanner. This allows role separation where the relay uses
+    # one service account but operates as another.
+    attr_accessor :service_account_to_impersonate
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    attr_accessor :subdomain
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      bind_interface: nil,
+      database: nil,
+      egress_filter: nil,
+      endpoint: nil,
+      healthy: nil,
+      id: nil,
+      instance: nil,
+      name: nil,
+      port: nil,
+      port_override: nil,
+      project: nil,
+      proxy_cluster_id: nil,
+      secret_store_id: nil,
+      service_account_to_impersonate: nil,
+      subdomain: nil,
+      tags: nil
+    )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
+      @database = database == nil ? "" : database
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @endpoint = endpoint == nil ? "" : endpoint
+      @healthy = healthy == nil ? false : healthy
+      @id = id == nil ? "" : id
+      @instance = instance == nil ? "" : instance
+      @name = name == nil ? "" : name
+      @port = port == nil ? 0 : port
+      @port_override = port_override == nil ? 0 : port_override
+      @project = project == nil ? "" : project
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @service_account_to_impersonate = service_account_to_impersonate == nil ? "" : service_account_to_impersonate
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
     end
@@ -10975,8 +11054,6 @@ module SDM
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
-    # The name of the mongo replicaset.
-    attr_accessor :replica_set
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
@@ -11001,7 +11078,6 @@ module SDM
       port: nil,
       port_override: nil,
       proxy_cluster_id: nil,
-      replica_set: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -11020,7 +11096,6 @@ module SDM
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
       @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
-      @replica_set = replica_set == nil ? "" : replica_set
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -11062,8 +11137,6 @@ module SDM
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
-    # The name of the mongo replicaset.
-    attr_accessor :replica_set
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
@@ -11088,7 +11161,6 @@ module SDM
       port: nil,
       port_override: nil,
       proxy_cluster_id: nil,
-      replica_set: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -11107,7 +11179,6 @@ module SDM
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
       @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
-      @replica_set = replica_set == nil ? "" : replica_set
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags

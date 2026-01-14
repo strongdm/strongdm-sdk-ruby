@@ -6518,7 +6518,6 @@ module SDM
       porcelain.password = (plumbing.password)
       porcelain.port_override = (plumbing.port_override)
       porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
-      porcelain.replica_set = (plumbing.replica_set)
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
@@ -6542,7 +6541,6 @@ module SDM
       plumbing.password = (porcelain.password)
       plumbing.port_override = (porcelain.port_override)
       plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
-      plumbing.replica_set = (porcelain.replica_set)
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
@@ -7704,6 +7702,70 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_google_gke_user_impersonation_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_google_spanner_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = GoogleSpanner.new()
+      porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.database = (plumbing.database)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.endpoint = (plumbing.endpoint)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.id = (plumbing.id)
+      porcelain.instance = (plumbing.instance)
+      porcelain.name = (plumbing.name)
+      porcelain.port = (plumbing.port)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.project = (plumbing.project)
+      porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.service_account_to_impersonate = (plumbing.service_account_to_impersonate)
+      porcelain.subdomain = (plumbing.subdomain)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_google_spanner_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::GoogleSpanner.new()
+      plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.database = (porcelain.database)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.endpoint = (porcelain.endpoint)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.id = (porcelain.id)
+      plumbing.instance = (porcelain.instance)
+      plumbing.name = (porcelain.name)
+      plumbing.port = (porcelain.port)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.project = (porcelain.project)
+      plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.service_account_to_impersonate = (porcelain.service_account_to_impersonate)
+      plumbing.subdomain = (porcelain.subdomain)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_google_spanner_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_google_spanner_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_google_spanner_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_google_spanner_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -11539,7 +11601,6 @@ module SDM
       porcelain.port = (plumbing.port)
       porcelain.port_override = (plumbing.port_override)
       porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
-      porcelain.replica_set = (plumbing.replica_set)
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
@@ -11565,7 +11626,6 @@ module SDM
       plumbing.port = (porcelain.port)
       plumbing.port_override = (porcelain.port_override)
       plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
-      plumbing.replica_set = (porcelain.replica_set)
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
@@ -11607,7 +11667,6 @@ module SDM
       porcelain.port = (plumbing.port)
       porcelain.port_override = (plumbing.port_override)
       porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
-      porcelain.replica_set = (plumbing.replica_set)
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
@@ -11633,7 +11692,6 @@ module SDM
       plumbing.port = (porcelain.port)
       plumbing.port_override = (porcelain.port_override)
       plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
-      plumbing.replica_set = (porcelain.replica_set)
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
@@ -15380,6 +15438,9 @@ module SDM
       if porcelain.instance_of? GoogleGKEUserImpersonation
         plumbing.google_gke_user_impersonation = convert_google_gke_user_impersonation_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? GoogleSpanner
+        plumbing.google_spanner = convert_google_spanner_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? Greenplum
         plumbing.greenplum = convert_greenplum_to_plumbing(porcelain)
       end
@@ -15722,6 +15783,9 @@ module SDM
       end
       if plumbing.google_gke_user_impersonation != nil
         return convert_google_gke_user_impersonation_to_porcelain(plumbing.google_gke_user_impersonation)
+      end
+      if plumbing.google_spanner != nil
+        return convert_google_spanner_to_porcelain(plumbing.google_spanner)
       end
       if plumbing.greenplum != nil
         return convert_greenplum_to_porcelain(plumbing.greenplum)

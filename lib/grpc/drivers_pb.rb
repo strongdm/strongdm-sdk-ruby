@@ -82,6 +82,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :gcpwif, :message, 2701, "v1.GCPWIF"
         optional :google_gke, :message, 803, "v1.GoogleGKE"
         optional :google_gke_user_impersonation, :message, 816, "v1.GoogleGKEUserImpersonation"
+        optional :google_spanner, :message, 4800, "v1.GoogleSpanner"
         optional :greenplum, :message, 1302, "v1.Greenplum"
         optional :http_auth, :message, 702, "v1.HTTPAuth"
         optional :http_basic_auth, :message, 700, "v1.HTTPBasicAuth"
@@ -947,7 +948,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :hostname, :string, 1
       optional :password, :string, 5
       optional :port_override, :int32, 3
-      optional :replica_set, :string, 6
       optional :username, :string, 4
     end
     add_message "v1.DocumentDBReplicaSetIAM" do
@@ -1173,6 +1173,24 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :healthcheck_namespace, :string, 6
       optional :port_override, :int32, 12
       optional :service_account_key, :string, 4
+    end
+    add_message "v1.GoogleSpanner" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :proxy_cluster_id, :string, 32776
+      optional :subdomain, :string, 32775
+      optional :database, :string, 3
+      optional :endpoint, :string, 4
+      optional :instance, :string, 2
+      optional :port, :int32, 6
+      optional :port_override, :int32, 5
+      optional :project, :string, 1
+      optional :service_account_to_impersonate, :string, 10
     end
     add_message "v1.Greenplum" do
       optional :id, :string, 32768
@@ -1527,7 +1545,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :password, :string, 5
       optional :port, :int32, 6
       optional :port_override, :int32, 3
-      optional :replica_set, :string, 7
       optional :tls_required, :bool, 9
       optional :username, :string, 4
     end
@@ -1547,7 +1564,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :password, :string, 5
       optional :port, :int32, 6
       optional :port_override, :int32, 3
-      optional :replica_set, :string, 7
       optional :tls_required, :bool, 9
       optional :username, :string, 4
     end
@@ -2229,6 +2245,7 @@ module V1
   GCPWIF = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GCPWIF").msgclass
   GoogleGKE = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GoogleGKE").msgclass
   GoogleGKEUserImpersonation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GoogleGKEUserImpersonation").msgclass
+  GoogleSpanner = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GoogleSpanner").msgclass
   Greenplum = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Greenplum").msgclass
   HTTPAuth = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.HTTPAuth").msgclass
   HTTPBasicAuth = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.HTTPBasicAuth").msgclass
