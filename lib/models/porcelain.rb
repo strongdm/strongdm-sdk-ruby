@@ -9788,6 +9788,8 @@ module SDM
     attr_accessor :name
     # The OAuth 2.0 authorization endpoint URL.
     attr_accessor :oauth_auth_endpoint
+    # The OAuth 2.0 dynamic client registration endpoint URL.
+    attr_accessor :oauth_register_endpoint
     # The OAuth 2.0 token endpoint URL.
     attr_accessor :oauth_token_endpoint
     # OAuth App Client Secret
@@ -9815,6 +9817,7 @@ module SDM
       id: nil,
       name: nil,
       oauth_auth_endpoint: nil,
+      oauth_register_endpoint: nil,
       oauth_token_endpoint: nil,
       password: nil,
       port: nil,
@@ -9832,6 +9835,7 @@ module SDM
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
       @oauth_auth_endpoint = oauth_auth_endpoint == nil ? "" : oauth_auth_endpoint
+      @oauth_register_endpoint = oauth_register_endpoint == nil ? "" : oauth_register_endpoint
       @oauth_token_endpoint = oauth_token_endpoint == nil ? "" : oauth_token_endpoint
       @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
