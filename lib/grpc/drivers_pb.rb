@@ -19,6 +19,7 @@ require "google/protobuf"
 
 require "options_pb"
 require "tags_pb"
+require "custom_headers_pb"
 
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("drivers.proto", :syntax => :proto3) do
@@ -1220,6 +1221,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :bind_interface, :string, 32774
       optional :proxy_cluster_id, :string, 32776
       optional :auth_header, :string, 3
+      optional :custom_headers, :message, 13, "v1.CustomHeaders"
       optional :default_path, :string, 5
       optional :headers_blacklist, :string, 4
       optional :healthcheck_path, :string, 2
@@ -1237,6 +1239,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
       optional :proxy_cluster_id, :string, 32776
+      optional :custom_headers, :message, 13, "v1.CustomHeaders"
       optional :default_path, :string, 6
       optional :headers_blacklist, :string, 5
       optional :healthcheck_path, :string, 2
@@ -1256,6 +1259,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :egress_filter, :string, 32773
       optional :bind_interface, :string, 32774
       optional :proxy_cluster_id, :string, 32776
+      optional :custom_headers, :message, 13, "v1.CustomHeaders"
       optional :default_path, :string, 4
       optional :headers_blacklist, :string, 3
       optional :healthcheck_path, :string, 2
@@ -1647,7 +1651,9 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :bind_interface, :string, 32774
       optional :proxy_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
+      optional :discovery_enabled, :bool, 6
       optional :domain, :string, 1
+      optional :group_names, :string, 7
       optional :identity_set_id, :string, 3
       optional :privilege_levels, :string, 2
     end
@@ -1734,6 +1740,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :proxy_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
       optional :downgrade_nla_connections, :bool, 6
+      optional :enable_ephemeral_accounts, :bool, 13
       optional :hostname, :string, 1
       optional :identity_alias_healthcheck_username, :string, 12
       optional :identity_set_id, :string, 11

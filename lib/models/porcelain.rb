@@ -5727,6 +5727,54 @@ module SDM
     end
   end
 
+  # CustomHeader describes a single HTTP header
+  class CustomHeader
+    # The name of this header.
+    attr_accessor :name
+    # Headers containing sensitive values must be stored encrypted and redacted from logs.
+    attr_accessor :secret
+    # The value of this header.
+    attr_accessor :value
+
+    def initialize(
+      name: nil,
+      secret: nil,
+      value: nil
+    )
+      @name = name == nil ? "" : name
+      @secret = secret == nil ? false : secret
+      @value = value == nil ? "" : value
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # CustomHeaders holds an array of HTTP headers to be injected into requests by the driver
+  class CustomHeaders
+    # Entries, each describing a single header
+    attr_accessor :custom_headers
+
+    def initialize(
+      custom_headers: nil
+    )
+      @custom_headers = custom_headers == nil ? [] : custom_headers
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class CyberarkConjurStore
     # The URL of the Cyberark instance
     attr_accessor :appurl
@@ -8305,6 +8353,8 @@ module SDM
     attr_accessor :auth_header
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
+    # Additional HTTP headers to include in requests.
+    attr_accessor :custom_headers
     # Automatically redirect to this path upon connecting.
     attr_accessor :default_path
     # A filter applied to the routing logic to pin datasource to nodes.
@@ -8337,6 +8387,7 @@ module SDM
     def initialize(
       auth_header: nil,
       bind_interface: nil,
+      custom_headers: nil,
       default_path: nil,
       egress_filter: nil,
       headers_blacklist: nil,
@@ -8354,6 +8405,7 @@ module SDM
     )
       @auth_header = auth_header == nil ? "" : auth_header
       @bind_interface = bind_interface == nil ? "" : bind_interface
+      @custom_headers = custom_headers == nil ? nil : custom_headers
       @default_path = default_path == nil ? "" : default_path
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @headers_blacklist = headers_blacklist == nil ? "" : headers_blacklist
@@ -8382,6 +8434,8 @@ module SDM
   class HTTPBasicAuth
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
+    # Additional HTTP headers to include in requests.
+    attr_accessor :custom_headers
     # Automatically redirect to this path upon connecting.
     attr_accessor :default_path
     # A filter applied to the routing logic to pin datasource to nodes.
@@ -8417,6 +8471,7 @@ module SDM
 
     def initialize(
       bind_interface: nil,
+      custom_headers: nil,
       default_path: nil,
       egress_filter: nil,
       headers_blacklist: nil,
@@ -8435,6 +8490,7 @@ module SDM
       username: nil
     )
       @bind_interface = bind_interface == nil ? "" : bind_interface
+      @custom_headers = custom_headers == nil ? nil : custom_headers
       @default_path = default_path == nil ? "" : default_path
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @headers_blacklist = headers_blacklist == nil ? "" : headers_blacklist
@@ -8465,6 +8521,8 @@ module SDM
   class HTTPNoAuth
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
+    # Additional HTTP headers to include in requests.
+    attr_accessor :custom_headers
     # Automatically redirect to this path upon connecting.
     attr_accessor :default_path
     # A filter applied to the routing logic to pin datasource to nodes.
@@ -8496,6 +8554,7 @@ module SDM
 
     def initialize(
       bind_interface: nil,
+      custom_headers: nil,
       default_path: nil,
       egress_filter: nil,
       headers_blacklist: nil,
@@ -8512,6 +8571,7 @@ module SDM
       url: nil
     )
       @bind_interface = bind_interface == nil ? "" : bind_interface
+      @custom_headers = custom_headers == nil ? nil : custom_headers
       @default_path = default_path == nil ? "" : default_path
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @headers_blacklist = headers_blacklist == nil ? "" : headers_blacklist
@@ -11803,10 +11863,14 @@ module SDM
   class OktaGroups
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
+    # If true, configures discovery of the Okta org to be run from a node.
+    attr_accessor :discovery_enabled
     # Represents the Okta Org Client URL
     attr_accessor :domain
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter
+    # comma separated list of group names to filter by. Supports wildcards (*)
+    attr_accessor :group_names
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
     # Unique identifier of the Resource.
@@ -11828,8 +11892,10 @@ module SDM
 
     def initialize(
       bind_interface: nil,
+      discovery_enabled: nil,
       domain: nil,
       egress_filter: nil,
+      group_names: nil,
       healthy: nil,
       id: nil,
       identity_set_id: nil,
@@ -11841,8 +11907,10 @@ module SDM
       tags: nil
     )
       @bind_interface = bind_interface == nil ? "" : bind_interface
+      @discovery_enabled = discovery_enabled == nil ? false : discovery_enabled
       @domain = domain == nil ? "" : domain
       @egress_filter = egress_filter == nil ? "" : egress_filter
+      @group_names = group_names == nil ? "" : group_names
       @healthy = healthy == nil ? false : healthy
       @id = id == nil ? "" : id
       @identity_set_id = identity_set_id == nil ? "" : identity_set_id
@@ -17097,6 +17165,8 @@ module SDM
     attr_accessor :created_at
     # The User's email address. Must be unique.
     attr_accessor :email
+    # Internal employee ID used to identify the user.
+    attr_accessor :employee_number
     # External ID is an alternative unique ID this user is represented by within an external service.
     attr_accessor :external_id
     # The User's first name.
@@ -17127,6 +17197,7 @@ module SDM
       scim: nil,
       created_at: nil,
       email: nil,
+      employee_number: nil,
       external_id: nil,
       first_name: nil,
       id: nil,
@@ -17142,6 +17213,7 @@ module SDM
       @scim = scim == nil ? "" : scim
       @created_at = created_at == nil ? nil : created_at
       @email = email == nil ? "" : email
+      @employee_number = employee_number == nil ? "" : employee_number
       @external_id = external_id == nil ? "" : external_id
       @first_name = first_name == nil ? "" : first_name
       @id = id == nil ? "" : id

@@ -97,6 +97,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :manager_id, :string, 14
       optional :resolved_manager_id, :string, 15
       optional :created_at, :message, 16, "google.protobuf.Timestamp"
+      optional :employee_number, :string, 17
     end
     add_message "v1.Service" do
       optional :id, :string, 1

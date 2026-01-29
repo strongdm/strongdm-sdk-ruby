@@ -24,6 +24,7 @@ require_relative "./tags_pb"
 require_relative "./access_requests_pb"
 require_relative "./access_request_events_history_pb"
 require_relative "./access_requests_history_pb"
+require_relative "./custom_headers_pb"
 require_relative "./drivers_pb"
 require_relative "./account_attachments_pb"
 require_relative "./account_attachments_history_pb"
@@ -6062,6 +6063,78 @@ module SDM
       end
       items
     end
+    def self.convert_custom_header_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = CustomHeader.new()
+      porcelain.name = (plumbing.name)
+      porcelain.secret = (plumbing.secret)
+      porcelain.value = (plumbing.value)
+      porcelain
+    end
+
+    def self.convert_custom_header_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::CustomHeader.new()
+      plumbing.name = (porcelain.name)
+      plumbing.secret = (porcelain.secret)
+      plumbing.value = (porcelain.value)
+      plumbing
+    end
+    def self.convert_repeated_custom_header_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_custom_header_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_custom_header_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_custom_header_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_custom_headers_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = CustomHeaders.new()
+      porcelain.custom_headers = convert_repeated_custom_header_to_porcelain(plumbing.custom_headers)
+      porcelain
+    end
+
+    def self.convert_custom_headers_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::CustomHeaders.new()
+      plumbing.custom_headers += convert_repeated_custom_header_to_plumbing(porcelain.custom_headers)
+      plumbing
+    end
+    def self.convert_repeated_custom_headers_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_custom_headers_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_custom_headers_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_custom_headers_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_cyberark_conjur_store_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -8747,6 +8820,7 @@ module SDM
       porcelain = HTTPAuth.new()
       porcelain.auth_header = (plumbing.auth_header)
       porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.custom_headers = convert_custom_headers_to_porcelain(plumbing.custom_headers)
       porcelain.default_path = (plumbing.default_path)
       porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.headers_blacklist = (plumbing.headers_blacklist)
@@ -8771,6 +8845,7 @@ module SDM
       plumbing = V1::HTTPAuth.new()
       plumbing.auth_header = (porcelain.auth_header)
       plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.custom_headers = convert_custom_headers_to_plumbing(porcelain.custom_headers)
       plumbing.default_path = (porcelain.default_path)
       plumbing.egress_filter = (porcelain.egress_filter)
       plumbing.headers_blacklist = (porcelain.headers_blacklist)
@@ -8810,6 +8885,7 @@ module SDM
       end
       porcelain = HTTPBasicAuth.new()
       porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.custom_headers = convert_custom_headers_to_porcelain(plumbing.custom_headers)
       porcelain.default_path = (plumbing.default_path)
       porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.headers_blacklist = (plumbing.headers_blacklist)
@@ -8835,6 +8911,7 @@ module SDM
       end
       plumbing = V1::HTTPBasicAuth.new()
       plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.custom_headers = convert_custom_headers_to_plumbing(porcelain.custom_headers)
       plumbing.default_path = (porcelain.default_path)
       plumbing.egress_filter = (porcelain.egress_filter)
       plumbing.headers_blacklist = (porcelain.headers_blacklist)
@@ -8876,6 +8953,7 @@ module SDM
       end
       porcelain = HTTPNoAuth.new()
       porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.custom_headers = convert_custom_headers_to_porcelain(plumbing.custom_headers)
       porcelain.default_path = (plumbing.default_path)
       porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.headers_blacklist = (plumbing.headers_blacklist)
@@ -8899,6 +8977,7 @@ module SDM
       end
       plumbing = V1::HTTPNoAuth.new()
       plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.custom_headers = convert_custom_headers_to_plumbing(porcelain.custom_headers)
       plumbing.default_path = (porcelain.default_path)
       plumbing.egress_filter = (porcelain.egress_filter)
       plumbing.headers_blacklist = (porcelain.headers_blacklist)
@@ -12357,8 +12436,10 @@ module SDM
       end
       porcelain = OktaGroups.new()
       porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.discovery_enabled = (plumbing.discovery_enabled)
       porcelain.domain = (plumbing.domain)
       porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.group_names = (plumbing.group_names)
       porcelain.healthy = (plumbing.healthy)
       porcelain.id = (plumbing.id)
       porcelain.identity_set_id = (plumbing.identity_set_id)
@@ -12377,8 +12458,10 @@ module SDM
       end
       plumbing = V1::OktaGroups.new()
       plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.discovery_enabled = (porcelain.discovery_enabled)
       plumbing.domain = (porcelain.domain)
       plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.group_names = (porcelain.group_names)
       plumbing.healthy = (porcelain.healthy)
       plumbing.id = (porcelain.id)
       plumbing.identity_set_id = (porcelain.identity_set_id)
@@ -18796,6 +18879,7 @@ module SDM
       porcelain.scim = (plumbing.SCIM)
       porcelain.created_at = convert_timestamp_to_porcelain(plumbing.created_at)
       porcelain.email = (plumbing.email)
+      porcelain.employee_number = (plumbing.employee_number)
       porcelain.external_id = (plumbing.external_id)
       porcelain.first_name = (plumbing.first_name)
       porcelain.id = (plumbing.id)
@@ -18818,6 +18902,7 @@ module SDM
       plumbing.SCIM = (porcelain.scim)
       plumbing.created_at = convert_timestamp_to_plumbing(porcelain.created_at)
       plumbing.email = (porcelain.email)
+      plumbing.employee_number = (porcelain.employee_number)
       plumbing.external_id = (porcelain.external_id)
       plumbing.first_name = (porcelain.first_name)
       plumbing.id = (porcelain.id)
