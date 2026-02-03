@@ -6755,6 +6755,7 @@ module SDM #:nodoc:
   # {KubernetesUserImpersonation}
   # {Maria}
   # {MCP}
+  # {MCPDCR}
   # {Memcached}
   # {Memsql}
   # {MongoHost}
