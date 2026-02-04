@@ -2443,6 +2443,43 @@ module SDM #:nodoc:
       resp
     end
 
+    # GetOrgURLInfo retrieves URL configuration for the organization.
+    # This includes the base URL, website subdomain, OIDC issuer URL, and SAML metadata URL.
+    def get_org_url_info(
+      deadline: nil
+    )
+      req = V1::ControlPanelGetOrgURLInfoRequest.new()
+
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("ControlPanel.GetOrgURLInfo", self, req)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.get_org_url_info(req, metadata: @parent.get_metadata("ControlPanel.GetOrgURLInfo", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("ControlPanel.GetOrgURLInfo", self, req, plumbing_response)
+
+      resp = ControlPanelGetOrgURLInfoResponse.new()
+      resp.base_url = (plumbing_response.base_url)
+      resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.oidc_issuer_url = (plumbing_response.oidc_issuer_url)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp.saml_metadata_url = (plumbing_response.saml_metadata_url)
+      resp.websites_subdomain = (plumbing_response.websites_subdomain)
+      resp
+    end
+
     # VerifyJWT reports whether the given JWT token (x-sdm-token) is valid.
     def verify_jwt(
       token,

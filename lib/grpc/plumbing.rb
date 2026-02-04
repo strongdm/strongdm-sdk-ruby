@@ -44,6 +44,7 @@ require_relative "./approval_workflow_steps_pb"
 require_relative "./approval_workflow_steps_history_pb"
 require_relative "./approval_workflows_pb"
 require_relative "./approval_workflows_history_pb"
+require_relative "./authorization_policies_pb"
 require_relative "./control_panel_pb"
 require_relative "./discovery_connectors_pb"
 require_relative "./roles_pb"
@@ -75,6 +76,7 @@ require_relative "./remote_identity_groups_history_pb"
 require_relative "./replays_pb"
 require_relative "./resources_pb"
 require_relative "./resources_history_pb"
+require_relative "./resourcetypes_pb"
 require_relative "./role_resources_pb"
 require_relative "./role_resources_history_pb"
 require_relative "./roles_history_pb"
@@ -224,6 +226,524 @@ module SDM
         return nil
       end
       JSON.dump(access_rule)
+    end
+    def self.convert_resource_type_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      case plumbing
+      when V1::ResourceType::RESOURCE_TYPE_UNSPECIFIED
+        return SDM::ResourceType::RESOURCE_TYPE_UNSPECIFIED
+      when V1::ResourceType::RESOURCE_TYPE_AKS
+        return SDM::ResourceType::RESOURCE_TYPE_AKS
+      when V1::ResourceType::RESOURCE_TYPE_AKS_BASIC_AUTH
+        return SDM::ResourceType::RESOURCE_TYPE_AKS_BASIC_AUTH
+      when V1::ResourceType::RESOURCE_TYPE_AKS_SERVICE_ACCOUNT
+        return SDM::ResourceType::RESOURCE_TYPE_AKS_SERVICE_ACCOUNT
+      when V1::ResourceType::RESOURCE_TYPE_AKS_SERVICE_ACCOUNT_USER_IMPERSONATION
+        return SDM::ResourceType::RESOURCE_TYPE_AKS_SERVICE_ACCOUNT_USER_IMPERSONATION
+      when V1::ResourceType::RESOURCE_TYPE_AKS_USER_IMPERSONATION
+        return SDM::ResourceType::RESOURCE_TYPE_AKS_USER_IMPERSONATION
+      when V1::ResourceType::RESOURCE_TYPE_AMAZON_MQAMQP
+        return SDM::ResourceType::RESOURCE_TYPE_AMAZON_MQAMQP
+      when V1::ResourceType::RESOURCE_TYPE_AWS
+        return SDM::ResourceType::RESOURCE_TYPE_AWS
+      when V1::ResourceType::RESOURCE_TYPE_AWS_CONSOLE
+        return SDM::ResourceType::RESOURCE_TYPE_AWS_CONSOLE
+      when V1::ResourceType::RESOURCE_TYPE_AWS_CONSOLE_STATIC_KEY_PAIR
+        return SDM::ResourceType::RESOURCE_TYPE_AWS_CONSOLE_STATIC_KEY_PAIR
+      when V1::ResourceType::RESOURCE_TYPE_AWS_INSTANCE_PROFILE
+        return SDM::ResourceType::RESOURCE_TYPE_AWS_INSTANCE_PROFILE
+      when V1::ResourceType::RESOURCE_TYPE_AEROSPIKE
+        return SDM::ResourceType::RESOURCE_TYPE_AEROSPIKE
+      when V1::ResourceType::RESOURCE_TYPE_AMAZON_EKS
+        return SDM::ResourceType::RESOURCE_TYPE_AMAZON_EKS
+      when V1::ResourceType::RESOURCE_TYPE_AMAZON_EKS_INSTANCE_PROFILE
+        return SDM::ResourceType::RESOURCE_TYPE_AMAZON_EKS_INSTANCE_PROFILE
+      when V1::ResourceType::RESOURCE_TYPE_AMAZON_EKS_INSTANCE_PROFILE_USER_IMPERSONATION
+        return SDM::ResourceType::RESOURCE_TYPE_AMAZON_EKS_INSTANCE_PROFILE_USER_IMPERSONATION
+      when V1::ResourceType::RESOURCE_TYPE_AMAZON_EKS_USER_IMPERSONATION
+        return SDM::ResourceType::RESOURCE_TYPE_AMAZON_EKS_USER_IMPERSONATION
+      when V1::ResourceType::RESOURCE_TYPE_AMAZON_ES
+        return SDM::ResourceType::RESOURCE_TYPE_AMAZON_ES
+      when V1::ResourceType::RESOURCE_TYPE_AMAZON_ESIAM
+        return SDM::ResourceType::RESOURCE_TYPE_AMAZON_ESIAM
+      when V1::ResourceType::RESOURCE_TYPE_AMAZON_MQAMQP_091
+        return SDM::ResourceType::RESOURCE_TYPE_AMAZON_MQAMQP_091
+      when V1::ResourceType::RESOURCE_TYPE_ATHENA
+        return SDM::ResourceType::RESOURCE_TYPE_ATHENA
+      when V1::ResourceType::RESOURCE_TYPE_ATHENA_IAM
+        return SDM::ResourceType::RESOURCE_TYPE_ATHENA_IAM
+      when V1::ResourceType::RESOURCE_TYPE_AURORA_MY_SQL
+        return SDM::ResourceType::RESOURCE_TYPE_AURORA_MY_SQL
+      when V1::ResourceType::RESOURCE_TYPE_AURORA_MY_SQLIAM
+        return SDM::ResourceType::RESOURCE_TYPE_AURORA_MY_SQLIAM
+      when V1::ResourceType::RESOURCE_TYPE_AURORA_POSTGRES
+        return SDM::ResourceType::RESOURCE_TYPE_AURORA_POSTGRES
+      when V1::ResourceType::RESOURCE_TYPE_AURORA_POSTGRES_IAM
+        return SDM::ResourceType::RESOURCE_TYPE_AURORA_POSTGRES_IAM
+      when V1::ResourceType::RESOURCE_TYPE_AZURE
+        return SDM::ResourceType::RESOURCE_TYPE_AZURE
+      when V1::ResourceType::RESOURCE_TYPE_AZURE_CERT
+        return SDM::ResourceType::RESOURCE_TYPE_AZURE_CERT
+      when V1::ResourceType::RESOURCE_TYPE_AZURE_MY_SQL
+        return SDM::ResourceType::RESOURCE_TYPE_AZURE_MY_SQL
+      when V1::ResourceType::RESOURCE_TYPE_AZURE_MY_SQL_MANAGED_IDENTITY
+        return SDM::ResourceType::RESOURCE_TYPE_AZURE_MY_SQL_MANAGED_IDENTITY
+      when V1::ResourceType::RESOURCE_TYPE_AZURE_POSTGRES
+        return SDM::ResourceType::RESOURCE_TYPE_AZURE_POSTGRES
+      when V1::ResourceType::RESOURCE_TYPE_AZURE_POSTGRES_MANAGED_IDENTITY
+        return SDM::ResourceType::RESOURCE_TYPE_AZURE_POSTGRES_MANAGED_IDENTITY
+      when V1::ResourceType::RESOURCE_TYPE_BIGQUERY
+        return SDM::ResourceType::RESOURCE_TYPE_BIGQUERY
+      when V1::ResourceType::RESOURCE_TYPE_CASSANDRA
+        return SDM::ResourceType::RESOURCE_TYPE_CASSANDRA
+      when V1::ResourceType::RESOURCE_TYPE_CITUS
+        return SDM::ResourceType::RESOURCE_TYPE_CITUS
+      when V1::ResourceType::RESOURCE_TYPE_CLICK_HOUSE_HTTP
+        return SDM::ResourceType::RESOURCE_TYPE_CLICK_HOUSE_HTTP
+      when V1::ResourceType::RESOURCE_TYPE_CLICK_HOUSE_MY_SQL
+        return SDM::ResourceType::RESOURCE_TYPE_CLICK_HOUSE_MY_SQL
+      when V1::ResourceType::RESOURCE_TYPE_CLICK_HOUSE_TCP
+        return SDM::ResourceType::RESOURCE_TYPE_CLICK_HOUSE_TCP
+      when V1::ResourceType::RESOURCE_TYPE_CLUSTRIX
+        return SDM::ResourceType::RESOURCE_TYPE_CLUSTRIX
+      when V1::ResourceType::RESOURCE_TYPE_COCKROACH
+        return SDM::ResourceType::RESOURCE_TYPE_COCKROACH
+      when V1::ResourceType::RESOURCE_TYPE_COUCHBASE_DATABASE
+        return SDM::ResourceType::RESOURCE_TYPE_COUCHBASE_DATABASE
+      when V1::ResourceType::RESOURCE_TYPE_COUCHBASE_WEB_UI
+        return SDM::ResourceType::RESOURCE_TYPE_COUCHBASE_WEB_UI
+      when V1::ResourceType::RESOURCE_TYPE_DB_2_I
+        return SDM::ResourceType::RESOURCE_TYPE_DB_2_I
+      when V1::ResourceType::RESOURCE_TYPE_DB_2_LUW
+        return SDM::ResourceType::RESOURCE_TYPE_DB_2_LUW
+      when V1::ResourceType::RESOURCE_TYPE_DOCUMENT_DB_HOST
+        return SDM::ResourceType::RESOURCE_TYPE_DOCUMENT_DB_HOST
+      when V1::ResourceType::RESOURCE_TYPE_DOCUMENT_DB_HOST_IAM
+        return SDM::ResourceType::RESOURCE_TYPE_DOCUMENT_DB_HOST_IAM
+      when V1::ResourceType::RESOURCE_TYPE_DOCUMENT_DB_REPLICA_SET
+        return SDM::ResourceType::RESOURCE_TYPE_DOCUMENT_DB_REPLICA_SET
+      when V1::ResourceType::RESOURCE_TYPE_DOCUMENT_DB_REPLICA_SET_IAM
+        return SDM::ResourceType::RESOURCE_TYPE_DOCUMENT_DB_REPLICA_SET_IAM
+      when V1::ResourceType::RESOURCE_TYPE_DRUID
+        return SDM::ResourceType::RESOURCE_TYPE_DRUID
+      when V1::ResourceType::RESOURCE_TYPE_DYNAMO_DB
+        return SDM::ResourceType::RESOURCE_TYPE_DYNAMO_DB
+      when V1::ResourceType::RESOURCE_TYPE_DYNAMO_DBIAM
+        return SDM::ResourceType::RESOURCE_TYPE_DYNAMO_DBIAM
+      when V1::ResourceType::RESOURCE_TYPE_ELASTIC
+        return SDM::ResourceType::RESOURCE_TYPE_ELASTIC
+      when V1::ResourceType::RESOURCE_TYPE_ELASTI_CACHE_REDIS
+        return SDM::ResourceType::RESOURCE_TYPE_ELASTI_CACHE_REDIS
+      when V1::ResourceType::RESOURCE_TYPE_ELASTI_CACHE_REDIS_IAM
+        return SDM::ResourceType::RESOURCE_TYPE_ELASTI_CACHE_REDIS_IAM
+      when V1::ResourceType::RESOURCE_TYPE_ENTRA_ID
+        return SDM::ResourceType::RESOURCE_TYPE_ENTRA_ID
+      when V1::ResourceType::RESOURCE_TYPE_GCP
+        return SDM::ResourceType::RESOURCE_TYPE_GCP
+      when V1::ResourceType::RESOURCE_TYPE_GCP_CONSOLE
+        return SDM::ResourceType::RESOURCE_TYPE_GCP_CONSOLE
+      when V1::ResourceType::RESOURCE_TYPE_GCPWIF
+        return SDM::ResourceType::RESOURCE_TYPE_GCPWIF
+      when V1::ResourceType::RESOURCE_TYPE_GIT_HUB
+        return SDM::ResourceType::RESOURCE_TYPE_GIT_HUB
+      when V1::ResourceType::RESOURCE_TYPE_GOOGLE_ADMIN
+        return SDM::ResourceType::RESOURCE_TYPE_GOOGLE_ADMIN
+      when V1::ResourceType::RESOURCE_TYPE_GOOGLE_GKE
+        return SDM::ResourceType::RESOURCE_TYPE_GOOGLE_GKE
+      when V1::ResourceType::RESOURCE_TYPE_GOOGLE_GKE_USER_IMPERSONATION
+        return SDM::ResourceType::RESOURCE_TYPE_GOOGLE_GKE_USER_IMPERSONATION
+      when V1::ResourceType::RESOURCE_TYPE_GOOGLE_SPANNER
+        return SDM::ResourceType::RESOURCE_TYPE_GOOGLE_SPANNER
+      when V1::ResourceType::RESOURCE_TYPE_GREENPLUM
+        return SDM::ResourceType::RESOURCE_TYPE_GREENPLUM
+      when V1::ResourceType::RESOURCE_TYPE_HTTP_AUTH
+        return SDM::ResourceType::RESOURCE_TYPE_HTTP_AUTH
+      when V1::ResourceType::RESOURCE_TYPE_HTTP_BASIC
+        return SDM::ResourceType::RESOURCE_TYPE_HTTP_BASIC
+      when V1::ResourceType::RESOURCE_TYPE_HTTP_NO_AUTH
+        return SDM::ResourceType::RESOURCE_TYPE_HTTP_NO_AUTH
+      when V1::ResourceType::RESOURCE_TYPE_KUBERNETES
+        return SDM::ResourceType::RESOURCE_TYPE_KUBERNETES
+      when V1::ResourceType::RESOURCE_TYPE_KUBERNETES_BASIC_AUTH
+        return SDM::ResourceType::RESOURCE_TYPE_KUBERNETES_BASIC_AUTH
+      when V1::ResourceType::RESOURCE_TYPE_KUBERNETES_POD_IDENTITY
+        return SDM::ResourceType::RESOURCE_TYPE_KUBERNETES_POD_IDENTITY
+      when V1::ResourceType::RESOURCE_TYPE_KUBERNETES_SERVICE_ACCOUNT
+        return SDM::ResourceType::RESOURCE_TYPE_KUBERNETES_SERVICE_ACCOUNT
+      when V1::ResourceType::RESOURCE_TYPE_KUBERNETES_SERVICE_ACCOUNT_USER_IMPERSONATION
+        return SDM::ResourceType::RESOURCE_TYPE_KUBERNETES_SERVICE_ACCOUNT_USER_IMPERSONATION
+      when V1::ResourceType::RESOURCE_TYPE_KUBERNETES_USER_IMPERSONATION
+        return SDM::ResourceType::RESOURCE_TYPE_KUBERNETES_USER_IMPERSONATION
+      when V1::ResourceType::RESOURCE_TYPE_MCP
+        return SDM::ResourceType::RESOURCE_TYPE_MCP
+      when V1::ResourceType::RESOURCE_TYPE_MCPDCR
+        return SDM::ResourceType::RESOURCE_TYPE_MCPDCR
+      when V1::ResourceType::RESOURCE_TYPE_MTLS_MY_SQL
+        return SDM::ResourceType::RESOURCE_TYPE_MTLS_MY_SQL
+      when V1::ResourceType::RESOURCE_TYPE_MTLS_POSTGRES
+        return SDM::ResourceType::RESOURCE_TYPE_MTLS_POSTGRES
+      when V1::ResourceType::RESOURCE_TYPE_MARIA
+        return SDM::ResourceType::RESOURCE_TYPE_MARIA
+      when V1::ResourceType::RESOURCE_TYPE_MEMCACHED
+        return SDM::ResourceType::RESOURCE_TYPE_MEMCACHED
+      when V1::ResourceType::RESOURCE_TYPE_MEM_SQL
+        return SDM::ResourceType::RESOURCE_TYPE_MEM_SQL
+      when V1::ResourceType::RESOURCE_TYPE_MICROSOFT_365
+        return SDM::ResourceType::RESOURCE_TYPE_MICROSOFT_365
+      when V1::ResourceType::RESOURCE_TYPE_MONGO_DB_HOST
+        return SDM::ResourceType::RESOURCE_TYPE_MONGO_DB_HOST
+      when V1::ResourceType::RESOURCE_TYPE_MONGO_DB
+        return SDM::ResourceType::RESOURCE_TYPE_MONGO_DB
+      when V1::ResourceType::RESOURCE_TYPE_MONGO_DB_LEGACY_REPLICA_SET
+        return SDM::ResourceType::RESOURCE_TYPE_MONGO_DB_LEGACY_REPLICA_SET
+      when V1::ResourceType::RESOURCE_TYPE_MONGO_DB_REPLICA_SET
+        return SDM::ResourceType::RESOURCE_TYPE_MONGO_DB_REPLICA_SET
+      when V1::ResourceType::RESOURCE_TYPE_MONGO_DB_SHARDED_CLUSTER
+        return SDM::ResourceType::RESOURCE_TYPE_MONGO_DB_SHARDED_CLUSTER
+      when V1::ResourceType::RESOURCE_TYPE_MY_SQL
+        return SDM::ResourceType::RESOURCE_TYPE_MY_SQL
+      when V1::ResourceType::RESOURCE_TYPE_NEPTUNE
+        return SDM::ResourceType::RESOURCE_TYPE_NEPTUNE
+      when V1::ResourceType::RESOURCE_TYPE_NEPTUNE_IAM
+        return SDM::ResourceType::RESOURCE_TYPE_NEPTUNE_IAM
+      when V1::ResourceType::RESOURCE_TYPE_OKTA_ADMIN
+        return SDM::ResourceType::RESOURCE_TYPE_OKTA_ADMIN
+      when V1::ResourceType::RESOURCE_TYPE_OKTA_GROUPS
+        return SDM::ResourceType::RESOURCE_TYPE_OKTA_GROUPS
+      when V1::ResourceType::RESOURCE_TYPE_ORACLE
+        return SDM::ResourceType::RESOURCE_TYPE_ORACLE
+      when V1::ResourceType::RESOURCE_TYPE_ORACLE_NNE
+        return SDM::ResourceType::RESOURCE_TYPE_ORACLE_NNE
+      when V1::ResourceType::RESOURCE_TYPE_POSTGRES
+        return SDM::ResourceType::RESOURCE_TYPE_POSTGRES
+      when V1::ResourceType::RESOURCE_TYPE_PRESTO
+        return SDM::ResourceType::RESOURCE_TYPE_PRESTO
+      when V1::ResourceType::RESOURCE_TYPE_RDP
+        return SDM::ResourceType::RESOURCE_TYPE_RDP
+      when V1::ResourceType::RESOURCE_TYPE_RDP_CERT
+        return SDM::ResourceType::RESOURCE_TYPE_RDP_CERT
+      when V1::ResourceType::RESOURCE_TYPE_RDS_POSTGRES_IAM
+        return SDM::ResourceType::RESOURCE_TYPE_RDS_POSTGRES_IAM
+      when V1::ResourceType::RESOURCE_TYPE_RABBIT_MQAMQP_091
+        return SDM::ResourceType::RESOURCE_TYPE_RABBIT_MQAMQP_091
+      when V1::ResourceType::RESOURCE_TYPE_TCP
+        return SDM::ResourceType::RESOURCE_TYPE_TCP
+      when V1::ResourceType::RESOURCE_TYPE_REDIS
+        return SDM::ResourceType::RESOURCE_TYPE_REDIS
+      when V1::ResourceType::RESOURCE_TYPE_REDIS_CLUSTER
+        return SDM::ResourceType::RESOURCE_TYPE_REDIS_CLUSTER
+      when V1::ResourceType::RESOURCE_TYPE_REDSHIFT
+        return SDM::ResourceType::RESOURCE_TYPE_REDSHIFT
+      when V1::ResourceType::RESOURCE_TYPE_REDSHIFT_IAM
+        return SDM::ResourceType::RESOURCE_TYPE_REDSHIFT_IAM
+      when V1::ResourceType::RESOURCE_TYPE_REDSHIFT_SERVERLESS_IAM
+        return SDM::ResourceType::RESOURCE_TYPE_REDSHIFT_SERVERLESS_IAM
+      when V1::ResourceType::RESOURCE_TYPE_SQL_SERVER
+        return SDM::ResourceType::RESOURCE_TYPE_SQL_SERVER
+      when V1::ResourceType::RESOURCE_TYPE_SQL_SERVER_AZURE_AD
+        return SDM::ResourceType::RESOURCE_TYPE_SQL_SERVER_AZURE_AD
+      when V1::ResourceType::RESOURCE_TYPE_SQL_SERVER_KERBEROS
+        return SDM::ResourceType::RESOURCE_TYPE_SQL_SERVER_KERBEROS
+      when V1::ResourceType::RESOURCE_TYPE_SSH
+        return SDM::ResourceType::RESOURCE_TYPE_SSH
+      when V1::ResourceType::RESOURCE_TYPE_SSH_CERT
+        return SDM::ResourceType::RESOURCE_TYPE_SSH_CERT
+      when V1::ResourceType::RESOURCE_TYPE_SSH_CERT_USER_PROVISION
+        return SDM::ResourceType::RESOURCE_TYPE_SSH_CERT_USER_PROVISION
+      when V1::ResourceType::RESOURCE_TYPE_SSH_CUSTOMER_KEY
+        return SDM::ResourceType::RESOURCE_TYPE_SSH_CUSTOMER_KEY
+      when V1::ResourceType::RESOURCE_TYPE_SSH_PASSWORD
+        return SDM::ResourceType::RESOURCE_TYPE_SSH_PASSWORD
+      when V1::ResourceType::RESOURCE_TYPE_SALESFORCE
+        return SDM::ResourceType::RESOURCE_TYPE_SALESFORCE
+      when V1::ResourceType::RESOURCE_TYPE_SINGLE_STORE
+        return SDM::ResourceType::RESOURCE_TYPE_SINGLE_STORE
+      when V1::ResourceType::RESOURCE_TYPE_SNOWFLAKE
+        return SDM::ResourceType::RESOURCE_TYPE_SNOWFLAKE
+      when V1::ResourceType::RESOURCE_TYPE_SNOWSIGHT
+        return SDM::ResourceType::RESOURCE_TYPE_SNOWSIGHT
+      when V1::ResourceType::RESOURCE_TYPE_SYBASE_ASE
+        return SDM::ResourceType::RESOURCE_TYPE_SYBASE_ASE
+      when V1::ResourceType::RESOURCE_TYPE_SYBASE_IQ
+        return SDM::ResourceType::RESOURCE_TYPE_SYBASE_IQ
+      when V1::ResourceType::RESOURCE_TYPE_TERADATA
+        return SDM::ResourceType::RESOURCE_TYPE_TERADATA
+      when V1::ResourceType::RESOURCE_TYPE_TRINO
+        return SDM::ResourceType::RESOURCE_TYPE_TRINO
+      when V1::ResourceType::RESOURCE_TYPE_VERTICA
+        return SDM::ResourceType::RESOURCE_TYPE_VERTICA
+      end
+      nil
+    end
+
+    def self.convert_resource_type_to_plumbing(porcelain)
+      if porcelain == nil
+        return V1::ResourceType::RESOURCE_TYPE_UNSPECIFIED
+      end
+      value = porcelain
+      case porcelain
+      when SDM::ResourceType::RESOURCE_TYPE_UNSPECIFIED, "RESOURCE_TYPE_UNSPECIFIED"
+        value = V1::ResourceType::RESOURCE_TYPE_UNSPECIFIED
+      when SDM::ResourceType::RESOURCE_TYPE_AKS, "RESOURCE_TYPE_AKS"
+        value = V1::ResourceType::RESOURCE_TYPE_AKS
+      when SDM::ResourceType::RESOURCE_TYPE_AKS_BASIC_AUTH, "RESOURCE_TYPE_AKS_BASIC_AUTH"
+        value = V1::ResourceType::RESOURCE_TYPE_AKS_BASIC_AUTH
+      when SDM::ResourceType::RESOURCE_TYPE_AKS_SERVICE_ACCOUNT, "RESOURCE_TYPE_AKS_SERVICE_ACCOUNT"
+        value = V1::ResourceType::RESOURCE_TYPE_AKS_SERVICE_ACCOUNT
+      when SDM::ResourceType::RESOURCE_TYPE_AKS_SERVICE_ACCOUNT_USER_IMPERSONATION, "RESOURCE_TYPE_AKS_SERVICE_ACCOUNT_USER_IMPERSONATION"
+        value = V1::ResourceType::RESOURCE_TYPE_AKS_SERVICE_ACCOUNT_USER_IMPERSONATION
+      when SDM::ResourceType::RESOURCE_TYPE_AKS_USER_IMPERSONATION, "RESOURCE_TYPE_AKS_USER_IMPERSONATION"
+        value = V1::ResourceType::RESOURCE_TYPE_AKS_USER_IMPERSONATION
+      when SDM::ResourceType::RESOURCE_TYPE_AMAZON_MQAMQP, "RESOURCE_TYPE_AMAZON_MQAMQP"
+        value = V1::ResourceType::RESOURCE_TYPE_AMAZON_MQAMQP
+      when SDM::ResourceType::RESOURCE_TYPE_AWS, "RESOURCE_TYPE_AWS"
+        value = V1::ResourceType::RESOURCE_TYPE_AWS
+      when SDM::ResourceType::RESOURCE_TYPE_AWS_CONSOLE, "RESOURCE_TYPE_AWS_CONSOLE"
+        value = V1::ResourceType::RESOURCE_TYPE_AWS_CONSOLE
+      when SDM::ResourceType::RESOURCE_TYPE_AWS_CONSOLE_STATIC_KEY_PAIR, "RESOURCE_TYPE_AWS_CONSOLE_STATIC_KEY_PAIR"
+        value = V1::ResourceType::RESOURCE_TYPE_AWS_CONSOLE_STATIC_KEY_PAIR
+      when SDM::ResourceType::RESOURCE_TYPE_AWS_INSTANCE_PROFILE, "RESOURCE_TYPE_AWS_INSTANCE_PROFILE"
+        value = V1::ResourceType::RESOURCE_TYPE_AWS_INSTANCE_PROFILE
+      when SDM::ResourceType::RESOURCE_TYPE_AEROSPIKE, "RESOURCE_TYPE_AEROSPIKE"
+        value = V1::ResourceType::RESOURCE_TYPE_AEROSPIKE
+      when SDM::ResourceType::RESOURCE_TYPE_AMAZON_EKS, "RESOURCE_TYPE_AMAZON_EKS"
+        value = V1::ResourceType::RESOURCE_TYPE_AMAZON_EKS
+      when SDM::ResourceType::RESOURCE_TYPE_AMAZON_EKS_INSTANCE_PROFILE, "RESOURCE_TYPE_AMAZON_EKS_INSTANCE_PROFILE"
+        value = V1::ResourceType::RESOURCE_TYPE_AMAZON_EKS_INSTANCE_PROFILE
+      when SDM::ResourceType::RESOURCE_TYPE_AMAZON_EKS_INSTANCE_PROFILE_USER_IMPERSONATION, "RESOURCE_TYPE_AMAZON_EKS_INSTANCE_PROFILE_USER_IMPERSONATION"
+        value = V1::ResourceType::RESOURCE_TYPE_AMAZON_EKS_INSTANCE_PROFILE_USER_IMPERSONATION
+      when SDM::ResourceType::RESOURCE_TYPE_AMAZON_EKS_USER_IMPERSONATION, "RESOURCE_TYPE_AMAZON_EKS_USER_IMPERSONATION"
+        value = V1::ResourceType::RESOURCE_TYPE_AMAZON_EKS_USER_IMPERSONATION
+      when SDM::ResourceType::RESOURCE_TYPE_AMAZON_ES, "RESOURCE_TYPE_AMAZON_ES"
+        value = V1::ResourceType::RESOURCE_TYPE_AMAZON_ES
+      when SDM::ResourceType::RESOURCE_TYPE_AMAZON_ESIAM, "RESOURCE_TYPE_AMAZON_ESIAM"
+        value = V1::ResourceType::RESOURCE_TYPE_AMAZON_ESIAM
+      when SDM::ResourceType::RESOURCE_TYPE_AMAZON_MQAMQP_091, "RESOURCE_TYPE_AMAZON_MQAMQP_091"
+        value = V1::ResourceType::RESOURCE_TYPE_AMAZON_MQAMQP_091
+      when SDM::ResourceType::RESOURCE_TYPE_ATHENA, "RESOURCE_TYPE_ATHENA"
+        value = V1::ResourceType::RESOURCE_TYPE_ATHENA
+      when SDM::ResourceType::RESOURCE_TYPE_ATHENA_IAM, "RESOURCE_TYPE_ATHENA_IAM"
+        value = V1::ResourceType::RESOURCE_TYPE_ATHENA_IAM
+      when SDM::ResourceType::RESOURCE_TYPE_AURORA_MY_SQL, "RESOURCE_TYPE_AURORA_MY_SQL"
+        value = V1::ResourceType::RESOURCE_TYPE_AURORA_MY_SQL
+      when SDM::ResourceType::RESOURCE_TYPE_AURORA_MY_SQLIAM, "RESOURCE_TYPE_AURORA_MY_SQLIAM"
+        value = V1::ResourceType::RESOURCE_TYPE_AURORA_MY_SQLIAM
+      when SDM::ResourceType::RESOURCE_TYPE_AURORA_POSTGRES, "RESOURCE_TYPE_AURORA_POSTGRES"
+        value = V1::ResourceType::RESOURCE_TYPE_AURORA_POSTGRES
+      when SDM::ResourceType::RESOURCE_TYPE_AURORA_POSTGRES_IAM, "RESOURCE_TYPE_AURORA_POSTGRES_IAM"
+        value = V1::ResourceType::RESOURCE_TYPE_AURORA_POSTGRES_IAM
+      when SDM::ResourceType::RESOURCE_TYPE_AZURE, "RESOURCE_TYPE_AZURE"
+        value = V1::ResourceType::RESOURCE_TYPE_AZURE
+      when SDM::ResourceType::RESOURCE_TYPE_AZURE_CERT, "RESOURCE_TYPE_AZURE_CERT"
+        value = V1::ResourceType::RESOURCE_TYPE_AZURE_CERT
+      when SDM::ResourceType::RESOURCE_TYPE_AZURE_MY_SQL, "RESOURCE_TYPE_AZURE_MY_SQL"
+        value = V1::ResourceType::RESOURCE_TYPE_AZURE_MY_SQL
+      when SDM::ResourceType::RESOURCE_TYPE_AZURE_MY_SQL_MANAGED_IDENTITY, "RESOURCE_TYPE_AZURE_MY_SQL_MANAGED_IDENTITY"
+        value = V1::ResourceType::RESOURCE_TYPE_AZURE_MY_SQL_MANAGED_IDENTITY
+      when SDM::ResourceType::RESOURCE_TYPE_AZURE_POSTGRES, "RESOURCE_TYPE_AZURE_POSTGRES"
+        value = V1::ResourceType::RESOURCE_TYPE_AZURE_POSTGRES
+      when SDM::ResourceType::RESOURCE_TYPE_AZURE_POSTGRES_MANAGED_IDENTITY, "RESOURCE_TYPE_AZURE_POSTGRES_MANAGED_IDENTITY"
+        value = V1::ResourceType::RESOURCE_TYPE_AZURE_POSTGRES_MANAGED_IDENTITY
+      when SDM::ResourceType::RESOURCE_TYPE_BIGQUERY, "RESOURCE_TYPE_BIGQUERY"
+        value = V1::ResourceType::RESOURCE_TYPE_BIGQUERY
+      when SDM::ResourceType::RESOURCE_TYPE_CASSANDRA, "RESOURCE_TYPE_CASSANDRA"
+        value = V1::ResourceType::RESOURCE_TYPE_CASSANDRA
+      when SDM::ResourceType::RESOURCE_TYPE_CITUS, "RESOURCE_TYPE_CITUS"
+        value = V1::ResourceType::RESOURCE_TYPE_CITUS
+      when SDM::ResourceType::RESOURCE_TYPE_CLICK_HOUSE_HTTP, "RESOURCE_TYPE_CLICK_HOUSE_HTTP"
+        value = V1::ResourceType::RESOURCE_TYPE_CLICK_HOUSE_HTTP
+      when SDM::ResourceType::RESOURCE_TYPE_CLICK_HOUSE_MY_SQL, "RESOURCE_TYPE_CLICK_HOUSE_MY_SQL"
+        value = V1::ResourceType::RESOURCE_TYPE_CLICK_HOUSE_MY_SQL
+      when SDM::ResourceType::RESOURCE_TYPE_CLICK_HOUSE_TCP, "RESOURCE_TYPE_CLICK_HOUSE_TCP"
+        value = V1::ResourceType::RESOURCE_TYPE_CLICK_HOUSE_TCP
+      when SDM::ResourceType::RESOURCE_TYPE_CLUSTRIX, "RESOURCE_TYPE_CLUSTRIX"
+        value = V1::ResourceType::RESOURCE_TYPE_CLUSTRIX
+      when SDM::ResourceType::RESOURCE_TYPE_COCKROACH, "RESOURCE_TYPE_COCKROACH"
+        value = V1::ResourceType::RESOURCE_TYPE_COCKROACH
+      when SDM::ResourceType::RESOURCE_TYPE_COUCHBASE_DATABASE, "RESOURCE_TYPE_COUCHBASE_DATABASE"
+        value = V1::ResourceType::RESOURCE_TYPE_COUCHBASE_DATABASE
+      when SDM::ResourceType::RESOURCE_TYPE_COUCHBASE_WEB_UI, "RESOURCE_TYPE_COUCHBASE_WEB_UI"
+        value = V1::ResourceType::RESOURCE_TYPE_COUCHBASE_WEB_UI
+      when SDM::ResourceType::RESOURCE_TYPE_DB_2_I, "RESOURCE_TYPE_DB_2_I"
+        value = V1::ResourceType::RESOURCE_TYPE_DB_2_I
+      when SDM::ResourceType::RESOURCE_TYPE_DB_2_LUW, "RESOURCE_TYPE_DB_2_LUW"
+        value = V1::ResourceType::RESOURCE_TYPE_DB_2_LUW
+      when SDM::ResourceType::RESOURCE_TYPE_DOCUMENT_DB_HOST, "RESOURCE_TYPE_DOCUMENT_DB_HOST"
+        value = V1::ResourceType::RESOURCE_TYPE_DOCUMENT_DB_HOST
+      when SDM::ResourceType::RESOURCE_TYPE_DOCUMENT_DB_HOST_IAM, "RESOURCE_TYPE_DOCUMENT_DB_HOST_IAM"
+        value = V1::ResourceType::RESOURCE_TYPE_DOCUMENT_DB_HOST_IAM
+      when SDM::ResourceType::RESOURCE_TYPE_DOCUMENT_DB_REPLICA_SET, "RESOURCE_TYPE_DOCUMENT_DB_REPLICA_SET"
+        value = V1::ResourceType::RESOURCE_TYPE_DOCUMENT_DB_REPLICA_SET
+      when SDM::ResourceType::RESOURCE_TYPE_DOCUMENT_DB_REPLICA_SET_IAM, "RESOURCE_TYPE_DOCUMENT_DB_REPLICA_SET_IAM"
+        value = V1::ResourceType::RESOURCE_TYPE_DOCUMENT_DB_REPLICA_SET_IAM
+      when SDM::ResourceType::RESOURCE_TYPE_DRUID, "RESOURCE_TYPE_DRUID"
+        value = V1::ResourceType::RESOURCE_TYPE_DRUID
+      when SDM::ResourceType::RESOURCE_TYPE_DYNAMO_DB, "RESOURCE_TYPE_DYNAMO_DB"
+        value = V1::ResourceType::RESOURCE_TYPE_DYNAMO_DB
+      when SDM::ResourceType::RESOURCE_TYPE_DYNAMO_DBIAM, "RESOURCE_TYPE_DYNAMO_DBIAM"
+        value = V1::ResourceType::RESOURCE_TYPE_DYNAMO_DBIAM
+      when SDM::ResourceType::RESOURCE_TYPE_ELASTIC, "RESOURCE_TYPE_ELASTIC"
+        value = V1::ResourceType::RESOURCE_TYPE_ELASTIC
+      when SDM::ResourceType::RESOURCE_TYPE_ELASTI_CACHE_REDIS, "RESOURCE_TYPE_ELASTI_CACHE_REDIS"
+        value = V1::ResourceType::RESOURCE_TYPE_ELASTI_CACHE_REDIS
+      when SDM::ResourceType::RESOURCE_TYPE_ELASTI_CACHE_REDIS_IAM, "RESOURCE_TYPE_ELASTI_CACHE_REDIS_IAM"
+        value = V1::ResourceType::RESOURCE_TYPE_ELASTI_CACHE_REDIS_IAM
+      when SDM::ResourceType::RESOURCE_TYPE_ENTRA_ID, "RESOURCE_TYPE_ENTRA_ID"
+        value = V1::ResourceType::RESOURCE_TYPE_ENTRA_ID
+      when SDM::ResourceType::RESOURCE_TYPE_GCP, "RESOURCE_TYPE_GCP"
+        value = V1::ResourceType::RESOURCE_TYPE_GCP
+      when SDM::ResourceType::RESOURCE_TYPE_GCP_CONSOLE, "RESOURCE_TYPE_GCP_CONSOLE"
+        value = V1::ResourceType::RESOURCE_TYPE_GCP_CONSOLE
+      when SDM::ResourceType::RESOURCE_TYPE_GCPWIF, "RESOURCE_TYPE_GCPWIF"
+        value = V1::ResourceType::RESOURCE_TYPE_GCPWIF
+      when SDM::ResourceType::RESOURCE_TYPE_GIT_HUB, "RESOURCE_TYPE_GIT_HUB"
+        value = V1::ResourceType::RESOURCE_TYPE_GIT_HUB
+      when SDM::ResourceType::RESOURCE_TYPE_GOOGLE_ADMIN, "RESOURCE_TYPE_GOOGLE_ADMIN"
+        value = V1::ResourceType::RESOURCE_TYPE_GOOGLE_ADMIN
+      when SDM::ResourceType::RESOURCE_TYPE_GOOGLE_GKE, "RESOURCE_TYPE_GOOGLE_GKE"
+        value = V1::ResourceType::RESOURCE_TYPE_GOOGLE_GKE
+      when SDM::ResourceType::RESOURCE_TYPE_GOOGLE_GKE_USER_IMPERSONATION, "RESOURCE_TYPE_GOOGLE_GKE_USER_IMPERSONATION"
+        value = V1::ResourceType::RESOURCE_TYPE_GOOGLE_GKE_USER_IMPERSONATION
+      when SDM::ResourceType::RESOURCE_TYPE_GOOGLE_SPANNER, "RESOURCE_TYPE_GOOGLE_SPANNER"
+        value = V1::ResourceType::RESOURCE_TYPE_GOOGLE_SPANNER
+      when SDM::ResourceType::RESOURCE_TYPE_GREENPLUM, "RESOURCE_TYPE_GREENPLUM"
+        value = V1::ResourceType::RESOURCE_TYPE_GREENPLUM
+      when SDM::ResourceType::RESOURCE_TYPE_HTTP_AUTH, "RESOURCE_TYPE_HTTP_AUTH"
+        value = V1::ResourceType::RESOURCE_TYPE_HTTP_AUTH
+      when SDM::ResourceType::RESOURCE_TYPE_HTTP_BASIC, "RESOURCE_TYPE_HTTP_BASIC"
+        value = V1::ResourceType::RESOURCE_TYPE_HTTP_BASIC
+      when SDM::ResourceType::RESOURCE_TYPE_HTTP_NO_AUTH, "RESOURCE_TYPE_HTTP_NO_AUTH"
+        value = V1::ResourceType::RESOURCE_TYPE_HTTP_NO_AUTH
+      when SDM::ResourceType::RESOURCE_TYPE_KUBERNETES, "RESOURCE_TYPE_KUBERNETES"
+        value = V1::ResourceType::RESOURCE_TYPE_KUBERNETES
+      when SDM::ResourceType::RESOURCE_TYPE_KUBERNETES_BASIC_AUTH, "RESOURCE_TYPE_KUBERNETES_BASIC_AUTH"
+        value = V1::ResourceType::RESOURCE_TYPE_KUBERNETES_BASIC_AUTH
+      when SDM::ResourceType::RESOURCE_TYPE_KUBERNETES_POD_IDENTITY, "RESOURCE_TYPE_KUBERNETES_POD_IDENTITY"
+        value = V1::ResourceType::RESOURCE_TYPE_KUBERNETES_POD_IDENTITY
+      when SDM::ResourceType::RESOURCE_TYPE_KUBERNETES_SERVICE_ACCOUNT, "RESOURCE_TYPE_KUBERNETES_SERVICE_ACCOUNT"
+        value = V1::ResourceType::RESOURCE_TYPE_KUBERNETES_SERVICE_ACCOUNT
+      when SDM::ResourceType::RESOURCE_TYPE_KUBERNETES_SERVICE_ACCOUNT_USER_IMPERSONATION, "RESOURCE_TYPE_KUBERNETES_SERVICE_ACCOUNT_USER_IMPERSONATION"
+        value = V1::ResourceType::RESOURCE_TYPE_KUBERNETES_SERVICE_ACCOUNT_USER_IMPERSONATION
+      when SDM::ResourceType::RESOURCE_TYPE_KUBERNETES_USER_IMPERSONATION, "RESOURCE_TYPE_KUBERNETES_USER_IMPERSONATION"
+        value = V1::ResourceType::RESOURCE_TYPE_KUBERNETES_USER_IMPERSONATION
+      when SDM::ResourceType::RESOURCE_TYPE_MCP, "RESOURCE_TYPE_MCP"
+        value = V1::ResourceType::RESOURCE_TYPE_MCP
+      when SDM::ResourceType::RESOURCE_TYPE_MCPDCR, "RESOURCE_TYPE_MCPDCR"
+        value = V1::ResourceType::RESOURCE_TYPE_MCPDCR
+      when SDM::ResourceType::RESOURCE_TYPE_MTLS_MY_SQL, "RESOURCE_TYPE_MTLS_MY_SQL"
+        value = V1::ResourceType::RESOURCE_TYPE_MTLS_MY_SQL
+      when SDM::ResourceType::RESOURCE_TYPE_MTLS_POSTGRES, "RESOURCE_TYPE_MTLS_POSTGRES"
+        value = V1::ResourceType::RESOURCE_TYPE_MTLS_POSTGRES
+      when SDM::ResourceType::RESOURCE_TYPE_MARIA, "RESOURCE_TYPE_MARIA"
+        value = V1::ResourceType::RESOURCE_TYPE_MARIA
+      when SDM::ResourceType::RESOURCE_TYPE_MEMCACHED, "RESOURCE_TYPE_MEMCACHED"
+        value = V1::ResourceType::RESOURCE_TYPE_MEMCACHED
+      when SDM::ResourceType::RESOURCE_TYPE_MEM_SQL, "RESOURCE_TYPE_MEM_SQL"
+        value = V1::ResourceType::RESOURCE_TYPE_MEM_SQL
+      when SDM::ResourceType::RESOURCE_TYPE_MICROSOFT_365, "RESOURCE_TYPE_MICROSOFT_365"
+        value = V1::ResourceType::RESOURCE_TYPE_MICROSOFT_365
+      when SDM::ResourceType::RESOURCE_TYPE_MONGO_DB_HOST, "RESOURCE_TYPE_MONGO_DB_HOST"
+        value = V1::ResourceType::RESOURCE_TYPE_MONGO_DB_HOST
+      when SDM::ResourceType::RESOURCE_TYPE_MONGO_DB, "RESOURCE_TYPE_MONGO_DB"
+        value = V1::ResourceType::RESOURCE_TYPE_MONGO_DB
+      when SDM::ResourceType::RESOURCE_TYPE_MONGO_DB_LEGACY_REPLICA_SET, "RESOURCE_TYPE_MONGO_DB_LEGACY_REPLICA_SET"
+        value = V1::ResourceType::RESOURCE_TYPE_MONGO_DB_LEGACY_REPLICA_SET
+      when SDM::ResourceType::RESOURCE_TYPE_MONGO_DB_REPLICA_SET, "RESOURCE_TYPE_MONGO_DB_REPLICA_SET"
+        value = V1::ResourceType::RESOURCE_TYPE_MONGO_DB_REPLICA_SET
+      when SDM::ResourceType::RESOURCE_TYPE_MONGO_DB_SHARDED_CLUSTER, "RESOURCE_TYPE_MONGO_DB_SHARDED_CLUSTER"
+        value = V1::ResourceType::RESOURCE_TYPE_MONGO_DB_SHARDED_CLUSTER
+      when SDM::ResourceType::RESOURCE_TYPE_MY_SQL, "RESOURCE_TYPE_MY_SQL"
+        value = V1::ResourceType::RESOURCE_TYPE_MY_SQL
+      when SDM::ResourceType::RESOURCE_TYPE_NEPTUNE, "RESOURCE_TYPE_NEPTUNE"
+        value = V1::ResourceType::RESOURCE_TYPE_NEPTUNE
+      when SDM::ResourceType::RESOURCE_TYPE_NEPTUNE_IAM, "RESOURCE_TYPE_NEPTUNE_IAM"
+        value = V1::ResourceType::RESOURCE_TYPE_NEPTUNE_IAM
+      when SDM::ResourceType::RESOURCE_TYPE_OKTA_ADMIN, "RESOURCE_TYPE_OKTA_ADMIN"
+        value = V1::ResourceType::RESOURCE_TYPE_OKTA_ADMIN
+      when SDM::ResourceType::RESOURCE_TYPE_OKTA_GROUPS, "RESOURCE_TYPE_OKTA_GROUPS"
+        value = V1::ResourceType::RESOURCE_TYPE_OKTA_GROUPS
+      when SDM::ResourceType::RESOURCE_TYPE_ORACLE, "RESOURCE_TYPE_ORACLE"
+        value = V1::ResourceType::RESOURCE_TYPE_ORACLE
+      when SDM::ResourceType::RESOURCE_TYPE_ORACLE_NNE, "RESOURCE_TYPE_ORACLE_NNE"
+        value = V1::ResourceType::RESOURCE_TYPE_ORACLE_NNE
+      when SDM::ResourceType::RESOURCE_TYPE_POSTGRES, "RESOURCE_TYPE_POSTGRES"
+        value = V1::ResourceType::RESOURCE_TYPE_POSTGRES
+      when SDM::ResourceType::RESOURCE_TYPE_PRESTO, "RESOURCE_TYPE_PRESTO"
+        value = V1::ResourceType::RESOURCE_TYPE_PRESTO
+      when SDM::ResourceType::RESOURCE_TYPE_RDP, "RESOURCE_TYPE_RDP"
+        value = V1::ResourceType::RESOURCE_TYPE_RDP
+      when SDM::ResourceType::RESOURCE_TYPE_RDP_CERT, "RESOURCE_TYPE_RDP_CERT"
+        value = V1::ResourceType::RESOURCE_TYPE_RDP_CERT
+      when SDM::ResourceType::RESOURCE_TYPE_RDS_POSTGRES_IAM, "RESOURCE_TYPE_RDS_POSTGRES_IAM"
+        value = V1::ResourceType::RESOURCE_TYPE_RDS_POSTGRES_IAM
+      when SDM::ResourceType::RESOURCE_TYPE_RABBIT_MQAMQP_091, "RESOURCE_TYPE_RABBIT_MQAMQP_091"
+        value = V1::ResourceType::RESOURCE_TYPE_RABBIT_MQAMQP_091
+      when SDM::ResourceType::RESOURCE_TYPE_TCP, "RESOURCE_TYPE_TCP"
+        value = V1::ResourceType::RESOURCE_TYPE_TCP
+      when SDM::ResourceType::RESOURCE_TYPE_REDIS, "RESOURCE_TYPE_REDIS"
+        value = V1::ResourceType::RESOURCE_TYPE_REDIS
+      when SDM::ResourceType::RESOURCE_TYPE_REDIS_CLUSTER, "RESOURCE_TYPE_REDIS_CLUSTER"
+        value = V1::ResourceType::RESOURCE_TYPE_REDIS_CLUSTER
+      when SDM::ResourceType::RESOURCE_TYPE_REDSHIFT, "RESOURCE_TYPE_REDSHIFT"
+        value = V1::ResourceType::RESOURCE_TYPE_REDSHIFT
+      when SDM::ResourceType::RESOURCE_TYPE_REDSHIFT_IAM, "RESOURCE_TYPE_REDSHIFT_IAM"
+        value = V1::ResourceType::RESOURCE_TYPE_REDSHIFT_IAM
+      when SDM::ResourceType::RESOURCE_TYPE_REDSHIFT_SERVERLESS_IAM, "RESOURCE_TYPE_REDSHIFT_SERVERLESS_IAM"
+        value = V1::ResourceType::RESOURCE_TYPE_REDSHIFT_SERVERLESS_IAM
+      when SDM::ResourceType::RESOURCE_TYPE_SQL_SERVER, "RESOURCE_TYPE_SQL_SERVER"
+        value = V1::ResourceType::RESOURCE_TYPE_SQL_SERVER
+      when SDM::ResourceType::RESOURCE_TYPE_SQL_SERVER_AZURE_AD, "RESOURCE_TYPE_SQL_SERVER_AZURE_AD"
+        value = V1::ResourceType::RESOURCE_TYPE_SQL_SERVER_AZURE_AD
+      when SDM::ResourceType::RESOURCE_TYPE_SQL_SERVER_KERBEROS, "RESOURCE_TYPE_SQL_SERVER_KERBEROS"
+        value = V1::ResourceType::RESOURCE_TYPE_SQL_SERVER_KERBEROS
+      when SDM::ResourceType::RESOURCE_TYPE_SSH, "RESOURCE_TYPE_SSH"
+        value = V1::ResourceType::RESOURCE_TYPE_SSH
+      when SDM::ResourceType::RESOURCE_TYPE_SSH_CERT, "RESOURCE_TYPE_SSH_CERT"
+        value = V1::ResourceType::RESOURCE_TYPE_SSH_CERT
+      when SDM::ResourceType::RESOURCE_TYPE_SSH_CERT_USER_PROVISION, "RESOURCE_TYPE_SSH_CERT_USER_PROVISION"
+        value = V1::ResourceType::RESOURCE_TYPE_SSH_CERT_USER_PROVISION
+      when SDM::ResourceType::RESOURCE_TYPE_SSH_CUSTOMER_KEY, "RESOURCE_TYPE_SSH_CUSTOMER_KEY"
+        value = V1::ResourceType::RESOURCE_TYPE_SSH_CUSTOMER_KEY
+      when SDM::ResourceType::RESOURCE_TYPE_SSH_PASSWORD, "RESOURCE_TYPE_SSH_PASSWORD"
+        value = V1::ResourceType::RESOURCE_TYPE_SSH_PASSWORD
+      when SDM::ResourceType::RESOURCE_TYPE_SALESFORCE, "RESOURCE_TYPE_SALESFORCE"
+        value = V1::ResourceType::RESOURCE_TYPE_SALESFORCE
+      when SDM::ResourceType::RESOURCE_TYPE_SINGLE_STORE, "RESOURCE_TYPE_SINGLE_STORE"
+        value = V1::ResourceType::RESOURCE_TYPE_SINGLE_STORE
+      when SDM::ResourceType::RESOURCE_TYPE_SNOWFLAKE, "RESOURCE_TYPE_SNOWFLAKE"
+        value = V1::ResourceType::RESOURCE_TYPE_SNOWFLAKE
+      when SDM::ResourceType::RESOURCE_TYPE_SNOWSIGHT, "RESOURCE_TYPE_SNOWSIGHT"
+        value = V1::ResourceType::RESOURCE_TYPE_SNOWSIGHT
+      when SDM::ResourceType::RESOURCE_TYPE_SYBASE_ASE, "RESOURCE_TYPE_SYBASE_ASE"
+        value = V1::ResourceType::RESOURCE_TYPE_SYBASE_ASE
+      when SDM::ResourceType::RESOURCE_TYPE_SYBASE_IQ, "RESOURCE_TYPE_SYBASE_IQ"
+        value = V1::ResourceType::RESOURCE_TYPE_SYBASE_IQ
+      when SDM::ResourceType::RESOURCE_TYPE_TERADATA, "RESOURCE_TYPE_TERADATA"
+        value = V1::ResourceType::RESOURCE_TYPE_TERADATA
+      when SDM::ResourceType::RESOURCE_TYPE_TRINO, "RESOURCE_TYPE_TRINO"
+        value = V1::ResourceType::RESOURCE_TYPE_TRINO
+      when SDM::ResourceType::RESOURCE_TYPE_VERTICA, "RESOURCE_TYPE_VERTICA"
+        value = V1::ResourceType::RESOURCE_TYPE_VERTICA
+      else
+        value = V1::ResourceType::RESOURCE_TYPE_UNSPECIFIED
+      end
+      value
+    end
+
+    def self.convert_repeated_resource_type_to_porcelain(plumbings)
+      if plumbings == nil
+        return []
+      end
+      plumbings.map { |v| convert_resource_type_to_porcelain(v) }
+    end
+
+    def self.convert_repeated_resource_type_to_plumbing(porcelains)
+      if porcelains == nil
+        return []
+      end
+      porcelains.map { |v| convert_resource_type_to_plumbing(v) }
     end
     def self.convert_aks_to_porcelain(plumbing)
       if plumbing == nil
@@ -5791,6 +6311,50 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_connector_update_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_control_panel_get_org_url_info_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = ControlPanelGetOrgURLInfoResponse.new()
+      porcelain.base_url = (plumbing.base_url)
+      porcelain.meta = convert_get_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.oidc_issuer_url = (plumbing.oidc_issuer_url)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain.saml_metadata_url = (plumbing.saml_metadata_url)
+      porcelain.websites_subdomain = (plumbing.websites_subdomain)
+      porcelain
+    end
+
+    def self.convert_control_panel_get_org_url_info_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::ControlPanelGetOrgURLInfoResponse.new()
+      plumbing.base_url = (porcelain.base_url)
+      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.oidc_issuer_url = (porcelain.oidc_issuer_url)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing.saml_metadata_url = (porcelain.saml_metadata_url)
+      plumbing.websites_subdomain = (porcelain.websites_subdomain)
+      plumbing
+    end
+    def self.convert_repeated_control_panel_get_org_url_info_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_control_panel_get_org_url_info_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_control_panel_get_org_url_info_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_control_panel_get_org_url_info_response_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items

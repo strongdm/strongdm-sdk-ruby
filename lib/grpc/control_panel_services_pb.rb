@@ -32,6 +32,9 @@ module V1
       rpc :GetSSHCAPublicKey, ::V1::ControlPanelGetSSHCAPublicKeyRequest, ::V1::ControlPanelGetSSHCAPublicKeyResponse
       # GetRDPCAPublicKey retrieves the RDP CA public key.
       rpc :GetRDPCAPublicKey, ::V1::ControlPanelGetRDPCAPublicKeyRequest, ::V1::ControlPanelGetRDPCAPublicKeyResponse
+      # GetOrgURLInfo retrieves URL configuration for the organization.
+      # This includes the base URL, website subdomain, OIDC issuer URL, and SAML metadata URL.
+      rpc :GetOrgURLInfo, ::V1::ControlPanelGetOrgURLInfoRequest, ::V1::ControlPanelGetOrgURLInfoResponse
       # VerifyJWT reports whether the given JWT token (x-sdm-token) is valid.
       rpc :VerifyJWT, ::V1::ControlPanelVerifyJWTRequest, ::V1::ControlPanelVerifyJWTResponse
     end

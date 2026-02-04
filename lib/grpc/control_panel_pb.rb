@@ -47,6 +47,17 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :valid, :bool, 2
       optional :rate_limit, :message, 3, "v1.RateLimitMetadata"
     end
+    add_message "v1.ControlPanelGetOrgURLInfoRequest" do
+      optional :meta, :message, 1, "v1.GetRequestMetadata"
+    end
+    add_message "v1.ControlPanelGetOrgURLInfoResponse" do
+      optional :meta, :message, 1, "v1.GetResponseMetadata"
+      optional :base_url, :string, 2
+      optional :websites_subdomain, :string, 3
+      optional :oidc_issuer_url, :string, 4
+      optional :saml_metadata_url, :string, 5
+      optional :rate_limit, :message, 6, "v1.RateLimitMetadata"
+    end
   end
 end
 
@@ -57,4 +68,6 @@ module V1
   ControlPanelGetRDPCAPublicKeyResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ControlPanelGetRDPCAPublicKeyResponse").msgclass
   ControlPanelVerifyJWTRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ControlPanelVerifyJWTRequest").msgclass
   ControlPanelVerifyJWTResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ControlPanelVerifyJWTResponse").msgclass
+  ControlPanelGetOrgURLInfoRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ControlPanelGetOrgURLInfoRequest").msgclass
+  ControlPanelGetOrgURLInfoResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ControlPanelGetOrgURLInfoResponse").msgclass
 end
