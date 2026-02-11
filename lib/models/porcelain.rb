@@ -2308,6 +2308,8 @@ module SDM
     attr_accessor :max_backoff_duration
     # Unique human-readable name of the Secret Engine.
     attr_accessor :name
+    # node selector is used to narrow down the nodes used to communicate with with secret engine
+    attr_accessor :node_selector
     # Policy for password creation
     attr_accessor :policy
     # Public key linked with a secret engine
@@ -2343,6 +2345,7 @@ module SDM
       key_rotation_interval_days: nil,
       max_backoff_duration: nil,
       name: nil,
+      node_selector: nil,
       policy: nil,
       public_key: nil,
       request_timeout: nil,
@@ -2366,6 +2369,7 @@ module SDM
       @key_rotation_interval_days = key_rotation_interval_days == nil ? 0 : key_rotation_interval_days
       @max_backoff_duration = max_backoff_duration == nil ? nil : max_backoff_duration
       @name = name == nil ? "" : name
+      @node_selector = node_selector == nil ? "" : node_selector
       @policy = policy == nil ? nil : policy
       @public_key = public_key == nil ? "" : public_key
       @request_timeout = request_timeout == nil ? 0 : request_timeout
@@ -9371,6 +9375,8 @@ module SDM
     attr_accessor :key_rotation_interval_days
     # Unique human-readable name of the Secret Engine.
     attr_accessor :name
+    # node selector is used to narrow down the nodes used to communicate with with secret engine
+    attr_accessor :node_selector
     # Public key linked with a secret engine
     attr_accessor :public_key
     # Backing secret store identifier
@@ -9384,6 +9390,7 @@ module SDM
       id: nil,
       key_rotation_interval_days: nil,
       name: nil,
+      node_selector: nil,
       public_key: nil,
       secret_store_id: nil,
       secret_store_root_path: nil,
@@ -9392,6 +9399,7 @@ module SDM
       @id = id == nil ? "" : id
       @key_rotation_interval_days = key_rotation_interval_days == nil ? 0 : key_rotation_interval_days
       @name = name == nil ? "" : name
+      @node_selector = node_selector == nil ? "" : node_selector
       @public_key = public_key == nil ? "" : public_key
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @secret_store_root_path = secret_store_root_path == nil ? "" : secret_store_root_path
@@ -11780,6 +11788,8 @@ module SDM
     attr_accessor :key_rotation_interval_days
     # Unique human-readable name of the Secret Engine.
     attr_accessor :name
+    # node selector is used to narrow down the nodes used to communicate with with secret engine
+    attr_accessor :node_selector
     # Password is the password to connect to the MySQL server.
     attr_accessor :password
     # Policy for password creation
@@ -11810,6 +11820,7 @@ module SDM
       id: nil,
       key_rotation_interval_days: nil,
       name: nil,
+      node_selector: nil,
       password: nil,
       policy: nil,
       port: nil,
@@ -11828,6 +11839,7 @@ module SDM
       @id = id == nil ? "" : id
       @key_rotation_interval_days = key_rotation_interval_days == nil ? 0 : key_rotation_interval_days
       @name = name == nil ? "" : name
+      @node_selector = node_selector == nil ? "" : node_selector
       @password = password == nil ? "" : password
       @policy = policy == nil ? nil : policy
       @port = port == nil ? 0 : port
@@ -13323,6 +13335,8 @@ module SDM
     attr_accessor :key_rotation_interval_days
     # Unique human-readable name of the Secret Engine.
     attr_accessor :name
+    # node selector is used to narrow down the nodes used to communicate with with secret engine
+    attr_accessor :node_selector
     # Password is the password to connect to the Postgres server.
     attr_accessor :password
     # Policy for password creation
@@ -13351,6 +13365,7 @@ module SDM
       id: nil,
       key_rotation_interval_days: nil,
       name: nil,
+      node_selector: nil,
       password: nil,
       policy: nil,
       port: nil,
@@ -13368,6 +13383,7 @@ module SDM
       @id = id == nil ? "" : id
       @key_rotation_interval_days = key_rotation_interval_days == nil ? 0 : key_rotation_interval_days
       @name = name == nil ? "" : name
+      @node_selector = node_selector == nil ? "" : node_selector
       @password = password == nil ? "" : password
       @policy = policy == nil ? nil : policy
       @port = port == nil ? 0 : port
@@ -17027,6 +17043,8 @@ module SDM
     attr_accessor :key_rotation_interval_days
     # Unique human-readable name of the Secret Engine.
     attr_accessor :name
+    # node selector is used to narrow down the nodes used to communicate with with secret engine
+    attr_accessor :node_selector
     # Password is the password to connect to the SQL Server server.
     attr_accessor :password
     # Policy for password creation
@@ -17057,6 +17075,7 @@ module SDM
       id: nil,
       key_rotation_interval_days: nil,
       name: nil,
+      node_selector: nil,
       password: nil,
       policy: nil,
       port: nil,
@@ -17075,6 +17094,7 @@ module SDM
       @id = id == nil ? "" : id
       @key_rotation_interval_days = key_rotation_interval_days == nil ? 0 : key_rotation_interval_days
       @name = name == nil ? "" : name
+      @node_selector = node_selector == nil ? "" : node_selector
       @password = password == nil ? "" : password
       @policy = policy == nil ? nil : policy
       @port = port == nil ? 0 : port

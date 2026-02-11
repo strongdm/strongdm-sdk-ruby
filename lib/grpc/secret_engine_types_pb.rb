@@ -57,6 +57,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 7, "v1.Tags"
       optional :public_key, :bytes, 8
       optional :key_rotation_interval_days, :int32, 9
+      optional :node_selector, :string, 10
     end
     add_message "v1.KeyValueEngine" do
       optional :id, :string, 1
@@ -67,6 +68,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 7, "v1.Tags"
       optional :public_key, :bytes, 8
       optional :key_rotation_interval_days, :int32, 9
+      optional :node_selector, :string, 10
     end
     add_message "v1.MysqlEngine" do
       optional :after_read_ttl, :message, 105, "google.protobuf.Duration"
@@ -87,6 +89,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 7, "v1.Tags"
       optional :public_key, :bytes, 8
       optional :key_rotation_interval_days, :int32, 9
+      optional :node_selector, :string, 10
     end
     add_message "v1.PostgresEngine" do
       optional :after_read_ttl, :message, 105, "google.protobuf.Duration"
@@ -106,6 +109,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 7, "v1.Tags"
       optional :public_key, :bytes, 8
       optional :key_rotation_interval_days, :int32, 9
+      optional :node_selector, :string, 10
     end
     add_message "v1.SqlserverEngine" do
       optional :after_read_ttl, :message, 105, "google.protobuf.Duration"
@@ -126,6 +130,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 7, "v1.Tags"
       optional :public_key, :bytes, 8
       optional :key_rotation_interval_days, :int32, 9
+      optional :node_selector, :string, 10
     end
   end
 end
