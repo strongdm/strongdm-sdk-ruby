@@ -67,6 +67,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :couchbase_web_ui, :message, 3200, "v1.CouchbaseWebUI"
         optional :db_2_i, :message, 2400, "v1.DB2I"
         optional :db_2_luw, :message, 2200, "v1.DB2LUW"
+        optional :databricks, :message, 3600, "v1.Databricks"
         optional :document_db_host, :message, 1052, "v1.DocumentDBHost"
         optional :document_db_host_iam, :message, 1055, "v1.DocumentDBHostIAM"
         optional :document_db_replica_set, :message, 1053, "v1.DocumentDBReplicaSet"
@@ -902,6 +903,22 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port_override, :int32, 5
       optional :tls_required, :bool, 8
       optional :username, :string, 2
+    end
+    add_message "v1.Databricks" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :proxy_cluster_id, :string, 32776
+      optional :subdomain, :string, 32775
+      optional :access_token, :string, 3
+      optional :hostname, :string, 1
+      optional :http_path, :string, 2
+      optional :port_override, :int32, 5
+      optional :schema, :string, 4
     end
     add_message "v1.DocumentDBHost" do
       optional :id, :string, 32768
@@ -2252,6 +2269,7 @@ module V1
   CouchbaseWebUI = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.CouchbaseWebUI").msgclass
   DB2I = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DB2I").msgclass
   DB2LUW = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DB2LUW").msgclass
+  Databricks = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Databricks").msgclass
   DocumentDBHost = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DocumentDBHost").msgclass
   DocumentDBHostIAM = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DocumentDBHostIAM").msgclass
   DocumentDBReplicaSet = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DocumentDBReplicaSet").msgclass

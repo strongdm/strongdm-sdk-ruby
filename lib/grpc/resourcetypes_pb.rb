@@ -63,6 +63,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       value :RESOURCE_TYPE_COUCHBASE_WEB_UI, 3200
       value :RESOURCE_TYPE_DB_2_I, 2400
       value :RESOURCE_TYPE_DB_2_LUW, 2200
+      value :RESOURCE_TYPE_DATABRICKS, 3600
       value :RESOURCE_TYPE_DOCUMENT_DB_HOST, 1052
       value :RESOURCE_TYPE_DOCUMENT_DB_HOST_IAM, 1055
       value :RESOURCE_TYPE_DOCUMENT_DB_REPLICA_SET, 1053

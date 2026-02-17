@@ -318,6 +318,8 @@ module SDM
         return SDM::ResourceType::RESOURCE_TYPE_DB_2_I
       when V1::ResourceType::RESOURCE_TYPE_DB_2_LUW
         return SDM::ResourceType::RESOURCE_TYPE_DB_2_LUW
+      when V1::ResourceType::RESOURCE_TYPE_DATABRICKS
+        return SDM::ResourceType::RESOURCE_TYPE_DATABRICKS
       when V1::ResourceType::RESOURCE_TYPE_DOCUMENT_DB_HOST
         return SDM::ResourceType::RESOURCE_TYPE_DOCUMENT_DB_HOST
       when V1::ResourceType::RESOURCE_TYPE_DOCUMENT_DB_HOST_IAM
@@ -570,6 +572,8 @@ module SDM
         value = V1::ResourceType::RESOURCE_TYPE_DB_2_I
       when SDM::ResourceType::RESOURCE_TYPE_DB_2_LUW, "RESOURCE_TYPE_DB_2_LUW"
         value = V1::ResourceType::RESOURCE_TYPE_DB_2_LUW
+      when SDM::ResourceType::RESOURCE_TYPE_DATABRICKS, "RESOURCE_TYPE_DATABRICKS"
+        value = V1::ResourceType::RESOURCE_TYPE_DATABRICKS
       when SDM::ResourceType::RESOURCE_TYPE_DOCUMENT_DB_HOST, "RESOURCE_TYPE_DOCUMENT_DB_HOST"
         value = V1::ResourceType::RESOURCE_TYPE_DOCUMENT_DB_HOST
       when SDM::ResourceType::RESOURCE_TYPE_DOCUMENT_DB_HOST_IAM, "RESOURCE_TYPE_DOCUMENT_DB_HOST_IAM"
@@ -6943,6 +6947,66 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_db_2_luw_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_databricks_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = Databricks.new()
+      porcelain.access_token = (plumbing.access_token)
+      porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.http_path = (plumbing.http_path)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
+      porcelain.schema = (plumbing.schema)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.subdomain = (plumbing.subdomain)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_databricks_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::Databricks.new()
+      plumbing.access_token = (porcelain.access_token)
+      plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.http_path = (porcelain.http_path)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
+      plumbing.schema = (porcelain.schema)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.subdomain = (porcelain.subdomain)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_databricks_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_databricks_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_databricks_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_databricks_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -16097,6 +16161,9 @@ module SDM
       if porcelain.instance_of? CouchbaseWebUI
         plumbing.couchbase_web_ui = convert_couchbase_web_ui_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? Databricks
+        plumbing.databricks = convert_databricks_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? DB2I
         plumbing.db_2_i = convert_db_2_i_to_plumbing(porcelain)
       end
@@ -16445,6 +16512,9 @@ module SDM
       end
       if plumbing.couchbase_web_ui != nil
         return convert_couchbase_web_ui_to_porcelain(plumbing.couchbase_web_ui)
+      end
+      if plumbing.databricks != nil
+        return convert_databricks_to_porcelain(plumbing.databricks)
       end
       if plumbing.db_2_i != nil
         return convert_db_2_i_to_porcelain(plumbing.db_2_i)

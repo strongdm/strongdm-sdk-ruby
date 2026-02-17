@@ -6761,6 +6761,7 @@ module SDM #:nodoc:
   # {Cockroach}
   # {CouchbaseDatabase}
   # {CouchbaseWebUI}
+  # {Databricks}
   # {DB2I}
   # {DB2LUW}
   # {DocumentDBHost}

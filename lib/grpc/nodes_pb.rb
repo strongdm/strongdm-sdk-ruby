@@ -100,7 +100,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :version, :string, 8
       optional :uuid, :string, 9
       repeated :maintenance_windows, :message, 11, "v1.NodeMaintenanceWindow"
-      optional :discovery_config, :message, 12, "v1.NodeDiscoveryConfig"
     end
     add_message "v1.Gateway" do
       optional :id, :string, 1
@@ -115,7 +114,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :version, :string, 10
       optional :uuid, :string, 11
       repeated :maintenance_windows, :message, 13, "v1.NodeMaintenanceWindow"
-      optional :discovery_config, :message, 14, "v1.NodeDiscoveryConfig"
     end
     add_message "v1.ProxyCluster" do
       optional :id, :string, 1
@@ -123,19 +121,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :address, :string, 3
       optional :tags, :message, 4, "v1.Tags"
       repeated :maintenance_windows, :message, 5, "v1.NodeMaintenanceWindow"
-      optional :discovery_config, :message, 6, "v1.NodeDiscoveryConfig"
     end
     add_message "v1.NodeMaintenanceWindow" do
       optional :cron_schedule, :string, 1
       optional :require_idleness, :bool, 2
-    end
-    add_message "v1.NodeDiscoveryConfig" do
-      optional :enabled, :bool, 1
-      optional :period, :message, 2, "google.protobuf.Duration"
-      repeated :enabledTypes, :message, 3, "v1.NodeDiscoveryTypeConfig"
-    end
-    add_message "v1.NodeDiscoveryTypeConfig" do
-      optional :type, :string, 1
     end
   end
 end
@@ -158,6 +147,4 @@ module V1
   Gateway = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Gateway").msgclass
   ProxyCluster = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ProxyCluster").msgclass
   NodeMaintenanceWindow = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.NodeMaintenanceWindow").msgclass
-  NodeDiscoveryConfig = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.NodeDiscoveryConfig").msgclass
-  NodeDiscoveryTypeConfig = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.NodeDiscoveryTypeConfig").msgclass
 end
