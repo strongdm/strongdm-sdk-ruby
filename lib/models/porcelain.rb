@@ -10215,6 +10215,8 @@ module SDM
     attr_accessor :name
     # The OAuth 2.0 authorization endpoint URL.
     attr_accessor :oauth_auth_endpoint
+    # Space-separated list of OAuth scopes to request.
+    attr_accessor :oauth_scopes
     # The OAuth 2.0 token endpoint URL.
     attr_accessor :oauth_token_endpoint
     # OAuth App Client Secret
@@ -10240,6 +10242,7 @@ module SDM
       id: nil,
       name: nil,
       oauth_auth_endpoint: nil,
+      oauth_scopes: nil,
       oauth_token_endpoint: nil,
       password: nil,
       port_override: nil,
@@ -10256,6 +10259,7 @@ module SDM
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
       @oauth_auth_endpoint = oauth_auth_endpoint == nil ? "" : oauth_auth_endpoint
+      @oauth_scopes = oauth_scopes == nil ? "" : oauth_scopes
       @oauth_token_endpoint = oauth_token_endpoint == nil ? "" : oauth_token_endpoint
       @password = password == nil ? "" : password
       @port_override = port_override == nil ? 0 : port_override
@@ -10293,6 +10297,8 @@ module SDM
     attr_accessor :oauth_auth_endpoint
     # The OAuth 2.0 dynamic client registration endpoint URL.
     attr_accessor :oauth_register_endpoint
+    # Space-separated list of OAuth scopes to request.
+    attr_accessor :oauth_scopes
     # The OAuth 2.0 token endpoint URL.
     attr_accessor :oauth_token_endpoint
     # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
@@ -10315,6 +10321,7 @@ module SDM
       name: nil,
       oauth_auth_endpoint: nil,
       oauth_register_endpoint: nil,
+      oauth_scopes: nil,
       oauth_token_endpoint: nil,
       port_override: nil,
       proxy_cluster_id: nil,
@@ -10330,6 +10337,7 @@ module SDM
       @name = name == nil ? "" : name
       @oauth_auth_endpoint = oauth_auth_endpoint == nil ? "" : oauth_auth_endpoint
       @oauth_register_endpoint = oauth_register_endpoint == nil ? "" : oauth_register_endpoint
+      @oauth_scopes = oauth_scopes == nil ? "" : oauth_scopes
       @oauth_token_endpoint = oauth_token_endpoint == nil ? "" : oauth_token_endpoint
       @port_override = port_override == nil ? 0 : port_override
       @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id

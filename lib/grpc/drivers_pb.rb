@@ -1412,6 +1412,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :subdomain, :string, 32775
       optional :hostname, :string, 1
       optional :oauth_auth_endpoint, :string, 8
+      optional :oauth_scopes, :string, 11
       optional :oauth_token_endpoint, :string, 9
       optional :password, :string, 2
       optional :port_override, :int32, 4
@@ -1430,6 +1431,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :hostname, :string, 1
       optional :oauth_auth_endpoint, :string, 8
       optional :oauth_register_endpoint, :string, 10
+      optional :oauth_scopes, :string, 12
       optional :oauth_token_endpoint, :string, 9
       optional :port_override, :int32, 4
     end
