@@ -31,7 +31,7 @@ module SDM #:nodoc:
     DEFAULT_RETRY_FACTOR = 1.6
     DEFAULT_RETRY_JITTER = 0.2
     API_VERSION = "2025-04-14"
-    USER_AGENT = "strongdm-sdk-ruby/16.12.0"
+    USER_AGENT = "strongdm-sdk-ruby/16.13.0"
     private_constant :DEFAULT_BASE_RETRY_DELAY, :DEFAULT_MAX_RETRY_DELAY, :DEFAULT_RETRY_FACTOR, :DEFAULT_RETRY_JITTER, :API_VERSION, :USER_AGENT
 
     # Creates a new strongDM API client.
@@ -85,6 +85,9 @@ module SDM #:nodoc:
       @approval_workflows_history = ApprovalWorkflowsHistory.new(@channel, self)
       @control_panel = ControlPanel.new(@channel, self)
       @discovery_connectors = DiscoveryConnectors.new(@channel, self)
+      @granted_account_entitlements = GrantedAccountEntitlements.new(@channel, self)
+      @granted_resource_entitlements = GrantedResourceEntitlements.new(@channel, self)
+      @granted_role_entitlements = GrantedRoleEntitlements.new(@channel, self)
       @roles = Roles.new(@channel, self)
       @groups = Groups.new(@channel, self)
       @groups_history = GroupsHistory.new(@channel, self)
@@ -342,6 +345,21 @@ module SDM #:nodoc:
     #
     # See {DiscoveryConnectors}.
     attr_reader :discovery_connectors
+    # GrantedAccountEntitlements enumerates the resources to which an account has been granted access.
+    # The GrantedAccountEntitlements service is read-only.
+    #
+    # See {GrantedAccountEntitlements}.
+    attr_reader :granted_account_entitlements
+    # GrantedResourceEntitlements enumerates the accounts that have been granted access to a given resource.
+    # The GrantedResourceEntitlements service is read-only.
+    #
+    # See {GrantedResourceEntitlements}.
+    attr_reader :granted_resource_entitlements
+    # GrantedRoleEntitlements enumerates the resources to which a role grants access.
+    # The GrantedRoleEntitlements service is read-only.
+    #
+    # See {GrantedRoleEntitlements}.
+    attr_reader :granted_role_entitlements
     # A Role has a list of access rules which determine which Resources the members
     # of the Role have access to. An Account can be a member of multiple Roles via
     # AccountAttachments.
@@ -564,6 +582,9 @@ module SDM #:nodoc:
       @approval_workflows_history = ApprovalWorkflowsHistory.new(@channel, self)
       @control_panel = ControlPanel.new(@channel, self)
       @discovery_connectors = DiscoveryConnectors.new(@channel, self)
+      @granted_account_entitlements = GrantedAccountEntitlements.new(@channel, self)
+      @granted_resource_entitlements = GrantedResourceEntitlements.new(@channel, self)
+      @granted_role_entitlements = GrantedRoleEntitlements.new(@channel, self)
       @roles = Roles.new(@channel, self)
       @groups = Groups.new(@channel, self)
       @groups_history = GroupsHistory.new(@channel, self)
@@ -623,6 +644,9 @@ module SDM #:nodoc:
       @approval_workflow_steps = SnapshotApprovalWorkflowSteps.new(client.approval_workflow_steps)
       @approval_workflows = SnapshotApprovalWorkflows.new(client.approval_workflows)
       @discovery_connectors = SnapshotDiscoveryConnectors.new(client.discovery_connectors)
+      @granted_account_entitlements = SnapshotGrantedAccountEntitlements.new(client.granted_account_entitlements)
+      @granted_resource_entitlements = SnapshotGrantedResourceEntitlements.new(client.granted_resource_entitlements)
+      @granted_role_entitlements = SnapshotGrantedRoleEntitlements.new(client.granted_role_entitlements)
       @roles = SnapshotRoles.new(client.roles)
       @groups = SnapshotGroups.new(client.groups)
       @groups_roles = SnapshotGroupsRoles.new(client.groups_roles)
@@ -692,6 +716,21 @@ module SDM #:nodoc:
     #
     # See {SnapshotDiscoveryConnectors}.
     attr_reader :discovery_connectors
+    # GrantedAccountEntitlements enumerates the resources to which an account has been granted access.
+    # The GrantedAccountEntitlements service is read-only.
+    #
+    # See {SnapshotGrantedAccountEntitlements}.
+    attr_reader :granted_account_entitlements
+    # GrantedResourceEntitlements enumerates the accounts that have been granted access to a given resource.
+    # The GrantedResourceEntitlements service is read-only.
+    #
+    # See {SnapshotGrantedResourceEntitlements}.
+    attr_reader :granted_resource_entitlements
+    # GrantedRoleEntitlements enumerates the resources to which a role grants access.
+    # The GrantedRoleEntitlements service is read-only.
+    #
+    # See {SnapshotGrantedRoleEntitlements}.
+    attr_reader :granted_role_entitlements
     # A Role has a list of access rules which determine which Resources the members
     # of the Role have access to. An Account can be a member of multiple Roles via
     # AccountAttachments.

@@ -2750,6 +2750,255 @@ module SDM #:nodoc:
     end
   end
 
+  # GrantedAccountEntitlements enumerates the resources to which an account has been granted access.
+  # The GrantedAccountEntitlements service is read-only.
+  #
+  # See {GrantedAccountEntitlement}.
+  class GrantedAccountEntitlements
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::GrantedAccountEntitlements::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # List gets a list of GrantedAccountEntitlement records matching a given set of criteria.
+    def list(
+      account_id,
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::GrantedAccountEntitlementListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      if not @parent.page_limit.nil?
+        req.meta.limit = @parent.page_limit
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.account_id = (account_id)
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("GrantedAccountEntitlements.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.granted_account_entitlements.each do |plumbing_item|
+            g.yield Plumbing::convert_granted_account_entitlement_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # SnapshotGrantedAccountEntitlements exposes the read only methods of the GrantedAccountEntitlements
+  # service for historical queries.
+  class SnapshotGrantedAccountEntitlements
+    extend Gem::Deprecate
+
+    def initialize(granted_account_entitlements)
+      @granted_account_entitlements = granted_account_entitlements
+    end
+
+    # List gets a list of GrantedAccountEntitlement records matching a given set of criteria.
+    def list(
+      account_id,
+      filter,
+      *args,
+      deadline: nil
+    )
+      return @granted_account_entitlements.list(
+               account_id,
+               filter,
+                            *args,
+                            deadline: deadline,
+             )
+    end
+  end
+
+  # GrantedResourceEntitlements enumerates the accounts that have been granted access to a given resource.
+  # The GrantedResourceEntitlements service is read-only.
+  #
+  # See {GrantedResourceEntitlement}.
+  class GrantedResourceEntitlements
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::GrantedResourceEntitlements::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # List gets a list of GrantedResourceEntitlement records matching a given set of criteria.
+    def list(
+      resource_id,
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::GrantedResourceEntitlementListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      if not @parent.page_limit.nil?
+        req.meta.limit = @parent.page_limit
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.resource_id = (resource_id)
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("GrantedResourceEntitlements.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.granted_resource_entitlements.each do |plumbing_item|
+            g.yield Plumbing::convert_granted_resource_entitlement_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # SnapshotGrantedResourceEntitlements exposes the read only methods of the GrantedResourceEntitlements
+  # service for historical queries.
+  class SnapshotGrantedResourceEntitlements
+    extend Gem::Deprecate
+
+    def initialize(granted_resource_entitlements)
+      @granted_resource_entitlements = granted_resource_entitlements
+    end
+
+    # List gets a list of GrantedResourceEntitlement records matching a given set of criteria.
+    def list(
+      resource_id,
+      filter,
+      *args,
+      deadline: nil
+    )
+      return @granted_resource_entitlements.list(
+               resource_id,
+               filter,
+                            *args,
+                            deadline: deadline,
+             )
+    end
+  end
+
+  # GrantedRoleEntitlements enumerates the resources to which a role grants access.
+  # The GrantedRoleEntitlements service is read-only.
+  #
+  # See {GrantedRoleEntitlement}.
+  class GrantedRoleEntitlements
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::GrantedRoleEntitlements::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # List gets a list of GrantedRoleEntitlement records matching a given set of criteria.
+    def list(
+      role_id,
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::GrantedRoleEntitlementListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      if not @parent.page_limit.nil?
+        req.meta.limit = @parent.page_limit
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.role_id = (role_id)
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("GrantedRoleEntitlements.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.granted_role_entitlements.each do |plumbing_item|
+            g.yield Plumbing::convert_granted_role_entitlement_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # SnapshotGrantedRoleEntitlements exposes the read only methods of the GrantedRoleEntitlements
+  # service for historical queries.
+  class SnapshotGrantedRoleEntitlements
+    extend Gem::Deprecate
+
+    def initialize(granted_role_entitlements)
+      @granted_role_entitlements = granted_role_entitlements
+    end
+
+    # List gets a list of GrantedRoleEntitlement records matching a given set of criteria.
+    def list(
+      role_id,
+      filter,
+      *args,
+      deadline: nil
+    )
+      return @granted_role_entitlements.list(
+               role_id,
+               filter,
+                            *args,
+                            deadline: deadline,
+             )
+    end
+  end
+
   # A Role has a list of access rules which determine which Resources the members
   # of the Role have access to. An Account can be a member of multiple Roles via
   # AccountAttachments.

@@ -385,6 +385,7 @@ module SDM
     DEPRECATED_DATASOURCE_GRANT = "datasource:grant"
     DISCOVERY_CONNECTOR_READ = "discoveryconnector:read"
     DISCOVERY_CONNECTOR_WRITE = "discoveryconnector:write"
+    ENTITLEMENTS_READ = "entitlements:read"
     GRANT_READ = "grant:read"
     GRANT_WRITE = "grant:write"
     GROUP_READ = "group:read"

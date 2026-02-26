@@ -8013,6 +8013,132 @@ module SDM
     end
   end
 
+  # GrantedAccountEntitlement represents an individual entitlement of an Account to a Resource that has been granted.
+  class GrantedAccountEntitlement
+    # The unique identifier of the group associated with this entitlement, if any.
+    attr_accessor :group_id
+    # The most recent time at which the account accessed this resource. Empty if the resource has never been accessed.
+    attr_accessor :last_accessed
+    # The mapped identity privileges for this entitlement, such as Kubernetes group memberships.
+    attr_accessor :mapped_identities
+    # The unique identifier of the origin of this entitlement (e.g., a Role or AccountGrant ID).
+    attr_accessor :origin_id
+    # The unique identifier of the Resource to which access is granted.
+    attr_accessor :resource_id
+
+    def initialize(
+      group_id: nil,
+      last_accessed: nil,
+      mapped_identities: nil,
+      origin_id: nil,
+      resource_id: nil
+    )
+      @group_id = group_id == nil ? "" : group_id
+      @last_accessed = last_accessed == nil ? nil : last_accessed
+      @mapped_identities = mapped_identities == nil ? nil : mapped_identities
+      @origin_id = origin_id == nil ? "" : origin_id
+      @resource_id = resource_id == nil ? "" : resource_id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # GrantedEntitlementKubernetesPrivileges holds Kubernetes group memberships for a granted entitlement.
+  class GrantedEntitlementKubernetesPrivileges
+    # The Kubernetes groups granted to this principal for this resource.
+    attr_accessor :groups
+
+    def initialize(
+      groups: nil
+    )
+      @groups = groups == nil ? [] : groups
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # GrantedResourceEntitlement represents an individual entitlement of an Account to a Resource,
+  # viewed from the resource's perspective.
+  class GrantedResourceEntitlement
+    # The unique identifier of the Account that has access to this resource.
+    attr_accessor :account_id
+    # The unique identifier of the group associated with this entitlement, if any.
+    attr_accessor :group_id
+    # The most recent time at which the account accessed this resource. Empty if the resource has never been accessed.
+    attr_accessor :last_accessed
+    # The mapped identity privileges for this entitlement, such as Kubernetes group memberships.
+    attr_accessor :mapped_identities
+    # The unique identifier of the origin of this entitlement (e.g., a Role or AccountGrant ID).
+    attr_accessor :origin_id
+
+    def initialize(
+      account_id: nil,
+      group_id: nil,
+      last_accessed: nil,
+      mapped_identities: nil,
+      origin_id: nil
+    )
+      @account_id = account_id == nil ? "" : account_id
+      @group_id = group_id == nil ? "" : group_id
+      @last_accessed = last_accessed == nil ? nil : last_accessed
+      @mapped_identities = mapped_identities == nil ? nil : mapped_identities
+      @origin_id = origin_id == nil ? "" : origin_id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # GrantedRoleEntitlement represents an individual resource entitlement granted through a Role.
+  class GrantedRoleEntitlement
+    # The unique identifier of the group associated with this entitlement, if any.
+    attr_accessor :group_id
+    # The most recent time at which any account in the organization accessed this resource.
+    # Empty if the resource has never been accessed.
+    attr_accessor :last_accessed
+    # The mapped identity privileges for this entitlement, such as Kubernetes group memberships.
+    attr_accessor :mapped_identities
+    # The unique identifier of the Resource to which the role grants access.
+    attr_accessor :resource_id
+
+    def initialize(
+      group_id: nil,
+      last_accessed: nil,
+      mapped_identities: nil,
+      resource_id: nil
+    )
+      @group_id = group_id == nil ? "" : group_id
+      @last_accessed = last_accessed == nil ? nil : last_accessed
+      @mapped_identities = mapped_identities == nil ? nil : mapped_identities
+      @resource_id = resource_id == nil ? "" : resource_id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class Greenplum
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
@@ -11131,6 +11257,26 @@ module SDM
       @meta = meta == nil ? nil : meta
       @rate_limit = rate_limit == nil ? nil : rate_limit
       @valid = valid == nil ? false : valid
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # MappedIdentities represents the mapped identity privileges granted alongside an entitlement.
+  class MappedIdentities
+    # Kubernetes group memberships.
+    attr_accessor :kubernetes
+
+    def initialize(
+      kubernetes: nil
+    )
+      @kubernetes = kubernetes == nil ? nil : kubernetes
     end
 
     def to_json(options = {})
