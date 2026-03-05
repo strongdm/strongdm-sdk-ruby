@@ -2201,6 +2201,7 @@ module SDM
         return nil
       end
       porcelain = AccountGrant.new()
+      porcelain.access_request_id = (plumbing.access_request_id)
       porcelain.access_rule = convert_access_rule_to_porcelain(plumbing.access_rule)
       porcelain.account_id = (plumbing.account_id)
       porcelain.id = (plumbing.id)
@@ -2215,6 +2216,7 @@ module SDM
         return nil
       end
       plumbing = V1::AccountGrant.new()
+      plumbing.access_request_id = (porcelain.access_request_id)
       plumbing.access_rule = convert_access_rule_to_plumbing(porcelain.access_rule)
       plumbing.account_id = (porcelain.account_id)
       plumbing.id = (porcelain.id)
