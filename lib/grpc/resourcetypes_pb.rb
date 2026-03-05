@@ -95,8 +95,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       value :RESOURCE_TYPE_KUBERNETES_USER_IMPERSONATION, 812
       value :RESOURCE_TYPE_MCP, 4700
       value :RESOURCE_TYPE_MCPDCR, 4701
-      value :RESOURCE_TYPE_MCP_NO_AUTH, 4703
-      value :RESOURCE_TYPE_MCPPAT, 4702
       value :RESOURCE_TYPE_MTLS_MY_SQL, 1106
       value :RESOURCE_TYPE_MTLS_POSTGRES, 1306
       value :RESOURCE_TYPE_MARIA, 1103

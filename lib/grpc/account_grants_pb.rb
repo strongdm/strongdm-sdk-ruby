@@ -65,7 +65,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :start_from, :message, 4, "google.protobuf.Timestamp"
       optional :valid_until, :message, 5, "google.protobuf.Timestamp"
       optional :access_rule, :string, 6
-      optional :access_request_id, :string, 7
     end
   end
 end

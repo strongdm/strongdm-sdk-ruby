@@ -44,8 +44,6 @@ require_relative "./approval_workflow_steps_pb"
 require_relative "./approval_workflow_steps_history_pb"
 require_relative "./approval_workflows_pb"
 require_relative "./approval_workflows_history_pb"
-require_relative "./resourcetypes_pb"
-require_relative "./location_enums_pb"
 require_relative "./authorization_policies_pb"
 require_relative "./control_panel_pb"
 require_relative "./discovery_connectors_pb"
@@ -81,6 +79,7 @@ require_relative "./remote_identity_groups_history_pb"
 require_relative "./replays_pb"
 require_relative "./resources_pb"
 require_relative "./resources_history_pb"
+require_relative "./resourcetypes_pb"
 require_relative "./role_resources_pb"
 require_relative "./role_resources_history_pb"
 require_relative "./roles_history_pb"
@@ -386,10 +385,6 @@ module SDM
         return SDM::ResourceType::RESOURCE_TYPE_MCP
       when V1::ResourceType::RESOURCE_TYPE_MCPDCR
         return SDM::ResourceType::RESOURCE_TYPE_MCPDCR
-      when V1::ResourceType::RESOURCE_TYPE_MCP_NO_AUTH
-        return SDM::ResourceType::RESOURCE_TYPE_MCP_NO_AUTH
-      when V1::ResourceType::RESOURCE_TYPE_MCPPAT
-        return SDM::ResourceType::RESOURCE_TYPE_MCPPAT
       when V1::ResourceType::RESOURCE_TYPE_MTLS_MY_SQL
         return SDM::ResourceType::RESOURCE_TYPE_MTLS_MY_SQL
       when V1::ResourceType::RESOURCE_TYPE_MTLS_POSTGRES
@@ -644,10 +639,6 @@ module SDM
         value = V1::ResourceType::RESOURCE_TYPE_MCP
       when SDM::ResourceType::RESOURCE_TYPE_MCPDCR, "RESOURCE_TYPE_MCPDCR"
         value = V1::ResourceType::RESOURCE_TYPE_MCPDCR
-      when SDM::ResourceType::RESOURCE_TYPE_MCP_NO_AUTH, "RESOURCE_TYPE_MCP_NO_AUTH"
-        value = V1::ResourceType::RESOURCE_TYPE_MCP_NO_AUTH
-      when SDM::ResourceType::RESOURCE_TYPE_MCPPAT, "RESOURCE_TYPE_MCPPAT"
-        value = V1::ResourceType::RESOURCE_TYPE_MCPPAT
       when SDM::ResourceType::RESOURCE_TYPE_MTLS_MY_SQL, "RESOURCE_TYPE_MTLS_MY_SQL"
         value = V1::ResourceType::RESOURCE_TYPE_MTLS_MY_SQL
       when SDM::ResourceType::RESOURCE_TYPE_MTLS_POSTGRES, "RESOURCE_TYPE_MTLS_POSTGRES"
@@ -2201,7 +2192,6 @@ module SDM
         return nil
       end
       porcelain = AccountGrant.new()
-      porcelain.access_request_id = (plumbing.access_request_id)
       porcelain.access_rule = convert_access_rule_to_porcelain(plumbing.access_rule)
       porcelain.account_id = (plumbing.account_id)
       porcelain.id = (plumbing.id)
@@ -2216,7 +2206,6 @@ module SDM
         return nil
       end
       plumbing = V1::AccountGrant.new()
-      plumbing.access_request_id = (porcelain.access_request_id)
       plumbing.access_rule = convert_access_rule_to_plumbing(porcelain.access_rule)
       plumbing.account_id = (porcelain.account_id)
       plumbing.id = (porcelain.id)
@@ -11221,116 +11210,6 @@ module SDM
       end
       items
     end
-    def self.convert_mcp_gateway_no_auth_to_porcelain(plumbing)
-      if plumbing == nil
-        return nil
-      end
-      porcelain = MCPGatewayNoAuth.new()
-      porcelain.bind_interface = (plumbing.bind_interface)
-      porcelain.egress_filter = (plumbing.egress_filter)
-      porcelain.healthy = (plumbing.healthy)
-      porcelain.hostname = (plumbing.hostname)
-      porcelain.id = (plumbing.id)
-      porcelain.name = (plumbing.name)
-      porcelain.port_override = (plumbing.port_override)
-      porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
-      porcelain.secret_store_id = (plumbing.secret_store_id)
-      porcelain.subdomain = (plumbing.subdomain)
-      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
-      porcelain
-    end
-
-    def self.convert_mcp_gateway_no_auth_to_plumbing(porcelain)
-      if porcelain == nil
-        return nil
-      end
-      plumbing = V1::MCPGatewayNoAuth.new()
-      plumbing.bind_interface = (porcelain.bind_interface)
-      plumbing.egress_filter = (porcelain.egress_filter)
-      plumbing.healthy = (porcelain.healthy)
-      plumbing.hostname = (porcelain.hostname)
-      plumbing.id = (porcelain.id)
-      plumbing.name = (porcelain.name)
-      plumbing.port_override = (porcelain.port_override)
-      plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
-      plumbing.secret_store_id = (porcelain.secret_store_id)
-      plumbing.subdomain = (porcelain.subdomain)
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
-      plumbing
-    end
-    def self.convert_repeated_mcp_gateway_no_auth_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = convert_mcp_gateway_no_auth_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.convert_repeated_mcp_gateway_no_auth_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = convert_mcp_gateway_no_auth_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
-    def self.convert_mcp_gateway_pat_to_porcelain(plumbing)
-      if plumbing == nil
-        return nil
-      end
-      porcelain = MCPGatewayPAT.new()
-      porcelain.bind_interface = (plumbing.bind_interface)
-      porcelain.egress_filter = (plumbing.egress_filter)
-      porcelain.healthy = (plumbing.healthy)
-      porcelain.hostname = (plumbing.hostname)
-      porcelain.id = (plumbing.id)
-      porcelain.name = (plumbing.name)
-      porcelain.password = (plumbing.password)
-      porcelain.port_override = (plumbing.port_override)
-      porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
-      porcelain.secret_store_id = (plumbing.secret_store_id)
-      porcelain.subdomain = (plumbing.subdomain)
-      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
-      porcelain
-    end
-
-    def self.convert_mcp_gateway_pat_to_plumbing(porcelain)
-      if porcelain == nil
-        return nil
-      end
-      plumbing = V1::MCPGatewayPAT.new()
-      plumbing.bind_interface = (porcelain.bind_interface)
-      plumbing.egress_filter = (porcelain.egress_filter)
-      plumbing.healthy = (porcelain.healthy)
-      plumbing.hostname = (porcelain.hostname)
-      plumbing.id = (porcelain.id)
-      plumbing.name = (porcelain.name)
-      plumbing.password = (porcelain.password)
-      plumbing.port_override = (porcelain.port_override)
-      plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
-      plumbing.secret_store_id = (porcelain.secret_store_id)
-      plumbing.subdomain = (porcelain.subdomain)
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
-      plumbing
-    end
-    def self.convert_repeated_mcp_gateway_pat_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = convert_mcp_gateway_pat_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.convert_repeated_mcp_gateway_pat_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = convert_mcp_gateway_pat_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
     def self.convert_mtls_mysql_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -16577,12 +16456,6 @@ module SDM
       if porcelain.instance_of? MCP
         plumbing.mcp = convert_mcp_to_plumbing(porcelain)
       end
-      if porcelain.instance_of? MCPGatewayNoAuth
-        plumbing.mcp_gateway_no_auth = convert_mcp_gateway_no_auth_to_plumbing(porcelain)
-      end
-      if porcelain.instance_of? MCPGatewayPAT
-        plumbing.mcp_gateway_pat = convert_mcp_gateway_pat_to_plumbing(porcelain)
-      end
       if porcelain.instance_of? MCPDCR
         plumbing.mcpdcr = convert_mcpdcr_to_plumbing(porcelain)
       end
@@ -16934,12 +16807,6 @@ module SDM
       end
       if plumbing.mcp != nil
         return convert_mcp_to_porcelain(plumbing.mcp)
-      end
-      if plumbing.mcp_gateway_no_auth != nil
-        return convert_mcp_gateway_no_auth_to_porcelain(plumbing.mcp_gateway_no_auth)
-      end
-      if plumbing.mcp_gateway_pat != nil
-        return convert_mcp_gateway_pat_to_porcelain(plumbing.mcp_gateway_pat)
       end
       if plumbing.mcpdcr != nil
         return convert_mcpdcr_to_porcelain(plumbing.mcpdcr)
