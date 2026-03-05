@@ -7042,6 +7042,8 @@ module SDM #:nodoc:
   # {KubernetesUserImpersonation}
   # {Maria}
   # {MCP}
+  # {MCPGatewayNoAuth}
+  # {MCPGatewayPAT}
   # {MCPDCR}
   # {Memcached}
   # {Memsql}

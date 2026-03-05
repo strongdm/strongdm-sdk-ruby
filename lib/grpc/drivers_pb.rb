@@ -97,6 +97,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :kubernetes_user_impersonation, :message, 812, "v1.KubernetesUserImpersonation"
         optional :mcp, :message, 4700, "v1.MCP"
         optional :mcpdcr, :message, 4701, "v1.MCPDCR"
+        optional :mcp_gateway_no_auth, :message, 4703, "v1.MCPGatewayNoAuth"
+        optional :mcp_gateway_pat, :message, 4702, "v1.MCPGatewayPAT"
         optional :mtls_mysql, :message, 1106, "v1.MTLSMysql"
         optional :mtls_postgres, :message, 1306, "v1.MTLSPostgres"
         optional :maria, :message, 1103, "v1.Maria"
@@ -1435,6 +1437,33 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :oauth_token_endpoint, :string, 9
       optional :port_override, :int32, 4
     end
+    add_message "v1.MCPGatewayNoAuth" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :proxy_cluster_id, :string, 32776
+      optional :subdomain, :string, 32775
+      optional :hostname, :string, 1
+      optional :port_override, :int32, 4
+    end
+    add_message "v1.MCPGatewayPAT" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :proxy_cluster_id, :string, 32776
+      optional :subdomain, :string, 32775
+      optional :hostname, :string, 1
+      optional :password, :string, 2
+      optional :port_override, :int32, 4
+    end
     add_message "v1.MTLSMysql" do
       optional :id, :string, 32768
       optional :name, :string, 32769
@@ -2301,6 +2330,8 @@ module V1
   KubernetesUserImpersonation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.KubernetesUserImpersonation").msgclass
   MCP = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MCP").msgclass
   MCPDCR = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MCPDCR").msgclass
+  MCPGatewayNoAuth = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MCPGatewayNoAuth").msgclass
+  MCPGatewayPAT = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MCPGatewayPAT").msgclass
   MTLSMysql = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MTLSMysql").msgclass
   MTLSPostgres = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MTLSPostgres").msgclass
   Maria = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Maria").msgclass
