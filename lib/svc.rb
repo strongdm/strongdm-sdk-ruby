@@ -7041,10 +7041,10 @@ module SDM #:nodoc:
   # {KubernetesServiceAccountUserImpersonation}
   # {KubernetesUserImpersonation}
   # {Maria}
-  # {MCP}
   # {MCPGatewayNoAuth}
+  # {MCPGatewayOAuth}
+  # {MCPGatewayOAuthDCR}
   # {MCPGatewayPAT}
-  # {MCPDCR}
   # {Memcached}
   # {Memsql}
   # {MongoHost}

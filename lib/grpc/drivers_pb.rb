@@ -95,9 +95,9 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :kubernetes_service_account, :message, 804, "v1.KubernetesServiceAccount"
         optional :kubernetes_service_account_user_impersonation, :message, 808, "v1.KubernetesServiceAccountUserImpersonation"
         optional :kubernetes_user_impersonation, :message, 812, "v1.KubernetesUserImpersonation"
-        optional :mcp, :message, 4700, "v1.MCP"
-        optional :mcpdcr, :message, 4701, "v1.MCPDCR"
         optional :mcp_gateway_no_auth, :message, 4703, "v1.MCPGatewayNoAuth"
+        optional :mcp_gateway_o_auth, :message, 4700, "v1.MCPGatewayOAuth"
+        optional :mcp_gateway_o_auth_dcr, :message, 4701, "v1.MCPGatewayOAuthDCR"
         optional :mcp_gateway_pat, :message, 4702, "v1.MCPGatewayPAT"
         optional :mtls_mysql, :message, 1106, "v1.MTLSMysql"
         optional :mtls_postgres, :message, 1306, "v1.MTLSPostgres"
@@ -291,6 +291,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :role_external_id, :string, 4
       optional :session_expiry, :int32, 5
       optional :subdomain, :string, 6
+      optional :use_https, :bool, 15
     end
     add_message "v1.AWSConsoleStaticKeyPair" do
       optional :id, :string, 32768
@@ -311,6 +312,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :secret_access_key, :string, 2
       optional :session_expiry, :int32, 6
       optional :subdomain, :string, 7
+      optional :use_https, :bool, 14
     end
     add_message "v1.AWSInstanceProfile" do
       optional :id, :string, 32768
@@ -1248,6 +1250,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :host_override, :string, 7
       optional :port_override, :int32, 12
       optional :subdomain, :string, 6
+      optional :tls_required, :bool, 9
       optional :url, :string, 1
     end
     add_message "v1.HTTPBasicAuth" do
@@ -1267,6 +1270,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :password, :string, 4
       optional :port_override, :int32, 12
       optional :subdomain, :string, 7
+      optional :tls_required, :bool, 10
       optional :url, :string, 1
       optional :username, :string, 3
     end
@@ -1286,6 +1290,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :host_override, :string, 6
       optional :port_override, :int32, 12
       optional :subdomain, :string, 5
+      optional :tls_required, :bool, 8
       optional :url, :string, 1
     end
     add_message "v1.Kubernetes" do
@@ -1402,7 +1407,20 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port, :int32, 2
       optional :port_override, :int32, 10
     end
-    add_message "v1.MCP" do
+    add_message "v1.MCPGatewayNoAuth" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :proxy_cluster_id, :string, 32776
+      optional :subdomain, :string, 32775
+      optional :hostname, :string, 1
+      optional :port_override, :int32, 4
+    end
+    add_message "v1.MCPGatewayOAuth" do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
@@ -1420,7 +1438,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port_override, :int32, 4
       optional :username, :string, 6
     end
-    add_message "v1.MCPDCR" do
+    add_message "v1.MCPGatewayOAuthDCR" do
       optional :id, :string, 32768
       optional :name, :string, 32769
       optional :healthy, :bool, 32770
@@ -1435,19 +1453,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :oauth_register_endpoint, :string, 10
       optional :oauth_scopes, :string, 12
       optional :oauth_token_endpoint, :string, 9
-      optional :port_override, :int32, 4
-    end
-    add_message "v1.MCPGatewayNoAuth" do
-      optional :id, :string, 32768
-      optional :name, :string, 32769
-      optional :healthy, :bool, 32770
-      optional :tags, :message, 32771, "v1.Tags"
-      optional :secret_store_id, :string, 32772
-      optional :egress_filter, :string, 32773
-      optional :bind_interface, :string, 32774
-      optional :proxy_cluster_id, :string, 32776
-      optional :subdomain, :string, 32775
-      optional :hostname, :string, 1
       optional :port_override, :int32, 4
     end
     add_message "v1.MCPGatewayPAT" do
@@ -2170,6 +2175,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port_override, :int32, 3
       optional :samlMetadata, :string, 1
       optional :subdomain, :string, 2
+      optional :use_https, :bool, 14
     end
     add_message "v1.Sybase" do
       optional :id, :string, 32768
@@ -2328,9 +2334,9 @@ module V1
   KubernetesServiceAccount = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.KubernetesServiceAccount").msgclass
   KubernetesServiceAccountUserImpersonation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.KubernetesServiceAccountUserImpersonation").msgclass
   KubernetesUserImpersonation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.KubernetesUserImpersonation").msgclass
-  MCP = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MCP").msgclass
-  MCPDCR = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MCPDCR").msgclass
   MCPGatewayNoAuth = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MCPGatewayNoAuth").msgclass
+  MCPGatewayOAuth = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MCPGatewayOAuth").msgclass
+  MCPGatewayOAuthDCR = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MCPGatewayOAuthDCR").msgclass
   MCPGatewayPAT = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MCPGatewayPAT").msgclass
   MTLSMysql = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MTLSMysql").msgclass
   MTLSPostgres = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MTLSPostgres").msgclass

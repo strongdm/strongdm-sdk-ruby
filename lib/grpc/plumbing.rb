@@ -382,12 +382,12 @@ module SDM
         return SDM::ResourceType::RESOURCE_TYPE_KUBERNETES_SERVICE_ACCOUNT_USER_IMPERSONATION
       when V1::ResourceType::RESOURCE_TYPE_KUBERNETES_USER_IMPERSONATION
         return SDM::ResourceType::RESOURCE_TYPE_KUBERNETES_USER_IMPERSONATION
+      when V1::ResourceType::RESOURCE_TYPE_MCP_NO_AUTH
+        return SDM::ResourceType::RESOURCE_TYPE_MCP_NO_AUTH
       when V1::ResourceType::RESOURCE_TYPE_MCP
         return SDM::ResourceType::RESOURCE_TYPE_MCP
       when V1::ResourceType::RESOURCE_TYPE_MCPDCR
         return SDM::ResourceType::RESOURCE_TYPE_MCPDCR
-      when V1::ResourceType::RESOURCE_TYPE_MCP_NO_AUTH
-        return SDM::ResourceType::RESOURCE_TYPE_MCP_NO_AUTH
       when V1::ResourceType::RESOURCE_TYPE_MCPPAT
         return SDM::ResourceType::RESOURCE_TYPE_MCPPAT
       when V1::ResourceType::RESOURCE_TYPE_MTLS_MY_SQL
@@ -640,12 +640,12 @@ module SDM
         value = V1::ResourceType::RESOURCE_TYPE_KUBERNETES_SERVICE_ACCOUNT_USER_IMPERSONATION
       when SDM::ResourceType::RESOURCE_TYPE_KUBERNETES_USER_IMPERSONATION, "RESOURCE_TYPE_KUBERNETES_USER_IMPERSONATION"
         value = V1::ResourceType::RESOURCE_TYPE_KUBERNETES_USER_IMPERSONATION
+      when SDM::ResourceType::RESOURCE_TYPE_MCP_NO_AUTH, "RESOURCE_TYPE_MCP_NO_AUTH"
+        value = V1::ResourceType::RESOURCE_TYPE_MCP_NO_AUTH
       when SDM::ResourceType::RESOURCE_TYPE_MCP, "RESOURCE_TYPE_MCP"
         value = V1::ResourceType::RESOURCE_TYPE_MCP
       when SDM::ResourceType::RESOURCE_TYPE_MCPDCR, "RESOURCE_TYPE_MCPDCR"
         value = V1::ResourceType::RESOURCE_TYPE_MCPDCR
-      when SDM::ResourceType::RESOURCE_TYPE_MCP_NO_AUTH, "RESOURCE_TYPE_MCP_NO_AUTH"
-        value = V1::ResourceType::RESOURCE_TYPE_MCP_NO_AUTH
       when SDM::ResourceType::RESOURCE_TYPE_MCPPAT, "RESOURCE_TYPE_MCPPAT"
         value = V1::ResourceType::RESOURCE_TYPE_MCPPAT
       when SDM::ResourceType::RESOURCE_TYPE_MTLS_MY_SQL, "RESOURCE_TYPE_MTLS_MY_SQL"
@@ -1335,6 +1335,7 @@ module SDM
       porcelain.session_expiry = (plumbing.session_expiry)
       porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.use_https = (plumbing.use_https)
       porcelain
     end
 
@@ -1360,6 +1361,7 @@ module SDM
       plumbing.session_expiry = (porcelain.session_expiry)
       plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.use_https = (porcelain.use_https)
       plumbing
     end
     def self.convert_repeated_aws_console_to_plumbing(porcelains)
@@ -1402,6 +1404,7 @@ module SDM
       porcelain.session_expiry = (plumbing.session_expiry)
       porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.use_https = (plumbing.use_https)
       porcelain
     end
 
@@ -1428,6 +1431,7 @@ module SDM
       plumbing.session_expiry = (porcelain.session_expiry)
       plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.use_https = (porcelain.use_https)
       plumbing
     end
     def self.convert_repeated_aws_console_static_key_pair_to_plumbing(porcelains)
@@ -9636,6 +9640,7 @@ module SDM
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.tls_required = (plumbing.tls_required)
       porcelain.url = (plumbing.url)
       porcelain
     end
@@ -9661,6 +9666,7 @@ module SDM
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.tls_required = (porcelain.tls_required)
       plumbing.url = (porcelain.url)
       plumbing
     end
@@ -9702,6 +9708,7 @@ module SDM
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.tls_required = (plumbing.tls_required)
       porcelain.url = (plumbing.url)
       porcelain.username = (plumbing.username)
       porcelain
@@ -9728,6 +9735,7 @@ module SDM
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.tls_required = (porcelain.tls_required)
       plumbing.url = (porcelain.url)
       plumbing.username = (porcelain.username)
       plumbing
@@ -9769,6 +9777,7 @@ module SDM
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.tls_required = (plumbing.tls_required)
       porcelain.url = (plumbing.url)
       porcelain
     end
@@ -9793,6 +9802,7 @@ module SDM
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.tls_required = (porcelain.tls_required)
       plumbing.url = (porcelain.url)
       plumbing
     end
@@ -11095,132 +11105,6 @@ module SDM
       end
       items
     end
-    def self.convert_mcp_to_porcelain(plumbing)
-      if plumbing == nil
-        return nil
-      end
-      porcelain = MCP.new()
-      porcelain.bind_interface = (plumbing.bind_interface)
-      porcelain.egress_filter = (plumbing.egress_filter)
-      porcelain.healthy = (plumbing.healthy)
-      porcelain.hostname = (plumbing.hostname)
-      porcelain.id = (plumbing.id)
-      porcelain.name = (plumbing.name)
-      porcelain.oauth_auth_endpoint = (plumbing.oauth_auth_endpoint)
-      porcelain.oauth_scopes = (plumbing.oauth_scopes)
-      porcelain.oauth_token_endpoint = (plumbing.oauth_token_endpoint)
-      porcelain.password = (plumbing.password)
-      porcelain.port_override = (plumbing.port_override)
-      porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
-      porcelain.secret_store_id = (plumbing.secret_store_id)
-      porcelain.subdomain = (plumbing.subdomain)
-      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
-      porcelain.username = (plumbing.username)
-      porcelain
-    end
-
-    def self.convert_mcp_to_plumbing(porcelain)
-      if porcelain == nil
-        return nil
-      end
-      plumbing = V1::MCP.new()
-      plumbing.bind_interface = (porcelain.bind_interface)
-      plumbing.egress_filter = (porcelain.egress_filter)
-      plumbing.healthy = (porcelain.healthy)
-      plumbing.hostname = (porcelain.hostname)
-      plumbing.id = (porcelain.id)
-      plumbing.name = (porcelain.name)
-      plumbing.oauth_auth_endpoint = (porcelain.oauth_auth_endpoint)
-      plumbing.oauth_scopes = (porcelain.oauth_scopes)
-      plumbing.oauth_token_endpoint = (porcelain.oauth_token_endpoint)
-      plumbing.password = (porcelain.password)
-      plumbing.port_override = (porcelain.port_override)
-      plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
-      plumbing.secret_store_id = (porcelain.secret_store_id)
-      plumbing.subdomain = (porcelain.subdomain)
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
-      plumbing.username = (porcelain.username)
-      plumbing
-    end
-    def self.convert_repeated_mcp_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = convert_mcp_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.convert_repeated_mcp_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = convert_mcp_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
-    def self.convert_mcpdcr_to_porcelain(plumbing)
-      if plumbing == nil
-        return nil
-      end
-      porcelain = MCPDCR.new()
-      porcelain.bind_interface = (plumbing.bind_interface)
-      porcelain.egress_filter = (plumbing.egress_filter)
-      porcelain.healthy = (plumbing.healthy)
-      porcelain.hostname = (plumbing.hostname)
-      porcelain.id = (plumbing.id)
-      porcelain.name = (plumbing.name)
-      porcelain.oauth_auth_endpoint = (plumbing.oauth_auth_endpoint)
-      porcelain.oauth_register_endpoint = (plumbing.oauth_register_endpoint)
-      porcelain.oauth_scopes = (plumbing.oauth_scopes)
-      porcelain.oauth_token_endpoint = (plumbing.oauth_token_endpoint)
-      porcelain.port_override = (plumbing.port_override)
-      porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
-      porcelain.secret_store_id = (plumbing.secret_store_id)
-      porcelain.subdomain = (plumbing.subdomain)
-      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
-      porcelain
-    end
-
-    def self.convert_mcpdcr_to_plumbing(porcelain)
-      if porcelain == nil
-        return nil
-      end
-      plumbing = V1::MCPDCR.new()
-      plumbing.bind_interface = (porcelain.bind_interface)
-      plumbing.egress_filter = (porcelain.egress_filter)
-      plumbing.healthy = (porcelain.healthy)
-      plumbing.hostname = (porcelain.hostname)
-      plumbing.id = (porcelain.id)
-      plumbing.name = (porcelain.name)
-      plumbing.oauth_auth_endpoint = (porcelain.oauth_auth_endpoint)
-      plumbing.oauth_register_endpoint = (porcelain.oauth_register_endpoint)
-      plumbing.oauth_scopes = (porcelain.oauth_scopes)
-      plumbing.oauth_token_endpoint = (porcelain.oauth_token_endpoint)
-      plumbing.port_override = (porcelain.port_override)
-      plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
-      plumbing.secret_store_id = (porcelain.secret_store_id)
-      plumbing.subdomain = (porcelain.subdomain)
-      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
-      plumbing
-    end
-    def self.convert_repeated_mcpdcr_to_plumbing(porcelains)
-      items = Array.new
-      porcelains.each do |porcelain|
-        plumbing = convert_mcpdcr_to_plumbing(porcelain)
-        items.append(plumbing)
-      end
-      items
-    end
-
-    def self.convert_repeated_mcpdcr_to_porcelain(plumbings)
-      items = Array.new
-      plumbings.each do |plumbing|
-        porcelain = convert_mcpdcr_to_porcelain(plumbing)
-        items.append(porcelain)
-      end
-      items
-    end
     def self.convert_mcp_gateway_no_auth_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -11271,6 +11155,132 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_mcp_gateway_no_auth_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_mcp_gateway_o_auth_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = MCPGatewayOAuth.new()
+      porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.oauth_auth_endpoint = (plumbing.oauth_auth_endpoint)
+      porcelain.oauth_scopes = (plumbing.oauth_scopes)
+      porcelain.oauth_token_endpoint = (plumbing.oauth_token_endpoint)
+      porcelain.password = (plumbing.password)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.subdomain = (plumbing.subdomain)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.username = (plumbing.username)
+      porcelain
+    end
+
+    def self.convert_mcp_gateway_o_auth_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::MCPGatewayOAuth.new()
+      plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.oauth_auth_endpoint = (porcelain.oauth_auth_endpoint)
+      plumbing.oauth_scopes = (porcelain.oauth_scopes)
+      plumbing.oauth_token_endpoint = (porcelain.oauth_token_endpoint)
+      plumbing.password = (porcelain.password)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.subdomain = (porcelain.subdomain)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.username = (porcelain.username)
+      plumbing
+    end
+    def self.convert_repeated_mcp_gateway_o_auth_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_mcp_gateway_o_auth_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_mcp_gateway_o_auth_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_mcp_gateway_o_auth_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_mcp_gateway_o_auth_dcr_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = MCPGatewayOAuthDCR.new()
+      porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.hostname = (plumbing.hostname)
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.oauth_auth_endpoint = (plumbing.oauth_auth_endpoint)
+      porcelain.oauth_register_endpoint = (plumbing.oauth_register_endpoint)
+      porcelain.oauth_scopes = (plumbing.oauth_scopes)
+      porcelain.oauth_token_endpoint = (plumbing.oauth_token_endpoint)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.subdomain = (plumbing.subdomain)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_mcp_gateway_o_auth_dcr_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::MCPGatewayOAuthDCR.new()
+      plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.hostname = (porcelain.hostname)
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.oauth_auth_endpoint = (porcelain.oauth_auth_endpoint)
+      plumbing.oauth_register_endpoint = (porcelain.oauth_register_endpoint)
+      plumbing.oauth_scopes = (porcelain.oauth_scopes)
+      plumbing.oauth_token_endpoint = (porcelain.oauth_token_endpoint)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.subdomain = (porcelain.subdomain)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_mcp_gateway_o_auth_dcr_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_mcp_gateway_o_auth_dcr_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_mcp_gateway_o_auth_dcr_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_mcp_gateway_o_auth_dcr_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -16574,17 +16584,17 @@ module SDM
       if porcelain.instance_of? Maria
         plumbing.maria = convert_maria_to_plumbing(porcelain)
       end
-      if porcelain.instance_of? MCP
-        plumbing.mcp = convert_mcp_to_plumbing(porcelain)
-      end
       if porcelain.instance_of? MCPGatewayNoAuth
         plumbing.mcp_gateway_no_auth = convert_mcp_gateway_no_auth_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? MCPGatewayOAuth
+        plumbing.mcp_gateway_o_auth = convert_mcp_gateway_o_auth_to_plumbing(porcelain)
+      end
+      if porcelain.instance_of? MCPGatewayOAuthDCR
+        plumbing.mcp_gateway_o_auth_dcr = convert_mcp_gateway_o_auth_dcr_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? MCPGatewayPAT
         plumbing.mcp_gateway_pat = convert_mcp_gateway_pat_to_plumbing(porcelain)
-      end
-      if porcelain.instance_of? MCPDCR
-        plumbing.mcpdcr = convert_mcpdcr_to_plumbing(porcelain)
       end
       if porcelain.instance_of? Memcached
         plumbing.memcached = convert_memcached_to_plumbing(porcelain)
@@ -16932,17 +16942,17 @@ module SDM
       if plumbing.maria != nil
         return convert_maria_to_porcelain(plumbing.maria)
       end
-      if plumbing.mcp != nil
-        return convert_mcp_to_porcelain(plumbing.mcp)
-      end
       if plumbing.mcp_gateway_no_auth != nil
         return convert_mcp_gateway_no_auth_to_porcelain(plumbing.mcp_gateway_no_auth)
       end
+      if plumbing.mcp_gateway_o_auth != nil
+        return convert_mcp_gateway_o_auth_to_porcelain(plumbing.mcp_gateway_o_auth)
+      end
+      if plumbing.mcp_gateway_o_auth_dcr != nil
+        return convert_mcp_gateway_o_auth_dcr_to_porcelain(plumbing.mcp_gateway_o_auth_dcr)
+      end
       if plumbing.mcp_gateway_pat != nil
         return convert_mcp_gateway_pat_to_porcelain(plumbing.mcp_gateway_pat)
-      end
-      if plumbing.mcpdcr != nil
-        return convert_mcpdcr_to_porcelain(plumbing.mcpdcr)
       end
       if plumbing.memcached != nil
         return convert_memcached_to_porcelain(plumbing.memcached)
@@ -19401,6 +19411,7 @@ module SDM
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.use_https = (plumbing.use_https)
       porcelain
     end
 
@@ -19422,6 +19433,7 @@ module SDM
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.use_https = (porcelain.use_https)
       plumbing
     end
     def self.convert_repeated_snowsight_to_plumbing(porcelains)

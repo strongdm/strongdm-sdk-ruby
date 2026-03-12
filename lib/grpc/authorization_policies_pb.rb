@@ -78,20 +78,22 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :state, :enum, 5, "v1.AuthorizationPolicyState"
     end
     add_message "v1.AuthorizationPolicyItem" do
-      optional :principal_all, :message, 1, "v1.AuthorizationPolicyItemPrincipalAll"
-      optional :principal_by_ids, :message, 2, "v1.AuthorizationPolicyItemPrincipalByIds"
-      optional :resources_all, :message, 3, "v1.AuthorizationPolicyItemResourcesAll"
-      optional :resource_by_ids, :message, 4, "v1.AuthorizationPolicyItemResourceByIds"
-      optional :resource_by_type_and_tags, :message, 5, "v1.AuthorizationPolicyItemResourceByTypeAndTags"
-      optional :resource_by_type_tags_and_kubernetes_groups, :message, 6, "v1.AuthorizationPolicyItemResourceByTypeTagsAndKubernetesGroups"
-      optional :resource_by_okta_with_groups, :message, 7, "v1.AuthorizationPolicyItemResourceByOktaWithGroups"
-      optional :resource_by_entra_with_groups, :message, 8, "v1.AuthorizationPolicyItemResourceByEntraWithGroups"
-      optional :condition_mfa, :message, 9, "v1.AuthorizationPolicyItemConditionMFA"
-      optional :condition_device_trust, :message, 10, "v1.AuthorizationPolicyItemConditionDeviceTrust"
-      optional :condition_location, :message, 11, "v1.AuthorizationPolicyItemConditionLocation"
-      optional :condition_ip, :message, 12, "v1.AuthorizationPolicyItemConditionIP"
-      optional :condition_time, :message, 13, "v1.AuthorizationPolicyItemConditionTime"
-      optional :condition_approval_flow, :message, 14, "v1.AuthorizationPolicyItemConditionApprovalFlow"
+      oneof :kind do
+        optional :principal_all, :message, 1, "v1.AuthorizationPolicyItemPrincipalAll"
+        optional :principal_by_ids, :message, 2, "v1.AuthorizationPolicyItemPrincipalByIds"
+        optional :resources_all, :message, 3, "v1.AuthorizationPolicyItemResourcesAll"
+        optional :resource_by_ids, :message, 4, "v1.AuthorizationPolicyItemResourceByIds"
+        optional :resource_by_type_and_tags, :message, 5, "v1.AuthorizationPolicyItemResourceByTypeAndTags"
+        optional :resource_by_type_tags_and_kubernetes_groups, :message, 6, "v1.AuthorizationPolicyItemResourceByTypeTagsAndKubernetesGroups"
+        optional :resource_by_okta_with_groups, :message, 7, "v1.AuthorizationPolicyItemResourceByOktaWithGroups"
+        optional :resource_by_entra_with_groups, :message, 8, "v1.AuthorizationPolicyItemResourceByEntraWithGroups"
+        optional :condition_mfa, :message, 9, "v1.AuthorizationPolicyItemConditionMFA"
+        optional :condition_device_trust, :message, 10, "v1.AuthorizationPolicyItemConditionDeviceTrust"
+        optional :condition_location, :message, 11, "v1.AuthorizationPolicyItemConditionLocation"
+        optional :condition_ip, :message, 12, "v1.AuthorizationPolicyItemConditionIP"
+        optional :condition_time, :message, 13, "v1.AuthorizationPolicyItemConditionTime"
+        optional :condition_approval_flow, :message, 14, "v1.AuthorizationPolicyItemConditionApprovalFlow"
+      end
     end
     add_message "v1.AuthorizationPolicyItemPrincipalAll" do
     end
@@ -113,11 +115,11 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       repeated :kubernetes_groups, :string, 3
     end
     add_message "v1.AuthorizationPolicyItemResourceByOktaWithGroups" do
-      optional :id, :string, 1
+      optional :resource_id, :string, 1
       repeated :groups, :string, 2
     end
     add_message "v1.AuthorizationPolicyItemResourceByEntraWithGroups" do
-      optional :id, :string, 1
+      optional :resource_id, :string, 1
       repeated :groups, :string, 2
     end
     add_message "v1.AuthorizationPolicyItemConditionMFA" do
@@ -164,20 +166,35 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.AuthorizationPolicyTimeRule" do
       oneof :rule do
         optional :day_of_week, :message, 1, "v1.AuthorizationPolicyTimeRuleDayOfWeek"
-        optional :time_of_day, :message, 2, "v1.AuthorizationPolicyTimeRuleTimeOfDay"
+        optional :time_of_day, :message, 2, "v1.LegacyAuthorizationPolicyTimeRuleTimeOfDay"
         optional :month, :message, 3, "v1.AuthorizationPolicyTimeRuleMonth"
         optional :days_of_month, :message, 4, "v1.AuthorizationPolicyTimeRuleDaysOfMonth"
+        optional :time_of_day_outside_of, :message, 5, "v1.LegacyAuthorizationPolicyTimeRuleTimeOfDayOutsideOf"
+        optional :time_of_day_with_operator, :message, 6, "v1.AuthorizationPolicyTimeRuleTimeOfDay"
       end
     end
     add_message "v1.AuthorizationPolicyTimeRuleDayOfWeek" do
       optional :operator, :enum, 1, "v1.AuthorizationPolicyTimeOperator"
       repeated :days, :enum, 2, "v1.AuthorizationPolicyDayOfWeek"
     end
-    add_message "v1.AuthorizationPolicyTimeRuleTimeOfDay" do
+    add_message "v1.LegacyAuthorizationPolicyTimeRuleTimeOfDay" do
       optional :start_hour, :int32, 1
       optional :start_minutes, :int32, 2
       optional :end_hour, :int32, 3
       optional :end_minutes, :int32, 4
+    end
+    add_message "v1.LegacyAuthorizationPolicyTimeRuleTimeOfDayOutsideOf" do
+      optional :start_hour, :int32, 1
+      optional :start_minutes, :int32, 2
+      optional :end_hour, :int32, 3
+      optional :end_minutes, :int32, 4
+    end
+    add_message "v1.AuthorizationPolicyTimeRuleTimeOfDay" do
+      optional :operator, :enum, 1, "v1.AuthorizationPolicyTimeOperator"
+      optional :start_hour, :int32, 2
+      optional :start_minutes, :int32, 3
+      optional :end_hour, :int32, 4
+      optional :end_minutes, :int32, 5
     end
     add_message "v1.AuthorizationPolicyTimeRuleMonth" do
       repeated :months, :int32, 1
@@ -273,6 +290,8 @@ module V1
   AuthorizationPolicyItemConditionTime = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyItemConditionTime").msgclass
   AuthorizationPolicyTimeRule = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyTimeRule").msgclass
   AuthorizationPolicyTimeRuleDayOfWeek = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyTimeRuleDayOfWeek").msgclass
+  LegacyAuthorizationPolicyTimeRuleTimeOfDay = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.LegacyAuthorizationPolicyTimeRuleTimeOfDay").msgclass
+  LegacyAuthorizationPolicyTimeRuleTimeOfDayOutsideOf = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.LegacyAuthorizationPolicyTimeRuleTimeOfDayOutsideOf").msgclass
   AuthorizationPolicyTimeRuleTimeOfDay = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyTimeRuleTimeOfDay").msgclass
   AuthorizationPolicyTimeRuleMonth = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyTimeRuleMonth").msgclass
   AuthorizationPolicyTimeRuleDaysOfMonth = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyTimeRuleDaysOfMonth").msgclass
