@@ -79,6 +79,9 @@ require_relative "./remote_identities_history_pb"
 require_relative "./remote_identity_groups_pb"
 require_relative "./remote_identity_groups_history_pb"
 require_relative "./replays_pb"
+require_relative "./requestable_account_entitlements_pb"
+require_relative "./requestable_resource_entitlements_pb"
+require_relative "./requestable_role_entitlements_pb"
 require_relative "./resources_pb"
 require_relative "./resources_history_pb"
 require_relative "./role_resources_pb"
@@ -16320,6 +16323,46 @@ module SDM
       end
       items
     end
+    def self.convert_requestable_account_entitlement_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = RequestableAccountEntitlement.new()
+      porcelain.group_id = (plumbing.group_id)
+      porcelain.mapped_identities = convert_mapped_identities_to_porcelain(plumbing.mapped_identities)
+      porcelain.origin_id = (plumbing.origin_id)
+      porcelain.resource_id = (plumbing.resource_id)
+      porcelain
+    end
+
+    def self.convert_requestable_account_entitlement_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::RequestableAccountEntitlement.new()
+      plumbing.group_id = (porcelain.group_id)
+      plumbing.mapped_identities = convert_mapped_identities_to_plumbing(porcelain.mapped_identities)
+      plumbing.origin_id = (porcelain.origin_id)
+      plumbing.resource_id = (porcelain.resource_id)
+      plumbing
+    end
+    def self.convert_repeated_requestable_account_entitlement_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_requestable_account_entitlement_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_requestable_account_entitlement_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_requestable_account_entitlement_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_requestable_resource_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -16362,6 +16405,86 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_requestable_resource_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_requestable_resource_entitlement_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = RequestableResourceEntitlement.new()
+      porcelain.account_id = (plumbing.account_id)
+      porcelain.group_id = (plumbing.group_id)
+      porcelain.mapped_identities = convert_mapped_identities_to_porcelain(plumbing.mapped_identities)
+      porcelain.origin_id = (plumbing.origin_id)
+      porcelain
+    end
+
+    def self.convert_requestable_resource_entitlement_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::RequestableResourceEntitlement.new()
+      plumbing.account_id = (porcelain.account_id)
+      plumbing.group_id = (porcelain.group_id)
+      plumbing.mapped_identities = convert_mapped_identities_to_plumbing(porcelain.mapped_identities)
+      plumbing.origin_id = (porcelain.origin_id)
+      plumbing
+    end
+    def self.convert_repeated_requestable_resource_entitlement_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_requestable_resource_entitlement_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_requestable_resource_entitlement_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_requestable_resource_entitlement_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_requestable_role_entitlement_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = RequestableRoleEntitlement.new()
+      porcelain.group_id = (plumbing.group_id)
+      porcelain.mapped_identities = convert_mapped_identities_to_porcelain(plumbing.mapped_identities)
+      porcelain.origin_id = (plumbing.origin_id)
+      porcelain.resource_id = (plumbing.resource_id)
+      porcelain
+    end
+
+    def self.convert_requestable_role_entitlement_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::RequestableRoleEntitlement.new()
+      plumbing.group_id = (porcelain.group_id)
+      plumbing.mapped_identities = convert_mapped_identities_to_plumbing(porcelain.mapped_identities)
+      plumbing.origin_id = (porcelain.origin_id)
+      plumbing.resource_id = (porcelain.resource_id)
+      plumbing
+    end
+    def self.convert_repeated_requestable_role_entitlement_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_requestable_role_entitlement_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_requestable_role_entitlement_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_requestable_role_entitlement_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items

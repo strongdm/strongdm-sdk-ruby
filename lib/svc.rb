@@ -6966,6 +6966,255 @@ module SDM #:nodoc:
     end
   end
 
+  # RequestableAccountEntitlements enumerates the resources that an account is permitted to request access to.
+  # The RequestableAccountEntitlements service is read-only.
+  #
+  # See {RequestableAccountEntitlement}.
+  class RequestableAccountEntitlements
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::RequestableAccountEntitlements::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # List gets a list of RequestableAccountEntitlement records matching a given set of criteria.
+    def list(
+      account_id,
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::RequestableAccountEntitlementListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      if not @parent.page_limit.nil?
+        req.meta.limit = @parent.page_limit
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.account_id = (account_id)
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("RequestableAccountEntitlements.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.requestable_account_entitlements.each do |plumbing_item|
+            g.yield Plumbing::convert_requestable_account_entitlement_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # SnapshotRequestableAccountEntitlements exposes the read only methods of the RequestableAccountEntitlements
+  # service for historical queries.
+  class SnapshotRequestableAccountEntitlements
+    extend Gem::Deprecate
+
+    def initialize(requestable_account_entitlements)
+      @requestable_account_entitlements = requestable_account_entitlements
+    end
+
+    # List gets a list of RequestableAccountEntitlement records matching a given set of criteria.
+    def list(
+      account_id,
+      filter,
+      *args,
+      deadline: nil
+    )
+      return @requestable_account_entitlements.list(
+               account_id,
+               filter,
+                            *args,
+                            deadline: deadline,
+             )
+    end
+  end
+
+  # RequestableResourceEntitlements enumerates the accounts that are permitted to request access to a given resource.
+  # The RequestableResourceEntitlements service is read-only.
+  #
+  # See {RequestableResourceEntitlement}.
+  class RequestableResourceEntitlements
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::RequestableResourceEntitlements::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # List gets a list of RequestableResourceEntitlement records matching a given set of criteria.
+    def list(
+      resource_id,
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::RequestableResourceEntitlementListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      if not @parent.page_limit.nil?
+        req.meta.limit = @parent.page_limit
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.resource_id = (resource_id)
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("RequestableResourceEntitlements.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.requestable_resource_entitlements.each do |plumbing_item|
+            g.yield Plumbing::convert_requestable_resource_entitlement_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # SnapshotRequestableResourceEntitlements exposes the read only methods of the RequestableResourceEntitlements
+  # service for historical queries.
+  class SnapshotRequestableResourceEntitlements
+    extend Gem::Deprecate
+
+    def initialize(requestable_resource_entitlements)
+      @requestable_resource_entitlements = requestable_resource_entitlements
+    end
+
+    # List gets a list of RequestableResourceEntitlement records matching a given set of criteria.
+    def list(
+      resource_id,
+      filter,
+      *args,
+      deadline: nil
+    )
+      return @requestable_resource_entitlements.list(
+               resource_id,
+               filter,
+                            *args,
+                            deadline: deadline,
+             )
+    end
+  end
+
+  # RequestableRoleEntitlements enumerates the resources that a role permits its members to request access to.
+  # The RequestableRoleEntitlements service is read-only.
+  #
+  # See {RequestableRoleEntitlement}.
+  class RequestableRoleEntitlements
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::RequestableRoleEntitlements::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # List gets a list of RequestableRoleEntitlement records matching a given set of criteria.
+    def list(
+      role_id,
+      filter,
+      *args,
+      deadline: nil
+    )
+      req = V1::RequestableRoleEntitlementListRequest.new()
+      req.meta = V1::ListRequestMetadata.new()
+      if not @parent.page_limit.nil?
+        req.meta.limit = @parent.page_limit
+      end
+      if not @parent.snapshot_time.nil?
+        req.meta.snapshot_at = @parent.snapshot_time
+      end
+
+      req.role_id = (role_id)
+      req.filter = Plumbing::quote_filter_args(filter, *args)
+      resp = Enumerator::Generator.new { |g|
+        tries = 0
+        loop do
+          begin
+            plumbing_response = @stub.list(req, metadata: @parent.get_metadata("RequestableRoleEntitlements.List", req), deadline: deadline)
+          rescue => exception
+            if (@parent.shouldRetry(tries, exception, deadline))
+              tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+              next
+            end
+            raise Plumbing::convert_error_to_porcelain(exception)
+          end
+          tries = 0
+          plumbing_response.requestable_role_entitlements.each do |plumbing_item|
+            g.yield Plumbing::convert_requestable_role_entitlement_to_porcelain(plumbing_item)
+          end
+          break if plumbing_response.meta.next_cursor == ""
+          req.meta.cursor = plumbing_response.meta.next_cursor
+        end
+      }
+      resp
+    end
+  end
+
+  # SnapshotRequestableRoleEntitlements exposes the read only methods of the RequestableRoleEntitlements
+  # service for historical queries.
+  class SnapshotRequestableRoleEntitlements
+    extend Gem::Deprecate
+
+    def initialize(requestable_role_entitlements)
+      @requestable_role_entitlements = requestable_role_entitlements
+    end
+
+    # List gets a list of RequestableRoleEntitlement records matching a given set of criteria.
+    def list(
+      role_id,
+      filter,
+      *args,
+      deadline: nil
+    )
+      return @requestable_role_entitlements.list(
+               role_id,
+               filter,
+                            *args,
+                            deadline: deadline,
+             )
+    end
+  end
+
   # Resources are databases, servers, clusters, websites, or clouds that strongDM
   # delegates access to.
   #

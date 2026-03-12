@@ -31,7 +31,7 @@ module SDM #:nodoc:
     DEFAULT_RETRY_FACTOR = 1.6
     DEFAULT_RETRY_JITTER = 0.2
     API_VERSION = "2025-04-14"
-    USER_AGENT = "strongdm-sdk-ruby/16.20.0"
+    USER_AGENT = "strongdm-sdk-ruby/16.21.0"
     private_constant :DEFAULT_BASE_RETRY_DELAY, :DEFAULT_MAX_RETRY_DELAY, :DEFAULT_RETRY_FACTOR, :DEFAULT_RETRY_JITTER, :API_VERSION, :USER_AGENT
 
     # Creates a new strongDM API client.
@@ -115,6 +115,9 @@ module SDM #:nodoc:
       @remote_identity_groups = RemoteIdentityGroups.new(@channel, self)
       @remote_identity_groups_history = RemoteIdentityGroupsHistory.new(@channel, self)
       @replays = Replays.new(@channel, self)
+      @requestable_account_entitlements = RequestableAccountEntitlements.new(@channel, self)
+      @requestable_resource_entitlements = RequestableResourceEntitlements.new(@channel, self)
+      @requestable_role_entitlements = RequestableRoleEntitlements.new(@channel, self)
       @resources = Resources.new(@channel, self)
       @resources_history = ResourcesHistory.new(@channel, self)
       @role_resources = RoleResources.new(@channel, self)
@@ -486,6 +489,21 @@ module SDM #:nodoc:
     #
     # See {Replays}.
     attr_reader :replays
+    # RequestableAccountEntitlements enumerates the resources that an account is permitted to request access to.
+    # The RequestableAccountEntitlements service is read-only.
+    #
+    # See {RequestableAccountEntitlements}.
+    attr_reader :requestable_account_entitlements
+    # RequestableResourceEntitlements enumerates the accounts that are permitted to request access to a given resource.
+    # The RequestableResourceEntitlements service is read-only.
+    #
+    # See {RequestableResourceEntitlements}.
+    attr_reader :requestable_resource_entitlements
+    # RequestableRoleEntitlements enumerates the resources that a role permits its members to request access to.
+    # The RequestableRoleEntitlements service is read-only.
+    #
+    # See {RequestableRoleEntitlements}.
+    attr_reader :requestable_role_entitlements
     # Resources are databases, servers, clusters, websites, or clouds that strongDM
     # delegates access to.
     #
@@ -612,6 +630,9 @@ module SDM #:nodoc:
       @remote_identity_groups = RemoteIdentityGroups.new(@channel, self)
       @remote_identity_groups_history = RemoteIdentityGroupsHistory.new(@channel, self)
       @replays = Replays.new(@channel, self)
+      @requestable_account_entitlements = RequestableAccountEntitlements.new(@channel, self)
+      @requestable_resource_entitlements = RequestableResourceEntitlements.new(@channel, self)
+      @requestable_role_entitlements = RequestableRoleEntitlements.new(@channel, self)
       @resources = Resources.new(@channel, self)
       @resources_history = ResourcesHistory.new(@channel, self)
       @role_resources = RoleResources.new(@channel, self)
@@ -657,6 +678,9 @@ module SDM #:nodoc:
       @proxy_cluster_keys = SnapshotProxyClusterKeys.new(client.proxy_cluster_keys)
       @remote_identities = SnapshotRemoteIdentities.new(client.remote_identities)
       @remote_identity_groups = SnapshotRemoteIdentityGroups.new(client.remote_identity_groups)
+      @requestable_account_entitlements = SnapshotRequestableAccountEntitlements.new(client.requestable_account_entitlements)
+      @requestable_resource_entitlements = SnapshotRequestableResourceEntitlements.new(client.requestable_resource_entitlements)
+      @requestable_role_entitlements = SnapshotRequestableRoleEntitlements.new(client.requestable_role_entitlements)
       @resources = SnapshotResources.new(client.resources)
       @role_resources = SnapshotRoleResources.new(client.role_resources)
       @secret_stores = SnapshotSecretStores.new(client.secret_stores)
@@ -783,6 +807,21 @@ module SDM #:nodoc:
     #
     # See {SnapshotRemoteIdentityGroups}.
     attr_reader :remote_identity_groups
+    # RequestableAccountEntitlements enumerates the resources that an account is permitted to request access to.
+    # The RequestableAccountEntitlements service is read-only.
+    #
+    # See {SnapshotRequestableAccountEntitlements}.
+    attr_reader :requestable_account_entitlements
+    # RequestableResourceEntitlements enumerates the accounts that are permitted to request access to a given resource.
+    # The RequestableResourceEntitlements service is read-only.
+    #
+    # See {SnapshotRequestableResourceEntitlements}.
+    attr_reader :requestable_resource_entitlements
+    # RequestableRoleEntitlements enumerates the resources that a role permits its members to request access to.
+    # The RequestableRoleEntitlements service is read-only.
+    #
+    # See {SnapshotRequestableRoleEntitlements}.
+    attr_reader :requestable_role_entitlements
     # Resources are databases, servers, clusters, websites, or clouds that strongDM
     # delegates access to.
     #

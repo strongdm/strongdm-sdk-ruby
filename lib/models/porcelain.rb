@@ -15468,6 +15468,38 @@ module SDM
     end
   end
 
+  # RequestableAccountEntitlement represents an individual resource that an Account is permitted to request access to.
+  class RequestableAccountEntitlement
+    # The unique identifier of the group associated with this entitlement, if any.
+    attr_accessor :group_id
+    # The mapped identity privileges for this entitlement, such as Kubernetes group memberships.
+    attr_accessor :mapped_identities
+    # The unique identifier of the origin of this entitlement (e.g., an Access Workflow ID).
+    attr_accessor :origin_id
+    # The unique identifier of the Resource to which access can be requested.
+    attr_accessor :resource_id
+
+    def initialize(
+      group_id: nil,
+      mapped_identities: nil,
+      origin_id: nil,
+      resource_id: nil
+    )
+      @group_id = group_id == nil ? "" : group_id
+      @mapped_identities = mapped_identities == nil ? nil : mapped_identities
+      @origin_id = origin_id == nil ? "" : origin_id
+      @resource_id = resource_id == nil ? "" : resource_id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   # RequestableResource is a resource that can be requested via an AccessRequestConfig
   class RequestableResource
     # The current state of the user's access to the resources
@@ -15501,6 +15533,70 @@ module SDM
       @name = name == nil ? "" : name
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
       @type = type == nil ? "" : type
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # RequestableResourceEntitlement represents an individual account that is permitted to request access to a Resource.
+  class RequestableResourceEntitlement
+    # The unique identifier of the Account that can request access to this resource.
+    attr_accessor :account_id
+    # The unique identifier of the group associated with this entitlement, if any.
+    attr_accessor :group_id
+    # The mapped identity privileges for this entitlement, such as Kubernetes group memberships.
+    attr_accessor :mapped_identities
+    # The unique identifier of the origin of this entitlement (e.g., an Access Workflow ID).
+    attr_accessor :origin_id
+
+    def initialize(
+      account_id: nil,
+      group_id: nil,
+      mapped_identities: nil,
+      origin_id: nil
+    )
+      @account_id = account_id == nil ? "" : account_id
+      @group_id = group_id == nil ? "" : group_id
+      @mapped_identities = mapped_identities == nil ? nil : mapped_identities
+      @origin_id = origin_id == nil ? "" : origin_id
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  # RequestableRoleEntitlement represents an individual resource that a Role permits its members to request access to.
+  class RequestableRoleEntitlement
+    # The unique identifier of the group associated with this entitlement, if any.
+    attr_accessor :group_id
+    # The mapped identity privileges for this entitlement, such as Kubernetes group memberships.
+    attr_accessor :mapped_identities
+    # The unique identifier of the origin of this entitlement (e.g., an Access Workflow ID).
+    attr_accessor :origin_id
+    # The unique identifier of the Resource to which access can be requested through this role.
+    attr_accessor :resource_id
+
+    def initialize(
+      group_id: nil,
+      mapped_identities: nil,
+      origin_id: nil,
+      resource_id: nil
+    )
+      @group_id = group_id == nil ? "" : group_id
+      @mapped_identities = mapped_identities == nil ? nil : mapped_identities
+      @origin_id = origin_id == nil ? "" : origin_id
+      @resource_id = resource_id == nil ? "" : resource_id
     end
 
     def to_json(options = {})
