@@ -10832,6 +10832,8 @@ module SDM
     attr_accessor :id
     # Timestamp of when secret was last rotated
     attr_accessor :last_rotated_at
+    # Whether the secret requires a lock to access
+    attr_accessor :lock_required
     # Unique human-readable name of the Managed Secret.
     attr_accessor :name
     # Password and rotation policy for the secret
@@ -10850,6 +10852,7 @@ module SDM
       expires_at: nil,
       id: nil,
       last_rotated_at: nil,
+      lock_required: nil,
       name: nil,
       policy: nil,
       secret_engine_id: nil,
@@ -10861,6 +10864,7 @@ module SDM
       @expires_at = expires_at == nil ? nil : expires_at
       @id = id == nil ? "" : id
       @last_rotated_at = last_rotated_at == nil ? nil : last_rotated_at
+      @lock_required = lock_required == nil ? false : lock_required
       @name = name == nil ? "" : name
       @policy = policy == nil ? nil : policy
       @secret_engine_id = secret_engine_id == nil ? "" : secret_engine_id

@@ -126,6 +126,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :last_rotated_at, :message, 8, "google.protobuf.Timestamp"
       optional :expires_at, :message, 9, "google.protobuf.Timestamp"
       optional :config, :string, 10
+      optional :lock_required, :bool, 11
     end
     add_message "v1.ManagedSecretPolicy" do
       optional :rotation_policy, :message, 1, "v1.ManagedSecretRotationPolicy"
