@@ -74,63 +74,63 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 1
       optional :name, :string, 2
       optional :description, :string, 3
-      repeated :items, :message, 4, "v1.AuthorizationPolicyItem"
+      repeated :rules, :message, 4, "v1.AuthorizationPolicyRule"
       optional :state, :enum, 5, "v1.AuthorizationPolicyState"
     end
-    add_message "v1.AuthorizationPolicyItem" do
+    add_message "v1.AuthorizationPolicyRule" do
       oneof :kind do
-        optional :principal_all, :message, 1, "v1.AuthorizationPolicyItemPrincipalAll"
-        optional :principal_by_ids, :message, 2, "v1.AuthorizationPolicyItemPrincipalByIds"
-        optional :resources_all, :message, 3, "v1.AuthorizationPolicyItemResourcesAll"
-        optional :resource_by_ids, :message, 4, "v1.AuthorizationPolicyItemResourceByIds"
-        optional :resource_by_type_and_tags, :message, 5, "v1.AuthorizationPolicyItemResourceByTypeAndTags"
-        optional :resource_by_type_tags_and_kubernetes_groups, :message, 6, "v1.AuthorizationPolicyItemResourceByTypeTagsAndKubernetesGroups"
-        optional :resource_by_okta_with_groups, :message, 7, "v1.AuthorizationPolicyItemResourceByOktaWithGroups"
-        optional :resource_by_entra_with_groups, :message, 8, "v1.AuthorizationPolicyItemResourceByEntraWithGroups"
-        optional :condition_mfa, :message, 9, "v1.AuthorizationPolicyItemConditionMFA"
-        optional :condition_device_trust, :message, 10, "v1.AuthorizationPolicyItemConditionDeviceTrust"
-        optional :condition_location, :message, 11, "v1.AuthorizationPolicyItemConditionLocation"
-        optional :condition_ip, :message, 12, "v1.AuthorizationPolicyItemConditionIP"
-        optional :condition_time, :message, 13, "v1.AuthorizationPolicyItemConditionTime"
-        optional :condition_approval_flow, :message, 14, "v1.AuthorizationPolicyItemConditionApprovalFlow"
+        optional :principal_all, :message, 1, "v1.AuthorizationPolicyRulePrincipalAll"
+        optional :principal_by_ids, :message, 2, "v1.AuthorizationPolicyRulePrincipalByIds"
+        optional :resources_all, :message, 3, "v1.AuthorizationPolicyRuleResourcesAll"
+        optional :resource_by_ids, :message, 4, "v1.AuthorizationPolicyRuleResourceByIds"
+        optional :resource_by_type_and_tags, :message, 5, "v1.AuthorizationPolicyRuleResourceByTypeAndTags"
+        optional :resource_by_type_tags_and_kubernetes_groups, :message, 6, "v1.AuthorizationPolicyRuleResourceByTypeTagsAndKubernetesGroups"
+        optional :resource_by_okta_with_groups, :message, 7, "v1.AuthorizationPolicyRuleResourceByOktaWithGroups"
+        optional :resource_by_entra_with_groups, :message, 8, "v1.AuthorizationPolicyRuleResourceByEntraWithGroups"
+        optional :condition_mfa, :message, 9, "v1.AuthorizationPolicyRuleConditionMFA"
+        optional :condition_device_trust, :message, 10, "v1.AuthorizationPolicyRuleConditionDeviceTrust"
+        optional :condition_location, :message, 11, "v1.AuthorizationPolicyRuleConditionLocation"
+        optional :condition_ip, :message, 12, "v1.AuthorizationPolicyRuleConditionIP"
+        optional :condition_time, :message, 13, "v1.AuthorizationPolicyRuleConditionTime"
+        optional :condition_approval_flow, :message, 14, "v1.AuthorizationPolicyRuleConditionApprovalFlow"
       end
     end
-    add_message "v1.AuthorizationPolicyItemPrincipalAll" do
+    add_message "v1.AuthorizationPolicyRulePrincipalAll" do
     end
-    add_message "v1.AuthorizationPolicyItemPrincipalByIds" do
+    add_message "v1.AuthorizationPolicyRulePrincipalByIds" do
       repeated :ids, :string, 1
     end
-    add_message "v1.AuthorizationPolicyItemResourcesAll" do
+    add_message "v1.AuthorizationPolicyRuleResourcesAll" do
     end
-    add_message "v1.AuthorizationPolicyItemResourceByIds" do
+    add_message "v1.AuthorizationPolicyRuleResourceByIds" do
       repeated :ids, :string, 1
     end
-    add_message "v1.AuthorizationPolicyItemResourceByTypeAndTags" do
+    add_message "v1.AuthorizationPolicyRuleResourceByTypeAndTags" do
       optional :type, :enum, 1, "v1.ResourceType"
       repeated :tags, :message, 2, "v1.Tag"
     end
-    add_message "v1.AuthorizationPolicyItemResourceByTypeTagsAndKubernetesGroups" do
+    add_message "v1.AuthorizationPolicyRuleResourceByTypeTagsAndKubernetesGroups" do
       optional :type, :enum, 1, "v1.ResourceType"
       repeated :tags, :message, 2, "v1.Tag"
       repeated :kubernetes_groups, :string, 3
     end
-    add_message "v1.AuthorizationPolicyItemResourceByOktaWithGroups" do
+    add_message "v1.AuthorizationPolicyRuleResourceByOktaWithGroups" do
       optional :resource_id, :string, 1
       repeated :groups, :string, 2
     end
-    add_message "v1.AuthorizationPolicyItemResourceByEntraWithGroups" do
+    add_message "v1.AuthorizationPolicyRuleResourceByEntraWithGroups" do
       optional :resource_id, :string, 1
       repeated :groups, :string, 2
     end
-    add_message "v1.AuthorizationPolicyItemConditionMFA" do
+    add_message "v1.AuthorizationPolicyRuleConditionMFA" do
       optional :reason, :string, 1
       optional :cache_timeout_seconds, :int32, 2
     end
-    add_message "v1.AuthorizationPolicyItemConditionDeviceTrust" do
+    add_message "v1.AuthorizationPolicyRuleConditionDeviceTrust" do
       optional :operator, :enum, 1, "v1.AuthorizationPolicyDeviceTrustOperator"
       optional :level, :enum, 2, "v1.AuthorizationPolicyDeviceTrustLevel"
     end
-    add_message "v1.AuthorizationPolicyItemConditionLocation" do
+    add_message "v1.AuthorizationPolicyRuleConditionLocation" do
       repeated :rules, :message, 1, "v1.AuthorizationPolicyLocationRule"
     end
     add_message "v1.AuthorizationPolicyLocationRule" do
@@ -152,7 +152,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :operator, :enum, 1, "v1.LocationOperator"
       repeated :subdivisions, :string, 2
     end
-    add_message "v1.AuthorizationPolicyItemConditionIP" do
+    add_message "v1.AuthorizationPolicyRuleConditionIP" do
       repeated :rules, :message, 1, "v1.AuthorizationPolicyIPRule"
     end
     add_message "v1.AuthorizationPolicyIPRule" do
@@ -160,7 +160,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :network, :enum, 2, "v1.AuthorizationPolicyIPNetwork"
       optional :cidr, :string, 3
     end
-    add_message "v1.AuthorizationPolicyItemConditionTime" do
+    add_message "v1.AuthorizationPolicyRuleConditionTime" do
       repeated :rules, :message, 1, "v1.AuthorizationPolicyTimeRule"
     end
     add_message "v1.AuthorizationPolicyTimeRule" do
@@ -202,7 +202,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "v1.AuthorizationPolicyTimeRuleDaysOfMonth" do
       repeated :days, :int32, 1
     end
-    add_message "v1.AuthorizationPolicyItemConditionApprovalFlow" do
+    add_message "v1.AuthorizationPolicyRuleConditionApprovalFlow" do
       optional :approval_flow_id, :string, 1
     end
     add_enum "v1.AuthorizationPolicyState" do
@@ -269,25 +269,25 @@ module V1
   AuthorizationPolicyListRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyListRequest").msgclass
   AuthorizationPolicyListResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyListResponse").msgclass
   AuthorizationPolicy = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicy").msgclass
-  AuthorizationPolicyItem = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyItem").msgclass
-  AuthorizationPolicyItemPrincipalAll = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyItemPrincipalAll").msgclass
-  AuthorizationPolicyItemPrincipalByIds = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyItemPrincipalByIds").msgclass
-  AuthorizationPolicyItemResourcesAll = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyItemResourcesAll").msgclass
-  AuthorizationPolicyItemResourceByIds = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyItemResourceByIds").msgclass
-  AuthorizationPolicyItemResourceByTypeAndTags = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyItemResourceByTypeAndTags").msgclass
-  AuthorizationPolicyItemResourceByTypeTagsAndKubernetesGroups = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyItemResourceByTypeTagsAndKubernetesGroups").msgclass
-  AuthorizationPolicyItemResourceByOktaWithGroups = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyItemResourceByOktaWithGroups").msgclass
-  AuthorizationPolicyItemResourceByEntraWithGroups = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyItemResourceByEntraWithGroups").msgclass
-  AuthorizationPolicyItemConditionMFA = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyItemConditionMFA").msgclass
-  AuthorizationPolicyItemConditionDeviceTrust = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyItemConditionDeviceTrust").msgclass
-  AuthorizationPolicyItemConditionLocation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyItemConditionLocation").msgclass
+  AuthorizationPolicyRule = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyRule").msgclass
+  AuthorizationPolicyRulePrincipalAll = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyRulePrincipalAll").msgclass
+  AuthorizationPolicyRulePrincipalByIds = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyRulePrincipalByIds").msgclass
+  AuthorizationPolicyRuleResourcesAll = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyRuleResourcesAll").msgclass
+  AuthorizationPolicyRuleResourceByIds = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyRuleResourceByIds").msgclass
+  AuthorizationPolicyRuleResourceByTypeAndTags = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyRuleResourceByTypeAndTags").msgclass
+  AuthorizationPolicyRuleResourceByTypeTagsAndKubernetesGroups = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyRuleResourceByTypeTagsAndKubernetesGroups").msgclass
+  AuthorizationPolicyRuleResourceByOktaWithGroups = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyRuleResourceByOktaWithGroups").msgclass
+  AuthorizationPolicyRuleResourceByEntraWithGroups = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyRuleResourceByEntraWithGroups").msgclass
+  AuthorizationPolicyRuleConditionMFA = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyRuleConditionMFA").msgclass
+  AuthorizationPolicyRuleConditionDeviceTrust = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyRuleConditionDeviceTrust").msgclass
+  AuthorizationPolicyRuleConditionLocation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyRuleConditionLocation").msgclass
   AuthorizationPolicyLocationRule = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyLocationRule").msgclass
   AuthorizationPolicyContinentRule = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyContinentRule").msgclass
   AuthorizationPolicyCountryRule = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyCountryRule").msgclass
   AuthorizationPolicySubdivisionRule = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicySubdivisionRule").msgclass
-  AuthorizationPolicyItemConditionIP = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyItemConditionIP").msgclass
+  AuthorizationPolicyRuleConditionIP = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyRuleConditionIP").msgclass
   AuthorizationPolicyIPRule = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyIPRule").msgclass
-  AuthorizationPolicyItemConditionTime = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyItemConditionTime").msgclass
+  AuthorizationPolicyRuleConditionTime = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyRuleConditionTime").msgclass
   AuthorizationPolicyTimeRule = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyTimeRule").msgclass
   AuthorizationPolicyTimeRuleDayOfWeek = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyTimeRuleDayOfWeek").msgclass
   LegacyAuthorizationPolicyTimeRuleTimeOfDay = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.LegacyAuthorizationPolicyTimeRuleTimeOfDay").msgclass
@@ -295,7 +295,7 @@ module V1
   AuthorizationPolicyTimeRuleTimeOfDay = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyTimeRuleTimeOfDay").msgclass
   AuthorizationPolicyTimeRuleMonth = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyTimeRuleMonth").msgclass
   AuthorizationPolicyTimeRuleDaysOfMonth = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyTimeRuleDaysOfMonth").msgclass
-  AuthorizationPolicyItemConditionApprovalFlow = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyItemConditionApprovalFlow").msgclass
+  AuthorizationPolicyRuleConditionApprovalFlow = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyRuleConditionApprovalFlow").msgclass
   AuthorizationPolicyState = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyState").enummodule
   AuthorizationPolicyDeviceTrustOperator = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyDeviceTrustOperator").enummodule
   AuthorizationPolicyDeviceTrustLevel = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AuthorizationPolicyDeviceTrustLevel").enummodule

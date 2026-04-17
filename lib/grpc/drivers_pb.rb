@@ -1419,6 +1419,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :subdomain, :string, 32775
       optional :hostname, :string, 1
       optional :port_override, :int32, 4
+      optional :url, :string, 9
     end
     add_message "v1.MCPGatewayOAuth" do
       optional :id, :string, 32768
@@ -1436,6 +1437,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :oauth_token_endpoint, :string, 9
       optional :password, :string, 2
       optional :port_override, :int32, 4
+      optional :url, :string, 12
       optional :username, :string, 6
     end
     add_message "v1.MCPGatewayOAuthDCR" do
@@ -1454,6 +1456,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :oauth_scopes, :string, 12
       optional :oauth_token_endpoint, :string, 9
       optional :port_override, :int32, 4
+      optional :url, :string, 13
     end
     add_message "v1.MCPGatewayPAT" do
       optional :id, :string, 32768
@@ -1468,6 +1471,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :hostname, :string, 1
       optional :password, :string, 2
       optional :port_override, :int32, 4
+      optional :url, :string, 9
     end
     add_message "v1.MTLSMysql" do
       optional :id, :string, 32768

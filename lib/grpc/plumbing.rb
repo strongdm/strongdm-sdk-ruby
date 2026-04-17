@@ -11124,6 +11124,7 @@ module SDM
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.url = (plumbing.url)
       porcelain
     end
 
@@ -11143,6 +11144,7 @@ module SDM
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.url = (porcelain.url)
       plumbing
     end
     def self.convert_repeated_mcp_gateway_no_auth_to_plumbing(porcelains)
@@ -11182,6 +11184,7 @@ module SDM
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.url = (plumbing.url)
       porcelain.username = (plumbing.username)
       porcelain
     end
@@ -11206,6 +11209,7 @@ module SDM
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.url = (porcelain.url)
       plumbing.username = (porcelain.username)
       plumbing
     end
@@ -11246,6 +11250,7 @@ module SDM
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.url = (plumbing.url)
       porcelain
     end
 
@@ -11269,6 +11274,7 @@ module SDM
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.url = (porcelain.url)
       plumbing
     end
     def self.convert_repeated_mcp_gateway_o_auth_dcr_to_plumbing(porcelains)
@@ -11305,6 +11311,7 @@ module SDM
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.url = (plumbing.url)
       porcelain
     end
 
@@ -11325,6 +11332,7 @@ module SDM
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.url = (porcelain.url)
       plumbing
     end
     def self.convert_repeated_mcp_gateway_pat_to_plumbing(porcelains)
