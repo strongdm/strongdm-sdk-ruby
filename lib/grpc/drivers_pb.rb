@@ -2037,6 +2037,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :allow_deprecated_encryption, :bool, 12
       optional :database, :string, 4
       optional :hostname, :string, 1
+      optional :identity_alias_healthcheck_username, :string, 14
+      optional :identity_set_id, :string, 13
       optional :keytab, :string, 3
       optional :krb_config, :string, 9
       optional :override_database, :bool, 8

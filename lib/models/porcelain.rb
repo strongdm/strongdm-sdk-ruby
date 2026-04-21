@@ -16260,6 +16260,10 @@ module SDM
     attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
+    # The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+    attr_accessor :identity_alias_healthcheck_username
+    # The ID of the identity set to use for identity connections.
+    attr_accessor :identity_set_id
     # The keytab file in base64 format containing an entry with the principal name (username@realm) and key version number with which to authenticate.
     attr_accessor :keytab
     # The Kerberos 5 configuration file (krb5.conf) specifying the Active Directory server (KDC) for the configured realm.
@@ -16297,6 +16301,8 @@ module SDM
       healthy: nil,
       hostname: nil,
       id: nil,
+      identity_alias_healthcheck_username: nil,
+      identity_set_id: nil,
       keytab: nil,
       krb_config: nil,
       name: nil,
@@ -16319,6 +16325,8 @@ module SDM
       @healthy = healthy == nil ? false : healthy
       @hostname = hostname == nil ? "" : hostname
       @id = id == nil ? "" : id
+      @identity_alias_healthcheck_username = identity_alias_healthcheck_username == nil ? "" : identity_alias_healthcheck_username
+      @identity_set_id = identity_set_id == nil ? "" : identity_set_id
       @keytab = keytab == nil ? "" : keytab
       @krb_config = krb_config == nil ? "" : krb_config
       @name = name == nil ? "" : name
