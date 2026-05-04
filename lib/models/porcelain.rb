@@ -163,6 +163,8 @@ module SDM
 
     KUBERNETES_USER_IMPERSONATION = "RESOURCE_TYPE_KUBERNETES_USER_IMPERSONATION"
 
+    LLM = "RESOURCE_TYPE_LLM"
+
     MCP_NO_AUTH = "RESOURCE_TYPE_MCP_NO_AUTH"
 
     MCP = "RESOURCE_TYPE_MCP"
@@ -10285,6 +10287,74 @@ module SDM
     end
   end
 
+  # LLM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class LLM
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    attr_accessor :bind_interface
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # Space-separated list of model names this resource accepts. Requests for unlisted models are rejected. Leave empty to allow all models.
+    attr_accessor :models
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # The password to authenticate with.
+    attr_accessor :password
+    # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
+    attr_accessor :port_override
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    attr_accessor :subdomain
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+    # The URL to dial to initiate a connection from the egress node to this resource.
+    attr_accessor :url
+
+    def initialize(
+      bind_interface: nil,
+      egress_filter: nil,
+      healthy: nil,
+      id: nil,
+      models: nil,
+      name: nil,
+      password: nil,
+      port_override: nil,
+      proxy_cluster_id: nil,
+      secret_store_id: nil,
+      subdomain: nil,
+      tags: nil,
+      url: nil
+    )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @healthy = healthy == nil ? false : healthy
+      @id = id == nil ? "" : id
+      @models = models == nil ? "" : models
+      @name = name == nil ? "" : name
+      @password = password == nil ? "" : password
+      @port_override = port_override == nil ? 0 : port_override
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @subdomain = subdomain == nil ? "" : subdomain
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @url = url == nil ? "" : url
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class LogCategoryConfig
     # Indicates if the Organization should exclude replay data from remote logging for the log category.
     attr_accessor :remote_discard_replays
@@ -10632,6 +10702,33 @@ module SDM
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
       @url = url == nil ? "" : url
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  class MFAConfig
+    # Indicates if MFA is enabled for the organization.
+    attr_accessor :enabled
+    # Okta MFA configuration. Future providers will be added to this wrapper.
+    attr_accessor :okta
+    # The MFA provider, one of the MFAProvider constants.
+    attr_accessor :provider
+
+    def initialize(
+      enabled: nil,
+      okta: nil,
+      provider: nil
+    )
+      @enabled = enabled == nil ? false : enabled
+      @okta = okta == nil ? nil : okta
+      @provider = provider == nil ? "" : provider
     end
 
     def to_json(options = {})
@@ -12685,6 +12782,67 @@ module SDM
     end
   end
 
+  class OktaMFAConfig
+    # The API token to authenticate with when auth_mode is api_token.
+    attr_accessor :api_token
+    # Indicates if an API token is already stored.
+    attr_accessor :api_token_set
+    # The Okta auth mode, one of the OktaAuthMode constants.
+    attr_accessor :auth_mode
+    # The Okta client ID to authenticate with when auth_mode is client_credentials.
+    attr_accessor :client_id
+    # Indicates if multidevice push is enabled.
+    attr_accessor :multidevice_push_enabled
+    # The Okta organization URL.
+    attr_accessor :organization_url
+    # The key ID (kid) assigned by Okta to the registered public key.
+    attr_accessor :private_key_id
+    # Indicates if a key ID is already stored or explicitly supplied. This allows
+    # callers to preserve the existing value when omitted or clear it by
+    # sending an empty string with private_key_id_set=true.
+    attr_accessor :private_key_id_set
+    # The PEM encoded private key to authenticate with when auth_mode is client_credentials.
+    attr_accessor :private_key_pem
+    # Indicates if a PEM encoded private key is already stored.
+    attr_accessor :private_key_pem_set
+    # The Okta user lookup strategy, one of the OktaUserLookup constants.
+    attr_accessor :user_lookup
+
+    def initialize(
+      api_token: nil,
+      api_token_set: nil,
+      auth_mode: nil,
+      client_id: nil,
+      multidevice_push_enabled: nil,
+      organization_url: nil,
+      private_key_id: nil,
+      private_key_id_set: nil,
+      private_key_pem: nil,
+      private_key_pem_set: nil,
+      user_lookup: nil
+    )
+      @api_token = api_token == nil ? "" : api_token
+      @api_token_set = api_token_set == nil ? false : api_token_set
+      @auth_mode = auth_mode == nil ? "" : auth_mode
+      @client_id = client_id == nil ? "" : client_id
+      @multidevice_push_enabled = multidevice_push_enabled == nil ? false : multidevice_push_enabled
+      @organization_url = organization_url == nil ? "" : organization_url
+      @private_key_id = private_key_id == nil ? "" : private_key_id
+      @private_key_id_set = private_key_id_set == nil ? false : private_key_id_set
+      @private_key_pem = private_key_pem == nil ? "" : private_key_pem
+      @private_key_pem_set = private_key_pem_set == nil ? false : private_key_pem_set
+      @user_lookup = user_lookup == nil ? "" : user_lookup
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class Oracle
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
@@ -12990,6 +13148,33 @@ module SDM
     end
   end
 
+  class OrganizationGetMFAResponse
+    # Reserved for future use.
+    attr_accessor :meta
+    # The current MFA configuration.
+    attr_accessor :mfa
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      meta: nil,
+      mfa: nil,
+      rate_limit: nil
+    )
+      @meta = meta == nil ? nil : meta
+      @mfa = mfa == nil ? nil : mfa
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   # OrganizationHistoryRecord records the state of an Organization at a given point in time,
   # where every change to an Organization produces an OrganizationHistoryRecord.
   class OrganizationHistoryRecord
@@ -13009,6 +13194,48 @@ module SDM
       @activity_id = activity_id == nil ? "" : activity_id
       @organization = organization == nil ? nil : organization
       @timestamp = timestamp == nil ? nil : timestamp
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  class OrganizationTestMFAResponse
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      rate_limit: nil
+    )
+      @rate_limit = rate_limit == nil ? nil : rate_limit
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
+  class OrganizationUpdateMFAResponse
+    # The updated MFA configuration.
+    attr_accessor :mfa
+    # Rate limit information.
+    attr_accessor :rate_limit
+
+    def initialize(
+      mfa: nil,
+      rate_limit: nil
+    )
+      @mfa = mfa == nil ? nil : mfa
+      @rate_limit = rate_limit == nil ? nil : rate_limit
     end
 
     def to_json(options = {})

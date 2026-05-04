@@ -31,7 +31,7 @@ module SDM #:nodoc:
     DEFAULT_RETRY_FACTOR = 1.6
     DEFAULT_RETRY_JITTER = 0.2
     API_VERSION = "2025-04-14"
-    USER_AGENT = "strongdm-sdk-ruby/17.2.0"
+    USER_AGENT = "strongdm-sdk-ruby/17.4.0"
     private_constant :DEFAULT_BASE_RETRY_DELAY, :DEFAULT_MAX_RETRY_DELAY, :DEFAULT_RETRY_FACTOR, :DEFAULT_RETRY_JITTER, :API_VERSION, :USER_AGENT
 
     # Creates a new strongDM API client.
@@ -102,6 +102,7 @@ module SDM #:nodoc:
       @nodes = Nodes.new(@channel, self)
       @nodes_history = NodesHistory.new(@channel, self)
       @organization_history = OrganizationHistory.new(@channel, self)
+      @organizations = Organizations.new(@channel, self)
       @peering_group_nodes = PeeringGroupNodes.new(@channel, self)
       @peering_group_peers = PeeringGroupPeers.new(@channel, self)
       @peering_group_resources = PeeringGroupResources.new(@channel, self)
@@ -430,6 +431,14 @@ module SDM #:nodoc:
     #
     # See {OrganizationHistory}.
     attr_reader :organization_history
+    # Organizations exposes organization configuration. Most RPCs remain private to the
+    # go_private SDK; public MFA management is exposed to all public SDK targets.
+    # The terraform-provider target is opted out at the service level because the
+    # provider's data-source generator assumes every service has a List RPC; MFA is
+    # instead surfaced via a hand-written resource template.
+    #
+    # See {Organizations}.
+    attr_reader :organizations
     # PeeringGroupNodes provides the building blocks necessary to obtain attach a node to a peering group.
     #
     # See {PeeringGroupNodes}.
@@ -617,6 +626,7 @@ module SDM #:nodoc:
       @nodes = Nodes.new(@channel, self)
       @nodes_history = NodesHistory.new(@channel, self)
       @organization_history = OrganizationHistory.new(@channel, self)
+      @organizations = Organizations.new(@channel, self)
       @peering_group_nodes = PeeringGroupNodes.new(@channel, self)
       @peering_group_peers = PeeringGroupPeers.new(@channel, self)
       @peering_group_resources = PeeringGroupResources.new(@channel, self)

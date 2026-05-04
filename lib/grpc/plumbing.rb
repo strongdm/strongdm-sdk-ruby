@@ -66,6 +66,7 @@ require_relative "./managed_secrets_pb"
 require_relative "./nodes_pb"
 require_relative "./nodes_history_pb"
 require_relative "./organization_history_pb"
+require_relative "./organizations_pb"
 require_relative "./peering_group_nodes_pb"
 require_relative "./peering_group_peers_pb"
 require_relative "./peering_group_resources_pb"
@@ -385,6 +386,8 @@ module SDM
         return SDM::ResourceType::RESOURCE_TYPE_KUBERNETES_SERVICE_ACCOUNT_USER_IMPERSONATION
       when V1::ResourceType::RESOURCE_TYPE_KUBERNETES_USER_IMPERSONATION
         return SDM::ResourceType::RESOURCE_TYPE_KUBERNETES_USER_IMPERSONATION
+      when V1::ResourceType::RESOURCE_TYPE_LLM
+        return SDM::ResourceType::RESOURCE_TYPE_LLM
       when V1::ResourceType::RESOURCE_TYPE_MCP_NO_AUTH
         return SDM::ResourceType::RESOURCE_TYPE_MCP_NO_AUTH
       when V1::ResourceType::RESOURCE_TYPE_MCP
@@ -643,6 +646,8 @@ module SDM
         value = V1::ResourceType::RESOURCE_TYPE_KUBERNETES_SERVICE_ACCOUNT_USER_IMPERSONATION
       when SDM::ResourceType::RESOURCE_TYPE_KUBERNETES_USER_IMPERSONATION, "RESOURCE_TYPE_KUBERNETES_USER_IMPERSONATION"
         value = V1::ResourceType::RESOURCE_TYPE_KUBERNETES_USER_IMPERSONATION
+      when SDM::ResourceType::RESOURCE_TYPE_LLM, "RESOURCE_TYPE_LLM"
+        value = V1::ResourceType::RESOURCE_TYPE_LLM
       when SDM::ResourceType::RESOURCE_TYPE_MCP_NO_AUTH, "RESOURCE_TYPE_MCP_NO_AUTH"
         value = V1::ResourceType::RESOURCE_TYPE_MCP_NO_AUTH
       when SDM::ResourceType::RESOURCE_TYPE_MCP, "RESOURCE_TYPE_MCP"
@@ -11026,6 +11031,64 @@ module SDM
       end
       items
     end
+    def self.convert_llm_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = LLM.new()
+      porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.id = (plumbing.id)
+      porcelain.models = (plumbing.models)
+      porcelain.name = (plumbing.name)
+      porcelain.password = (plumbing.password)
+      porcelain.port_override = (plumbing.port_override)
+      porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.subdomain = (plumbing.subdomain)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.url = (plumbing.url)
+      porcelain
+    end
+
+    def self.convert_llm_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::LLM.new()
+      plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.id = (porcelain.id)
+      plumbing.models = (porcelain.models)
+      plumbing.name = (porcelain.name)
+      plumbing.password = (porcelain.password)
+      plumbing.port_override = (porcelain.port_override)
+      plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.subdomain = (porcelain.subdomain)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.url = (porcelain.url)
+      plumbing
+    end
+    def self.convert_repeated_llm_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_llm_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_llm_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_llm_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_log_category_config_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -11348,6 +11411,44 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_mcp_gateway_pat_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_mfa_config_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = MFAConfig.new()
+      porcelain.enabled = (plumbing.enabled)
+      porcelain.okta = convert_okta_mfa_config_to_porcelain(plumbing.okta)
+      porcelain.provider = (plumbing.provider)
+      porcelain
+    end
+
+    def self.convert_mfa_config_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::MFAConfig.new()
+      plumbing.enabled = (porcelain.enabled)
+      plumbing.okta = convert_okta_mfa_config_to_plumbing(porcelain.okta)
+      plumbing.provider = (porcelain.provider)
+      plumbing
+    end
+    def self.convert_repeated_mfa_config_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_mfa_config_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_mfa_config_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_mfa_config_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -13523,6 +13624,60 @@ module SDM
       end
       items
     end
+    def self.convert_okta_mfa_config_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = OktaMFAConfig.new()
+      porcelain.api_token = (plumbing.api_token)
+      porcelain.api_token_set = (plumbing.api_token_set)
+      porcelain.auth_mode = (plumbing.auth_mode)
+      porcelain.client_id = (plumbing.client_id)
+      porcelain.multidevice_push_enabled = (plumbing.multidevice_push_enabled)
+      porcelain.organization_url = (plumbing.organization_url)
+      porcelain.private_key_id = (plumbing.private_key_id)
+      porcelain.private_key_id_set = (plumbing.private_key_id_set)
+      porcelain.private_key_pem = (plumbing.private_key_pem)
+      porcelain.private_key_pem_set = (plumbing.private_key_pem_set)
+      porcelain.user_lookup = (plumbing.user_lookup)
+      porcelain
+    end
+
+    def self.convert_okta_mfa_config_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::OktaMFAConfig.new()
+      plumbing.api_token = (porcelain.api_token)
+      plumbing.api_token_set = (porcelain.api_token_set)
+      plumbing.auth_mode = (porcelain.auth_mode)
+      plumbing.client_id = (porcelain.client_id)
+      plumbing.multidevice_push_enabled = (porcelain.multidevice_push_enabled)
+      plumbing.organization_url = (porcelain.organization_url)
+      plumbing.private_key_id = (porcelain.private_key_id)
+      plumbing.private_key_id_set = (porcelain.private_key_id_set)
+      plumbing.private_key_pem = (porcelain.private_key_pem)
+      plumbing.private_key_pem_set = (porcelain.private_key_pem_set)
+      plumbing.user_lookup = (porcelain.user_lookup)
+      plumbing
+    end
+    def self.convert_repeated_okta_mfa_config_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_okta_mfa_config_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_okta_mfa_config_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_okta_mfa_config_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_oracle_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -13745,6 +13900,44 @@ module SDM
       end
       items
     end
+    def self.convert_organization_get_mfa_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = OrganizationGetMFAResponse.new()
+      porcelain.meta = convert_get_response_metadata_to_porcelain(plumbing.meta)
+      porcelain.mfa = convert_mfa_config_to_porcelain(plumbing.mfa)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_organization_get_mfa_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::OrganizationGetMFAResponse.new()
+      plumbing.meta = convert_get_response_metadata_to_plumbing(porcelain.meta)
+      plumbing.mfa = convert_mfa_config_to_plumbing(porcelain.mfa)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_organization_get_mfa_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_organization_get_mfa_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_organization_get_mfa_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_organization_get_mfa_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_organization_history_record_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -13779,6 +13972,76 @@ module SDM
       items = Array.new
       plumbings.each do |plumbing|
         porcelain = convert_organization_history_record_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_organization_test_mfa_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = OrganizationTestMFAResponse.new()
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_organization_test_mfa_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::OrganizationTestMFAResponse.new()
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_organization_test_mfa_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_organization_test_mfa_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_organization_test_mfa_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_organization_test_mfa_response_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
+    def self.convert_organization_update_mfa_response_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = OrganizationUpdateMFAResponse.new()
+      porcelain.mfa = convert_mfa_config_to_porcelain(plumbing.mfa)
+      porcelain.rate_limit = convert_rate_limit_metadata_to_porcelain(plumbing.rate_limit)
+      porcelain
+    end
+
+    def self.convert_organization_update_mfa_response_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::OrganizationUpdateMFAResponse.new()
+      plumbing.mfa = convert_mfa_config_to_plumbing(porcelain.mfa)
+      plumbing.rate_limit = convert_rate_limit_metadata_to_plumbing(porcelain.rate_limit)
+      plumbing
+    end
+    def self.convert_repeated_organization_update_mfa_response_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_organization_update_mfa_response_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_organization_update_mfa_response_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_organization_update_mfa_response_to_porcelain(plumbing)
         items.append(porcelain)
       end
       items
@@ -16714,6 +16977,9 @@ module SDM
       if porcelain.instance_of? KubernetesUserImpersonation
         plumbing.kubernetes_user_impersonation = convert_kubernetes_user_impersonation_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? LLM
+        plumbing.llm = convert_llm_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? Maria
         plumbing.maria = convert_maria_to_plumbing(porcelain)
       end
@@ -17071,6 +17337,9 @@ module SDM
       end
       if plumbing.kubernetes_user_impersonation != nil
         return convert_kubernetes_user_impersonation_to_porcelain(plumbing.kubernetes_user_impersonation)
+      end
+      if plumbing.llm != nil
+        return convert_llm_to_porcelain(plumbing.llm)
       end
       if plumbing.maria != nil
         return convert_maria_to_porcelain(plumbing.maria)

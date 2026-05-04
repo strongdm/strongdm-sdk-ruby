@@ -95,6 +95,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :kubernetes_service_account, :message, 804, "v1.KubernetesServiceAccount"
         optional :kubernetes_service_account_user_impersonation, :message, 808, "v1.KubernetesServiceAccountUserImpersonation"
         optional :kubernetes_user_impersonation, :message, 812, "v1.KubernetesUserImpersonation"
+        optional :llm, :message, 4900, "v1.LLM"
         optional :mcp_gateway_no_auth, :message, 4703, "v1.MCPGatewayNoAuth"
         optional :mcp_gateway_o_auth, :message, 4700, "v1.MCPGatewayOAuth"
         optional :mcp_gateway_o_auth_dcr, :message, 4701, "v1.MCPGatewayOAuthDCR"
@@ -1407,6 +1408,21 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port, :int32, 2
       optional :port_override, :int32, 10
     end
+    add_message "v1.LLM" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :proxy_cluster_id, :string, 32776
+      optional :subdomain, :string, 32775
+      optional :models, :string, 10
+      optional :password, :string, 2
+      optional :port_override, :int32, 4
+      optional :url, :string, 9
+    end
     add_message "v1.MCPGatewayNoAuth" do
       optional :id, :string, 32768
       optional :name, :string, 32769
@@ -2340,6 +2356,7 @@ module V1
   KubernetesServiceAccount = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.KubernetesServiceAccount").msgclass
   KubernetesServiceAccountUserImpersonation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.KubernetesServiceAccountUserImpersonation").msgclass
   KubernetesUserImpersonation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.KubernetesUserImpersonation").msgclass
+  LLM = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.LLM").msgclass
   MCPGatewayNoAuth = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MCPGatewayNoAuth").msgclass
   MCPGatewayOAuth = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MCPGatewayOAuth").msgclass
   MCPGatewayOAuthDCR = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.MCPGatewayOAuthDCR").msgclass

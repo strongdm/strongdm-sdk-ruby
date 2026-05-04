@@ -5245,6 +5245,126 @@ module SDM #:nodoc:
     end
   end
 
+  # Organizations exposes organization configuration. Most RPCs remain private to the
+  # go_private SDK; public MFA management is exposed to all public SDK targets.
+  # The terraform-provider target is opted out at the service level because the
+  # provider's data-source generator assumes every service has a List RPC; MFA is
+  # instead surfaced via a hand-written resource template.
+  #
+  # See {Organization}.
+  class Organizations
+    extend Gem::Deprecate
+
+    def initialize(channel, parent)
+      begin
+        @stub = V1::Organizations::Stub.new(nil, nil, channel_override: channel)
+      rescue => exception
+        raise Plumbing::convert_error_to_porcelain(exception)
+      end
+      @parent = parent
+    end
+
+    # GetMFA gets the organization's MFA configuration.
+    def get_mfa(
+      deadline: nil
+    )
+      req = V1::OrganizationGetMFARequest.new()
+
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("Organizations.GetMFA", self, req)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.get_mfa(req, metadata: @parent.get_metadata("Organizations.GetMFA", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("Organizations.GetMFA", self, req, plumbing_response)
+
+      resp = OrganizationGetMFAResponse.new()
+      resp.meta = Plumbing::convert_get_response_metadata_to_porcelain(plumbing_response.meta)
+      resp.mfa = Plumbing::convert_mfa_config_to_porcelain(plumbing_response.mfa)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # UpdateMFA updates the organization's MFA configuration.
+    def update_mfa(
+      mfa,
+      deadline: nil
+    )
+      req = V1::OrganizationUpdateMFARequest.new()
+
+      req.mfa = Plumbing::convert_mfa_config_to_plumbing(mfa)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("Organizations.UpdateMFA", self, req)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.update_mfa(req, metadata: @parent.get_metadata("Organizations.UpdateMFA", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("Organizations.UpdateMFA", self, req, plumbing_response)
+
+      resp = OrganizationUpdateMFAResponse.new()
+      resp.mfa = Plumbing::convert_mfa_config_to_porcelain(plumbing_response.mfa)
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+
+    # TestMFA validates MFA connectivity without persisting changes.
+    def test_mfa(
+      mfa,
+      deadline: nil
+    )
+      req = V1::OrganizationTestMFARequest.new()
+
+      req.mfa = Plumbing::convert_mfa_config_to_plumbing(mfa)
+      # Execute before interceptor hooks
+      req = @parent.interceptor.execute_before("Organizations.TestMFA", self, req)
+      tries = 0
+      plumbing_response = nil
+      loop do
+        begin
+          plumbing_response = @stub.test_mfa(req, metadata: @parent.get_metadata("Organizations.TestMFA", req), deadline: deadline)
+        rescue => exception
+          if (@parent.shouldRetry(tries, exception, deadline))
+            tries + +sleep(@parent.exponentialBackoff(tries, deadline))
+            next
+          end
+          raise Plumbing::convert_error_to_porcelain(exception)
+        end
+        break
+      end
+
+      # Execute after interceptor hooks
+      plumbing_response = @parent.interceptor.execute_after("Organizations.TestMFA", self, req, plumbing_response)
+
+      resp = OrganizationTestMFAResponse.new()
+      resp.rate_limit = Plumbing::convert_rate_limit_metadata_to_porcelain(plumbing_response.rate_limit)
+      resp
+    end
+  end
+
   # PeeringGroupNodes provides the building blocks necessary to obtain attach a node to a peering group.
   #
   # See {PeeringGroupNode}.
@@ -7289,6 +7409,7 @@ module SDM #:nodoc:
   # {KubernetesServiceAccount}
   # {KubernetesServiceAccountUserImpersonation}
   # {KubernetesUserImpersonation}
+  # {LLM}
   # {Maria}
   # {MCPGatewayNoAuth}
   # {MCPGatewayOAuth}
