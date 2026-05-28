@@ -2058,6 +2058,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :keytab, :string, 3
       optional :krb_config, :string, 9
       optional :override_database, :bool, 8
+      optional :password, :string, 15
       optional :port, :int32, 7
       optional :port_override, :int32, 5
       optional :realm, :string, 11

@@ -16498,6 +16498,8 @@ module SDM
     attr_accessor :name
     # If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
     attr_accessor :override_database
+    # The password to authenticate with.
+    attr_accessor :password
     # The port to dial to initiate a connection from the egress node to this resource.
     attr_accessor :port
     # The local port used by clients to connect to this resource. It is automatically generated if not provided on create and may be re-generated on update by specifying a value of -1.
@@ -16533,6 +16535,7 @@ module SDM
       krb_config: nil,
       name: nil,
       override_database: nil,
+      password: nil,
       port: nil,
       port_override: nil,
       proxy_cluster_id: nil,
@@ -16557,6 +16560,7 @@ module SDM
       @krb_config = krb_config == nil ? "" : krb_config
       @name = name == nil ? "" : name
       @override_database = override_database == nil ? false : override_database
+      @password = password == nil ? "" : password
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
       @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
