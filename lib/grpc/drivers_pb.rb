@@ -765,6 +765,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :database, :string, 5
       optional :password, :string, 3
       optional :port_override, :int32, 4
+      optional :tls_cert, :string, 12
+      optional :tls_insecure, :bool, 11
       optional :url, :string, 1
       optional :username, :string, 2
     end
@@ -856,6 +858,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :password, :string, 2
       optional :port, :int32, 9
       optional :port_override, :int32, 3
+      optional :tls_cert, :string, 11
+      optional :tls_insecure, :bool, 10
       optional :tls_required, :bool, 7
       optional :username, :string, 1
     end
@@ -871,6 +875,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :password, :string, 3
       optional :port_override, :int32, 5
       optional :subdomain, :string, 4
+      optional :tls_cert, :string, 13
+      optional :tls_insecure, :bool, 12
       optional :url, :string, 1
       optional :username, :string, 2
     end
@@ -1251,6 +1257,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :host_override, :string, 7
       optional :port_override, :int32, 12
       optional :subdomain, :string, 6
+      optional :tls_cert, :string, 15
+      optional :tls_insecure, :bool, 14
       optional :tls_required, :bool, 9
       optional :url, :string, 1
     end
@@ -1271,6 +1279,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :password, :string, 4
       optional :port_override, :int32, 12
       optional :subdomain, :string, 7
+      optional :tls_cert, :string, 15
+      optional :tls_insecure, :bool, 14
       optional :tls_required, :bool, 10
       optional :url, :string, 1
       optional :username, :string, 3
@@ -1291,6 +1301,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :host_override, :string, 6
       optional :port_override, :int32, 12
       optional :subdomain, :string, 5
+      optional :tls_cert, :string, 15
+      optional :tls_insecure, :bool, 14
       optional :tls_required, :bool, 8
       optional :url, :string, 1
     end
@@ -1435,6 +1447,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :subdomain, :string, 32775
       optional :hostname, :string, 1
       optional :port_override, :int32, 4
+      optional :tls_cert, :string, 11
+      optional :tls_insecure, :bool, 10
       optional :url, :string, 9
     end
     add_message "v1.MCPGatewayOAuth" do
@@ -1453,6 +1467,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :oauth_token_endpoint, :string, 9
       optional :password, :string, 2
       optional :port_override, :int32, 4
+      optional :tls_cert, :string, 14
+      optional :tls_insecure, :bool, 13
       optional :url, :string, 12
       optional :username, :string, 6
     end
@@ -1472,6 +1488,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :oauth_scopes, :string, 12
       optional :oauth_token_endpoint, :string, 9
       optional :port_override, :int32, 4
+      optional :tls_cert, :string, 15
+      optional :tls_insecure, :bool, 14
       optional :url, :string, 13
     end
     add_message "v1.MCPGatewayPAT" do
@@ -1487,6 +1505,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :hostname, :string, 1
       optional :password, :string, 2
       optional :port_override, :int32, 4
+      optional :tls_cert, :string, 11
+      optional :tls_insecure, :bool, 10
       optional :url, :string, 9
     end
     add_message "v1.MTLSMysql" do

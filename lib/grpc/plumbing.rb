@@ -5648,6 +5648,8 @@ module SDM
       porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.tls_cert = (plumbing.tls_cert)
+      porcelain.tls_insecure = (plumbing.tls_insecure)
       porcelain.url = (plumbing.url)
       porcelain.username = (plumbing.username)
       porcelain
@@ -5669,6 +5671,8 @@ module SDM
       plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.tls_cert = (porcelain.tls_cert)
+      plumbing.tls_insecure = (porcelain.tls_insecure)
       plumbing.url = (porcelain.url)
       plumbing.username = (porcelain.username)
       plumbing
@@ -6524,6 +6528,8 @@ module SDM
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.tls_cert = (plumbing.tls_cert)
+      porcelain.tls_insecure = (plumbing.tls_insecure)
       porcelain.tls_required = (plumbing.tls_required)
       porcelain.username = (plumbing.username)
       porcelain
@@ -6548,6 +6554,8 @@ module SDM
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.tls_cert = (porcelain.tls_cert)
+      plumbing.tls_insecure = (porcelain.tls_insecure)
       plumbing.tls_required = (porcelain.tls_required)
       plumbing.username = (porcelain.username)
       plumbing
@@ -6585,6 +6593,8 @@ module SDM
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.tls_cert = (plumbing.tls_cert)
+      porcelain.tls_insecure = (plumbing.tls_insecure)
       porcelain.url = (plumbing.url)
       porcelain.username = (plumbing.username)
       porcelain
@@ -6606,6 +6616,8 @@ module SDM
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.tls_cert = (porcelain.tls_cert)
+      plumbing.tls_insecure = (porcelain.tls_insecure)
       plumbing.url = (porcelain.url)
       plumbing.username = (porcelain.username)
       plumbing
@@ -9648,6 +9660,8 @@ module SDM
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.tls_cert = (plumbing.tls_cert)
+      porcelain.tls_insecure = (plumbing.tls_insecure)
       porcelain.tls_required = (plumbing.tls_required)
       porcelain.url = (plumbing.url)
       porcelain
@@ -9674,6 +9688,8 @@ module SDM
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.tls_cert = (porcelain.tls_cert)
+      plumbing.tls_insecure = (porcelain.tls_insecure)
       plumbing.tls_required = (porcelain.tls_required)
       plumbing.url = (porcelain.url)
       plumbing
@@ -9716,6 +9732,8 @@ module SDM
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.tls_cert = (plumbing.tls_cert)
+      porcelain.tls_insecure = (plumbing.tls_insecure)
       porcelain.tls_required = (plumbing.tls_required)
       porcelain.url = (plumbing.url)
       porcelain.username = (plumbing.username)
@@ -9743,6 +9761,8 @@ module SDM
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.tls_cert = (porcelain.tls_cert)
+      plumbing.tls_insecure = (porcelain.tls_insecure)
       plumbing.tls_required = (porcelain.tls_required)
       plumbing.url = (porcelain.url)
       plumbing.username = (porcelain.username)
@@ -9785,6 +9805,8 @@ module SDM
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.tls_cert = (plumbing.tls_cert)
+      porcelain.tls_insecure = (plumbing.tls_insecure)
       porcelain.tls_required = (plumbing.tls_required)
       porcelain.url = (plumbing.url)
       porcelain
@@ -9810,6 +9832,8 @@ module SDM
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.tls_cert = (porcelain.tls_cert)
+      plumbing.tls_insecure = (porcelain.tls_insecure)
       plumbing.tls_required = (porcelain.tls_required)
       plumbing.url = (porcelain.url)
       plumbing
@@ -11187,6 +11211,8 @@ module SDM
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.tls_cert = (plumbing.tls_cert)
+      porcelain.tls_insecure = (plumbing.tls_insecure)
       porcelain.url = (plumbing.url)
       porcelain
     end
@@ -11207,6 +11233,8 @@ module SDM
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.tls_cert = (porcelain.tls_cert)
+      plumbing.tls_insecure = (porcelain.tls_insecure)
       plumbing.url = (porcelain.url)
       plumbing
     end
@@ -11247,6 +11275,8 @@ module SDM
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.tls_cert = (plumbing.tls_cert)
+      porcelain.tls_insecure = (plumbing.tls_insecure)
       porcelain.url = (plumbing.url)
       porcelain.username = (plumbing.username)
       porcelain
@@ -11272,6 +11302,8 @@ module SDM
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.tls_cert = (porcelain.tls_cert)
+      plumbing.tls_insecure = (porcelain.tls_insecure)
       plumbing.url = (porcelain.url)
       plumbing.username = (porcelain.username)
       plumbing
@@ -11313,6 +11345,8 @@ module SDM
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.tls_cert = (plumbing.tls_cert)
+      porcelain.tls_insecure = (plumbing.tls_insecure)
       porcelain.url = (plumbing.url)
       porcelain
     end
@@ -11337,6 +11371,8 @@ module SDM
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.tls_cert = (porcelain.tls_cert)
+      plumbing.tls_insecure = (porcelain.tls_insecure)
       plumbing.url = (porcelain.url)
       plumbing
     end
@@ -11374,6 +11410,8 @@ module SDM
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.tls_cert = (plumbing.tls_cert)
+      porcelain.tls_insecure = (plumbing.tls_insecure)
       porcelain.url = (plumbing.url)
       porcelain
     end
@@ -11395,6 +11433,8 @@ module SDM
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.tls_cert = (porcelain.tls_cert)
+      plumbing.tls_insecure = (porcelain.tls_insecure)
       plumbing.url = (porcelain.url)
       plumbing
     end

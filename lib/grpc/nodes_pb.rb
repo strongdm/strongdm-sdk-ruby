@@ -87,6 +87,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :relay, :message, 1, "v1.Relay"
         optional :gateway, :message, 2, "v1.Gateway"
         optional :proxy_cluster, :message, 3, "v1.ProxyCluster"
+        optional :ai_router, :message, 4, "v1.AIRouter"
       end
     end
     add_message "v1.Relay" do
@@ -122,6 +123,13 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 4, "v1.Tags"
       repeated :maintenance_windows, :message, 5, "v1.NodeMaintenanceWindow"
     end
+    add_message "v1.AIRouter" do
+      optional :id, :string, 1
+      optional :name, :string, 2
+      optional :address, :string, 3
+      optional :tags, :message, 4, "v1.Tags"
+      repeated :maintenance_windows, :message, 5, "v1.NodeMaintenanceWindow"
+    end
     add_message "v1.NodeMaintenanceWindow" do
       optional :cron_schedule, :string, 1
       optional :require_idleness, :bool, 2
@@ -146,5 +154,6 @@ module V1
   Relay = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Relay").msgclass
   Gateway = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Gateway").msgclass
   ProxyCluster = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.ProxyCluster").msgclass
+  AIRouter = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AIRouter").msgclass
   NodeMaintenanceWindow = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.NodeMaintenanceWindow").msgclass
 end

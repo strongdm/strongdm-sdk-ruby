@@ -5160,6 +5160,10 @@ module SDM
     attr_accessor :secret_store_id
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # Custom TLS certificate for upstream connection.
+    attr_accessor :tls_cert
+    # Skip TLS certificate verification for the upstream connection.
+    attr_accessor :tls_insecure
     # The URL to dial to initiate a connection from the egress node to this resource.
     attr_accessor :url
     # The username to authenticate with.
@@ -5177,6 +5181,8 @@ module SDM
       proxy_cluster_id: nil,
       secret_store_id: nil,
       tags: nil,
+      tls_cert: nil,
+      tls_insecure: nil,
       url: nil,
       username: nil
     )
@@ -5191,6 +5197,8 @@ module SDM
       @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tls_cert = tls_cert == nil ? "" : tls_cert
+      @tls_insecure = tls_insecure == nil ? false : tls_insecure
       @url = url == nil ? "" : url
       @username = username == nil ? "" : username
     end
@@ -5905,6 +5913,10 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # Custom TLS certificate for upstream connection.
+    attr_accessor :tls_cert
+    # Skip TLS certificate verification for the upstream connection.
+    attr_accessor :tls_insecure
     # If set, TLS must be used to connect to this resource.
     attr_accessor :tls_required
     # The username to authenticate with.
@@ -5925,6 +5937,8 @@ module SDM
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
+      tls_cert: nil,
+      tls_insecure: nil,
       tls_required: nil,
       username: nil
     )
@@ -5942,6 +5956,8 @@ module SDM
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tls_cert = tls_cert == nil ? "" : tls_cert
+      @tls_insecure = tls_insecure == nil ? false : tls_insecure
       @tls_required = tls_required == nil ? false : tls_required
       @username = username == nil ? "" : username
     end
@@ -5978,6 +5994,10 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # Custom TLS certificate for upstream connection.
+    attr_accessor :tls_cert
+    # Skip TLS certificate verification for the upstream connection.
+    attr_accessor :tls_insecure
     # The base address of your website without the path.
     attr_accessor :url
     # The username to authenticate with.
@@ -5995,6 +6015,8 @@ module SDM
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
+      tls_cert: nil,
+      tls_insecure: nil,
       url: nil,
       username: nil
     )
@@ -6009,6 +6031,8 @@ module SDM
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tls_cert = tls_cert == nil ? "" : tls_cert
+      @tls_insecure = tls_insecure == nil ? false : tls_insecure
       @url = url == nil ? "" : url
       @username = username == nil ? "" : username
     end
@@ -8886,6 +8910,10 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # Custom TLS certificate for upstream connection.
+    attr_accessor :tls_cert
+    # Skip TLS certificate verification for the upstream connection.
+    attr_accessor :tls_insecure
     # This option enforces HTTPS on the client, not resource connection.
     attr_accessor :tls_required
     # The base address of your website without the path.
@@ -8908,6 +8936,8 @@ module SDM
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
+      tls_cert: nil,
+      tls_insecure: nil,
       tls_required: nil,
       url: nil
     )
@@ -8927,6 +8957,8 @@ module SDM
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tls_cert = tls_cert == nil ? "" : tls_cert
+      @tls_insecure = tls_insecure == nil ? false : tls_insecure
       @tls_required = tls_required == nil ? false : tls_required
       @url = url == nil ? "" : url
     end
@@ -8973,6 +9005,10 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # Custom TLS certificate for upstream connection.
+    attr_accessor :tls_cert
+    # Skip TLS certificate verification for the upstream connection.
+    attr_accessor :tls_insecure
     # This option enforces HTTPS on the client, not resource connection.
     attr_accessor :tls_required
     # The base address of your website without the path.
@@ -8997,6 +9033,8 @@ module SDM
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
+      tls_cert: nil,
+      tls_insecure: nil,
       tls_required: nil,
       url: nil,
       username: nil
@@ -9017,6 +9055,8 @@ module SDM
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tls_cert = tls_cert == nil ? "" : tls_cert
+      @tls_insecure = tls_insecure == nil ? false : tls_insecure
       @tls_required = tls_required == nil ? false : tls_required
       @url = url == nil ? "" : url
       @username = username == nil ? "" : username
@@ -9062,6 +9102,10 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # Custom TLS certificate for upstream connection.
+    attr_accessor :tls_cert
+    # Skip TLS certificate verification for the upstream connection.
+    attr_accessor :tls_insecure
     # This option enforces HTTPS on the client, not resource connection.
     attr_accessor :tls_required
     # The base address of your website without the path.
@@ -9083,6 +9127,8 @@ module SDM
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
+      tls_cert: nil,
+      tls_insecure: nil,
       tls_required: nil,
       url: nil
     )
@@ -9101,6 +9147,8 @@ module SDM
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tls_cert = tls_cert == nil ? "" : tls_cert
+      @tls_insecure = tls_insecure == nil ? false : tls_insecure
       @tls_required = tls_required == nil ? false : tls_required
       @url = url == nil ? "" : url
     end
@@ -10444,6 +10492,10 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # Custom TLS certificate for upstream connection.
+    attr_accessor :tls_cert
+    # Skip TLS certificate verification for the upstream connection.
+    attr_accessor :tls_insecure
     # The URL to dial to initiate a connection from the egress node to this resource.
     attr_accessor :url
 
@@ -10459,6 +10511,8 @@ module SDM
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
+      tls_cert: nil,
+      tls_insecure: nil,
       url: nil
     )
       @bind_interface = bind_interface == nil ? "" : bind_interface
@@ -10472,6 +10526,8 @@ module SDM
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tls_cert = tls_cert == nil ? "" : tls_cert
+      @tls_insecure = tls_insecure == nil ? false : tls_insecure
       @url = url == nil ? "" : url
     end
 
@@ -10515,6 +10571,10 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # Custom TLS certificate for upstream connection.
+    attr_accessor :tls_cert
+    # Skip TLS certificate verification for the upstream connection.
+    attr_accessor :tls_insecure
     # The URL to dial to initiate a connection from the egress node to this resource.
     attr_accessor :url
     # OAuth App Client ID
@@ -10536,6 +10596,8 @@ module SDM
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
+      tls_cert: nil,
+      tls_insecure: nil,
       url: nil,
       username: nil
     )
@@ -10554,6 +10616,8 @@ module SDM
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tls_cert = tls_cert == nil ? "" : tls_cert
+      @tls_insecure = tls_insecure == nil ? false : tls_insecure
       @url = url == nil ? "" : url
       @username = username == nil ? "" : username
     end
@@ -10598,6 +10662,10 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # Custom TLS certificate for upstream connection.
+    attr_accessor :tls_cert
+    # Skip TLS certificate verification for the upstream connection.
+    attr_accessor :tls_insecure
     # The URL to dial to initiate a connection from the egress node to this resource.
     attr_accessor :url
 
@@ -10617,6 +10685,8 @@ module SDM
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
+      tls_cert: nil,
+      tls_insecure: nil,
       url: nil
     )
       @bind_interface = bind_interface == nil ? "" : bind_interface
@@ -10634,6 +10704,8 @@ module SDM
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tls_cert = tls_cert == nil ? "" : tls_cert
+      @tls_insecure = tls_insecure == nil ? false : tls_insecure
       @url = url == nil ? "" : url
     end
 
@@ -10671,6 +10743,10 @@ module SDM
     attr_accessor :subdomain
     # Tags is a map of key, value pairs.
     attr_accessor :tags
+    # Custom TLS certificate for upstream connection.
+    attr_accessor :tls_cert
+    # Skip TLS certificate verification for the upstream connection.
+    attr_accessor :tls_insecure
     # The URL to dial to initiate a connection from the egress node to this resource.
     attr_accessor :url
 
@@ -10687,6 +10763,8 @@ module SDM
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
+      tls_cert: nil,
+      tls_insecure: nil,
       url: nil
     )
       @bind_interface = bind_interface == nil ? "" : bind_interface
@@ -10701,6 +10779,8 @@ module SDM
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tls_cert = tls_cert == nil ? "" : tls_cert
+      @tls_insecure = tls_insecure == nil ? false : tls_insecure
       @url = url == nil ? "" : url
     end
 
