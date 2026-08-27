@@ -6441,6 +6441,42 @@ module SDM
     end
   end
 
+  # DelineaDSVStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class DelineaDSVStore
+    # Unique identifier of the SecretStore.
+    attr_accessor :id
+    # Unique human-readable name of the SecretStore.
+    attr_accessor :name
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+    # The tenant name to target, e.g. "acme" for acme.secretsvaultcloud.com
+    attr_accessor :tenant
+    # The top level domain of the DSV instance, e.g. "com". Defaults to "com".
+    attr_accessor :tld
+
+    def initialize(
+      id: nil,
+      name: nil,
+      tags: nil,
+      tenant: nil,
+      tld: nil
+    )
+      @id = id == nil ? "" : id
+      @name = name == nil ? "" : name
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+      @tenant = tenant == nil ? "" : tenant
+      @tld = tld == nil ? "" : tld
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class DelineaStore
     # Unique identifier of the SecretStore.
     attr_accessor :id
@@ -11884,6 +11920,8 @@ module SDM
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
+    # The AWS region to use for IAM (MONGODB-AWS) authentication.
+    attr_accessor :region
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
@@ -11907,6 +11945,7 @@ module SDM
       port: nil,
       port_override: nil,
       proxy_cluster_id: nil,
+      region: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -11924,6 +11963,7 @@ module SDM
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
       @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
+      @region = region == nil ? "" : region
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -12129,6 +12169,8 @@ module SDM
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
+    # The AWS region to use for IAM (MONGODB-AWS) authentication.
+    attr_accessor :region
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
@@ -12153,6 +12195,7 @@ module SDM
       port: nil,
       port_override: nil,
       proxy_cluster_id: nil,
+      region: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -12171,6 +12214,7 @@ module SDM
       @port = port == nil ? 0 : port
       @port_override = port_override == nil ? 0 : port_override
       @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
+      @region = region == nil ? "" : region
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
@@ -12208,6 +12252,8 @@ module SDM
     attr_accessor :port_override
     # ID of the proxy cluster for this resource, if any.
     attr_accessor :proxy_cluster_id
+    # The AWS region to use for IAM (MONGODB-AWS) authentication.
+    attr_accessor :region
     # ID of the secret store containing credentials for this resource, if any.
     attr_accessor :secret_store_id
     # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
@@ -12230,6 +12276,7 @@ module SDM
       password: nil,
       port_override: nil,
       proxy_cluster_id: nil,
+      region: nil,
       secret_store_id: nil,
       subdomain: nil,
       tags: nil,
@@ -12246,6 +12293,7 @@ module SDM
       @password = password == nil ? "" : password
       @port_override = port_override == nil ? 0 : port_override
       @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
+      @region = region == nil ? "" : region
       @secret_store_id = secret_store_id == nil ? "" : secret_store_id
       @subdomain = subdomain == nil ? "" : subdomain
       @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags

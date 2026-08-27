@@ -32,6 +32,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :cyberark_pam, :message, 303, "v1.CyberarkPAMStore"
         optional :cyberark_pam_experimental, :message, 302, "v1.CyberarkPAMExperimentalStore"
         optional :delinea, :message, 2900, "v1.DelineaStore"
+        optional :delinea_dsv, :message, 2901, "v1.DelineaDSVStore"
         optional :gcp, :message, 201, "v1.GCPStore"
         optional :gcp_cert_x_509, :message, 202, "v1.GCPCertX509Store"
         optional :keyfactor_ssh, :message, 210, "v1.KeyfactorSSHStore"
@@ -107,6 +108,13 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :name, :string, 2
       optional :server_url, :string, 3
       optional :tenant_name, :string, 4
+      optional :tags, :message, 32771, "v1.Tags"
+    end
+    add_message "v1.DelineaDSVStore" do
+      optional :id, :string, 1
+      optional :name, :string, 2
+      optional :tenant, :string, 3
+      optional :tld, :string, 4
       optional :tags, :message, 32771, "v1.Tags"
     end
     add_message "v1.GCPStore" do
@@ -315,6 +323,7 @@ module V1
   CyberarkPAMStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.CyberarkPAMStore").msgclass
   CyberarkPAMExperimentalStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.CyberarkPAMExperimentalStore").msgclass
   DelineaStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DelineaStore").msgclass
+  DelineaDSVStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.DelineaDSVStore").msgclass
   GCPStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GCPStore").msgclass
   GCPCertX509Store = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GCPCertX509Store").msgclass
   KeyfactorSSHStore = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.KeyfactorSSHStore").msgclass

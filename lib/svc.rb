@@ -8016,6 +8016,7 @@ module SDM #:nodoc:
   # {CyberarkPAMStore}
   # {CyberarkPAMExperimentalStore}
   # {DelineaStore}
+  # {DelineaDSVStore}
   # {GCPStore}
   # {GCPCertX509Store}
   # {KeyfactorSSHStore}

@@ -1621,6 +1621,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :password, :string, 5
       optional :port, :int32, 6
       optional :port_override, :int32, 3
+      optional :region, :string, 10
       optional :tls_required, :bool, 8
       optional :username, :string, 4
     end
@@ -1677,6 +1678,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :password, :string, 5
       optional :port, :int32, 6
       optional :port_override, :int32, 3
+      optional :region, :string, 10
       optional :tls_required, :bool, 9
       optional :username, :string, 4
     end
@@ -1694,6 +1696,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :hostname, :string, 1
       optional :password, :string, 5
       optional :port_override, :int32, 3
+      optional :region, :string, 9
       optional :tls_required, :bool, 6
       optional :username, :string, 4
     end

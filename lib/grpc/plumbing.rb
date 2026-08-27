@@ -7081,6 +7081,48 @@ module SDM
       end
       items
     end
+    def self.convert_delinea_dsv_store_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = DelineaDSVStore.new()
+      porcelain.id = (plumbing.id)
+      porcelain.name = (plumbing.name)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain.tenant = (plumbing.tenant)
+      porcelain.tld = (plumbing.tld)
+      porcelain
+    end
+
+    def self.convert_delinea_dsv_store_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::DelineaDSVStore.new()
+      plumbing.id = (porcelain.id)
+      plumbing.name = (porcelain.name)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing.tenant = (porcelain.tenant)
+      plumbing.tld = (porcelain.tld)
+      plumbing
+    end
+    def self.convert_repeated_delinea_dsv_store_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_delinea_dsv_store_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_delinea_dsv_store_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_delinea_dsv_store_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_delinea_store_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -12725,6 +12767,7 @@ module SDM
       porcelain.port = (plumbing.port)
       porcelain.port_override = (plumbing.port_override)
       porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
+      porcelain.region = (plumbing.region)
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
@@ -12749,6 +12792,7 @@ module SDM
       plumbing.port = (porcelain.port)
       plumbing.port_override = (porcelain.port_override)
       plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
+      plumbing.region = (porcelain.region)
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
@@ -12920,6 +12964,7 @@ module SDM
       porcelain.port = (plumbing.port)
       porcelain.port_override = (plumbing.port_override)
       porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
+      porcelain.region = (plumbing.region)
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
@@ -12945,6 +12990,7 @@ module SDM
       plumbing.port = (porcelain.port)
       plumbing.port_override = (porcelain.port_override)
       plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
+      plumbing.region = (porcelain.region)
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
@@ -12984,6 +13030,7 @@ module SDM
       porcelain.password = (plumbing.password)
       porcelain.port_override = (plumbing.port_override)
       porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
+      porcelain.region = (plumbing.region)
       porcelain.secret_store_id = (plumbing.secret_store_id)
       porcelain.subdomain = (plumbing.subdomain)
       porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
@@ -13007,6 +13054,7 @@ module SDM
       plumbing.password = (porcelain.password)
       plumbing.port_override = (porcelain.port_override)
       plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
+      plumbing.region = (porcelain.region)
       plumbing.secret_store_id = (porcelain.secret_store_id)
       plumbing.subdomain = (porcelain.subdomain)
       plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
@@ -19193,6 +19241,9 @@ module SDM
       if porcelain.instance_of? DelineaStore
         plumbing.delinea = convert_delinea_store_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? DelineaDSVStore
+        plumbing.delinea_dsv = convert_delinea_dsv_store_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? GCPStore
         plumbing.gcp = convert_gcp_store_to_plumbing(porcelain)
       end
@@ -19283,6 +19334,9 @@ module SDM
       end
       if plumbing.delinea != nil
         return convert_delinea_store_to_porcelain(plumbing.delinea)
+      end
+      if plumbing.delinea_dsv != nil
+        return convert_delinea_dsv_store_to_porcelain(plumbing.delinea_dsv)
       end
       if plumbing.gcp != nil
         return convert_gcp_store_to_porcelain(plumbing.gcp)
