@@ -364,6 +364,8 @@ module SDM
         return SDM::ResourceType::RESOURCE_TYPE_GOOGLE_GKE
       when V1::ResourceType::RESOURCE_TYPE_GOOGLE_GKE_USER_IMPERSONATION
         return SDM::ResourceType::RESOURCE_TYPE_GOOGLE_GKE_USER_IMPERSONATION
+      when V1::ResourceType::RESOURCE_TYPE_GOOGLE_GROUPS
+        return SDM::ResourceType::RESOURCE_TYPE_GOOGLE_GROUPS
       when V1::ResourceType::RESOURCE_TYPE_GOOGLE_SPANNER
         return SDM::ResourceType::RESOURCE_TYPE_GOOGLE_SPANNER
       when V1::ResourceType::RESOURCE_TYPE_GREENPLUM
@@ -624,6 +626,8 @@ module SDM
         value = V1::ResourceType::RESOURCE_TYPE_GOOGLE_GKE
       when SDM::ResourceType::RESOURCE_TYPE_GOOGLE_GKE_USER_IMPERSONATION, "RESOURCE_TYPE_GOOGLE_GKE_USER_IMPERSONATION"
         value = V1::ResourceType::RESOURCE_TYPE_GOOGLE_GKE_USER_IMPERSONATION
+      when SDM::ResourceType::RESOURCE_TYPE_GOOGLE_GROUPS, "RESOURCE_TYPE_GOOGLE_GROUPS"
+        value = V1::ResourceType::RESOURCE_TYPE_GOOGLE_GROUPS
       when SDM::ResourceType::RESOURCE_TYPE_GOOGLE_SPANNER, "RESOURCE_TYPE_GOOGLE_SPANNER"
         value = V1::ResourceType::RESOURCE_TYPE_GOOGLE_SPANNER
       when SDM::ResourceType::RESOURCE_TYPE_GREENPLUM, "RESOURCE_TYPE_GREENPLUM"
@@ -8489,6 +8493,66 @@ module SDM
       end
       items
     end
+    def self.convert_google_groups_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = GoogleGroups.new()
+      porcelain.bind_interface = (plumbing.bind_interface)
+      porcelain.discovery_enabled = (plumbing.discovery_enabled)
+      porcelain.domain = (plumbing.domain)
+      porcelain.egress_filter = (plumbing.egress_filter)
+      porcelain.group_emails = (plumbing.group_emails)
+      porcelain.healthy = (plumbing.healthy)
+      porcelain.id = (plumbing.id)
+      porcelain.identity_set_id = (plumbing.identity_set_id)
+      porcelain.name = (plumbing.name)
+      porcelain.privilege_levels = (plumbing.privilege_levels)
+      porcelain.proxy_cluster_id = (plumbing.proxy_cluster_id)
+      porcelain.secret_store_id = (plumbing.secret_store_id)
+      porcelain.subdomain = (plumbing.subdomain)
+      porcelain.tags = convert_tags_to_porcelain(plumbing.tags)
+      porcelain
+    end
+
+    def self.convert_google_groups_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::GoogleGroups.new()
+      plumbing.bind_interface = (porcelain.bind_interface)
+      plumbing.discovery_enabled = (porcelain.discovery_enabled)
+      plumbing.domain = (porcelain.domain)
+      plumbing.egress_filter = (porcelain.egress_filter)
+      plumbing.group_emails = (porcelain.group_emails)
+      plumbing.healthy = (porcelain.healthy)
+      plumbing.id = (porcelain.id)
+      plumbing.identity_set_id = (porcelain.identity_set_id)
+      plumbing.name = (porcelain.name)
+      plumbing.privilege_levels = (porcelain.privilege_levels)
+      plumbing.proxy_cluster_id = (porcelain.proxy_cluster_id)
+      plumbing.secret_store_id = (porcelain.secret_store_id)
+      plumbing.subdomain = (porcelain.subdomain)
+      plumbing.tags = convert_tags_to_plumbing(porcelain.tags)
+      plumbing
+    end
+    def self.convert_repeated_google_groups_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_google_groups_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_google_groups_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_google_groups_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_google_spanner_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -11245,7 +11309,6 @@ module SDM
       porcelain.bind_interface = (plumbing.bind_interface)
       porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.healthy = (plumbing.healthy)
-      porcelain.hostname = (plumbing.hostname)
       porcelain.id = (plumbing.id)
       porcelain.name = (plumbing.name)
       porcelain.port_override = (plumbing.port_override)
@@ -11267,7 +11330,6 @@ module SDM
       plumbing.bind_interface = (porcelain.bind_interface)
       plumbing.egress_filter = (porcelain.egress_filter)
       plumbing.healthy = (porcelain.healthy)
-      plumbing.hostname = (porcelain.hostname)
       plumbing.id = (porcelain.id)
       plumbing.name = (porcelain.name)
       plumbing.port_override = (porcelain.port_override)
@@ -11305,7 +11367,6 @@ module SDM
       porcelain.bind_interface = (plumbing.bind_interface)
       porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.healthy = (plumbing.healthy)
-      porcelain.hostname = (plumbing.hostname)
       porcelain.id = (plumbing.id)
       porcelain.name = (plumbing.name)
       porcelain.oauth_auth_endpoint = (plumbing.oauth_auth_endpoint)
@@ -11332,7 +11393,6 @@ module SDM
       plumbing.bind_interface = (porcelain.bind_interface)
       plumbing.egress_filter = (porcelain.egress_filter)
       plumbing.healthy = (porcelain.healthy)
-      plumbing.hostname = (porcelain.hostname)
       plumbing.id = (porcelain.id)
       plumbing.name = (porcelain.name)
       plumbing.oauth_auth_endpoint = (porcelain.oauth_auth_endpoint)
@@ -11375,7 +11435,6 @@ module SDM
       porcelain.bind_interface = (plumbing.bind_interface)
       porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.healthy = (plumbing.healthy)
-      porcelain.hostname = (plumbing.hostname)
       porcelain.id = (plumbing.id)
       porcelain.name = (plumbing.name)
       porcelain.oauth_auth_endpoint = (plumbing.oauth_auth_endpoint)
@@ -11401,7 +11460,6 @@ module SDM
       plumbing.bind_interface = (porcelain.bind_interface)
       plumbing.egress_filter = (porcelain.egress_filter)
       plumbing.healthy = (porcelain.healthy)
-      plumbing.hostname = (porcelain.hostname)
       plumbing.id = (porcelain.id)
       plumbing.name = (porcelain.name)
       plumbing.oauth_auth_endpoint = (porcelain.oauth_auth_endpoint)
@@ -11443,7 +11501,6 @@ module SDM
       porcelain.bind_interface = (plumbing.bind_interface)
       porcelain.egress_filter = (plumbing.egress_filter)
       porcelain.healthy = (plumbing.healthy)
-      porcelain.hostname = (plumbing.hostname)
       porcelain.id = (plumbing.id)
       porcelain.name = (plumbing.name)
       porcelain.password = (plumbing.password)
@@ -11466,7 +11523,6 @@ module SDM
       plumbing.bind_interface = (porcelain.bind_interface)
       plumbing.egress_filter = (porcelain.egress_filter)
       plumbing.healthy = (porcelain.healthy)
-      plumbing.hostname = (porcelain.hostname)
       plumbing.id = (porcelain.id)
       plumbing.name = (porcelain.name)
       plumbing.password = (porcelain.password)
@@ -17032,6 +17088,9 @@ module SDM
       if porcelain.instance_of? GoogleGKEUserImpersonation
         plumbing.google_gke_user_impersonation = convert_google_gke_user_impersonation_to_plumbing(porcelain)
       end
+      if porcelain.instance_of? GoogleGroups
+        plumbing.google_groups = convert_google_groups_to_plumbing(porcelain)
+      end
       if porcelain.instance_of? GoogleSpanner
         plumbing.google_spanner = convert_google_spanner_to_plumbing(porcelain)
       end
@@ -17392,6 +17451,9 @@ module SDM
       end
       if plumbing.google_gke_user_impersonation != nil
         return convert_google_gke_user_impersonation_to_porcelain(plumbing.google_gke_user_impersonation)
+      end
+      if plumbing.google_groups != nil
+        return convert_google_groups_to_porcelain(plumbing.google_groups)
       end
       if plumbing.google_spanner != nil
         return convert_google_spanner_to_porcelain(plumbing.google_spanner)

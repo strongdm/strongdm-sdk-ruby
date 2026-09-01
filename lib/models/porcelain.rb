@@ -141,6 +141,8 @@ module SDM
 
     GOOGLE_GKE_USER_IMPERSONATION = "RESOURCE_TYPE_GOOGLE_GKE_USER_IMPERSONATION"
 
+    GOOGLE_GROUPS = "RESOURCE_TYPE_GOOGLE_GROUPS"
+
     GOOGLE_SPANNER = "RESOURCE_TYPE_GOOGLE_SPANNER"
 
     GREENPLUM = "RESOURCE_TYPE_GREENPLUM"
@@ -8008,6 +8010,80 @@ module SDM
     end
   end
 
+  # GoogleGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
+  class GoogleGroups
+    # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
+    attr_accessor :bind_interface
+    # If true, configures discovery of the Google Workspace account to be run
+    # from a node.
+    attr_accessor :discovery_enabled
+    # The primary domain of the Google Workspace account that owns the groups.
+    attr_accessor :domain
+    # A filter applied to the routing logic to pin datasource to nodes.
+    attr_accessor :egress_filter
+    # comma separated list of group email addresses to filter by. Supports
+    # wildcards (*)
+    attr_accessor :group_emails
+    # True if the datasource is reachable and the credentials are valid.
+    attr_accessor :healthy
+    # Unique identifier of the Resource.
+    attr_accessor :id
+    # The ID of the identity set to use for identity connections.
+    attr_accessor :identity_set_id
+    # Unique human-readable name of the Resource.
+    attr_accessor :name
+    # The privilege levels specify which Groups are managed externally
+    attr_accessor :privilege_levels
+    # ID of the proxy cluster for this resource, if any.
+    attr_accessor :proxy_cluster_id
+    # ID of the secret store containing credentials for this resource, if any.
+    attr_accessor :secret_store_id
+    # DNS subdomain through which this resource may be accessed on clients.  (e.g. "app-prod1" allows the resource to be accessed at "app-prod1.your-org-name.sdm-proxy-domain"). Only applicable to HTTP-based resources or resources using virtual networking mode.
+    attr_accessor :subdomain
+    # Tags is a map of key, value pairs.
+    attr_accessor :tags
+
+    def initialize(
+      bind_interface: nil,
+      discovery_enabled: nil,
+      domain: nil,
+      egress_filter: nil,
+      group_emails: nil,
+      healthy: nil,
+      id: nil,
+      identity_set_id: nil,
+      name: nil,
+      privilege_levels: nil,
+      proxy_cluster_id: nil,
+      secret_store_id: nil,
+      subdomain: nil,
+      tags: nil
+    )
+      @bind_interface = bind_interface == nil ? "" : bind_interface
+      @discovery_enabled = discovery_enabled == nil ? false : discovery_enabled
+      @domain = domain == nil ? "" : domain
+      @egress_filter = egress_filter == nil ? "" : egress_filter
+      @group_emails = group_emails == nil ? "" : group_emails
+      @healthy = healthy == nil ? false : healthy
+      @id = id == nil ? "" : id
+      @identity_set_id = identity_set_id == nil ? "" : identity_set_id
+      @name = name == nil ? "" : name
+      @privilege_levels = privilege_levels == nil ? "" : privilege_levels
+      @proxy_cluster_id = proxy_cluster_id == nil ? "" : proxy_cluster_id
+      @secret_store_id = secret_store_id == nil ? "" : secret_store_id
+      @subdomain = subdomain == nil ? "" : subdomain
+      @tags = tags == nil ? SDM::_porcelain_zero_value_tags() : tags
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class GoogleSpanner
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
@@ -10512,8 +10588,6 @@ module SDM
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-    # The host to dial to initiate a connection from the egress node to this resource.
-    attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
@@ -10539,7 +10613,6 @@ module SDM
       bind_interface: nil,
       egress_filter: nil,
       healthy: nil,
-      hostname: nil,
       id: nil,
       name: nil,
       port_override: nil,
@@ -10554,7 +10627,6 @@ module SDM
       @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
-      @hostname = hostname == nil ? "" : hostname
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
       @port_override = port_override == nil ? 0 : port_override
@@ -10583,8 +10655,6 @@ module SDM
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-    # The host to dial to initiate a connection from the egress node to this resource.
-    attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
@@ -10620,7 +10690,6 @@ module SDM
       bind_interface: nil,
       egress_filter: nil,
       healthy: nil,
-      hostname: nil,
       id: nil,
       name: nil,
       oauth_auth_endpoint: nil,
@@ -10640,7 +10709,6 @@ module SDM
       @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
-      @hostname = hostname == nil ? "" : hostname
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
       @oauth_auth_endpoint = oauth_auth_endpoint == nil ? "" : oauth_auth_endpoint
@@ -10674,8 +10742,6 @@ module SDM
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-    # The host to dial to initiate a connection from the egress node to this resource.
-    attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
@@ -10709,7 +10775,6 @@ module SDM
       bind_interface: nil,
       egress_filter: nil,
       healthy: nil,
-      hostname: nil,
       id: nil,
       name: nil,
       oauth_auth_endpoint: nil,
@@ -10728,7 +10793,6 @@ module SDM
       @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
-      @hostname = hostname == nil ? "" : hostname
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
       @oauth_auth_endpoint = oauth_auth_endpoint == nil ? "" : oauth_auth_endpoint
@@ -10761,8 +10825,6 @@ module SDM
     attr_accessor :egress_filter
     # True if the datasource is reachable and the credentials are valid.
     attr_accessor :healthy
-    # The host to dial to initiate a connection from the egress node to this resource.
-    attr_accessor :hostname
     # Unique identifier of the Resource.
     attr_accessor :id
     # Unique human-readable name of the Resource.
@@ -10790,7 +10852,6 @@ module SDM
       bind_interface: nil,
       egress_filter: nil,
       healthy: nil,
-      hostname: nil,
       id: nil,
       name: nil,
       password: nil,
@@ -10806,7 +10867,6 @@ module SDM
       @bind_interface = bind_interface == nil ? "" : bind_interface
       @egress_filter = egress_filter == nil ? "" : egress_filter
       @healthy = healthy == nil ? false : healthy
-      @hostname = hostname == nil ? "" : hostname
       @id = id == nil ? "" : id
       @name = name == nil ? "" : name
       @password = password == nil ? "" : password

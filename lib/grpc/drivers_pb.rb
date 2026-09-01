@@ -84,6 +84,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :gcpwif, :message, 2701, "v1.GCPWIF"
         optional :google_gke, :message, 803, "v1.GoogleGKE"
         optional :google_gke_user_impersonation, :message, 816, "v1.GoogleGKEUserImpersonation"
+        optional :google_groups, :message, 5000, "v1.GoogleGroups"
         optional :google_spanner, :message, 4800, "v1.GoogleSpanner"
         optional :greenplum, :message, 1302, "v1.Greenplum"
         optional :http_auth, :message, 702, "v1.HTTPAuth"
@@ -1204,6 +1205,22 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :port_override, :int32, 12
       optional :service_account_key, :string, 4
     end
+    add_message "v1.GoogleGroups" do
+      optional :id, :string, 32768
+      optional :name, :string, 32769
+      optional :healthy, :bool, 32770
+      optional :tags, :message, 32771, "v1.Tags"
+      optional :secret_store_id, :string, 32772
+      optional :egress_filter, :string, 32773
+      optional :bind_interface, :string, 32774
+      optional :proxy_cluster_id, :string, 32776
+      optional :subdomain, :string, 32775
+      optional :discovery_enabled, :bool, 4
+      optional :domain, :string, 1
+      optional :group_emails, :string, 5
+      optional :identity_set_id, :string, 3
+      optional :privilege_levels, :string, 2
+    end
     add_message "v1.GoogleSpanner" do
       optional :id, :string, 32768
       optional :name, :string, 32769
@@ -1445,7 +1462,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :bind_interface, :string, 32774
       optional :proxy_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
-      optional :hostname, :string, 1
       optional :port_override, :int32, 4
       optional :tls_cert, :string, 11
       optional :tls_insecure, :bool, 10
@@ -1461,7 +1477,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :bind_interface, :string, 32774
       optional :proxy_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
-      optional :hostname, :string, 1
       optional :oauth_auth_endpoint, :string, 8
       optional :oauth_scopes, :string, 11
       optional :oauth_token_endpoint, :string, 9
@@ -1482,7 +1497,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :bind_interface, :string, 32774
       optional :proxy_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
-      optional :hostname, :string, 1
       optional :oauth_auth_endpoint, :string, 8
       optional :oauth_register_endpoint, :string, 10
       optional :oauth_scopes, :string, 12
@@ -1502,7 +1516,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :bind_interface, :string, 32774
       optional :proxy_cluster_id, :string, 32776
       optional :subdomain, :string, 32775
-      optional :hostname, :string, 1
       optional :password, :string, 2
       optional :port_override, :int32, 4
       optional :tls_cert, :string, 11
@@ -2369,6 +2382,7 @@ module V1
   GCPWIF = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GCPWIF").msgclass
   GoogleGKE = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GoogleGKE").msgclass
   GoogleGKEUserImpersonation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GoogleGKEUserImpersonation").msgclass
+  GoogleGroups = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GoogleGroups").msgclass
   GoogleSpanner = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GoogleSpanner").msgclass
   Greenplum = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Greenplum").msgclass
   HTTPAuth = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.HTTPAuth").msgclass

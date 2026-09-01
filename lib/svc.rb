@@ -7398,6 +7398,7 @@ module SDM #:nodoc:
   # {GCPWIF}
   # {GoogleGKE}
   # {GoogleGKEUserImpersonation}
+  # {GoogleGroups}
   # {GoogleSpanner}
   # {Greenplum}
   # {HTTPAuth}
