@@ -6443,7 +6443,6 @@ module SDM
     end
   end
 
-  # DelineaDSVStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class DelineaDSVStore
     # Unique identifier of the SecretStore.
     attr_accessor :id
