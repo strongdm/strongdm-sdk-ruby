@@ -8009,14 +8009,15 @@ module SDM
     end
   end
 
-  # GoogleGroups is currently unstable, and its API may change, or it may be removed, without a major version bump.
   class GoogleGroups
     # The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided and may also be set to one of the ResourceIPAllocationMode constants to select between VNM, loopback, or default allocation.
     attr_accessor :bind_interface
     # If true, configures discovery of the Google Workspace account to be run
     # from a node.
     attr_accessor :discovery_enabled
-    # The primary domain of the Google Workspace account that owns the groups.
+    # The Google Workspace domain that owns the groups. Only groups whose email
+    # address is at this exact domain are discovered; add one resource per
+    # secondary domain.
     attr_accessor :domain
     # A filter applied to the routing logic to pin datasource to nodes.
     attr_accessor :egress_filter

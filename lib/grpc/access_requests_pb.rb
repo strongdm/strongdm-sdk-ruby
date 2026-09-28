@@ -73,6 +73,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :kubernetes, :message, 1, "v1.KubernetesPrivileges"
       optional :entraGroups, :message, 2, "v1.EntraGroupPrivileges"
       optional :oktaGroups, :message, 3, "v1.OktaGroupPrivileges"
+      optional :googleGroups, :message, 4, "v1.GoogleGroupPrivileges"
     end
     add_message "v1.KubernetesPrivileges" do
       repeated :groups, :string, 1
@@ -81,6 +82,9 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       repeated :groups, :string, 1
     end
     add_message "v1.OktaGroupPrivileges" do
+      repeated :groups, :string, 1
+    end
+    add_message "v1.GoogleGroupPrivileges" do
       repeated :groups, :string, 1
     end
     add_message "v1.AccessRequestConfig" do
@@ -109,6 +113,7 @@ module V1
   KubernetesPrivileges = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.KubernetesPrivileges").msgclass
   EntraGroupPrivileges = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.EntraGroupPrivileges").msgclass
   OktaGroupPrivileges = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.OktaGroupPrivileges").msgclass
+  GoogleGroupPrivileges = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.GoogleGroupPrivileges").msgclass
   AccessRequestConfig = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.AccessRequestConfig").msgclass
   RequestAccessRequestConfig = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RequestAccessRequestConfig").msgclass
 end
