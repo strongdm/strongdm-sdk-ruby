@@ -573,6 +573,13 @@ module SDM
     EU = "app.eu.strongdm.com:443"
   end
 
+  # InitiatorType defines who established a connection to a resource, as classified by the local StrongDM client.
+  module InitiatorType
+    AI_AGENT = "ai_agent"
+    HUMAN = "human"
+    UNKNOWN = "unknown"
+  end
+
   # ApproverReference defines the type for approver references.
   module ApproverReference
     NONE = ""

@@ -71,6 +71,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :discard_replays, :bool, 30
       optional :public_key_pem, :string, 31
       optional :log_config, :message, 32, "v1.LogConfig"
+      optional :peer_policies_enabled, :bool, 33
     end
     add_message "v1.LogConfig" do
       optional :local_storage, :string, 1

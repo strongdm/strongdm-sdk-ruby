@@ -10605,6 +10605,46 @@ module SDM
       end
       items
     end
+    def self.convert_initiator_to_porcelain(plumbing)
+      if plumbing == nil
+        return nil
+      end
+      porcelain = Initiator.new()
+      porcelain.ai_agent = (plumbing.ai_agent)
+      porcelain.trusted = (plumbing.trusted)
+      porcelain.type = (plumbing.type)
+      porcelain.version = (plumbing.version)
+      porcelain
+    end
+
+    def self.convert_initiator_to_plumbing(porcelain)
+      if porcelain == nil
+        return nil
+      end
+      plumbing = V1::Initiator.new()
+      plumbing.ai_agent = (porcelain.ai_agent)
+      plumbing.trusted = (porcelain.trusted)
+      plumbing.type = (porcelain.type)
+      plumbing.version = (porcelain.version)
+      plumbing
+    end
+    def self.convert_repeated_initiator_to_plumbing(porcelains)
+      items = Array.new
+      porcelains.each do |porcelain|
+        plumbing = convert_initiator_to_plumbing(porcelain)
+        items.append(plumbing)
+      end
+      items
+    end
+
+    def self.convert_repeated_initiator_to_porcelain(plumbings)
+      items = Array.new
+      plumbings.each do |plumbing|
+        porcelain = convert_initiator_to_porcelain(plumbing)
+        items.append(porcelain)
+      end
+      items
+    end
     def self.convert_key_value_engine_to_porcelain(plumbing)
       if plumbing == nil
         return nil
@@ -15455,6 +15495,7 @@ module SDM
       porcelain.encrypted = (plumbing.encrypted)
       porcelain.id = (plumbing.id)
       porcelain.identity_alias_username = (plumbing.identity_alias_username)
+      porcelain.initiator = convert_initiator_to_porcelain(plumbing.initiator)
       porcelain.metadata_json = (plumbing.metadata_json)
       porcelain.query_body = (plumbing.query_body)
       porcelain.query_category = (plumbing.query_category)
@@ -15492,6 +15533,7 @@ module SDM
       plumbing.encrypted = (porcelain.encrypted)
       plumbing.id = (porcelain.id)
       plumbing.identity_alias_username = (porcelain.identity_alias_username)
+      plumbing.initiator = convert_initiator_to_plumbing(porcelain.initiator)
       plumbing.metadata_json = (porcelain.metadata_json)
       plumbing.query_body = (porcelain.query_body)
       plumbing.query_category = (porcelain.query_category)

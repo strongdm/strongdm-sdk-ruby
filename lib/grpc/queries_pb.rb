@@ -66,6 +66,13 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :client_ip, :string, 29
       optional :identity_alias_username, :string, 30
       optional :metadata_json, :string, 31
+      optional :initiator, :message, 32, "v1.Initiator"
+    end
+    add_message "v1.Initiator" do
+      optional :type, :string, 1
+      optional :ai_agent, :string, 2
+      optional :version, :string, 3
+      optional :trusted, :bool, 4
     end
     add_message "v1.QueryCapture" do
       optional :width, :int32, 1
@@ -92,5 +99,6 @@ module V1
   QueryListRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.QueryListRequest").msgclass
   QueryListResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.QueryListResponse").msgclass
   Query = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Query").msgclass
+  Initiator = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Initiator").msgclass
   QueryCapture = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.QueryCapture").msgclass
 end

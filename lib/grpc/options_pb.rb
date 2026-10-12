@@ -68,6 +68,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :condition, :string, 1941323
       repeated :conditions, :string, 1941325
       optional :expect_file, :bool, 1941324
+      optional :nullable, :bool, 1941326
     end
     add_message "v1.EnumOptions" do
       repeated :targets, :string, 1941330

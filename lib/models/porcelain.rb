@@ -9755,6 +9755,42 @@ module SDM
     end
   end
 
+  # An Initiator describes who established the connection to the resource, as classified by
+  # the local StrongDM client.
+  class Initiator
+    # A stable identifier of the AI Agent that established the connection, e.g. "claude-code".
+    # Empty unless type is "ai_agent".
+    attr_accessor :ai_agent
+    # Indicates whether the initiator detection is trusted, meaning it cannot be spoofed by the end user.
+    attr_accessor :trusted
+    # The kind of initiator, one of the InitiatorType constants: "ai_agent" when a supported AI
+    # Agent was detected, "human" when no supported AI Agent was detected, or "unknown" when the
+    # client could not determine the initiator.
+    attr_accessor :type
+    # The version of the AI Agent, when it could be determined.
+    attr_accessor :version
+
+    def initialize(
+      ai_agent: nil,
+      trusted: nil,
+      type: nil,
+      version: nil
+    )
+      @ai_agent = ai_agent == nil ? "" : ai_agent
+      @trusted = trusted == nil ? false : trusted
+      @type = type == nil ? "" : type
+      @version = version == nil ? "" : version
+    end
+
+    def to_json(options = {})
+      hash = {}
+      self.instance_variables.each do |var|
+        hash[var.id2name.delete_prefix("@")] = self.instance_variable_get var
+      end
+      hash.to_json
+    end
+  end
+
   class KeyValueEngine
     # Unique identifier of the Secret Engine.
     attr_accessor :id
@@ -14500,6 +14536,9 @@ module SDM
     attr_accessor :id
     # The username of the IdentityAlias used to access the Resource.
     attr_accessor :identity_alias_username
+    # Who established the connection to the resource, as classified by the local StrongDM client.
+    # Absent when the initiator was not recorded or the organization does not have AI Agent controls.
+    attr_accessor :initiator
     # Driver specific metadata associated with this query.
     attr_accessor :metadata_json
     # The captured content of the Query.
@@ -14552,6 +14591,7 @@ module SDM
       encrypted: nil,
       id: nil,
       identity_alias_username: nil,
+      initiator: nil,
       metadata_json: nil,
       query_body: nil,
       query_category: nil,
@@ -14582,6 +14622,7 @@ module SDM
       @encrypted = encrypted == nil ? false : encrypted
       @id = id == nil ? "" : id
       @identity_alias_username = identity_alias_username == nil ? "" : identity_alias_username
+      @initiator = initiator == nil ? nil : initiator
       @metadata_json = metadata_json == nil ? "" : metadata_json
       @query_body = query_body == nil ? "" : query_body
       @query_category = query_category == nil ? "" : query_category
