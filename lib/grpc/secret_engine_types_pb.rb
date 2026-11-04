@@ -42,6 +42,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :do_not_validate_timestamps, :bool, 1015
       optional :insecure_tls, :bool, 106
       optional :max_backoff_duration, :message, 1016, "google.protobuf.Duration"
+      optional :path_credentials, :bool, 1017
       optional :policy, :message, 1014, "v1.SecretEnginePolicy"
       optional :request_timeout, :uint32, 104
       optional :start_tls, :bool, 105
@@ -75,6 +76,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :database, :string, 108
       optional :hostname, :string, 101
       optional :password, :string, 103
+      optional :path_credentials, :bool, 1011
       optional :policy, :message, 107, "v1.SecretEnginePolicy"
       optional :port, :uint32, 104
       optional :tls, :bool, 109
@@ -96,6 +98,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :database, :string, 108
       optional :hostname, :string, 101
       optional :password, :string, 103
+      optional :path_credentials, :bool, 1010
       optional :policy, :message, 107, "v1.SecretEnginePolicy"
       optional :port, :uint32, 104
       optional :tls, :bool, 109
@@ -116,6 +119,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :database, :string, 108
       optional :hostname, :string, 101
       optional :password, :string, 103
+      optional :path_credentials, :bool, 1011
       optional :policy, :message, 107, "v1.SecretEnginePolicy"
       optional :port, :uint32, 104
       optional :tls, :bool, 109

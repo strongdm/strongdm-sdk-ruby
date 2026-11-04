@@ -74,9 +74,9 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 4, "v1.Tags"
       optional :access_rules, :string, 5
       optional :managed_by, :string, 6
-      optional :scope, :message, 7, "v1.RoleScope"
+      optional :conditions, :message, 7, "v1.RoleConditions"
     end
-    add_message "v1.RoleScope" do
+    add_message "v1.RoleConditions" do
       optional :type, :string, 1
       repeated :agents, :string, 2
     end
@@ -95,5 +95,5 @@ module V1
   RoleListRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RoleListRequest").msgclass
   RoleListResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RoleListResponse").msgclass
   Role = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.Role").msgclass
-  RoleScope = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RoleScope").msgclass
+  RoleConditions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("v1.RoleConditions").msgclass
 end

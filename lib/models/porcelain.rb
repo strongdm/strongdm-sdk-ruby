@@ -2308,9 +2308,9 @@ module SDM
   class ActiveDirectoryEngine
     # The default time-to-live duration of the password after it's read. Once the ttl has passed, a password will be rotated.
     attr_accessor :after_read_ttl
-    # Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com
+    # Distinguished name of object to bind when performing user and group search. Example: cn=vault,ou=Users,dc=example,dc=com. With path_credentials it is a secret store path in the resource format path?key=username, otherwise it is the literal username.
     attr_accessor :binddn
-    # Password to use along with binddn when performing user search.
+    # Bindpass is the password to use along with binddn when performing user search. With path_credentials it is a secret store path in the resource format path?key=password, otherwise it is the literal password.
     attr_accessor :bindpass
     # CA certificate to use when verifying LDAP server certificate, must be x509 PEM encoded.
     attr_accessor :certificate
@@ -2331,6 +2331,8 @@ module SDM
     attr_accessor :name
     # node selector is used to narrow down the nodes used to communicate with with secret engine
     attr_accessor :node_selector
+    # PathCredentials is true when username and password are secret store paths, which the control plane stores. When false, they are literal values and the password is rotated and kept in the engine's secret store.
+    attr_accessor :path_credentials
     # Policy for password creation
     attr_accessor :policy
     # Public key linked with a secret engine
@@ -2367,6 +2369,7 @@ module SDM
       max_backoff_duration: nil,
       name: nil,
       node_selector: nil,
+      path_credentials: nil,
       policy: nil,
       public_key: nil,
       request_timeout: nil,
@@ -2391,6 +2394,7 @@ module SDM
       @max_backoff_duration = max_backoff_duration == nil ? nil : max_backoff_duration
       @name = name == nil ? "" : name
       @node_selector = node_selector == nil ? "" : node_selector
+      @path_credentials = path_credentials == nil ? false : path_credentials
       @policy = policy == nil ? nil : policy
       @public_key = public_key == nil ? "" : public_key
       @request_timeout = request_timeout == nil ? 0 : request_timeout
@@ -12504,8 +12508,10 @@ module SDM
     attr_accessor :name
     # node selector is used to narrow down the nodes used to communicate with with secret engine
     attr_accessor :node_selector
-    # Password is the password to connect to the MySQL server.
+    # Password is the password to connect to the MySQL server. With path_credentials it is a secret store path in the resource format path?key=password, otherwise it is the literal password.
     attr_accessor :password
+    # PathCredentials is true when username and password are secret store paths, which the control plane stores. When false, they are literal values and the password is rotated and kept in the engine's secret store.
+    attr_accessor :path_credentials
     # Policy for password creation
     attr_accessor :policy
     # Port is the port number of the MySQL server.
@@ -12524,7 +12530,7 @@ module SDM
     attr_accessor :tls_skip_verify
     # The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
     attr_accessor :ttl
-    # Username is the username to connect to the MySQL server.
+    # Username is the username to connect to the MySQL server. With path_credentials it is a secret store path in the resource format path?key=username, otherwise it is the literal username.
     attr_accessor :username
 
     def initialize(
@@ -12536,6 +12542,7 @@ module SDM
       name: nil,
       node_selector: nil,
       password: nil,
+      path_credentials: nil,
       policy: nil,
       port: nil,
       public_key: nil,
@@ -12555,6 +12562,7 @@ module SDM
       @name = name == nil ? "" : name
       @node_selector = node_selector == nil ? "" : node_selector
       @password = password == nil ? "" : password
+      @path_credentials = path_credentials == nil ? false : path_credentials
       @policy = policy == nil ? nil : policy
       @port = port == nil ? 0 : port
       @public_key = public_key == nil ? "" : public_key
@@ -14180,8 +14188,10 @@ module SDM
     attr_accessor :name
     # node selector is used to narrow down the nodes used to communicate with with secret engine
     attr_accessor :node_selector
-    # Password is the password to connect to the Postgres server.
+    # Password is the password to connect to the Postgres server. With path_credentials it is a secret store path in the resource format path?key=password, otherwise it is the literal password.
     attr_accessor :password
+    # PathCredentials is true when username and password are secret store paths, which the control plane stores. When false, they are literal values and the password is rotated and kept in the engine's secret store.
+    attr_accessor :path_credentials
     # Policy for password creation
     attr_accessor :policy
     # Port is the port number of the Postgres server.
@@ -14198,7 +14208,7 @@ module SDM
     attr_accessor :tls
     # The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
     attr_accessor :ttl
-    # Username is the username to connect to the Postgres server.
+    # Username is the username to connect to the Postgres server. With path_credentials it is a secret store path in the resource format path?key=username, otherwise it is the literal username.
     attr_accessor :username
 
     def initialize(
@@ -14210,6 +14220,7 @@ module SDM
       name: nil,
       node_selector: nil,
       password: nil,
+      path_credentials: nil,
       policy: nil,
       port: nil,
       public_key: nil,
@@ -14228,6 +14239,7 @@ module SDM
       @name = name == nil ? "" : name
       @node_selector = node_selector == nil ? "" : node_selector
       @password = password == nil ? "" : password
+      @path_credentials = path_credentials == nil ? false : path_credentials
       @policy = policy == nil ? nil : policy
       @port = port == nil ? 0 : port
       @public_key = public_key == nil ? "" : public_key
@@ -18005,8 +18017,10 @@ module SDM
     attr_accessor :name
     # node selector is used to narrow down the nodes used to communicate with with secret engine
     attr_accessor :node_selector
-    # Password is the password to connect to the SQL Server server.
+    # Password is the password to connect to the SQL Server server. With path_credentials it is a secret store path in the resource format path?key=password, otherwise it is the literal password.
     attr_accessor :password
+    # PathCredentials is true when username and password are secret store paths, which the control plane stores. When false, they are literal values and the password is rotated and kept in the engine's secret store.
+    attr_accessor :path_credentials
     # Policy for password creation
     attr_accessor :policy
     # Port is the port number of the SQL Server server.
@@ -18025,7 +18039,7 @@ module SDM
     attr_accessor :tls_skip_verify
     # The default password time-to-live duration. Once the ttl has passed, a password will be rotated the next time it's requested.
     attr_accessor :ttl
-    # Username is the username to connect to the SQL Server.
+    # Username is the username to connect to the SQL Server. With path_credentials it is a secret store path in the resource format path?key=username, otherwise it is the literal username.
     attr_accessor :username
 
     def initialize(
@@ -18037,6 +18051,7 @@ module SDM
       name: nil,
       node_selector: nil,
       password: nil,
+      path_credentials: nil,
       policy: nil,
       port: nil,
       public_key: nil,
@@ -18056,6 +18071,7 @@ module SDM
       @name = name == nil ? "" : name
       @node_selector = node_selector == nil ? "" : node_selector
       @password = password == nil ? "" : password
+      @path_credentials = path_credentials == nil ? false : path_credentials
       @policy = policy == nil ? nil : policy
       @port = port == nil ? 0 : port
       @public_key = public_key == nil ? "" : public_key

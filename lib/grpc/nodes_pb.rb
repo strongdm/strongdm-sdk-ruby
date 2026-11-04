@@ -130,6 +130,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :tags, :message, 4, "v1.Tags"
       repeated :maintenance_windows, :message, 5, "v1.NodeMaintenanceWindow"
       optional :certificate_authority_id, :string, 6
+      optional :tls_mode, :string, 7
     end
     add_message "v1.NodeMaintenanceWindow" do
       optional :cron_schedule, :string, 1
